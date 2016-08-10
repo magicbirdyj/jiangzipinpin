@@ -1,0 +1,261 @@
+/* CSS Document */
+
+/* 默认样式设置*/
+/* -moz :火狐私有属性；-webkit :chrome、safari私有属性* -ms IE私有属性*/
+
+
+body,div,ul,li,a,img,input,form,h1,h2,h3,h4,h5,h6,p,table,tr,td{padding:0px;margin:0px;}
+div,ul,li,a,img,input,form,h1,h2,h3,h4,h5,h6,p{
+    overflow:hidden;
+    border: none;
+}
+img{border:none;}
+
+body{
+font: normal 100% Helvetica, Arial, sans-serif;
+color:#666;
+font-family:Arial, Helvetica, sans-serif,新宋体;
+text-align:center;
+background-color:#F0F0F0;
+width: 100%;
+font-size: 16px;
+}
+div{text-align:left;background-color: #FFF;}
+ul li{list-style:none;}
+h1,h2,h3,h4,h5,h6{font-weight:400;}
+table,td{border:none; border-collapse:collapse;}
+
+/*全局css*/
+/*字体颜色*/
+.red{
+color:#F76120;
+}
+.green{
+    color:#2BB8AA;/*浅绿色#00FFDB*/
+}
+/*文字自动换行*/
+.warp{
+word-break:break-all;}
+/*去边框*/
+.noborder{
+border:none;
+}
+/*链接样式*/
+a{
+color:#666;
+cursor:pointer;/*手形*/
+}
+a:link,a:visited {
+text-decoration:none;
+}
+a:hover{
+color:#2BB8AA;
+}
+
+.page_foot{
+    margin-top: 20px;
+    background-color: #FFF;
+    padding: 5px 0px;
+}
+.page_foot div{
+    text-align: center;
+    height: 34px;
+    line-height: 34px;
+    font-size: 14px;
+}
+.page_foot .num, .page_foot .current{
+    padding: 6px 10px;
+    border: 2px solid #999;
+    margin-left: 3px;
+    border-radius: 4px;
+}
+
+.page_foot .current{
+    color: #00FFDB;
+    border: 2px solid #00FFDB;
+}
+
+.page_foot .next,.page_foot .prev{
+    border: 2px solid #00FFDB;
+    padding: 6px 10px;
+    margin: 0px 5px;
+    color: #00FFDB;
+    border-radius: 4px;
+}
+/*按钮样式（灰色）*/
+.button_a{
+    height: 33px;
+    border: 1px solid #AAA;
+    background-image: url(../Images/public/button_background1.jpg);
+    display: inline-block;
+    cursor:pointer;/*手形*/
+}
+/*按钮样式鼠标放上*/
+.button_a:hover{
+    background-image: url(../Images/public/button_background2.jpg);
+}
+
+/*按钮样式（绿色按钮）*/
+.button_a_lvse:link,.button_a_lvse:visited {
+    box-sizing: border-box;
+    display:block;
+    width:90%;
+    padding: 15px 0px;
+    background-color:#03BA8A;
+    text-align:center;
+    margin-left: 5%;
+    border:1px solid #03BA8A;
+    color:#FFFFFF;
+    font-size:20px;
+    cursor:pointer;
+}
+/*按钮样式鼠标放上*/
+.button_a_lvse:active{
+    box-sizing: border-box;
+    border:1px solid #000;
+    color: #EEE;
+}
+
+/*超出部分的文字用省略号代替*/
+.shenglue{
+    overflow: hidden;
+    text-overflow:ellipsis;/*超出部分省略号*/
+    white-space: nowrap;/*强制文本一行输出*/
+}
+
+
+.ui-content .ui-grid-c{
+    background-color: #FFF;
+}
+
+.ui-content{
+    padding: 0em;
+    margin-bottom: 47.4px;
+    border-width: 0;
+}
+
+
+.padding{
+    padding: 12px;
+}
+.fanhui{
+    position: relative;
+    z-index: 1000;
+    font-size: 20px;
+    background-color: #06c1ae;
+    text-align: center;
+    color: #FFF;
+    transition:dispaly 2s;
+    -moz-transition:dispaly 2s; /* Firefox 4 */
+    -webkit-transition:dispaly 2s; /* Safari and Chrome */
+    -o-transition:dispaly 2s; /* Opera */
+}
+.fanhui .tb_fanhui{
+    position: absolute;
+    font-size: 40px;
+    color: #FFF;
+    left: 10px;
+    top: 3px;
+}
+/*搜索页面的css*/
+.logo .tb_fanhui{
+    font-size: 40px;
+    color: #FFF;
+    margin-top: 0px;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    top:-3px;
+}
+
+embed{
+    width:100%;
+}
+
+
+/*提示信息样式*/
+.infor{
+    display: none;
+    padding: 9px 0px;
+    background-color: #F0F0F0;
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    position: fixed;
+    top:45px;
+    overflow: hidden;
+    text-overflow:ellipsis;/*超出部分省略号*/
+    white-space: nowrap;/*强制文本一行输出*/
+    z-index: 999;
+}
+
+.border{
+    border:1px solid #f0efed;
+}
+.border-bottom{
+    border-bottom: 1px solid #f0efed;;
+}
+.border-top{
+    border-top: 1px solid #f0efed;;
+}
+/*价格颜色_red*/
+.price_red{
+    color: #FF9712;
+}
+
+.fixed_bottom{
+    position: fixed;
+    bottom: 50px;
+}
+
+
+/*向上的三角形 */
+.triangle-up {
+width:0;
+height:0;   
+border-left:10px solid transparent;   
+border-right:10px solid transparent;   
+border-bottom:10px solid #555;
+} 
+
+/*最新订单提示css*/
+.new_order_div{
+    position: absolute;
+    top:100px;
+    left: 10px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #555;
+    color: #FFF;
+    font-size: 10px;
+    border-radius:15px;
+    padding-right: 15px;
+}
+.new_order_div span{
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    position: relative;
+    top:-11px;
+    padding-left: 10px;
+}
+.new_order_div img{
+    height: 30px;
+    width: 30px;
+    border-radius:15px;
+}
+
+/*遮罩层css*/
+#overlay {
+    background: #000;
+    filter: alpha(opacity=30); /* IE的透明度 */
+    opacity: 0.3 ; /* 透明度 */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 10000; /* 此处的图层要大于页面 */
+    display:none;
+}

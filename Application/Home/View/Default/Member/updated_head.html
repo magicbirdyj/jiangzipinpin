@@ -1,0 +1,71 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/hunliren_shangjiaxinxi.css">
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/jquery.form.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script>
+</head>
+
+<body>
+    <include file='Public/menu'/>
+    <include file='Public/member_left' />
+    <div class="right">
+        <div class="right_head">
+            <div class="hlr_touxiang">
+                <img src="<{$touxiang_url}>" class="img" id='touxiang_img' />
+                <img src='__PUBLIC_HOME__/Images/public/circle_f6f6f6.png' class="img_circle" id='file_jia' style="cursor:pointer;" />
+            </div>
+            <a  href="javascript:void(0)" id='submit_a'>确定</a>
+        </div>
+    </div>
+    
+</div>
+ <form name="updated_head_queren" method="post"  action="<{:U('Member/updated_head_queren')}>">
+     <input name="head_img" value=""  type="hidden" /> 
+ </form>
+<form id = "form_file_jia" enctype="multipart/form-data" action="<{:U('Member/file_jia')}>" method="post">   
+        <input name="file_img" type="file"  style="visibility:hidden; width:0px; height: 0px;"/>
+</form>    
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script type="text/javascript">
+    $('#file_jia').bind('click',function(){
+    $('input[name=file_img]').trigger('click');
+    });
+    $('input[name=file_img]').bind('change',function(){
+        if(check_file_image($(this),$('#span_touxiang'),true)){
+            file_jia_change();
+        };
+    });
+    
+    //文件上传控件内容改变时的ajax上传函数
+function file_jia_change(){
+    $("#form_file_jia").ajaxSubmit({  
+                    type: 'post',  
+                    dataType:"json",
+                    async : false,
+                    success: function(msg){
+                        $('#touxiang_img').attr('src','/'+msg.src);
+                        $('input[name=head_img]').attr('value',String(msg.src));
+                        if(String(msg.src)=== "undefined"){
+                            alert('商品图片因超过5M或其它原因未上传成功,请重新上传');
+                        }
+                        return true; 
+                    },  
+                    error: function(){  
+                        alert('上传文件出错');
+                        return false;
+                    }  
+                });  
+}
+$('#submit_a').bind('click',function(){
+    var aa=$('input[name=head_img]').attr('value');
+    if(aa.indexOf("undefined")!==-1){
+        alert('商品图片因超过5M或其它原因未上传成功');
+    }else{
+        $('form[name=updated_head_queren]').submit();
+    }
+});
+</script>
+
+</body>
+</html>

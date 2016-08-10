@@ -1,0 +1,78 @@
+
+.title{
+    font-size: 20px;
+    margin: 10px 0px 30px 200px;
+}
+.inof_div{
+    padding: 30px 100px;
+}
+.tr_td1{
+text-align:right;
+margin:10px 0px;
+height:27px;
+line-height:27px;
+font-size:14px;
+padding-right:30px;;
+width:100px;
+color:#333;
+float: left;
+}
+.tr_td2{
+height:25px;
+line-height:25px;
+border:none;
+margin:10px 0px;
+padding:0px;
+font-size:14px;
+}
+.tr .text{
+    width: 250px;
+    height: 28px;
+    line-height:28px;
+    margin-top: 8px;
+}
+.release_select{
+    border:1px solid #AAA;
+    padding:0px 4px;
+    width:100px;
+    text-align: center;
+    color: #000;
+    cursor:pointer;
+}
+.tr_td1_input{
+    height:25px;
+    line-height:25px;
+    padding:0px;
+    font-size:14px;
+    text-align: center;
+}
+.input_button{
+    padding: 3px 6px;
+    display: inline-block;
+    cursor:pointer;
+}
+.del_a{
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 50px;
+    height: 27px;
+    display:none;
+    background-image: url("../Images/common/del_a.png");
+    //background-position: 0px -40px;
+    //background-color: #AAA;
+}
+.js_div{
+    float: left;
+    position:relative;
+}
+.del_a1{
+    left: 0px;
+    top:10px;
+}
+.input_button_sxz{
+    margin-top: 10px;
+    margin-left: 30px;
+    padding: 0px 5px;
+    font-size: 14px;
+}

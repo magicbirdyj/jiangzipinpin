@@ -1,0 +1,79 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/order_view.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/order_tuikuang.css">
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script>
+</head>
+
+<body>
+    <include file='Public/menu'/>
+    <div class="view">
+        <div class="tuikuang_div">
+            <if condition="$order['pay_status'] eq '1'" >
+            <form name="tuikuang" method="post" action="<{:U('Order/tuikuang_check')}>">
+                <input type='hidden' name='order_id' id='order_id' value="<{$order['order_id']}>" />
+            <div class="tuikuang_cause">
+            请选择退款原因：
+            <select name="tuikuang_cause" class="tuikuang_select">
+                <option value="商家时间冲突，无法预约">商家时间冲突，无法预约</option>
+                <option value="服务内容不满意">服务内容不满意</option>
+                <option value="另有选择，不想要了">另有选择，不想要了</option>
+                <option value="其它原因">其它原因</option>
+            </select>
+            </div>
+        </form>
+            <div class="tishi">
+                温馨提示：距婚礼日期不足五天申请退款，除商家时间冲突原因外，只能退款80%。五天以前申请，将无条件100%退款
+            </div>
+            <a class="button_a_lvse tijiao" >提交申请</a><a href='<{:U("Order/index")}>' class="quxiao">取消并返回</a>
+            <elseif condition="$order['pay_status'] eq '2'" />
+                <div class='status'>
+                    申请退款成功，请等待商家确认!
+                </div>
+            <elseif condition="$order['pay_status'] eq '3'" />
+                <div class='status'>
+                    退款成功，请查收账户余额!
+                </div>
+            </if>
+    </div>
+        <h2 class="view_h2">
+            订单详情
+            <span class="h2_span">
+                <if  condition="$user_id eq $order['user_id']">
+                <a href='<{:U("Order/index")}>' class="span_a">返回我的订单</a>
+                <elseif  condition="$user_id eq $order['shop_id']" />
+                <a href='<{:U("Member/goods_sold")}>' class="span_a">返回已售商品</a>
+                </if>
+            </span>
+        </h2>
+        <div class="view_info">
+            <if condition="$order['deleted'] eq '1'" >
+                <div>当前订单状态：<span class="red">该订单已被删除</span></div>
+             <else />   
+                <div>当前订单状态：<span class="red"><{:order_status($order['pay_status'],$order['status'])['status']}></span></div>
+                
+            </if>
+        </div>
+        <div class="d2">
+            <div class="d2_title">订单信息</div>
+            <div class="d2_content"><span>订单编号：<{$order['order_no']}></span> <span>创建时间：<{$order['created']|date='Y-m-d H：i',###}> </span><span>更新时间：<{$order['updated']|date='Y-m-d H：i',###}> </span></div>
+            <div class="d2_title">商家信息</div>
+            <div class="d2_content"><span>昵称：<{$order['shop_name']}></span> <span>真实姓名：<{$order['true_name']}> </span><span>城市：<{$order['location']}> </span><span>联系电话：<{$order['mobile_phone']}> </span></div>
+            <div class="d2_title">买家信息</div>
+            <div class="d2_content"><span>昵称：<{$maijia['user_name']}></span><span>联系电话：<{$maijia['mobile_phone']}> </span></div>
+            <div class="d2_title">商品信息</div>
+            <div class="d2_table">
+                <table>
+                    <tr><th class="left">商品图片</th><th class="teshu">商品名称</th><th>价格</th><th>服务日期</th><th>状态</th><th>支付金额</th></tr>
+                    <tr><td class="left"><img src="<{$order['goods_img']}>" class="img_goods" /></td><td class="teshu"><{$order['goods_name']}></td><td>&yen;<{$order['price']}></td><td><{$order['server_day']|date_geshi1=###}></td><td><{:order_status($order['pay_status'],$order['status'])['status']}></td><td>&yen;<{$order['dues']}></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+   
+
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script src="__PUBLIC_HOME__/Js/order_tuikuang.js" type="text/javascript"></script>
+
+

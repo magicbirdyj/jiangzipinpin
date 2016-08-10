@@ -1,0 +1,73 @@
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/goods.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/buy.css">
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+
+</head>
+
+<body>
+<include file='Public/menu_top'/>
+<div class="buy_div">
+<div class="logo"><!--logo-->
+    <a class="logol" href="<{:U('index/index')}>"></a>
+<div class="zhuce_head">
+<div>欢迎下单:</div>
+<ul>
+<li><span>提交订单</span></li>
+<li><span class="zhuce_head_jt1">&gt;&gt;</span></li>
+<li><span class="zhuce_head_self">选择支付方式</span></li>
+<li><span class="zhuce_head_jt1">&gt;&gt;</span></li>
+<li><span>购买成功</span></li>
+</ul>
+</div>
+</div>
+
+    <form name="qufukuang" method="get" action="<{:U('Goods/alipay')}>">
+<table class="buy_table" cellspacing="0">
+<tr class="buy_table_head">
+    <th class="shangjia">商家</th>
+    <th class="desc">项目</th>
+    <th class="price">价格</th>
+    <th class="daijin">日期</th>
+    <th class="yingfu">应付</th>
+</tr>
+<tr class="buy_table_head buy_table_content">
+    <td class="shangjia"><{$goods['user_name']}></td>
+    <td class="desc">[<{$goods['cat_name']}>]<{$goods['goods_name']}></td>
+    <td class="price">&yen <{$goods['price']}></td>
+    <td class="daijin"><{$server_day|date_geshi1}></td>
+    <td class="yingfu">&yen <{$goods['price']}></td>
+</tr>
+<tr class="buy_table_head buy_table_content">
+    <td colspan="3" class="yingfu">可用代金卷：&yen<{$ky_daijinjuan|number_format=2}></td>
+    <td colspan="2" class="yingfu">应付金额：&yen <{$dues|number_format=2}></td>
+</tr>
+<tr class="buy_table_head buy_table_content">
+    <td colspan="5" class="yingfu">【 购买成功，评论后还可返现：&yen<{$fanxian|number_format=2}> 】</td>
+</tr>
+<tr class="buy_table_head buy_table_content">
+    <td colspan="5" class="yingfu">
+        <label>
+            付款方式：
+            <select name="pay_method" >
+                <volist name="pay_method" key="key" id="vopay">
+                    <option value="<{$vopay.id}>" ><{$vopay.name}></option>
+                </volist>
+            </select>
+        </label>
+    </td>
+</tr>
+</table>
+        <input type="hidden" name="order_id" value="<{$order_id}>" />
+    </form>
+    <a href="javascript:void(0)" class="a_tjdd" >去付款</a>
+</div>
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script type="text/javascript">
+    $('.a_tjdd').bind('click',function(){
+        $('form[name=qufukuang]').submit();
+    })
+</script>

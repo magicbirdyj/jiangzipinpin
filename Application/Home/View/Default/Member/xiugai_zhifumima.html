@@ -1,0 +1,65 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/zhuce.css">
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+</head>
+
+<body>
+<div class="zhuce_top">
+<a href="<{:U('Index/index')}>"><img src="__PUBLIC_HOME__/Images/menu_and_foot/logo.png"/></a>
+<span class="zhuce_top_spanl">会员信息修改</span>
+</div>
+<div class="zhuce_head">
+<div>密码修改:</div>
+<ul>
+<li><span class="zhuce_head_self">修改支付密码</span></li>
+<li><span class="zhuce_head_jt1">&gt;&gt;</span></li>
+<li><span>修改完成</span></li>
+</ul>
+</div>
+<hr class="zhuce_hr" />
+<div class="zhuce1_div_form">
+    <form name="xiugaimima"  method="post" action="<{:U('Member/xiugai_zhifumima_success')}>" id="form1" >
+        <input type="hidden" name="hidden" value="<{$time}>" />
+<div class="zhuce1_box">
+
+<div class="zhuce1_tr">
+<div class="zhuce1_tr_td1">原密码</div>
+<input type="text" name="yuan_mima" class="zhuce1_tr_td2" />
+<span id="infor_yuan_mima"></span>
+</div><!--第二行-->
+
+<div class="zhuce1_tr">
+<div class="zhuce1_tr_td1">新密码</div>
+<input type="text" name="new_mima" class="zhuce1_tr_td2" />
+<span id="infor_new_mima"></span>
+</div><!--第三行-->
+<div class="mimaxiaoguo" id="mimaxiaoguo">
+<div class="mimaxiaoguo_fenlei">弱</div>
+<div class="mimaxiaoguo_fenlei">中</div>
+<div class="mimaxiaoguo_fenlei">强</div>
+</div><!--密码效果-->
+
+<div class="zhuce1_tr">
+<div class="zhuce1_tr_td1">确认新密码</div>
+<input type="text" name="again_mima" class="zhuce1_tr_td2" />
+<span id="infor_again_mima"></span>
+</div><!--第四行-->
+
+<div class="zhuce1_tr">
+<div class="zhuce1_tr_td1">验证码</div>
+<input type="text" name="yanzhengma" class="zhuce1_tr_td2"/>
+<span id="infor_yanzhengma"><{$infor_yanzhengma}></span>
+</div><!--第五行-->
+<img class="zhuce1_yanzhengma" src="__URL__/getCode" /><span>看不清？点击图片</span>
+<a href="javascript:void(0)" id="zhuce1_xiayibu" class="a_xyb" onClick="return checkForm(this)">下一步</a>
+</div>
+
+</form>
+</div>
+
+
+<script src="__PUBLIC_HOME__/Js/xiugai_zhifumima.js" type="text/javascript"></script>
+
+</body>
+</html>

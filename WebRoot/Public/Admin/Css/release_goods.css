@@ -1,0 +1,138 @@
+/* CSS Document */
+
+.release{
+width:935px;
+margin-left: 20px;
+float: left;
+}
+.release .div1{
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #f6f6f6;
+    padding: 10px 20px;
+}
+
+.tr_td1{
+text-align:right;
+margin:10px 0px;
+height:27px;
+line-height:27px;
+font-size:14px;
+padding-right:30px;;
+width:100px;
+color:#333;
+float: left;
+}
+.tr_td2{
+height:25px;
+line-height:25px;
+border:none;
+margin:10px 0px;
+padding:0px;
+font-size:14px;
+}
+.tr .text{
+    width: 250px;
+    height: 28px;
+    line-height:28px;
+    margin-top: 8px;
+}
+.radio{margin-right:5px;}
+.release_select{border:1px solid #AAA;
+padding:0px 4px;
+width:100px;}
+.zhuce1_tr span{
+font-size:14px;
+padding:0px 5px;}
+
+.release .xyb{
+    display: block;
+    width:120px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 30px 0px 0px 50px;
+}
+.release .xyb:link,.release .xyb:visited{
+    background-color: #03BA8A;
+}
+.release .xyb:hover{
+    background-color: #00FFDB;
+}
+
+.tr .price_text{
+    width: 150px;
+}
+
+span{
+    padding-left: 10px;
+}
+
+
+
+.file_jia{
+    padding: 3px 0px;
+    border: 1px dashed #CCC;
+    height: 37px;
+    font-size: 45px;
+    line-height: 37px;
+    text-align: center;
+    color: #CCC;
+    text-shadow: 0px -1px #DDD;
+    cursor: pointer;
+    float: left;
+    width: 43px;
+    margin: 5px;
+}
+.file_tishi{
+    height: 55px;
+    line-height: 55px;
+}
+.div_goods_img{
+    float: left;
+    width: 43px;
+    height: 43px;
+    margin: 5px;
+    border: 1px solid #EEE;
+    text-align: center;
+    position: relative;
+    cursor:pointer;
+}
+.goods_img{
+    display: inline-block;
+    max-width: 43px;
+    max-height: 43px;
+    vertical-align: middle;
+}
+.div_goods_img a{
+    position: absolute;
+    width: 43px;
+    height: 18px;
+    left: 0px;
+    bottom: 0px;
+    background-position: 0px -40px;
+    background-image: url("../Images/public/delete_icon.png");
+    display: none;
+}
+.empty_img{
+    width:0px;
+    height: 100%;
+    vertical-align: middle;
+}
+.tr_td1 i{
+    font-size: 12px;
+}
+
+
+.ke-dialog-default{
+    overflow:inherit;
+}
+
+.ke-dialog-default div{
+    overflow:inherit;
+} 
+form{
+    margin: 0px;
+}

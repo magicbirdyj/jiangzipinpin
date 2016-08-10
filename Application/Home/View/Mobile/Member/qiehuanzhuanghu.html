@@ -1,0 +1,27 @@
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/hunliren_shangjiaxinxi.css">
+</head>
+
+<body>
+    
+    <ul>
+        <volist name='list' id='vo'>
+        <li style='height:30px;line-height: 30px;border: 1px solid #00FFDB;margin-top: 10px;width: 80%;margin-left: 10%;'>
+            <a href="<{:U('member/login',array('user_id'=>$vo['user_id']))}>" style='display: block'><{$vo['user_name']}></a>
+        </li>
+        </volist>
+    </ul>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<script src="__PUBLIC_HOME__/Mobile/Js/member.js" type="text/javascript"></script>
+</body>
+</html>

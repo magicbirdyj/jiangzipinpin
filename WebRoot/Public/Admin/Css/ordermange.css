@@ -1,0 +1,118 @@
+
+
+.inof_div{
+    padding: 30px 50px;
+}
+.big_title{
+    font-size: 20px;
+    margin: 10px 0px 30px 200px;
+}
+
+
+
+.title{
+    margin-top: 20px;
+    background-color: #00FFDB;
+    width: 1410px;
+}
+.title div{
+    float: left;
+    font-size: 14px;
+    color: #000;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #EEE;
+}
+
+.td2{
+    width: 50px;
+    text-align: center;
+}
+.td3{
+    width: 150px;
+    text-align: center;
+}
+.td4{
+    width: 100px;
+    text-align: center;
+}
+.td5{
+    width: 100px;
+    text-align: center;
+}
+.td6{
+    width: 100px;
+    text-align: center;
+}
+.td7{
+    width: 50px;
+    text-align: center;
+}
+.td8{
+    width: 350px;
+    text-align: center;
+}
+.content .td8{
+    width: 340px;
+    text-align: left;
+    line-height: 30px;
+    padding: 0px 5px;
+}
+.td9{
+    width: 50px;
+    text-align: center;
+}
+.td10{
+    width: 50px;
+    text-align: center;
+}
+.td11{
+    width: 60px;
+    text-align: center;
+}
+.td12{
+    width: 50px;
+    text-align: center;
+}
+.td13{
+    width: 70px;
+    text-align: center;
+}
+.td14{
+    width: 100px;
+    text-align: center;
+}
+.td15{
+    width: 100px;
+    text-align: center;
+}
+
+
+
+
+.td6 a{
+    margin: 0px 10px;
+}
+.release .content{
+    margin-top: 10px;
+}
+
+.content div{
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    border:1px solid #EEE;
+    font-size: 14px;
+}
+.content .img_zst{
+    height: 60px;
+}
+.index_input{
+    width: 100px;
+    padding: 3px 5px;
+    margin: 20px 0px;
+}
+.td6 .input_button{
+   margin-left: 10px;
+}

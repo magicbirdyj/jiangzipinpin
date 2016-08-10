@@ -1,0 +1,60 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/sellection.css">
+</head>
+
+<body>
+    <div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>我的收藏</div>
+    <div class="release">
+
+        
+        
+        <volist name="list" id="vo">
+        <a  href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><!--内容遍历-->
+            <div class="order_row">
+                <div class="scsj shenglue">收藏时间：<{$vo['add_time']|date='Y-m-d H：i',###}></div>
+                <div class='td_l'>
+                    <div class="picture"><img src="<{$vo['goods_img']}>"></div>
+                </div>
+                 <div class="td_r">
+                    <div class="info_name shenglue"><{$vo['goods_name']}></div>
+                    <div class="info_name shenglue">商家：<{$vo['user_name']}></div>
+                    <div class="info_name shenglue">单买价：&yen;<{$vo['price']}></div>
+                    <div class='info_name shenglue'><span><{$vo['tuan_number']}>人团：<span class="price_red" style="font-size: 16px;">&yen;<{$vo['tuan_price']}></span></span></div>
+                </div>
+            </div>
+        </a>
+            <div class='action'>
+                <a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>" class="button_a_order">去开团</a>
+                <a href="javascript:void(0)" class="button_a_order" onclick="Del(<{$vo['sellection_id']}>,'<{$vo['goods_name']}>')" style="margin-right: 0px;">删除</a>
+            </div>
+        </volist>
+        
+    
+        
+        
+        <div class="page_foot"><{$page_foot}></div>
+        
+    </div>
+   
+
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script type="text/javascript">
+    function Del(id,name){
+        if(window.confirm('确定要删除收藏的商品 ['+name+'] 吗？')){
+            var url="/Home/Member/sellection_del/sellection_id/"+id+".html";
+            $.ajax({
+                        type:'post',
+                        async : false,
+                        url:url,
+                        datatype:'json'
+                    });
+             window.location.href=window.location.href;
+        }else{
+            return false;
+        }
+    }
+    
+    
+</script>
+
+

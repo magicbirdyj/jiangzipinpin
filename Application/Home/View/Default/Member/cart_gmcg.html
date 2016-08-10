@@ -1,0 +1,38 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/goods.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/cart_gmcg.css">
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+
+</head>
+
+<body>
+<include file='Public/menu_top'/>
+<div class="buy_div">
+<div class="logo"><!--logo-->
+<a href=<{:U('Index/index')}>><div class="logol"></div></a>
+<div class="zhuce_head">
+<div>欢迎下单:</div>
+<ul>
+<li><span>提交订单</span></li>
+<li><span class="zhuce_head_jt1">&gt;&gt;</span></li>
+<li><span>选择支付方式</span></li>
+<li><span class="zhuce_head_jt1">&gt;&gt;</span></li>
+<li><span class="zhuce_head_self">购买成功</span></li>
+</ul>
+</div>
+</div>
+    <div class="gmcg">
+        <div class="gmcg_xinxi">
+            <div class="gmcg_title">您已成功购买商品:</div>
+            <volist name="order_2" id="order">
+            <div class="gmcg_goods"> “ <{$order['server_day']|date_geshi1}>:【<{$order['shop_name']}>】<{$order['goods_name']}> ”</div>
+            </volist>
+            <div class="gmcg_tishi">您在商家服务后，点击服务完成并评价后，商家才会收到您的付款</div>
+            <div><a class="button_a button_gmcg" href="<{:U('Order/index')}>">查看已购买的商品</a><a class="button_a button_gmcg color_black">与好友分享</a></div>
+        </div>      
+    </div>
+</div>
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>

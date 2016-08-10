@@ -1,0 +1,64 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/goods.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/buy.css">
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+
+</head>
+
+<body>
+<include file='Public/menu_top'/>
+<div class="buy_div">
+<div class="logo"><!--logo-->
+<a href=<{:U('Index/index')}>><div class="logol"></div></a>
+<div class="zhuce_head">
+<div>欢迎下单:</div>
+<ul>
+<li><span>提交订单</span></li>
+<li><span class="zhuce_head_jt1">&gt;&gt;</span></li>
+<li><span  class="zhuce_head_self">选择支付方式</span></li>
+<li><span class="zhuce_head_jt1">&gt;&gt;</span></li>
+<li><span>购买成功</span></li>
+</ul>
+</div>
+</div>
+<table class="buy_table" cellspacing="0">
+<tr class="buy_table_head">
+    <th class="shangjia">商家</th>
+    <th class="desc">商品</th>
+    <th class="price">价格</th>
+    <th class="daijin">日期</th>
+    <th class="yingfu">应付</th>
+</tr>
+<volist name="order" id="vo">
+<tr class="buy_table_head buy_table_content">
+    <td class="shangjia"><{$vo['shop_name']}></td>
+    <td class="desc">[<{$vo['cat_name']}>]<{$vo['goods_name']}></td>
+    <td class="price">&yen <{$vo['price']}></td>
+    <td class="daijin"><{$vo['server_day']|date_geshi1}></td>
+    <td class="yingfu">&yen <{$vo['price']}></td>
+</tr>
+</volist>
+<tr class="buy_table_head buy_table_content">
+    <td colspan="5" class="yingfu">代金卷：0</td>
+</tr>
+<tr class="buy_table_head buy_table_content">
+    <td colspan="5" class="yingfu">应付金额：&yen <{$price}></td>
+</tr>
+</table>
+    <div class="shuoming">提交订单后，商家将再次确认订单日期是否有档期，如没有，将全额退款</div>
+    <form name="qufukuang" method="post" action="<{:U('Member/cart_gmcg')}>">
+        <volist name='order_id' id='vo'>
+        <input type="hidden" name="order_id[]" value="<{$vo}>" />
+        </volist>
+    </form>
+    <a href="javascript:void(0)" class="a_tjdd" >去付款</a>
+</div>
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script type="text/javascript">
+    $('.a_tjdd').bind('click',function(){
+        $('form[name=qufukuang]').submit();
+    })
+</script>

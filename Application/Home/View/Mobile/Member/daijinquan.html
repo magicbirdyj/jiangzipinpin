@@ -1,0 +1,35 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/daijinquan.css">
+</head>
+
+<body>
+    <div class="fanhui padding"><a href="<{:U('Member/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>我的代金券</div>
+    
+    <ul class="daijinquan_ul" style='margin-bottom: 50px;'>
+        <volist name='arr_daijinquan' id='vo'>
+        <li>
+            <div class="daijinquan_left price_red">
+                <span class="daijinquan_leixing"><{$vo['type']}></span>
+                &yen;<span class='daijinquan_money'><{$vo['sum']}></span>
+            </div>
+            <div class="daijinquan_right">
+                <div class="daijinquan_right_div">
+                    <div class="daijinquan_right_div_1 price_red">满<{$vo['sum']*10}>减<{$vo['sum']}></div>
+                    <div>全场通用</div>
+                    <div><{$vo['youxiaoqi']}></div>
+                </div>
+            </div>
+        </li>
+        </volist>
+    </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+</body>
+</html>

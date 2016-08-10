@@ -1,0 +1,117 @@
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/goods.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/buy.css">
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+
+</head>
+
+<body>
+<include file='Public/menu_top'/>
+<div class="buy_div">
+<div class="logo"><!--logo-->
+    <a class="logol" href="<{:U('index/index')}>"></a>
+<div class="zhuce_head">
+<div>欢迎下单:</div>
+<ul>
+<li><span>提交订单</span></li>
+<li><span class="zhuce_head_jt1">&gt;&gt;</span></li>
+<li><span class="zhuce_head_self">选择支付方式</span></li>
+<li><span class="zhuce_head_jt1">&gt;&gt;</span></li>
+<li><span>购买成功</span></li>
+</ul>
+</div>
+</div>
+
+    <form name="qufukuang" method="get" action="<{:U('Goods/alipay')}>">
+<table class="buy_table" cellspacing="0">
+<tr class="buy_table_head">
+    <th class="shangjia">商家</th>
+    <th class="desc">项目</th>
+    <th class="price">价格</th>
+    <th class="daijin">日期</th>
+    <th class="yingfu">应付</th>
+</tr>
+<tr class="buy_table_head buy_table_content">
+    <td class="shangjia"><{$goods['shop_name']}></td>
+    <td class="desc">[<{$goods['cat_name']}>]<{$goods['goods_name']}></td>
+    <td class="price">&yen <{$goods['price']}></td>
+    <td class="daijin"><{$goods['server_day']|date_geshi1}></td>
+    <td class="yingfu">&yen <{$goods['price']}></td>
+</tr>
+<tr class="buy_table_head buy_table_content">
+    <td colspan="3" class="yingfu">代金卷：<{$goods['daijinjuan']}></td>
+    <td colspan="2" class="yingfu">应付金额：&yen <{$goods['dues']}></td>
+</tr>
+
+
+</table>
+        <input type="hidden" name="order_id" value="<{$order_id}>" />
+    </form>
+    
+    
+    <div class="wxzhifu_div">
+        <div class="wxzhifu_left">
+            <div class="left_content">
+                <div class="qrcode-header">
+                    <div class="ft-center">扫一扫付款（元）</div>
+                    <div class="ft-center qrcode-header-money"><{$goods['dues']}></div>
+                </div>
+                <div class="qrguide-area" id="J_qrguideArea" seed="NewQr_animationClick">
+                    <img style="display: block;" smartracker="on" seed="J_qrguideArea-qrguideAreaImgT1" src="__PUBLIC_HOME__/Images/public/saoyisao_big.jpg" class="qrguide-area-img active">
+                </div>
+                <div class="qrcode-img-wrapper">
+                    <div class="qrcode-img-area">
+                        <div style="position: relative;display: inline-block;">
+                            <img height="190" width="190" src="<{:U('Buy/getQRPHP')}>?data=<{$payurl}>" style="position: relative;left:-10px;" />
+                        </div>
+                    </div>
+                    <div class="qrcode-img-explain fn-clear">
+                        <img smartracker="on" seed="qrcodeImgExplain-tImagesT1bdtfXfdiXXXXXXXX" class="fn-left" src="__PUBLIC_HOME__/Images/public/saoyisao.png" alt="扫一扫标识">
+                        <div class="fn-left">打开手机微信<br>扫一扫继续付款</div>
+                    </div>
+                </div>
+                <div class="botton_zhifu"><a class="button_a_lvse" href='<{:U("Goods/gmcg_wx","order_id=$order_id")}>'>支付成功，如未跳转请点击</a></div>
+            </div>
+        </div>
+        <div class="wxzhifu_right">
+            <div class="right_content">
+                 <p>支付方法：</p>请用手机打开微信，点击发现，点击扫一扫对准二维码即可。
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+
+</div>
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script type="text/javascript">
+    var order_id_get="<{$order_id}>";
+    var setIn_id=setInterval("jiance_pay()",3000);//1000为1秒钟
+    function jiance_pay(){
+        var pay_status;
+        var url='/Home/Goods/jiance_pay.html';
+        var data={
+            order_id:order_id_get,
+            check:"wx_zhifu"
+            };
+        $.ajax({
+            type:'post',
+            async : false,
+            url:url,
+            data:data,
+            datatype:'json',
+            success:function(msg){
+                pay_status=msg;
+            }
+        });
+        if(pay_status==='1'){
+            clearInterval(setIn_id);
+            window.location.href='<{:U("Goods/gmcg_wx","order_id=$order_id")}>';
+        }
+    }
+</script>

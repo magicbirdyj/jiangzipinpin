@@ -1,0 +1,64 @@
+/* CSS Document */
+
+.view{
+    width: 100%;
+    border: 1px solid #EEE;
+    min-height: 400px;
+    margin: 0px auto;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+
+
+
+.view_info{
+    padding: 10px 0px 0px 0px;
+}
+.view_info div{
+    margin-bottom: 10px;
+    padding: 0px 10px;
+}
+.view_info .d1{
+    padding: 10px 10px;
+    margin-bottom: 0px;
+    background-color: #F8F9FA;
+}
+.view_info .red{
+    color:#D00;
+    font-weight: 700;
+}
+
+
+
+.d2{
+    border: 1px solid #E5E5E5;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+.d2_title{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    background: #EEE;
+}
+.d2 .d2_content{
+    padding: 8px  10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.d2_content span{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0px;
+    text-align: left;
+    margin-right: 10px;
+    display: inline-block;
+}
+.view_info .button_a_order{
+    float: right;
+}

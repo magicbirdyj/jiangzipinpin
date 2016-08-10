@@ -1,0 +1,120 @@
+/* CSS Document */
+
+.release{
+width:100%;
+margin-bottom: 50px;
+    background-color: #F0F0F0;
+}
+
+.div_a{
+    display: block;
+}
+.order_row{
+    box-sizing: border-box;
+    padding: 10px 10px;
+    width: 100%;
+    position: relative;
+    display: block;
+}
+.order_row>div{
+    box-sizing: border-box;
+    float: left;
+    /*border:1px solid #EEE;*/
+    font-size: 12px;
+    text-align: center;
+    padding: 0px 1px;
+}
+.order_row .td_l{
+    width: 60px;
+    position: absolute;
+}
+.td_l .picture{
+    float: left;
+    width: 60px;
+    margin-right: 20px;
+    height: 60px;
+}
+.picture img{
+    width:60px;
+    height: 60px;
+}
+
+.order_row .td_r{
+    padding-left: 80px;
+    width: 100%;
+    min-height: 60px;
+}
+.td_r .info_name{
+    width: 235px;
+    text-align: left;
+    font-size: 14px;
+    padding: 2px 0px;
+}
+.td_r div{
+    margin-top: 7px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.des_title{
+    font-size: 14px;
+    float: left;
+    margin-left: 10px;
+}
+.des_ul{
+    float: left;
+    position: relative;
+    top:-4px;
+}
+.des_ul ul li{
+    margin: 0px 0px 5px 0px;
+    padding: 0px;
+}
+.des_ul .pingjia_text{
+    font-size: 14px;
+    display: inline-block;
+    height: 23px;
+    line-height: 23px;
+}
+/*先简单写成几分，以后有需要再改成图片星星显示
+.des_ul .pingjia_xingxing{
+    margin-left: 5px;
+    font-size: 14px;
+    display: inline-block;
+    height: 23px;
+    line-height: 23px;
+    position:relative;
+    top:3px;
+}
+*/
+.des_ul .pingjia_last{
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.pingjia_last strong{
+    color: #F60;
+    font-weight:500;
+}
+.jutipingjia{
+    padding-left: 10px;
+    width: 600px;
+    color: #EB8A3D;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DDD8CE;
+    
+}

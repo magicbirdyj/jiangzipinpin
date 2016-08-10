@@ -1,0 +1,116 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order_view.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/iconfont/iconfont_public/iconfont.css">
+</head>
+
+<body>
+    <div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>订单详情</div>
+    <a   href="<{:U('Goods/index',array('goods_id'=>$order['goods_id']))}>"><!--内容遍历-->
+                <div class="order_row">
+                <div class='td_l'>
+                    <div class="picture"><img src="<{$order['goods_img']}>"></div>
+                </div>
+                <div class="td_r">
+                    <div class="info_name shenglue"><{$order['goods_name']}></div>
+                    <div class="info_name shenglue">商家：<{$order['shop_name']}></div>
+                    <div class="info_name shenglue"><span>价格：&yen;<{$order['price']}> × <{$order['buy_number']}></span></div>
+                    <div class='info_name'><span>应付：&yen;<{$order['dues']}></span></div>
+                
+                </div>
+                </div>
+    </a>
+    <div class="view">
+        <div class="d2">
+            <div class="d2_title">订单信息</div>
+            <div class="d2_content"><span>订单编号：<{$order['order_no']}></span> <span>创建时间：<{$order['created']|date='Y-m-d H：i',###}> </span><span>收货地址：<{$address['location']}> <{$address['address']}></span><span>收货人：<{$address['name']}> <{$address['mobile']}></span></div>
+            <div class="d2_title">商家信息</div>
+            <div class="d2_content"><span>昵称：<{$order['shop_name']}></span> </div>
+        </div>
+        <div class="d2_title">订单状态</div>
+        <div class="view_info">
+            <if condition="$order['deleted'] eq '1'" >
+                <div>当前订单状态：<span class="red">该订单已被删除</span></div>
+             <else />   
+                <div>当前订单状态：<span class="red"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['server_day'],$order['goods_id'])['status']}></span></div>
+                <if  condition="$order['status'] eq '3'">
+                    <div>请收货后再点确认</div>
+                    <div class="d1">
+                        <a  href="<{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_url']}>" class="button_a_order"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_button']}></a>
+                        <a  class="button_a_order"  href="<{:U('Order/view_kuaidi',array('order_id'=>$order['order_id']))}>">查看物流</a>
+                    </div>
+                <elseif  condition="($order['pay_status'] eq '0') and ($order['status'] lt '6')" />
+                    <div>请及时付款哦！</div>
+                    <div class="d1">
+                        <a  href="<{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_url']}>" class="button_a_order"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_button']}></a>
+                        <a  class="button_a_order quxiao_order" name="<{$order['order_id']}>">取消订单</a>
+                    </div>
+                <elseif  condition="(($order['pay_status'] eq '1') and ($order['status'] egt '4'))" />
+                     <div class="d1">
+                        <a  href="<{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_url']}>" class="button_a_order"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_button']}></a>
+                        <a id='shouhou' class="button_a_order" name="<{$order['order_id']}>" href="<{:U('Order/shouhou')}>">申请售后</a>
+                     </div>
+                <else />
+                <div class="d1">
+                    <a  href="<{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_url']}>" class="button_a_order"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_button']}></a>
+                </div>
+                </if>
+            </if>
+        </div>
+    </div>
+
+   
+
+<script type="text/javascript">
+    $('.button_a_order:contains("去付款")').css('background-color','#D00');
+    $('.button_a_order:contains("去付款")').css('color','#fff');
+    $('.quxiao_order').bind('click',function(){
+        if(confirm("确定要取消订单吗？")){
+            var url='/Home/Order/quxiao_order.html';
+            var data={
+                    order_id:$(this).attr('name'),
+                    check:"quxiao_order"
+                }
+            $.ajax({
+                    type:'get',
+                    async : false,
+                    url:url,
+                    data:data,
+                    datatype:'json',
+                    success:function(msg){
+                        if(msg){ 
+                            location=location;                        
+                        }else{
+                            alert('取消订单失败'); 
+                        }
+                    }
+                });    
+        }
+    });
+    $('.button_a_order:contains("删除订单")').bind('click',function(event){
+        event.preventDefault();
+        if(confirm("确定要删除订单吗？")){
+            var url='/Home/Order/delete_order.html';
+            var data={
+                    order_id:$(this).attr('href'),
+                    check:"delete_order"
+                }
+            $.ajax({
+                    type:'get',
+                    async : false,
+                    url:url,
+                    data:data,
+                    datatype:'json',
+                    success:function(msg){
+                        if(msg){ 
+                            location=location;                        
+                        }else{
+                            alert('删除订单失败'); 
+                        }
+                    }
+                }); 
+        }
+    });
+</script>
+
+

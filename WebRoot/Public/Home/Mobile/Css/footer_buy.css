@@ -1,0 +1,73 @@
+/* CSS Document */
+
+
+.footer{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    border-top: 1px solid #C8C8C8;
+    z-index: 30000;
+}
+
+.ui-footer{
+}
+
+
+
+.ui-footer  a{
+    width: 25%;
+    background-color: #FFF;
+    border: none;
+    padding: 0px;
+    display: block;
+    float: left;
+    margin: 0;
+    text-align: center;
+    cursor: pointer;
+    color: #5D656B;
+}
+.ui-footer  a  span{
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+}
+
+.ui-footer  .foot_tb{
+    display: block;
+    margin: auto;
+    font-size: 26x;
+    line-height: 28px;
+    padding: 2px 0px 1px 0px;
+}
+
+.ui-footer  .foot_home{
+    font-size:26px;
+}
+.ui-footer a .foot_shoucang{
+    font-size: 28px;
+    position: relative;
+    top:-2px;
+}
+
+
+.ui-footer a .foot_buy{
+    font-size: 20px;
+    color: #FFF;
+}
+
+.ui-footer .back_color_buy{
+    background-color: #ff5000;
+}
+.ui-footer .back_color_gwc{
+    background-color:#ff9402;
+}
+.ui-footer  a .color_FFF{
+    color: #FFF;
+}
+
+.ui-footer .xiao_a{
+    box-sizing: border-box;
+    width: 16.66666667%;
+    border-right: 1px solid #C8C8C8;
+}

@@ -1,0 +1,170 @@
+/* CSS Document */
+.title_img{
+    width: 1200px;
+}
+.shangpindkj{width:1200px;}
+.shangpindkj_title{
+margin-bottom:15px;
+padding-top:30px;
+
+line-height:38px;
+border-bottom:2px solid #DADADA;
+}
+.shangpindkj_title p{
+font-size:26px;
+color:#333;
+width:110px;
+display:block;
+text-align: center;
+width: 1200px;
+}
+.combo_jieshao{
+    border: 1px solid #DDD;
+    margin-bottom: 5px;
+    padding: 10px 150px 10px 50px;
+    font-size: 16px;
+}
+.combo_jieshao span{
+    display: block;
+    float: left;
+}
+
+.shangpindkj_content{
+width:1216px;
+}
+.shopping_add{
+    width:288px;
+    margin-right:16px;
+    float:left;
+    margin-bottom:10px;
+}
+.shopping{
+width:286px;
+height:342px;
+border:1px solid #ddd;
+margin-right:16px;
+float:left;
+margin-bottom:10px;
+}
+.shopping_server{
+    width: 288px;
+    height: 40px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 40px;
+    background-color:#00FFDB;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+.sanjiao_down{
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #00FFDB;
+    position: relative;
+    left: 135px;
+}
+.shopping_img{
+height:191px;
+border-bottom: 1px solid #DDD;
+}
+.shopping img{
+width:286px;
+}
+.shopping_title{
+padding:10px 15px 0px 15px;
+font-size:16px;
+color:#000000;
+height: 19px;
+}
+
+.shopping_title a{
+line-height:19px;
+height:19px;
+width: 220px;
+display:inline-block;
+text-overflow:ellipsis;/*超出部分省略号*/
+white-space: nowrap;/*强制文本一行输出*/
+}
+.shopping_title_name{
+background-color:#999;
+font-size:12px;
+float:left;
+padding:1px 2px;
+margin:0px 5px 0px 0px;
+color:#FFFFFF;
+line-height:17px;
+}
+.shopping_tr2{
+padding:10px 15px 0px 15px;
+}
+.shopping_tr2 .shopping_title_name{margin-top:0px;}
+.shopping_tr2 span{
+font-size:14px;
+display:inline-block;
+text-overflow:ellipsis;/*超出部分省略号*/
+white-space: nowrap;/*强制文本一行输出*/
+width: 80px;
+}
+.shopping_tr2 div{float:left;}
+
+.shopping_didian img{
+margin-right:7px;
+width:11px;
+height:17px;
+}
+.shopping .shopping_didian{float:right;}
+.shopping .shopping_didian div{
+float:right;
+margin-top:2px;
+}
+.shopping_pricepj{
+height:44px;
+line-height:44px;
+margin:10px 15px 0px 15px;
+border-bottom: 1px dotted #DDD;
+}
+.shopping_price{
+height:44px;
+line-height:44px;
+font-size:20px;
+color: #F76120;
+float:left;
+width: 190px;
+text-overflow:ellipsis;/*超出部分省略号*/
+white-space: nowrap;/*强制文本一行输出*/
+}
+.shopping_price .yuan_price{
+    font-size: 12px;
+    color: #999;
+    padding-left: 5px;
+}
+.yuan_price del{
+    padding-left: 3px;
+}
+.shopping_sale{
+    display: inline-block;
+    float: right;
+    color: #999;
+}
+.shopping_pingjia{
+height:12px;
+width:60px;
+background-image:url(../Images/public/xingxing_kong.png);
+float:right;
+margin-top:12px;
+}
+
+.pingjia_limian{
+    background-image:url(../Images/public/xingxing.png);
+    height: 12px;
+}
+
+.shopping_pjrenshu{
+padding-left:10px;
+color:#999;
+float:right;
+margin-top: 10px;
+}
+

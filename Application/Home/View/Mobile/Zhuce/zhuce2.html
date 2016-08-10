@@ -1,0 +1,64 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/zhuce.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/iconfont/iconfont_zhuce/iconfont.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/iconfont/iconfont_jiantou/iconfont.css">
+</head>
+
+<body>
+    <div class="fanhui padding"><a href="<{:U('Member/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe643;</span></a>填写账户信息</div>
+     <div id="infor" class="infor"></div>
+    <form name="zhuce"  method="post" action="<{:U('zhuce/zhuce3')}>">
+        <input type="hidden" name="hidden" value="<{$time2}>" />
+<div class="zhuce1_tr">
+<div class="zhuce1_tr_td2" id="dlm_sjh"><{$dlm}></div>
+<input class="butttom_sjyz" id="butttom_sjyz" type="button" name="btn_sjyz" value="点击免费获取短信动态码" />
+</div><!--第一行-->
+
+<div class="zhuce1_tr">
+<i class="iconfont tb_duanxin icon">&#xe625;</i>
+<input type="text" name="shoujiyanzheng" class="zhuce1_tr_td2" placeholder="短信动态码"/>
+
+</div><!--第二行-->
+
+<div class="zhuce1_tr">
+<i class="icon icon-user"></i>
+<input type="text" name="huiyuanming" class="zhuce1_tr_td2" placeholder="会员名"/>
+
+</div><!--第二行-->
+<div class="zhuce1_tr">
+ <i class="icon icon-password"></i>   
+<input type="password" name="shezhimima" class="zhuce1_tr_td2" placeholder="设置密码"/>
+
+</div><!--第三行-->
+<div class="mimaxiaoguo" id="mimaxiaoguo">
+<div class="mimaxiaoguo_fenlei">弱</div>
+<div class="mimaxiaoguo_fenlei">中</div>
+<div class="mimaxiaoguo_fenlei" id="mimaxiaoguo_last">强</div>
+</div><!--密码效果-->
+
+<div class="zhuce1_tr">
+<i class="icon icon-password"></i>
+<input type="password" name="querenmima" class="zhuce1_tr_td2 zhuce1_tr_teshu" placeholder="确认密码" style="border-top: 1px solid #F0F0F0;border-bottom: 1px solid #F0F0F0;"/>
+
+</div><!--第四行-->
+<a href="javascript:void(0)" id="zhuce1_xiayibu" class="a_xyb" >下一步</a>
+
+
+</form>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ 
+
+<script src="__PUBLIC_HOME__/Mobile/Js/zhuce2.js" type="text/javascript"></script>
+
+
+

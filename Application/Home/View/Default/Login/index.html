@@ -1,0 +1,47 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/login.css">
+
+</head>
+
+<body>
+<div class="zhuce_top">
+    <a href="<{:U('Index/index')}>"><img src="__PUBLIC_HOME__/Images/menu_and_foot/logo.png"/></a>
+<span class="zhuce_top_spanl">账户登录</span>
+<div class="zhuce_top_r">
+<div class="zhuce_top_divr">还没有账号？</div>
+<a  class="a_dl" href="<{:U('Zhuce/index')}>" style="width: 60px;">免费注册</a>
+</div>
+</div>
+
+<hr class="zhuce_hr" />
+<div class="zhuce1_div_form">
+    <div class="login_left">
+        <img src="__PUBLIC_COMMON__/Images/login_back.png" />
+    </div>
+    <form name="zhuce"  method="post" action="<{:U('Login/chenggong')}>" id="form1" >
+        <input type="hidden" name="hidden" value="<{$time}>" />
+        <input type="hidden" name="leixing" value="login" />
+<div class="zhuce1_box">
+    <div class="login_head">账号登录</div>
+<div class="zhuce1_tr">
+        <i class="icon icon-user"></i>
+<input type="text" name="shoujihao" class="zhuce1_tr_td2" placeholder="手机号" />
+<span id="infor_shoujihao"></span>
+</div><!--第一行-->
+
+<div class="zhuce1_tr">
+    <i class="icon icon-password"></i>
+<input type="password" name="mima" class="zhuce1_tr_td2" placeholder="密码"/>
+<span id="infor_mima"><{$infor_mima}></span>
+</div><!--第二行-->
+<a href="javascript:void(0)" id="zhuce1_xiayibu" class="a_xyb" onClick="return login(this)" style="float: left;" >登录</a>
+<div id="info_login" style="font-size: 14px; float: left; margin: 40px 0px 0px 20px;"></div>
+</div>
+
+</form>
+</div>
+
+
+<script src="__PUBLIC_HOME__/Js/denglu.js" type="text/javascript"></script>
+
+

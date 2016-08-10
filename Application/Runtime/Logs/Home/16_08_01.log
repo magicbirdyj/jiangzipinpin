@@ -1,0 +1,1857 @@
+[ 2016-08-01T10:47:50+08:00 ] 127.0.0.1 /Home/Order/get_new_order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000605s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000822s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000918s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.5070s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `order_id`,`user_id`,`created`,`order_address` FROM `m_order` WHERE ( order_id>60 ) ORDER BY order_id desc LIMIT 6   [ RunTime:0.0006s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 399 行.
+
+[ 2016-08-01T10:48:04+08:00 ] 127.0.0.1 /Home/Order/get_new_order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000978s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001630s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001795s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0069s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `order_id`,`user_id`,`created`,`order_address` FROM `m_order` WHERE ( order_id>60 ) ORDER BY order_id desc LIMIT 6   [ RunTime:0.0006s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 399 行.
+
+[ 2016-08-01T10:48:09+08:00 ] 127.0.0.1 /Home/Order/get_new_order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001023s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002236s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002405s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0208s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `order_id`,`user_id`,`created`,`order_address` FROM `m_order` WHERE ( order_id>60 ) ORDER BY order_id desc LIMIT 6   [ RunTime:0.0005s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 399 行.
+
+[ 2016-08-01T10:48:19+08:00 ] 127.0.0.1 /Home/Order/get_new_order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000961s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000816s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000956s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0079s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `order_id`,`user_id`,`created`,`order_address` FROM `m_order` WHERE ( order_id>60 ) ORDER BY order_id desc LIMIT 6   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 399 行.
+
+[ 2016-08-01T10:48:28+08:00 ] 127.0.0.1 /Home/Order/get_new_order.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000584s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001010s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001238s ]
+
+[ 2016-08-01T10:48:28+08:00 ] 127.0.0.1 /Home/Login/weixin_login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001260s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001019s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001159s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0059s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2048] mktime(): You should be using the time() function instead E:\wamp\www\myguopin\Application\Home\Controller\LoginController.class.php 第 122 行.
+SQL: UPDATE `m_users` SET `last_login`='1470019708',`last_ip`='127.0.0.1' WHERE ( open_id='1234568' ) [ RunTime:0.0883s ]
+SQL: SELECT `user_id`,`user_name` FROM `m_users` WHERE ( open_id='1234568' ) LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2016-08-01T10:48:28+08:00 ] 127.0.0.1 /Home/Order/get_new_order.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000622s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000872s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000985s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `order_id`,`user_id`,`created`,`order_address` FROM `m_order` ORDER BY order_id desc LIMIT 6   [ RunTime:0.0005s ]
+SQL: SELECT `user_name`,`address`,`head_url` FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0005s ]
+
+[ 2016-08-01T10:48:29+08:00 ] 127.0.0.1 /Home/Order/get_new_order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000630s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000891s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000987s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0064s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `order_id`,`user_id`,`created`,`order_address` FROM `m_order` WHERE ( order_id>60 ) ORDER BY order_id desc LIMIT 6   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 399 行.
+
+[ 2016-08-01T10:48:39+08:00 ] 127.0.0.1 /Home/Order/get_new_order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000550s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000870s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000983s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0058s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `order_id`,`user_id`,`created`,`order_address` FROM `m_order` WHERE ( order_id>60 ) ORDER BY order_id desc LIMIT 6   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 399 行.
+
+[ 2016-08-01T10:48:47+08:00 ] 127.0.0.1 /Home/admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000572s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000851s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000940s ]
+ERR: 无法加载控制器:Admin
+
+[ 2016-08-01T10:48:49+08:00 ] 127.0.0.1 /Home/Order/get_new_order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000573s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001329s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001468s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0062s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `order_id`,`user_id`,`created`,`order_address` FROM `m_order` WHERE ( order_id>60 ) ORDER BY order_id desc LIMIT 6   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 399 行.
+
+[ 2016-08-01T10:48:59+08:00 ] 127.0.0.1 /Home/Order/get_new_order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000570s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000914s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000993s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0055s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `order_id`,`user_id`,`created`,`order_address` FROM `m_order` WHERE ( order_id>60 ) ORDER BY order_id desc LIMIT 6   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 399 行.
+
+[ 2016-08-01T10:49:10+08:00 ] 127.0.0.1 /Home/Order/get_new_order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000611s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000908s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001008s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0059s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `order_id`,`user_id`,`created`,`order_address` FROM `m_order` WHERE ( order_id>60 ) ORDER BY order_id desc LIMIT 6   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 399 行.
+
+[ 2016-08-01T10:49:19+08:00 ] 127.0.0.1 /Home/Order/get_new_order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000601s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000895s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000981s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0055s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `order_id`,`user_id`,`created`,`order_address` FROM `m_order` WHERE ( order_id>60 ) ORDER BY order_id desc LIMIT 6   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 399 行.
+
+[ 2016-08-01T10:49:29+08:00 ] 127.0.0.1 /Home/Order/get_new_order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000715s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000852s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000948s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `order_id`,`user_id`,`created`,`order_address` FROM `m_order` WHERE ( order_id>60 ) ORDER BY order_id desc LIMIT 6   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 399 行.
+
+[ 2016-08-01T10:49:33+08:00 ] 127.0.0.1 /Home/Member/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000618s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000829s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000923s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and deleted=0 ) LIMIT 1   [ RunTime:0.1576s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=1 and deleted=0 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=2 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\MemberController.class.php 第 30 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_sellection` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=3 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\MemberController.class.php 第 39 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000158s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000255s ]
+NOTIC: [8] Undefined index: cart E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 115 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 183 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 184 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 185 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 186 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.082550s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.082683s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000643s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001055s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001815s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000825s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000929s ]
+
+[ 2016-08-01T10:49:37+08:00 ] 127.0.0.1 /Home/Order/index/status/no_pay.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000657s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001015s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001135s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0194s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 38 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0187s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=80 and t1.pay_status=0  and t1.status<7 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0994s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000188s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000289s ]
+NOTIC: [8] Undefined index: count E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 115 行.
+NOTIC: [8] Undefined index: count E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 115 行.
+NOTIC: [8] Undefined index: count E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 115 行.
+NOTIC: [8] Undefined index: count E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 115 行.
+NOTIC: [8] Undefined index: count E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 115 行.
+NOTIC: [8] Undefined index: count E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 115 行.
+NOTIC: [8] Undefined index: count E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 115 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 232 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 233 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 234 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 235 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.073926s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.074015s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000645s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001329s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002099s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000821s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000900s ]
+
+[ 2016-08-01T10:49:44+08:00 ] 127.0.0.1 /Home/Goods/zhifu/order_id/60.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000568s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002641s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003094s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0051s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `m_order` WHERE ( order_id='60' ) LIMIT 1   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000116s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000214s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6388bfa04d50b286e2aa403a6d6fcf79.php 第 87 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6388bfa04d50b286e2aa403a6d6fcf79.php 第 88 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6388bfa04d50b286e2aa403a6d6fcf79.php 第 89 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6388bfa04d50b286e2aa403a6d6fcf79.php 第 90 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011776s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011875s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000644s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000652s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001418s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000899s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000989s ]
+
+[ 2016-08-01T10:49:47+08:00 ] 127.0.0.1 /Home/Goods/alipay.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000530s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000698s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000814s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0056s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `m_order` WHERE ( order_id=60 and deleted=0  ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `open_id` FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( tuan_no=60 and pay_status=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `tuan_number` FROM `m_order` WHERE ( order_id=60 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: returnPay E:\wamp\www\myguopin\Application\Home\Controller\GoodsController.class.php 第 532 行.
+SQL: UPDATE `m_order` SET `pay_status`='1',`updated`='1470019787',`pay_type`='1',`pay_info`='N;',`created`='1470019787' WHERE ( order_id=60 ) [ RunTime:0.0070s ]
+
+[ 2016-08-01T10:49:47+08:00 ] 127.0.0.1 /Home/Goods/gmcg_wx/order_id/60.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000754s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000683s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000819s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0063s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `m_order` WHERE ( order_id='60' and deleted=0 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( tuan_no=60 and pay_status=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `user_id` FROM `m_order` WHERE ( tuan_no=60 and identity=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `head_url`,`user_name` FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `created` FROM `m_order` WHERE ( order_id=60 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0066s ]
+SQL: SELECT t2.head_url,t2.user_name,t1.created FROM m_order t1,m_users t2 WHERE ( t1.user_id=t2.user_id and t1.tuan_no=60 and t1.identity=0 )  [ RunTime:0.0009s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\myguopin\Application\Home\Controller\GoodsController.class.php 第 700 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000178s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000292s ]
+NOTIC: [8] Undefined variable: is_ztcg E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb7ac65801f665c643ab21ba75aa91d4e0.php 第 41 行.
+NOTIC: [8] Undefined variable: is_ztcg E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb7ac65801f665c643ab21ba75aa91d4e0.php 第 90 行.
+NOTIC: [8] Undefined variable: is_ztcg E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb7ac65801f665c643ab21ba75aa91d4e0.php 第 119 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb7ac65801f665c643ab21ba75aa91d4e0.php 第 141 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb7ac65801f665c643ab21ba75aa91d4e0.php 第 142 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb7ac65801f665c643ab21ba75aa91d4e0.php 第 143 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb7ac65801f665c643ab21ba75aa91d4e0.php 第 144 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019215s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019335s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000658s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000861s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001658s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000709s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000786s ]
+
+[ 2016-08-01T16:50:00+08:00 ] 127.0.0.1 /Home/Member/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001281s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001441s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0054s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=1 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=2 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\MemberController.class.php 第 30 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_sellection` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=3 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\MemberController.class.php 第 39 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000173s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000272s ]
+NOTIC: [8] Undefined index: cart E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 115 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 183 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 184 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 185 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 186 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016911s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016993s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000576s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000952s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001660s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000799s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000877s ]
+
+[ 2016-08-01T16:50:01+08:00 ] 127.0.0.1 /Home/Member/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000546s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001077s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001202s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0057s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=1 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=2 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\MemberController.class.php 第 30 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_sellection` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=80 and pay_status=1 and status=3 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\MemberController.class.php 第 39 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000154s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000274s ]
+NOTIC: [8] Undefined index: cart E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 115 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 183 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 184 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 185 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 186 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015075s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015168s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000659s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001009s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001801s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000891s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000982s ]
+
+[ 2016-08-01T16:50:09+08:00 ] 127.0.0.1 /Home/Member/qiehuanzhuanghu.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000590s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001429s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001566s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0063s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant Users - assumed 'Users' E:\wamp\www\myguopin\Application\Home\Controller\MemberController.class.php 第 1155 行.
+SQL: SELECT * FROM `m_users`  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000107s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000233s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb60feb0825a89b4c8be82d7abb4adbe9e.php 第 74 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb60feb0825a89b4c8be82d7abb4adbe9e.php 第 75 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb60feb0825a89b4c8be82d7abb4adbe9e.php 第 76 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb60feb0825a89b4c8be82d7abb4adbe9e.php 第 77 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014880s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014970s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000656s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000942s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001732s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001236s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001343s ]
+
+[ 2016-08-01T16:50:11+08:00 ] 127.0.0.1 /Home/member/login/user_id/87.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000637s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000888s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000985s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `m_users` WHERE ( user_id=87 ) LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2016-08-01T16:50:11+08:00 ] 127.0.0.1 /Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000944s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001103s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0056s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_admin_advert` [ RunTime:0.0050s ]
+SQL: SELECT `xuhao`,`img_url`,`url` FROM `m_admin_advert` WHERE ( position='轮播' )  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `m_goods`  [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000146s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000242s ]
+NOTIC: [8] Undefined variable: get E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbd4464d615aba9d56fd2fbd7560cbe17f.php 第 49 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbd4464d615aba9d56fd2fbd7560cbe17f.php 第 147 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbd4464d615aba9d56fd2fbd7560cbe17f.php 第 148 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbd4464d615aba9d56fd2fbd7560cbe17f.php 第 149 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbd4464d615aba9d56fd2fbd7560cbe17f.php 第 150 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020322s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020420s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000724s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001047s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001917s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000884s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000961s ]
+
+[ 2016-08-01T16:50:13+08:00 ] 127.0.0.1 /Home/Member/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000693s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000820s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000944s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0047s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `m_users` WHERE ( user_id=87 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=2 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\MemberController.class.php 第 30 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_sellection` WHERE ( user_id=87 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\MemberController.class.php 第 39 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000179s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000285s ]
+NOTIC: [8] Undefined index: cart E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 115 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 183 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 184 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 185 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mb6ad0640ef37124cc9b9b64ee183b97bc.php 第 186 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017597s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017704s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000563s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000980s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001702s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000804s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000893s ]
+
+[ 2016-08-01T16:50:15+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000602s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001650s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001893s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0057s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0056s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0023s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000178s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000280s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 232 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 233 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 234 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 235 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.051313s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.051464s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000593s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000947s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001707s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000712s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000793s ]
+
+[ 2016-08-01T17:07:08+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000677s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000934s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001053s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0074s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0067s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000257s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000393s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 232 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 233 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 234 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 235 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019633s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019733s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000692s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001830s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000851s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000943s ]
+
+[ 2016-08-01T17:07:09+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000596s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000888s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000978s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0055s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0052s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000281s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000422s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 232 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 233 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 234 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 235 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019243s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019353s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000691s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001048s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001859s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000840s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000916s ]
+
+[ 2016-08-01T17:16:49+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000662s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000869s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000968s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0073s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0064s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000230s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000322s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 241 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 242 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018425s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018517s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000800s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001064s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000848s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000940s ]
+
+[ 2016-08-01T17:17:06+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000836s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001077s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001178s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0063s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000181s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000269s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 241 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 242 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017601s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017687s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000686s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001347s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002209s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000924s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001015s ]
+
+[ 2016-08-01T17:17:19+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000582s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000876s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001008s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0056s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0061s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000172s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000269s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 241 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 242 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016951s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017044s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000620s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001254s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002034s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001101s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001197s ]
+
+[ 2016-08-01T17:17:29+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000636s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000831s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000936s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0057s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0050s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000175s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000262s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 241 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 242 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017024s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017114s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000607s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000987s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001716s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000785s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000864s ]
+
+[ 2016-08-01T17:17:37+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000622s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000927s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001040s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0059s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0049s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000183s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000286s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 241 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 242 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016860s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016940s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000642s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001030s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001794s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000857s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000935s ]
+
+[ 2016-08-01T17:18:06+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000135s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001714s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000940s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001047s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0058s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0065s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000304s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000444s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 241 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 242 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018921s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019053s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000796s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001083s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002016s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000854s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000932s ]
+
+[ 2016-08-01T17:18:14+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001344s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000858s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000956s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0057s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0051s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000183s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000269s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 241 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 242 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017088s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017171s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000720s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001023s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001864s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000863s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000953s ]
+
+[ 2016-08-01T17:18:30+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000651s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001159s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001342s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0053s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0057s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000174s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000264s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 241 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 242 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017226s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017313s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000565s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000980s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001669s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000774s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000853s ]
+
+[ 2016-08-01T17:19:33+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000634s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000864s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000959s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0056s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0058s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000203s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000291s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 241 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 242 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016895s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016981s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000552s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001467s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002213s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001519s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001629s ]
+
+[ 2016-08-01T17:19:44+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001151s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000844s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000955s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0054s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0075s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000186s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000284s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 241 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 242 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018668s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018785s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000595s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000991s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001710s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000767s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000844s ]
+
+[ 2016-08-01T17:21:53+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000628s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000966s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001072s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0057s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0058s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000181s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000270s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 245 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 246 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 247 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016721s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016803s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000809s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001401s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002362s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000892s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000983s ]
+
+[ 2016-08-01T17:22:33+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001155s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001297s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0053s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0057s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000197s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000289s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 245 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 246 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 247 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018353s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018439s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000717s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001060s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001909s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000932s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001012s ]
+
+[ 2016-08-01T17:22:50+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000640s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001029s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001152s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0068s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000234s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000349s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 242 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 245 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019895s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020036s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000754s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001145s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002066s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000973s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001081s ]
+
+[ 2016-08-01T17:23:45+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000746s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000821s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000925s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0049s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0060s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000285s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000454s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 245 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 246 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017874s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017961s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000572s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001019s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001713s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000770s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000848s ]
+
+[ 2016-08-01T17:24:16+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000589s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000868s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000965s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0058s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0059s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000186s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000271s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 245 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 246 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016591s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016675s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000655s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001076s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001851s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000849s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000928s ]
+
+[ 2016-08-01T17:24:31+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000646s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001424s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001574s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0047s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0051s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000182s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000282s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 245 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 246 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017535s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017629s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000812s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001393s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002421s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001394s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001486s ]
+
+[ 2016-08-01T17:24:43+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000684s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000873s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001003s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0049s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0219s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000181s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000280s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 245 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 246 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017456s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017548s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000626s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001096s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001852s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000841s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000933s ]
+
+[ 2016-08-01T17:24:51+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000727s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.007645s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007922s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0092s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0076s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0015s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000247s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000380s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 245 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 246 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021200s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021338s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000668s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001096s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001912s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000848s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000964s ]
+
+[ 2016-08-01T17:24:58+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000587s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000981s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001099s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0053s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0070s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000240s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000365s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 243 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 244 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 245 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 246 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019246s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019330s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000770s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001164s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002060s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000833s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000911s ]
+
+[ 2016-08-01T18:34:09+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000734s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000814s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000908s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0066s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0063s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000173s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000260s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 237 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 238 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 239 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 240 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029780s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029868s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.005230s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001594s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006980s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001377s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001461s ]
+
+[ 2016-08-01T23:41:04+08:00 ] 127.0.0.1 /Home/Order/index/status/daishouhuo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000612s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001018s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001142s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0058s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=213 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and deleted=0 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=0 and deleted=0  and status<7 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=1 and tuan_no<>0 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=4 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant status_count - assumed 'status_count' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 17 行.
+NOTIC: [8] Use of undefined constant selected - assumed 'selected' E:\wamp\www\myguopin\Application\Home\Controller\OrderController.class.php 第 66 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( user_id=87 and pay_status=1 and status=3 and deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0073s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number FROM m_order t1,m_goods t2 WHERE ( t1.deleted=0 and t1.user_id=87 and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id ) ORDER BY t1.created desc LIMIT 0,10   [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000216s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000331s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 237 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 238 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 239 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbaf9769e242ae05de14306b5193cdc702.php 第 240 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021751s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021848s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000539s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001002s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001680s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000806s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000895s ]
+

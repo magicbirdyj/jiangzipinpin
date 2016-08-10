@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/jquery.form.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/kindeditor/kindeditor.js"></script>
+<script src="__PUBLIC_COMMON__/Js/kindeditor/lang/zh_CN.js"></script>
+</head>
+<body>
+    
+    <div style="font-size: 16px;margin: 20px 200px;">详情编辑--轮播<{$data['position']==='轮播上'?'上':'下'}>（<{$xuhao}>）</div>
+    <form name="advert_xqbj" method="post" enctype="multipart/form-data" action="<{:U('Advert/xqbj_check')}>">
+        <input name='xuhao' value="<{$xuhao}>" type="hidden" />
+    <div style="margin: 0px 0px 20px 30px;" >
+    <textarea id="content" name="content" style="width:90%;height:300px;visibility:hidden;">
+                    <{$data['advert_desc']}>
+    </textarea>
+    </div>
+    <input type="submit" value="确定发布" style="margin: 20px 0px 50px 30px;" />
+    </form>
+    <script src="__PUBLIC_ADMIN__/Js/kindeditor.js" type="text/javascript"></script>
+</body>
+</html>

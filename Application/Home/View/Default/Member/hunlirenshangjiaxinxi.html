@@ -1,0 +1,56 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/hunliren_shangjiaxinxi.css">
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+</head>
+
+<body>
+    <include file='Public/menu' />
+    <include file='Public/member_left' />
+    <div class="right">
+        <div class="right_head">
+            <div class="hlr_touxiang">
+                <img src="<{$touxiang_url}>" class="img" />
+                <img src='__PUBLIC_HOME__/Images/public/circle_f6f6f6.png' class="img_circle" />
+            </div>
+            <div class="hlr_name"><{$day_time}>， <{$userdata['user_name']}>（<{$userdata['server_content']}>）</div>
+            <a  href="<{:U('Member/release_goods')}>">发布商品</a>
+        </div>
+        <div class="title">
+            商家资料
+            <a class="bianji_a" href="<{:U('Member/hunliren_bianji')}>">编辑</a>
+        </div>
+        <div class="content">
+            <ul>
+                <li>会员名： <{$userdata['user_name']}></li>
+                <li>商家注册时间： <{$userdata['shopman_reg_time']|date='Y年m月d日 H：i',###}></li>
+                <li>性别： <{$userdata['sex']==='0'?'男':'女'}></li>
+                <li>服务形式： <{$userdata['server_form']==='0'?'个人':'工作室'}></li>
+                <li>服务岗位： <{$userdata['server_content']}></li>
+                <li>所在城市： <{$userdata['location']}></li>
+                <li>地址： <{$userdata['address']}></li>
+                <li>QQ： <{$userdata['qq']}></li>
+                <li>微信： <{$userdata['weixin']}></li>
+                <if condition="$userdata['weixin_erweima'] neq ''">
+                    <li class="erweima"><span>微信二维码：</span><img src="<{$userdata['weixin_erweima']}>"></li>
+                </if>
+                <li>email： <{$userdata['email']}></li>
+                <li>商家简介： <{$userdata['shop_introduce']}></li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+</body>
+</html>
+        

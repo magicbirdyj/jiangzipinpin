@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC_ADMIN__/Css/manger.css" />
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/jquery.form.js"></script> 
+</head>
+<body>
+    <div class="inof_div">
+        <div class="title">分类属性管理</div>
+        <form name="sv_cont"  method="post"   action="<{:U('Category/manger')}>">
+            <div class="tr">
+                <div class="tr_td1">服务分类</div>
+                <select name="server_content" class="tr_td2 release_select" >
+                    <volist name="data" id="vo">
+                        <option value="<{$vo['cat_name']}>" <{$$vo['cat_name']}> ><{$vo['cat_name']}></option>
+                    </volist>
+                </select>
+            </div>
+        </form>
+        <form  name="sv_shuxing"  method="post"   action="<{:U('Category/check')}>">
+            <input type="hidden" name="cat_name" value="<{$cat_name}>"/>
+            
+            <volist name='arr_shuxing' id='vo' key='k1'>
+                <div class="tr">
+                    <div class="tr_td1 js_div "><input name="shuxing[]" class="tr_td1_input release_select" type="text" value="<{$key}>" /><a class="del_a" title="删除"></a></div>
+                    <volist name='vo' id='value' key='k2'>
+                        <div class="js_div ">
+                            <input name="shuxingzhi[<{$k1-1}>][]" class="tr_td2 release_select" type="text" value="<{$value}>"/>
+                            <a class="del_a del_a1" title="删除"></a>
+                        </div>
+                    </volist>
+                    <input class="input_button_sxz" type="button" value="增加属性值" />
+                </div>
+            </volist>
+        <div class="tr" style="margin-top: 30px;">
+            <input type="button" value='增加属性' class="input_button" id='add_sx' /> 
+            <input type="submit" value='确认修改' style="margin-left: 30px;" class="input_button" id='qrxg' />
+        </div>
+        </form>
+    </div>
+   
+    
+    
+<script src="__PUBLIC_ADMIN__/Js/manger.js" type="text/javascript"></script>
+</body>
+</html>

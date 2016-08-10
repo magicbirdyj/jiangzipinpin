@@ -1,0 +1,71 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/hunliren_shangjiaxinxi.css">
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+</head>
+
+<body>
+    <include file='Public/menu' />
+    <include file='Public/member_left' />
+    <div class="right">
+        <div class="right_head">
+            <div class="hlr_touxiang">
+                <img src="<{$touxiang_url}>" class="img" />
+                <img src='__PUBLIC_HOME__/Images/public/circle_f6f6f6.png' class="img_circle" />
+            </div>
+            <div class="hlr_name"><{$day_time}>， <{$userdata['user_name']}></div>
+        </div>
+        <div class="title">
+            会员余额
+        </div>
+        <div class="content">
+            <ul>
+                <li>会员名： <{$userdata['user_name']}></li>
+                <li>账户余额：&yen;  <{$userdata['credit_line']}></li>
+                <form name="tixian" action="<{:U('Member/tixian_check')}>" method="post">
+                <li>
+                    申请提现：
+                    <input class="tixian_text" type="text" name="tixian" /> 元
+                    <input class="tixian_submit" type="submit" value="确定" />
+                    <span id='tixian_tishi'></span>
+                </li>
+                </form>
+            </ul>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script src="__PUBLIC_HOME__/Js/tixian.js"></script> 
+<script type="text/javascript">
+    function yanzheng_tixian(obj){
+    var str=obj.val();
+    var yu_e="<{$userdata['credit_line']}>";
+    if(is_tixian(parseFloat(str))){
+        if(parseFloat(str)>parseFloat(yu_e)){
+            $('#tixian_tishi').html('您输入的金额大于账户余额，请重新输入');
+            $('#tixian_tishi').css('color','red');
+            return false;
+        }else{
+            $('#tixian_tishi').html('您将提现: &yen;'+parseFloat(str).toFixed(2));
+            $('#tixian_tishi').css('color','#666');
+            return true;
+        }
+    }else{
+        $('#tixian_tishi').html('您输入的金额不符合规范，请重新输入');
+        $('#tixian_tishi').css('color','red');
+        return false;
+    }
+}
+</script> 
+    </body>
+</html>

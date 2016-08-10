@@ -1,0 +1,66 @@
+/* CSS Document */
+
+.release{
+width:935px;
+margin-left: 20px;
+float: left;
+}
+.release .div1{
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #f6f6f6;
+    padding: 10px 20px;
+}
+.release .title{
+    margin-top: 20px;
+    background-color: #00FFDB;
+}
+.title div{
+    float: left;
+    font-size: 14px;
+    color: #000;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #EEE;
+}
+.td1{
+    width: 50px;
+    text-align: center;
+}
+.td2{
+    width: 360px;
+}
+.td3{
+    width: 90px;
+}
+.td4{
+    width: 70px;
+    text-align: center;
+}
+.td5{
+    width: 160px;
+    text-align: center;
+}
+.td6{
+    width: 193px;
+    text-align: center;
+}
+.td6 a{
+    margin: 0px 10px;
+}
+.release .content{
+    margin-top: 10px;
+}
+
+.content div{
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    border:1px solid #EEE;
+    font-size: 14px;
+}
+.content .img_zst{
+    height: 60px;
+}
+

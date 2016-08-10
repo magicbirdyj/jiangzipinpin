@@ -1,0 +1,79 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/appraise_manage.css">
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script>
+</head>
+
+<body>
+    <include file='Public/menu'/>
+    <include file='Public/member_left' />
+    <div class="release">
+        <volist name="list" id="vo">
+        <div class="content"><!--内容遍历-->
+                <div class='td1'>
+                    <div class="picture"><a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><img src="<{$vo['goods_img']}>"></a></div>
+                    <div class="info"><a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><{$vo['goods_name']}></a><p class="color_999">商品日期：<{$vo['server_day']|date_geshi1=###}></p><p class="color_2BB8AA">商家：<{$vo['shop_name']}></p></div>
+                    <div>
+                        <div class='des_title'>我已评价：</div>
+                <div class="des_ul">
+                    <ul>
+                        <li>
+                            <span class="pingjia_text">服务与描述相符</span>
+                            <!--先简单写成几分，以后有需要再改成图片星星显示
+                            <span class="pingjia_xingxing">
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="1_1" />
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="1_2"  />
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="1_3"  />
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="1_4"  />
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="1_5"  />
+                            </span>
+                            -->
+                            <span class="pingjia_last" id="1_des"><{$vo['pingfen']|unserialize|shuzu=0}>分</span>
+                        </li>
+                        <li>
+                            <span class="pingjia_text">商家的服务态度</span>
+                            <!--先简单写成几分，以后有需要再改成图片星星显示
+                            <span class="pingjia_xingxing">
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="2_1"  />
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="2_2" />
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="2_3" />
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="2_4" />
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="2_5" />
+                            </span>
+                            -->
+                            <span class="pingjia_last" id="2_des"><{$vo['pingfen']|unserialize|shuzu=0}>分</span>
+                        </li>
+                        <li>
+                            <span class="pingjia_text">商家的专业水平</span>
+                            <!--先简单写成几分，以后有需要再改成图片星星显示
+                            <span class="pingjia_xingxing">
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="3_1" />
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="3_2" />
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="3_3" />
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="3_4" />
+                                <img src="__PUBLIC_HOME__/Images/public/pingjia_xingxing_kong.png" id="3_5" />
+                            </span>
+                            -->
+                            <span class="pingjia_last" id="3_des"><{$vo['pingfen']|unserialize|shuzu=0}>分</span>
+                        </li>
+                    </ul>
+                </div>
+                    </div>
+                    <div class="jutipingjia"><{$vo['appraise']}></div>
+                </div>
+        </div>
+        </volist>
+        
+    
+        
+        
+        <div class="page_foot"><{$page_foot}></div>
+        
+    </div>
+   
+
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+
+
+

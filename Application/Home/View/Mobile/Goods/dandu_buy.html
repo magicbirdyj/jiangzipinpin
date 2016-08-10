@@ -1,0 +1,149 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/goods.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/buy.css">
+</head>
+
+<body>
+
+<div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>提交订单</div>
+<table class="buy_table" cellspacing="0">
+<tr class="buy_table_head">
+    <td colspan="2">
+        <img src="<{$goods['goods_img']}>"  />
+        <div class="goods_name">
+            <div class="name"><{$goods['goods_name']}></div>
+            <div class="name_price">&yen <span class="price_red"><{$goods['price']|floatval}> </span> /<{$goods['units']}> </div>
+        </div>
+    </td>
+</tr>
+<tr class="buy_table_content">
+    <td colspan="2" style='position: relative;'>
+        <span class="iconfont tb_address">&#xe621;</span>
+        <div class="address">
+            <div><{$default_Address['name']}>   <{$default_Address['mobile']}></div>
+            <div><{$default_Address['location']}>   <{$default_Address['address']}></div>
+        </div>
+        <span class="iconfont tb_right">&#xe604;</span>
+    </td>
+</tr>
+<if condition="($goods['1yuangou'] neq '1') and ($goods['choujiang'] neq '1')">
+<tr class="buy_table_content">
+    <td class="td_l">数量：</td>
+    <td class="td_r" style='padding: 7px 10px'>
+        <span class="number_kongzhi" id='jian'>-</span>
+        <input type="text" id='buy_number' value='1' />
+        <span class="number_kongzhi" id='jia'>+</span>
+    </td>
+</tr>
+</if>
+<tr class="buy_table_content">
+    <td class="td_l">商家：</td>
+    <td class="td_r"><{$goods['user_name']}></td>
+</tr>
+
+<if condition="$youxiao_daijinquan neq null">
+<tr class="buy_table_content" id='xz_daijinquan'>
+    <td class="td_l">可用代金卷：</td>
+    <td class="td_r" style='position: relative;'>
+        <span style="margin-right: 30px;" id='ky_daijinquan'></span>
+        <span class="iconfont tb_right" style="top:2px;">&#xe604;</span>
+    </td> 
+</tr>
+</if>
+<tr class="buy_table_content">
+    <td class="td_l">应付金额：</td>
+    <td class="td_r yingfu">&yen <span id="dues"><{$goods['price']-$goods['ky_daijinquan']|floatval}></span></td>
+</tr>
+
+
+</table>
+   
+    <form name="dingdan" method="post" action="<{:U('Goods/dandu_buy_success')}>">
+        <input type="hidden" name="goods_id" value="<{$goods['goods_id']}>" />
+        <if condition="$zx_shuxing neq NULL">
+        <input type="hidden" name="zx_shuxing" value='<{$zx_shuxing}>' />
+        </if>
+        <input type="hidden" name="price" value="<{$goods['price']}>" />
+        <input type="hidden" name="buy_number" value="1" />
+        <input type="hidden" name="ky_daijinquan" value="0" />
+        <input type="hidden" name="dues" value="" />
+    </form>
+    <a href="javascript:void(0)" class="a_tjdd button_a_lvse" >提交订单</a>
+
+<script>
+        var ky_daijinquan=0;
+        var price=parseInt(<{$goods['price']|floatval}>);
+        var totle_price=price;
+    </script>
+<if condition="$youxiao_daijinquan neq null">
+    <include file='Public/daijinquan'/> 
+</if>    
+<script type="text/javascript">
+    $('.a_tjdd').bind('click',function(){
+        $('form[name=dingdan]').submit();
+    });
+    var value;
+    $('#buy_number').val('1');
+    $('#dues').text(totle_price-ky_daijinquan);
+    $(':hidden[name=dues]').val(totle_price-ky_daijinquan);
+    $('#jia').bind('click',function(){
+        value=parseInt($('#buy_number').val());
+        if((value)>8){
+            return false;
+        }
+        $('#buy_number').val((value+1));
+        value=parseInt($('#buy_number').val());
+        $(':hidden[name=buy_number]').val(value);
+        totle_price=value*price;
+        $('#dues').html( totle_price-ky_daijinquan);
+        $(':hidden[name=dues]').val( totle_price-ky_daijinquan);
+        if((value)>8){
+            $('#jia').css('background-color','#C8C8C8');
+        }
+        if((value)>1){
+            $('#jian').css('background-color','#FFF');
+        }
+        daijinquan_each();
+    });
+    $('#jian').bind('click',function(){
+        value=parseInt($('#buy_number').val());
+        if((value)<2){
+            return false;
+        }
+        $('#buy_number').val(value-1);
+        value=parseInt($('#buy_number').val());
+        $(':hidden[name=buy_number]').val(value);
+        totle_price=value*price;
+        $('#dues').html(totle_price-ky_daijinquan);
+        $(':hidden[name=dues]').val(totle_price-ky_daijinquan);
+        if((value)<2){
+            $('#jian').css('background-color','#C8C8C8');
+        }
+        if((value)<9){
+            $('#jia').css('background-color','#FFF');
+        }
+         daijinquan_each();
+    });
+    $('#jian').css('background-color','#C8C8C8');
+    
+    
+    $('#buy_number').bind('change',function(){
+        value=parseInt($('#buy_number').val());
+        if(value>=9){
+            $('#buy_number').val(9);
+            $('#jia').css('background-color','#C8C8C8');
+            $('#jian').css('background-color','#FFF');
+        }else if(value<=1){
+            $('#buy_number').val(1);
+            $('#jian').css('background-color','#C8C8C8');
+            $('#jia').css('background-color','#FFF');
+        }
+        value=parseInt($('#buy_number').val());
+        totle_price=value*price;
+        $('#dues').html(totle_price-ky_daijinquan);
+        $(':hidden[name=dues]').val(totle_price-ky_daijinquan);
+        $(':hidden[name=buy_number]').val(value);
+        daijinquan_each();
+        });
+    
+</script>

@@ -1,0 +1,38 @@
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/goods.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/buy.css">
+</head>
+
+<body>
+    <div class="fanhui padding"><a href="<{:U('Order/view',array('order_id'=>$order['order_id']))}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>下单成功</div>
+
+<table class="buy_table" cellspacing="0">
+<tr class="buy_table_head">
+    <td colspan="2"><{$order['goods_name']}></td>
+</tr>
+<tr class="buy_table_content">
+    <td class="td_l">应付金额：</td>
+    <td class="td_r yingfu">&yen <{$order['dues']|floatval}></td>
+</tr>
+<form name="qufukuang" method="post" action="<{:U('Goods/alipay')}>">
+<tr class="buy_table_content">
+    <td class="td_l">付款方式：</td>
+    <td class="td_r pay_method">
+        <select name="pay_method" >
+                    <option value="2" >微信支付</option>
+            </select>
+    </td>
+</tr>
+
+</table>
+        <input type="hidden" name="order_id" value="<{$order['order_id']}>" />
+    </form>
+    <a href="javascript:void(0)" class="a_tjdd button_a_lvse" >去付款</a>
+</div>
+
+<script type="text/javascript">
+    $('.a_tjdd').bind('click',function(){
+        $('form[name=qufukuang]').submit();
+    })
+</script>

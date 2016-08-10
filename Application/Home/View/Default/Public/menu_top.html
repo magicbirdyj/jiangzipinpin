@@ -1,0 +1,77 @@
+<a name="top"></a>
+<div class="top"><!--顶部-->
+<div class="top1">
+<span class="span1">
+    <!--<a  href="#" class="red">登录</a><a href="<{:U('Zhuce/index')}>">注册</a>-->
+    <{$yonghuxinxi}>
+    <a id="noborder" href="#">手机婚拉拉</a>
+</span>
+
+    <ul class="span2">   
+        <li><a  href="<{:U('Order/index')}>">我的订单</a></li>
+        <li><a   href="<{:U('Member/index')}>">我的一起网</a></li>
+        <li><a  href="<{:U('Member/cart')}>">购物车</a></li>
+        <li><a  href="<{:U('Member/hunlirenshangjiaxinxi')}>">我是婚礼人</a></li>
+        <li id="li_history">
+            <a href="javascript:void(0);"  id="a_history">最近浏览</a>
+    <div class="menu_history" id="menu_history">
+        <ul class="menu_history_ul">
+            <volist name="distory_goods" id="vo">
+            <li>
+                <a class="a_history" href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>">
+                    <div class="div_history">
+                        <img src="<{$vo['goods_img']}>" />
+                    </div>
+                    <h5><{$vo['goods_name']}></h5>
+                    <span><em>&yen;<{$vo['price']}></em> <s><{$vo['yuan_price']}></s> </span>
+                </a>
+            </li>
+            </volist>
+        </ul>
+        <p class="clear">
+            <a href="javascript:void(0);" id="delete_distory">清空最近浏览记录</a>
+        </p>
+    </div>
+        </li>
+        <li><a id="noborder" href="#">联系客服</a></li>
+    </ul>
+    
+</div>
+</div><!--//顶部-->
+<script  type="text/javascript">
+    $('.div_history img').each(function(i,item){
+        if($(item).width()<90){
+            $(item).css('width','90px');
+            $(item).css('height','auto');
+        }
+    });
+    
+    $('#sr').bind('click',function(){
+        if($('input[name=sp]').val()==''){
+            var a=$('input[name=sp]').attr('placeholder');
+            $('input[name=sp]').val(a);
+        }
+    });
+    
+    $('.span2>li').bind('mouseover',function(){
+        $(this).css('background-color','#FFF');
+    });
+    $('.span2>li').bind('mouseout',function(){
+        $(this).css('background-color','#F9F9F9');
+    });
+    $('#li_history').bind('mouseover',function(){
+        $('#menu_history').css('display','block');
+    });
+    $('#li_history').bind('mouseout',function(){
+        $('#menu_history').css('display','none');
+    });
+    $('#delete_distory').bind('click',function(){
+        var url="<{:U('Index/delete_distory')}>";
+        $.ajax({
+            type:'post',
+            url:url,
+            datatype:'json'
+        });
+         $('#menu_history').css('display','none');
+    });
+</script>

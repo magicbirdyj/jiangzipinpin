@@ -1,0 +1,64 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/sellection.css">
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script>
+</head>
+
+<body>
+    <include file='Public/menu'/>
+    <include file='Public/member_left' />
+    <div class="release">
+        <div class="title"><!--标题行-->
+            <div class='td1'>商品</div>
+            <div class='td2'>价格</div>
+            <div class='td3'>收藏时间</div>
+            <div class='td4'>购买</div>
+            <div class='td5'>删除</div>
+        </div>
+        
+        
+        <volist name="list" id="vo">
+        <div class="content"><!--内容遍历-->
+            <div class="order_row">
+                <div class='td1'>
+                    <div class="picture"><a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><img src="<{$vo['goods_img']}>"></a></div>
+                    <div class="info"><a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><{$vo['goods_name']}></a><p class="color_999">商品日期：<{$vo['server_day']|date_geshi1=###}></p><p class="color_2BB8AA">商家：<{$vo['user_name']}></p></div>
+                </div>
+                <div class='td2'>&yen;<{$vo['price']}></div>
+                <div class='td3'><{$vo['add_time']|date='Y-m-d H：i',###}></div>
+                <div class='td4'><a href="<{:U('Goods/buy',array('goods_id'=>$vo['goods_id'],'server_day'=>$vo['server_day']))}>" class="button_a_lvse">购买</a></div>
+                <div class='td5'><a href="javascript:void(0)" class="button_a_lvse" onclick="Del(<{$vo['sellection_id']}>,'<{$vo['goods_name']}>')">删除</a></div>
+            </div>
+        </div>
+        </volist>
+        
+    
+        
+        
+        <div class="page_foot"><{$page_foot}></div>
+        
+    </div>
+   
+
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script type="text/javascript">
+    function Del(id,name){
+        if(window.confirm('确定要删除收藏的商品 ['+name+'] 吗？')){
+            var url="/Home/Member/sellection_del/sellection_id/"+id+".html";
+            $.ajax({
+                        type:'post',
+                        async : false,
+                        url:url,
+                        datatype:'json'
+                    });
+             window.location.href=window.location.href;
+        }else{
+            return false;
+        }
+    }
+    
+    
+</script>
+
+

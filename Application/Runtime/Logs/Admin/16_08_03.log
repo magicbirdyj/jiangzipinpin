@@ -1,0 +1,911 @@
+[ 2016-08-03T15:58:24+08:00 ] 127.0.0.1 /Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000621s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000779s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000886s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0049s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0068s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0226s ]
+SQL: SELECT * FROM m_order t1,m_users t2 WHERE ( t1.user_id=t2.user_id and t1.deleted=0 ) ORDER BY t1.order_id desc LIMIT 0,10   [ RunTime:0.0085s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000108s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000197s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.028562s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028658s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000711s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001320s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002181s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000810s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000895s ]
+
+[ 2016-08-03T15:58:24+08:00 ] 127.0.0.1 /Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000747s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000751s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000854s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0057s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: url_to E:\wamp\www\myguopin\Application\Admin\Controller\LoginController.class.php 第 10 行.
+NOTIC: [8] Undefined index: url_to E:\wamp\www\myguopin\Application\Admin\Controller\LoginController.class.php 第 12 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000086s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000172s ]
+NOTIC: [8] Undefined variable: infor_mima E:\wamp\www\myguopin\Application\Runtime\Cache\Admin\286f14c479e57cdb25987680ec610826.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008876s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008996s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000748s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000767s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001673s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000811s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000913s ]
+
+[ 2016-08-03T15:58:32+08:00 ] 127.0.0.1 /Admin/login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001325s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000847s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000936s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0061s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_admin_user` [ RunTime:0.0057s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_admin_user` WHERE ( mobile_phone='13574506835' ) LIMIT 1   [ RunTime:0.0999s ]
+SQL: SELECT `ad_salt` FROM `m_admin_user` WHERE ( mobile_phone='13574506835' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_admin_user` WHERE ( mobile_phone='13574506835' and password='f9241fc0fe6db8097a92f8f978e9586a' ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2016-08-03T15:58:32+08:00 ] 127.0.0.1 /Admin/Login/chenggong.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000580s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000821s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000912s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0047s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: dlm E:\wamp\www\myguopin\Application\Admin\Controller\LoginController.class.php 第 52 行.
+NOTIC: [8] Undefined variable: mima E:\wamp\www\myguopin\Application\Admin\Controller\LoginController.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `m_admin_user` [ RunTime:0.0072s ]
+NOTIC: [2048] mktime(): You should be using the time() function instead E:\wamp\www\myguopin\Application\Admin\Controller\LoginController.class.php 第 58 行.
+SQL: UPDATE `m_admin_user` SET `last_login`='1470211112',`last_ip`='127.0.0.1' WHERE ( mobile_phone='13574506835' ) [ RunTime:0.0269s ]
+SQL: SELECT `user_id` FROM `m_admin_user` WHERE ( mobile_phone='13574506835' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `user_name` FROM `m_admin_user` WHERE ( mobile_phone='13574506835' ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `last_login` FROM `m_admin_user` WHERE ( mobile_phone='13574506835' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2016-08-03T15:58:32+08:00 ] 127.0.0.1 /Admin/index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000595s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001104s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0049s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000080s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000180s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032726s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032957s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000933s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001018s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002134s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000876s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000956s ]
+
+[ 2016-08-03T15:58:32+08:00 ] 127.0.0.1 /Admin/Index/top.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000830s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002061s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002243s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0061s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000096s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000209s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026674s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026794s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000646s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000774s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001595s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000778s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000857s ]
+
+[ 2016-08-03T15:58:33+08:00 ] 127.0.0.1 /Admin/Index/menu.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000988s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001548s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001711s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0074s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000122s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000219s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.060586s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.060716s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000646s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000837s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001622s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000744s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000830s ]
+
+[ 2016-08-03T15:58:33+08:00 ] 127.0.0.1 /Admin/Index/drag.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002663s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001231s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001666s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0063s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000091s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000197s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011131s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011283s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000604s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000895s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001696s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001277s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002747s ]
+
+[ 2016-08-03T15:58:33+08:00 ] 127.0.0.1 /Admin/Index/main.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000712s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001413s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001580s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0081s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000086s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000188s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029490s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029694s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000735s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001753s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002905s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001386s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001571s ]
+
+[ 2016-08-03T15:58:38+08:00 ] 127.0.0.1 /Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000552s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000789s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000925s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0049s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0054s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0065s ]
+SQL: SELECT * FROM m_order t1,m_users t2 WHERE ( t1.user_id=t2.user_id and t1.deleted=0 ) ORDER BY t1.order_id desc LIMIT 0,10   [ RunTime:0.0078s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000109s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000198s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015268s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015411s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000551s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001022s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001731s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001987s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002249s ]
+
+[ 2016-08-03T15:58:41+08:00 ] 127.0.0.1 /Admin/Ordermanage/fahuo/order_id/62.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000596s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000759s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000847s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0054s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000091s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000185s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009764s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009855s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000544s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000789s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001457s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000778s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000857s ]
+
+[ 2016-08-03T15:58:50+08:00 ] 127.0.0.1 /Admin/Ordermanage/fahuo_check.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000601s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000918s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001061s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0135s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0061s ]
+NOTIC: [8] Undefined variable: row E:\wamp\www\myguopin\Application\Admin\Controller\OrdermanageController.class.php 第 38 行.
+SQL: UPDATE `m_order` SET `status`='3' WHERE ( order_id=62 ) [ RunTime:0.0087s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000070s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000215s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007787s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007889s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000590s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000687s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001399s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000780s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000859s ]
+
+[ 2016-08-03T15:58:52+08:00 ] 127.0.0.1 /Admin/Goodsmanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000062s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001140s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000807s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000920s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0063s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `m_category` [ RunTime:0.0088s ]
+SQL: SELECT `cat_name` FROM `m_category`  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `m_goods` [ RunTime:0.0097s ]
+NOTIC: [8] Undefined index: serch E:\wamp\www\myguopin\Application\Admin\Controller\GoodsmanageController.class.php 第 20 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_goods` WHERE ( cat_name='水果' and is_delete=0 ) LIMIT 1   [ RunTime:0.0011s ]
+SQL: SELECT * FROM `m_goods` WHERE ( cat_name='水果' and is_delete=0 ) ORDER BY goods_id desc LIMIT 0,10   [ RunTime:0.0016s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000119s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000218s ]
+NOTIC: [8] Undefined variable: 果汁 E:\wamp\www\myguopin\Application\Runtime\Cache\Admin\44be48c52c819b74b3b0b16f06fea967.php 第 38 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.052825s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.052976s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000614s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000906s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001698s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000876s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000992s ]
+
+[ 2016-08-03T16:31:53+08:00 ] 127.0.0.1 /Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000620s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001053s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001174s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0061s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0056s ]
+SQL: SELECT * FROM m_order t1,m_users t2 WHERE ( t1.user_id=t2.user_id and t1.deleted=0 ) ORDER BY t1.order_id desc LIMIT 0,10   [ RunTime:0.0078s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000104s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000204s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.036342s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036455s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000750s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001175s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002094s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000901s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001016s ]
+
+[ 2016-08-03T16:32:09+08:00 ] 127.0.0.1 /Admin/Ordermanage/index/p/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000590s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000798s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000901s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0063s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0066s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0068s ]
+SQL: SELECT * FROM m_order t1,m_users t2 WHERE ( t1.user_id=t2.user_id and t1.deleted=0 ) ORDER BY t1.order_id desc LIMIT 10,10   [ RunTime:0.0072s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000107s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000197s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013227s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013324s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000559s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001073s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001755s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000873s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000953s ]
+
+[ 2016-08-03T16:32:11+08:00 ] 127.0.0.1 /Admin/Ordermanage/fahuo/order_id/48.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000536s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000744s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000843s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0054s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000096s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000191s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009671s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009768s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000521s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000772s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001418s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000770s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000851s ]
+
+[ 2016-08-03T16:32:18+08:00 ] 127.0.0.1 /Admin/Ordermanage/fahuo_check.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000802s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000765s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000877s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0049s ]
+NOTIC: [8] Undefined variable: row E:\wamp\www\myguopin\Application\Admin\Controller\OrdermanageController.class.php 第 38 行.
+SQL: UPDATE `m_order` SET `status`='3' WHERE ( order_id=48 ) [ RunTime:0.0081s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000126s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000241s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008053s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008155s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000541s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001133s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001817s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000825s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000919s ]
+
+[ 2016-08-03T16:32:20+08:00 ] 127.0.0.1 /Admin/Goodsmanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001880s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000753s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000852s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_category` [ RunTime:0.0050s ]
+SQL: SELECT `cat_name` FROM `m_category`  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `m_goods` [ RunTime:0.0060s ]
+NOTIC: [8] Undefined index: serch E:\wamp\www\myguopin\Application\Admin\Controller\GoodsmanageController.class.php 第 20 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_goods` WHERE ( cat_name='水果' and is_delete=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `m_goods` WHERE ( cat_name='水果' and is_delete=0 ) ORDER BY goods_id desc LIMIT 0,10   [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000107s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000198s ]
+NOTIC: [8] Undefined variable: 果汁 E:\wamp\www\myguopin\Application\Runtime\Cache\Admin\44be48c52c819b74b3b0b16f06fea967.php 第 38 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041149s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041241s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000602s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000887s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001613s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000765s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000844s ]
+
+[ 2016-08-03T16:32:27+08:00 ] 127.0.0.1 /Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000554s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000751s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000839s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0057s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0226s ]
+SQL: SELECT * FROM m_order t1,m_users t2 WHERE ( t1.user_id=t2.user_id and t1.deleted=0 ) ORDER BY t1.order_id desc LIMIT 0,10   [ RunTime:0.0075s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000112s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000205s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012942s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013036s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000530s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000958s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001609s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000751s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000829s ]
+
+[ 2016-08-03T16:32:30+08:00 ] 127.0.0.1 /Admin/Ordermanage/index/p/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000565s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000746s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000835s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0061s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0062s ]
+SQL: SELECT * FROM m_order t1,m_users t2 WHERE ( t1.user_id=t2.user_id and t1.deleted=0 ) ORDER BY t1.order_id desc LIMIT 10,10   [ RunTime:0.0098s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000123s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000229s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013994s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014101s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000554s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001029s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001735s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000809s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000898s ]
+
+[ 2016-08-03T16:32:36+08:00 ] 127.0.0.1 /Admin/Ordermanage/fahuo/order_id/44.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000555s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001756s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002058s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0063s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000150s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000241s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008096s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008187s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000520s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000775s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001418s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000825s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000925s ]
+
+[ 2016-08-03T16:32:43+08:00 ] 127.0.0.1 /Admin/Ordermanage/fahuo_check.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000538s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000753s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000844s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0061s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0062s ]
+NOTIC: [8] Undefined variable: row E:\wamp\www\myguopin\Application\Admin\Controller\OrdermanageController.class.php 第 38 行.
+SQL: UPDATE `m_order` SET `status`='3' WHERE ( order_id=44 ) [ RunTime:0.0015s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000133s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000346s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008534s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008635s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000516s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000682s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001317s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000760s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000838s ]
+
+[ 2016-08-03T16:32:45+08:00 ] 127.0.0.1 /Admin/Goodsmanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000598s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000802s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000906s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0055s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_category` [ RunTime:0.0066s ]
+SQL: SELECT `cat_name` FROM `m_category`  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_goods` [ RunTime:0.0062s ]
+NOTIC: [8] Undefined index: serch E:\wamp\www\myguopin\Application\Admin\Controller\GoodsmanageController.class.php 第 20 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_goods` WHERE ( cat_name='水果' and is_delete=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `m_goods` WHERE ( cat_name='水果' and is_delete=0 ) ORDER BY goods_id desc LIMIT 0,10   [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000101s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000188s ]
+NOTIC: [8] Undefined variable: 果汁 E:\wamp\www\myguopin\Application\Runtime\Cache\Admin\44be48c52c819b74b3b0b16f06fea967.php 第 38 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011961s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012051s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000512s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000861s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001494s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000739s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000817s ]
+
+[ 2016-08-03T16:32:47+08:00 ] 127.0.0.1 /Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000597s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000892s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001028s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0064s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0056s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0146s ]
+SQL: SELECT * FROM m_order t1,m_users t2 WHERE ( t1.user_id=t2.user_id and t1.deleted=0 ) ORDER BY t1.order_id desc LIMIT 0,10   [ RunTime:0.0069s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000123s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000220s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012703s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012799s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000527s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000954s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001602s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000863s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000995s ]
+
+[ 2016-08-03T16:32:58+08:00 ] 127.0.0.1 /Admin/Ordermanage/index/p/4.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001007s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000868s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000973s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0067s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0052s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( deleted=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0077s ]
+SQL: SELECT * FROM m_order t1,m_users t2 WHERE ( t1.user_id=t2.user_id and t1.deleted=0 ) ORDER BY t1.order_id desc LIMIT 30,10   [ RunTime:0.0070s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000105s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000195s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013299s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013395s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000626s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001048s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001796s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000815s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000892s ]
+
+[ 2016-08-03T16:33:00+08:00 ] 127.0.0.1 /Admin/Ordermanage/fahuo/order_id/27.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000704s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000912s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001022s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000089s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000179s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007979s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008095s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000906s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000861s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001919s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000861s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000940s ]
+
+[ 2016-08-03T16:33:16+08:00 ] 127.0.0.1 /Admin/Ordermanage/index/p/3.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000555s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000776s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000884s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0066s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0087s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `m_order` WHERE ( deleted=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0077s ]
+SQL: SELECT * FROM m_order t1,m_users t2 WHERE ( t1.user_id=t2.user_id and t1.deleted=0 ) ORDER BY t1.order_id desc LIMIT 20,10   [ RunTime:0.0077s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000199s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000384s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021664s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021796s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000834s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001486s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002533s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001010s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001121s ]
+
+[ 2016-08-03T16:33:20+08:00 ] 127.0.0.1 /Admin/Ordermanage/fahuo/order_id/33.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000812s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000912s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0067s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000090s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000175s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007960s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008052s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000543s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000773s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001473s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001169s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001318s ]
+
+[ 2016-08-03T16:33:26+08:00 ] 127.0.0.1 /Admin/Ordermanage/fahuo_check.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000604s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000737s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000831s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0059s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0057s ]
+NOTIC: [8] Undefined variable: row E:\wamp\www\myguopin\Application\Admin\Controller\OrdermanageController.class.php 第 38 行.
+SQL: UPDATE `m_order` SET `status`='3' WHERE ( order_id=33 ) [ RunTime:0.0984s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000066s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000151s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006897s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006995s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000529s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000653s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001302s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000758s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000834s ]
+
+[ 2016-08-03T16:33:28+08:00 ] 127.0.0.1 /Admin/Goodsmanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000588s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000766s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000866s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_category` [ RunTime:0.0057s ]
+SQL: SELECT `cat_name` FROM `m_category`  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_goods` [ RunTime:0.0061s ]
+NOTIC: [8] Undefined index: serch E:\wamp\www\myguopin\Application\Admin\Controller\GoodsmanageController.class.php 第 20 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `m_goods` WHERE ( cat_name='水果' and is_delete=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `m_goods` WHERE ( cat_name='水果' and is_delete=0 ) ORDER BY goods_id desc LIMIT 0,10   [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000134s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000247s ]
+NOTIC: [8] Undefined variable: 果汁 E:\wamp\www\myguopin\Application\Runtime\Cache\Admin\44be48c52c819b74b3b0b16f06fea967.php 第 38 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023706s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023864s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000602s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000916s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001678s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000798s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000889s ]
+
+[ 2016-08-03T19:53:27+08:00 ] 127.0.0.1 /Admin/Goodsmanage/release_goods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000572s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000795s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000889s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0249s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `m_category` [ RunTime:0.0058s ]
+SQL: SELECT `cat_name` FROM `m_category`  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: data E:\wamp\www\myguopin\Application\Admin\Controller\GoodsmanageController.class.php 第 261 行.
+SQL: SELECT `shuxing` FROM `m_category` WHERE ( cat_name='水果' ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000165s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000262s ]
+NOTIC: [8] Undefined variable: 水果 E:\wamp\www\myguopin\Application\Runtime\Cache\Admin\53799f05b0b0c291dadfaf9c4f44647b.php 第 40 行.
+NOTIC: [8] Undefined variable: 果汁 E:\wamp\www\myguopin\Application\Runtime\Cache\Admin\53799f05b0b0c291dadfaf9c4f44647b.php 第 40 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.037593s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000674s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001187s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002047s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001547s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001710s ]
+
+[ 2016-08-03T19:53:27+08:00 ] 127.0.0.1 /Admin/index/menu.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000808s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001449s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001624s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0056s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000107s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000203s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.046262s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046407s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000675s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000839s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001677s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000758s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000836s ]
+
+[ 2016-08-03T19:53:32+08:00 ] 127.0.0.1 /Admin/Goodsmanage/file_jia/name/file_img/width/43.5/height/23.2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000592s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000756s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000835s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0053s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\myguopin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-03T19:53:35+08:00 ] 127.0.0.1 /Admin/Goodsmanage/file_jia/name/file_img/width/43.5/height/23.2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000749s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000739s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000824s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\myguopin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-03T19:53:39+08:00 ] 127.0.0.1 /Admin/Goodsmanage/file_jia/name/file_img/width/43.5/height/23.2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000572s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000802s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000927s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0066s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\myguopin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-03T19:53:42+08:00 ] 127.0.0.1 /Admin/Goodsmanage/file_jia/name/file_img/width/43.5/height/23.2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000788s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001202s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001357s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0062s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\myguopin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-03T19:53:45+08:00 ] 127.0.0.1 /Admin/Goodsmanage/file_jia/name/file_img/width/43.5/height/23.2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000757s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001401s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001560s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0065s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\myguopin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-03T19:53:48+08:00 ] 127.0.0.1 /Admin/Goodsmanage/file_jia/name/file_img/width/43.5/height/23.2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000577s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000735s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000826s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\wamp\www\myguopin\Application\Admin\Controller\FontEndController.class.php 第 22 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0058s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\myguopin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+

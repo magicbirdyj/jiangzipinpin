@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/login.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/iconfont/iconfont_iphone/iconfont.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/iconfont/iconfont_public/iconfont.css">
+</head>
+
+<body>
+<div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe604;</span></a>17登陆</div>
+<span id="infor_login"></span>
+<form name="zhuce"  method="post" action="<{:U('Login/chenggong')}>" id="form1" >
+        <input type="hidden" name="hidden" value="<{$time}>" />
+        <input type="hidden" name="leixing" value="login" />
+
+<div class="zhuce1_tr">
+        <i class="icon icon-user"></i>
+<input type="text" name="shoujihao" class="zhuce1_tr_td2" placeholder="手机号" />
+</div><!--第一行-->
+
+<div class="zhuce1_tr">
+    <i class="icon icon-password"></i>
+<input type="password" name="mima" class="zhuce1_tr_td2" placeholder="密码" id="password"/>
+</div><!--第二行-->
+<a href="javascript:void(0)" id="zhuce1_xiayibu" class="a_xyb" onClick="return login(this)" style="float: left;" >登录</a>
+</form>
+<a href="<{:U('Zhuce/index')}>" id="zhuce">免费注册</a>
+
+<script src="__PUBLIC_HOME__/Mobile/Js/denglu.js" type="text/javascript"></script>
+
+

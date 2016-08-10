@@ -1,0 +1,133 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/goods.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/cart.css">
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+
+</head>
+
+<body>
+<include file='Public/menu_top'/>
+<div class="buy_div">
+<div class="logo"><!--logo-->
+    <a href=<{:U('Index/index')}>><div class="logol"></div></a>
+<div class="zhuce_head">
+<div>欢迎下单:</div>
+<ul>
+<li><span class="zhuce_head_self">提交订单</span></li>
+<li><span class="zhuce_head_jt1">&gt;&gt;</span></li>
+<li><span>选择支付方式</span></li>
+<li><span class="zhuce_head_jt1">&gt;&gt;</span></li>
+<li><span>购买成功</span></li>
+</ul>
+</div>
+</div>
+    <div class="cart_head">
+        <i></i>
+        <span class="cart_title">我的购物车</span>
+        <span style="font-size: 14px;"><span style="color: #F76120"><{$count}></span>/10</span>
+    </div>
+    <form method="post" action="<{:U('Member/cart_zhifu')}>" name='cart_tjdd'>    
+<table class="buy_table" cellspacing="0">
+<tr class="buy_table_head">
+    <th class="xuanze">
+        <input type="checkbox" class="ui-checkbox" id='quanxuan' checked="true"/>
+        <label>全选</label>
+    </th>
+    <th class="desc">商品</th>
+    <th class="price">门店价</th>
+    <th class="daijin">价格</th>
+    <th class="yingfu">操作</th>
+</tr>
+<volist name="mycart" id="vo">
+<tr class="buy_table_head buy_table_content">
+    <td class="xuanze"><input type="checkbox" class="ui-checkbox" name="cart_item[]" value="<{$vo['cart_id']}>" checked="true" /></td>
+    <td class="desc"><a href="#" class="desc_left"><img src="<{$vo['goods_img']}>" /></a>
+        <div class="desc_right">
+            <a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><{$vo['goods_name']}></a>
+            <p class="color_999">商品日期：<{$vo['server_day']|date_geshi1=###}></p>
+            <p class="color_2BB8AA">商家：<{$vo['shop_name']}></p>
+        </div>
+    </td>
+    <td class="price"><del>&yen <{$vo['yuan_price']}></del></td>
+    <td class="daijin" >&yen <span id="price"><{$vo['goods_price']}></span></td>
+    <td class="yingfu"><a href="javascript:void(0);" onclick="Del(<{$vo['cart_id']}>)">删除</a></td>
+</tr>
+</volist>
+<tr class="buy_table_head buy_table_content">
+    <td colspan="5" class="yingfu">代金卷：0</td>
+</tr>
+<tr class="buy_table_head buy_table_content">
+    <td colspan="5" class="yingfu">应付金额：&yen <span id="money"></span></td>
+</tr>
+</table>
+    </form>
+    <div class="shuoming">提交订单后，商家将再次确认订单日期是否有档期，如没有，将全额退款</div>
+
+    <a href="javascript:void(0)" class="a_tjdd" >提交订单</a>
+</div>
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script type="text/javascript">
+    $('.a_tjdd').bind('click',function(){
+        $('form[name=dingdan]').submit();
+    })
+    function Del(id){
+        if(window.confirm('确定要删除吗？')){
+            url="/Home/Member/cart_del/cart_id/"+id+".html";
+            $.ajax({
+                        type:'post',
+                        async : false,
+                        url:url,
+                        datatype:'json'
+                    });
+             window.location.href=window.location.href;
+        }else{
+            return false;
+        }
+    }
+    
+
+    var money=0;
+    $('.ui-checkbox').not('#quanxuan').each(function(){
+        if($(this).prop("checked")){
+            money+=parseFloat($(this).parent().next().next().next().children().text());
+        }
+        $('#money').html(money.toFixed(2));
+    });
+    $('.ui-checkbox').not('#quanxuan').bind('change',function(){
+        money=parseFloat($('#money').html());
+       if($(this).prop("checked")){
+            money+=parseFloat($(this).parent().next().next().next().children().text());
+        }else{
+            money-=parseFloat($(this).parent().next().next().next().children().text());
+        }
+        $('#money').html(money.toFixed(2));
+        
+        if($('.ui-checkbox:checked').not('#quanxuan').length==$('.ui-checkbox').not('#quanxuan').length){
+            $('#quanxuan').prop("checked",'true');
+        }else if($('.ui-checkbox:checked').not('#quanxuan').length==0){
+            $('#quanxuan').removeAttr("checked");
+        };
+    });
+    $('#quanxuan').bind('change',function(){
+        money=0;
+        $(".ui-checkbox").not('#quanxuan').prop('checked',this.checked);
+        if($(this).prop('checked')){
+            $('.ui-checkbox').not('#quanxuan').each(function(){
+                if($(this).prop("checked")){
+                    money+=parseFloat($(this).parent().next().next().next().children().text());
+                }
+                $('#money').html(money.toFixed(2));
+            });
+        }else{
+            $('#money').html('0.00');
+        }
+        
+    });
+    
+    $('.a_tjdd').bind('click',function(){
+        $('form[name=cart_tjdd]').submit();
+    });
+</script>

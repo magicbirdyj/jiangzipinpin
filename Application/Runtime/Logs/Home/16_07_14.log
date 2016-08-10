@@ -1,0 +1,271 @@
+[ 2016-07-14T18:13:34+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001015s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001189s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001288s ]
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [8] Use of undefined constant HTTP_HOST - assumed 'HTTP_HOST' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+NOTIC: [8] Use of undefined constant REQUEST_URI - assumed 'REQUEST_URI' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0073s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0006s ]
+NOTIC: [2] array_reverse() expects parameter 1 to be array, null given E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 74 行.
+SQL: SHOW COLUMNS FROM `m_admin_advert` [ RunTime:0.0055s ]
+SQL: SELECT `xuhao`,`img_url`,`url` FROM `m_admin_advert` WHERE ( position='轮播' )  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000116s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000228s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.063710s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.063844s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000969s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001089s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001385s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001495s ]
+
+[ 2016-07-14T19:36:01+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000716s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000831s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000935s ]
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [8] Use of undefined constant HTTP_HOST - assumed 'HTTP_HOST' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+NOTIC: [8] Use of undefined constant REQUEST_URI - assumed 'REQUEST_URI' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0053s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2] array_reverse() expects parameter 1 to be array, null given E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 74 行.
+SQL: SHOW COLUMNS FROM `m_admin_advert` [ RunTime:0.0060s ]
+SQL: SELECT `xuhao`,`img_url`,`url` FROM `m_admin_advert` WHERE ( position='轮播' )  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000094s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000188s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.036140s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036232s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000645s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000726s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000873s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000953s ]
+
+[ 2016-07-14T22:08:52+08:00 ] 127.0.0.1 /Home/Kindeditor/editor_check?dir=image
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001379s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000831s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000952s ]
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [8] Use of undefined constant HTTP_HOST - assumed 'HTTP_HOST' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+NOTIC: [8] Use of undefined constant REQUEST_URI - assumed 'REQUEST_URI' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0078s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [2] array_reverse() expects parameter 1 to be array, null given E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 74 行.
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\myguopin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-07-14T23:04:48+08:00 ] 127.0.0.1 /Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000978s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001443s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001625s ]
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [8] Use of undefined constant HTTP_HOST - assumed 'HTTP_HOST' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+NOTIC: [8] Use of undefined constant REQUEST_URI - assumed 'REQUEST_URI' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0112s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [2] array_reverse() expects parameter 1 to be array, null given E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 74 行.
+SQL: SHOW COLUMNS FROM `m_admin_advert` [ RunTime:0.0074s ]
+SQL: SELECT `xuhao`,`img_url`,`url` FROM `m_admin_advert` WHERE ( position='轮播' )  [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000281s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000446s ]
+NOTIC: [8] Undefined variable: get E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbd4464d615aba9d56fd2fbd7560cbe17f.php 第 50 行.
+NOTIC: [8] Undefined index: goods_id E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbd4464d615aba9d56fd2fbd7560cbe17f.php 第 116 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.097669s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.097823s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001011s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001166s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001364s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001533s ]
+
+[ 2016-07-14T23:06:11+08:00 ] 127.0.0.1 /Home/Goods/index/goods_id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000614s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000881s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000977s ]
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [8] Use of undefined constant HTTP_HOST - assumed 'HTTP_HOST' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+NOTIC: [8] Use of undefined constant REQUEST_URI - assumed 'REQUEST_URI' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0058s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [2] array_reverse() expects parameter 1 to be array, null given E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 74 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Home\Controller\GoodsController.class.php 第 25 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000196s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000297s ]
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 41 行.
+NOTIC: [8] Undefined variable: img_qita E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 42 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 46 行.
+NOTIC: [8] Undefined variable: img_qita E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 47 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 58 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 62 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 64 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 67 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 68 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 73 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 74 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 74 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 75 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 75 行.
+NOTIC: [8] Undefined variable: pingfen_fl E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 102 行.
+NOTIC: [8] Undefined variable: pingfen_fl E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 106 行.
+NOTIC: [8] Undefined variable: pingfen_fl E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 110 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 124 行.
+NOTIC: [8] Undefined variable: shuxing E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 128 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 132 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 138 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 141 行.
+NOTIC: [8] Undefined variable: goods E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 141 行.
+NOTIC: [8] Undefined variable: is_sellect E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbbfb955c00910670f529257f3e75f4841.php 第 192 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.069958s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.070076s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000694s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000787s ]
+
+[ 2016-07-14T23:06:12+08:00 ] 127.0.0.1 /Home/Goods/pinglun/goods_id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001386s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001546s ]
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [8] Use of undefined constant HTTP_HOST - assumed 'HTTP_HOST' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+NOTIC: [8] Use of undefined constant REQUEST_URI - assumed 'REQUEST_URI' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [2] array_reverse() expects parameter 1 to be array, null given E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 74 行.
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sql_guopin.m_order' doesn't exist
+
+[ 2016-07-14T23:06:32+08:00 ] 127.0.0.1 /Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000227s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001824s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000891s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000989s ]
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx6231a8932405bdaf&amp;secret=05406ab511f4d9bd46ac09982065b102): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 144 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/d86c828583c5c6160e8acfee88ba1590.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] file_get_contents(): Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&amp;type=jsapi): failed to open stream: No such file or directory E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 152 行.
+NOTIC: [2] unlink(../Application/Runtime/Temp/e344c187b5ce3b018775638c2dc0c114.php): No such file or directory E:\wamp\www\myguopin\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [8] Use of undefined constant HTTP_HOST - assumed 'HTTP_HOST' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+NOTIC: [8] Use of undefined constant REQUEST_URI - assumed 'REQUEST_URI' E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 160 行.
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0058s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [2] array_reverse() expects parameter 1 to be array, null given E:\wamp\www\myguopin\Application\Home\Controller\FontEndController.class.php 第 74 行.
+SQL: SHOW COLUMNS FROM `m_admin_advert` [ RunTime:0.0074s ]
+SQL: SELECT `xuhao`,`img_url`,`url` FROM `m_admin_advert` WHERE ( position='轮播' )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000171s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000337s ]
+NOTIC: [8] Undefined variable: get E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbd4464d615aba9d56fd2fbd7560cbe17f.php 第 50 行.
+NOTIC: [8] Undefined index: goods_id E:\wamp\www\myguopin\Application\Runtime\Cache\Home\mbd4464d615aba9d56fd2fbd7560cbe17f.php 第 116 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017934s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018027s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000658s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000749s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000865s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000944s ]
+

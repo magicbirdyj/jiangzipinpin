@@ -1,0 +1,53 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/order_queren.css">
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script>
+
+</head>
+
+<body>
+    <include file='Public/menu'/>
+    <div class="view">
+        <h2 class="view_h2">
+            服务完成，同意付款给商家
+            <span class="h2_span"><a href='<{:U("Order/index")}>' class="span_a">返回我的订单</a></span>
+        </h2>
+
+        <div class="d2">
+            <div class="d2_title">订单信息</div>
+            <div class="d2_content"><span>订单编号：<{$order['order_no']}></span> <span>创建时间：<{$order['created']|date='Y-m-d H：i',###}> </span><span>更新时间：<{$order['updated']|date='Y-m-d H：i',###}> </span></div>
+            <div class="d2_title">商家信息</div>
+            <div class="d2_content"><span>昵称：<{$order['shop_name']}></span> <span>真实姓名：<{$order['true_name']}> </span><span>城市：<{$order['location']}> </span><span>联系电话：<{$order['mobile_phone']}> </span></div>
+            <div class="d2_title">商品信息</div>
+            <div class="d2_table">
+                <table>
+                    <tr><th class="left">商品图片</th><th class="teshu">商品名称</th><th>价格</th><th>服务日期</th><th>状态</th><th>支付金额</th><th>返现</th></tr>
+                    <tr><td class="left"><img src="<{$order['goods_img']}>" class="img_goods" /></td><td class="teshu"><{$order['goods_name']}></td><td>&yen;<{$order['price']}></td><td><{$order['server_day']|date_geshi1=###}></td><td><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['server_day'])['status']}></td><td>&yen;<{$order['dues']}></td><td>&yen;<{$order['fanxian']}></td></tr>
+                </table>
+            </div>
+        </div>
+        <div class="queren">
+            <div class="queren_d1">请等待商家服务完成后，再确认支付！否则您可能钱货两空！</div>
+            <div class="queren_d2">如果您想申请退款，请点击这里</div>
+            <div class="queren_d3">
+                <div class="queren_d3_left">一起网支付密码：</div>
+                <div class="queren_d3_right">
+                    <form action="<{:U('Order/queren_success')}>" name="form_queren" method="post">
+                        <input type="hidden" name="order_id" value="<{$order['order_id']}>" />
+                        <input type="password" name="zhifu_password" />
+                        <a href='<{:U("Member/xiugai_zhifumima")}>' class="wjmm" style='border-right:1px dotted;padding-right: 10px;'>修改支付密码</a>
+                        <a href='#' class="wjmm">忘记密码？</a>
+                    </form>
+                </div>
+                <div class='clear_both' id='tishi'>初始密码为登录密码，建议修改</div>
+                <a class="button_a_lvse queding" href='javascript:void(0)' id='queding' >确定</a>
+            </div>
+        </div>
+    </div>
+
+   
+
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script src="__PUBLIC_HOME__/Js/order_queren.js" type="text/javascript"></script>
+
+

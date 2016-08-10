@@ -1,0 +1,37 @@
+{__NOLAYOUT__} 
+<!DOCTYPE html">
+<html>
+<head>
+<title><{$title}></title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/mini_login.css">
+</head>
+
+<body>
+<div class="zhuce1_div_form">
+    <form name="zhuce"  method="post" action="<{:U('Login/chenggong')}>" id="form1" >
+        <input type="hidden" name="hidden" value="<{$time}>" />
+        <input type="hidden" name="leixing" value="mini_login" />
+<div class="zhuce1_box">
+<div class="zhuce1_tr">
+<div class="zhuce1_tr_td1">手机号码：</div>
+<span id="infor_shoujihao"></span>
+<input type="text" name="shoujihao" class="zhuce1_tr_td2" />
+</div><!--第一行-->
+
+<div class="zhuce1_tr">
+<div class="zhuce1_tr_td1">密码：</div>
+<span id="infor_mima"><{$infor_mima}></span>
+<input type="password" name="mima" class="zhuce1_tr_td2"/>
+</div><!--第二行-->
+<a href="javascript:void(0)" id="zhuce1_xiayibu" class="a_xyb" onClick="return login(this)" style="float: left;" >登录</a>
+<div id="info_login" style="font-size: 14px; float: left; margin: 40px 0px 0px 20px;"></div>
+</div>
+
+</form>
+</div>
+
+
+<script src="__PUBLIC_HOME__/Js/denglu.js" type="text/javascript"></script>
+
+</body>
+</html>

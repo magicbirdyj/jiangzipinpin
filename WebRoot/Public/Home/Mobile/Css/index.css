@@ -1,0 +1,102 @@
+/* 默认样式设置*/
+/* -moz :火狐私有属性；-weblit :chrome、safari私有属性* -ms IE私有属性*/
+.ui-content .ui-grid-c{
+    overflow: hidden;
+}
+.ui-content .ui-grid-c div
+{
+text-align: center;
+padding:10px 0px;
+font-size: 0.75em;
+width: 25%;
+margin: 0;
+border: 0;
+float: left;
+box-sizing: border-box;
+overflow: hidden;
+}
+.ui-grid-c a{
+    display: block;
+}
+.ui-grid-c .menu_yuan{
+    text-shadow: 0 1px 0 #f3f3f3;
+    display: block;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 2px;
+    border-radius:1.666665em;
+    line-height:40px;
+    text-align: center;
+    color: #fff;
+    font-size: 22px;
+}
+.ui-grid-c .tb_home{
+    font-size: 26px;
+    background: #f82;
+}
+.ui-grid-c .tb_miaosha{
+    background: #ea6644;
+    font-size: 28px;
+}
+.ui-grid-c .tb_chaozhi{
+    background: #7788f2;
+}
+.ui-grid-c .tb_1yuangou{
+    background: #f82;
+}
+.ui-grid-c .tb_shuiguo{
+    background: #62C4EA;
+    font-size: 28px;
+}
+.ui-grid-c .tb_tianpin{
+    background: #F8B868;
+}
+.ui-grid-c .tb_guozhi{
+    background: #62C4EA;
+}
+.ui-grid-c .tb_zhishi{
+    background: #f82;
+}
+
+
+
+
+
+
+.shopping{
+    width: 100%;
+    margin-top: 10px;
+}
+.goods_a .goods_img{
+    width: 100%;
+}
+.goods_a .goods_infor{
+    padding: 5px 10px;
+}
+.goods_infor .goods_title{
+   padding: 8px 0px;
+}
+
+.goods_infor .goods_bottom{
+    padding: 8px 0px;
+    position: relative;
+}
+.goods_bottom .goods_infor_left{
+    font-size: 14px;
+    float: left;
+    height: 28px;
+    line-height: 28px;
+}
+.goods_infor_left .price{
+    font-size: 24px;
+    margin-left: 5px;
+}
+.goods_bottom .goods_infor_right{
+    float: right;
+    height: 28px;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}

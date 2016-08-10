@@ -1,0 +1,686 @@
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/goods.css">
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+<!--begin 日历 -->
+<link href="__PUBLIC_COMMON__/Css/calendar.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="__PUBLIC_COMMON__/Js/calendar.js"></script>
+<!-- end 日历 -->
+</head>
+
+<body>
+<include file='Public/menu'/>
+<div style="width:1200px;margin:20px auto;">
+    <div style="position: relative;">
+        <div class="datouxiang_fangda"></div>
+     <div class="titile1">[<{$goods['cat_name']}>]<{$goods['goods_name']}></div>
+     <!--<div class="titile2"><{$goods['user_name']}></div>  不要商家名称-->
+    <div class="touxiang">
+        <div class="datouxiang_div">
+            <img class="datouxiang" src="<{$goods['goods_img']}>" />
+            <img class="huise_gezi" />
+        </div>
+        <ul class="xiangtouxiang_ul">
+            <li class="xiaotouxiang"><a href="javascript:void(0)" ><img src="<{$goods['goods_img']}>"/></a></li>
+            <volist name="img_qita" id="vo">
+            <li class="xiaotouxiang"><a href="javascript:void(0)"><img src="<{$vo}>" /></a></li>
+            </volist>
+        </ul>  
+        <div class="lianxifangshi">
+            <ul>
+                <li id="dh"><img src="__PUBLIC_HOME__/Images/public/dianhua1.png" /></li>
+                <li id="wx"><img src="__PUBLIC_HOME__/Images/public/weixin1.png" /></li>
+                <li id="em"><img src="__PUBLIC_HOME__/Images/public/youxiang1.png" /></li>
+                <li class="li_last"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<{$goods['qq']}>&site=qq&menu=yes"><img id="qqjt" src="__PUBLIC_HOME__/Images/public/qqjt.png"/></a></li>
+                
+            </ul>
+        </div>
+    </div>
+    <div class="info">
+        <div class="price">
+            <div class="price1"><div class="span">价格:</div><div class="span1">&yen;&nbsp;<s><{$goods['yuan_price']}></s></div></div>
+            <div class="price2"><div class="span">一起网价:</div><div class="span2">&yen;&nbsp;<{$goods['price']}></div>
+                <if  condition="$goods['daijinquan'] eq '1'">
+                    <span class="daijinquan" style="margin-left: 5px;">券</span>
+                </if>
+                <if  condition="$goods['fanxian'] neq '0'">
+                        <span class="daijinquan">返</span>
+                </if>
+            </div>
+        </div>
+        <div class="about">
+            <div>已售：<span><{$goods['buy_number']}></span></div>
+            <div><a class="maodian_pingjia" href="<{:U('Goods/index',array('goods_id'=>$goods['goods_id'])).'#maodian_pingjia'}>"><span><{$goods['score']}></span>分</a></div>
+            <div id="pingjia"><a class="maodian_pingjia" href="<{:U('Goods/index',array('goods_id'=>$goods['goods_id'])).'#maodian_pingjia'}>"><span><{$goods['comment_number']}></span>人评价</a></div>
+        </div>
+        <div class="xzrq">选择日期：  绿色：选中 &nbsp; &nbsp; &nbsp; &nbsp; 白色：未选 &nbsp; &nbsp; &nbsp; &nbsp; 灰色：不可选</div>
+    <table class="biao" width="500px" style="table-layout: fixed; ">
+                            <tbody>
+                            <tr>
+                                <td class="calTit" colSpan=7 style="height:30px;padding-top:3px;text-align:center;">
+    
+                                    <a href="javascript:void(0)" title="上一年" id="nianjian" class="ymNaviBtn lsArrow"></a>
+                                    <a href="javascript:void(0)" title="上一月" id="yuejian" class="ymNaviBtn lArrow"></a>
+    
+                                    <div style="width:250px; float:left; padding-left:90px;">
+                                                        <span id="dateSelectionRili" class="dateSelectionRili"
+                                                              style="cursor:hand;color: white; border-bottom: 1px solid white;"
+                                                              onclick="dateSelection.show()">
+                                                        <span id="nian" class="topDateFont"></span><span
+                                                                class="topDateFont">年</span><span id="yue"
+                                                                                                  class="topDateFont"></span><span
+                                                                class="topDateFont">月</span>
+                                                        <span class="dateSelectionBtn cal_next"
+                                                              onclick="dateSelection.show()">▼</span></span> &nbsp;&nbsp;<font id=GZ
+                                                                                                                               class="topDateFont"></font>
+                                    </div>
+                                    <!--新加导航功能-->
+                                    <div style="left: 250px; display: none;" id="dateSelectionDiv">
+                                        <div id="dateSelectionHeader"></div>
+                                        <div id="dateSelectionBody">
+                                            <div id="yearList">
+                                                <div id="yearListPrev" onClick="dateSelection.prevYearPage()">&lt;</div>
+                                                <div id="yearListContent"></div>
+                                                <div id="yearListNext" onClick="dateSelection.nextYearPage()">&gt;</div>
+                                            </div>
+                                            <div id="dateSeparator"></div>
+                                            <div id="monthList">
+                                                <div id="monthListContent"><span id="SM0" class="month"
+                                                                                 onclick="dateSelection.setMonth(0)">1</span><span
+                                                        id="SM1" class="month" onClick="dateSelection.setMonth(1)">2</span><span
+                                                        id="SM2" class="month" onClick="dateSelection.setMonth(2)">3</span><span
+                                                        id="SM3" class="month" onClick="dateSelection.setMonth(3)">4</span><span
+                                                        id="SM4" class="month" onClick="dateSelection.setMonth(4)">5</span><span
+                                                        id="SM5" class="month" onClick="dateSelection.setMonth(5)">6</span><span
+                                                        id="SM6" class="month" onClick="dateSelection.setMonth(6)">7</span><span
+                                                        id="SM7" class="month" onClick="dateSelection.setMonth(7)">8</span><span
+                                                        id="SM8" class="month" onClick="dateSelection.setMonth(8)">9</span><span
+                                                        id="SM9" class="month" onClick="dateSelection.setMonth(9)">10</span><span
+                                                        id="SM10" class="month" onClick="dateSelection.setMonth(10)">11</span><span
+                                                        id="SM11" class="month curr" onClick="dateSelection.setMonth(11)">12</span>
+                                                </div>
+                                                <div style="clear: both;"></div>
+                                            </div>
+                                            <div id="dateSelectionBtn">
+                                                <div id="dateSelectionTodayBtn" onClick="dateSelection.goToday()">今天</div>
+                                                <div id="dateSelectionOkBtn" onClick="dateSelection.go()">确定</div>
+                                                <div id="dateSelectionCancelBtn" onClick="dateSelection.hide()">取消</div>
+                                            </div>
+                                        </div>
+                                        <div id="dateSelectionFooter"></div>
+                                    </div>
+                                    <a href="javascript:void(0)" id="nianjia" title="下一年" class="ymNaviBtn rsArrow" style="float:right;"></a>
+                                    <a href="javascript:void(0)" id="yuejia" title="下一月" class="ymNaviBtn rArrow" style="float:right;"></a>
+    
+                                </td>
+                            </tr>
+                            
+                            <tr class="calWeekTit" style="font-size:12px; height:20px;text-align:center;">
+                                <td width="100" class="red">星期日</td>
+                                <td width="100">星期一</td>
+                                <td width="100">星期二</td>
+                                <td width="100">星期三</td>
+                                <td width="100">星期四</td>
+                                <td width="100">星期五</td>
+                                <td width="100" class="red">星期六</td>
+                            </tr>
+                            <SCRIPT language="JavaScript">
+    
+                                var gNum;
+                                for (var i = 0; i < 6; i++) {
+                                    document.write('<tr align=center height="38" id="tt">');
+                                    for (var j = 0; j < 7; j++) {
+                                        gNum = i * 7 + j ;
+                                        document.write('<td  id="GD' + gNum + '" on="0" ><font  id="SD' + gNum + '" style="font-size:14px;font-family:Microsoft YaHei;font-weight: bold;"');
+                                        if (j == 0)  document.write('color=red');
+                                        if (j == 6)
+                                            if (i % 2 == 1)  document.write('color=red');
+                                            else  document.write('color=red');
+                                        document.write('  TITLE="">  </font><br><font  id="LD' + gNum + '"  size=2  style="white-space:nowrap;overflow:hidden;cursor:default;color: #999;">  </font></td>');
+                                    }
+                                    document.write('</tr>');
+                                }
+                            </SCRIPT>
+                            </tbody>
+                        </table>
+       
+        <form name="buy" action="<{:U('Goods/buy')}>" method="get">
+            <input name="goods_id" type="hidden" value="<{$goods_id}>" />
+            <input name="server_day" type="hidden" />
+        </form>
+        
+        
+        <div class="buy" id="buy">
+            <a href="javascript:void(0)" class="goumai">立即购买 </a>
+            <a href="javascript:void(0)" class="gouwuche" title="加入购物车" id="gouwuche"> </a>
+            <i class="i_shoucang"></i>
+            <if condition="$is_sellect eq null">
+                <a  class="shoucang" id="shoucang">收藏商品（<strong><{$sellection_count}></strong>）</a>
+            <else />
+                <span  class="shoucang">已收藏（<strong><{$sellection_count}></strong>）</span>
+            </if>
+            <i class="i_fenxiang"></i>
+              <a href="javascript:void(0)" class="shoucang fenxiang" id="fenxiang">分享</a>
+        </div>
+        <div class="buy buy_clone" id="buy_clone">请选择日期<a class="mini_close" id="tishi_close" href="javascript:void(0)">×</a></div>
+    </div>
+     <div class="jianjie_more_div">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<{$goods['shop_introduce']}><a href="javascript:void(0)" class="mini_close">×</a></div>
+     <div class="dianpujieshao">
+         <div class="jianjie" >
+         商家承诺
+         <div class="chengnuo_content">
+             <a href="<{:U('Company/index','name=shuangbeipeifu')}>">
+             <i class="peifu"></i>
+             双倍赔付
+             </a>
+             <a href="<{:U('Company/index','name=suishitui')}>">
+             <i class="tui"></i>
+             随时退
+             </a>
+             <a href="<{:U('Company/index','name=baozhengjin')}>" style="margin-right: 0px;">
+                 <i class="baozhengjin">
+                     保
+                 </i>
+                 保证金
+             </a>
+         </div>
+         </div>
+         <ul class="dianpujieshao_pingfen">
+             <li>
+                 <div>描述</div>
+                 <div class="pingfen_jt"><{$pingfen_fl[0]}></div>
+             </li>
+             <li>
+                 <div>服务</div>
+                 <div class="pingfen_jt"><{$pingfen_fl[1]}></div>
+             </li>
+             <li style="border-right: none;">
+                 <div>专业</div>
+                 <div  class="pingfen_jt"><{$pingfen_fl[2]}></div>
+             </li>
+         </ul>
+         <div class="jianjie">
+         婚礼人介绍
+         <div><span class="jianjie_content">
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<{$goods['shop_introduce']|substr=###,0,600}>
+                 <if  condition="$shop_introduce gt 600">
+                 <a class='jianjie_more'>更多......</a>
+                 </if>
+             </span></div>
+         </div>
+     </div>
+    </div>
+    <div class="box_b">
+        <div class="box_bl">
+     <div class="other">
+         <ul>
+             <li class="other_title" id="li_title"> <span class="span1">该商家的其它服务</span>
+                 <span class="span2 hlljg">一起网价</span><span class="span2 mdj">门 店 价</span><span class="span2 ys">已售</span>
+                 </li>
+                 <div id="div_li">   </div>
+         </ul>
+         <div class="page_foot" id="page_foot_1"></div>
+     </div>
+    <a name='maodian_pingjia' id='maodian_pingjia'>&nbsp;</a>
+    <div class="guanggao" style="margin-top: 15px;">
+             <h3>该商家其它服务</h3>
+            <volist name="goods_qita" id="vo">
+                <div class="box_r_shopping">
+                    <a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>">
+                        <img src="<{$vo['goods_img']}>"/>
+                    </a>
+                    <h4><a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><{$vo['goods_name']}></a></h4>
+                    <p>
+                        <span class="guanggao_price">&yen;<{$vo['price']}></span>
+                        <span>已售 <span class="red"><{$vo['buy_number']}></span></span>
+                    </p>
+                </div>
+            </volist>
+        </div>
+    <div class="shop_div">
+    <div class="content_title"><ul>
+            <li class="spxq">服务详情</li>
+            <li class="ljpj">累计评价</li>
+        </ul></div>
+    <div id="spxq">
+    <div class="goods_shuxing">
+        <div>商家：<{$goods['user_name']}></div>
+        <div class="shuxing_title">产品属性：</div>
+        <div>
+        <ul>
+            <volist name="shuxing" id="vo">
+            <li><{$key}> ：<{$vo}></li>
+            </volist>
+        </ul>
+        </div>
+    </div>
+    <div class="goodscontent"><{$goods['goods_desc']}></div>
+    </div>
+    <div class="pinglun">
+        <div class="zhengtifenshu">
+            <span class="zhengtipingjia">整体评价:</span>
+            <span class="score"><{$goods['score']}></span><span class="fen">分</span><span class="shopping_pingjia"><span class="pingjia_limian" style="width: <{$goods['score']|xingxing_baifenbi}>;"></span></span>共<strong><{$goods['comment_number']}></strong>人评价
+        </div>
+        <div class="leijipinglun">
+            <ul id='leijipinglun'>
+            </ul>
+            <!--<div class="page_foot" id='page_foot_pinglun'><{$page_foot_pinglun}></div>-->
+            <div class="page_foot" id='page_foot_pinglun'></div>
+        </div>
+    </div>
+    </div>
+</div>
+        <div class="guanggao">
+             <h3>猜你喜欢</h3>
+            <volist name="guanggao" id="vo">
+                <div class="box_r_shopping">
+                    <a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>">
+                        <img src="<{$vo['goods_img']}>"/>
+                    </a>
+                    <h4><a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><{$vo['goods_name']}></a></h4>
+                    <p>
+                        <span class="guanggao_price">&yen;<{$vo['price']}></span>
+                        <span>已售 <span class="red"><{$vo['buy_number']}></span></span>
+                    </p>
+                </div>
+            </volist>
+        </div>
+    </div>
+</div>
+        
+<div id="overlay"></div><!--遮罩层div-->
+<div class="mini_login" id="mini_login">
+    <div class="mini_head">账号登录<a  class="a_zhuce" href="<{:U('Zhuce/index')}>" style="width: 60px;">免费注册</a><a class="mini_close" id="mini_close" href="javascript:void(0)" title="关闭此窗口">×</a></div>
+    <div class="mini_div">
+        <include file="Login:mini_login" />
+    </div>
+</div>
+
+<div class="gouwuche_join" id="gouwuche_join">
+    <a  id="gouwuche_guanbi" class="gouwuche_guanbi" hidefocus="true"></a>
+    <div class="gouwuche_body">
+	<div id="gouwuche_top" class="gouwuche_top">
+            
+		<div class="gouwuche_top_left">
+                    <i></i>
+			<h5>成功加入购物车</h5>
+
+			<p>购物车内共有<strong>1</strong>种商品</p>
+
+		</div>
+
+		<div class="gouwuche_top_right">
+			<a href="javascript:void(0);"  class="gouwuche_top_right_a1" id="gouwuche_jxll"><<继续浏览</a>
+                        <a href="<{:U('Member/cart')}>"  class="gouwuche_top_right_a2">去购物车结算>></a>
+		</div>
+
+ 	</div>     
+    </div>
+</div>
+<!--收藏成功div-->
+<div class="gouwuche_join" id="shoucang_join">
+    <a  id="shoucang_guanbi" class="gouwuche_guanbi" hidefocus="true"></a>
+    <div class="gouwuche_body">
+	<div id="gouwuche_top" class="gouwuche_top">
+            
+		<div class="gouwuche_top_left">
+                    <i></i>
+			<h5>成功加入收藏</h5>
+
+			<p>共收藏了<strong><{$sellection_count+1}></strong>种商品</p>
+
+		</div>
+
+		<div class="gouwuche_top_right">
+			<a href="javascript:void(0);"  class="gouwuche_top_right_a1" id="shoucang_jxll"><<继续浏览</a>
+                        <a href="<{:U('Member/sellection')}>"  class="gouwuche_top_right_a2">去看我的收藏>></a>
+		</div>
+
+ 	</div>     
+    </div>
+</div>
+
+<!--分享的弹出div-->
+<div  class="fenxiang_tanchu_div" id="fenxiang_tanchu_div">
+    <div >
+        <div>
+            <div class="deal-share">
+                <ul>
+                    <li><a class="im deal-share-im" href="javascript:void(0);" id="fenxiang_qq_a" ><i class="icon-share"></i><span>QQ/MSN</span></a></li>
+                    <li><a id="weibo_a" galabel="default" href="http://v.t.sina.com.cn/share/share.php?appkey=2455095087&url=<{$goods['url']['url']}>&title=<{$goods['url']['goods_name']}>&pic=<{$goods['url']['goods_img']}>" target="_blank" ><i class="icon-share icon-share--sina"></i><span>微博</span></a></li>
+                    <li><a galabel="default" href="http://share.renren.com/share/buttonshare.do?link=<{$goods['url']['url']}>&amp;title=<{$goods['url']['goods_name']}>" target="_blank" gaevent="content/main/share/renren"><i class="icon-share icon-share--renren"></i><span>人人</span></a></li>
+                    <li><a galabel="default" href="http://www.douban.com/recommend/?url=<{$goods['url']['url']}>&amp;title=<{$goods['url']['goods_name']}>" target="_blank" gaevent="content/main/share/douban"><i class="icon-share icon-share--douban"></i><span>豆瓣</span></a></li>
+                    <li><a galabel="default" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title=<{$goods['url']['goods_name']}>&amp;url=<{$goods['url']['url']}>&amp;pics=<{$goods['url']['goods_img']}>&amp;summary=<{$goods['url']['summary']}>" target="_blank" gaevent="content/main/share/qzone"><i class="icon-share icon-share--qzone"></i><span>QQ空间</span></a></li>
+                </ul>
+            </div>
+</div></div></div>
+
+<!--分享到QQ的弹出div-->
+<div  class="fenxiang_qq_div" id="fenxiang_qq_div">
+    <div class="yui3-overlay-content yui3-widget-stdmod" id="yui_3_16_0_1_1451799391828_2921">
+        <div id="yui_3_16_0_1_1451799391828_3030" class="yui3-widget-bd">
+            <div id="yui_3_16_0_1_1451799391828_3029" class="mt-dialog">
+                <h3 id="yui_3_16_0_1_1451799391828_3028" class="head">分享给QQ好友
+                    <span id="fenxiang_qq_close" class="close"></span>
+                </h3>
+                <div class="body">
+                    <p class="error" style="display:none">&nbsp;</p>
+                    <div>通过QQ、电子邮件发送链接给你的朋友</div>
+                    <input class="deal-share-qq-input" value="" maxlength="40" type="text" id="fenxiang_qq_url">
+                    <input class="deal-share-qq-copy" value="复制"  type="button" id="fenxiang_qq_copy" style="display: none" >
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-overlay-underlay"></div>
+</div>
+
+
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script src="__PUBLIC_HOME__/Js/goods.js" type="text/javascript"></script>
+<script type="text/javascript">
+    //检测是否登录
+    var is_login=check_login();
+    //弹出联系方式
+    $('#dh').bind('mouseover',function(e){
+        var xx=e.pageX+10;
+        var yy=e.pageY+10;
+        is_login=check_login();
+        if(is_login!=0){
+            var dh='<div id="div_tanchu"><button type="button">电话：<{$goods["mobile_phone"]}></button></div>';
+        }else{
+            var dh='<div id="div_tanchu"><button type="button">点我登录获取电话</button></div>';
+            $('#dh').bind('click',function(e){
+                showOverlay('mini_login');
+            });
+        }
+        $('body').append(dh);
+        $('#div_tanchu').css({top: yy, left: xx});
+    });
+    $('#wx').bind('mouseover',function(e){
+        var xx=e.pageX+10;
+        var yy=e.pageY+10;
+        is_login=check_login();
+        if(is_login!=0){
+            var dh='<div id="div_tanchu"><button type="button">微信：<{$goods["weixin"]}></button></div>';
+            var erweima='<{$goods["weixin_erweima"]}>';
+            if(erweima!==''){
+                var img_erweima='<img class="erweima" src="'+erweima+'" />';
+            }
+        }else{
+            var dh='<div id="div_tanchu"><button type="button">点我登录获取微信</button></div>';
+            $('#wx').bind('click',function(e){
+                showOverlay('mini_login');
+            });
+        }
+        $('body').append(dh);
+        $('body').append(img_erweima);
+        $('#div_tanchu').css({top: yy, left: xx});
+        $('.erweima').css({top: yy, left: xx-130});
+    });
+    $('#em').bind('mouseover',function(e){
+        var xx=e.pageX+10;
+        var yy=e.pageY+10;
+        is_login=check_login();
+        if(is_login!=0){
+            var dh='<div id="div_tanchu" style="width:220px;"><button type="button">email：<{$goods["email"]}></button></div>';
+        }else{
+            var dh='<div id="div_tanchu"><button type="button">点我登录获取email</button></div>';
+            $('#em').bind('click',function(e){
+                showOverlay('mini_login');
+            });
+        }
+        $('body').append(dh);
+        $('#div_tanchu').css({top: yy, left: xx});
+    });
+    
+    //鼠标移开 删除弹出
+    $('#dh,#wx,#em,.li_last').bind('mouseout',function(){
+        $('#div_tanchu').remove();
+        $('.erweima').remove();
+    });
+    
+    //如果没登录 点击QQ弹出请先登录,并且title内容改变
+    if(is_login==0){
+        $('.li_last>a').attr('title','请先点我登录一起网');
+    }else{
+        $('.li_last>a').attr('title','给我发QQ消息');
+    }
+    $('.li_last>a').bind('click',function(event){
+        if(is_login==0){
+            event.preventDefault();
+            showOverlay('mini_login');  
+        }
+    });
+    //点击购买
+    $('.goumai').bind('click',function(){
+        if($('input[name=server_day]').val()===''){
+            $('#buy').css('display','none');
+            $('#buy_clone').css('display','block');
+        }else{
+            is_login=check_login();
+            if(is_login!=0){
+                var user_id="<{$user_id}>";
+                var goods_user_id="<{$goods['user_id']}>";
+                if(user_id===goods_user_id){
+                    alert('不能购买自己的商品');
+                }else{
+                    $('form[name=buy]').submit();
+                }
+                }else{
+                    //通过请求让控制器记录$_SESSION['ref']
+                    var server_day=$('input[name=server_day]').val();
+                    var url='/Home/Goods/buy/server_day/'+server_day+'/goods_id/'+$('input[name=goods_id]').val()+'.html';
+                    $.ajax({
+                        type:'post',
+                        async : true,
+                         url:url,
+                         datatype:'json'
+                    });
+                    
+                    showOverlay('mini_login');  
+                }
+            }
+    });
+//点击加入购物车
+$('#gouwuche').bind('click',function(){
+    var is_success=true;
+        if($('input[name=server_day]').val()==''){
+            $('#buy').css('display','none');
+            $('#buy_clone').css('display','block');
+        }else{
+            is_login=check_login();
+            if(is_login!=0){
+                 var server_day=$('input[name=server_day]').val();
+                    var url='/Home/Goods/cart_join.html';
+                    var data={
+                        server_day:server_day,
+                        goods_id:$('input[name=goods_id]').val(),
+                        check:"cart_join"
+                    };
+                    $.ajax({
+                        type:'post',
+                        async : false,
+                        url:url,
+                        data:data,
+                        datatype:'json',
+                        success:function(msg){
+                            if(msg=='9'){
+                                is_success=false;
+                                alert('该商品的该日期你已经加入购物车，请重新选择日期');                                
+                            }
+                            if(msg=='-1'){
+                                is_success=false;
+                                alert('加入购物车失败，请重新加入');                                
+                            }
+                        }
+                    });
+                    if(is_success){
+                        showOverlay('gouwuche_join');  
+                    }
+                }else{ 
+                    showOverlay('mini_login');  
+                }
+            }
+    });
+    
+    //点击商店介绍的更多
+    $('.jianjie_more').bind('click',function(){
+        $('.jianjie_more_div').css('display','block');
+    });
+    $('.jianjie_more_div .mini_close').bind('click',function(){
+        $('.jianjie_more_div').css('display','none');
+    });
+    
+    //日历js的主函数，循环填写每天的日期
+    function drawCld(SY, SM) {
+        var buy_server_day=new Array();
+        var x=0;
+        <volist name='buy_server_day' id='vo'>
+            buy_server_day[x]=<{$vo}>;
+            x++;
+        </volist>
+    var jinri=addZ(today.getFullYear())+addZ(today.getMonth()+1)+addZ(today.getDate());
+    var i,sD,s,size;
+    cld = new calendar(SY, SM);
+
+
+    $("#GZ")[0].innerHTML = '  农历' + cyclical(SY - 1900 + 36) + '年&nbsp;【' + Animals[(SY - 4) % 12] + '年】';
+
+    for (i = 0; i < 42; i++) {
+        sObj = $("#SD" + i)[0];
+
+        lObj = $("#LD" + i)[0];
+
+        sObj.className = '';
+
+        sD = i - cld.firstWeek;
+
+        if (sD > -1 && sD < cld.length) {  //日期内
+            sObj.innerHTML = sD + 1;
+            //wly 注册点击事件
+						$("#GD" + i).unbind('click').click(function(){mOck(this,sD + 1);});
+						var nowDays = SY+''+addZ((SM+1))+addZ((sD+1));
+                                                //如果是过去的日期，显示灰色 并且取消点击事件，并加入点击事件，弹出对话框提示
+                                                if(jinri>nowDays){
+                                                    $("#GD" + i).addClass("unover");
+                                                    $("#GD" + i).unbind('click').click(function(){
+                                                        alert('该日期已经过去，请选择今天以后的日期');
+                                                        $('input[name=server_day]').val('');
+                                                        $('td[class=selday]').attr('on','0');
+                                                        $('td[class=selday]').removeClass('selday');
+                                                    });
+                                                }
+                                                var y=0;
+                                                for(y in buy_server_day){
+                                                        if(nowDays==buy_server_day[y]){
+                                                        $("#GD" + i).addClass("unover");
+                                                        $("#GD" + i).unbind('click').click(function(){
+                                                            alert('商品的该日期已被购买，请选择其它商品');
+                                                            $('input[name=server_day]').val('');
+                                                            $('td[class=selday]').attr('on','0');
+                                                            $('td[class=selday]').removeClass('selday');
+                                                        });
+                                                    }
+                                               }
+                                                
+						var hstr = hDays.join();
+						if(hstr.indexOf(nowDays)>-1){
+							 $("#GD" + i).addClass("selday");
+							}
+            if (cld[sD].isToday)  $("#GD" + i).addClass("jinri");  //今日颜色
+
+            sObj.style.color = cld[sD].color;  //国定假日颜色
+
+            if (cld[sD].lDay == 1)  //显示农历月
+                lObj.innerHTML = '<b>' + (cld[sD].isLeap ? '闰' : '') + cld[sD].lMonth + '月' + (monthDays(cld[sD].lYear, cld[sD].lMonth) == 29 ? '小' : '大') + '</b>';
+            else  //显示农历日
+                lObj.innerHTML = cDay(cld[sD].lDay);
+
+            s = cld[sD].lunarFestival;
+            if (s.length > 0) {  //农历节日
+                if (s.length > 8)  s = s.substr(0, 5) + '...';
+                s = s.fontcolor('red');
+            }
+            else {  //国历节日
+                s = cld[sD].solarFestival;
+                if (s.length > 0) {
+                    if (s.length > 8)  s = s.substr(0, 5) + '...';
+                    s = (s == '黑色星期五') ? s.fontcolor('black') : s.fontcolor('#0066FF');
+                }
+                else {  //廿四节气
+                    s = cld[sD].solarTerms;
+                    if (s.length > 0)  s = s.fontcolor('limegreen');
+                }
+            }
+            if (cld[sD].solarTerms == '清明') s = '清明节'.fontcolor('red');
+            if (cld[sD].solarTerms == '芒种') s = '芒种'.fontcolor('red');
+            if (cld[sD].solarTerms == '夏至') s = '夏至'.fontcolor('red');
+            if (cld[sD].solarTerms == '冬至') s = '冬至'.fontcolor('red');
+
+            if (s.length > 0)  lObj.innerHTML = s;
+
+        }
+        else {  //非日期
+            $("#GD" + i).addClass("unover");
+
+        }
+    }
+}
+
+
+//点击加入收藏
+$('#shoucang').bind('click',function(){
+    var is_success=false;
+        if($('input[name=server_day]').val()===''){
+            $('#buy').css('display','none');
+            $('#buy_clone').css('display','block');
+        }else{
+            is_login=check_login();
+            if(is_login!=0){
+                var server_day=$('input[name=server_day]').val();
+                var url='/Home/Goods/sellection_join.html';
+                var data={
+                    server_day:server_day,
+                    goods_id:$('input[name=goods_id]').val(),
+                    check:"sellection_join"
+                };
+                $.ajax({
+                    type:'post',
+                    async : false,
+                    url:url,
+                    data:data,
+                    datatype:'json',
+                    success:function(msg){
+                        if(msg=='-1'){
+                            alert('加入收藏失败，请重新加入');                                
+                        }
+                        if(msg=='1'){
+                            is_success=true;                               
+                        }
+                    }
+                });
+                if(is_success){
+                    $('#shoucang').replaceWith('<span  class="shoucang">已收藏（<strong><{$sellection_count+1}></strong>）</span>');
+                    showOverlay('shoucang_join');  
+                }
+            }else{
+                showOverlay('mini_login');  
+            }
+        }    
+    });
+    
+    //点击分享按钮
+    $('#fenxiang').bind('click',function(){
+    if($('#fenxiang_tanchu_div').css('display')==='none'){
+        //给分享到微博等的a添加url
+        var self_url_escape=escape(window.location.href);
+        var title_escape=escape('一起网:www.17each.com '+" [<{$goods['cat_name']}>]<{$goods['goods_name']}>");
+        var weibo_url="http://v.t.sina.com.cn/share/share.php?appkey=579809138&amp;url="+self_url_escape+";title="+title_escape;
+        //$('#weibo_a').attr('href',weibo_url);
+        $('#fenxiang_tanchu_div').css('display','block');
+    }else{
+        $('#fenxiang_tanchu_div').css('display','none');
+    }
+});
+</script>

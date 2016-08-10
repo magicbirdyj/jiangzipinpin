@@ -1,0 +1,122 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/order_view.css">
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script>
+</head>
+
+<body>
+    <include file='Public/menu'/>
+    <div class="view">
+        <h2 class="view_h2">
+            订单详情
+            <span class="h2_span">
+                <if  condition="$user_id eq $order['user_id']">
+                <a href='<{:U("Order/index")}>' class="span_a">返回我的订单</a>
+                <elseif  condition="$user_id eq $order['shop_id']" />
+                <a href='<{:U("Member/goods_sold")}>' class="span_a">返回已售商品</a>
+                </if>
+            </span>
+        </h2>
+        <div class="view_info">
+            <if condition="$order['deleted'] eq '1'" >
+                <div>当前订单状态：<span class="red">该订单已被删除</span></div>
+             <else />   
+                <div>当前订单状态：<span class="red"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['server_day'],$order['goods_id'])['status']}></span></div>
+                <if  condition="$order['status'] eq '4'">
+                    <a class="button_a_lvse" href="<{$order['order_id']}>">删除订单</a>  
+                <elseif condition="($order['status'] eq '1') and ($order['pay_status'] eq '0')" />
+                    <div>请及时付款，不然该日期就被别人预订了</div>
+                    <div class="d1">
+                        <a href="<{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['server_day'],$order['goods_id'])['status_url']}>" class="button_a_lvse"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['server_day'],$order['goods_id'])['status_button']}></a>
+                        <a class="button_a_lvse" id='quxiao_order' name="<{$vo['order_id']}>">取消订单</a>
+                    </div>
+                <elseif condition="($order['status'] eq '1') and ($order['pay_status'] eq '1')"  />
+                    <div>请服务完成后再点确认，不然可能货财两空</div>
+                    <div class="d1">
+                        <a href="<{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['server_day'],$order['goods_id'])['status_url']}>" class="button_a_lvse"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['server_day'],$order['goods_id'])['status_button']}></a>
+                        <a class="button_a_lvse" href='<{:U("Order/tuikuang",array("order_id"=>$vo["order_id"]))}>'>申请退款</a>
+                    </div>
+                <elseif condition="($order['status'] eq '2')"  />
+                    <div>请及时评价，会有意外惊喜</div>
+                    <div class="d1">
+                        <a href="<{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['server_day'],$order['goods_id'])['status_url']}>" class="button_a_lvse"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['server_day'],$order['goods_id'])['status_button']}></a>
+                        <a class="button_a_lvse" href='<{:U("Order/shouhou",array("order_id"=>$vo["order_id"]))}>'>申请退款</a>
+                    </div>
+                <else />
+                    <div class="d1">
+                        <a class="button_a_lvse" href="<{$order['order_id']}>">删除订单</a>
+                    </div>
+                </if>
+            </if>
+        </div>
+        <div class="d2">
+            <div class="d2_title">订单信息</div>
+            <div class="d2_content"><span>订单编号：<{$order['order_no']}></span> <span>创建时间：<{$order['created']|date='Y-m-d H：i',###}> </span><span>更新时间：<{$order['updated']|date='Y-m-d H：i',###}> </span></div>
+            <div class="d2_title">商家信息</div>
+            <div class="d2_content"><span>昵称：<{$order['shop_name']}></span> <span>真实姓名：<{$order['true_name']}> </span><span>城市：<{$order['location']}> </span><span>联系电话：<{$order['mobile_phone']}> </span></div>
+            <div class="d2_title">买家信息</div>
+            <div class="d2_content"><span>昵称：<{$maijia['user_name']}></span><span>联系电话：<{$maijia['mobile_phone']}> </span></div>
+            <div class="d2_title">商品信息</div>
+            <div class="d2_table">
+                <table>
+                    <tr><th class="left">商品图片</th><th class="teshu">商品名称</th><th>价格</th><th>服务日期</th><th>状态</th><th>支付金额</th></tr>
+                    <tr><td class="left"><img src="<{$order['goods_img']}>" class="img_goods" /></td><td class="teshu"><{$order['goods_name']}></td><td>&yen;<{$order['price']}></td><td><{$order['server_day']|date_geshi1=###}></td><td><{:order_status($order['pay_status'],$order['status'])['status']}></td><td>&yen;<{$order['dues']}></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+   
+
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script type="text/javascript">
+    $('.button_a_lvse:contains("删除订单")').bind('click',function(event){
+        event.preventDefault();
+        if(confirm("确定要删除订单吗？")){
+            var url='/Home/Order/delete_order.html';
+            var data={
+                    order_id:$(this).attr('href'),
+                    check:"delete_order"
+                }
+            $.ajax({
+                    type:'get',
+                    async : false,
+                    url:url,
+                    data:data,
+                    datatype:'json',
+                    success:function(msg){
+                        if(msg){ 
+                            location="/Home/Order/index.html";                        
+                        }else{
+                            alert('删除订单失败'); 
+                        }
+                    }
+                }); 
+        }
+    });
+    $('#quxiao_order').bind('click',function(){
+        if(confirm("确定要取消订单吗？")){
+            var url='/Home/Order/quxiao_order.html';
+            var data={
+                    order_id:$(this).attr('name'),
+                    check:"quxiao_order"
+                }
+            $.ajax({
+                    type:'get',
+                    async : false,
+                    url:url,
+                    data:data,
+                    datatype:'json',
+                    success:function(msg){
+                        if(msg){ 
+                            location=location;                        
+                        }else{
+                            alert('取消订单失败'); 
+                        }
+                    }
+                });    
+        }
+    });
+</script>
+
+

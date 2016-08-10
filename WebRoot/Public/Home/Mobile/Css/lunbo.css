@@ -1,0 +1,42 @@
+/* 默认样式设置*/
+/* -moz :火狐私有属性；-weblit :chrome、safari私有属性* -ms IE私有属性*/
+
+.lunbo_div{
+    margin: 0px auto;
+    height: auto;
+    background-color: #FFF;
+    overflow: hidden;
+    width: 600%;
+}
+
+.lunbo_div img{
+    width:16.66666667%;
+    float: left;
+}
+
+.choose{
+      height: 10px;
+      position:relative;
+      top:-15px;
+      background-color:  transparent;
+      text-align:center
+    }
+    .choose .choose_div{
+        margin: 0px auto;
+        background-color:  transparent;
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+    .choose div span{
+      margin-right: 30px;
+      float: left;
+      display: inline-block;
+      background: #E5E5E5;
+      width:8px;
+      height:8px;
+      border-radius: 8px;
+    }
+
+    .choose .bg_red{
+      background: #1dc116;
+    }

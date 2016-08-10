@@ -1,0 +1,58 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order_queren.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/iconfont/iconfont_public/iconfont.css">
+</head>
+
+<body>
+    <div class="view">
+        <div class="fanhui padding"><a href="javascript:history.back();"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe601;</span></a>确认完成</div>
+        <h2 class="view_h2">
+            服务完成，同意付款给商家
+        </h2>
+
+        <div class="d2">
+            <div class="d2_title">订单信息</div>
+            <div class="d2_content"><span>订单编号：<{$order['order_no']}></span> <span>创建时间：<{$order['created']|date='Y-m-d H：i',###}> </span><span>更新时间：<{$order['updated']|date='Y-m-d H：i',###}> </span></div>
+            <div class="d2_title">商家信息</div>
+            <div class="d2_content"><span>昵称：<{$order['shop_name']}></span> <span>真实姓名：<{$order['true_name']}> </span><span>城市：<{$order['location']}> </span><span>联系电话：<{$order['mobile_phone']}> </span></div>
+            <div class="d2_title">商品信息</div>
+            <div class="order_row">
+                <div class='td_l'>
+                    <div class="picture"><img src="<{$order['goods_img']}>"></div>
+                </div>
+                <div class="td_r">
+                    <div class="info_name shenglue"><{$order['goods_name']}></div>
+                    <div class="info_name shenglue">订单状态：<{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['server_day'])['status']}></div>
+                    <div class="info_name shenglue">服务日期：<{$order['server_day']|date_geshi1=###}></div>
+                    <div class='info_name'><span>价格：&yen;<{$order['price']}></span><span style="margin-left: 20px;">支付金额：&yen;<{$order['dues']}></span></div>
+                    <div class="info_name shenglue">返现：&yen;<{$order['fanxian']}></div>
+                
+                </div>
+                </div>
+        </div>
+        <div class="queren">
+            <div class="queren_d1">请等待商家服务完成后，再确认支付！</div>
+            <div class="queren_d1">否则您可能钱货两空！</div>
+            <div class="queren_d2">如果您想申请退款，请点击这里</div>
+            <div class="queren_d3">
+                <div class="queren_d3_left">一起网支付密码：</div>
+                <div class="queren_d3_right">
+                    <form action="<{:U('Order/queren_success')}>" name="form_queren" method="post">
+                        <input type="hidden" name="order_id" value="<{$order['order_id']}>" />
+                        <input type="password" name="zhifu_password" placeholder='初始密码为登录密码，建议修改' />
+                        <a href='<{:U("Member/xiugai_zhifumima")}>' class="wjmm" style='border-right:1px dotted;padding-right: 10px;'>修改支付密码</a>
+                        <a href='#' class="wjmm">忘记密码？</a>
+                    </form>
+                </div>
+                <div class='clear_both' id='tishi'></div>
+                <a class="button_a_lvse queding" href='javascript:void(0)' id='queding' >确  定</a>
+            </div>
+        </div>
+    </div>
+
+   
+
+
+<script src="__PUBLIC_HOME__/Mobile/Js/order_queren.js" type="text/javascript"></script>
+
+

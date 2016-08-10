@@ -1,0 +1,131 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/order.css">
+</head>
+
+<body>
+    
+    <include file='Public/menu'/>
+    <include file='Public/member_left' />
+    <div class="release">
+        <select class="order_select">
+            <option value="<{:U('Order/index')}>" <{$selected['all']}> >全部状态</option>
+            <option value="<{:U('Order/index?status=no_pay')}>" <{$selected['no_pay']}> >未付款</option>
+            <option value="<{:U('Order/index?status=daiqueren')}>" <{$selected['daiqueren']}> >待确认</option>
+            <option value="<{:U('Order/index?status=daipingjia')}>" <{$selected['daipingjia']}> >待评价</option>
+        </select>
+        <div class="kuaijietishi">快捷提示：您有
+            <a href="<{:U('Order/index')}>" class="em">全部状态（<{$status_count['all']}>）</a>
+            <a href="<{:U('Order/index?status=no_pay')}>" class="em">待付款（<{$status_count['no_pay']}>）</a>
+            <a href="<{:U('Order/index?status=daiqueren')}>" class="em">待确认（<{$status_count['daiqueren']}>）</a>
+            <a href="<{:U('Order/index?status=daipingjia')}>" class="em">待评价（<{$status_count['daipingjia']}>）</a>
+        </div>
+
+        <div class="title"><!--标题行-->
+            <div class='td1'>商品</div>
+            <div class='td2'>价格</div>
+            <div class='td3'>实付款</div>
+            <div class='td4'>订单状态</div>
+            <div class='td5'>操作</div>
+        </div>
+        
+        
+        <volist name="list" id="vo">
+        <div class="content"><!--内容遍历-->
+            <div class="order_title">订单编号：
+                <a href="#"><{$vo['order_no']}></a>
+                订单更新时间：<{$vo['updated']|date='Y-m-d H：i',###}>
+            </div>
+            <div class="order_row">
+                <div class='td1'>
+                    <div class="picture"><a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><img src="<{$vo['goods_img']}>"></a></div>
+                    <div class="info"><a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><{$vo['goods_name']}></a><p class="color_999">商品日期：<{$vo['server_day']|date_geshi1=###}></p><p class="color_2BB8AA">商家：<{$vo['shop_name']}></p></div>
+                </div>
+                <div class='td2'>&yen;<{$vo['price']}></div>
+                <div class='td3'>&yen;<{$vo['dues']}></div>
+                <div class='td4'><p><{:order_status($vo['pay_status'],$vo['status'],$vo['order_id'],$vo['server_day'],$vo['goods_id'])['status']}></p><a href="<{:U('Order/view',array('order_id'=>$vo['order_id']))}>">订单详情</a></div>
+                <div class='td5'>
+                    <if condition="$vo['pay_status'] eq '3' ">
+                        <a href="<{$vo['order_id']}>" class="button_a_lvse" style="margin-bottom: 20px;">删除订单</a>
+                    </if>
+                    <a  href="<{:order_status($vo['pay_status'],$vo['status'],$vo['order_id'],$vo['server_day'],$vo['goods_id'])['status_url']}>" class="button_a_lvse"><{:order_status($vo['pay_status'],$vo['status'],$vo['order_id'],$vo['server_day'],$vo['goods_id'])['status_button']}></a>
+                    <if  condition="($vo['pay_status'] eq '0') and ($vo['status'] neq '4')">
+                        <a  class="button_a_lvse quxiao_order" name="<{$vo['order_id']}>" style="margin-top: 20px;">取消订单</a>
+                    </if>
+                   <if  condition="($vo['pay_status'] eq '1') and ($vo['status'] eq '1') and (shijianchuo($vo['server_day']) gt $time)">                           
+                        <a id='tuikuang' class="button_a_lvse" name="<{$vo['order_id']}>" href='<{:U("Order/tuikuang",array("order_id"=>$vo["order_id"]))}>' style="margin-top: 20px;">申请退款</a>
+                    </if>
+                    
+                    <if  condition="(($vo['pay_status'] eq '1') and ($vo['status'] neq '1')) or (shijianchuo($vo['server_day']) lt $time) ">
+                        <a id='shouhou' class="button_a_lvse" name="<{$vo['order_id']}>" href="<{:U('Order/shouhou')}>" style="margin-top: 20px;">申请售后</a>
+                    </if>
+                </div>
+                
+            </div>
+        </div>
+        </volist>
+        
+    
+        
+        
+        <div class="page_foot"><{$page_foot}></div>
+        
+    </div>
+   
+
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script type="text/javascript">
+    $('.order_select').bind('change',function(){
+        location.replace(this.value);
+    });
+    $('.quxiao_order').bind('click',function(){
+        if(confirm("确定要取消订单吗？")){
+            var url='/Home/Order/quxiao_order.html';
+            var data={
+                    order_id:$(this).attr('name'),
+                    check:"quxiao_order"
+                }
+            $.ajax({
+                    type:'get',
+                    async : false,
+                    url:url,
+                    data:data,
+                    datatype:'json',
+                    success:function(msg){
+                        if(msg){ 
+                            location=location;                        
+                        }else{
+                            alert('取消订单失败'); 
+                        }
+                    }
+                });    
+        }
+    });
+    $('.button_a_lvse:contains("删除订单")').bind('click',function(event){
+        event.preventDefault();
+        if(confirm("确定要删除订单吗？")){
+            var url='/Home/Order/delete_order.html';
+            var data={
+                    order_id:$(this).attr('href'),
+                    check:"delete_order"
+                }
+            $.ajax({
+                    type:'get',
+                    async : false,
+                    url:url,
+                    data:data,
+                    datatype:'json',
+                    success:function(msg){
+                        if(msg){ 
+                            location=location;                        
+                        }else{
+                            alert('删除订单失败'); 
+                        }
+                    }
+                }); 
+        }
+    });
+    
+</script>
+
+

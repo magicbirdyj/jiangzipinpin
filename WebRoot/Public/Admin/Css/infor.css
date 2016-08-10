@@ -1,0 +1,29 @@
+.inof_div{
+    padding: 30px 100px;
+}
+.title{
+    font-size: 20px;
+    padding-left: 200px;
+}
+.hang{
+    padding: 10px;
+}
+.lie_1,.lie_2{
+    float: left;
+    padding: 5px;
+}
+.lie_1{
+    width: 80px;
+    text-align: right;
+    margin-right: 20px;
+    font-size: 14px;
+}
+.lie_2{
+    width: 300px;
+}
+.qrxg{
+    margin-left: 350px;
+    margin-top: 30px;
+    display: inline-block;
+    font-size: 14px;
+}

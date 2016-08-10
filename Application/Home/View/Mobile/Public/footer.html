@@ -1,0 +1,48 @@
+  <div class="footer">
+      <div class="ui-footer">
+                  <a href="<{:U('Index/index')}>"><span class=" iconfont foot_home foot_tb">&#xe60f;</span><span>首页</span></a>
+                  <a href="<{:U('Member/sellection')}>"><span class=" iconfont foot_shoucang foot_tb">&#xe620;</span><span>我的收藏</span></a>
+                  <a href="<{:U('Member/cart')}>"><span class="iconfont foot_pintuan foot_tb">&#xe622;</span><span>我的拼团</span></a>
+                  <a href="<{:U('Member/index')}>"><span class=" iconfont foot_wode foot_tb">&#xe60a;</span><span>我的果果</span></a>
+          </div>
+  </div> 
+
+
+
+
+
+<script>
+    wx.config({  
+        //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: "<{$wx_config['appId']}>", // 必填，公众号的唯一标识
+        timestamp: "<{$wx_config['timestamp']}>", // 必填，生成签名的时间戳
+        nonceStr: "<{$wx_config['nonceStr']}>", // 必填，生成签名的随机串
+        signature: "<{$wx_config['signature']}>",// 必填，签名，见附录1
+        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+    wx.ready(function () {
+        wx.onMenuShareTimeline({
+            title: '17一起网', // 分享标题
+            imgUrl: 'http://www.17each.com/Public/Home/Images/menu_and_foot/logo.png' // 分享图标
+        });
+        wx.onMenuShareAppMessage({
+            title: '17一起网', // 分享标题
+            desc: "要“17”，不要“each”，节省50%费用，拥有梦幻婚礼不再是梦", // 分享描述
+            imgUrl: 'http://www.17each.com/Public/Home/Images/menu_and_foot/logo.png' // 分享图标
+        });
+        wx.onMenuShareQQ({
+            title: '17一起网', // 分享标题
+            desc: "要“17”，不要“each”，节省50%费用，拥有梦幻婚礼不再是梦", // 分享描述
+            imgUrl: 'http://www.17each.com/Public/Home/Images/menu_and_foot/logo.png' // 分享图标
+        });
+        wx.onMenuShareQZone({
+            title: '17一起网', // 分享标题
+            desc: "要“17”，不要“each”，节省50%费用，拥有梦幻婚礼不再是梦", // 分享描述
+            imgUrl: 'http://www.17each.com/Public/Home/Images/menu_and_foot/logo.png' // 分享图标
+        });
+    });
+    
+</script>
+
+</body>
+</html>

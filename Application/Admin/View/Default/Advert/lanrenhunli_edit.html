@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC_ADMIN__/Css/lanrenhunli_edit.css" />
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/jquery.form.js"></script> 
+</head>
+<body>
+    <div class="inof_div">
+        <div class="big_title">懒人婚礼——<{$combo['combo_name']}>：编辑</div> <input type='button' value='确定发布'id='edit_queding' /><div style="clear: both;"></div>
+        <form id='edit_form' name="lanrenhunli_edit"  method="post"   action="<{:U('Advert/lanrenhunli_check')}>">
+            <input type="hidden" name='combo_id' value="<{$combo['combo_id']}>" />
+            <volist name="content" id="vo">
+                <div class="combo_good">
+                    <{$key}>： 商品ID:
+                    <input name="<{$key}>" type="text" readonly="readonly" class="combo_input" value="<{$vo}>" />
+                    <input type="button" value="删除" class="del_button" />
+                </div>  
+            </volist>
+        </form>
+        <form name="sv_cont"  method="post"   action="<{:U('Advert/lanrenhunli_edit')}>">
+            <div class="tr">
+                <div class="tr_td1">服务分类</div>
+                <select name="server_content" class="tr_td2 release_select" >
+                    <volist name="data" id="vo">
+                        <option value="<{$vo['cat_name']}>" <{$$vo['cat_name']}> ><{$vo['cat_name']}></option>
+                    </volist>
+                </select>
+            </div>
+            <div class="serch_div">
+                <div class="tr_td1">输入商品名</div>
+                <input type="text" name="serch" class="text_serch" value="<{$serch_name}>" />
+                <input type="button" name="serch_sm" value="搜索"/>
+            </div>
+        </form>
+        <div class="title"><!--标题行-->
+            <div class='td1'>序号</div>
+            <div class='td2'>商品名称(id)</div>
+            <div class='td3'>商品图片</div>
+            <div class='td4'>价格</div>
+            <div class='td5'>添加时间</div>
+            <div class='td6'>操作</div>
+        </div>
+        <div id='goods_list'></div>
+        <!--
+        <volist name="list" id="vo">
+        <div class="content">
+            <div class='td1'><{$key+1}></div>
+            <div class='td2'><{$vo['goods_name']}> (id:<{$vo['goods_id']}>)</div>
+            <div class='td3'><a href="<{:U('/Home/Goods/index',array('goods_id'=>$vo['goods_id']))}>"><img src="<{$vo['goods_img']}>" class="img_zst"/></a></div>
+            <div class='td4'>&yen;<{$vo['price']}></div>
+            <div class='td5'><{$vo['add_time']|date='Y/m/d H：i',###}></div>
+            <div class='td6'><input type="button" class="input_button" id="<{$vo['goods_id']}>"  name="<{$vo['goods_name']}>"  value="加入" /></div>
+        </div>
+        </volist> 
+        -->
+    
+        
+        
+        <div class="page_foot"></div>
+    </div>
+   
+    
+    
+    <script src="__PUBLIC_ADMIN__/Js/lanrenhunli_edit.js">
+    </script> 
+    <script>
+        var combo_name="<{$combo_name}>";
+    </script>
+
+</body>
+</html>

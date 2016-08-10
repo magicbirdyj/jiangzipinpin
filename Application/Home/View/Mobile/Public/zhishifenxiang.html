@@ -1,0 +1,20 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/zhishifenxiang.css">
+
+
+
+
+
+<div id="overlay"></div><!--遮罩层div-->
+<div id="zhishi_fenxiang">
+    <span class="zhishi_text text1">发送给小伙伴参团</span>
+    <if condition="$order['tuan_no'] eq $order['order_id']">
+    <span class="zhishi_text text2">您已开团成功，还差<span class="price_red"><{$goods['tuan_number']-$goods['count']}></span>人成团</span>
+    <else />
+    <span class="zhishi_text text2">您已参加此团，还差<span class="price_red"><{$goods['tuan_number']-$goods['count']}></span>人成团</span>
+    </if>
+    <span class="zhishi_text text3 price_red">成团后立得66元优惠卷</span>
+    
+</div>
+
+
+<script src="__PUBLIC_HOME__/Mobile/Js/zhishifenxiang.js" type="text/javascript"></script>

@@ -1,0 +1,80 @@
+/* CSS Document */
+
+#logo_header{
+    background-color: #03BA8A;
+}
+.logo{
+height:40px;
+width:96%;
+margin:0px auto;
+overflow:hidden;
+padding: 10px 2%;
+background-color: #06c1ae;
+}
+
+.logo .logol{
+box-sizing:content-box;/*content-box盒子模型 border-box 怪异模型 border与padding包含其中*/
+line-height:40px;
+height: 40px;
+display: block;
+color: #FFF;
+font-size: 1em;
+width: 50px;
+text-align: center;
+margin-right: 2%;
+float: left;
+}
+.logo .search{
+display: block;
+}
+
+.search_div{
+    position: relative;
+    height: 40px;
+}
+.search .tb_search{
+    position: absolute;
+    font-size: 24px;
+    line-height: 40px;
+    height: 40px;
+    left: 5px;
+    color: #999;
+}
+
+.logo .inputsr{
+box-sizing:border-box;/*content-box盒子模型 border-box 怪异模型 border与padding包含其中*/
+height:40px;
+line-height:40px;
+font-size:1em;
+padding:0px 30px;
+border: none;
+border-radius:5px 0px 0px 5px;
+-webkit-border-radius:5px 0px 0px 5px;
+width: 100%;
+}
+
+
+
+.logo .submitsr{
+box-sizing:border-box;/*content-box盒子模型 border-box 怪异模型 border与padding包含其中*/
+height:38px;
+width:50px;
+background:#DDDDDD;
+border:0px none;
+float:right;
+font-size:1em;
+color:#FFFFFF;
+cursor:pointer;
+border-radius:0px 5px 5px 0px;
+-webkit-border-radius:0px 5px 5px 0px;
+}
+
+
+
+
+
+
+
+
+
+

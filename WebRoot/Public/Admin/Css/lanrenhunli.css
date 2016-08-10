@@ -1,0 +1,119 @@
+
+
+.inof_div{
+    padding: 30px 50px;
+}
+.big_title{
+    font-size: 20px;
+    margin: 10px 0px 30px 200px;
+}
+.tr_td1{
+text-align:right;
+margin:10px 0px;
+height:27px;
+line-height:27px;
+font-size:14px;
+padding-right:30px;;
+width:100px;
+color:#333;
+float: left;
+}
+.tr_td2{
+height:25px;
+line-height:25px;
+border:none;
+margin:10px 0px;
+padding:0px;
+font-size:14px;
+}
+
+.release_select{
+    border:1px solid #AAA;
+    padding:0px 4px;
+    width:100px;
+    text-align: center;
+    color: #000;
+    cursor:pointer;
+}
+.serch_div{
+    margin: 20px 0px;
+}
+.text_serch{
+    padding: 3px;
+    width: 300px;
+    margin: 10px 0px;
+}
+
+.title{
+    margin-top: 20px;
+    background-color: #00FFDB;
+    width: 935px;
+}
+.title div{
+    float: left;
+    font-size: 14px;
+    color: #000;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #EEE;
+}
+.td1{
+    width: 50px;
+    text-align: center;
+}
+.td2{
+    width: 360px;
+}
+.td3{
+    width: 90px;
+}
+.td4{
+    width: 70px;
+    text-align: center;
+}
+.td5{
+    width: 160px;
+    text-align: center;
+}
+.td6{
+    width: 193px;
+    text-align: center;
+}
+.td6 a{
+    margin: 0px 10px;
+}
+.release .content{
+    margin-top: 10px;
+}
+
+.content div{
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    border:1px solid #EEE;
+    font-size: 14px;
+}
+.content .img_zst{
+    height: 60px;
+}
+.index_input{
+    width: 100px;
+    padding: 3px 5px;
+    margin: 20px 0px;
+}
+.td6 .input_button{
+   margin-left: 10px;
+}
+
+.add_button{
+    margin-left: 20px;
+    padding: 0px 3px;
+}
+.edit_button{
+    padding: 1px 5px;
+}
+.combo_jieshao{
+    width: 600px;
+    height: 200px;
+}

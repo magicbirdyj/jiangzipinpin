@@ -1,0 +1,260 @@
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/category.css">
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+<title>一起网_分类商品</title>
+</head>
+<body>
+<include file='Public/menu'/>
+<div class="box">
+<div class="box_l">
+<div class="box_l_menu">
+<div class="box_l_menu_tr">
+<div class="menu_tr_head" style='margin-right: 0px;border: none;font-weight: 900;'><{$cat_name}></div>
+<if  condition="$get['sex'] neq null">
+    <div class="menu_tr_head"><a href="<{:U('Category/index',$get_cs['no_sex'])}>">性别: <{$get['sex']==0?'男性':'女性'}> &nbsp;<span class="guanbi">×</span></a></div>
+</if>
+<if  condition="$get['form'] neq null">
+    <div class="menu_tr_head"><a href="<{:U('Category/index',$get_cs['no_form'])}>">形式: <{$get['form']==0?'个人':'团队'}> &nbsp;<span class="guanbi">×</span></a></div>
+</if>
+<if  condition="$get['location'] neq null">
+    <div class="menu_tr_head"><a href="<{:str_replace('/location/'.urlencode($get['location']),'',$url['full'])}>">区域: <{$get['location']}> &nbsp;<span class="guanbi">×</span></a></div>
+</if>
+<if  condition="$get['price'] neq null">
+    <div class="menu_tr_head"><a href="<{:str_replace('/price/'.urlencode($get['price']),'',$url['full'])}>">价格: <{$get['price']}> &nbsp;<span class="guanbi">×</span></a></div>
+</if>
+
+    <volist name='shuxing' id='vo'>
+    <div class="menu_tr_head"><a href="<{:quxiao_shuxing($url['full'],$vo)}>"><{$vo}> &nbsp;<span class="guanbi">×</span></a></div>
+    </volist>
+
+</div>
+    <if  condition="$sex_and_form eq 1">
+        <else />
+<div class="box_l_menu_tr">
+    <if  condition="$get['sex'] eq null">
+        <div class="first_div">
+<div class="menu_tr_title">性别&nbsp;:</div>
+<ul class="menu_tr_ul" style="width:auto;">
+    <li><a href="<{:U('Category/index',$get_cs['sex_0'])}>">男性</a></li>
+<li><a href="<{:U('Category/index',$get_cs['sex_1'])}>">女性</a></li>
+</ul>
+        </div>
+<else />
+    </if>
+    <if  condition="$get['form'] eq null">
+        <div class="first_div">
+    <div class="menu_tr_title">形式 :</div>
+<ul class="menu_tr_ul" style="width:auto;">
+<li><a href="<{:U('Category/index',$get_cs['form_1'])}>">团队</a></li>
+<li><a href="<{:U('Category/index',$get_cs['form_0'])}>">个人</a></li>
+</ul>
+        </div>
+    <else />
+    </if>
+</div>
+    </if>
+    <div class="box_l_menu_tr" style="border-bottom: none;">
+<ul class="menu_tr_ul menu_tr_ul_shuxing">
+<volist name="arr_shuxing[0]" id="vo">
+    <div class="first_div">
+    <li class="menu_tr_title teshu_li"><{$key}> :</li>
+    <foreach name="vo" item="value" key='k'>
+        <li class="shuxing_jq"><a href="<{:U(shuxing_url($url['teshu'],$key.'-'.$value))}><{$url['houmian']}>"><{$value}></a></li>
+    </foreach>
+    </div>
+</volist>
+</ul>
+</div>
+    
+    <volist name='arr_shuxing' id='first' offset='1'>
+        <div class="box_l_menu_tr" style="border-bottom: none;padding-top: 0px;">
+<ul class="menu_tr_ul menu_tr_ul_shuxing">
+<volist name="first" id="vo">
+    <div class="first_div">
+    <li class="menu_tr_title teshu_li"><{$key}> :</li>
+    <foreach name="vo" item="value" key='k'>
+<li class="shuxing_jq"><a href="<{:U(shuxing_url($url['teshu'],$key.'-'.$value))}><{$url['houmian']}>"><{$value}></a></li>
+    </foreach>
+    </div>
+</volist>
+</ul>
+</div>
+    </volist>
+    
+    
+    <if  condition="$get['location'] eq null">
+    <div class="box_l_menu_tr" style="border-top: 1px dotted #DDD;">
+<div class="menu_tr_title">区域&nbsp;:</div>
+<ul class="menu_tr_ul">
+<li><a href="<{:U($url['teshu'].'/location/芙蓉区').$url['houmian']}>">芙蓉区</a></li>
+<li><a href="<{:U($url['teshu'].'/location/雨花区').$url['houmian']}>">雨花区</a></li>
+<li><a href="<{:U($url['teshu'].'/location/天心区').$url['houmian']}>">天心区</a></li>
+<li><a href="<{:U($url['teshu'].'/location/开福区').$url['houmian']}>">开福区</a></li>
+<li><a href="<{:U($url['teshu'].'/location/岳麓区').$url['houmian']}>">岳麓区</a></li>
+<li><a href="<{:U($url['teshu'].'/location/望城县').$url['houmian']}>">望城县</a></li>
+<li><a href="<{:U($url['teshu'].'/location/宁乡县').$url['houmian']}>">宁乡县</a></li>
+<li><a href="<{:U($url['teshu'].'/location/浏阳市').$url['houmian']}>">浏阳市</a></li>
+<li><a href="<{:U($url['teshu'].'/location/长沙县').$url['houmian']}>">长沙县</a></li>
+</ul>
+</div>
+        <else />
+    </if>
+    <if  condition="$get['price'] eq null">
+<div class="box_l_menu_tr">
+<div class="menu_tr_title">价格&nbsp;:</div>
+<ul class="menu_tr_ul">
+    <li><a href="<{:U($url['teshu'].'/price/400元以下')}>">400元以下</a></li>
+<li><a href="<{:U($url['teshu'].'/price/400-600元')}>">400-600元</a></li>
+<li><a href="<{:U($url['teshu'].'/price/600-800元')}>">600-800元</a></li>
+<li><a href="<{:U($url['teshu'].'/price/800-1000元')}>">800-1000元</a></li>
+<li><a href="<{:U($url['teshu'].'/price/1000元以上')}>">1000元以上</a></li>
+<li><span>价格区间：</span>
+    <form style="display:inline;" action="<{$url['full']}>" >
+        <input type="text" name="price_s" value="" placeholder="&yen;" style="padding:0px 2px;"/><span style="padding:0px 2px;">-</span>
+<input type="text" name="price_b" value="" placeholder="&yen;" style="padding:0px 2px;"/>
+<input type="submit" class="submit_sr" value="确定" />
+</form>
+</li>
+</ul>
+</div>
+        <else />
+        </if>
+</div><!---左边选项菜单-->
+<div class="box_l_menu">
+<div>
+<ul class="menu_tr_ul menu_tr_ul2">
+    <li id="moren"><a href="<{:U('Category/index',$get_cs['order_moren'])}>">默认</a></li>
+    <li id="number"><a href="<{:U('Category/index', $get_cs['order_xiaoliang'])}>">销量<span class="jiantou"></span></a></li>
+    <li id="price"><a href="<{:U('Category/index', $get_cs['order_price_desc'])}>">价格<span class="jiantou"></span></a></li>
+    <li id="pinglun"><a href="<{:U('Category/index', $get_cs['order_pinglun'])}>">好评<span class="jiantou"></span></a></li>
+    <li id="update"><a href="<{:U('Category/index', $get_cs['order_update'])}>">发布时间<span class="jiantou"></span></a></li>
+</ul>
+</div>
+<div>
+    <a href="#" class="menu_tr_check" id="daijinquan"><span class="icon_check"></span>
+<span>代金券</span></a>
+<a href="#" class="menu_tr_check" id="fanxian"><span class="icon_check"></span>
+<span>评价返现</span></a>
+</div>
+</div><!--左边选项菜单2-->
+<div class="shopping_table">
+    
+    
+    <volist name="list" id="vo">
+<div class="shopping">
+    <div class="shopping_img"><a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><img src="<{$vo['goods_img']}>"/></a></div>
+<div class="shopping_title">
+<div class="shopping_title_name">商品</div>
+<a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><{$vo['goods_name']}></a>
+<if  condition="$vo['daijinquan'] eq '1'">
+<span class="daijinquan" style="margin-left: 5px;">券</span>
+</if>
+<if  condition="$vo['fanxian'] neq '0'">
+    <span class="daijinquan">返</span>
+</if>
+</div>
+<div class="shopping_tr2">
+<div class="shopping_title_name"><{$cat_name}></div>
+<span><{$vo['user_name']}></span>
+<div class="shopping_didian"><img src="__PUBLIC_HOME__/Images/index/didian.png"  /><div><{$vo['area']|str_replace='省'.$a,' ',###|str_replace='市'.$a,' ',###}></div></div>
+</div><!--第二行信息-->
+<div class="shopping_pricepj">
+    <div class="shopping_price">&yen;<{$vo['price']}><span class="yuan_price">门店价 <del>&yen;<{$vo['yuan_price']|floor}></del></span></div>
+    <span class="shopping_sale">已售 <{$vo['buy_number']}></span>
+</div>
+<div class="pingjia_div"><div class="shopping_pjrenshu"><a href="#"><{$vo['comment_number']}>人评价</a></div>
+<div class="shopping_pingjia"><div class="pingjia_limian" style="width:<{$vo['score']|xingxing_baifenbi}>;"></div></div></div>
+</div><!--商品1-->
+    </volist>
+    
+    
+</div><!--商品列表-->
+<div class="page_foot"><{$page_foot}></div>
+</div><!--左边主内容-->
+<div class="box_r">
+    <h3>猜你喜欢</h3>
+    <volist name="guanggao" id="vo">
+    <div class="box_r_shopping">
+        <a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>">
+            <img src="<{$vo['goods_img']}>"/>
+        </a>
+        <h4><a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><{$vo['goods_name']}></a></h4>
+        <p>
+            <span class="guanggao_price">&yen;<{$vo['price']}></span>
+            <span>已售 <span class="red"><{$vo['buy_number']}></span></span>
+        </p>
+    </div>
+    </volist>
+</div>
+</div><!--主内容盒子-->
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script src="__PUBLIC_HOME__/Js/category.js" type="text/javascript"></script>
+
+
+
+<!--价格搜索框显示自己填写的价格区间-->
+<script  type="text/javascript">
+    $('input[name=price_s]').val(<{$get['price_s']}>);
+    $('input[name=price_b]').val(<{$get['price_b']}>);
+    $('.submit_sr').bind('click',function(){
+        var price_s=$('input[name=price_s]').val()==''?0:$('input[name=price_s]').val();
+        var price_b=$('input[name=price_b]').val()==''?99999:$('input[name=price_b]').val();
+        $('input[name=price_s]').val(price_s);
+        $('input[name=price_b]').val(price_b);
+    })
+    var order = "<{$get['order']}>";
+    if(order===''){
+        $('#moren a').css('color','#03BA8A');
+    }else if(order==='number_desc'){
+        $('#number a').css('color','#03BA8A');
+        $('#number .jiantou').css('background-position','0px -810px');
+    }else if(order==='price_desc'){
+        $('#price a').css('color','#03BA8A');
+        $('#price .jiantou').css('background-position','0px -810px');
+        $('#price a').attr('href',"<{:U('Category/index', $get_cs['order_price_asc'])}>");
+    }else if(order==='price_asc'){
+        $('#price a').css('color','#03BA8A');
+        $('#price .jiantou').css('background-position','0px -11px');
+        $('#price a').attr('href',"<{:U('Category/index', $get_cs['order_price_desc'])}>");
+    }else if(order==='pinglun_desc'){
+        $('#pinglun a').css('color','#03BA8A');
+        $('#pinglun .jiantou').css('background-position','0px -810px');
+    }else if(order==='update_desc'){
+        $('#update a').css('color','#03BA8A');
+        $('#update .jiantou').css('background-position','0px -810px');
+    };
+
+    var daijinquan = "<{$get['daijinquan']}>";
+    if(daijinquan=='1'){
+        $('#daijinquan').children('.icon_check').css('background-position','-435px -151px');
+        $('#daijinquan').attr('href',"<{:U('Category/index',$get_cs['no_daijinquan'])}>");
+    }else{
+        $('#daijinquan').children('.icon_check').css('background-position','-435px -128px');
+        $('#daijinquan').attr('href',"<{:U('Category/index',$get_cs['daijinquan'])}>");
+    }
+    var fanxian = "<{$get['fanxian']}>";
+    if(fanxian=='1'){
+        $('#fanxian').children('.icon_check').css('background-position','-435px -151px');
+        $('#fanxian').attr('href',"<{:U('Category/index',$get_cs['no_fanxian'])}>");
+    }else{
+        $('#fanxian').children('.icon_check').css('background-position','-435px -128px');
+        $('#fanxian').attr('href',"<{:U('Category/index',$get_cs['fanxian'])}>");
+    }
+    
+    //属性用js控制是否显示
+    var shuxing="<{$get['shuxing']}>";
+    if(shuxing!==''){
+        var arr_shuxing=shuxing.split('+');
+        for(i=0;i<arr_shuxing.length;i++){
+            var arr_1=arr_shuxing[i].split('-');
+            $('li:contains('+arr_1[0]+')').parent().css('display','none');
+        }
+        var shuxing_count=<{$shuxing_count}>;
+        if(arr_shuxing.length==shuxing_count){
+            $('.menu_tr_ul_shuxing').parent().css('display','none');
+        }
+    }
+    
+</script>

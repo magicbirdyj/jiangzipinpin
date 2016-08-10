@@ -1,0 +1,209 @@
+/* CSS Document */
+
+.release{
+width:100%;
+margin-bottom: 50px;
+}
+
+.tr{
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 68px;
+}
+.tr_td1{
+text-align:right;
+margin:15px 0px;
+height:38px;
+line-height:38px;
+font-size:16px;
+width:100px;
+color:#333;
+position: absolute;
+}
+.tr_td2{
+height:38px;
+line-height:38px;
+border:none;
+margin:15px 0px;
+padding:0px;
+font-size:16px;
+width: 100%;
+box-sizing: border-box;
+padding-left: 120px;
+}
+.release_select{
+    border:1px solid #AAA;
+    width: 90%;
+    box-sizing: border-box;
+    font-size:16px;
+    padding: 6px 0px 6px 30%;
+}
+
+
+
+.tr .text{
+    border:1px solid #AAA;
+    width: 90%;
+    box-sizing: border-box;
+    font-size:16px;
+    padding: 6px 10px;
+}
+.radio{
+    margin-right:5px;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top:4px;
+}
+
+.help{
+    margin-left: 6%;
+    border: 1px solid #f90;
+    padding:7px 10px;font-size: 12px;
+    position: relative;
+    bottom: 2px;
+    color: #f90;
+    border-radius: 5px;
+}
+
+
+.zhuce1_tr span{
+font-size:14px;
+padding:0px 5px;}
+
+.release .xyb{
+    display: block;
+    width:90%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0px auto;
+    margin-top: 20px;
+}
+.release .xyb:link,.release .xyb:visited{
+    background-color: #03BA8A;
+}
+.release .xyb:hover{
+    background-color: #00FFDB;
+}
+
+
+
+span{
+    padding-left: 10px;
+}
+
+
+
+.file_jia{
+    padding: 3px 0px;
+    border: 1px dashed #CCC;
+    height: 37px;
+    font-size: 45px;
+    line-height: 37px;
+    text-align: center;
+    color: #CCC;
+    text-shadow: 0px -1px #DDD;
+    cursor: pointer;
+    float: left;
+    width: 43px;
+    margin: 0px 5px;
+}
+.file_tishi{
+    height: 55px;
+    line-height: 55px;
+}
+.div_goods_img{
+    float: left;
+    width: 43px;
+    height: 43px;
+    margin: 0px 5px;
+    border: 1px solid #EEE;
+    text-align: center;
+    position: relative;
+    cursor:pointer;
+}
+.goods_img{
+    display: inline-block;
+    max-width: 43px;
+    max-height: 43px;
+    vertical-align: middle;
+}
+.div_goods_img a{
+    position: absolute;
+    width: 43px;
+    height: 18px;
+    left: 0px;
+    bottom: 0px;
+    background-position: 0px -40px;
+    background-image: url("../Images/public/delete_icon.png");
+    display: none;
+}
+.empty_img{
+    width:0px;
+    height: 100%;
+    vertical-align: middle;
+}
+.tr_td1 i{
+    font-size: 12px;
+}
+
+
+
+
+.file_tishi{
+    font-size: 12px;
+    position: absolute;
+    left: 0px;
+    top:30px;
+}
+
+
+
+
+.xuxian{
+    width:100%;
+    height:0px;
+    border-top:1px dashed #666;
+}
+#spms{
+    display: none;
+    
+}
+
+/*编辑器样式*/
+.ke-container .ke-toolbar{
+    padding: 0px;
+    width: 100%;
+}
+.ke-container .ke-toolbar .ke-outline{
+    width: 33.333333333%;
+    box-sizing: border-box;
+    margin: 0px;
+    border: none;
+    padding: 0px;
+    margin-top: 10px;
+}
+.ke-container .ke-toolbar .ke-outline .ke-toolbar-icon{
+    background-image: none;
+    text-align: center;
+    font-size: 16px;
+    padding-left: 0px;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+}
+.ke-outline .ke-icon-image{
+    background-color: #FFF;
+}
+.ke-outline .ke-icon-media{
+    background-color: #f90;
+    color: #FFF;
+}
+.ke-outline .ke-icon-link{
+    background-color: #03BA8A;
+    color: #FFF;
+}

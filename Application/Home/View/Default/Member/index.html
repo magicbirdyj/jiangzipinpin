@@ -1,0 +1,43 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/hunliren_shangjiaxinxi.css">
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script> 
+</head>
+
+<body>
+    <include file='Public/menu' />
+    <include file='Public/member_left' />
+    <div class="right">
+        <div class="right_head">
+            <div class="hlr_touxiang">
+                <img src="<{$touxiang_url}>" class="img" />
+                <img src='__PUBLIC_HOME__/Images/public/circle_f6f6f6.png' class="img_circle" />
+            </div>
+            <div class="hlr_name"><{$day_time}>， <{$userdata['user_name']}></div>
+            <a  href="<{:U('Member/updated_head')}>">更换头像</a>
+        </div>
+        <div class="title">
+            会员资料
+        </div>
+        <div class="content">
+            <ul>
+                <li>会员名： <{$userdata['user_name']}></li>
+                <li>会员注册时间： <{$userdata['reg_time']|date='Y年m月d日 H：i',###}></li>
+                <li>性别： <{$userdata['sex']==='0'?'男':'女'}></li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+</body>
+</html>

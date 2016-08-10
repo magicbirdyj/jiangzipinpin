@@ -1,0 +1,85 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/order.css">
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script>
+</head>
+
+<body>
+    <include file='Public/menu'/>
+    <include file='Public/member_left' />
+    <div class="release">
+        <select class="order_select">
+            <option value="<{:U('Member/goods_sold')}>" <{$selected['all']}> >全部状态</option>
+            <option value="<{:U('Member/goods_sold?status=no_pay')}>" <{$selected['no_pay']}> >未付款</option>
+            <option value="<{:U('Member/goods_sold?status=daiqueren')}>" <{$selected['daiqueren']}> >待确认</option>
+            <option value="<{:U('Member/goods_sold?status=daipingjia')}>" <{$selected['daipingjia']}> >待评价</option>
+        </select>
+        <div class="kuaijietishi">快捷提示：您有
+            <a href="<{:U('Member/goods_sold')}>" class="em">全部状态（<{$status_count['all']}>）</a>
+            <a href="<{:U('Member/goods_sold?status=no_pay')}>" class="em">待付款（<{$status_count['no_pay']}>）</a>
+            <a href="<{:U('Member/goods_sold?status=daiqueren')}>" class="em">待确认（<{$status_count['daiqueren']}>）</a>
+            <a href="<{:U('Member/goods_sold?status=daipingjia')}>" class="em">待评价（<{$status_count['daipingjia']}>）</a>
+        </div>
+
+        <div class="title"><!--标题行-->
+            <div class='td1'>商品</div>
+            <div class='td2'>价格</div>
+            <div class='td3'>实付款</div>
+            <div class='td4'>订单状态</div>
+            <div class='td5'>操作</div>
+        </div>
+        
+        
+        <volist name="list" id="vo">
+        <div class="content"><!--内容遍历-->
+            <div class="order_title">订单编号：
+                <a href="#"><{$vo['order_no']}></a>
+                订单更新时间：<{$vo['updated']|date='Y-m-d H：i',###}>
+            </div>
+            <div class="order_row">
+                <div class='td1'>
+                    <div class="picture"><a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><img src="<{$vo['goods_img']}>"></a></div>
+                    <div class="info"><a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><{$vo['goods_name']}></a><p class="color_999">商品日期：<{$vo['server_day']|date_geshi1=###}></p><p class="color_2BB8AA">买家：<{$vo['user_name']}></p></div>
+                </div>
+                <div class='td2'>&yen;<{$vo['price']}></div>
+                <div class='td3'>&yen;<{$vo['dues']}></div>
+                <div class='td4'><p><{:order_status($vo['pay_status'],$vo['status'])['status']}></p><a href="<{:U('Order/view',array('order_id'=>$vo['order_id']))}>">订单详情</a></div>
+                <div class='td5'>
+                    <a class="button_a_lvse" name="<{$vo['mobile_phone']}>" style="margin-top: 20px;">联系买家</a>
+                </div>
+                
+            </div>
+        </div>
+        </volist>
+        
+    
+        
+        
+        <div class="page_foot"><{$page_foot}></div>
+        
+    </div>
+   
+
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script type="text/javascript">
+    $('.order_select').bind('change',function(){
+        location.replace(this.value);
+    });
+    //弹出联系方式
+    $('.button_a_lvse').bind('mouseover',function(e){
+        var xx=e.pageX+10;
+        var yy=e.pageY+10;
+        var dianhua=$(this).attr('name');
+        var dh='<div id="div_tanchu"><button type="button">电话：'+dianhua+'</button></div>';
+        $('body').append(dh);
+        $('#div_tanchu').css({top: yy, left: xx-60});
+    });
+    //鼠标移开 删除弹出
+    $('#dh').bind('mouseout',function(){
+        $('#div_tanchu').remove();
+    });
+    
+</script>
+
+

@@ -1,0 +1,323 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/category.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/iconfont/iconfont_sousou/iconfont.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/iconfont/iconfont_public/iconfont.css">
+<title>一起网_搜索</title>
+</head>
+<body>
+    <div class="logo"><!--logo-->
+        <a href="<{:U($ref)}>" class="logol"><span class="iconfont tb_fanhui" id="shangjia_info_fanhui">&#xe601;</span></a>
+<div class="search">
+    <form name="searchform" action="<{:U('Index/search')}>" method="get" id="searchform">
+        <div class="search_div">
+            <span class="iconfont tb_search">&#xe605;</span>
+            <input class="inputsr" type="text" name="sp" value="<{$get['sp']}>" placeholder="西式 策划" maxlength="100" data-role="none"  />
+        </div>
+    </form>
+</div>
+    </div><!--//logo-->
+<div class="box">
+
+    <div class="fenlei_menu" id="fenlei_menu">
+        <ul id='menu_ul'>
+            <li style="border-left: none;" id="fenlei_li"><{$get['cid']|get_catname}><span class="iconfont tb_jiantou_xia" >&#xe79b;</span></li>
+            <li id="didian_li"><{$get['location']?$get['location']:'全城'}><span class="iconfont tb_jiantou_xia" >&#xe79b;</span></li>
+            <li id='paixu_li'><a1 id='paixu_li_span'>默认排序</a1><span class="iconfont tb_jiantou_xia" >&#xe79b;</span></li>
+            <li id='shaixuan_li'>筛选<span class="iconfont tb_jiantou_xia" >&#xe79b;</span></li>
+        </ul>
+    </div>
+    <div class="fenlei_select none" id="fenlei_select">
+        <ul>
+            <li><a href="<{:str_replace('/cid/'.urlencode($get['cid']),'',$url['full'])}>">全部(<{$arr_count[0]}>)</a></li>
+            <volist name='arr_cat_id' id='vo'>
+                <li><a href="<{:U(change_url_canshu($url['full'],'cid',$vo))}>"><{$vo|get_catname}>(<{$arr_count[$vo]}>)</a></li>
+            </volist>
+        </ul>
+    </div>
+    <div class="fenlei_select none" id="didian_select">
+            <ul>
+                <li><a href="<{:str_replace('/location/'.urlencode($get['location']),'',$url['full'])}>">全城</a></li>
+                <li><a href="<{:U(change_url_canshu($url['full'],'location','芙蓉区'))}>">芙蓉区</a></li>
+                <li><a href="<{:U(change_url_canshu($url['full'],'location','雨花区'))}>">雨花区</a></li>
+                <li><a href="<{:U(change_url_canshu($url['full'],'location','天心区'))}>">天心区</a></li>
+                <li><a href="<{:U(change_url_canshu($url['full'],'location','开福区'))}>">开福区</a></li>
+                <li><a href="<{:U(change_url_canshu($url['full'],'location','岳麓区'))}>">岳麓区</a></li>
+                <li><a href="<{:U(change_url_canshu($url['full'],'location','望城县'))}>">望城县</a></li>
+                <li><a href="<{:U(change_url_canshu($url['full'],'location','宁乡县'))}>">宁乡县</a></li>
+                <li><a href="<{:U(change_url_canshu($url['full'],'location','浏阳市'))}>">浏阳市</a></li>
+                <li><a href="<{:U(change_url_canshu($url['full'],'location','长沙县'))}>">长沙县</a></li>
+            </ul>
+    </div>
+    <div class="fenlei_select none" id="paixu_select">
+            <ul>
+                <li id="moren"><a href="<{:U('Category/index',$get_cs['order_moren'])}>">默认排序</a></li>
+                <li id="number"><a href="<{:U('Category/index', $get_cs['order_xiaoliang'])}>">销量最高</a></li>
+                <li id="price"><a href="<{:U('Category/index', $get_cs['order_price_asc'])}>">价格最低</a></li>
+                <li id="price"><a href="<{:U('Category/index', $get_cs['order_price_desc'])}>">价格最高</a></li>
+                <li id="pinglun"><a href="<{:U('Category/index', $get_cs['order_pinglun'])}>">评价最高</a></li>
+                <li id="update"><a href="<{:U('Category/index', $get_cs['order_update'])}>">最新发布</a></li>
+            </ul>
+    </div>
+    <div class="fenlei_select none" id="shaixuan_select">
+            <div  id="daijinquan">
+                <span>代金券</span>
+                <span class="icon_check"></span>
+            </div>
+            <div  id="fanxian">
+                <span>评价返现</span>
+                <span class="icon_check"></span>
+            </div>
+            <div id="shaixuan_sex">
+                <span>性别：</span>
+                <ul class="xuanxiang_r">
+                    <li>男性</li>
+                    <li>女性</li>
+                </ul>
+            </div>
+            <div id="shaixuan_form">
+                <span>形式：</span>
+                <ul class="xuanxiang_r">
+                    <li>团队</li>
+                    <li>个人</li>
+                </ul>
+            </div>
+            <volist name='arr_shuxing0' id='first'>
+            <div>
+                <span class="name"><{$key}></span><span>：</span>
+                <ul class="xuanxiang">
+                    <foreach name="first" item="value" key='k'>
+                    <li><{$value}></li>
+                    </foreach>
+                </ul>
+            </div>
+            </volist>
+        
+        <div class="queding_div">
+            <div class="shaixuan_button chongzhi" id="chongzhi">重置</div>
+            <div class="shaixuan_button queding" id="queding">确定</div>
+        </div>
+    </div>
+    
+    
+    
+    
+
+
+
+    
+    
+    <volist name="list_iphone" id="vo">
+ <div class="shopping">
+        <a target="_blank" href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>" style="display: block;">
+    <div class="shopping_img"><img src="<{$vo['goods_img']}>"/></div>
+    <div class="shopping_title"><{$vo['goods_name']}></div>
+    <div class="shopping_pricepj">
+    <div class="shopping_price">&yen;<{$vo['price']}><span class="yuan_price">门店价 <del>&yen;<{$vo['yuan_price']|floor}></del></span></div>
+    </div>
+    <div class="pingjia_div">
+        <div class="shopping_sale">已售 <{$vo['buy_number']}></div>
+        <div class="shopping_pjrenshu"><{$vo['comment_number']}>人评价</div>
+    </div>
+    </a>
+    </div><!--商品1-->
+    </volist>
+    
+    <div style="clear: both;height: 15px;background-color: #f0efed;"></div>
+<div class="page_foot"><{$page_foot_iphone}></div>
+
+
+</div><!--主内容盒子-->
+
+<div id="overlay"></div><!--遮罩层div-->
+
+
+
+<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+<script src="__PUBLIC_HOME__/Mobile/Js/category.js" type="text/javascript"></script>
+
+
+
+
+<script  type="text/javascript">
+    var url=decodeURI("<{$url['url']}>");
+//选中的分类 背景更暗
+$('#fenlei_select a:contains("<{$cat_name}>")').parent().css('background-color','#f6f4f0');
+var location_1="<{$get['location']?$get['location']:'全城'}>";
+$('#didian_select a:contains('+location_1+')').parent().css('background-color','#f6f4f0');
+//选中的排序 背景更暗
+    var order = "<{$get['order']}>";
+    var order_name;
+    if(order===''){
+        order_name='默认排序';
+        $('#paixu_select a:contains("默认排序")').parent().css('background-color','#f6f4f0');
+    }else if(order==='number_desc'){
+        order_name='销量最高';
+        $('#paixu_select a:contains("销量最高")').parent().css('background-color','#f6f4f0');
+    }else if(order==='price_desc'){
+        order_name='价格最高';
+        $('#paixu_select a:contains("价格最高")').parent().css('background-color','#f6f4f0');
+    }else if(order==='price_asc'){
+        order_name='价格最低';
+        $('#paixu_select a:contains("价格最低")').parent().css('background-color','#f6f4f0');
+    }else if(order==='pinglun_desc'){
+        order_name='评价最高';
+        $('#paixu_select a:contains("评价最高")').parent().css('background-color','#f6f4f0');
+    }else if(order==='update_desc'){
+        order_name='最新发布';
+        $('#paixu_select a:contains("最新发布")').parent().css('background-color','#f6f4f0');
+    };
+    $('#paixu_li_span').html(order_name);
+
+//筛选JS
+//根据url 把筛选匹配
+//匹配打勾的选项
+var daijinquan="<{$get['daijinquan']}>";
+var fanxian="<{$get['fanxian']}>";
+if(daijinquan==='1'){
+    $('#daijinquan').children('.icon_check').css('background-position','-435px -151px');
+}
+if(fanxian==='1'){
+    $('#fanxian').children('.icon_check').css('background-position','-435px -151px');
+}
+//匹配性别和形式
+
+var sex="<{$get['sex']}>";
+var form="<{$get['form']}>";
+if(sex==='0'){
+    $('#shaixuan_sex>ul>li:contains("男")').css('background-color','#06c1ae');
+    $('#shaixuan_sex>ul>li:contains("男")').css('color','#FFF');
+    
+}else if(sex==='1'){
+    $('#shaixuan_sex>ul>li:contains("女")').css('background-color','#06c1ae');
+    $('#shaixuan_sex>ul>li:contains("女")').css('color','#FFF');
+}
+if(form==='0'){
+    $('#shaixuan_form>ul>li:contains("个人")').css('background-color','#06c1ae');
+    $('#shaixuan_form>ul>li:contains("个人")').css('color','#FFF');
+}else if(form==='1'){
+    $('#shaixuan_form>ul>li:contains("团队")').css('background-color','#06c1ae');
+    $('#shaixuan_form>ul>li:contains("团队")').css('color','#FFF');
+}
+//匹配属性
+<volist name='shuxing' id='vo'>
+    var shuxing_name="<{$vo}>";
+    var arr_shuxing_name=shuxing_name.split('-');
+    $('.xuanxiang>li').filter(function(){return $(this).parent('.xuanxiang').prev().prev().text()===arr_shuxing_name[0]&&$(this).text()===arr_shuxing_name[1]}).css('background-color','#06c1ae');
+    $('.xuanxiang>li').filter(function(){return $(this).parent('.xuanxiang').prev().prev().text()===arr_shuxing_name[0]&&$(this).text()===arr_shuxing_name[1]}).css('color','#FFF');
+</volist>
+
+
+
+
+
+
+
+
+//打勾的选项 
+$('#daijinquan').bind('click',function(){
+    dagou($(this),'daijinquan');
+});
+$('#fanxian').bind('click',function(){
+    dagou($(this),'fanxian');
+});
+// 性别选项
+$('#shaixuan_sex>.xuanxiang_r>li').bind('click',function(){
+    if($(this).text()==='男性'){
+        xuanzhong_qita($(this),'sex','0');
+    }else{
+        xuanzhong_qita($(this),'sex','1');
+    }
+});
+//形式选项
+$('#shaixuan_form>.xuanxiang_r>li').bind('click',function(){
+    if($(this).text()==='个人'){
+        xuanzhong_qita($(this),'form','0');
+    }else{
+        xuanzhong_qita($(this),'form','1');
+    }
+});
+ 
+
+//
+$('.xuanxiang>li').bind('click',function(){
+    xuanzhong_shuxing($(this));
+});
+
+
+
+
+
+
+$('#chongzhi').bind('click',function(){
+    url=clear_url_canshu(url,'daijinquan');
+    url=clear_url_canshu(url,'fanxian');
+    url=clear_url_canshu(url,'sex');
+    url=clear_url_canshu(url,'form');
+    url=clear_url_canshu(url,'shuxing');
+    $('#daijinquan,#fanxian').children('.icon_check').css('background-position','-435px -128px');
+    $('.xuanxiang_r>li').css('background-color','#f2f2f2');
+    $('.xuanxiang_r>li').css('color','#999');
+    $('.xuanxiang>li').css('background-color','#f2f2f2');
+    $('.xuanxiang>li').css('color','#999');
+});
+$('#queding').bind('click',function(){
+    var url_full=url+'.html';
+    window.location.href=url_full; 
+});
+
+
+
+
+function xuanzhong_qita(obj,canshu,value){
+    if(rgb2hex(obj.css('background-color'))==='#f2f2f2'){
+        url=change_url_canshu(url,canshu,value);
+        obj.siblings().css('background-color','#f2f2f2');
+        obj.siblings().css('color','#999');
+        obj.css('background-color','#06c1ae');
+        obj.css('color','#FFF');
+    }else{
+        url=clear_url_canshu(url,canshu);
+        obj.css('background-color','#f2f2f2');
+        obj.css('color','#999');
+    }
+}
+function xuanzhong_shuxing(obj){
+    var name=obj.parent('.xuanxiang').prev().prev().text();
+    var value=obj.text();
+    if(rgb2hex(obj.css('background-color'))==='#f2f2f2'){
+        url=change_url_shuxing(url,name,value);
+        obj.siblings().css('background-color','#f2f2f2');
+        obj.siblings().css('color','#999');
+        obj.css('background-color','#06c1ae');
+        obj.css('color','#FFF');
+    }else{
+        url=clear_url_shuxing(url,name,value);
+        obj.css('background-color','#f2f2f2');
+        obj.css('color','#999');
+    }
+}
+function dagou(obj,canshu){
+    if(obj.children('.icon_check').css('background-position')==='-435px -128px'){
+        url=change_url_canshu(url,canshu,'1');
+        obj.children('.icon_check').css('background-position','-435px -151px');
+    }else{
+        url=clear_url_canshu(url,canshu);
+        obj.children('.icon_check').css('background-position','-435px -128px');
+    }
+}
+function rgb2hex(rgb) {
+rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+function hex(x) {
+return ("0" + parseInt(x).toString(16)).slice(-2);
+}
+return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
+</script>
+
+
+<script  type="text/javascript">
+    $('.inputsr').bind('click',function(){
+        window.location.href="<{:U('Index/search_m')}>"; 
+    });
+    
+</script>

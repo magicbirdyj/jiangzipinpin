@@ -1,0 +1,249 @@
+/* CSS Document */
+
+.fanhui .tb_fanhui{
+    position: absolute;
+    font-size: 40px;
+    color: #FFF;
+    left: 10px;
+    top: 3px;
+}
+
+.box{
+width:100%;
+margin:0px auto;
+margin-bottom: 50px;
+background-color: #F0F0F0;
+}
+.fenlei_menu>ul>li{
+    width:25%;
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+    padding: 15px 0px;
+    font-size: 14px;
+    color: #999;
+    overflow: hidden;
+    border-top: 1px solid #c6c0b3;
+    border-bottom: 1px solid #c6c0b3;
+    border-left: 1px solid #c6c0b3;
+}
+.fenlei_menu .tb_jiantou_xia{
+    font-size: 12px;
+    margin-left: 5px;
+    color: #999;
+}
+.fenlei_menu{
+    position: relative;
+    z-index: 999;
+}
+.none{
+    display: none;
+}
+.fenlei_select{
+    background-color: #f6f4f0;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+}
+.fenlei_select>ul>li{
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-bottom: 1px solid #B7B7B7;
+    font-size: 14px;
+    background-color: #FFF;
+    color: #999;
+}
+.fenlei_select>ul>li>a{
+    color: #999;
+    width: 100%;
+    display: block;
+    padding: 15px 20px;
+}
+
+#overlay {
+    background: #000;
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    display: none;
+}
+.icon_check{
+background-image:url(../Images/menu_and_foot/icon.png);
+background-position: -435px -128px;
+width:13px;
+height:13px;
+display:inline-block;
+float:right;
+margin-top:1px;
+margin-right:4px;
+}
+.fenlei_select>div{
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-bottom: 1px solid #B7B7B7;
+    padding: 15px 20px;
+    font-size: 14px;
+    background-color: #FFF;
+    color: #999;
+}
+.xuanxiang_r{
+    float: right;
+}
+.xuanxiang_r>li{
+    float: left;
+    padding: 6px 0px;
+    background-color: #f2f2f2;;
+    margin-left: 15px;
+    border-radius: 6px;
+    text-align: center;
+    width: 90px;
+    overflow: hidden;
+}
+.xuanxiang{
+    margin-top: 10px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.xuanxiang>li{
+    float: left;
+    padding: 6px 0px;
+    background-color: #f2f2f2;
+    margin: 0 3% 10px 0;
+    border-radius: 6px;
+    text-align: center;
+    width: 30%;
+    overflow: hidden;
+}
+.fenlei_select>.queding_div{
+    padding: 0px;
+}
+.shaixuan_button{
+    padding:15px 0px;
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+
+.queding{
+    background-color:#06c1ae;
+    color: #FFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.box .page_foot{
+    width: 100%;
+    margin-top: 0px;
+    background-color: #FFF;
+    padding: 5px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*格子显示
+.shopping{
+box-sizing: border-box;
+width:47%;
+border-left:1px solid #EEE;
+border-right:1px solid #EEE;
+border-bottom: 2px solid #EEE;
+border-top: 2px solid #EEE;
+float:left;
+font-size: 0.75em;
+margin-left: 2%;
+margin-top: 10px;
+}
+
+.shopping_img{
+    width:100%; 
+    height: 0px;
+    padding-bottom: 66.6666667%;
+}
+.shopping_img img{
+width:100%;
+float: left;
+}
+
+.shopping_title{
+padding:8px 4% 0% 4%;
+color:#000000;
+text-overflow:ellipsis;*//*超出部分省略号*//*
+white-space: nowrap;/*强制文本一行输出*//*
+}
+
+
+
+
+.shopping_pricepj{
+margin:8px 4% 0% 4%;
+border-bottom: 1px solid #DDD;
+}
+.shopping_price{
+font-size:1.333333em;
+color: #F76120;
+float:left;
+width:100%;
+overflow: hidden;
+text-overflow:ellipsis;/*超出部分省略号*//*
+white-space: nowrap;/*强制文本一行输出*//*
+}
+.shopping_price .yuan_price{
+    font-size: 0.75em;
+    color: #999;
+    padding-left: 5%;
+}
+.yuan_price del{
+    margin-left: 1%;
+}
+.pingjia_div{
+    box-sizing: border-box;
+    width:92%;
+    margin:3px 4% 0% 4%;
+}
+
+.shopping_sale{
+    float: left;
+    color: #999;
+}
+
+
+.shopping_pjrenshu{
+padding-left:5%;
+color:#999;
+float:right;
+}*/

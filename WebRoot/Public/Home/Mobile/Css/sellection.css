@@ -1,0 +1,93 @@
+/* CSS Document */
+.release{
+width:100%;
+margin-bottom: 50px;
+}
+.order_row{
+    box-sizing: border-box;
+    padding: 10px 10px;
+    width: 100%;
+    position: relative;
+    display: block;
+}
+.order_row>div{
+    box-sizing: border-box;
+    float: left;
+    /*border:1px solid #EEE;*/
+    font-size: 12px;
+    text-align: center;
+    padding: 0px 1px;
+}
+.order_row .td_l{
+    width: 80px;
+    position: absolute;
+    top:40px;
+}
+.td_l .picture{
+    float: left;
+    width: 80px;
+    margin-right: 20px;
+    height: 80px;
+}
+.picture img{
+    width:80px;
+    height: 80px;
+}
+
+.order_row .td_r{
+    padding-left: 100px;
+    width: 100%;
+    min-height: 80px;
+}
+.td_r .info_name{
+    width: 235px;
+    text-align: left;
+    font-size: 14px;
+    padding: 2px 0px;
+}
+
+.action{
+    box-sizing: border-box;
+    padding: 10px 10px;
+    padding-top: 0px;
+    width: 100%;
+    border-bottom:1px solid #DDD8CE;
+}
+
+
+
+
+
+
+.color_999{
+    color: #999;
+}
+.color_2BB8AA{
+    color: #2BB8AA;
+}
+.button_a_order{
+    box-sizing: border-box;
+    width: 45%;
+    border: 1px solid #f90;
+    color: #f90;
+    cursor:pointer;
+    border-radius:5px;
+    font-size: 16px;
+    padding: 10px 0px;
+    display: inline-block;
+    margin-right: 10%;
+    float: left;
+    text-align: center;
+}
+.button_a_order:hover{
+    color: #f90;
+}
+.img_zst{
+    height: 100px;
+}
+.order_row .scsj{
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
