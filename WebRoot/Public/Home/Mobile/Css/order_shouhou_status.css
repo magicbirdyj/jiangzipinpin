@@ -1,0 +1,20 @@
+
+.select_div{
+    width: 100%;
+}
+.select_div .juti{
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+.pingjia_textarea{
+    background-color: #f0f0f0;
+}
+.img_fangda{
+    width: 100%;
+}
+.div_fangda{
+    position: absolute;
+     width: 100%;
+    display: none;
+    top:40%;
+}

@@ -6,11 +6,11 @@
 </head>
 <body>
     <div class="logo"><!--logo-->
-        <a href="<{:U($ref)}>" class="logol"><span class="iconfont tb_fanhui" id="shangjia_info_fanhui">&#xe601;</span></a>
+        <a href="javascript:history.back()" class="logol"><span class="iconfont tb_fanhui" id="shangjia_info_fanhui">&#xe603;</span></a>
 <div class="search">
     <form name="searchform" action="<{:U('Index/search')}>" method="get" id="searchform">
         <div class="search_div">
-            <span class="iconfont tb_search">&#xe605;</span>
+            <span class="iconfont tb_search">&#xe60d;</span>
             <input class="inputsr" type="text" name="sp" value="<{$get['sp']}>" placeholder="西式 策划" maxlength="100" data-role="none"  />
         </div>
     </form>
@@ -20,7 +20,7 @@
 
     <div class="fenlei_menu" id="fenlei_menu">
         <ul id='menu_ul'>
-            <li style="border-left: none;" id="fenlei_li"><{$get['cid']|get_catname}><span class="iconfont tb_jiantou_xia" >&#xe79b;</span></li>
+            <li style="border-left: none;" id="fenlei_li"><{$get['cat_name']}><span class="iconfont tb_jiantou_xia" >&#xe79b;</span></li>
             <li id="didian_li"><{$get['location']?$get['location']:'全城'}><span class="iconfont tb_jiantou_xia" >&#xe79b;</span></li>
             <li id='paixu_li'><a1 id='paixu_li_span'>默认排序</a1><span class="iconfont tb_jiantou_xia" >&#xe79b;</span></li>
             <li id='shaixuan_li'>筛选<span class="iconfont tb_jiantou_xia" >&#xe79b;</span></li>

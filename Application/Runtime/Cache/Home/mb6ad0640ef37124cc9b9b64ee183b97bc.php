@@ -112,7 +112,7 @@
             <ul class="left_ul">
                 <li><a href="<?php echo U('Member/sellection');?>">我的收藏<div style="float:right"><span><?php echo ($status_count['sellection']); ?></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
                 <li><a href="<?php echo U('Order/appraise_manage');?>">我已评价<div style="float:right"><span><?php echo ($status_count['yipingjia']); ?></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
-                <li><a href="<?php echo U('Member/cart');?>">退款/售后<div style="float:right"><span><?php echo ($status_count['shouhou']); ?></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                <li><a href="<?php echo U('Order/index?status=shouhou');?>">退款/售后<div style="float:right"><span><?php echo ($status_count['shouhou']); ?></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
             </ul>
             
             <div class="d1">我的账户</div>

@@ -25,9 +25,9 @@
     display: block;
     right: 10px;
     top:10px;
-    background-color: #06c1ae;
-    height: 42px;
-    line-height: 42px;
+    background-color: #F90505;
+    height: 40px;
+    line-height: 40px;
     width: 60px;
     font-size: 14px;
     color: #FFF;
@@ -46,9 +46,9 @@
 
 .min_menu{
     position: absolute;
-    top:3px;
+    top:1px;
     right:10px;
-    background-color: #06c1ae;
+    background-color: #F90505;
     color: #FFF;
     padding: 0px 10px;
     z-index: 9999;

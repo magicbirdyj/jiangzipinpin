@@ -38,14 +38,14 @@
 </head>
 
 <body>
-    <?php if($goods['tuan_number'] != $goods['count']): ?><a class='button_a_lvse fixed_bottom' href='javascript:void()' id='wyct'>我也要参团</a> 
+    <?php if($goods['tuan_number'] != $goods['count']): ?><a class='button_a_lvse fixed_bottom wyct' href='javascript:void()' id='wyct'>我也要参团</a> 
     <form name="cantuan_buy" action="<?php echo U('Goods/cantuan_buy');?>" method="get">
         <input name="tuan_no" type="hidden" value="<?php echo ($tuan_no); ?>" />
         <?php if($zx_shuxing != false): ?><input name="zx_shuxing" type="hidden" value="" /><?php endif; ?>
     </form>
     <?php else: ?>
     <a class='button_a_lvse fixed_bottom' href="javascript:history.back()">该团已满，请参加其它组团</a><?php endif; ?>
-<div style="width:100%;background-color: #f0efed;" id="shop">
+<div style="width:100%;background-color: #f0efed;margin-bottom: 105px;" id="shop">
 <div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a><?php echo ($title); ?></div>
 <table class="buy_table" cellspacing="0">
 <tr class="buy_table_head">
@@ -61,7 +61,7 @@
 <div class="tuan_zhanshi">
     <div class="tuan_all_and_muqian">
     <div class="tuan_all">
-        <?php $__FOR_START_25260__=0;$__FOR_END_25260__=$goods['tuan_number'];for($i=$__FOR_START_25260__;$i < $__FOR_END_25260__;$i+=1){ ?><span class="iconfont tb_tuan">&#xe623;</span><?php } ?>
+        <?php $__FOR_START_10237__=0;$__FOR_END_10237__=$goods['tuan_number'];for($i=$__FOR_START_10237__;$i < $__FOR_END_10237__;$i+=1){ ?><span class="iconfont tb_tuan">&#xe623;</span><?php } ?>
     </div>
     <div class="tuan_muqian">
         <span class="head_span"> <img src="<?php echo ($goods['tuanzhang_head_url']); ?>" class='head_img' /></span>
@@ -89,8 +89,9 @@
 </div>
 </div>
 
-<?php if($zx_shuxing != null): ?><div id="div_xuanze" style="min-height: 750px;">
-        <div class="fanhui padding"><span class="iconfont tb_fanhui" id="xuanze_fanhui">&#xe603;</span>选择属性</div>
+<?php if($zx_shuxing != null): ?><div id="overlay"></div><!--遮罩层div-->
+<div id="div_xuanze">
+        <div class="fanhui padding"><span class="iconfont tb_fanhui" id="xuanze_fanhui">&#xe62d;</span>选择属性</div>
         <div class="order_row">
                 <div class='td_l'>
                     <div class="picture"><img src="<?php echo ($goods['goods_img']); ?>"></div>
@@ -106,6 +107,7 @@
                 <?php if(is_array($vo)): $i = 0; $__LIST__ = $vo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$shuxingzhi): $mod = ($i % 2 );++$i;?><li><?php echo ($shuxingzhi); ?></li><?php endforeach; endif; else: echo "" ;endif; ?>
             </ul>
         </div><?php endforeach; endif; else: echo "" ;endif; ?>
+        <a class='button_a_lvse wyct' href='javascript:void()'  style="margin-top: 20px;">确定参团</a> 
     </div><?php endif; ?>
 
 <div style='margin-bottom: 105px;'></div>

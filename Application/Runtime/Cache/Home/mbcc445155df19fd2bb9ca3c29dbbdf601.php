@@ -57,10 +57,10 @@
             <div class="d2_title">物流信息</div>
             <div class="d2_content"><span style="font-weight: bold">物流公司：<?php echo ($wuliu['company']); ?></span> <span>运单编号：<?php echo ($wuliu['no']); ?> </span></div>
         </div>
-        <div class="d2">
+
         <div class="d2_title">订单跟踪</div>
         <div class="d2_content"></div>
-        </div>
+
         
     </div>
 

@@ -3769,3 +3769,1090 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001019s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001155s ]
 
+[ 2016-08-10T22:53:29+08:00 ] 127.0.0.1 /Home/Order/appraise/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.052651s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001871s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001982s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0703s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0018s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `user_id` FROM `m_order` WHERE ( order_id=96 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0173s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.created,t1.updated,t2.goods_img,t1.price,t1.dues,t1.shop_name FROM m_order t1,m_goods t2 WHERE ( t1.order_id=96 and t1.goods_id=t2.goods_id ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `m_order` WHERE ( order_id=96 ) LIMIT 1   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000268s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000374s ]
+NOTIC: [8] Undefined index: server_day E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mbf25bcce8308c9d89be0c26b486cd584f.php 第 57 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mbf25bcce8308c9d89be0c26b486cd584f.php 第 303 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mbf25bcce8308c9d89be0c26b486cd584f.php 第 304 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mbf25bcce8308c9d89be0c26b486cd584f.php 第 305 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mbf25bcce8308c9d89be0c26b486cd584f.php 第 306 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.380750s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.380846s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.019317s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.033866s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.053875s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.031302s ]
+INFO: [ app_end ] --END-- [ RunTime:0.031439s ]
+
+[ 2016-08-10T22:53:39+08:00 ] 127.0.0.1 /Home/Order/shouhou/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000620s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000840s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000945s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0629s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0725s ]
+SQL: SELECT t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.deleted,t2.goods_img,t1.price,t1.dues FROM m_order t1,m_goods t2 WHERE ( t1.order_id=96  and t1.goods_id=t2.goods_id ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Use of undefined constant pay_status - assumed 'pay_status' E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 366 行.
+SQL: SELECT `user_name` FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0175s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000134s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000225s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 130 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 131 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 132 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 133 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.092867s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.092954s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000616s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000925s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001693s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000811s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000916s ]
+
+[ 2016-08-10T22:53:47+08:00 ] 127.0.0.1 /Home/Order/appraise/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000671s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000914s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001052s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0689s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `user_id` FROM `m_order` WHERE ( order_id=96 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0344s ]
+SQL: SELECT t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.created,t1.updated,t2.goods_img,t1.price,t1.dues,t1.shop_name FROM m_order t1,m_goods t2 WHERE ( t1.order_id=96 and t1.goods_id=t2.goods_id ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `m_order` WHERE ( order_id=96 ) LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000243s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000373s ]
+NOTIC: [8] Undefined index: server_day E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mbf25bcce8308c9d89be0c26b486cd584f.php 第 57 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mbf25bcce8308c9d89be0c26b486cd584f.php 第 303 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mbf25bcce8308c9d89be0c26b486cd584f.php 第 304 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mbf25bcce8308c9d89be0c26b486cd584f.php 第 305 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mbf25bcce8308c9d89be0c26b486cd584f.php 第 306 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.078828s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.078919s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000692s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001889s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002766s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000931s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001014s ]
+
+[ 2016-08-10T22:54:02+08:00 ] 127.0.0.1 /Home/Order/file_jia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000698s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001063s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001183s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0118s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\jiangzipinpin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-10T22:54:08+08:00 ] 127.0.0.1 /Home/Order/file_jia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000950s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001233s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001320s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0538s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\jiangzipinpin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-10T23:17:43+08:00 ] 127.0.0.1 /Home/Order/shouhou/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.017085s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.011743s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.011863s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0228s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0158s ]
+SQL: SELECT t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.deleted,t2.goods_img,t1.price,t1.dues FROM m_order t1,m_goods t2 WHERE ( t1.order_id=96  and t1.goods_id=t2.goods_id ) LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [8] Use of undefined constant pay_status - assumed 'pay_status' E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 366 行.
+SQL: SELECT `user_name` FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000136s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000234s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 132 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 133 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 134 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 135 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.182178s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.182273s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.009608s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.011094s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.020857s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.008699s ]
+INFO: [ app_end ] --END-- [ RunTime:0.008796s ]
+
+[ 2016-08-10T23:20:46+08:00 ] 127.0.0.1 /Home/Order/shouhou/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001596s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001571s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001673s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0128s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0109s ]
+SQL: SELECT t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.deleted,t2.goods_img,t1.price,t1.dues FROM m_order t1,m_goods t2 WHERE ( t1.order_id=96  and t1.goods_id=t2.goods_id ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Use of undefined constant pay_status - assumed 'pay_status' E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 366 行.
+SQL: SELECT `user_name` FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000135s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000224s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 126 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 127 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 128 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 129 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.131723s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.131815s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.009721s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001933s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.011807s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.008080s ]
+INFO: [ app_end ] --END-- [ RunTime:0.008177s ]
+
+[ 2016-08-10T23:27:45+08:00 ] 127.0.0.1 /Home/Order/shouhou/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001678s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002306s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002431s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0498s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0132s ]
+SQL: SELECT t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.deleted,t2.goods_img,t1.price,t1.dues FROM m_order t1,m_goods t2 WHERE ( t1.order_id=96  and t1.goods_id=t2.goods_id ) LIMIT 1   [ RunTime:0.0006s ]
+NOTIC: [8] Use of undefined constant pay_status - assumed 'pay_status' E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 366 行.
+SQL: SELECT `user_name` FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000273s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000421s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 126 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 127 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 128 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 129 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.142886s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.143052s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001638s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001977s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003780s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.009997s ]
+INFO: [ app_end ] --END-- [ RunTime:0.010267s ]
+
+[ 2016-08-10T23:35:23+08:00 ] 127.0.0.1 /Home/Order/file_jia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001695s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.012832s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.012971s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0264s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\jiangzipinpin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-10T23:35:27+08:00 ] 127.0.0.1 /Home/Order/file_jia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001502s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001893s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002033s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0271s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\jiangzipinpin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-10T23:37:30+08:00 ] 127.0.0.1 /Home/Order/shouhou/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002111s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001976s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002119s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0188s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0166s ]
+SQL: SELECT t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.deleted,t2.goods_img,t1.price,t1.dues FROM m_order t1,m_goods t2 WHERE ( t1.order_id=96  and t1.goods_id=t2.goods_id ) LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [8] Use of undefined constant pay_status - assumed 'pay_status' E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 366 行.
+SQL: SELECT `user_name` FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000289s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000485s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 126 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 127 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 128 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 129 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.216972s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.217084s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.010091s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.003409s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.013749s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.012302s ]
+INFO: [ app_end ] --END-- [ RunTime:0.012497s ]
+
+[ 2016-08-10T23:37:48+08:00 ] 127.0.0.1 /Home/Order/file_jia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000894s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000861s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000980s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\jiangzipinpin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-10T23:37:51+08:00 ] 127.0.0.1 /Home/Order/file_jia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000757s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001353s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001458s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0744s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\jiangzipinpin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-10T23:38:57+08:00 ] 127.0.0.1 /Home/Order/shouhou/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001399s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001049s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001154s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0131s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0111s ]
+SQL: SELECT t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.deleted,t2.goods_img,t1.price,t1.dues FROM m_order t1,m_goods t2 WHERE ( t1.order_id=96  and t1.goods_id=t2.goods_id ) LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [8] Use of undefined constant pay_status - assumed 'pay_status' E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 366 行.
+SQL: SELECT `user_name` FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000137s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000233s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 126 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 127 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 128 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 129 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.036577s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036670s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000898s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001619s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002693s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001050s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001143s ]
+
+[ 2016-08-10T23:39:33+08:00 ] 127.0.0.1 /Home/Order/shouhou/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000744s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000817s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000920s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0133s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0103s ]
+SQL: SELECT t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.deleted,t2.goods_img,t1.price,t1.dues FROM m_order t1,m_goods t2 WHERE ( t1.order_id=96  and t1.goods_id=t2.goods_id ) LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [8] Use of undefined constant pay_status - assumed 'pay_status' E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 366 行.
+SQL: SELECT `user_name` FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000133s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000224s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 126 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 127 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 128 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 129 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033406s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033514s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000613s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001280s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002070s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000917s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001020s ]
+
+[ 2016-08-10T23:39:50+08:00 ] 127.0.0.1 /Home/Order/file_jia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000776s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000910s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001006s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0464s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\jiangzipinpin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-10T23:39:53+08:00 ] 127.0.0.1 /Home/Order/file_jia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003921s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001414s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001648s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0188s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\jiangzipinpin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-10T23:39:54+08:00 ] 127.0.0.1 /Home/Order/shouhou_check.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000911s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000864s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000958s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0145s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `user_id`,`shop_name`,`goods_id`,`dues` FROM `m_order` WHERE ( order_id=96 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: shouhou_causess E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 401 行.
+SQL: UPDATE `m_order` SET `shouhou_img`='Public/Uploads/image/temp/20160810/14708435903605371210.png+img+Public/Uploads/image/temp/20160810/14708435931295797235.jpg',`shouhou_cause`=NULL,`shouhou_miaoshu`='收到后商品变质',`shouhou_iphone`='13574506835',`updated`='1470843594',`pay_status`='4' WHERE ( order_id=96 ) [ RunTime:0.2262s ]
+NOTIC: [8] Undefined variable: result E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 412 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000074s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000165s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.063759s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.063892s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000644s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000881s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001651s ]
+
+[ 2016-08-10T23:42:34+08:00 ] 127.0.0.1 /Home/Order/file_jia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000731s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000896s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000989s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0167s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\jiangzipinpin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-10T23:42:37+08:00 ] 127.0.0.1 /Home/Order/shouhou_check.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000663s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001129s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001341s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0129s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2016-08-10T23:43:51+08:00 ] 127.0.0.1 /Home/Order/shouhou/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001099s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000880s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000974s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0154s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0115s ]
+SQL: SELECT t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.deleted,t2.goods_img,t1.price,t1.dues FROM m_order t1,m_goods t2 WHERE ( t1.order_id=96  and t1.goods_id=t2.goods_id ) LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [8] Use of undefined constant pay_status - assumed 'pay_status' E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 366 行.
+SQL: SELECT `user_name` FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000131s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000236s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 126 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 127 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 128 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 129 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.051493s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.051642s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001054s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001044s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002288s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.009767s ]
+INFO: [ app_end ] --END-- [ RunTime:0.009867s ]
+
+[ 2016-08-10T23:44:07+08:00 ] 127.0.0.1 /Home/Order/file_jia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000954s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001074s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0122s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\jiangzipinpin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-10T23:44:13+08:00 ] 127.0.0.1 /Home/Order/file_jia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000762s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001385s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001531s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0124s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\jiangzipinpin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-10T23:44:19+08:00 ] 127.0.0.1 /Home/Order/shouhou_check.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000687s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000900s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001017s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0158s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0011s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `user_id`,`shop_name`,`goods_id`,`dues` FROM `m_order` WHERE ( order_id=96 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: UPDATE `m_order` SET `shouhou_img`='Public/Uploads/image/temp/20160810/14708438472912783756.png+img+Public/Uploads/image/temp/20160810/14708438538715146852.jpg',`shouhou_cause`='收到商品时有划痕或破损',`shouhou_miaoshu`='商品收到后已经变质',`shouhou_iphone`='13574506835',`updated`='1470843858',`pay_status`='2' WHERE ( order_id=96 ) [ RunTime:0.0177s ]
+NOTIC: [8] Undefined variable: result E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 412 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000107s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000249s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.109311s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.109431s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001738s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.010207s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012134s ]
+
+[ 2016-08-10T23:45:06+08:00 ] 127.0.0.1 /Home/Order/file_jia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000709s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000849s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000929s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0216s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\jiangzipinpin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-10T23:45:09+08:00 ] 127.0.0.1 /Home/Order/file_jia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000661s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000863s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000956s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0127s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\jiangzipinpin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-08-10T23:45:12+08:00 ] 127.0.0.1 /Home/Order/shouhou_check.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000700s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001571s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001811s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0122s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `user_id`,`shop_name`,`goods_id`,`dues` FROM `m_order` WHERE ( order_id=96 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: UPDATE `m_order` SET `shouhou_img`='Public/Uploads/image/temp/20160810/14708439068880093362.png+img+Public/Uploads/image/temp/20160810/14708439096127849179.jpg',`shouhou_cause`='收到商品时有划痕或破损',`shouhou_miaoshu`='商品收到后已经变质',`shouhou_iphone`='13574506835',`updated`='1470843912',`pay_status`='2' WHERE ( order_id=96 ) [ RunTime:0.0128s ]
+
+[ 2016-08-10T23:45:12+08:00 ] 127.0.0.1 /Home/Order/shouhou_status/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000679s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000835s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000929s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'shohou_miaoshu' in 'field list'
+
+[ 2016-08-10T23:45:52+08:00 ] 127.0.0.1 /Home/Order/shouhou_status/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000729s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001061s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001201s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `order_id`,`pay_status`,`shouhou_cause`,`shouhou_miaoshu`,`shouhou_img`,`shouhou_iphone`,`goods_id`,`dues`,`updated` FROM `m_order` WHERE ( order_id=96 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: user_id E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 425 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000076s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000173s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.091217s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.091357s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002150s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001886s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004194s ]
+
+[ 2016-08-10T23:46:21+08:00 ] 127.0.0.1 /Home/Order/shouhou/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000676s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000887s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0123s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `m_order` [ RunTime:0.0095s ]
+SQL: SELECT t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.deleted,t2.goods_img,t1.price,t1.dues FROM m_order t1,m_goods t2 WHERE ( t1.order_id=96  and t1.goods_id=t2.goods_id ) LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [8] Use of undefined constant pay_status - assumed 'pay_status' E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 366 行.
+SQL: SELECT `user_name` FROM `m_users` WHERE ( user_id=80 ) LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000161s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000251s ]
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 126 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 127 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 128 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb4e0cdbbe7fba236e4ca639ac9d16469a.php 第 129 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.059111s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.059334s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000662s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001009s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001806s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.020841s ]
+INFO: [ app_end ] --END-- [ RunTime:0.020964s ]
+
+[ 2016-08-10T23:46:28+08:00 ] 127.0.0.1 /Home/Order/shouhou_status/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000700s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000884s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000975s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0142s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `order_id`,`user_id`,`pay_status`,`shouhou_cause`,`shouhou_miaoshu`,`shouhou_img`,`shouhou_iphone`,`goods_id`,`dues`,`updated` FROM `m_order` WHERE ( order_id=96 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] unserialize(): Error at offset 0 of 123 bytes E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 432 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000147s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000240s ]
+NOTIC: [8] Undefined variable: shouhou E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 43 行.
+NOTIC: [8] Undefined variable: shouhou E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 46 行.
+NOTIC: [8] Undefined variable: shouhou E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 51 行.
+NOTIC: [8] Undefined variable: shouhou E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 65 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 104 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 105 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 106 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 107 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.048790s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.048879s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000731s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000933s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001787s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000824s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000915s ]
+
+[ 2016-08-10T23:46:56+08:00 ] 127.0.0.1 /Home/Order/shouhou_status/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000615s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000966s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001065s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0147s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `order_id`,`user_id`,`pay_status`,`shouhou_cause`,`shouhou_miaoshu`,`shouhou_img`,`shouhou_iphone`,`goods_id`,`dues`,`updated` FROM `m_order` WHERE ( order_id=96 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] unserialize(): Error at offset 0 of 123 bytes E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 432 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000146s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000286s ]
+NOTIC: [8] Undefined index: shouhou_leixing E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 43 行.
+NOTIC: [8] Undefined index: miaoshu E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 51 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 104 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 105 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 106 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 107 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.039026s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039126s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000795s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001098s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002046s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001089s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001201s ]
+
+[ 2016-08-10T23:47:00+08:00 ] 127.0.0.1 /Home/Order/shouhou_status/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000673s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000897s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000988s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0144s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `order_id`,`user_id`,`pay_status`,`shouhou_cause`,`shouhou_miaoshu`,`shouhou_img`,`shouhou_iphone`,`goods_id`,`dues`,`updated` FROM `m_order` WHERE ( order_id=96 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] unserialize(): Error at offset 0 of 123 bytes E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 432 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000127s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000243s ]
+NOTIC: [8] Undefined index: shouhou_leixing E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 43 行.
+NOTIC: [8] Undefined index: miaoshu E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 51 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 104 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 105 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 106 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 107 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012530s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012617s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000759s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001086s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001988s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000918s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001016s ]
+
+[ 2016-08-10T23:48:35+08:00 ] 127.0.0.1 /Home/Order/shouhou_status/order_id/96.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000663s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001572s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001760s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=225 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=224 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=223 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=222 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=221 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=220 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=218 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=217 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=216 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=215 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `goods_id`,`goods_name`,`yuan_price`,`price`,`goods_img` FROM `m_goods` WHERE ( goods_id=214 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `order_id`,`user_id`,`pay_status`,`shouhou_cause`,`shouhou_miaoshu`,`shouhou_img`,`shouhou_iphone`,`goods_id`,`dues`,`updated` FROM `m_order` WHERE ( order_id=96 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] unserialize(): Error at offset 0 of 123 bytes E:\wamp\www\jiangzipinpin\Application\Home\Controller\OrderController.class.php 第 432 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000143s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000252s ]
+NOTIC: [8] Undefined index: miaoshu E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 51 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 104 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 105 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 106 行.
+NOTIC: [8] Undefined variable: wx_config E:\wamp\www\jiangzipinpin\Application\Runtime\Cache\Home\mb295c1af9380f8342dc01d299635cfa64.php 第 107 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.145821s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.145917s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001748s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001885s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003827s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.008976s ]
+INFO: [ app_end ] --END-- [ RunTime:0.009092s ]
+

@@ -40,12 +40,13 @@
     <div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>售后退款</div>
     <div class="view">
         <div class="tuikuang_div">
-            <?php if($order['pay_status'] == '1'): ?><div class="d2_title">申请售后<span class="xinghao">*</span></div>
+ 
+                <div class="d2_title">售后类型<span class="xinghao">*</span></div>
                 <form name="shouhou" method="post" action="<?php echo U('Order/shouhou_check');?>">
                 <input type='hidden' name='order_id' id='order_id' value="<?php echo ($order['order_id']); ?>" />
                 <input name="goods_img" value="" type="hidden"/> 
             <div class="select_div">
-            <select name="tuikuang_cause" class="tuikuang_select">
+            <select name="shouhou_leixing" class="tuikuang_select">
                 <option value="申请换货">申请换货</option>
                 <option value="申请退货">申请退货</option>
             </select>
@@ -53,7 +54,7 @@
 
             <div class="d2_title">售后原因<span class="xinghao">*</span></div>
             <div class="select_div">
-            <select name="tuikuang_cause" class="tuikuang_select">
+            <select name="shouhou_cause" class="tuikuang_select">
                 <option value="商品有质量问题">商品有质量问题</option>
                 <option value="商品少发、漏发、发错">商品少发、漏发、发错</option>
                 <option value="商品与描述不一致">商品与描述不一致</option>
@@ -62,8 +63,7 @@
                 <option value="其它原因">其它原因</option>
             </select>
             </div>
-            {__TOKEN__}
-            </form>
+            
             <div class="d2_title">问题描述<span class="xinghao">*</span><span id='miaoshu_tishi' class="tishi">（您还可以输入170个字）</span></div>
             <div class="select_div">
             <div class="pingjia_box">
@@ -80,26 +80,22 @@
             </div>
             </div>
             </div>
+            
             <div class="d2_title"> 联系方式<span class="xinghao">*</span><span id='lianxi_tishi' class="tishi" style='color:red'></span></div>
             <div class="select_div">
-                <input name='lianxi_iphone' type="text" class="lianxi_iphone" />
+                <input name='shouhou_iphone' type="text" class="lianxi_iphone" />
             </div>
+            {__TOKEN__}
+            </form>
             <div class="d2_title"> 售后须知</div>
             <div class="select_div">
                 <span style='font-size: 12px;'>请按照提示关注维权进度和超时提醒并提供相应凭证</span>
             </div>
-            <?php elseif($order['pay_status'] == '2'): ?>
-                <div class='status'>
-                    申请退款成功，请等待商家确认!
-                </div>
-            <?php elseif($order['pay_status'] == '3'): ?>
-                <div class='status'>
-                    退款成功，将在五个工作日内退还到您的微信账户
-                </div><?php endif; ?>
+           
     </div>
         
         
-                <a class="button_a_lvse" href='javascript:void(0)' style="margin-top: 20px;" id='tijiao'>提交申请</a>
+                <a class="button_a_lvse" href='javascript:void(0)'  id='tijiao'>提交申请</a>
         </div>
 
    <form id = "form_file_jia" enctype="multipart/form-data" action="<?php echo U('Order/file_jia');?>" method="post">   

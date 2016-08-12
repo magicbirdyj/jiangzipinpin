@@ -9,7 +9,7 @@ width:96%;
 margin:0px auto;
 overflow:hidden;
 padding: 10px 2%;
-background-color: #06c1ae;
+background-color: #F90505;
 }
 
 .logo .logol{
@@ -24,6 +24,9 @@ text-align: center;
 margin-right: 2%;
 float: left;
 }
+.logol img{
+    width: 40px;
+}
 .logo .search{
 display: block;
 }
@@ -34,7 +37,7 @@ display: block;
 }
 .search .tb_search{
     position: absolute;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 40px;
     height: 40px;
     left: 5px;

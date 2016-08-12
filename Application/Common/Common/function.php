@@ -194,9 +194,13 @@ function order_status($pay_status,$status,$order_id,$tuan_no){
             return array('status'=>'拼团失败','status_button'=>'删除订单','status_url'=>"/Home/Order/appraise/order_id/{$order_id}.html");
         }
     }elseif($pay_status==='2'){
-        return array('status'=>'退款中...','status_button'=>'联系商家','status_url'=>"/Home/Order/tuikuang/order_id/{$order_id}.html");
+        return array('status'=>'退款中...','status_button'=>'售后查看','status_url'=>"/Home/Order/shouhou_status/order_id/{$order_id}.html");
     }elseif($pay_status==='3'){
+        return array('status'=>'换货中','status_button'=>'售后查看','status_url'=>"/Home/Order/shouhou_status/order_id/{$order_id}.html");
+    }elseif($pay_status==='4'){
         return array('status'=>'退款成功','status_button'=>'删除订单','status_url'=>"javascript:void(0)");
+    }elseif($pay_status==='5'){
+        return array('status'=>'换货成功','status_button'=>'删除订单','status_url'=>"javascript:void(0)");
     }
 }
 //数组取值

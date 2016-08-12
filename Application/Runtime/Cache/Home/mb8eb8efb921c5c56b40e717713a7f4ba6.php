@@ -148,7 +148,7 @@
 
 
 <script src="/Public/Home/Mobile/Js/category.js" type="text/javascript"></script>
-
+<script src="/Public/Home/Mobile/Js/new_order.js" type="text/javascript"></script>
 
 
 
@@ -283,7 +283,7 @@ $('#sousou').bind('click',function(){
   <div class="footer">
       <div class="ui-footer">
                   <a href="<?php echo U('Index/index');?>"><span class=" iconfont foot_home foot_tb">&#xe60f;</span><span>首页</span></a>
-                  <a href="<?php echo U('Member/hunlirenshangjiaxinxi');?>"><span class=" iconfont foot_shoucang foot_tb">&#xe620;</span><span>我的收藏</span></a>
+                  <a href="<?php echo U('Member/sellection');?>"><span class=" iconfont foot_shoucang foot_tb">&#xe620;</span><span>我的收藏</span></a>
                   <a href="<?php echo U('Member/cart');?>"><span class="iconfont foot_pintuan foot_tb">&#xe622;</span><span>我的拼团</span></a>
                   <a href="<?php echo U('Member/index');?>"><span class=" iconfont foot_wode foot_tb">&#xe60a;</span><span>我的果果</span></a>
           </div>
@@ -324,11 +324,7 @@ $('#sousou').bind('click',function(){
         });
     });
     
-    
-
 </script>
-
-
 
 </body>
 </html>

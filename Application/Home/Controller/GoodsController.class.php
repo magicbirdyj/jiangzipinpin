@@ -187,14 +187,25 @@ class GoodsController extends FontEndController {
     }
     public function kaituan_buy() {
         $user_id=$_SESSION['huiyuan']['user_id'];
+        $goods_id=$_GET['goods_id'];
+        if(!$goods_id){
+            $this->error("商品ID不存在");
+        }
+        //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
+        $ordermodel=D(Order);
+        $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
+        if($choujiang>0){
+            $this->error("您已经成功获取过该商品的活动购买资格，无法再重复参加活动");
+        }
+        
         $usersmodel=D('Users');
         $address=$usersmodel->where("user_id=$user_id")->field('address,default_address,daijinquan')->find();
         $arr_address=  unserialize($address['address']);
         $default=$address['default_address'];
         $default_address=$arr_address[$default];
         $this->assign('default_Address',$default_address);
-
-        $goods_id=$_GET['goods_id'];
+        
+        
         if($_GET['zx_shuxing']){
             $zx_shuxing=$_GET['zx_shuxing'];
             $this->assign('zx_shuxing',$zx_shuxing);
@@ -217,12 +228,26 @@ class GoodsController extends FontEndController {
         $this->display();
     }
     public function cantuan_buy() {
+        $user_id=$_SESSION['huiyuan']['user_id'];
         $tuan_no=$_GET['tuan_no'];
+        if(!$tuan_no){
+            $this->error("参团订单ID不存在");
+        }
+        //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
+        $ordermodel=D(Order);
+        $order=$ordermodel->where("order_id=$tuan_no and deleted=0 and status=1")->find();
+        $goods_id=$order['goods_id'];
+        $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
+        if($choujiang>0){
+            $this->error("您已经成功获取过该商品的活动购买资格，无法再重复参加活动");
+        }
+        
+        
         if($_GET['zx_shuxing']){
             $zx_shuxing=$_GET['zx_shuxing'];
             $this->assign('zx_shuxing',$zx_shuxing);
         }
-        $user_id=$_SESSION['huiyuan']['user_id'];
+        
         $usersmodel=D('Users');
         $address=$usersmodel->where("user_id=$user_id")->field('address,default_address,daijinquan')->find();
         $arr_address=  unserialize($address['address']);
@@ -230,8 +255,8 @@ class GoodsController extends FontEndController {
         $default_address=$arr_address[$default];
         $this->assign('default_Address',$default_address);
         
-        $ordermodel=D('Order');
-        $order=$ordermodel->where("order_id=$tuan_no and deleted=0 and status=1")->find();
+        ;
+        
         if(!$order){
             $this->error('该团不存在或者已经拼团失败');
         }
@@ -241,7 +266,7 @@ class GoodsController extends FontEndController {
         }elseif($cunzai_order){
             $this->error('您已经参加该团',$_SESSION['ref']);
         }
-        $goods_id=$order['goods_id'];
+        
         $goodsmodel=D('Goods');
         $goods=$goodsmodel->where("goods_id=$goods_id")->find();
         $goods['tuan_price']=$order['price'];
@@ -264,14 +289,26 @@ class GoodsController extends FontEndController {
     public function pintuan_info(){
         $this->assign('title','拼团详情');
         $tuan_no=$_GET['tuan_no'];
+        if(!$tuan_no){
+            $this->error("参团订单ID不存在");
+        }
         $this->assign('tuan_no',$tuan_no);
         $user_id=$_SESSION['huiyuan']['user_id'];
-        $ordermodel=D('Order');
+         //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
+        $ordermodel=D(Order);
+        $order=$ordermodel->where("order_id=$tuan_no and deleted=0 and status=1")->find();
+        $goods_id=$order['goods_id'];
+        $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
+        if($choujiang>0){
+            $this->error("您已经成功获取过该商品的活动购买资格，无法再重复参加活动");
+        }
+        
+        
         $order=$ordermodel->where("order_id='{$tuan_no}' and deleted=0 and status=1")->find();
         if(!$order){
             $this->error('该团不存在或者已经拼团失败');
         }
-        $goods_id=$order['goods_id'];
+
         $cunzai_order=$ordermodel->where("tuan_no=$tuan_no and user_id=$user_id  and status='1' and deleted='0'")->field('order_id,pay_status')->find();
         if($cunzai_order&&$cunzai_order['pay_status']==0){
             $this->success('您已经参加该团且未付款，将跳转到付款页面',U('Goods/zhifu',array('order_id'=>$cunzai_order['order_id'])),3);
@@ -783,9 +820,13 @@ class GoodsController extends FontEndController {
            $row=array(
                'status'=>2
            );
+           
+           
            $ordermodel->where("tuan_no=$tuan_no and pay_status=1")->save($row);
+           
+           
            //如果是抽奖活动，随机抽取一个获取购买资格 
-           $choujiang_count=$ordermodel->where("tuan_no=$tuan_no and identity=0")->count();
+           $choujiang_count=$ordermodel->where("tuan_no=$tuan_no and choujiang=1")->count();
            if($goods['choujiang']==1 and $choujiang_count==0){
                $rand=  mt_rand(0, $order['tuan_number']-2);
                $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status=1 and status=2 and identity=0")->getField('order_id',true);
@@ -793,7 +834,8 @@ class GoodsController extends FontEndController {
                $row=array(
                    'choujiang'=>1
                );
-               $ordermodel->where("order_id=$rand_order_id")->save($row);
+               $ordermodel->where("order_id=$rand_order_id")->save($row);//抽中的人获取资格
+               $ordermodel->where("order_id=$tuan_no")->save($row);//团长获取资格
                //给未被抽中的其它团员退款    以后再做
                //给未被抽中的其它团员发送退款消息，并告知谁被抽中 并告知可以开团获取购买资格
                //给被抽中的团员发送信息

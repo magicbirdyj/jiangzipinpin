@@ -7,7 +7,7 @@
 
 <body>
     <if condition="$is_ztcg neq 'ztcg'">
-        <div class='button_a_lvse fixed_bottom'>还差 <{$goods['tuan_number']-$goods['count']}>人拼团成功</div>
+        <a href="javascript:void(0)" class='button_a_lvse fixed_bottom'>还差 <{$goods['tuan_number']-$goods['count']}>人拼团成功</a>
         <include file='Public/zhishifenxiang'/>   
     </if>
 <div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a><{$title}></div>

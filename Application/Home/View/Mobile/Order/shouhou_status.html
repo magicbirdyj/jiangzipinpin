@@ -1,0 +1,87 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order_view.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order_tuikuang.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order_shouhou_status.css">
+</head>
+
+<body>
+    <div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>售后状态</div>
+    <div class="view">
+        <div class="tuikuang_div">
+            <div class="d2_title">售后状态</div>
+            <div class="select_div">
+                <div class="juti">
+                    <if condition="($order['pay_status'] eq 2) OR ($order['pay_status'] eq 3)">
+                        等待商家确认
+                        <elseif condition="($order['pay_status'] eq 4)" />
+                        商家已经退款，请查收您的微信账户
+                        <elseif condition="($order['pay_status'] eq 5)" />
+                        商家已经同意退货,将电话联系您，请注意接听
+                    </if>
+            </div>
+            </div>
+            
+            <div class="d2_title">售后类型</div>
+            <div class="select_div">
+                <div class="juti">
+                    <if condition="($order['pay_status'] eq 2) OR ($order['pay_status'] eq 4)">
+                    申请退货
+                    <elseif  condition="($order['pay_status'] eq 3) OR ($order['pay_status'] eq 5)" />
+                    申请换货
+                    </if>
+                </div>
+            </div>
+
+            <div class="d2_title">售后原因</div>
+            <div class="select_div">
+                <div class="juti"><{$order['shouhou_cause']}></div>
+            </div>
+            
+            <div class="d2_title">问题描述</div>
+            <div class="select_div">
+            <div class="pingjia_box">
+            <div class="pingjia_textarea"><{$order['shouhou_miaoshu']}></div>
+            
+            <div class="pingjia_box_szp">
+                <div class="file_tr">
+                    <div class="tr_td1" style="height: 35px;line-height: 35px;">凭证照片：</div>
+                    <volist name="arr_img" id="vo">
+                        <div class="div_goods_img"><img src="" class="empty_img" /><img class="goods_img" src='<{$vo}>' /></div>
+                    </volist>
+                    
+                </div>          
+            </div>
+            
+            </div>
+            </div>
+            <div class="div_fangda">
+            <img class="img_fangda" src="/Public/Uploads/image/temp/20160811/14709045708852719180.png"/>
+            </div>
+            <div class="d2_title"> 联系手机</div>
+            <div class="select_div"><{$order['shouhou_iphone']}></div>
+            <div class="d2_title"> 售后须知</div>
+            <div class="select_div">
+                <span style='font-size: 12px;'>请按照提示关注维权进度和超时提醒并提供相应凭证</span>
+            </div>
+           
+            
+          
+    </div>
+        
+                <if condition="($order['pay_status'] eq 2) OR ($order['pay_status'] eq 3)">
+                <a style="width:40%;float: left;margin-left: 7%" class="button_a_lvse" href='javascript:void(0)' id='quxiao'>取消售后</a>
+                <a style="width:40%;float: left;margin-left: 6%" class="button_a_lvse" href='<{:U("Order/shouhou",array("order_id"=>$order["order_id"]))}>' >重新申请</a>
+                </if>
+        </div>
+
+   <form id = "form_file_jia" enctype="multipart/form-data" action="<{:U('Order/file_jia')}>" method="post">   
+        <input name="file_img" type="file"  style="visibility:hidden; width:0px; height: 0px;"/>
+    </form>   
+    
+
+    <script>
+        var order_id="<{$order['order_id']}>";
+    </script>
+<script src="__PUBLIC_HOME__/Mobile/Js/order_status.js" type="text/javascript"></script>
+
+

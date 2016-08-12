@@ -4,7 +4,7 @@
 
 $('#tijiao').bind('click',function(){
     var a=yz_miaoshu($('textarea[name=miaoshu]'));
-    var b=yz_shouji($('input[name=lianxi_iphone]'));
+    var b=yz_shouji($('input[name=shouhou_iphone]'));
     var c=yz_img();
     if(!(a&&b&&c)){
         return false;
@@ -51,8 +51,8 @@ function file_jia_change(){
                     async : true,
                     success: function(msg){
                         if(msg.result==='error'){
-                            alert(msg.error);
-                            //alert('图片超过5M的大小限制，请重新选择图片');
+                            //alert(msg.error);
+                            alert('图片超过5M的大小限制，请重新选择图片');
                             return false;
                         }
                         var img_url=msg.src;
@@ -130,7 +130,7 @@ function yz_miaoshu(obj){
 }
 
 //验证手机
-$('input[name=lianxi_iphone]').bind('blur',function(){
+$('input[name=shouhou_iphone]').bind('blur',function(){
     yz_shouji($(this));
 });
 function yz_shouji(obj){
@@ -139,6 +139,7 @@ function yz_shouji(obj){
 	return false;
 	}else if(!is_shoujihao(obj.val())){
             $('#lianxi_tishi').html("(不正确，请输入正确的手机号码)");
+            alert(obj.val());
             return false;
             }else{
                 $('#lianxi_tishi').html("");

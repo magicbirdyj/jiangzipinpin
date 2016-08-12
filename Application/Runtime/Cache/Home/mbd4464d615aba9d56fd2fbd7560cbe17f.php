@@ -41,7 +41,7 @@
 
 <div  id="logo_header">
 <div class="logo"><!--logo-->
-    <a href="<?php echo U('Index/index');?>" class="logol">唯果果</a>
+    <a href="<?php echo U('Index/index');?>" class="logol"><img src="/Public/Home/Mobile/Images/public/jzpp_logo.jpg" /></a>
 <div class="search">
     <form name="searchform" action="<?php echo U('Index/search');?>" method="get" id="searchform">
         <div class="search_div">

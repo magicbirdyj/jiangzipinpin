@@ -38,7 +38,7 @@
 </head>
 
 <body>
-    <?php if($is_ztcg != 'ztcg'): ?><div class='button_a_lvse fixed_bottom'>还差 <?php echo ($goods['tuan_number']-$goods['count']); ?>人拼团成功</div>
+    <?php if($is_ztcg != 'ztcg'): ?><a href="javascript:void(0)" class='button_a_lvse fixed_bottom'>还差 <?php echo ($goods['tuan_number']-$goods['count']); ?>人拼团成功</a>
         <link rel="stylesheet" type="text/css" href="/Public/Home/Mobile/Css/zhishifenxiang.css">
 
 
@@ -80,7 +80,7 @@
 <div class="tuan_zhanshi">
     <div class="tuan_all_and_muqian">
     <div class="tuan_all">
-        <?php $__FOR_START_7029__=0;$__FOR_END_7029__=$goods['tuan_number'];for($i=$__FOR_START_7029__;$i < $__FOR_END_7029__;$i+=1){ ?><span class="iconfont tb_tuan">&#xe623;</span><?php } ?>
+        <?php $__FOR_START_28298__=0;$__FOR_END_28298__=$goods['tuan_number'];for($i=$__FOR_START_28298__;$i < $__FOR_END_28298__;$i+=1){ ?><span class="iconfont tb_tuan">&#xe623;</span><?php } ?>
     </div>
     <div class="tuan_muqian">
         <span class="head_span"> <img src="<?php echo ($goods['tuanzhang_head_url']); ?>" class='head_img' /></span>

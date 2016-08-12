@@ -37,12 +37,12 @@
 
 
 <body>
-    <div class="fanhui padding" style="margin-bottom: 0px;"><a href="<?php echo U($ref);?>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe601;</span></a>搜索</div>
+    <div class="fanhui padding" style="margin-bottom: 0px;"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>搜索</div>
     <div class="search">
     <form name="searchform" action="<?php echo U('Index/search');?>" method="post" id="searchform">
         <div class="search_div">
-            <span class="iconfont tb_search">&#xe605;</span>
-            <input class="inputsr" type="text" name="sp" value="<?php echo ($get['sp']); ?>" placeholder="西式 策划" maxlength="100" data-role="none"  />
+            <span class="iconfont tb_search">&#xe60d;</span>
+            <input class="inputsr" type="text" name="sp" value="<?php echo ($get['sp']); ?>" placeholder="猫山王 榴莲" maxlength="100" data-role="none"  />
         </div>
         <input class="submitsr" type="submit" id='sr' value="搜索" data-role="none"  />
     </form>
@@ -66,7 +66,7 @@
   <div class="footer">
       <div class="ui-footer">
                   <a href="<?php echo U('Index/index');?>"><span class=" iconfont foot_home foot_tb">&#xe60f;</span><span>首页</span></a>
-                  <a href="<?php echo U('Member/hunlirenshangjiaxinxi');?>"><span class=" iconfont foot_shoucang foot_tb">&#xe620;</span><span>我的收藏</span></a>
+                  <a href="<?php echo U('Member/sellection');?>"><span class=" iconfont foot_shoucang foot_tb">&#xe620;</span><span>我的收藏</span></a>
                   <a href="<?php echo U('Member/cart');?>"><span class="iconfont foot_pintuan foot_tb">&#xe622;</span><span>我的拼团</span></a>
                   <a href="<?php echo U('Member/index');?>"><span class=" iconfont foot_wode foot_tb">&#xe60a;</span><span>我的果果</span></a>
           </div>
@@ -107,11 +107,7 @@
         });
     });
     
-    
-
 </script>
-
-
 
 </body>
 </html>

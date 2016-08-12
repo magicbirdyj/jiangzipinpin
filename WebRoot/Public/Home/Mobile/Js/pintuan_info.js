@@ -1,19 +1,11 @@
 
 
-//点击#xuanze隐藏#shop 显示#div_xuanze
-$('#xuanze').bind('click',function(){
-    $('#div_xuanze').css('display','block');
-    window.scrollTo(0,0);
-    $('#div_xuanze').animate({'left':'0%'},'normal',function(){
-        $('#shop').css('display','none');
-    });
-  
-});
+
 //点击#xuanze_fanhui返回商品页面
 $('#xuanze_fanhui').bind('click',function(){
-    $('#shop').css('display','block');
-    $('#div_xuanze').animate({'left':'100%'},'normal',function(){
+    $('#div_xuanze').animate({'bottom':'-500px'},'normal',function(){
         $('#div_xuanze').css('display','none');
+        hideOverlay('div_xuanze');
     });
 
 });
@@ -44,16 +36,16 @@ $('.zx_shuxing_ul>li').bind('click',function(){
 
 
 
-$('#wyct').bind('click',function(event){
+$('.wyct').bind('click',function(event){
     var zx_length=$('.zx_shuxing_ul').length;
     var yixuan_length=$('.zx_shuxing_ul>.yixuan').length;
     if(zx_length!==yixuan_length){
         $('#div_xuanze').css('display','block');
-        window.scrollTo(0,0);
-        $('#div_xuanze').animate({'left':'0%'},'normal',function(){
-            $('#shop').css('display','none');
-        });
+        showOverlay('div_xuanze');
+        $('#div_xuanze').animate({'bottom':'0px'},'normal');
+        return false;
     }else{
         $('form[name=cantuan_buy]').submit();
+        return true;
     }
 });

@@ -46,7 +46,7 @@
                 <div class="td_r">
                     <div class="info_name shenglue"><?php echo ($order['goods_name']); ?></div>
                     <div class="info_name shenglue">商家：<?php echo ($order['shop_name']); ?></div>
-                    <div class="info_name shenglue"><span>价格：&yen;<?php echo ($order['price']); ?></span></div>
+                    <div class="info_name shenglue"><span>价格：&yen;<?php echo ($order['price']); ?> × <?php echo ($order['buy_number']); ?></span></div>
                     <div class='info_name'><span>应付：&yen;<?php echo ($order['dues']); ?></span></div>
                 
                 </div>

@@ -14,6 +14,7 @@ class OrderController extends FontEndController {
          $status_count['daifahuo']=$ordermodel->where("user_id={$user_id} and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0")->count();//获取待发货条数
          $status_count['daishouhuo']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=3 and deleted=0")->count();//获取待收货条数
          $status_count['daipingjia']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=4 and deleted=0")->count();//获取待评价条数
+         $status_count['shouhou']=$ordermodel->where("user_id={$user_id} and pay_status>1 and deleted=0")->count();//获取售后条数
          $this->assign(status_count,$status_count);
          $time=  time();
          $this->assign('time',$time);
@@ -91,6 +92,15 @@ class OrderController extends FontEndController {
              $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.pay_status=1 and t1.status=4 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number')->limit($page->firstRow.','.$page->listRows)->select();
              $this->assign('list',$list);
              $this->assign('page_foot',$page_foot);
+         }else if($status==='shouhou'){
+             $selected['shouhou']="selected='selected'";//选中下拉菜单的售后
+             $this->assign(selected,$selected);
+             $count=$ordermodel->where("user_id={$user_id} and pay_status>1 and deleted=0")->count();
+             $page=$this->get_page($count, 10);
+             $page_foot=$page->show();//显示页脚信息
+             $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.pay_status>1 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number')->limit($page->firstRow.','.$page->listRows)->select();
+             $this->assign('list',$list);
+             $this->assign('page_foot',$page_foot);
          }
          
          
@@ -110,6 +120,30 @@ class OrderController extends FontEndController {
                 $this->ajaxReturn($result);
                 exit();
             }
+            $result = $ordermodel->where("order_id=$order_id")->save($row);
+            $this->ajaxReturn($result);
+        }
+    }
+    public function quxiao_shouhou(){
+        if((!empty($_POST['order_id']))&&$_POST['check']==='quxiao_shouhou'){
+            $order_id=$_POST['order_id'];
+            $ordermodel=D('Order');
+            $pay_status=$ordermodel->where("order_id=$order_id")->getField('pay_status');//查看订单付款状态 如果未付款 退出
+            $order_user_id=$ordermodel->where("order_id=$order_id")->getField('user_id');//登录用户无该订单权限
+            if(($order_user_id!=$_SESSION['huiyuan']['user_id'])||$pay_status==0){
+                $result=false;
+                $this->ajaxReturn($result);
+                exit();
+            }
+            $row=array(
+                'pay_status' => 1,
+                'shouhou_cause'=>'',
+                'shouhou_miaoshu'=>'',
+                'shouhou_img'=>'',
+                'shouhou_iphone'=>'',
+                'updated'=>time()
+            );
+            
             $result = $ordermodel->where("order_id=$order_id")->save($row);
             $this->ajaxReturn($result);
         }
@@ -357,8 +391,11 @@ class OrderController extends FontEndController {
         $user_id=$_SESSION['huiyuan']['user_id'];
         $this->assign('user_id',$user_id);
         $order_id=$_GET['order_id'];
+        if(!$order_id){
+            $this->error('订单号为空！');
+        }
         $ordermodel=D('Order');
-        $order=$ordermodel->table('m_order t1,m_goods t2')->where("t1.order_id={$order_id}  and t1.goods_id=t2.goods_id")->field('t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.created,t1.updated,t1.deleted,t2.goods_img,t1.price,t1.dues')->find();
+        $order=$ordermodel->table('m_order t1,m_goods t2')->where("t1.order_id={$order_id}  and t1.goods_id=t2.goods_id")->field('t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.deleted,t2.goods_img,t1.price,t1.dues')->find();
         $maijia_id=$order['user_id'];
         if(empty($maijia_id)){
             $this->error('该订单不存在','/Home/Order/index');
@@ -376,31 +413,75 @@ class OrderController extends FontEndController {
             $this->error('该订单不存在','/Home/Order/index');
         }
     }
-    
     public function shouhou_check() {
+        $ordermodel=D('Order');
+        // 手动进行令牌验证 
+        if (!$ordermodel->autoCheckToken($_POST)){ 
+            $this->error('不能重复提交订单',U('Order/index'));
+        }
         $order_id=$_POST['order_id'];
         if(empty($order_id)){
             $this->error('订单号不存在');
         }
-        $ordermodel=D('Order');
+        
         $order=$ordermodel->where("order_id=$order_id")->field("user_id,shop_name,goods_id,dues")->find();
         $order_user=$order['user_id'];
         $user_id=$_SESSION['huiyuan']['user_id'];
         if($order_user!==$user_id){
             $this->error('您没有该订单');
         }
-        $usersmodel=D('Users');
+        //描述超过170个字，返回
+        if(strlen($_POST['miaoshu'])>170){
+            $this->error('您的问题描述超出170个字！');
+        }
+        //验证手机号是否符合规范
+        if(!is_shoujihao($_POST['shouhou_iphone'])){
+            $this->error('您的联系手机不符合规范！');
+        }
+        $arr_img=  explode('+img+',$_POST['goods_img']);
+        foreach ($arr_img as &$value) {
+            $value='/'.$value;
+        }
+        $shouhou_img=  serialize($arr_img);
         $order_row=array(
-            'pay_status'=>3,
-            'tuikuang_cause'=>$_POST['cause']
+            'shouhou_img'=>$shouhou_img,
+            'shouhou_cause'=>$_POST['shouhou_cause'],
+            'shouhou_miaoshu'=>$_POST['miaoshu'],
+            'shouhou_iphone'=>$_POST['shouhou_iphone'],
+            'updated'=>  time()
         );
-                $ordermodel->where("order_id=$order_id")->save($order_row);
-                $usersmodel->where("user_id=$order_user")->setInc( 'credit_line',$order['dues']);
-                $this->ajaxReturn('success');
-           
-                
-            
+        if($_POST['shouhou_leixing']==='申请换货'){
+            $order_row['pay_status']=3;
+        }elseif($_POST['shouhou_leixing']==='申请退货'){
+            $order_row['pay_status']=2;
+        }
+        $result=$ordermodel->where("order_id=$order_id")->save($order_row);
+        if($result){
+            $this->redirect('Order/shouhou_status',array('order_id'=>$order_id),0);
+        }else{
+            $this->error('提交售后失败！');
+        }
+    }
+    public function shouhou_status() {
+        $order_id=$_GET['order_id'];
+        if(empty($order_id)){
+            $this->error('订单号不存在');
+        }
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id=$order_id")->field('order_id,user_id,pay_status,shouhou_cause,shouhou_miaoshu,shouhou_img,shouhou_iphone,goods_id,dues,updated')->find();
+        if($order['pay_status']<2){
+            $this->error('该订单没有申请售后！');
+        }
+        $order_user=$order['user_id'];
+        $user_id=$_SESSION['huiyuan']['user_id'];
+        if($order_user!==$user_id){
+            $this->error('您没有该订单');
+        }
         
+        $this->assign('order',$order);
+        $arr_img= unserialize($order['shouhou_img']);
+        $this->assign('arr_img',$arr_img);
+        $this->display();
     }
     
     

@@ -5,9 +5,12 @@
 .view_h2{
     font-size: 18px;
 }
-
+.tuikuang_div{
+    margin-bottom: 20px;
+}
 .select_div{
     padding:0px 10px;
+    box-sizing: border-box;
 }
 .tuikuang_div .d2_title{
     background-color: #FFF;

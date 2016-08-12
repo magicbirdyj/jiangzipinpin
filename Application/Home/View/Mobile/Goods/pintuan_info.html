@@ -7,7 +7,7 @@
 
 <body>
     <if condition="$goods['tuan_number'] neq $goods['count']">
-    <a class='button_a_lvse fixed_bottom' href='javascript:void()' id='wyct'>我也要参团</a> 
+    <a class='button_a_lvse fixed_bottom wyct' href='javascript:void()' id='wyct'>我也要参团</a> 
     <form name="cantuan_buy" action="<{:U('Goods/cantuan_buy')}>" method="get">
         <input name="tuan_no" type="hidden" value="<{$tuan_no}>" />
         <if condition="$zx_shuxing neq false">
@@ -17,7 +17,7 @@
     <else />
     <a class='button_a_lvse fixed_bottom' href="javascript:history.back()">该团已满，请参加其它组团</a> 
     </if>
-<div style="width:100%;background-color: #f0efed;" id="shop">
+<div style="width:100%;background-color: #f0efed;margin-bottom: 105px;" id="shop">
 <div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a><{$title}></div>
 <table class="buy_table" cellspacing="0">
 <tr class="buy_table_head">
@@ -68,8 +68,9 @@
 </div>
 
 <if condition="$zx_shuxing neq null">
-<div id="div_xuanze" style="min-height: 750px;">
-        <div class="fanhui padding"><span class="iconfont tb_fanhui" id="xuanze_fanhui">&#xe603;</span>选择属性</div>
+    <div id="overlay"></div><!--遮罩层div-->
+<div id="div_xuanze">
+        <div class="fanhui padding"><span class="iconfont tb_fanhui" id="xuanze_fanhui">&#xe62d;</span>选择属性</div>
         <div class="order_row">
                 <div class='td_l'>
                     <div class="picture"><img src="<{$goods['goods_img']}>"></div>
@@ -89,6 +90,7 @@
             </ul>
         </div>
         </volist>
+        <a class='button_a_lvse wyct' href='javascript:void()'  style="margin-top: 20px;">确定参团</a> 
     </div>
 </if>
 

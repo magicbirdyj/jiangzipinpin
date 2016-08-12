@@ -5,12 +5,12 @@
 
 
 <body>
-    <div class="fanhui padding" style="margin-bottom: 0px;"><a href="<{:U($ref)}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe601;</span></a>搜索</div>
+    <div class="fanhui padding" style="margin-bottom: 0px;"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>搜索</div>
     <div class="search">
     <form name="searchform" action="<{:U('Index/search')}>" method="post" id="searchform">
         <div class="search_div">
-            <span class="iconfont tb_search">&#xe605;</span>
-            <input class="inputsr" type="text" name="sp" value="<{$get['sp']}>" placeholder="西式 策划" maxlength="100" data-role="none"  />
+            <span class="iconfont tb_search">&#xe60d;</span>
+            <input class="inputsr" type="text" name="sp" value="<{$get['sp']}>" placeholder="猫山王 榴莲" maxlength="100" data-role="none"  />
         </div>
         <input class="submitsr" type="submit" id='sr' value="搜索" data-role="none"  />
     </form>

@@ -93,6 +93,15 @@
                     <div><span>待评价</span></div>
                     </a>
                 </li>
+                <li>
+                    <a href="<?php echo U('Order/index?status=shouhou');?>">
+                    <div class='dingdan_fenkai_tb_div'>
+                        <span class="iconfont tb_dingdan_li">&#xe62b;</span>
+                        <span style='margin-left: 2px;' class="right_up_tb"><?php echo ($status_count['shouhou']); ?></span>
+                    </div>
+                    <div><span>售后退款</span></div>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
