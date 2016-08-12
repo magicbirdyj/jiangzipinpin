@@ -3,7 +3,6 @@ namespace Home\Controller;
 use Home\Controller;
 class MemberController extends FontEndController {
     public function index(){
-        $this->assign("title","我的果果拼拼");
         $user_id=$_SESSION['huiyuan']['user_id'];//获取会员id号
         $usersmodel=D('Users');
         if(!empty($user_id)||$user_id===0){

@@ -5,7 +5,6 @@ class OrderController extends FontEndController {
     public function index(){
          $status=$_GET['status'];
          $this->assign('canshu',$_GET['status']);
-         $this->assign('title','我的订单');
          $ordermodel=D('Order');
          $user_id=$_SESSION['huiyuan']['user_id'];
          $status_count['all']=$ordermodel->where("user_id={$user_id} and deleted=0")->count();//获取全部订单条数
