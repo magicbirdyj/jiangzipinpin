@@ -115,7 +115,7 @@ class GoodsController extends FontEndController {
         $arr_zx_shuxing=  unserialize($goods['goods_shuxing']);
         $this->assign('zx_shuxing',$arr_zx_shuxing);
 
-        $this->assign("title", "果果拼拼—". $goods['goods_name']); //给标题赋值
+        $this->assign("title", "酱紫拼拼—". $goods['goods_name']); //给标题赋值
          C('TOKEN_ON',false);//取消表单令牌
         $this->display('index');
     }
@@ -645,7 +645,7 @@ class GoodsController extends FontEndController {
             $usersmodel=D('Users');
             $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
             $paydata=array(
-                'body'=>sprintf("果果拼拼：商铺名：%s 商品名：%s", $order['shop_name'], $order['goods_name']),
+                'body'=>sprintf("酱紫拼拼：商铺名：%s 商品名：%s", $order['shop_name'], $order['goods_name']),
                 'total_fee'=>$order['dues'],
                 'notify'=>PAY_HOST . U("Goods/notifyweixin"),
                 'shop_name'=>$order['shop_name'],
@@ -840,9 +840,16 @@ class GoodsController extends FontEndController {
                //给未被抽中的其它团员发送退款消息，并告知谁被抽中 并告知可以开团获取购买资格
                //给被抽中的团员发送信息
                //给团长发送信息
+               
+               $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',2);//商品的购买次数加2
            }
            //给成团的团长和团员发送消息，成团成功，等待发货
            
+           //每个团员购买数量 都需要给商品的购买次数增加
+           $arr_buy_number=$ordermodel->where("tuan_no=$tuan_no and pay_status=1")->getField('buy_number',true);
+           foreach ($arr_buy_number as $value) {
+               $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$value);//商品的购买次数加
+           }
         }
         
         $tuanzhang_id=$ordermodel->where("tuan_no=$tuan_no and identity=1")->getField('user_id');

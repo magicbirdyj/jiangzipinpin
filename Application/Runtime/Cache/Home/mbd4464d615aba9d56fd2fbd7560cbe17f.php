@@ -32,6 +32,7 @@
  
 <link rel="stylesheet" type="text/css" href="/Public/Home/Mobile/Css/lunbo.css">
 <link rel="stylesheet" type="text/css" href="/Public/Home/Mobile/Css/index.css">
+<link rel="stylesheet" type="text/css" href="/Public/Home/Mobile/Css/shop_1.css">
 </head>
 <body>
 
@@ -103,7 +104,7 @@
                             <del style="margin-left: 5px;">单买价：<?php echo ($vo['price']); ?>元</del>
                         </div>
                         <div class="goods_infor_right">
-                            <span>已售：<?php echo ($vo['buy_number']); ?></span>
+                            <span>已团：<?php echo ($vo['buy_number']); ?></span>
                         </div>
                     </div>
                     </div>
@@ -133,7 +134,7 @@
                   <a href="<?php echo U('Index/index');?>"><span class=" iconfont foot_home foot_tb">&#xe60f;</span><span>首页</span></a>
                   <a href="<?php echo U('Member/sellection');?>"><span class=" iconfont foot_shoucang foot_tb">&#xe620;</span><span>我的收藏</span></a>
                   <a href="<?php echo U('Member/cart');?>"><span class="iconfont foot_pintuan foot_tb">&#xe622;</span><span>我的拼团</span></a>
-                  <a href="<?php echo U('Member/index');?>"><span class=" iconfont foot_wode foot_tb">&#xe60a;</span><span>我的果果</span></a>
+                  <a href="<?php echo U('Member/index');?>"><span class=" iconfont foot_wode foot_tb">&#xe60a;</span><span>我的酱紫</span></a>
           </div>
   </div> 
 

@@ -61,7 +61,7 @@
 <div class="tuan_zhanshi">
     <div class="tuan_all_and_muqian">
     <div class="tuan_all">
-        <?php $__FOR_START_10237__=0;$__FOR_END_10237__=$goods['tuan_number'];for($i=$__FOR_START_10237__;$i < $__FOR_END_10237__;$i+=1){ ?><span class="iconfont tb_tuan">&#xe623;</span><?php } ?>
+        <?php $__FOR_START_23567__=0;$__FOR_END_23567__=$goods['tuan_number'];for($i=$__FOR_START_23567__;$i < $__FOR_END_23567__;$i+=1){ ?><span class="iconfont tb_tuan">&#xe623;</span><?php } ?>
     </div>
     <div class="tuan_muqian">
         <span class="head_span"> <img src="<?php echo ($goods['tuanzhang_head_url']); ?>" class='head_img' /></span>
@@ -127,7 +127,7 @@
                   <a href="<?php echo U('Index/index');?>"><span class=" iconfont foot_home foot_tb">&#xe60f;</span><span>首页</span></a>
                   <a href="<?php echo U('Member/sellection');?>"><span class=" iconfont foot_shoucang foot_tb">&#xe620;</span><span>我的收藏</span></a>
                   <a href="<?php echo U('Member/cart');?>"><span class="iconfont foot_pintuan foot_tb">&#xe622;</span><span>我的拼团</span></a>
-                  <a href="<?php echo U('Member/index');?>"><span class=" iconfont foot_wode foot_tb">&#xe60a;</span><span>我的果果</span></a>
+                  <a href="<?php echo U('Member/index');?>"><span class=" iconfont foot_wode foot_tb">&#xe60a;</span><span>我的酱紫</span></a>
           </div>
   </div> 
 

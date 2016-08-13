@@ -2,6 +2,7 @@
 /* -moz :火狐私有属性；-weblit :chrome、safari私有属性* -ms IE私有属性*/
 .ui-content .ui-grid-c{
     overflow: hidden;
+    margin-bottom: 10px;
 }
 .ui-content .ui-grid-c div
 {
@@ -63,40 +64,3 @@ overflow: hidden;
 
 
 
-
-.shopping{
-    width: 100%;
-    margin-top: 10px;
-}
-.goods_a .goods_img{
-    width: 100%;
-}
-.goods_a .goods_infor{
-    padding: 5px 10px;
-}
-.goods_infor .goods_title{
-   padding: 8px 0px;
-}
-
-.goods_infor .goods_bottom{
-    padding: 8px 0px;
-    position: relative;
-}
-.goods_bottom .goods_infor_left{
-    font-size: 14px;
-    float: left;
-    height: 28px;
-    line-height: 28px;
-}
-.goods_infor_left .price{
-    font-size: 24px;
-    margin-left: 5px;
-}
-.goods_bottom .goods_infor_right{
-    float: right;
-    height: 28px;
-    font-size: 14px;
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-}

@@ -27,10 +27,28 @@ background-color: #F0F0F0;
     border-bottom: 1px solid #c6c0b3;
     border-left: 1px solid #c6c0b3;
 }
+.fenlei_menu>ul>#shaixuan_li{
+    padding: 0px;
+    height: 48px;
+    line-height: 48px;
+}
+.fenlei_menu>ul>#shaixuan_li>#shaixuan{
+    height: 46px;
+    line-height: 46px;
+    display: inline-block;
+}
 .fenlei_menu .tb_jiantou_xia{
     font-size: 12px;
     margin-left: 5px;
     color: #999;
+}
+.fenlei_menu .tb_xianshi{
+    font-size: 22px;
+    margin-left: 5px;
+    color: #999;
+    height: 46px;
+    line-height: 46px;
+    display: inline-block;
 }
 .fenlei_menu{
     position: relative;
@@ -55,12 +73,15 @@ background-color: #F0F0F0;
     color: #999;
 }
 .fenlei_select>ul>li>a{
+    box-sizing: border-box;
     color: #999;
     width: 100%;
     display: block;
     padding: 15px 20px;
 }
-
+.fenlei_select .count{
+    float: right;
+}
 #overlay {
     background: #000;
     filter: alpha(opacity=30);
@@ -175,75 +196,3 @@ margin-right:4px;
 
 
 
-/*格子显示
-.shopping{
-box-sizing: border-box;
-width:47%;
-border-left:1px solid #EEE;
-border-right:1px solid #EEE;
-border-bottom: 2px solid #EEE;
-border-top: 2px solid #EEE;
-float:left;
-font-size: 0.75em;
-margin-left: 2%;
-margin-top: 10px;
-}
-
-.shopping_img{
-    width:100%; 
-    height: 0px;
-    padding-bottom: 66.6666667%;
-}
-.shopping_img img{
-width:100%;
-float: left;
-}
-
-.shopping_title{
-padding:8px 4% 0% 4%;
-color:#000000;
-text-overflow:ellipsis;*//*超出部分省略号*//*
-white-space: nowrap;/*强制文本一行输出*//*
-}
-
-
-
-
-.shopping_pricepj{
-margin:8px 4% 0% 4%;
-border-bottom: 1px solid #DDD;
-}
-.shopping_price{
-font-size:1.333333em;
-color: #F76120;
-float:left;
-width:100%;
-overflow: hidden;
-text-overflow:ellipsis;/*超出部分省略号*//*
-white-space: nowrap;/*强制文本一行输出*//*
-}
-.shopping_price .yuan_price{
-    font-size: 0.75em;
-    color: #999;
-    padding-left: 5%;
-}
-.yuan_price del{
-    margin-left: 1%;
-}
-.pingjia_div{
-    box-sizing: border-box;
-    width:92%;
-    margin:3px 4% 0% 4%;
-}
-
-.shopping_sale{
-    float: left;
-    color: #999;
-}
-
-
-.shopping_pjrenshu{
-padding-left:5%;
-color:#999;
-float:right;
-}*/

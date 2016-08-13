@@ -8,7 +8,7 @@ $('#didian_li').bind('click',function(){
 $('#paixu_li').bind('click',function(){
     menu_click('paixu');
 });
-$('#shaixuan_li').bind('click',function(){
+$('#shaixuan').bind('click',function(){
     menu_click('shaixuan');
 });
 

@@ -13,18 +13,15 @@ class CategoryController extends FontEndController {
         if(isset($_GET['cid'])){
             //获取所有分类
             $categorymodel=D('category');
-            $cat_allname=$categorymodel->field('cat_id,cat_name')->select();
-            $this->assign('cat_allname',$cat_allname);
+            $cat_all=$categorymodel->field('cat_id,cat_name')->select();
+            $this->assign('cat_all',$cat_all);
             
             $cat_id=$_GET['cid'];
             $cat_name=$categorymodel->where("cat_id=$cat_id")->getField("cat_name");
             $this->assign('cat_name',$cat_name);
-            $this->assign("title","果果拼拼 ".$cat_name);
+            $this->assign("title","酱紫拼拼 ".$cat_name);
             $url['full']=$_SERVER['REQUEST_URI'];
-            //$url['full_teshu']=substr($url['full'],0,strpos($url['full'],'?')===FALSE?strlen($url['full']):strpos($url['full'],'?'));
-            //$url['houmian']=strstr($url['full'],'?');
             $url['url']=str_replace('.html', '',$url['full']);
-            //$url['teshu']=str_replace('.html', '',$url['full_teshu']);
             $this->assign("url",$url);
             $get=$_GET;
             $this->assign('get',$get);//get赋值给模板
@@ -94,31 +91,55 @@ class CategoryController extends FontEndController {
            
             
             $count=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->count();
-            //手机端
-            $page_iphone=$this->get_page_iphone($count, 12);
-            $page_foot_iphone=$page_iphone->show();//显示页脚信息
+
             
             //排序
             $order=$_GET['order'];
             if(empty($order)){ 
-                $list_iphone=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->limit($page_iphone->firstRow.','.$page_iphone->listRows)->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('daijinquan desc,buy_number desc,score desc,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('daijinquan desc,buy_number desc,score desc,last_update desc')->select();
             }elseif($order==='number_desc'){
-                $list_iphone=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->limit($page_iphone->firstRow.','.$page_iphone->listRows)->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('buy_number desc,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('buy_number desc,last_update desc')->select();
             }elseif($order==='price_desc'){
-                $list_iphone=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' is_delete=0")->limit($page_iphone->firstRow.','.$page_iphone->listRows)->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('tuan_price desc,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('tuan_price desc,last_update desc')->select();
             }elseif($order==='pinglun_desc'){
-                $list_iphone=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->limit($page_iphone->firstRow.','.$page_iphone->listRows)->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('score desc,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('score desc,last_update desc')->select();
             }elseif($order==='update_desc'){
-                $list_iphone=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->limit($pag_iphonee->firstRow.','.$page_iphone->listRows)->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('last_update desc')->select();
             }elseif($order==='price_asc'){
-                $list_iphone=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->limit($page_iphone->firstRow.','.$page_iphone->listRows)->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('tuan_price,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('tuan_price,last_update desc')->select();
             }
             
             //手机端
-            $this->get_thumb($list_iphone);
-            $this->assign('list_iphone',$list_iphone);
-            $this->assign('page_foot_iphone',$page_foot_iphone);
+            $this->get_thumb($list);
+            $this->assign('list',$list);
             
+          
+       //按团人数分的商品数量统计,应该去除$tiaojian里面的团购人数
+        $tiaojian_count=$tiaojian;
+        unset($tiaojian_count['tuan_number']);
+        $arr_tuan_number=array('2','5','10');
+        foreach ($arr_tuan_number as $value) {
+            $tuan_number_where['tuan_number']=array('EQ',$value);
+            $arr_count[$value]=$goodsmodel->where($tiaojian_count)->where("cat_name='$cat_name' and is_delete=0")->where($tuan_number_where)->count();
+        }
+        //按团人数分的商品数量统计
+        $arr_count['tuan_number']=$goodsmodel->where($tiaojian_count)->where("cat_name='$cat_name' and is_delete=0")->count();
+        
+        //各种分类的商品数量,不要cat_name参数
+        $tiaojian_count=$tiaojian;
+        $tiaojian_count_noshuxing=$tiaojian_count;
+        unset($tiaojian_count_noshuxing['shuxing']);
+        $cat_allname=$categorymodel->getField('cat_name',true);
+        foreach ($cat_allname as $value) {
+            $cat_name_where['cat_name']=array('EQ',$value);
+            if($cat_name==$value){
+                $arr_count[$value]=$goodsmodel->where($tiaojian_count)->where("is_delete=0")->where($cat_name_where)->count();
+            }else{
+                $arr_count[$value]=$goodsmodel->where($tiaojian_count_noshuxing)->where("is_delete=0")->where($cat_name_where)->count();
+            }
+        }
+       
+            $this->assign('arr_count',$arr_count);
             $this->display(index);
         }
     }

@@ -1,0 +1,83 @@
+/* 默认样式设置*/
+/* -moz :火狐私有属性；-weblit :chrome、safari私有属性* -ms IE私有属性*/
+
+
+.img_fengge_1{
+    display: none;
+}
+
+
+.shopping{
+    width: 50%;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    float: left;
+    border-right: 3px solid #f0f0f0;
+    font-size: 14px;
+}
+
+.goods_a .goods_img{
+    width: 100%;
+}
+.goods_a .goods_infor{
+    padding: 5px 10px;
+}
+.goods_infor .goods_title{
+    padding: 0px;
+}
+
+.goods_infor .goods_bottom{
+    padding-top: 4px;
+    position: relative;
+    height: 24px;
+}
+
+del{
+    display: none;
+}
+.price_red{
+    float: left;
+}
+
+.yuan{
+    display: none;
+}
+.rmb{
+    margin-top: 10px;
+    font-size: 14px;
+}
+.goods_bottom .goods_infor_left{
+    font-size: 12px;
+    float: left;
+    height: 24px;
+}
+.goods_infor_left .iconfont{
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 12px;
+    display: inline-block;
+}
+.goods_infor_left .rentuan{
+    margin-top: 10px;
+    display: inline-block;
+}
+.goods_infor_left .price{
+    font-size: 24px;
+    margin-left: 5px;
+    height: 24px;
+}
+.goods_bottom .goods_infor_right{
+    float: right;
+    height: 24px;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+.goods_infor_right .yituan{
+    display: inline-block;
+    margin-top: 10px;
+}
+.maohao{
+    display: none;
+}
