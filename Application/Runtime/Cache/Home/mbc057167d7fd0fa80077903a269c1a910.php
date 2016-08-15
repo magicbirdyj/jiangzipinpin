@@ -30,35 +30,44 @@
 
 
  
+<link rel="stylesheet" type="text/css" href="/Public/Home/Mobile/Css/public.css"/>
 <link rel="stylesheet" type="text/css" href="/Public/Home/Mobile/Css/category.css">
 <link rel="stylesheet" type="text/css" href="/Public/Home/Mobile/Css/index.css">
-<link rel="stylesheet" type="text/css" href="/Public/Home/Mobile/Css/search_m.css">
 <link rel="stylesheet" type="text/css" href="/Public/Home/Mobile/Css/shop_1.css" id='shop_1'>
+<title>一起网_搜索</title>
 </head>
 <body>
-    <div class="min_menu shareBtn" id='sousou'>
-    <span class="iconfont tb_fenxiang"id="sousou" style='font-size: 22px'>&#xe60d;</span>
-    <span class="fenxiang">搜索</span>
-    </div>
-    <div class="fanhui padding"><a href="<?php echo U('index/index');?>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>分类</div>
+    <div class="logo"><!--logo-->
+        <a href="javascript:history.back()" class="logol"><span class="iconfont tb_fanhui" id="shangjia_info_fanhui">&#xe603;</span></a>
+<div class="search">
+    <form name="searchform" action="<?php echo U('Index/search');?>" method="get" id="searchform">
+        <div class="search_div">
+            <span class="iconfont tb_search">&#xe60d;</span>
+            <input class="inputsr" type="text" name="sp" value="<?php echo ($get['sp']); ?>" placeholder="西式 策划" maxlength="100" data-role="none"  />
+        </div>
+    </form>
+</div>
+    </div><!--//logo-->
 <div class="box">
 
     <div class="fenlei_menu" id="fenlei_menu">
         <ul id='menu_ul'>
-            <li style="border-left: none;" id="fenlei_li"><?php echo ($cat_name); ?><span class="iconfont tb_jiantou_xia" >&#xe602;</span></li>
+            <li style="border-left: none;" id="fenlei_li"><?php echo ($get['cat_id']?$cat_name:'全部'); ?><span class="iconfont tb_jiantou_xia" >&#xe602;</span></li>
             <li id="didian_li">
             <?php if($get['tuan_number'] == null ): ?>全部
                 <?php else: echo ($get['tuan_number']); ?>人团<?php endif; ?>
                 <span class="iconfont tb_jiantou_xia" >&#xe602;</span>
             </li>
             <li id='paixu_li'><a1 id='paixu_li_span'>默认排序</a1><span class="iconfont tb_jiantou_xia" >&#xe602;</span></li>
-    <li id='shaixuan_li'><div id="shaixuan">筛选<span class="iconfont tb_jiantou_xia" >&#xe602;</span></div><div class="iconfont tb_xianshi" id='fengge_1'>&#xe630;</div></li>
+            <li id='shaixuan_li'><div id="shaixuan">筛选<span class="iconfont tb_jiantou_xia" >&#xe602;</span></div><div class="iconfont tb_xianshi" id='fengge_1'>&#xe630;</div></li>
         </ul>
-        
     </div>
     <div class="fenlei_select none" id="fenlei_select">
         <ul>
-            <?php if(is_array($cat_all)): $i = 0; $__LIST__ = $cat_all;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li><a href="<?php echo U('Category/index',array('cid'=>$vo['cat_id']));?>"><?php echo ($vo['cat_name']); ?><span class="count"><?php echo ($arr_count[$vo['cat_name']]); ?></span></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+            <li><a href="<?php echo str_replace('/shuxing/'.urlencode($get['shuxing']),'',(str_replace('/cat_id/'.urlencode($get['cat_id']),'',$url['full'])));?>">全部<span class="count"><?php echo ($arr_count['cat_name']); ?></span></a></li>
+            <?php if(is_array($cat_all)): $i = 0; $__LIST__ = $cat_all;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if($vo['cat_id'] == $get['cat_id']): ?><li><a href="<?php echo U(change_url_canshu($url['full'],'cat_id',$vo['cat_id']));?>"><?php echo ($vo['cat_name']); ?><span class="count"><?php echo ($arr_count[$vo['cat_name']]); ?></span></a></li>
+                <?php else: ?>
+                    <li><a href="<?php echo str_replace('/shuxing/'.$get['shuxing'],'' ,U(change_url_canshu($url['full'],'cat_id',$vo['cat_id'])));?>"><?php echo ($vo['cat_name']); ?><span class="count"><?php echo ($arr_count[$vo['cat_name']]); ?></span></a></li><?php endif; endforeach; endif; else: echo "" ;endif; ?>
         </ul>
     </div>
     <div class="fenlei_select none" id="didian_select">
@@ -71,12 +80,12 @@
     </div>
     <div class="fenlei_select none" id="paixu_select">
             <ul>
-                <li id="moren"><a href="<?php echo U('Category/index',$get_cs['order_moren']);?>">默认排序</a></li>
-                <li id="number"><a href="<?php echo U('Category/index', $get_cs['order_xiaoliang']);?>">销量最高</a></li>
-                <li id="price"><a href="<?php echo U('Category/index', $get_cs['order_price_asc']);?>">价格最低</a></li>
-                <li id="price"><a href="<?php echo U('Category/index', $get_cs['order_price_desc']);?>">价格最高</a></li>
-                <li id="pinglun"><a href="<?php echo U('Category/index', $get_cs['order_pinglun']);?>">评价最高</a></li>
-                <li id="update"><a href="<?php echo U('Category/index', $get_cs['order_update']);?>">最新发布</a></li>
+                <li id="moren"><a href="<?php echo U('Index/search',$get_cs['order_moren']);?>">默认排序</a></li>
+                <li id="number"><a href="<?php echo U('Index/search', $get_cs['order_xiaoliang']);?>">销量最高</a></li>
+                <li id="price"><a href="<?php echo U('Index/search', $get_cs['order_price_asc']);?>">价格最低</a></li>
+                <li id="price"><a href="<?php echo U('Index/search', $get_cs['order_price_desc']);?>">价格最高</a></li>
+                <li id="pinglun"><a href="<?php echo U('Index/search', $get_cs['order_pinglun']);?>">评价最高</a></li>
+                <li id="update"><a href="<?php echo U('Index/search', $get_cs['order_update']);?>">最新发布</a></li>
             </ul>
     </div>
     <div class="fenlei_select none" id="shaixuan_select">
@@ -84,7 +93,7 @@
                 <span>代金券</span>
                 <span class="icon_check"></span>
             </div>
-           
+
             <?php if(is_array($arr_shuxing0)): $i = 0; $__LIST__ = $arr_shuxing0;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$first): $mod = ($i % 2 );++$i;?><div>
                 <span class="name"><?php echo ($key); ?></span><span>：</span>
                 <ul class="xuanxiang">
@@ -106,6 +115,7 @@
 
     
     
+
     <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="shopping">
                 <a  href="<?php echo U('Goods/index',array('goods_id'=>$vo['goods_id']));?>" class="goods_a">
                     <img src="<?php echo ($vo['goods_img_qita_0']); ?>" class="goods_img img_fengge_1"/>
@@ -128,12 +138,14 @@
                 </a>
             </div><!--商品1--><?php endforeach; endif; else: echo "" ;endif; ?>
     
+    <div style="clear: both;height: 15px;background-color: #f0efed;"></div>
 <div class="page_foot"><?php echo ($page_foot_iphone); ?></div>
 
 
 </div><!--主内容盒子-->
 
 <div id="overlay"></div><!--遮罩层div-->
+
 
 
 <script> 
@@ -145,11 +157,12 @@
 <script src="/Public/Home/Mobile/Js/shop.js" type="text/javascript"></script>
 
 
+
 <script  type="text/javascript">
-  
     var url=decodeURI("<?php echo ($url['url']); ?>");
 //选中的分类 背景更暗
-$('#fenlei_select a:contains("<?php echo ($cat_name); ?>")').parent().css('background-color','#f6f4f0');
+var fenlei="<?php echo ($cat_name?$cat_name:'全部'); ?>";
+$('#fenlei_select a:contains('+fenlei+')').parent().css('background-color','#f6f4f0');
 var location_1="<?php echo ($get['tuan_number']?$get['tuan_number']:'全部'); ?>";
 $('#didian_select a:contains('+location_1+')').parent().css('background-color','#f6f4f0');
 //选中的排序 背景更暗
@@ -180,12 +193,32 @@ $('#didian_select a:contains('+location_1+')').parent().css('background-color','
 //根据url 把筛选匹配
 //匹配打勾的选项
 var daijinquan="<?php echo ($get['daijinquan']); ?>";
-
+var fanxian="<?php echo ($get['fanxian']); ?>";
 if(daijinquan==='1'){
     $('#daijinquan').children('.icon_check').css('background-position','-435px -151px');
 }
+if(fanxian==='1'){
+    $('#fanxian').children('.icon_check').css('background-position','-435px -151px');
+}
+//匹配性别和形式
 
-
+var sex="<?php echo ($get['sex']); ?>";
+var form="<?php echo ($get['form']); ?>";
+if(sex==='0'){
+    $('#shaixuan_sex>ul>li:contains("男")').css('background-color','#06c1ae');
+    $('#shaixuan_sex>ul>li:contains("男")').css('color','#FFF');
+    
+}else if(sex==='1'){
+    $('#shaixuan_sex>ul>li:contains("女")').css('background-color','#06c1ae');
+    $('#shaixuan_sex>ul>li:contains("女")').css('color','#FFF');
+}
+if(form==='0'){
+    $('#shaixuan_form>ul>li:contains("个人")').css('background-color','#06c1ae');
+    $('#shaixuan_form>ul>li:contains("个人")').css('color','#FFF');
+}else if(form==='1'){
+    $('#shaixuan_form>ul>li:contains("团队")').css('background-color','#06c1ae');
+    $('#shaixuan_form>ul>li:contains("团队")').css('color','#FFF');
+}
 //匹配属性
 <?php if(is_array($shuxing)): $i = 0; $__LIST__ = $shuxing;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>var shuxing_name="<?php echo ($vo); ?>";
     var arr_shuxing_name=shuxing_name.split('-');
@@ -204,6 +237,7 @@ $('#daijinquan').bind('click',function(){
     dagou($(this),'daijinquan');
 });
 
+
  
 
 //
@@ -218,8 +252,11 @@ $('.xuanxiang>li').bind('click',function(){
 
 $('#chongzhi').bind('click',function(){
     url=clear_url_canshu(url,'daijinquan');
+    url=clear_url_canshu(url,'fanxian');
+    url=clear_url_canshu(url,'sex');
+    url=clear_url_canshu(url,'form');
     url=clear_url_canshu(url,'shuxing');
-    $('#daijinquan').children('.icon_check').css('background-position','-435px -128px');
+    $('#daijinquan,#fanxian').children('.icon_check').css('background-position','-435px -128px');
     $('.xuanxiang_r>li').css('background-color','#f2f2f2');
     $('.xuanxiang_r>li').css('color','#999');
     $('.xuanxiang>li').css('background-color','#f2f2f2');
@@ -233,7 +270,19 @@ $('#queding').bind('click',function(){
 
 
 
-
+function xuanzhong_qita(obj,canshu,value){
+    if(rgb2hex(obj.css('background-color'))==='#f2f2f2'){
+        url=change_url_canshu(url,canshu,value);
+        obj.siblings().css('background-color','#f2f2f2');
+        obj.siblings().css('color','#999');
+        obj.css('background-color','#06c1ae');
+        obj.css('color','#FFF');
+    }else{
+        url=clear_url_canshu(url,canshu);
+        obj.css('background-color','#f2f2f2');
+        obj.css('color','#999');
+    }
+}
 function xuanzhong_shuxing(obj){
     var name=obj.parent('.xuanxiang').prev().prev().text();
     var value=obj.text();
@@ -265,14 +314,14 @@ return ("0" + parseInt(x).toString(16)).slice(-2);
 }
 return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 }
+</script>
 
 
-
-
-//搜索按钮
-$('#sousou').bind('click',function(){
-    window.location.href="<?php echo U('Index/search_m');?>"; 
-});
+<script  type="text/javascript">
+    $('.inputsr').bind('click',function(){
+        window.location.href="<?php echo U('Index/search_m');?>"; 
+    });
+    
 </script>
   <div class="footer">
       <div class="ui-footer">

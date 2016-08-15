@@ -22,9 +22,9 @@
 <script src="/Public/Common/Js/function.js"></script>
 	<script type="text/javascript">
 		if(device.mobile()){
-			window.location.host  = "m.17each.com";
+			window.location.host  = "m.jiangzipinpin.com";
 		}else if(device.ipad()){
-			window.location.host  = "m.17each.com";
+			window.location.host  = "m.jiangzipinpin.com";
 		}
 	</script>
 <title><?php echo ($title); ?></title>

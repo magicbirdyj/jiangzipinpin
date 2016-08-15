@@ -1,0 +1,121 @@
+[ 2016-08-15T02:12:52+08:00 ] 121.42.0.15 /extensions/kindeditor/themes/default/default.png)
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000222s ]
+NOTIC: [2] preg_replace(): Compilation failed: unmatched parentheses at offset 5 /alidata/www/jiangzipinpin/ThinkPHP/Library/Think/Dispatcher.class.php 第 127 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000272s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000305s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] array_reverse() expects parameter 1 to be array, null given /alidata/www/jiangzipinpin/Application/Home/Controller/FontEndController.class.php 第 42 行.
+ERR: 非法操作:themes
+
+[ 2016-08-15T06:36:35+08:00 ] 42.156.251.185 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000519s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000692s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000742s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] array_reverse() expects parameter 1 to be array, null given /alidata/www/jiangzipinpin/Application/Home/Controller/FontEndController.class.php 第 42 行.
+SQL: SHOW COLUMNS FROM `m_admin_advert` [ RunTime:0.0004s ]
+SQL: SELECT `xuhao`,`img_url`,`url` FROM `m_admin_advert` WHERE ( position='轮播' )  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `m_goods`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000037s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000069s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004213s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004245s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000100s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000225s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000367s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000283s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000310s ]
+
+[ 2016-08-15T06:36:45+08:00 ] 42.156.251.185 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000296s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000277s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000313s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] array_reverse() expects parameter 1 to be array, null given /alidata/www/jiangzipinpin/Application/Home/Controller/FontEndController.class.php 第 42 行.
+SQL: SHOW COLUMNS FROM `m_admin_advert` [ RunTime:0.0003s ]
+SQL: SELECT `xuhao`,`img_url`,`url` FROM `m_admin_advert` WHERE ( position='轮播' )  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `m_goods`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000036s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000069s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004170s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004204s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000100s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000215s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000361s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000273s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000301s ]
+
+[ 2016-08-15T06:36:57+08:00 ] 42.156.251.185 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000207s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000260s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000292s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] array_reverse() expects parameter 1 to be array, null given /alidata/www/jiangzipinpin/Application/Home/Controller/FontEndController.class.php 第 42 行.
+SQL: SHOW COLUMNS FROM `m_admin_advert` [ RunTime:0.0003s ]
+SQL: SELECT `xuhao`,`img_url`,`url` FROM `m_admin_advert` WHERE ( position='轮播' )  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `m_goods`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000037s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000072s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004142s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004180s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000098s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000183s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000328s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000302s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000332s ]
+
+[ 2016-08-15T08:20:13+08:00 ] 121.42.0.59 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000244s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000364s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000403s ]
+SQL: SHOW COLUMNS FROM `m_admin_infor` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `m_admin_infor` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] array_reverse() expects parameter 1 to be array, null given /alidata/www/jiangzipinpin/Application/Home/Controller/FontEndController.class.php 第 42 行.
+SQL: SHOW COLUMNS FROM `m_admin_advert` [ RunTime:0.0003s ]
+SQL: SELECT `xuhao`,`img_url`,`url` FROM `m_admin_advert` WHERE ( position='轮播' )  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `m_goods`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000038s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000069s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004620s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004652s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000095s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000192s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000328s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000304s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000331s ]
+

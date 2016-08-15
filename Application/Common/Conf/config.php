@@ -49,7 +49,7 @@ return array(
     'DB_HOST'               =>  'localhost', // 服务器地址
     'DB_NAME'               =>  'sql_guopin',          // 数据库名
     'DB_USER'               =>  'root',      // 用户名
-    'DB_PWD'                =>  'asd123321',          // 密码
+    'DB_PWD'                =>  'zex_yj_17each',          // 密码
     'DB_PORT'               =>  '3306',        // 端口
     'DB_PREFIX'             =>  'm_',    // 数据库表前缀
     'DB_PARAMS'          	=>  array(), // 数据库连接参数    
@@ -64,4 +64,6 @@ return array(
         1=>array("name"=>"支付宝","id"=>"1","img_url"=>""),
         2=>array("name"=>"微信支付","id"=>"2",'img_url'=>""),
     ),
+    'TMPL_ACTION_ERROR' => 'Public:error',
+    'TMPL_ACTION_SUCCESS' => 'Public:success',
 );
