@@ -11,7 +11,11 @@ float: left;
     background-color: #f6f6f6;
     padding: 10px 20px;
 }
-
+.goods_jianjie{
+    width: 400px;
+    height: 200px;
+    margin: 8px 0px;;
+}
 .tr_td1{
 text-align:right;
 margin:10px 0px;
@@ -32,15 +36,20 @@ padding:0px;
 font-size:14px;
 }
 .tr .text{
+    padding: 0px 10px;
     width: 250px;
     height: 28px;
     line-height:28px;
     margin-top: 8px;
 }
 .radio{margin-right:5px;}
-.release_select{border:1px solid #AAA;
-padding:0px 4px;
-width:100px;}
+
+.release_select{
+    border:1px solid #AAA;
+    padding:0px 4px;
+    width:100px;
+}
+
 .zhuce1_tr span{
 font-size:14px;
 padding:0px 5px;}
@@ -133,6 +142,14 @@ span{
 .ke-dialog-default div{
     overflow:inherit;
 } 
-form{
-    margin: 0px;
+
+
+/*在线编辑器里的img*/
+.ke-content img{
+    max-width: 760px;
+}
+/*增加商品可选属性*/
+#add_sx{
+    margin: 10px 0px;
+    margin-left: 160px;
 }

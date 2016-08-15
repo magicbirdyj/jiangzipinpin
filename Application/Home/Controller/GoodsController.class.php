@@ -18,8 +18,7 @@ class GoodsController extends FontEndController {
         if($goods['is_delete']==='1'||!$goods){
             $this->error('该商品不存在！', '/Home/Index/index');
         }
-        
-        
+
         //把价格后面无意义的0去掉
         $goods['price']= floatval($goods['price']);
         $goods['yuan_price']= floatval($goods['yuan_price']);
@@ -94,9 +93,6 @@ class GoodsController extends FontEndController {
         //$guanggao = $goodsmodel->where("cat_id={$goods['cat_id']}")->order('advert_shop_order')->limit(12)->field('goods_id,goods_name,goods_img,price,buy_number')->select();
         //$this->assign('guanggao', $guanggao);
 
-        
-        
-
 
         //找出该商品是否被用户收藏了
         $sellectionmodel = D('Sellection');
@@ -117,6 +113,17 @@ class GoodsController extends FontEndController {
 
         $this->assign("title", "酱紫拼拼—". $goods['goods_name']); //给标题赋值
          C('TOKEN_ON',false);//取消表单令牌
+         //让商品的点击次数加1
+         $goodsmodel->where("goods_id='$goods_id'")->setInc('click_count');
+         
+         
+         //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
+         if($goods['1yuangou']==1||$goods['choujiang']==1){
+            $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
+            if($choujiang>0){
+                $this->assign('is_get','yijing_get');//分配变量给JS用 对已经获取过该活动商品的用户 开团按钮失效
+            }
+         }
         $this->display('index');
     }
 
@@ -288,6 +295,7 @@ class GoodsController extends FontEndController {
     }
     public function pintuan_info(){
         $this->assign('title','拼团详情');
+        $this->assign('is_ztcg','ddct');//组团状态
         $tuan_no=$_GET['tuan_no'];
         if(!$tuan_no){
             $this->error("参团订单ID不存在");
@@ -296,25 +304,24 @@ class GoodsController extends FontEndController {
         $user_id=$_SESSION['huiyuan']['user_id'];
          //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
         $ordermodel=D(Order);
-        $order=$ordermodel->where("order_id=$tuan_no and deleted=0 and status=1")->find();
+        $order=$ordermodel->where("order_id=$tuan_no and deleted=0")->find();
+        if(!$order){
+            $this->error('该团不存在');
+        }
         $goods_id=$order['goods_id'];
         $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
-        if($choujiang>0){
-            $this->error("您已经成功获取过该商品的活动购买资格，无法再重复参加活动");
-        }
         
-        
-        $order=$ordermodel->where("order_id='{$tuan_no}' and deleted=0 and status=1")->find();
-        if(!$order){
-            $this->error('该团不存在或者已经拼团失败');
-        }
+        // 把抽奖assign 页面判断 如果大于0 将不再显示参团按钮 而是现实您已经参加过活动，返回按钮
+        $this->assign('choujiang',$choujiang);
+
 
         $cunzai_order=$ordermodel->where("tuan_no=$tuan_no and user_id=$user_id  and status='1' and deleted='0'")->field('order_id,pay_status')->find();
         if($cunzai_order&&$cunzai_order['pay_status']==0){
-            $this->success('您已经参加该团且未付款，将跳转到付款页面',U('Goods/zhifu',array('order_id'=>$cunzai_order['order_id'])),3);
+            $this->redirect(U('Goods/zhifu',array('order_id'=>$cunzai_order['order_id'])),0);//已经参加该团 未付款
             exit();
         }elseif($cunzai_order){
-            $this->error('您已经参加该团');
+            $this->redirect(U('Goods/gmcg_wx',array('order_id'=>$cunzai_order['order_id'])),0);//已经参加该团 并且支付成功
+            exit();
         }
         if($order['pay_status']!='1'){
             $this->error('该团购因团长未付款，无法参团');
@@ -334,22 +341,24 @@ class GoodsController extends FontEndController {
             $tuanyuan_head_url=NULL;
         }
         $this->assign('tuanyuan',$tuanyuan);
+        $this->assign('tuanyuan_count',count($tuanyuan));
         $goods['count']=$ordermodel->where("tuan_no=$tuan_no and pay_status=1")->count();
         if($goods['tuan_number']==$goods['count']){
-            $this->assign('title','组团成功');
+            //组团成功
+            $this->assign('is_ztcg','ztcg');
         }
         $this->assign('goods', $goods);
         if($order['status']=='6'){
-            $this->display('pintuan_fail');
-            exit();
+            //组团失败
+            $this->assign('is_ztcg','ztsb'); 
+        }else{
+             $time=  time();
+            if($time-(int)$goods['tuanzhang_created']>=86400){
+                //组团失败
+                $this->assign('is_ztcg','ztsb');
+            }
         }
-        $time=  time();
-        if($time-(int)$goods['tuanzhang_created']>=86400){
-            $this->pintuan_fail($tuan_no);
-            $this->display('pintuan_fail');
-        }
-        
-        
+
         $arr_zx_shuxing=  unserialize($goods['goods_shuxing']);
         $this->assign('zx_shuxing',$arr_zx_shuxing);
         
@@ -441,8 +450,7 @@ class GoodsController extends FontEndController {
         $goodsmodel = D('Goods');
         $goods=$goodsmodel->where("goods_id=$goods_id")->find();
         
-        //1元购的商品，如果用户已经开团成功，不能再开团.
-        ////////////////////////////////////////以后再做
+
         $row = array(
             'user_id' => $user_id,
             "order_no" => $this->getUniqueOrderNo(),
@@ -511,8 +519,7 @@ class GoodsController extends FontEndController {
         }
       
         
-        //1元购的商品，如果用户已经开团成功，不能再参团.
-        ////////////////////////////////////////以后再做
+
         $row = array(
             'user_id' => $user_id,
             "order_no" => $this->getUniqueOrderNo(),
@@ -791,6 +798,7 @@ class GoodsController extends FontEndController {
     
     public function gmcg_wx(){
         $this->assign('title','付款成功');
+        $this->assign('is_ztcg','ddct');//组团状态为等待成团
         $order_id=$_GET['order_id'];
         $user_id=$_SESSION['huiyuan']['user_id'];
         $ordermodel=D('Order');
@@ -815,7 +823,7 @@ class GoodsController extends FontEndController {
         $goods['tuan_number']=$order['tuan_number'];//为了值需要assign给goods
         if($goods['count']==$order['tuan_number']){
            $this->assign('is_ztcg','ztcg');//给JS判断是否组团成功
-           $this->assign('title','组团成功');//组团成功
+           //$this->assign('title','组团成功');//组团成功
            //给该团所有订单的status改为2
            $row=array(
                'status'=>2
@@ -863,17 +871,19 @@ class GoodsController extends FontEndController {
             $tuanyuan=NULL;
         }
         $this->assign('tuanyuan',$tuanyuan);
+        $this->assign('tuanyuan_count',count($tuanyuan));
         $this->assign('goods', $goods);
         if($order['status']=='6'){
-            $this->display('pintuan_fail');
+            $this->assign('is_ztcg','ztsb');//给JS判断是否组团成功
+            $this->display('gmcg');
             exit();
+        }else{
+            $time=  time();
+            if($time-(int)$goods['tuanzhang_created']>=86400){
+                $this->assign('is_ztcg','ztsb');//给JS判断是否组团成功
+            }
         }
-        $time=  time();
-        if($time-(int)$goods['tuanzhang_created']>=86400){
-            $this->pintuan_fail($tuan_no);
-            $this->display('pintuan_fail');
-            exit();
-        }
+        
         $this->display('gmcg');
 
     }

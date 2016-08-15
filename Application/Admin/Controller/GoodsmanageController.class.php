@@ -83,6 +83,10 @@ class GoodsmanageController extends FontEndController {
         $arr_shuxing=unserialize($data_cat);//得到反序列化属性数组
         $this->assign("arr_shuxing",$arr_shuxing);//给模板里面的$arr_shuxing赋值
 
+        //自选属性赋值
+        $zixuan_shuxing=$goods['goods_shuxing'];
+        $arr_zixuan_shuxing=unserialize($zixuan_shuxing);//得到反序列化属性数组
+        $this->assign("arr_zixuan_shuxing",$arr_zixuan_shuxing);//给模板里面的$arr_shuxing赋值
         
         $this->display('goods_editor');
     }
@@ -207,6 +211,27 @@ class GoodsmanageController extends FontEndController {
              $arr_shuxing["$value"]=$content['shuxing'][$key];
          }
         $str_shuxing=serialize($arr_shuxing);
+        
+        
+        //获取商品可选属性（如果有）
+        $zx_shuxing=$content['zx_shuxing'];
+        if($zx_shuxing){
+           $zx_shuxingzhi=$content['zx_shuxingzhi'];
+            $i=0;
+            $new_arr=array();
+            foreach ($zx_shuxingzhi as  $value) {
+            $key=$zx_shuxing[$i];
+            $new_arr[$key]=$value;
+            $i++;
+            }
+            $str_zx_shuxing=serialize($new_arr);
+            
+        }else{
+            $str_zx_shuxing='';
+        }
+        
+        
+        
         //保存商品信息，把商品信息写入数据库
         
         $row=array(
@@ -224,6 +249,7 @@ class GoodsmanageController extends FontEndController {
             'tuan_number'=>$content['select_tuan_num'],//成团人数
             'fahuo_day'=>$content['select_fahuo'],//发货天数
             'shuxing'=>$str_shuxing,//属性
+            'goods_shuxing'=>$str_zx_shuxing,//商品可选属性
             'goods_img'=>$goods_zhanshitu,//商品图片
             'goods_img_qita'=>$str_goods_img,//被序列化的其它图片
             'daijinquan'=>$content['radio_daijinquan'],

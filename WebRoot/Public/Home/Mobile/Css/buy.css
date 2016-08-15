@@ -1,3 +1,14 @@
+.fanhui .tb_success{
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: #6bbd00;
+    border-radius: 15px;
+    line-height: 30px;
+    top:8px;
+}
+
+
 .buy_head{
     font-size: 1.25em;
     padding: 10px 0px;
@@ -12,10 +23,13 @@
     border: none;
     width: 100%;
 }
+.buy_table_head{
+    position: relative;
+}
 .buy_table_head td{
     box-sizing: border-box;
     background-color: #F0F0F0;
-    padding: 6px 10px;
+    padding: 15px 10px;
     font-size: 16px;
     font-weight: 500;
     text-align: left;
@@ -31,8 +45,8 @@
     width: 100%;
     background-color: #F0F0F0;
     padding-left: 100px;
-    line-height: 26px;
-    font-size: 14px;
+    line-height: 30px;
+    font-size: 16px;
 }
 .goods_name .name{
     background-color:#F0F0F0;
@@ -267,28 +281,31 @@ margin-top: 30px;
     display: inline-block;
     width: 100%;
     box-sizing: border-box;
+    padding: 10px 5px;
+    text-align: center;
 }
 .tuan_all{
-    width: 100%;
+    /*width: 100%;*/
+    display: inline-block;
     box-sizing: border-box;
+    margin: auto;
 }
-.tuan_all,.tuan_muqian{
-    padding: 10px 5px;
-}
+
 .tuan_all .tb_tuan{
-    font-size: 28px;
+    font-size: 26px;
     padding: 0px 5px;
     color: #E5E5E5;
     display: inline-block;
+    line-height: 28px;
+    height: 28px;
+    width: 28px;
 }
-.tuan_muqian{
-    position: absolute;
-    top:2px;
-}
+
 .head_span{
     padding: 0px 5px;
     display: inline-block;
-    height: 29px;
+    height: 28px;
+    line-height: 28px;
 }
 .head_img{
     width: 28px;
@@ -353,4 +370,22 @@ margin-top: 30px;
     color: #666;
     border-top: 1px solid #FF9712;
     border-bottom: 1px solid #FF9712;
+}
+
+
+/*拼团成功盖章*/
+.buy_table_head .tuangou_success{
+    position: absolute;
+    font-size: 140px;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+    padding: 0px;
+    z-index: 1000;
+    top:50px;
+    right: 20px;
+    color: #F90505;
+    background:rgba(255, 255, 255, 0) none repeat scroll 0 0 !important;/*实现FF背景透明，文字不透明*/
+    background:transparent;
 }

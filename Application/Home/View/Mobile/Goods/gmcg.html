@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/public.css">
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/goods.css">
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/buy.css">
@@ -6,11 +5,12 @@
 </head>
 
 <body>
-    <if condition="$is_ztcg neq 'ztcg'">
+    <if condition="$is_ztcg eq 'ddct'">
         <a href="javascript:void(0)" class='button_a_lvse fixed_bottom'>还差 <{$goods['tuan_number']-$goods['count']}>人拼团成功</a>
         <include file='Public/zhishifenxiang'/>   
     </if>
-<div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a><{$title}></div>
+<div class="fanhui padding"><a href="javascript:void(0)"><span class="iconfont tb_fanhui tb_success" id="shangjia_info_fanhui" >&#xe635;</span></a><{$title}></div>
+
 <table class="buy_table" cellspacing="0">
 <tr class="buy_table_head">
     <td colspan="2">
@@ -19,27 +19,31 @@
             <div class="name"><{$goods['goods_name']}></div>
             <div class="name_price"><span class="price_red"><{$goods['tuan_number']}></span>人团： &yen <span class="price_red"><{$goods['tuan_price']|floatval}></span> /<{$goods['units']}></div>
         </div>
-    </td>
+    </td> 
+    <if condition="$is_ztcg eq 'ztcg'">
+    <td class="tuangou_success iconfont"> &#xe633;</td>
+    </if>
+    <if condition="$is_ztcg eq 'ztsb'">
+    <td class="tuangou_success iconfont" style="color: #888"> &#xe632;</td>
+    </if>
 </tr>
 <tr class="buy_table_content">
     <td class="td_l">购买数量：</td>
     <td class="td_r"><{$order['buy_number']}></td>
 </tr>
 <tr class="buy_table_content">
-    <td class="td_l">实际付款：</td>
-    <td class="td_r">&yen <{$order['dues']|floatval}></td>
+    <td class="td_l">支付成功：</td>
+    <td class="td_r" style="padding:5px 10px;line-height: 39px;font-size: 26px;font-weight: bold;">&yen <{$order['dues']}></td>
 </tr>
 </table>
 <div class="tuan_zhanshi">
     <div class="tuan_all_and_muqian">
     <div class="tuan_all">
-        <for start="0" end="$goods['tuan_number']"><span class="iconfont tb_tuan">&#xe623;</span></for>
-    </div>
-    <div class="tuan_muqian">
         <span class="head_span"> <img src="<{$goods['tuanzhang_head_url']}>" class='head_img' /></span>
         <volist name='tuanyuan' id='vo'>
             <span class="head_span"><img src="<{$vo['head_url']}>" class='head_img'/></span>
         </volist>
+        <for start="$tuanyuan_count+1" end="$goods['tuan_number']"><div class="iconfont tb_tuan">&#xe623;</div></for>
     </div>
     </div>
     <if condition="$is_ztcg neq 'ztcg'">

@@ -29,10 +29,11 @@
         </div>
         <div class="d2_title">订单状态</div>
         <div class="view_info">
-            <if condition="$order['deleted'] eq '1'" >
-                <div>当前订单状态：<span class="red">该订单已被删除</span></div>
-             <else />   
-                <div>当前订单状态：<span class="red"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['server_day'],$order['goods_id'])['status']}></span></div>
+                <if condition="($order['tuan_no'] neq 0) and ($order['status'] eq 1) and ($order['pay_status'] eq 1)">
+                        <div>当前订单状态：<span class="red">还差 <span class="price_red"><{$order['count']}></span> 人成团</span></div>
+                    <else />
+                        <div>当前订单状态：<span class="red"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status']}></span></div>
+                    </if>
                 <if  condition="$order['status'] eq '3'">
                     <div>请收货后再点确认</div>
                     <div class="d1">
@@ -55,7 +56,6 @@
                     <a  href="<{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_url']}>" class="button_a_order"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_button']}></a>
                 </div>
                 </if>
-            </if>
         </div>
     </div>
 

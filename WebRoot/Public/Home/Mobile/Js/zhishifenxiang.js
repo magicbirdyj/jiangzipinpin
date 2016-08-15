@@ -19,5 +19,5 @@ $('.text2').css('top',text_h+"px");
 $('.text3').css('top',text_h+10+"px");
             
 
-            
+$('#fengxiang_success').css('top',(pageHeight()-$('#fengxiang_success').height())/2);        
             
