@@ -111,6 +111,7 @@ class LoginController extends FontEndController {
     
     
     public function weixin_login(){
+        var_dump($_GET);
         //获取微信用户信息并直接登陆
         if(isset($_GET['code'])){
             $code=$_GET['code'];
