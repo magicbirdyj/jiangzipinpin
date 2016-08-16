@@ -14,7 +14,6 @@ function CountDown(){
         clearInterval(timer);
         $('#tishi_span').css('display','none');
         $('.time').html('已结束');
-        $('.fixed_bottom').css('display','none');
         document.URL=location.href;
     }
 };

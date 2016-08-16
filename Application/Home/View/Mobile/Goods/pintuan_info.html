@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <if condition="($is_ztcg eq 'ddct') and ($choujiang elt 0)">
+    <if condition="($is_ztcg eq 'ddct') and ($choujiang eq 0) and ($is_ctcg eq 0)">
     <a class='button_a_lvse fixed_bottom wyct' href='javascript:void()' id='wyct'>我也要参团</a> 
     <form name="cantuan_buy" action="<{:U('Goods/cantuan_buy')}>" method="get">
         <input name="tuan_no" type="hidden" value="<{$tuan_no}>" />
@@ -17,7 +17,9 @@
     <elseif condition="($is_ztcg eq 'ztcg') or ($is_ztcg eq 'ztsb')" />
     <a class='button_a_lvse fixed_bottom' href="<{:U('Goods/kaituan_buy',array('goods_id'=>$goods['goods_id']))}>">我也开个团</a>
     <elseif   condition="$choujiang gt 0"/>
-    <a class='button_a_lvse fixed_bottom' href="javascript:history.back()" style="background-color: #888;border:1px solid #888;">您参加过该活动，返回</a>
+    <a class='button_a_lvse fixed_bottom' href="<{:U('Index/index')}>" style="background-color: #888;border:1px solid #888;">更多拼团</a>
+    <elseif   condition="$is_ctcg gt 0"/>
+   <a class='button_a_lvse fixed_bottom' href="<{:U('Goods/kaituan_buy',array('goods_id'=>$goods['goods_id']))}>">我也开个团</a>
     </if>
 <div style="width:100%;background-color: #f0efed;margin-bottom: 105px;" id="shop">
 <div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a><{$title}></div>
@@ -101,8 +103,12 @@
 </if>
 
 <div style='margin-bottom: 105px;'></div>
+<div id="fixed_tishi"></div>
 <script>
     var created=<{$goods['tuanzhang_created']}>+86400;
+    var is_ztcg="<{$is_ztcg}>"//该订单组团状态
+    var choujiang="<{$choujiang}>"//该会员是否获得过该活动商品
+    var is_ctcg="<{$is_ctcg}>"//该会员是否参团成功过该活动商品，但是未获奖
 </script>
 <script src="__PUBLIC_HOME__/Mobile/Js/daojishi.js" type="text/javascript"></script>
 <script src="__PUBLIC_HOME__/Mobile/Js/pintuan_info.js" type="text/javascript"></script>
