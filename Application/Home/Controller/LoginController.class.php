@@ -117,10 +117,9 @@ class LoginController extends FontEndController {
             $code=$_GET['code'];
             $wangye=$this->get_wangye($code);
             $open_id=$wangye['openid'];
-            var_dump($wangye);exit();
             $access_token=S('access_token');
             $userinfo=$this->get_userinfo($open_id,$access_token);
-            //var_dump($userinfo);
+            var_dump($userinfo);exit();
             $usersmodel=D('Users');
             $user_id=$usersmodel->where("open_id='$open_id'")->getField('user_id');
             $row=array(
