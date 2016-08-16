@@ -156,7 +156,7 @@ class LoginController extends FontEndController {
             //}else{
                 //header("location:". U('index/index'));
                 //exit();
-            }
+            //}
         }
     }
     
