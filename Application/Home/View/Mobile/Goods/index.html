@@ -49,6 +49,14 @@
       </div>
     <div class="titile"><{$goods['goods_name']}></div>
     <div class="title1_1"><{$goods['goods_jianjie']}></div>
+    <if condition="($goods['1yuangou'] eq 1) and ($goods['choujiang'] eq 1)">
+        <div class="title1_1">
+            <p>抽奖规则</p>
+            <p>1、拼团成功后，团长将获得1元购活动商品，再从9名团员中随机抽取一名获得1元购商品。</p>
+            <p>2、未中奖的团员全额退款，并赠送88元代金券。</p>
+            <p>3、未中奖的团员可自己开团，但不能再参团，拼团成功的团长和已中奖的团员不能重复参加该活动</p>
+        </div>
+    </if>
     <div class="price">
         <div class="price_l">
             <strong class="sprice_strong strong_color"><{$goods['tuan_price']}></strong>
@@ -71,21 +79,19 @@
         <div id="pingjia"><a class="maodian_pingjia" href="<{:U('Goods/index',array('goods_id'=>$goods['goods_id'])).'#maodian_pingjia'}>"><span><{$goods['comment_number']}></span>人评价</a></div>
     </div>
     <div class="jianjie" >
-        <div class="sjcn">果果承诺</div>
+        <div class="sjcn">酱紫承诺</div>
          <div class="chengnuo_content">
-             <a href="<{:U('Company/index','name=shuangbeipeifu')}>">
-             <i class="peifu"></i>
-             坏果包赔
+             <a href="javascript:void(0)">
+             <div class="iconfont tb_chengnuo">&#xe62e;</div>
+             <div>包邮</div>
              </a>
-             <a href="<{:U('Company/index','name=suishitui')}>">
-             <i class="tui"></i>
-             不满意退
+             <a href="javascript:void(0)">
+             <div class="iconfont tb_chengnuo">&#xe62e;</div>
+             <div>不满意退</div>
              </a>
-             <a href="<{:U('Company/index','name=baozhengjin')}>" style="margin-right: 0px;">
-                 <i class="baozhengjin">
-                     保
-                 </i>
-                 保证新鲜
+             <a href="javascript:void(0)" style="margin-right: 0px;">
+                 <div class="iconfont tb_chengnuo">&#xe62e;</div>
+                 <div>品质保证</div>
              </a>
          </div>
     </div>
