@@ -9,7 +9,7 @@ class LoginController extends FontEndController {
             exit();
         }
         if(is_weixin()){
-            $this->redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6231a8932405bdaf&redirect_uri=http://m.17each.com/Home/Login/weixin_login&response_type=code&scope=snsapi_base&state=1#wechat_redirect_redirect");
+            $this->redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6231a8932405bdaf&redirect_uri=http://".$_SERVER['HTTP_HOST']."/Home/Login/weixin_login&response_type=code&scope=snsapi_base&state=1#wechat_redirect_redirect");
             exit();
         }
         $time=gettime();
@@ -113,33 +113,67 @@ class LoginController extends FontEndController {
         //获取微信用户信息并直接登陆
         if(isset($_GET['code'])){
             $code=$_GET['code'];
-            $openid=$this->get_wangye_openid($code);
+            $wangye=$this->get_wangye($code);
+            $open_id=$wangye['openid'];
             $access_token=S('access_token');
-            $userinfo=$this->get_userinfo($openid,$access_token);
-            var_dump($userinfo);
-        }else{
-            $row=array(
-                    'last_login'=>mktime(),
-                    'last_ip'=>$_SERVER['REMOTE_ADDR']
-                );
-            $open_id='1234568';
+            $userinfo=$this->get_userinfo($open_id,$access_token);
+            //var_dump($userinfo);
             $usersmodel=D('Users');
-            $usersmodel->where("open_id='{$open_id}'")->save($row);
-            $huiyuan=$usersmodel->where("open_id='1234568'")->field('user_id,user_name')->find();
+            $count=$usersmodel->where("open_id='$open_id'")->count();
+            if($count==='0'){
+                $row=array(
+                    'open_id'=>"$open_id",
+                    'user_name'=>$userinfo['nickname'],
+                    'shopman_id'=>0,
+                    'head_url'=>$userinfo['headimgurl']
+                );
+                $usersmodel->add($row);
+            }
+            $user=$usersmodel->where("open_id='$open_id'")->field('user_id,user_name,open_id')->find();
             $_SESSION['huiyuan']=array(
-                'user_id'=>$huiyuan['user_id'],
-                'user_name'=>$huiyuan['user_name'],
-                'open_id'=>$open_id
-                 );
+            'user_id'=>$user['user_id'],
+            'user_name'=>$user['user_name'],
+            'open_id'=>"$open_id"
+                );
             if(isset($_SESSION['ref'])){
-                    header("location:". U($_SESSION['ref']));
-                    exit();
-                }else{
-                    header("location:". U('index/index'));
-                    exit();
-                }
+                header("location:". U($_SESSION['ref']));
+                exit();
+            }else{
+                header("location:". U('index/index'));
+                exit();
+            }
+        }else{
+            $usersmodel=D('Users');
+            $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
+            $_SESSION['huiyuan']=array(
+            'user_id'=>$user['user_id'],
+            'user_name'=>$user['user_name'],
+            'open_id'=>"$open_id"
+                );
+            if(isset($_SESSION['ref'])){
+                header("location:". U($_SESSION['ref']));
+                exit();
+            }else{
+                header("location:". U('index/index'));
+                exit();
+            }
         }
     }
+    
+    
+    private function get_wangye($code){
+       $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code" ;
+       $res = file_get_contents($url); //获取文件内容或获取网络请求的内容
+       $result = json_decode($res, true);//接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
+       return $result;
+  }
+  
+  private function get_userinfo($openid,$access_token){
+       $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$access_token."&openid=".$openid."&lang=zh_CN" ;
+       $res = file_get_contents($url); //获取文件内容或获取网络请求的内容
+       $result = json_decode($res, true);//接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
+       return $result;
+  }
 }
 
 

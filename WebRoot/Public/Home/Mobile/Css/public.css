@@ -108,6 +108,7 @@ color:#2BB8AA;
     color:#FFFFFF;
     font-size:20px;
     cursor:pointer;
+    border-radius: 5px;
 }
 /*按钮样式鼠标放上*/
 .button_a_lvse:active{
@@ -129,6 +130,7 @@ color:#2BB8AA;
     font-size:20px;
     cursor:pointer;
     float: left;
+    border-radius: 5px;
 }
 /*按钮样式鼠标放上*/
 .button_a_red_xiao:active{
@@ -176,6 +178,7 @@ color:#2BB8AA;
     padding: 0em;
     margin-bottom: 47.4px;
     border-width: 0;
+    background-color: #f0f0f0;
 }
 
 
@@ -312,7 +315,7 @@ border-bottom:10px solid #555;
     background-color: #333;
     color: #FFF;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 12px;
     margin:auto;
     left: 0px;
     right: 0px;

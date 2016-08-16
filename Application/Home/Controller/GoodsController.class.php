@@ -202,7 +202,7 @@ class GoodsController extends FontEndController {
         $ordermodel=D(Order);
         $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
         if($choujiang>0){
-            $this->error("您已经成功获取过该商品的活动购买资格，无法再重复参加活动");
+            $this->error("您已经成功获取过该活动商品，无法再重复参加活动");
         }
         
         $usersmodel=D('Users');
@@ -246,7 +246,7 @@ class GoodsController extends FontEndController {
         $goods_id=$order['goods_id'];
         $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
         if($choujiang>0){
-            $this->error("您已经成功获取过该商品的活动购买资格，无法再重复参加活动");
+            $this->error("您已经购买成功过该活动商品，无法再重复参加活动");
         }
         
         
@@ -302,6 +302,7 @@ class GoodsController extends FontEndController {
         }
         $this->assign('tuan_no',$tuan_no);
         $user_id=$_SESSION['huiyuan']['user_id'];
+        
          //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
         $ordermodel=D(Order);
         $order=$ordermodel->where("order_id=$tuan_no and deleted=0")->find();
@@ -309,11 +310,22 @@ class GoodsController extends FontEndController {
             $this->error('该团不存在');
         }
         $goods_id=$order['goods_id'];
-        $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
+        $goodsmodel=D('Goods');
+        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
+        if($goods['1yuangou']==1||$goods['choujiang']==1){
+            $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
+            // 把抽奖assign 页面判断 如果大于0 将不再显示参团按钮 而是现实您已经成功购买过该活动商品，返回按钮
+            $this->assign('choujiang',$choujiang);
+            //如果组团成功过该活动商品的团购，但是未获奖，也无法再参团 只能重新开团
+            $tianjian['status']=array('between','2,5');
+            $is_ctcg=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and identity=0 and choujiang=0")->where($tianjian)->count();
+            $this->assign('is_ctcg',$is_ctcg);
+        }else{
+            $choujiang=0;
+            $is_ctcg=0;
+        }
         
-        // 把抽奖assign 页面判断 如果大于0 将不再显示参团按钮 而是现实您已经参加过活动，返回按钮
-        $this->assign('choujiang',$choujiang);
-
+        
 
         $cunzai_order=$ordermodel->where("tuan_no=$tuan_no and user_id=$user_id  and status='1' and deleted='0'")->field('order_id,pay_status')->find();
         if($cunzai_order&&$cunzai_order['pay_status']==0){
@@ -327,8 +339,7 @@ class GoodsController extends FontEndController {
             $this->error('该团购因团长未付款，无法参团');
         }
         
-        $goodsmodel=D('Goods');
-        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
+        
         $goods['tuan_number']=$order['tuan_number'];//几人团以订单为准
         $tuanzhang_id=$order['user_id'];
         $usersmodel=D('Users');
@@ -360,8 +371,7 @@ class GoodsController extends FontEndController {
         }
 
         $arr_zx_shuxing=  unserialize($goods['goods_shuxing']);
-        $this->assign('zx_shuxing',$arr_zx_shuxing);
-        
+         
         $this->display();
     }
     

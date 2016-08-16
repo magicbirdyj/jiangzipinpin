@@ -18,6 +18,9 @@ class CategoryController extends FontEndController {
             
             $cat_id=$_GET['cid'];
             $cat_name=$categorymodel->where("cat_id=$cat_id")->getField("cat_name");
+            if(!$cat_name){
+                $this->error('未找到该分类');
+            }
             $this->assign('cat_name',$cat_name);
             $this->assign("title","酱紫拼拼 ".$cat_name);
             $url['full']=$_SERVER['REQUEST_URI'];
@@ -141,6 +144,8 @@ class CategoryController extends FontEndController {
        
             $this->assign('arr_count',$arr_count);
             $this->display(index);
+        }else{
+            $this->error('没有指定分类');
         }
     }
     
