@@ -27,12 +27,26 @@
         </div>
 
         <div class="d2_title">订单跟踪</div>
-        <div class="d2_content"></div>
+        <div class="d2_content">
+            <ul class="wuliu_guiji_ul">
+                <volist name="wuliu_guiji" id="vo" empty="没有找到该物流的信息">
+                    <li>
+                    <div class="dian"></div>
+                    <div class='guiji'>
+                        <div><{$vo['AcceptStation']}></div>
+                        <div class="time"><{$vo['AcceptTime']}></div>
+                    </div>
+                </li>
+                </volist>
+            </ul>
+        </div>
 
         
     </div>
 
    
+    
+ 
 
 
 

@@ -237,7 +237,7 @@ class GoodsmanageController extends FontEndController {
         $row=array(
             'cat_name'=>$server_content,//分类名
             'fabu_name'=>$fabu_name,     //发布者姓名
-            'user_name'=>'唯果果',//所属店铺
+            'user_name'=>'酱紫拼拼',//所属店铺
             'goods_name'=>$content['title'],//商品名称
             'goods_jianjie'=>$content['goods_jianjie'],//商品简介
             'units'=>$content['units'],//商品单位重量
@@ -431,7 +431,7 @@ class GoodsmanageController extends FontEndController {
         $row=array(
             'cat_name'=>$server_content,//分类名
             'fabu_name'=>$fabu_name,     //发布者姓名
-            'user_name'=>'唯果果',//所属店铺
+            'user_name'=>'酱紫拼拼',//所属店铺
             'goods_name'=>$content['title'],//商品名称
             'goods_jianjie'=>$content['goods_jianjie'],//商品简介
             'units'=>$content['units'],//商品单位重量

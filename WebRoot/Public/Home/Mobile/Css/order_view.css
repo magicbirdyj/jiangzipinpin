@@ -62,3 +62,37 @@
 .view_info .button_a_order{
     float: right;
 }
+
+
+/*物流轨迹css*/
+.wuliu_guiji_ul{
+    padding:30px 20px;
+    font-size: 14px;
+}
+.wuliu_guiji_ul li{
+   position: relative;
+}
+.wuliu_guiji_ul li .guiji{
+    border-left: 1px solid #ddd;
+    padding-left: 20px;
+    padding-bottom: 15px;
+    margin-left: 3px;
+}
+.wuliu_guiji_ul .dian{
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border:1px solid #ddd;
+    border-radius: 4px;
+    background-color: #ddd;
+    left: 0px;
+    z-index: 1000;
+    top:5px;
+}
+.wuliu_guiji_ul li:first-child .dian{
+    border:1px solid #F90505;;
+    background-color: #F90505;
+}
+.guiji div{
+    line-height: 24px;
+}

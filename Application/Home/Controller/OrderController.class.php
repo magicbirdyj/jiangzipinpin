@@ -194,11 +194,19 @@ class OrderController extends FontEndController {
         $this->assign('user_id',$user_id);
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');
-        $order=$ordermodel->table('m_order t1,m_goods t2')->where("t1.order_id='{$order_id}' and  t1.goods_id=t2.goods_id")->field('t1.user_id,t1.goods_name,t1.shop_name,t2.goods_img,t1.price,t1.buy_number,t1.dues,t1.kuaidi')->find();
+        $order=$ordermodel->table('m_order t1,m_goods t2')->where("t1.order_id='{$order_id}' and  t1.goods_id=t2.goods_id")->field('t1.order_no,t1.user_id,t1.goods_name,t1.shop_name,t2.goods_img,t1.price,t1.buy_number,t1.dues,t1.kuaidi')->find();
         if($order['user_id']===$user_id){
             $this->assign('order',$order);
             $wuliu=  unserialize($order['kuaidi']);
             $this->assign('wuliu',$wuliu);
+            if($wuliu['no']!=0&&$wuliu['company']!='同城送达'){
+                $wuliu_info=$this->getOrderTracesByJson($order['order_no'],$this->get_kuaidi_bianma($wuliu['company']),$wuliu['no']);
+                $arr_wuliu=json_decode($wuliu_info,true);
+                $wuliu_guiji=$arr_wuliu['Traces'];
+                krsort($wuliu_guiji);
+                $this->assign('wuliu_guiji',$wuliu_guiji);
+            }
+            
             $this->display();
         }else{
             $this->error('该订单不存在','/Home/Order/index');
@@ -551,6 +559,69 @@ class OrderController extends FontEndController {
             $shijian=floor($second/86400).'天';
         }
         return $shijian;
+    }
+    
+    
+    
+    /**
+    * Json方式 查询订单物流轨迹
+    */
+    private function getOrderTracesByJson($OrderCode,$ShipperCode,$LogisticCode){
+	$requestData= "{'OrderCode':'$OrderCode','ShipperCode':'$ShipperCode','LogisticCode':'$LogisticCode'}";
+	$datas = array(
+            'EBusinessID' => EB_ID,
+            'RequestType' => '1002',
+            'RequestData' => urlencode($requestData) ,
+            'DataType' => '2',
+        );
+        $datas['DataSign'] = $this->encrypt($requestData, EB_AppKey);
+	$result=$this->sendPost(EB_ReqURL, $datas);	
+	
+	//根据公司业务处理返回的信息......
+	
+	return $result;
+    }
+ 
+    /**
+    *  post提交数据 
+    * @param  string $url 请求Url
+    * @param  array $datas 提交的数据 
+    * @return url响应返回的html
+    */
+    private function sendPost($url, $datas) {
+        $postdata = http_build_query($datas);    
+        $options = array(    
+            'http' => array(    
+                'method' => 'POST',    
+                'header' => 'Content-type:application/x-www-form-urlencoded',    
+                'content' => $postdata,    
+                'timeout' => 15 * 60 // 超时时间（单位:s）    
+            )    
+        );    
+        $context = stream_context_create($options);    
+        $result = file_get_contents($url, false, $context);             
+        return $result;    
+    }
+
+    /**
+     * 电商Sign签名生成
+    * @param data 内容   
+    * @param appkey Appkey
+    * @return DataSign签名
+    */
+    private function encrypt($data, $appkey) {
+        return urlencode(base64_encode(md5($data.$appkey)));
+    }
+    
+    
+    private function get_kuaidi_bianma($name){
+        switch ($name) {
+            case '天天快递':
+                $result='HHTT';
+                break;
+
+        }
+        return $result;
     }
     
 }
