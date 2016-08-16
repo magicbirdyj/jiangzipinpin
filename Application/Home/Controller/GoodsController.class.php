@@ -40,9 +40,9 @@ class GoodsController extends FontEndController {
         }
 
         $goods['url']['url'] = urlencode('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-        $goods['url']['goods_name'] = urlencode('果果拼拼-' . $goods['cat_name'] . '-' . $goods['goods_name']);
+        $goods['url']['goods_name'] = urlencode('酱紫拼拼-' . $goods['cat_name'] . '-' . $goods['goods_name']);
         $goods['url']['goods_img'] = urlencode('http://www.pingogo.net' . $goods['goods_img']);
-        $goods['url']['summary'] = urlencode('秒果果，秒拼您的水果。' . '-' . $goods['goods_name']);
+        $goods['url']['summary'] = urlencode('酱紫拼拼，拼实惠，拼乐趣。' . '-' . $goods['goods_name']);
         $this->assign('goods', $goods);
         //获取该商品的团长信息(最新的2个团)
         $ordermodel=D('Order');

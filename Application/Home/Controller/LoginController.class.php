@@ -145,11 +145,11 @@ class LoginController extends FontEndController {
         }else{
             $usersmodel=D('Users');
             $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
-            $_SESSION['huiyuan']=array(
-            'user_id'=>$user['user_id'],
-            'user_name'=>$user['user_name'],
-            'open_id'=>"$open_id"
-                );
+            //$_SESSION['huiyuan']=array(
+            //'user_id'=>$user['user_id'],
+            //'user_name'=>$user['user_name'],
+            //'open_id'=>"$open_id"
+                //);
             if(isset($_SESSION['ref'])){
                 header("location:". U($_SESSION['ref']));
                 exit();
