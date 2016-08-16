@@ -24,7 +24,7 @@ class FontEndController extends Controller {
         if (in_array(CONTROLLER_NAME, $login_contorller)||in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $login)) {
             //如果没关注，弹出关注窗口
             if (!isset($_SESSION['huiyuan']) || $_SESSION['huiyuan'] == '') {
-                header("location:". U("Login/weixin_login"));
+                header("location:". U("Login/index"));
                 exit();
             }
         }

@@ -9,10 +9,8 @@ class LoginController extends FontEndController {
             exit();
         }
         if(is_weixin()){
-            //$a=urlencode("https://m.jiangzipinpin.com/Home/Login/weixin_login");
-            //$url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx91953340c19f656e&redirect_uri=".$a."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
-            $url="https://m.jiangzipinpin.com/Home/Login/weixin_login1";
-            header("Location:{$url}");
+            $a=urlencode("https://m.jiangzipinpin.com/Home/Login/weixin_login");
+            $this->redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx91953340c19f656e&redirect_uri=".$a."&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
             exit();
         }
         $time=gettime();
@@ -113,7 +111,6 @@ class LoginController extends FontEndController {
     
     
     public function weixin_login(){
-        var_dump($_GET);
         //获取微信用户信息并直接登陆
         if(isset($_GET['code'])){
             $code=$_GET['code'];
