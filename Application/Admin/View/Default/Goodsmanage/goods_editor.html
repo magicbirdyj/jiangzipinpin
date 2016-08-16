@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/member.css">
-<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/release_goods.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_ADMIN__/Css/release_goods.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC_ADMIN__/Css/manger.css" />
 <script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script>
 <script src="__PUBLIC_COMMON__/Js/jquery.form.js"></script> 
 <script src="__PUBLIC_COMMON__/Js/function.js"></script>
@@ -91,15 +92,7 @@
             </div>
 
             <div style="width:400px;height:0px;border-top:1px dashed #666;"></div>
-            
 
-
-
-
-
-          
-            
-            
             <div class="tr">
                 <div class="tr_td1">价格</div>
                 <input name="price" type="text" class="text price_text" value="<{$goods['price']|intval}>"  />
@@ -133,6 +126,41 @@
             </div>
             </volist>
             <div style="width:400px;height:0px;border-top:1px dashed #666;"></div>
+            
+            
+            <volist name="arr_shuxing" id="vo">
+            <div class="tr">
+                <div class="tr_td1"><{$key}></div>
+                <select name="shuxing[]" class="tr_td2 release_select" >
+                    <volist name="vo" id="value">
+                        <option value="<{$value}>"> <{$value}></option>
+                    </volist>
+                </select>
+            </div>
+            </volist>
+            <div style="width:400px;height:0px;border-top:1px dashed #666;"></div>
+            
+             <volist name='arr_zixuan_shuxing' id='vo' key='k1'>
+                <div class="tr zx_tr">
+                    <div class="tr_td1 js_div "><input name="zx_shuxing[]" class="tr_td1_input release_select" type="text" value="<{$key}>" /><a class="del_a" title="删除"></a></div>
+                    <volist name='vo' id='value' key='k2'>
+                        <div class="js_div ">
+                            <input name="zx_shuxingzhi[<{$k1-1}>][]" class="tr_td2 release_select shuxing" type="text" value="<{$value}>"/>
+                            <a class="del_a del_a1" title="删除"></a>
+                        </div>
+                    </volist>
+                    <input class="input_button_sxz" type="button" value="增加属性值" />
+                </div>
+            </volist>
+            <div class="tr">
+            <input type="button" value='增加商品属性' class="input_button" id='add_sx' /> 
+            </div>
+
+            
+            
+            <div style="width:400px;height:0px;border-top:1px dashed #666;"></div>
+            
+            
             <div class="tr">
                 <div class="tr_td1">参加代金券</div>
                 <div class="tr_td2">
@@ -186,8 +214,8 @@
         <input name="file_img_zhanshitu" type="file"  style="visibility:hidden; width:0px; height: 0px;"/>
 </form>
 
-<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
-<script src="__PUBLIC_HOME__/Js/release_goods.js" type="text/javascript"></script>
+
+<script src="__PUBLIC_ADMIN__/Js/release_goods.js" type="text/javascript"></script>
 <script  type="text/javascript">
     //发货天数选项赋值
     var fahuo_day="<{$goods['fahuo_day']}>";
@@ -212,6 +240,7 @@
         $('#choujiang_n').attr('checked','checked');
     }
    
+   //商品自选属性赋值
    
    
    var goods_zhanshitu="<{$goods[goods_img]}>";

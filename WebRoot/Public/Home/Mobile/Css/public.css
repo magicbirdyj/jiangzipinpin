@@ -95,16 +95,16 @@ color:#2BB8AA;
     background-image: url(../Images/public/button_background2.jpg);
 }
 
-/*按钮样式（绿色按钮）*/
+/*按钮样式（红色按钮）*/
 .button_a_lvse:link,.button_a_lvse:visited {
     box-sizing: border-box;
     display:block;
     width:90%;
     padding: 15px 0px;
-    background-color:#03BA8A;
+    background-color:#F90505;
     text-align:center;
     margin-left: 5%;
-    border:1px solid #03BA8A;
+    border:1px solid #F90505;
     color:#FFFFFF;
     font-size:20px;
     cursor:pointer;
@@ -115,6 +115,50 @@ color:#2BB8AA;
     border:1px solid #000;
     color: #EEE;
 }
+/*按钮样式（红色小按钮）*/
+.button_a_red_xiao:link,.button_a_red_xiao:visited {
+    box-sizing: border-box;
+    display:block;
+    width:51%;
+    padding: 15px 0px;
+    background-color:#F90505;
+    text-align:center;
+    margin-left: 5%;
+    border:1px solid #F90505;
+    color:#FFFFFF;
+    font-size:20px;
+    cursor:pointer;
+    float: left;
+}
+/*按钮样式鼠标放上*/
+.button_a_red_xiao:active{
+    box-sizing: border-box;
+    border:1px solid #000;
+    color: #EEE;
+}
+
+/*按钮样式（灰色小按钮）*/
+.button_a_hui_xiao:link,.button_a_hui_xiao:visited {
+    box-sizing: border-box;
+    display:block;
+    width:34%;
+    padding: 15px 0px;
+    background-color:#888;
+    text-align:center;
+    margin-left: 5%;
+    border:1px solid #888;
+    color:#FFFFFF;
+    font-size:20px;
+    cursor:pointer;
+    float: left;
+}
+/*按钮样式鼠标放上*/
+.button_a_hui_xiao:active{
+    box-sizing: border-box;
+    border:1px solid #000;
+    color: #EEE;
+}
+
 
 /*超出部分的文字用省略号代替*/
 .shenglue{
@@ -258,4 +302,21 @@ border-bottom:10px solid #555;
     height: 100%;
     z-index: 10000; /* 此处的图层要大于页面 */
     display:none;
+}
+
+/*fixed提示*/
+#fixed_tishi{
+    position: fixed;
+    bottom: 80px;
+    padding: 12px 0px;
+    background-color: #333;
+    color: #FFF;
+    border-radius: 5px;
+    font-size: 14px;
+    margin:auto;
+    left: 0px;
+    right: 0px;
+    width: 70%;
+    text-align: center;
+    display: none;
 }

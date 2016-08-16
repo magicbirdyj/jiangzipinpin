@@ -218,10 +218,9 @@ $('body').on('click','.div_goods_img #a_zhanshitu',function(){
 //
 //增加属性值
 $('body').on('click','.input_button_sxz',function(){
-    var index=$(this).parent().prevAll('div.tr').length;
- 
+    var index=$(this).parent().prevAll('div.zx_tr').length;
     var str='<div class="js_div ">';
-    str+='<input name="zx_shuxingzhi['+index+'][]" class="tr_td2 release_select" type="text" value="请输入属性值"/>';
+    str+='<input name="zx_shuxingzhi['+index+'][]" class="tr_td2 release_select shuxing" type="text" value="请输入属性值"/>';
     str+='<a class="del_a del_a1" title="删除"></a>';
     str+='</div>';
     $(this).before(str);
@@ -240,9 +239,9 @@ $('body').on('click','.del_a1',function(){
 $('#add_sx').bind('click',function(){
     //var input_name=$(this).parent().prev('.tr').children('div.tr_td1').children('input.tr_td1_input').attr('name');
     //var index=parseInt(input_name.substr(8))+1;
-    var str='<div class="tr">';
+    var str='<div class="tr zx_tr">';
     str+='<div class="tr_td1 js_div ">';
-    str+='<input name="zx_shuxing[]" class="tr_td1_input release_select" type="text" value="请输入属性名" />';
+    str+='<input name="zx_shuxing[]" class="tr_td1_input release_select shuxing" type="text" value="请输入属性名" />';
     str+='<a class="del_a" title="删除"></a></div>';
     str+='<input class="input_button_sxz" type="button" value="增加属性值"  />';
     str+='</div>';
@@ -254,6 +253,6 @@ $('body').on('click','.del_a:not(.del_a1)',function(){
         $(this).parents('.tr').remove();
     }
 });
-$('body').on('click','.release_select',function(){
+$('body').on('click','.shuxing',function(){
     $(this).val('');
 });

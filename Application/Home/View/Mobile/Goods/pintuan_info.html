@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <if condition="$goods['tuan_number'] neq $goods['count']">
+    <if condition="($is_ztcg eq 'ddct') and ($choujiang elt 0)">
     <a class='button_a_lvse fixed_bottom wyct' href='javascript:void()' id='wyct'>我也要参团</a> 
     <form name="cantuan_buy" action="<{:U('Goods/cantuan_buy')}>" method="get">
         <input name="tuan_no" type="hidden" value="<{$tuan_no}>" />
@@ -14,8 +14,10 @@
             <input name="zx_shuxing" type="hidden" value="" />
         </if>
     </form>
-    <else />
-    <a class='button_a_lvse fixed_bottom' href="javascript:history.back()">该团已满，请参加其它组团</a> 
+    <elseif condition="($is_ztcg eq 'ztcg') or ($is_ztcg eq 'ztsb')" />
+    <a class='button_a_lvse fixed_bottom' href="<{:U('Goods/kaituan_buy',array('goods_id'=>$goods['goods_id']))}>">我也开个团</a>
+    <elseif   condition="$choujiang gt 0"/>
+    <a class='button_a_lvse fixed_bottom' href="javascript:history.back()" style="background-color: #888;border:1px solid #888;">您参加过该活动，返回</a>
     </if>
 <div style="width:100%;background-color: #f0efed;margin-bottom: 105px;" id="shop">
 <div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a><{$title}></div>
@@ -28,18 +30,22 @@
             <div class="name_price"><span class="price_red"><{$goods['tuan_number']}></span>人团： &yen <span class="price_red"><{$goods['tuan_price']|floatval}></span> /<{$goods['units']}></div>
         </div>
     </td>
+    <if condition="$is_ztcg eq 'ztcg'">
+    <td class="tuangou_success iconfont"> &#xe633;</td>
+    </if>
+    <if condition="$is_ztcg eq 'ztsb'">
+    <td class="tuangou_success iconfont" style="color: #888;"> &#xe632;</td>
+    </if>
 </tr>
 </table>
 <div class="tuan_zhanshi">
     <div class="tuan_all_and_muqian">
     <div class="tuan_all">
-        <for start="0" end="$goods['tuan_number']"><span class="iconfont tb_tuan">&#xe623;</span></for>
-    </div>
-    <div class="tuan_muqian">
         <span class="head_span"> <img src="<{$goods['tuanzhang_head_url']}>" class='head_img' /></span>
         <volist name='tuanyuan' id='vo'>
             <span class="head_span"><img src="<{$vo['head_url']}>" class='head_img'/></span>
         </volist>
+        <for start="$tuanyuan_count+1" end="$goods['tuan_number']"><span class="iconfont tb_tuan">&#xe623;</span></for>
     </div>
     </div>
     <if condition="$goods['tuan_number'] neq $goods['count']">
