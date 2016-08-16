@@ -38,7 +38,7 @@
                     <div>请收货后再点确认</div>
                     <div class="d1">
                         <a  href="<{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_url']}>" class="button_a_order"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_button']}></a>
-                        <a  class="button_a_order"  href="<{:U('Order/view_kuaidi',array('order_id'=>$order['order_id']))}>">查看物流</a>
+                        <a  class="button_a_order"  href="<{:U('Order/view_wuliu',array('order_id'=>$order['order_id']))}>">查看物流</a>
                     </div>
                 <elseif  condition="($order['pay_status'] eq '0') and ($order['status'] lt '6')" />
                     <div>请及时付款哦！</div>
