@@ -121,22 +121,21 @@ class LoginController extends FontEndController {
             $userinfo=$this->get_userinfo($open_id,$access_token);
             //var_dump($userinfo);
             $usersmodel=D('Users');
-            $count=$usersmodel->where("open_id='$open_id'")->count();
-            if($count==='0'){
-                $row=array(
-                    'open_id'=>"$open_id",
-                    'user_name'=>$userinfo['nickname'],
-                    'shopman_id'=>0,
-                    'head_url'=>$userinfo['headimgurl']
-                );
+            $user_id=$usersmodel->where("open_id='$open_id'")->getField('user_id');
+            $row=array(
+                'open_id'=>"$open_id",
+                'user_name'=>$userinfo['nickname'],
+                'head_url'=>$userinfo['headimgurl']
+            );
+             $_SESSION['huiyuan']=$row;
+            if(!$user_id){ 
                 $usersmodel->add($row);
+                $row['user_id']=$usersmodel->where("open_id='$open_id'")->getField('user_id');
+            }else{
+                $usersmodel->where("user_id='$user_id'")->save($row);
+                $row['user_id']=$user_id;
             }
-            $user=$usersmodel->where("open_id='$open_id'")->field('user_id,user_name,open_id')->find();
-            $_SESSION['huiyuan']=array(
-            'user_id'=>$user['user_id'],
-            'user_name'=>$user['user_name'],
-            'open_id'=>"$open_id"
-                );
+            $_SESSION['huiyuan']=$row;
             if(isset($_SESSION['ref'])){
                 header("location:". U($_SESSION['ref']));
                 exit();
@@ -145,20 +144,21 @@ class LoginController extends FontEndController {
                 exit();
             }
         }else{
-            //$usersmodel=D('Users');
-            //$user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
-            //$_SESSION['huiyuan']=array(
-            //'user_id'=>$user['user_id'],
-            //'user_name'=>$user['user_name'],
-            //'open_id'=>"$open_id"
-                //);
-            //if(isset($_SESSION['ref'])){
-                //header("location:". U($_SESSION['ref']));
-                //exit();
-            //}else{
-                //header("location:". U('index/index'));
-                //exit();
-            //}
+            $usersmodel=D('Users');
+            $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
+            $_SESSION['huiyuan']=array(
+            'user_id'=>$user['user_id'],
+            'user_name'=>$user['user_name'],
+            'open_id'=>"$open_id",
+            'head_url'=>$use['head_url']
+                );
+            if(isset($_SESSION['ref'])){
+                header("location:". U($_SESSION['ref']));
+                exit();
+            }else{
+                header("location:". U('index/index'));
+                exit();
+            }
         }
     }
     
