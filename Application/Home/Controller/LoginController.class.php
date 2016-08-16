@@ -9,7 +9,7 @@ class LoginController extends FontEndController {
             exit();
         }
         if(is_weixin()){
-            $this->redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6231a8932405bdaf&redirect_uri=http://".$_SERVER['HTTP_HOST']."/Home/Login/weixin_login&response_type=code&scope=snsapi_base&state=1#wechat_redirect_redirect");
+            $this->redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6231a8932405bdaf&redirect_uri=http://m.jiangzipinpin.com/Home/Login/weixin_login&response_type=code&scope=snsapi_base&state=1#wechat_redirect_redirect");
             exit();
         }
         $time=gettime();
@@ -143,19 +143,19 @@ class LoginController extends FontEndController {
                 exit();
             }
         }else{
-            $usersmodel=D('Users');
-            $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
+            //$usersmodel=D('Users');
+            //$user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
             //$_SESSION['huiyuan']=array(
             //'user_id'=>$user['user_id'],
             //'user_name'=>$user['user_name'],
             //'open_id'=>"$open_id"
                 //);
-            if(isset($_SESSION['ref'])){
-                header("location:". U($_SESSION['ref']));
-                exit();
-            }else{
-                header("location:". U('index/index'));
-                exit();
+            //if(isset($_SESSION['ref'])){
+                //header("location:". U($_SESSION['ref']));
+                //exit();
+            //}else{
+                //header("location:". U('index/index'));
+                //exit();
             }
         }
     }
