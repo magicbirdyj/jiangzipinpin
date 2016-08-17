@@ -107,13 +107,12 @@ class LoginController extends FontEndController {
                 $row['user_id']=$user_id;
             }
             $_SESSION['wei_huiyuan']=$row;
-            var_dump($_SESSION['wei_huiyuan']);exit();
             if($userinfo['subscribe']==0){
                 //未关注，返回原页面并弹出关注页面
                 $_SESSION['guanzhu']='weiguanzhu';
                 //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
                 $this->assign('guanzhu',$_SESSION['guanzhu']);
-                
+                var_dump($userinfo);exit();
             }else{
                 $_SESSION['guanzhu']='yiguanzhu'; 
                 //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
