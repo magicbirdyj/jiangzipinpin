@@ -89,10 +89,9 @@ function delete_wei_huiyuan(){
             type:'post',
             url:'/Home/Login/delete_wei_huiyuan',
             data:0,
-            dataType:'json',
-            
+            dataType:'json'
         });
-    
+    } 
     
     
    
