@@ -7,6 +7,7 @@ use Home\Controller;
 class GoodsController extends FontEndController {
 
     public function index() {
+        exit();
         $this->get_weixin_config();
         $goods_id = $_GET['goods_id'];
         if(!$goods_id){
