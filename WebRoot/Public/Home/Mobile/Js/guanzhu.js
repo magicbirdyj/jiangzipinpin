@@ -4,7 +4,8 @@
 
 function tanchuguanzhu(){
         showOverlay('guanzhu');
-        $('#guanzhu').css('top',($(document).height()-$('#guanzhu').height())/2);
+        alert($(window).height());
+        $('#guanzhu').css('top',($(window).height()-$('#guanzhu').height())/2);
         $('.tb_zhiwen').css('height',$('.tb_zhiwen').css('width'));
         $('.tb_zhiwen').css('line-height',$('.tb_zhiwen').css('width'));
         $('.erweima_div').css('height',$('.erweima_div').css('width'));
