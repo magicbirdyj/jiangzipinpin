@@ -269,7 +269,7 @@ border-bottom:10px solid #555;
 /*最新订单提示css*/
 .new_order_div{
     position: absolute;
-    top:100px;
+    top:50px;
     left: 10px;
     height: 30px;
     line-height: 30px;
@@ -361,20 +361,14 @@ border-bottom:10px solid #555;
     margin-top: 0px;
     width: 80%;
     box-sizing: border-box;
-    padding: 10px 10px;
+    padding-top: 5px;
     background-color: #f0f0f0;
 }
-.guanzhu_erweima div{
-    float: left;
+.guanzhu_erweima .erweima{
     background-color: #f0f0f0;
     width: 50%;
     box-sizing: border-box;
     text-align: center;
+    width: 100%;
 }
-.guanzhu_erweima .tb_zhiwen{
-    font-size: 80px;
-    color:  #FF9712;
-}
-.guanzhu_erweima div img{
-    width:100%;
-}
+
