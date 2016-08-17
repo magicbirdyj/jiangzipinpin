@@ -7,6 +7,7 @@ use Home\Controller;
 class GoodsController extends FontEndController {
 
     public function index() {
+        C('TOKEN_ON',false);//取消表单令牌
         $this->get_weixin_config();
         $goods_id = $_GET['goods_id'];
         if(!$goods_id){
@@ -106,13 +107,13 @@ class GoodsController extends FontEndController {
         //该商品被收藏了多少次
         //$sellection_count = $sellectionmodel->where("goods_id=$goods_id")->count();
         //$this->assign('sellection_count', $sellection_count);
-        exit();
+        
         //商品自选属性
         $arr_zx_shuxing=  unserialize($goods['goods_shuxing']);
         $this->assign('zx_shuxing',$arr_zx_shuxing);
 
         $this->assign("title", "酱紫拼拼—". $goods['goods_name']); //给标题赋值
-         C('TOKEN_ON',false);//取消表单令牌
+         
          //让商品的点击次数加1
          $goodsmodel->where("goods_id='$goods_id'")->setInc('click_count');
          
@@ -124,6 +125,7 @@ class GoodsController extends FontEndController {
                 $this->assign('is_get','yijing_get');//分配变量给JS用 对已经获取过该活动商品的用户 开团按钮失效
             }
          }
+         exit();
         $this->display('index');
     }
 
