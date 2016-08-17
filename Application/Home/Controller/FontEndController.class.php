@@ -20,9 +20,8 @@ class FontEndController extends Controller {
         
         //需要登录的控制器或者方法
         $login_contorller = array('Member','Order');//需要登录的控制器
-        $login=array('Goods/pinglun','Goods/dandu_buy','Goods/kaituan_buy','Goods/cantuan_buy','Goods/pinglun','Goods/pinglun','Goods/pinglun','Goods/pinglun','Goods/pinglun','Goods/pinglun');//需要登录的方法
+        $login=array('Goods/pinglun','Goods/dandu_buy','Goods/kaituan_buy','Goods/cantuan_buy','Goods/dandu_buy_success','Goods/kaituan_success','Goods/cantuan_success()','Goods/zhifu()','Goods/alipay','Goods/weixin_zhijiezhifu','Goods/notifyweixin','Goods/gmcg_wx','Goods/jiance_pay','Goods/sellection_join','Goods/pinglun','Goods/pinglun');//需要登录的方法
         if (in_array(CONTROLLER_NAME, $login_contorller)||in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $login)) {
-            //如果没关注，弹出关注窗口
             if (!isset($_SESSION['huiyuan']) || $_SESSION['huiyuan'] == '') {
                 header("location:". U("Login/index"));
                 exit();
@@ -30,11 +29,19 @@ class FontEndController extends Controller {
         }
         
         //用于未关注登陆未成功返回登陆前页面的记录url
-        if(!in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $noref)&&!in_array(CONTROLLER_NAME, $noref_contorller)){
-            $_SESSION['before_login_ref']= str_replace('.html', '',$_SERVER['REQUEST_URI']);
+        //if(!in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $noref)&&!in_array(CONTROLLER_NAME, $noref_contorller)){
+            //$_SESSION['before_login_ref']= str_replace('.html', '',$_SERVER['REQUEST_URI']);
+        //}
+        //
+        
+        
+        //Goods/index和 Goods/pintuan_info 方法  将采用无关注伪登陆的方式
+        if (in_array(CONTROLLER_NAME.'/'.ACTION_NAME, array('Goods/index','Goods/pintuan_info'))){
+            if (!isset($_SESSION['wei_huiyuan']) || $_SESSION['wei_huiyuan'] == '') {
+                header("location:". U("Login/wei_index"));
+                exit();
+            }
         }
-        //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
-        $this->assign('guanzhu',$_SESSION['guanzhu']);
         
         
         $this->assign("date",date('Y'));//给日期赋值 
