@@ -125,7 +125,7 @@ class GoodsController extends FontEndController {
                 $this->assign('is_get','yijing_get');//分配变量给JS用 对已经获取过该活动商品的用户 开团按钮失效
             }
          }
-         exit();
+
         $this->display('index');
     }
 
