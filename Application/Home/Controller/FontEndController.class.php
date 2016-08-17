@@ -19,8 +19,8 @@ class FontEndController extends Controller {
         }
         
         //需要登录的控制器或者方法
-        $login_contorller = array('Member','Order','Goods');//需要登录的控制器
-        $login=array();//需要登录的方法
+        $login_contorller = array('Member','Order');//需要登录的控制器
+        $login=array('Goods/pinglun','Goods/dandu_buy','Goods/kaituan_buy','Goods/cantuan_buy','Goods/pinglun','Goods/pinglun','Goods/pinglun','Goods/pinglun','Goods/pinglun','Goods/pinglun');//需要登录的方法
         if (in_array(CONTROLLER_NAME, $login_contorller)||in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $login)) {
             //如果没关注，弹出关注窗口
             if (!isset($_SESSION['huiyuan']) || $_SESSION['huiyuan'] == '') {
@@ -29,7 +29,14 @@ class FontEndController extends Controller {
             }
         }
         
-         
+        //用于未关注登陆未成功返回登陆前页面的记录url
+        if(!in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $noref)&&!in_array(CONTROLLER_NAME, $noref_contorller)){
+            $_SESSION['before_login_ref']= str_replace('.html', '',$_SERVER['REQUEST_URI']);
+        }
+        //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
+        $this->assign('guanzhu',$_SESSION['guanzhu']);
+        
+        
         $this->assign("date",date('Y'));//给日期赋值 
         $informodel=D('Admin_infor');
         $webinfor=$informodel->where("id=1")->find();
