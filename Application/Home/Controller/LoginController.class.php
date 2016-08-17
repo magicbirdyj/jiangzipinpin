@@ -137,6 +137,76 @@ class LoginController extends FontEndController {
         }
     }
     
+    
+    public function get_guanzhu(){
+        $a=urlencode("http://m.jiangzipinpin.com/Home/Login/get_guanzhu_status");
+            $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx91953340c19f656e&redirect_uri=".$a."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+            header("Location:{$url}");
+            exit();
+        if(is_weixin()){
+            $a=urlencode("http://m.jiangzipinpin.com/Home/Login/get_guanzhu_status");
+            $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx91953340c19f656e&redirect_uri=".$a."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+            header("Location:{$url}");
+            exit();
+        }else{
+            $this->redirect('Login/wei_login');
+        }
+    }
+    
+    
+    public function get_guanzhu_status(){
+        $data=$_GET['code'];
+        $this->ajaxReturn($data);
+        exit();
+        //获取微信用户信息并直接登陆
+        if(isset($_GET['code'])){
+            $code=$_GET['code'];
+            $wangye=$this->get_wangye($code);
+            $open_id=$wangye['openid'];
+            $access_token=S('access_token');
+            $userinfo=$this->get_userinfo($open_id,$access_token);
+            $usersmodel=D('Users');
+            $user_id=$usersmodel->where("open_id='$open_id'")->getField('user_id');
+            $row=array(
+                 'open_id'=>"$open_id"
+                );
+            if(!$user_id){
+                $usersmodel->add($row);
+                $row['user_id']=$usersmodel->where("open_id='$open_id'")->getField('user_id');
+            }else{
+                $row['user_id']=$user_id;
+            }
+            $_SESSION['wei_huiyuan']=$row;
+            if($userinfo['subscribe']==0){
+                //未关注，返回原页面并弹出关注页面
+                $_SESSION['guanzhu']='weiguanzhu';
+            }else{
+                $_SESSION['guanzhu']='yiguanzhu'; 
+            }
+            if(isset($_SESSION['ref'])){
+                header("location:". $_SESSION['ref']);
+                exit();
+            }else{
+                header("location:". U('index/index'));
+                exit();
+            }
+        }else{
+            $usersmodel=D('Users');
+            $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
+            $_SESSION['wei_huiyuan']=array(
+            'user_id'=>$user['user_id'],
+            'open_id'=>"$open_id",
+                );
+            if(isset($_SESSION['ref'])){
+                header("location:". $_SESSION['ref']);
+                exit();
+            }else{
+                header("location:". U('index/index'));
+                exit();
+            }
+        }
+    }
+    
     private function get_wangye($code){
        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code" ;
        $res = file_get_contents($url); //获取文件内容或获取网络请求的内容
