@@ -127,7 +127,7 @@ class GoodsController extends FontEndController {
          }
           //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
           $this->assign('guanzhu',$_SESSION['guanzhu']);
-        $this->display('index');
+          $this->display('index');
     }
 
     public function pinglun() {

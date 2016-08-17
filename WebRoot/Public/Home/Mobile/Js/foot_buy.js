@@ -5,10 +5,9 @@ if(is_get=="yijing_get"){
         $('#kaituan_buy').css('background-color','#ccc');
     }
 $('#kaituan_buy').bind('click',function(){
-    guanzhu_ajax();
-    return false;
     if(guanzhu==='weiguanzhu'){
         tanchuguanzhu();
+        delete_wei_huiyuan();
         return false;
     }
     //已经过去过资格的1元购或者抽奖会员 无法再开团
@@ -30,6 +29,7 @@ $('#kaituan_buy').bind('click',function(){
 $('#dandu_buy').bind('click',function(){
     if(guanzhu==='weiguanzhu'){
         tanchuguanzhu();
+        delete_wei_huiyuan()
         return false;
     }
     var zx_length=$('.zx_shuxing_ul').length;
@@ -83,19 +83,15 @@ $('#kefu').bind('click',function(){
    
     });
     
-    
-    //ajax获取是否关注
-    function guanzhu_ajax(){
-         $.ajax({
-            type:'POST',
-            url:'/Home/Login/get_guanzhu',
+//ajax删除$_session
+function delete_wei_huiyuan(){
+        $.ajax({
+            type:'post',
+            url:'/Home/Login/delete_wei_huiyuan',
             data:0,
             dataType:'json',
-            success:function(msg){
-                alert(msg);
-            }
+            
         });
-    }
     
     
     
