@@ -28,7 +28,7 @@ table,td{border:none; border-collapse:collapse;}
 /*全局css*/
 /*字体颜色*/
 .red{
-color:#F76120;
+color:#F90505;
 }
 .green{
     color:#2BB8AA;/*浅绿色#00FFDB*/
@@ -322,4 +322,59 @@ border-bottom:10px solid #555;
     width: 70%;
     text-align: center;
     display: none;
+}
+
+/*二维码求关注*/
+#guanzhu{
+    position: fixed;
+    width: 80%;
+    z-index: 20000;
+    text-align: center;
+    margin-left: 10%;
+    display: none;
+}
+#guanzhu .gz_title{
+    background-color: #FF9712;
+    text-align: center;
+    padding: 15px 0px;
+}
+#guanzhu .guanzhu_content{
+    text-align: center;
+    padding: 20px 20px;
+    font-size: 14px;
+}
+.guanzhu_content .gz_content_text{
+    text-align: center;
+    height: 24px;
+    line-height: 24px;
+}
+.guanzhu_content .text_xiao{
+    color: #888;
+    font-size: 12px;
+}
+.gz_content_text div{
+    display: inline-block;
+    font-weight: bold;
+}
+.guanzhu_erweima{
+    margin: 20px auto;
+    margin-top: 0px;
+    width: 80%;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    background-color: #f0f0f0;
+}
+.guanzhu_erweima div{
+    float: left;
+    background-color: #f0f0f0;
+    width: 50%;
+    box-sizing: border-box;
+    text-align: center;
+}
+.guanzhu_erweima .tb_zhiwen{
+    font-size: 80px;
+    color:  #FF9712;
+}
+.guanzhu_erweima div img{
+    width:100%;
 }

@@ -119,30 +119,37 @@ class LoginController extends FontEndController {
             $open_id=$wangye['openid'];
             $access_token=S('access_token');
             $userinfo=$this->get_userinfo($open_id,$access_token);
-            var_dump($userinfo);exit();
-            $usersmodel=D('Users');
-            $user_id=$usersmodel->where("open_id='$open_id'")->getField('user_id');
-            $row=array(
-                'open_id'=>"$open_id",
-                'user_name'=>$userinfo['nickname'],
-                'head_url'=>$userinfo['headimgurl']
-            );
-             $_SESSION['huiyuan']=$row;
-            if(!$user_id){ 
-                $usersmodel->add($row);
-                $row['user_id']=$usersmodel->where("open_id='$open_id'")->getField('user_id');
+            if($userinfo['subscribe']==0){
+                //未关注，返回原页面并弹出关注页面
+                $_SESSION['guanzhu']='weiguanzhu';
+                $this->redirect($_SESSION['before_login_ref']);
+                
             }else{
-                $usersmodel->where("user_id='$user_id'")->save($row);
-                $row['user_id']=$user_id;
-            }
-            $_SESSION['huiyuan']=$row;
-            if(isset($_SESSION['ref'])){
-                header("location:". U($_SESSION['ref']));
-                exit();
-            }else{
-                header("location:". U('index/index'));
-                exit();
-            }
+                $_SESSION['guanzhu']='yiguanzhu';
+                $usersmodel=D('Users');
+                $user_id=$usersmodel->where("open_id='$open_id'")->getField('user_id');
+                $row=array(
+                    'open_id'=>"$open_id",
+                    'user_name'=>$userinfo['nickname'],
+                    'head_url'=>$userinfo['headimgurl']
+                );
+                $_SESSION['huiyuan']=$row;
+                if(!$user_id){ 
+                    $usersmodel->add($row);
+                    $row['user_id']=$usersmodel->where("open_id='$open_id'")->getField('user_id');
+                }else{
+                    $usersmodel->where("user_id='$user_id'")->save($row);
+                    $row['user_id']=$user_id;
+                }
+                $_SESSION['huiyuan']=$row;
+                if(isset($_SESSION['ref'])){
+                    header("location:". U($_SESSION['ref']));
+                    exit();
+                }else{
+                    header("location:". U('index/index'));
+                    exit();
+                }
+            } 
         }else{
             $usersmodel=D('Users');
             $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
