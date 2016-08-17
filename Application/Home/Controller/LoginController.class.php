@@ -60,7 +60,7 @@ class LoginController extends FontEndController {
             }
             $_SESSION['huiyuan']=$row;
             if(isset($_SESSION['ref'])){
-                header("location:". U($_SESSION['ref']));
+                header("location:". $_SESSION['ref']);
                 exit();
             }else{
                 header("location:". U('index/index'));
@@ -77,7 +77,7 @@ class LoginController extends FontEndController {
             'head_url'=>$use['head_url']
                 );
             if(isset($_SESSION['ref'])){
-                header("location:". U($_SESSION['ref']));
+                header("location:". $_SESSION['ref']);
                 exit();
             }else{
                 header("location:". U('index/index'));
@@ -112,14 +112,13 @@ class LoginController extends FontEndController {
                 $_SESSION['guanzhu']='weiguanzhu';
                 //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
                 $this->assign('guanzhu',$_SESSION['guanzhu']);
-                var_dump($_SESSION);exit();
             }else{
                 $_SESSION['guanzhu']='yiguanzhu'; 
                 //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
                 $this->assign('guanzhu',$_SESSION['guanzhu']);
             }
             if(isset($_SESSION['ref'])){
-                header("location:". U($_SESSION['ref']));
+                header("location:". $_SESSION['ref']);
                 exit();
             }else{
                 header("location:". U('index/index'));
@@ -133,7 +132,7 @@ class LoginController extends FontEndController {
             'open_id'=>"$open_id",
                 );
             if(isset($_SESSION['ref'])){
-                header("location:". U($_SESSION['ref']));
+                header("location:". $_SESSION['ref']);
                 exit();
             }else{
                 header("location:". U('index/index'));
