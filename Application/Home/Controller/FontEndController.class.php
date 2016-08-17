@@ -18,8 +18,8 @@ class FontEndController extends Controller {
             $_SESSION['ref']=  str_replace('.html', '',$_SERVER['REQUEST_URI']);
         }
         
-        //需要登录的控制器或者方法
-        $login_contorller = array('Member','Order');//需要登录的控制器
+        //需要关注登录的控制器或者方法
+        $login_contorller = array();//需要登录的控制器
         $login=array('Goods/pinglun','Goods/dandu_buy','Goods/kaituan_buy','Goods/cantuan_buy','Goods/dandu_buy_success','Goods/kaituan_success','Goods/cantuan_success()','Goods/zhifu()','Goods/alipay','Goods/weixin_zhijiezhifu','Goods/notifyweixin','Goods/gmcg_wx','Goods/jiance_pay','Goods/sellection_join','Goods/pinglun','Goods/pinglun');//需要登录的方法
         if (in_array(CONTROLLER_NAME, $login_contorller)||in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $login)) {
             if (!isset($_SESSION['huiyuan']) || $_SESSION['huiyuan'] == '') {
@@ -35,8 +35,10 @@ class FontEndController extends Controller {
         //
         
         
-        //Goods/index和 Goods/pintuan_info 方法  将采用无关注伪登陆的方式
-        if (in_array(CONTROLLER_NAME.'/'.ACTION_NAME, array('Goods/index','Goods/pintuan_info'))){
+        //需要无关注伪登陆的控制器或者方式
+        $wei_login_contorller = array('Member','Order');//需要登录的控制器
+        $wei_login=array('Goods/index','Goods/pintuan_info');
+        if (in_array(CONTROLLER_NAME, $wei_login_contorller)||in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $wei_login)){
             if (!isset($_SESSION['wei_huiyuan']) || $_SESSION['wei_huiyuan'] == '') {
                 header("location:". U("Login/wei_index"));
                 exit();
