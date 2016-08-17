@@ -110,12 +110,8 @@ class LoginController extends FontEndController {
             if($userinfo['subscribe']==0){
                 //未关注，返回原页面并弹出关注页面
                 $_SESSION['guanzhu']='weiguanzhu';
-                //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
-                $this->assign('guanzhu',$_SESSION['guanzhu']);
             }else{
                 $_SESSION['guanzhu']='yiguanzhu'; 
-                //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
-                $this->assign('guanzhu',$_SESSION['guanzhu']);
             }
             if(isset($_SESSION['ref'])){
                 header("location:". $_SESSION['ref']);
