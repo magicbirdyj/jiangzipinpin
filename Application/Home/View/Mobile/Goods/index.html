@@ -213,7 +213,6 @@
        
     
     <if condition="$zx_shuxing neq null">
-        <div id="overlay"></div><!--遮罩层div-->
     <div id="div_xuanze">
         <div class="fanhui padding"><span class="iconfont tb_fanhui" id="xuanze_fanhui">&#xe62d;</span>选择属性</div>
         <div class="order_row">
@@ -258,9 +257,26 @@
   </div> 
 
 <div id="fixed_tishi">无法购买该商品</div>
+
+
+<div id="overlay"></div><!--遮罩层div-->
+<div id="guanzhu">
+    <div class="gz_title">酱紫拼拼，拼实惠，拼乐趣</div>
+    <div class="guanzhu_content">
+        <div class="gz_content_text text_xiao">关注酱紫拼拼，以便购买后接受拼团和物流通知</div>
+        <div class="gz_content_text"><div class="red">请长按下面指纹</div><div>，识别二维码</div></div>
+    </div>
+    <div class="guanzhu_erweima">
+        <div class="iconfont tb_zhiwen">&#xe636;</div>
+        <div class="erweima_div"><img src="__PUBLIC_HOME__/Mobile/Images/public/jzpp_erweima.png" /></div>
+    </div>
+</div>
+
 <script>
+    var guanzhu="<{$guanzhu}>";
     var is_get="<{$is_get}>"//该会员是否已经获取过1元购商品的资格
 </script>
+<script src="__PUBLIC_HOME__/Mobile/Js/public.js" type="text/javascript"></script>
 <script src="__PUBLIC_HOME__/Mobile/Js/foot_buy.js" type="text/javascript"></script>
 <script src="__PUBLIC_HOME__/Mobile/Js/new_order.js" type="text/javascript"></script>
 

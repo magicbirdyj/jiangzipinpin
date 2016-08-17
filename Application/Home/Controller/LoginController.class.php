@@ -13,102 +13,26 @@ class LoginController extends FontEndController {
             $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx91953340c19f656e&redirect_uri=".$a."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
             header("Location:{$url}");
             exit();
+        }else{
+            $this->redirect('Login/weixin_login');
         }
-        $time=gettime();
-        $_SESSION['login']=$time;
-        $this->assign("title", "用户登录");
-        $this->assign("time", $time);
-        $this->display('index');
-        
     }
 
-    public function quit(){
-        unset($_SESSION['huiyuan']);
-        $index_url=U('index/index');
-        header ( "Location: {$index_url}" );  
-        exit();
-    }
-    
-    public function login(){
-        if($_POST['check']=='login'){
-            $dlm=$_POST['shoujihao'];
-            $mima =$_POST['mima'];
-            if(is_feifa($dlm)||is_feifa($mima)){
-                exit();
-            }
-            $usersmodel=D('Users');
-            $is_cunzai=$usersmodel->where("mobile_phone='{$dlm}'")->count();
-            if($is_cunzai!=='0'){
-                $salt=$usersmodel->where("mobile_phone='{$dlm}'")->getField('salt');
-                $mima_md5=md5($mima.$salt);
-                $data=$usersmodel->where("mobile_phone='{$dlm}' and password='{$mima_md5}'")->count();
-            }else{
-                $data='-1';
-            }
-            $this->ajaxReturn($data);
+    public function wei_index(){
+        if(isset($_SESSION['wei_huiyuan'])){
+            $index_url=U('index/index');
+            header ( "Location: {$index_url}" ); 
             exit();
         }
-    }
-
-    
-    public function chenggong() {
-        $leixing=$_POST['leixing'];
-        if(empty($_POST['hidden'])||empty($_SESSION[$leixing])){
-            $this->error('不是从登录页面进入，将转到主页',U('index/index'),3);
+        if(is_weixin()){
+            $a=urlencode("http://m.jiangzipinpin.com/Home/Login/wei_login");
+            $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx91953340c19f656e&redirect_uri=".$a."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+            header("Location:{$url}");
+            exit();
+        }else{
+            $this->redirect('Login/wei_login');
         }
-        if($_POST['hidden']==$_SESSION[$leixing]){
-                $dlm=$_POST['shoujihao'];
-                $mima =$_POST['mima'];
-                if(is_feifa($dlm)||is_feifa($mima)){
-                    exit();
-                }
-                $usersmodel=D('Users');
-                $is_cunzai=$usersmodel->where("mobile_phone='{$dlm}'")->count();
-                if($is_cunzai==='0'){
-                    $this->error('登录名不存在，请重新登录',U('Login/index'),3);
-                }
-                $salt=$usersmodel->where("mobile_phone='{$dlm}'")->getField('salt');
-                $mima_md5=md5($mima.$salt);
-                $data=$usersmodel->where("mobile_phone='{$dlm}' and password='{$mima_md5}'")->count();
-                if($data==='0'){
-                    $this->error('登录名或密码不正确，请重新登录',U('Login/index'),3);
-                }
-                $row=array(
-                    'last_login'=>mktime(),
-                    'last_ip'=>$_SERVER['REMOTE_ADDR']
-                );
-                $usersmodel->where("mobile_phone='{$dlm}'")->save($row);
-                $id=$usersmodel->where("mobile_phone='{$dlm}'")->getField('user_id');
-                $hym=$usersmodel->where("mobile_phone='{$dlm}'")->getField('user_name');
-                $smid=$usersmodel->where("mobile_phone='{$dlm}'")->getField('shopman_id');
-                $_SESSION['huiyuan']=array(
-                    'user_id'=>$id,
-                    'user_name'=>$hym,
-                    'shopman_id'=>$smid
-                     );
-                unset($_SESSION[$leixing]);
-                if(isset($_SESSION['ref'])){
-                    header("location:". U($_SESSION['ref']));
-                    exit();
-                }else{
-                    header("location:". U('index/index'));
-                    exit();
-                }
-            }else{
-                    $this->error('非法进入，将转到主页',U('index/index'),3);
-                }
     }
-    
-    public function is_login(){
-        if(isset($_SESSION['huiyuan'])){
-            $data=$_SESSION['huiyuan']['user_name'];
-        }  else {
-            $data=0;
-        }
-        $this->ajaxReturn($data);
-        exit();
-    }
-    
     
     
     public function weixin_login(){
@@ -119,37 +43,30 @@ class LoginController extends FontEndController {
             $open_id=$wangye['openid'];
             $access_token=S('access_token');
             $userinfo=$this->get_userinfo($open_id,$access_token);
-            if($userinfo['subscribe']==0){
-                //未关注，返回原页面并弹出关注页面
-                $_SESSION['guanzhu']='weiguanzhu';
-                $this->redirect($_SESSION['before_login_ref']);
-                
+            $usersmodel=D('Users');
+            $user_id=$usersmodel->where("open_id='$open_id'")->getField('user_id');
+            $row=array(
+                'open_id'=>"$open_id",
+                'user_name'=>$userinfo['nickname'],
+                'head_url'=>$userinfo['headimgurl']
+            );
+            $_SESSION['huiyuan']=$row;
+            if(!$user_id){ 
+                $usersmodel->add($row);
+                $row['user_id']=$usersmodel->where("open_id='$open_id'")->getField('user_id');
             }else{
-                $_SESSION['guanzhu']='yiguanzhu';
-                $usersmodel=D('Users');
-                $user_id=$usersmodel->where("open_id='$open_id'")->getField('user_id');
-                $row=array(
-                    'open_id'=>"$open_id",
-                    'user_name'=>$userinfo['nickname'],
-                    'head_url'=>$userinfo['headimgurl']
-                );
-                $_SESSION['huiyuan']=$row;
-                if(!$user_id){ 
-                    $usersmodel->add($row);
-                    $row['user_id']=$usersmodel->where("open_id='$open_id'")->getField('user_id');
-                }else{
-                    $usersmodel->where("user_id='$user_id'")->save($row);
-                    $row['user_id']=$user_id;
-                }
-                $_SESSION['huiyuan']=$row;
-                if(isset($_SESSION['ref'])){
-                    header("location:". U($_SESSION['ref']));
-                    exit();
-                }else{
-                    header("location:". U('index/index'));
-                    exit();
-                }
-            } 
+                $usersmodel->where("user_id='$user_id'")->save($row);
+                $row['user_id']=$user_id;
+            }
+            $_SESSION['huiyuan']=$row;
+            if(isset($_SESSION['ref'])){
+                header("location:". U($_SESSION['ref']));
+                exit();
+            }else{
+                header("location:". U('index/index'));
+                exit();
+            }
+            
         }else{
             $usersmodel=D('Users');
             $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
@@ -169,6 +86,62 @@ class LoginController extends FontEndController {
         }
     }
     
+    
+    public function wei_login(){
+        //获取微信用户信息并直接登陆
+        if(isset($_GET['code'])){
+            $code=$_GET['code'];
+            $wangye=$this->get_wangye($code);
+            $open_id=$wangye['openid'];
+            $access_token=S('access_token');
+            $userinfo=$this->get_userinfo($open_id,$access_token);
+            
+            $usersmodel=D('Users');
+            $user_id=$usersmodel->where("open_id='$open_id'")->getField('user_id');
+            $row=array(
+                 'open_id'=>"$open_id"
+                );
+            if(!$user_id){
+                $usersmodel->add($row);
+                $row['user_id']=$usersmodel->where("open_id='$open_id'")->getField('user_id');
+            }else{
+                $row['user_id']=$user_id;
+            }
+            $_SESSION['wei_huiyuan']=$row;
+            if($userinfo['subscribe']==0){
+                //未关注，返回原页面并弹出关注页面
+                $_SESSION['guanzhu']='weiguanzhu';
+                //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
+                $this->assign('guanzhu',$_SESSION['guanzhu']);
+                
+            }else{
+                $_SESSION['guanzhu']='yiguanzhu'; 
+                //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
+                $this->assign('guanzhu',$_SESSION['guanzhu']);
+            }
+            if(isset($_SESSION['ref'])){
+                header("location:". U($_SESSION['ref']));
+                exit();
+            }else{
+                header("location:". U('index/index'));
+                exit();
+            }
+        }else{
+            $usersmodel=D('Users');
+            $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
+            $_SESSION['wei_huiyuan']=array(
+            'user_id'=>$user['user_id'],
+            'open_id'=>"$open_id",
+                );
+            if(isset($_SESSION['ref'])){
+                header("location:". U($_SESSION['ref']));
+                exit();
+            }else{
+                header("location:". U('index/index'));
+                exit();
+            }
+        }
+    }
     
     private function get_wangye($code){
        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code" ;

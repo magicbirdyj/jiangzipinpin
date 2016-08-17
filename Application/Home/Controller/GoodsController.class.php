@@ -97,10 +97,10 @@ class GoodsController extends FontEndController {
         //找出该商品是否被用户收藏了
         $sellectionmodel = D('Sellection');
    
-            $user_id = $_SESSION['huiyuan']['user_id'];
-            $is_sellect = $sellectionmodel->where("goods_id=$goods_id and user_id=$user_id")->find();
-            $sellection_count = $sellectionmodel->where("user_id=$user_id")->count();
-            $this->assign('sellection_count', $sellection_count);
+        $user_id = $_SESSION['wei_huiyuan']['user_id'];
+        $is_sellect = $sellectionmodel->where("goods_id=$goods_id and user_id=$user_id")->find();
+        $sellection_count = $sellectionmodel->where("user_id=$user_id")->count();
+        $this->assign('sellection_count', $sellection_count);
 
         $this->assign('is_sellect', $is_sellect);
         //该商品被收藏了多少次
