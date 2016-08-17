@@ -112,7 +112,7 @@ class LoginController extends FontEndController {
                 $_SESSION['guanzhu']='weiguanzhu';
                 //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
                 $this->assign('guanzhu',$_SESSION['guanzhu']);
-                var_dump($userinfo);exit();
+                var_dump($_SESSION);exit();
             }else{
                 $_SESSION['guanzhu']='yiguanzhu'; 
                 //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
