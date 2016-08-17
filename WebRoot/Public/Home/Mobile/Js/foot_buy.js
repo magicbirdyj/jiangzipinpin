@@ -5,6 +5,8 @@ if(is_get=="yijing_get"){
         $('#kaituan_buy').css('background-color','#ccc');
     }
 $('#kaituan_buy').bind('click',function(){
+    guanzhu_ajax();
+    return false;
     if(guanzhu==='weiguanzhu'){
         tanchuguanzhu();
         return false;
@@ -82,7 +84,18 @@ $('#kefu').bind('click',function(){
     });
     
     
-    
+    //ajax获取是否关注
+    function guanzhu_ajax(){
+         $.ajax({
+            type:'POST',
+            url:'/Home/Login/get_guanzhu',
+            data:0,
+            dataType:'json',
+            success:function(msg){
+                alert(msg);
+            }
+        });
+    }
     
     
     
