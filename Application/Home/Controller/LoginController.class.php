@@ -26,7 +26,6 @@ class LoginController extends FontEndController {
         }
         if(is_weixin()){
             $a=urlencode("http://m.jiangzipinpin.com/Home/Login/wei_login");
-            var_dump($a);exit();
             $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx91953340c19f656e&redirect_uri=".$a."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
             header("Location:{$url}");
             exit();
