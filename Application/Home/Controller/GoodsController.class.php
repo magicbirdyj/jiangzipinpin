@@ -7,7 +7,6 @@ use Home\Controller;
 class GoodsController extends FontEndController {
 
     public function index() {
-        exit();
         $this->get_weixin_config();
         $goods_id = $_GET['goods_id'];
         if(!$goods_id){
@@ -61,7 +60,7 @@ class GoodsController extends FontEndController {
         }
         $this->assign('goods_tuan',$goods_tuan);
         
-        
+        exit();
         $img_qita = unserialize($goods['goods_img_qita']); //获取其它展示图数组
         $this->assign('img_qita', $img_qita);
         $shuxing = unserialize($goods['shuxing']); //获取商品属性数组
