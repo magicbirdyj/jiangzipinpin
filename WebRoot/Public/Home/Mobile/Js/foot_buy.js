@@ -5,6 +5,10 @@ if(is_get=="yijing_get"){
         $('#kaituan_buy').css('background-color','#ccc');
     }
 $('#kaituan_buy').bind('click',function(){
+    if(guanzhu==='weiguanzhu'){
+        tanchuguanzhu();
+        return false;
+    }
     //已经过去过资格的1元购或者抽奖会员 无法再开团
     if(is_get=="yijing_get"){
         $('#fixed_tishi').css('display','block');
@@ -22,6 +26,10 @@ $('#kaituan_buy').bind('click',function(){
     }
 });
 $('#dandu_buy').bind('click',function(){
+    if(guanzhu==='weiguanzhu'){
+        tanchuguanzhu();
+        return false;
+    }
     var zx_length=$('.zx_shuxing_ul').length;
     var yixuan_length=$('.zx_shuxing_ul>.yixuan').length;
     if(zx_length===yixuan_length){
