@@ -603,11 +603,9 @@ class GoodsController extends FontEndController {
         
         $this->assign('order',$order);
         //C('TOKEN_ON',false);//取消表单令牌
-         
 
-         
-         
         $this->alipay($order_id); 
+        
         $this->display('zhifu');
         
     }
