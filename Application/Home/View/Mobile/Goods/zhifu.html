@@ -30,11 +30,13 @@
         <input type="hidden" name="order_id" value="<{$order['order_id']}>" />
    
     <a href="javascript:void(0)" class="a_tjdd button_a_lvse" >去付款</a>
-</div>
+
 
 <script type="text/javascript">
     $('.a_tjdd').bind('click',function(){
-        callpay();
+        $(function(){
+                callpay();
+            });
     });
     
 
@@ -53,8 +55,8 @@
                             if (res.err_msg == "get_brand_wcpay_request:ok") {
                                 window.location.href="<{:U('Goods/gmcg_wx',array('order_id'=>$order_id))}>";
                             } else{
-                                alert("支付失败");
-                    //                setTimeout(function(){document.location.reload();},1888);
+                                //alert("支付失败");
+                                    setTimeout(function(){document.location.reload();},1888);
                             }
                         }
                 );
