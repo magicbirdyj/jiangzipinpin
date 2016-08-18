@@ -633,8 +633,6 @@ class GoodsController extends FontEndController {
         }elseif($order['status']>6){
             $this->error('该订单已被取消');
         }
-        $goods_id=$order['goods_id'];
-
         $this->assign('order', $order);
         $order_user_id = $order['user_id']; //登录用户无该订单权限
         if ($order_user_id != $_SESSION['huiyuan']['user_id']) {//登录用户无该订单权限
@@ -654,7 +652,6 @@ class GoodsController extends FontEndController {
                 'goods_id'=>$order['goods_id'],
                 'open_id'=>$open_id,
                 'goods_name'=> $order['goods_name'],
-                'shop_name'=>$order['shop_name'],
                 'order_id'=>$order_id
             );
             
