@@ -29,13 +29,14 @@
     <form action="<{:U('Goods/alipay')}>" method="get" id='form_alipay'>
         <input type="hidden" name="order_id" value="<{$order['order_id']}>" />
     </form>
-    <a href="javascript:void(0)" class="a_tjdd button_a_lvse" >去付款</a>
+    <a href="<{:U('Goods/alipay',array('order_id'=>$order['order_id']))}>" class="a_tjdd button_a_lvse" >去付款</a>
 
 
 <script type="text/javascript">
     $('.a_tjdd').bind('click',function(){
         //callpay();
-        $('#form_alipay').submit();
+        //$('#form_alipay').submit();
+        
     });
     
 /*
