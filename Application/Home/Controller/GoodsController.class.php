@@ -606,7 +606,7 @@ class GoodsController extends FontEndController {
 
         $this->alipay($order_id); 
         
-        $this->display('zhifu');
+        
         
     }
 
@@ -708,6 +708,7 @@ class GoodsController extends FontEndController {
             //$this->assign('paydata',$paydata);
             $this->assign("parameters", json_encode($parameters));
             //$this->assign("total_fee", $paydata['total_fee']);
+            $this->display('zhifu');
     }
     
     
