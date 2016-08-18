@@ -602,7 +602,12 @@ class GoodsController extends FontEndController {
         }
         
         $this->assign('order',$order);
-         C('TOKEN_ON',false);//取消表单令牌
+        //C('TOKEN_ON',false);//取消表单令牌
+         
+
+         
+         
+        $this->alipay($order_id); 
         $this->display('zhifu');
         
     }
@@ -622,10 +627,7 @@ class GoodsController extends FontEndController {
     }
 
     //生成微信支付订单
-    public function alipay() {
-        $order_id = $_POST['order_id'];
-        $pay_method = $_POST['pay_method'];
-        $pay_method = array_key_exists($pay_method, C("PAY_METHOD")) ? $pay_method : 2;
+    private function alipay($order_id) {
         $ordermodel = D('Order');
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
         if(!$order){
@@ -641,7 +643,6 @@ class GoodsController extends FontEndController {
             $this->error('您没有该订单权限');
         }
         
-        if ($pay_method == 2) {
             //微信
             $user_id=$order['user_id'];
             $usersmodel=D('Users');
@@ -678,10 +679,7 @@ class GoodsController extends FontEndController {
             }else{
                 $this->weixin_saomazhifu($paydata);
             } 
-            
-            
-             
-        }
+
     }
     
     private function weixin_zhijiezhifu($paydata){
@@ -712,16 +710,9 @@ class GoodsController extends FontEndController {
                 $this->error("下单失败" . $orderInfo['return_msg']);
             }
 
-            $this->assign('paydata',$paydata);
-            $order_id=$paydata['order_id'];
-            $this->assign('order_id',$order_id);
+            //$this->assign('paydata',$paydata);
             $this->assign("parameters", json_encode($parameters));
-            $this->assign("total_fee", $paydata['total_fee']);
-            
-            //$ordermodel=D('Order');
-            //$order=$ordermodel->where("order_id='{$order_id}'")->find();
-            //$this->assign('order',$order);
-            $this->display('zhifuweixin_zhijie');
+            //$this->assign("total_fee", $paydata['total_fee']);
     }
     
     
@@ -753,10 +744,9 @@ class GoodsController extends FontEndController {
             $row = array(
                 'pay_status' => 1, //支付状态为支付
                 'updated' => time(),
-                "pay_type" => 2,
+                "pay_type" => 1,
                 "trade_no" => $returnPay['transaction_id'],
-                "pay_info" => serialize($returnPay),
-                'created'=>  time()
+                "pay_info" => serialize($returnPay)
             );
             if (!$ordermodel->where("order_id=$order_id")->save($row)) {
                 echo "fail";
