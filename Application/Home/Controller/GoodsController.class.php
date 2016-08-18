@@ -608,9 +608,9 @@ class GoodsController extends FontEndController {
         
         $this->assign('order',$order);
         //C('TOKEN_ON',false);//取消表单令牌
-        //$this->display('zhifu');
+        $this->display('zhifu');exit();
         //微信
-        $this->redirect("Goods/alipay",array('order_id'=>$order_id));exit();
+        //$this->redirect("Goods/alipay",array('order_id'=>$order_id));exit();
         $usersmodel=D('Users');
         $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
         $paydata=array(
