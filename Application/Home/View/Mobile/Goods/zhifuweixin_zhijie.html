@@ -25,7 +25,7 @@
     <td class="td_r yingfu">&yen <{$paydata['total_fee']|floatval}></td>
 </tr>
 
- <a href="javascript:void(0)" class="a_tjdd button_a_lvse" >确认付款</a>
+
 
 
 </table>
@@ -41,13 +41,10 @@
 
 
 <script>
-    $('.a_tjdd').bind('click',function(){
-        callpay();
-        //$('#form_alipay').submit();
-    });
-            //$(function(){
-                //callpay();
-            //});
+
+            $(function(){
+                callpay();
+            });
             var jsApiParameters = <{$parameters}> ;
             function jsApiCall(){
                 WeixinJSBridge.invoke(
