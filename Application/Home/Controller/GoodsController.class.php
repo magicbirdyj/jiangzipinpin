@@ -759,7 +759,7 @@ class GoodsController extends FontEndController {
             }
             
             //订单或者团购订单成功再加商品购买数量
-            echo "success";
+            //echo "success";
             $this->redirect(U('Goods/gmcg_wx','order_id=$order_id'));
         }
     }
