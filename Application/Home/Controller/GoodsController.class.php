@@ -647,7 +647,7 @@ class GoodsController extends FontEndController {
 
     //生成微信支付订单
     public function alipay() {
-        $order_id=$_get['order_id'];
+        $order_id=$_GET['order_id'];
         $ordermodel = D('Order');
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
         //微信
