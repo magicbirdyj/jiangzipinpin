@@ -15,24 +15,64 @@
     <td class="td_l">应付金额：</td>
     <td class="td_r yingfu">&yen <{$order['dues']|floatval}></td>
 </tr>
-<form name="qufukuang" method="post" action="<{:U('Goods/alipay')}>">
+
 <tr class="buy_table_content">
     <td class="td_l">付款方式：</td>
     <td class="td_r pay_method">
         <select name="pay_method" >
-                    <option value="2" >微信支付</option>
+                    <option value="1" >微信支付</option>
             </select>
     </td>
 </tr>
 
 </table>
         <input type="hidden" name="order_id" value="<{$order['order_id']}>" />
-    </form>
+   
     <a href="javascript:void(0)" class="a_tjdd button_a_lvse" >去付款</a>
 </div>
 
 <script type="text/javascript">
     $('.a_tjdd').bind('click',function(){
-        $('form[name=qufukuang]').submit();
+        callpay();
     })
+    
+    
+    
+    //$(function(){
+                //callpay();
+            //});
+            var jsApiParameters = <{$parameters}> ;
+            function jsApiCall(){
+                WeixinJSBridge.invoke(
+                        'getBrandWCPayRequest', {
+                        "appId": jsApiParameters.appId,
+                                "timeStamp": jsApiParameters.timeStamp,
+                                "nonceStr": jsApiParameters.nonceStr,
+                                "package": jsApiParameters.package,
+                                "signType": jsApiParameters.signType,
+                                "paySign": jsApiParameters.paySign
+                        },
+                        function(res){
+                            if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                window.location.href="<{:U('Goods/gmcg_wx',array('order_id'=>$order_id))}>";
+                            } else{
+                                alert("支付失败");
+                    //                setTimeout(function(){document.location.reload();},1888);
+                            }
+                        }
+                );
+            }
+
+    function callpay(){
+        if (typeof WeixinJSBridge == "undefined"){
+            if (document.addEventListener){
+                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+            } else if (document.attachEvent){
+                document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+            }
+        } else{
+            jsApiCall();
+        }
+    }
 </script>
