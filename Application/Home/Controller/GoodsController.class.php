@@ -502,7 +502,7 @@ class GoodsController extends FontEndController {
             }
 
             cookie('order_id',$result,36000);
-            $this->redirect('Goods/zhifu',array('order_id'=>$result));
+            $this->redirect('Goods/alipay',array('order_id'=>$result));
         } else {
             $this->error('订单提交失败，请重新提交', $_SERVER['HTTP_REFERER'], 3);
         }
@@ -571,7 +571,7 @@ class GoodsController extends FontEndController {
         }
     }
 
-    public function zhifu() {
+    public function alipay() {
         $user_id = $_SESSION['huiyuan']['user_id'];
         $order_id = $_GET['order_id'];
         $ordermodel=D('Order');
@@ -607,9 +607,27 @@ class GoodsController extends FontEndController {
         }
         
         $this->assign('order',$order);
-        C('TOKEN_ON',false);//取消表单令牌
-        $this->display('zhifu');
-    
+        //C('TOKEN_ON',false);//取消表单令牌
+        //$this->display('zhifu');
+        //微信
+        $usersmodel=D('Users');
+        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
+        $paydata=array(
+            'body'=>sprintf("酱紫拼拼：商铺名：%s 商品名：%s", $order['shop_name'], $order['goods_name']),
+            'total_fee'=>$order['dues'],
+            'notify'=>PAY_HOST . U("Goods/notifyweixin"),
+            'shop_name'=>$order['shop_name'],
+            'order_no'=>$order['order_no'],
+            'goods_id'=>$order['goods_id'],
+            'open_id'=>$open_id,
+            'goods_name'=> $order['goods_name'],
+            'order_id'=>$order_id
+        );
+        if(is_weixin()){//如果是微信浏览器 直接公众号支付，否则 扫一扫支付
+            $this->weixin_zhijiezhifu($paydata);
+        }else{
+            $this->weixin_saomazhifu($paydata);
+        } 
     }
 
     /**
@@ -627,7 +645,7 @@ class GoodsController extends FontEndController {
     }
 
     //生成微信支付订单
-    public function alipay() {
+    public function alipay1() {
         $order_id=$_POST['order_id'];
         $ordermodel = D('Order');
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
@@ -683,7 +701,8 @@ class GoodsController extends FontEndController {
             }
             $this->assign('paydata',$paydata);
             $this->assign("parameters", json_encode($parameters));
-            $this->display('zhifuweixin_zhijie');
+            //$this->display('zhifuweixin_zhijie');
+            $this->display('zhifu');
     }
     
     
