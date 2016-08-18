@@ -13,24 +13,16 @@
 
 <table class="buy_table" cellspacing="0">
 <tr class="buy_table_head">
-    <td colspan="2"><{$goods['goods_name']}></td>
+    <td colspan="2"><{$paydata['goods_name']}></td>
 </tr>
 <tr class="buy_table_content">
     <td class="td_l">商家：</td>
-    <td class="td_r"><{$goods['shop_name']}></td>
-</tr>
-<tr class="buy_table_content">
-    <td class="td_l">价格：</td>
-    <td class="td_r">&yen <{$goods['price']|floatval}></td>
+    <td class="td_r"><{$paydata['shop_name']}></td>
 </tr>
 
 <tr class="buy_table_content">
-    <td class="td_l">代金卷：</td>
-    <td class="td_r">&yen <{$goods['daijinquan']|floatval}></td>
-</tr>
-<tr class="buy_table_content">
-    <td class="td_l">应付金额：</td>
-    <td class="td_r yingfu">&yen <{$goods['dues']|floatval}></td>
+    <td class="td_l">付款金额：</td>
+    <td class="td_r yingfu">&yen <{$paydata['total_fee']|floatval}></td>
 </tr>
 
 
