@@ -31,7 +31,7 @@
 </table>
 
     
-    
+<a href="javascript:void(0)" class="a_tjdd button_a_lvse" >去付款</a>    
     
     
     
@@ -41,10 +41,12 @@
 
 
 <script>
-
-            $(function(){
-                callpay();
-            });
+$('.a_tjdd').bind('click',function(){
+        callpay();
+    });
+            //$(function(){
+                //callpay();
+            //});
             var jsApiParameters = <{$parameters}> ;
             function jsApiCall(){
                 WeixinJSBridge.invoke(
