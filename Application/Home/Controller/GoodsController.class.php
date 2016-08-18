@@ -625,7 +625,7 @@ class GoodsController extends FontEndController {
     }
 
     //生成微信支付订单
-    private function alipay($order_id) {
+    public function alipay($order_id) {
         $ordermodel = D('Order');
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
         if(!$order){
@@ -677,7 +677,7 @@ class GoodsController extends FontEndController {
 
     }
     
-    private function weixin_zhijiezhifu($paydata){
+    public function weixin_zhijiezhifu($paydata){
             vendor('wxp.native'); //引入第三方类库
             $orderInput = new \WxPayUnifiedOrder();
             $orderInput->SetBody($paydata['body']);
@@ -705,9 +705,9 @@ class GoodsController extends FontEndController {
                 $this->error("下单失败" . $orderInfo['return_msg']);
             }
 
-            //$this->assign('paydata',$paydata);
+            $this->assign('paydata',$paydata);
             $this->assign("parameters", json_encode($parameters));
-            //$this->assign("total_fee", $paydata['total_fee']);
+            $this->assign("total_fee", $paydata['total_fee']);
             $this->display('zhifu');
     }
     
