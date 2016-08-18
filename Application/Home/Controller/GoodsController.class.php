@@ -676,16 +676,6 @@ class GoodsController extends FontEndController {
             if(is_weixin()){//如果是微信浏览器 直接公众号支付，否则 扫一扫支付
                 $this->weixin_zhijiezhifu($paydata);
             }else{
-                $order_id = $order['order_id'];
-                $row = array(
-                    'pay_status' => 1, //支付状态为支付
-                    'updated' => time(),
-                    "pay_type" => 1,
-                    "pay_info" => serialize($returnPay),
-                    'created'=>  time()
-                );
-                $ordermodel->where("order_id=$order_id")->save($row);
-                //$this->redirect('Goods/gmcg_wx',array('order_id'=>$order_id));
                 $this->weixin_saomazhifu($paydata);
             } 
             
