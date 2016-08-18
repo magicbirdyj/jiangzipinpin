@@ -502,7 +502,7 @@ class GoodsController extends FontEndController {
             }
 
             cookie('order_id',$result,36000);
-            $this->redirect('Goods/alipay',array('order_id'=>$result));
+            $this->redirect('Goods/zhifu',array('order_id'=>$result));
         } else {
             $this->error('订单提交失败，请重新提交', $_SERVER['HTTP_REFERER'], 3);
         }
@@ -571,7 +571,7 @@ class GoodsController extends FontEndController {
         }
     }
 
-    public function alipay() {
+    public function zhifu() {
         $user_id = $_SESSION['huiyuan']['user_id'];
         $order_id = $_GET['order_id'];
         $ordermodel=D('Order');
@@ -645,7 +645,7 @@ class GoodsController extends FontEndController {
     }
 
     //生成微信支付订单
-    public function alipay1() {
+    public function alipay() {
         $order_id=$_POST['order_id'];
         $ordermodel = D('Order');
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
@@ -701,8 +701,8 @@ class GoodsController extends FontEndController {
             }
             $this->assign('paydata',$paydata);
             $this->assign("parameters", json_encode($parameters));
-            //$this->display('zhifuweixin_zhijie');
-            $this->display('zhifu');
+            $this->display('zhifuweixin_zhijie');
+            //$this->display('zhifu');
     }
     
     
