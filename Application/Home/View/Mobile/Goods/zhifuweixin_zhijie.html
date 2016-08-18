@@ -57,7 +57,7 @@
                         },
                         function(res){
                             if (res.err_msg == "get_brand_wcpay_request:ok") {
-                                window.location.href="<{U:('Order/paySuccess')}>";
+                                window.location.href="<{U:('Goods/gmcg_wx',array('order_id'=>$order_id))}>";
                             } else{
                                 alert("支付失败");
                     //                setTimeout(function(){document.location.reload();},1888);
@@ -79,16 +79,5 @@
         }
     }
 
-    wx.config({  
-        //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-        appId: "<{$wx_config['appId']}>", // 必填，公众号的唯一标识
-        timestamp: "<{$wx_config['timestamp']}>", // 必填，生成签名的时间戳
-        nonceStr: "<{$wx_config['nonceStr']}>", // 必填，生成签名的随机串
-        signature: "<{$wx_config['signature']}>",// 必填，签名，见附录1
-        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-    });
-
-            wx.ready(function () {
-           
-                    });
+   
 </script>

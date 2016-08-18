@@ -713,9 +713,14 @@ class GoodsController extends FontEndController {
             }
 
             $this->assign('paydata',$paydata);
-            $this->assign('order_id',$paydata['order_id']);
+            $order_id=$paydata['order_id'];
+            $this->assign('order_id',$order_id);
             $this->assign("parameters", json_encode($parameters));
             $this->assign("total_fee", $paydata['total_fee']);
+            
+            //$ordermodel=D('Order');
+            //$order=$ordermodel->where("order_id='{$order_id}'")->find();
+            //$this->assign('order',$order);
             $this->display('zhifuweixin_zhijie');
     }
     
@@ -760,7 +765,6 @@ class GoodsController extends FontEndController {
             
             //订单或者团购订单成功再加商品购买数量
             echo "success";
-            $this->redirect('Goods/gmcg_wx',array('order_id'=>$order_id));
         }
     }
 
