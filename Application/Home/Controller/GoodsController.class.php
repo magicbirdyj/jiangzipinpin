@@ -576,6 +576,10 @@ class GoodsController extends FontEndController {
         $order_id = $_GET['order_id'];
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id='{$order_id}'")->find();
+        $order_user_id = $order['user_id']; //登录用户无该订单权限
+        if ($order_user_id != $user_id) {//登录用户无该订单权限
+            $this->error('您没有该订单权限');
+        }
         if($order['status']!=1||$order['deleted']==1){
             $this->error('该订单状态已无法付款');
         }
@@ -594,20 +598,36 @@ class GoodsController extends FontEndController {
             $count=$ordermodel->where("tuan_no=$tuan_no and pay_status >0")->count();
             if(($created+86400)<  time()||$count>=$order['tuan_number']){
                 $row=array(
-                    'status'=>6//团购失败
+                    'status'=>7//取消订单
                 );
                 $ordermodel->where("order_id=$order_id")->save($row);
                 $this->error('该团购已过期或者已成团,无法再付款',$_SESSION['ref'],2);
             }
+
         }
         
         $this->assign('order',$order);
         //C('TOKEN_ON',false);//取消表单令牌
-
-        $this->alipay($order_id); 
-        
-        
-        
+        //微信支付
+        $usersmodel=D('Users');
+        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
+        $paydata=array(
+            'body'=>sprintf("酱紫拼拼：商铺名：%s 商品名：%s", $order['shop_name'], $order['goods_name']),
+            'total_fee'=>$order['dues'],
+            'notify'=>PAY_HOST . U("Goods/notifyweixin"),
+            'shop_name'=>$order['shop_name'],
+            'order_no'=>$order['order_no'],
+            'goods_id'=>$order['goods_id'],
+            'open_id'=>$open_id,
+            'goods_name'=> $order['goods_name'],
+            'order_id'=>$order_id
+        );
+        if(is_weixin()){//如果是微信浏览器 直接公众号支付，否则 扫一扫支付
+            $this->weixin_zhijiezhifu($paydata);
+        }else{
+            $this->weixin_saomazhifu($paydata);
+        } 
+    
     }
 
     /**
@@ -628,56 +648,30 @@ class GoodsController extends FontEndController {
     public function alipay($order_id) {
         $ordermodel = D('Order');
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
-        if(!$order){
-            $this->error('该订单不存在或已被删除');
-        }elseif($order['status']>6){
-            $this->error('该订单已被取消');
-        }
-        $this->assign('order', $order);
-        $order_user_id = $order['user_id']; //登录用户无该订单权限
-        if ($order_user_id != $_SESSION['huiyuan']['user_id']) {//登录用户无该订单权限
-            $this->error('您没有该订单权限');
-        }
-        
-            //微信
-            $user_id=$order['user_id'];
-            $usersmodel=D('Users');
-            $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
-            $paydata=array(
-                'body'=>sprintf("酱紫拼拼：商铺名：%s 商品名：%s", $order['shop_name'], $order['goods_name']),
-                'total_fee'=>$order['dues'],
-                'notify'=>PAY_HOST . U("Goods/notifyweixin"),
-                'shop_name'=>$order['shop_name'],
-                'order_no'=>$order['order_no'],
-                'goods_id'=>$order['goods_id'],
-                'open_id'=>$open_id,
-                'goods_name'=> $order['goods_name'],
-                'order_id'=>$order_id
-            );
-            
-            $tuan_no=$order['tuan_no'];
-            //如果是单独购买，不再检测成团与否
-            if(!$tuan_no==0){
-                //如果该团已经成团，取消订单,提示并返回到首页
-                $count=$ordermodel->where("tuan_no=$tuan_no and pay_status=1")->count();
-                $tuan_number=$ordermodel->where("order_id=$order_id")->getField('tuan_number');
-                if($count>=$tuan_number){
-                    $row=array(
-                        'status'=>7
-                    );
-                    $ordermodel->where("order_id=$order_id")->save($row);
-                    $this->error('您好，该团购已经成团，您的订单将取消，请选其它团参团','Index/index',3);
-                }
-            }
-            if(is_weixin()){//如果是微信浏览器 直接公众号支付，否则 扫一扫支付
-                $this->weixin_zhijiezhifu($paydata);
-            }else{
-                $this->weixin_saomazhifu($paydata);
-            } 
+        //微信
+        $user_id=$order['user_id'];
+        $usersmodel=D('Users');
+        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
+        $paydata=array(
+            'body'=>sprintf("酱紫拼拼：商铺名：%s 商品名：%s", $order['shop_name'], $order['goods_name']),
+            'total_fee'=>$order['dues'],
+            'notify'=>PAY_HOST . U("Goods/notifyweixin"),
+            'shop_name'=>$order['shop_name'],
+            'order_no'=>$order['order_no'],
+            'goods_id'=>$order['goods_id'],
+            'open_id'=>$open_id,
+            'goods_name'=> $order['goods_name'],
+            'order_id'=>$order_id
+        );
+        if(is_weixin()){//如果是微信浏览器 直接公众号支付，否则 扫一扫支付
+            $this->weixin_zhijiezhifu($paydata);
+        }else{
+            $this->weixin_saomazhifu($paydata);
+        } 
 
     }
     
-    public function weixin_zhijiezhifu($paydata){
+    private function weixin_zhijiezhifu($paydata){
             vendor('wxp.native'); //引入第三方类库
             $orderInput = new \WxPayUnifiedOrder();
             $orderInput->SetBody($paydata['body']);
@@ -704,10 +698,8 @@ class GoodsController extends FontEndController {
             } else {
                 $this->error("下单失败" . $orderInfo['return_msg']);
             }
-
             $this->assign('paydata',$paydata);
             $this->assign("parameters", json_encode($parameters));
-            $this->assign("total_fee", $paydata['total_fee']);
             $this->display('zhifu');
     }
     
