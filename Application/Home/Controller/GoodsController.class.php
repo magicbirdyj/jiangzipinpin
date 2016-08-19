@@ -611,24 +611,7 @@ class GoodsController extends FontEndController {
         $this->display('zhifu');exit();
         //微信
         $this->redirect("Goods/alipay",array('order_id'=>$order_id));exit();
-        $usersmodel=D('Users');
-        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
-        $paydata=array(
-            'body'=>sprintf("酱紫拼拼：商铺名：%s 商品名：%s", $order['shop_name'], $order['goods_name']),
-            'total_fee'=>$order['dues'],
-            'notify'=>PAY_HOST . U("Goods/notifyweixin"),
-            'shop_name'=>$order['shop_name'],
-            'order_no'=>$order['order_no'],
-            'goods_id'=>$order['goods_id'],
-            'open_id'=>$open_id,
-            'goods_name'=> $order['goods_name'],
-            'order_id'=>$order_id
-        );
-        if(is_weixin()){//如果是微信浏览器 直接公众号支付，否则 扫一扫支付
-            $this->weixin_zhijiezhifu($paydata);
-        }else{
-            $this->weixin_saomazhifu($paydata);
-        } 
+       
     }
 
     /**
@@ -648,7 +631,7 @@ class GoodsController extends FontEndController {
     //生成微信支付订单
     public function alipay() {
         $order_id=$_GET['order_id'];
-        var_dump($order_id);
+        var_dump($order_id);die;
         $ordermodel = D('Order');
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
         //微信
