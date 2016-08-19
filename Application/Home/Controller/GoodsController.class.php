@@ -610,7 +610,7 @@ class GoodsController extends FontEndController {
         //C('TOKEN_ON',false);//取消表单令牌
         //$this->display('zhifu');exit();
         //微信
-        $this->redirect("Goods/alipay",array('order_id'=>$order_id));exit();
+        $this->alipay($order_id);
        
     }
 
@@ -629,9 +629,8 @@ class GoodsController extends FontEndController {
     }
 
     //生成微信支付订单
-    public function alipay() {
-        $order_id=$_GET['order_id'];
-        var_dump($order_id);
+    public function alipay($order_id) {
+        //$order_id=$_GET['order_id'];
         $ordermodel = D('Order');
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
         //微信
@@ -686,8 +685,8 @@ class GoodsController extends FontEndController {
             }
             $this->assign('paydata',$paydata);
             $this->assign("parameters", json_encode($parameters));
-            $this->display('zhifuweixin_zhijie');
-            //$this->display('zhifu');
+            //$this->display('zhifuweixin_zhijie');
+            $this->display('zhifu');
     }
     
     
