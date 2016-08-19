@@ -62,7 +62,8 @@ $('.a_tjdd').bind('click',function(){
                             if (res.err_msg == "get_brand_wcpay_request:ok") {
                                 window.location.href="<{:U('Goods/gmcg_wx',array('order_id'=>$order_id))}>";
                             } else{
-                                alert("支付失败");
+                                //alert("支付失败");
+                                alert(res.err_msg);
                     //                setTimeout(function(){document.location.reload();},1888);
                             }
                         }
