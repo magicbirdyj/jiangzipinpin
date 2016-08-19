@@ -55,7 +55,7 @@
                             if (res.err_msg == "get_brand_wcpay_request:ok") {
                                 window.location.href="<{:U('Goods/gmcg_wx',array('order_id'=>$order_id))}>";
                             } else{
-                                alert(res.err_msg);
+                                alert(res.err_desc);
                                 $.post("<{:U('Test/index')}>",res,function(){
                                     
                                 });
