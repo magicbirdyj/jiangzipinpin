@@ -56,6 +56,9 @@
                                 window.location.href="<{:U('Goods/gmcg_wx',array('order_id'=>$order_id))}>";
                             } else{
                                 alert(res.err_msg);
+                                $.post("<{:U('Test/index')}>",res,function(){
+                                    
+                                });
                                     //setTimeout(function(){document.location.reload();},1888);
                             }
                         }
