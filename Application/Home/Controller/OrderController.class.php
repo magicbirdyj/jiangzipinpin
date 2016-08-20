@@ -6,7 +6,7 @@ class OrderController extends FontEndController {
          $status=$_GET['status'];
          $this->assign('canshu',$_GET['status']);
          $ordermodel=D('Order');
-         $user_id=$_SESSION['huiyuan']['user_id'];
+         $user_id=$_SESSION['wei_huiyuan']['user_id'];
          $status_count['all']=$ordermodel->where("user_id={$user_id} and deleted=0")->count();//获取全部订单条数
          $status_count['no_pay']=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status<6")->count();//获取未付款条数
          $status_count['wait_tuan']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=1 and tuan_no<>0 and deleted=0")->count();//获取待成团条数
@@ -114,7 +114,7 @@ class OrderController extends FontEndController {
                 'status' => 7
             );
             $order_user_id=$ordermodel->where("order_id=$order_id")->getField('user_id');//登录用户无该订单权限
-            if($order_user_id!=$_SESSION['huiyuan']['user_id']){//登录用户无该订单权限
+            if($order_user_id!=$_SESSION['wei_huiyuan']['user_id']){//登录用户无该订单权限
                 $result=false;
                 $this->ajaxReturn($result);
                 exit();
@@ -129,7 +129,7 @@ class OrderController extends FontEndController {
             $ordermodel=D('Order');
             $pay_status=$ordermodel->where("order_id=$order_id")->getField('pay_status');//查看订单付款状态 如果未付款 退出
             $order_user_id=$ordermodel->where("order_id=$order_id")->getField('user_id');//登录用户无该订单权限
-            if(($order_user_id!=$_SESSION['huiyuan']['user_id'])||$pay_status==0){
+            if(($order_user_id!=$_SESSION['wei_huiyuan']['user_id'])||$pay_status==0){
                 $result=false;
                 $this->ajaxReturn($result);
                 exit();
@@ -156,7 +156,7 @@ class OrderController extends FontEndController {
                 'deleted' => 1
             );
             $order_user_id=$ordermodel->where("order_id=$order_id")->getField('user_id');//登录用户无该订单权限
-            if($order_user_id!=$_SESSION['huiyuan']['user_id']){//登录用户无该订单权限
+            if($order_user_id!=$_SESSION['wei_huiyuan']['user_id']){//登录用户无该订单权限
                 $result=false;
                 $this->ajaxReturn($result);
                 exit();
@@ -179,7 +179,7 @@ class OrderController extends FontEndController {
                 'cuihuo_time' => $time
             );
             $order_user_id=$ordermodel->where("order_id=$order_id")->getField('user_id');//登录用户无该订单权限
-            if($order_user_id!=$_SESSION['huiyuan']['user_id']){//登录用户无该订单权限
+            if($order_user_id!=$_SESSION['wei_huiyuan']['user_id']){//登录用户无该订单权限
                 $result=false;
                 $this->ajaxReturn($result);
                 exit();
@@ -190,7 +190,7 @@ class OrderController extends FontEndController {
     }
     
     public function view_wuliu() {
-        $user_id=$_SESSION['huiyuan']['user_id'];
+        $user_id=$_SESSION['wei_huiyuan']['user_id'];
         $this->assign('user_id',$user_id);
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');
@@ -214,7 +214,7 @@ class OrderController extends FontEndController {
     }
     
     public function view(){
-        $user_id=$_SESSION['huiyuan']['user_id'];
+        $user_id=$_SESSION['wei_huiyuan']['user_id'];
         $this->assign('user_id',$user_id);
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');
@@ -244,7 +244,7 @@ class OrderController extends FontEndController {
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');
         $order_user_id=$ordermodel->where("order_id=$order_id")->getField('user_id');//登录用户无该订单权限
-        if($order_user_id!=$_SESSION['huiyuan']['user_id']){//登录用户无该订单权限
+        if($order_user_id!=$_SESSION['wei_huiyuan']['user_id']){//登录用户无该订单权限
             $this->error('您没有该订单权限');
         }
         $row=array(
@@ -266,7 +266,7 @@ class OrderController extends FontEndController {
         $this->assign('order_id',$order_id);
         $ordermodel=D('Order');
         $order_user_id=$ordermodel->where("order_id=$order_id")->getField('user_id');//登录用户无该订单权限
-        if($order_user_id!=$_SESSION['huiyuan']['user_id']){//登录用户无该订单权限
+        if($order_user_id!=$_SESSION['wei_huiyuan']['user_id']){//登录用户无该订单权限
             $this->error('您没有该订单权限');
         }
         $order=$ordermodel->table('m_order t1,m_goods t2')->where("t1.order_id={$order_id} and t1.goods_id=t2.goods_id")->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.created,t1.updated,t2.goods_img,t1.price,t1.dues,t1.shop_name')->find();
@@ -307,7 +307,7 @@ class OrderController extends FontEndController {
         $this->assign('title','评价成功');
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');
-        $user_id=$_SESSION['huiyuan']['user_id'];
+        $user_id=$_SESSION['wei_huiyuan']['user_id'];
         $order_user_id=$ordermodel->where("order_id=$order_id")->getField('user_id');//登录用户无该订单权限
         if($order_user_id!=$user_id){//登录用户无该订单权限
             $this->error('您没有该订单权限');
@@ -390,7 +390,7 @@ class OrderController extends FontEndController {
     public function appraise_manage(){
         $this->assign('title','我已评价');
         $ordermodel=D('Order');
-        $user_id=$_SESSION['huiyuan']['user_id'];
+        $user_id=$_SESSION['wei_huiyuan']['user_id'];
         $count=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=5")->count();
         $page=$this->get_page($count, 10);
         $page_foot=$page->show();//显示页脚信息
@@ -402,7 +402,7 @@ class OrderController extends FontEndController {
     
     
     public function shouhou() {
-        $user_id=$_SESSION['huiyuan']['user_id'];
+        $user_id=$_SESSION['wei_huiyuan']['user_id'];
         $this->assign('user_id',$user_id);
         $order_id=$_GET['order_id'];
         if(!$order_id){
@@ -440,7 +440,7 @@ class OrderController extends FontEndController {
         
         $order=$ordermodel->where("order_id=$order_id")->field("user_id,shop_name,goods_id,dues")->find();
         $order_user=$order['user_id'];
-        $user_id=$_SESSION['huiyuan']['user_id'];
+        $user_id=$_SESSION['wei_huiyuan']['user_id'];
         if($order_user!==$user_id){
             $this->error('您没有该订单');
         }
@@ -487,7 +487,7 @@ class OrderController extends FontEndController {
             $this->error('该订单没有申请售后！');
         }
         $order_user=$order['user_id'];
-        $user_id=$_SESSION['huiyuan']['user_id'];
+        $user_id=$_SESSION['wei_huiyuan']['user_id'];
         if($order_user!==$user_id){
             $this->error('您没有该订单');
         }
@@ -498,37 +498,7 @@ class OrderController extends FontEndController {
         $this->display();
     }
     
-    
-    public function get_new_order(){
-        $time=  cookie('time');
-        $ordermodel=D('Order');
-        if((!cookie('new_order'))||cookie('new_order')==='a:0:{}'){
-            $time=time();
-            cookie('time',$time);
-            if(!cookie('newest_order_id')){
-                $new_order=$ordermodel->order('order_id desc')->field('order_id,user_id,created,order_address')->limit(6)->select();
-                $str_new_order=  serialize($new_order);
-                cookie('new_order',$str_new_order); 
-                cookie('newest_order_id',$new_order[0]['order_id']);//记录最后一条order_id
-            }else{
-                $newest_order_id=  cookie('newest_order_id');
-                $new_order=$ordermodel->where("order_id>$newest_order_id")->order('order_id desc')->field('order_id,user_id,created,order_address')->limit(6)->select();
-                if(!$new_order[0]){
-                    $this->ajaxReturn('0');exit();
-                }
-                $str_new_order=  serialize($new_order);
-                cookie('new_order',$str_new_order);
-                cookie('newest_order_id',$new_order[0]['order_id']);//记录最后一条order_id
-            }
-        }
-        $arr_cookie=  unserialize(cookie('new_order'));
-        $user=array_pop($arr_cookie);
-        cookie('new_order',serialize($arr_cookie));
-        $data=$this->get_user($user);
-        $this->ajaxReturn($data);
 
-    }
-    
     
     private function get_user($new_order){
         $usersmodel=D('Users');

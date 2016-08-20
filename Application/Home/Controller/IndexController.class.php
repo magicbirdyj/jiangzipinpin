@@ -163,4 +163,36 @@ private function get_thumb(&$arr){
             $value['goods_img_qita_0']=$img_url.'thumb/'.$img_name;
         }
     }
+    
+    
+    
+    public function get_new_order(){
+        $time=  cookie('time');
+        $ordermodel=D('Order');
+        if((!cookie('new_order'))||cookie('new_order')==='a:0:{}'){
+            $time=time();
+            cookie('time',$time);
+            if(!cookie('newest_order_id')){
+                $new_order=$ordermodel->order('order_id desc')->field('order_id,user_id,created,order_address')->limit(6)->select();
+                $str_new_order=  serialize($new_order);
+                cookie('new_order',$str_new_order); 
+                cookie('newest_order_id',$new_order[0]['order_id']);//记录最后一条order_id
+            }else{
+                $newest_order_id=  cookie('newest_order_id');
+                $new_order=$ordermodel->where("order_id>$newest_order_id")->order('order_id desc')->field('order_id,user_id,created,order_address')->limit(6)->select();
+                if(!$new_order[0]){
+                    $this->ajaxReturn('0');exit();
+                }
+                $str_new_order=  serialize($new_order);
+                cookie('new_order',$str_new_order);
+                cookie('newest_order_id',$new_order[0]['order_id']);//记录最后一条order_id
+            }
+        }
+        $arr_cookie=  unserialize(cookie('new_order'));
+        $user=array_pop($arr_cookie);
+        cookie('new_order',serialize($arr_cookie));
+        $data=$this->get_user($user);
+        $this->ajaxReturn($data);
+
+    }
 }

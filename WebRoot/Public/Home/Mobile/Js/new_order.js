@@ -8,7 +8,7 @@
     function get_new_order(){
         $.ajax({
             type:'GET',
-            url:'/Home/Order/get_new_order',
+            url:'/Home/Index/get_new_order',
             data:0,
             dataType:'json',
             success:function(msg){

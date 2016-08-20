@@ -119,7 +119,7 @@ class MemberController extends FontEndController {
     public function sellection_del(){
         $sellection_id=$_GET['sellection_id'];
         $sellectionmodel=D('Sellection');
-        $user_id=$_SESSION['huiyuan']['user_id'];
+        $user_id=$_SESSION['wei_huiyuan']['user_id'];
         $count=$sellectionmodel->where("sellection_id=$sellection_id and user_id=$user_id")->count();
         if($count==0){
             $this->error('非法操作',U($_SESSION['ref']),3);
@@ -183,7 +183,7 @@ class MemberController extends FontEndController {
         $user_id=$_GET['user_id'];
         $usersmodel=D('Users');
         $user=$usersmodel->where("user_id=$user_id")->find();
-        $_SESSION['huiyuan']=array(
+        $_SESSION['wei_huiyuan']=array(
                 'user_id'=>$user['user_id'],
                 'user_name'=>$user['user_name'],
                 'open_id'=>$user['open_id']
