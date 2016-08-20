@@ -499,24 +499,7 @@ class OrderController extends FontEndController {
     }
     
 
-    
-    
-    
-    private function shijian($time){
-        $second=time()-$time;
-        if($second<60){
-            $shijian=$second.'秒';
-        }elseif($second<3600){
-            $shijian=floor($second/60).'分钟';
-        }elseif($second<86400){
-            $shijian=floor($second/3600).'小时';
-        }else{
-            $shijian=floor($second/86400).'天';
-        }
-        return $shijian;
-    }
-    
-    
+
     
     /**
     * Json方式 查询订单物流轨迹

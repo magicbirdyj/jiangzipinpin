@@ -164,56 +164,7 @@ class LoginController extends FontEndController {
   }
   
   
-  
-  
-  public function get_new_order(){
-        $time=  cookie('time');
-        $ordermodel=D('Order');
-        if((!cookie('new_order'))||cookie('new_order')==='a:0:{}'){
-            $time=time();
-            cookie('time',$time);
-            if(!cookie('newest_order_id')){
-                $new_order=$ordermodel->order('order_id desc')->field('order_id,user_id,created,order_address')->limit(6)->select();
-                $str_new_order=  serialize($new_order);
-                cookie('new_order',$str_new_order); 
-                cookie('newest_order_id',$new_order[0]['order_id']);//记录最后一条order_id
-            }else{
-                $newest_order_id=  cookie('newest_order_id');
-                $new_order=$ordermodel->where("order_id>$newest_order_id")->order('order_id desc')->field('order_id,user_id,created,order_address')->limit(6)->select();
-                if(!$new_order[0]){
-                    $this->ajaxReturn('0');exit();
-                }
-                $str_new_order=  serialize($new_order);
-                cookie('new_order',$str_new_order);
-                cookie('newest_order_id',$new_order[0]['order_id']);//记录最后一条order_id
-            }
-        }
-        $arr_cookie=  unserialize(cookie('new_order'));
-        $user=array_pop($arr_cookie);
-        cookie('new_order',serialize($arr_cookie));
-        $data=$this->get_user($user);
-        $this->ajaxReturn($data);
 
-    }
-    
-    
-    
-    private function get_user($new_order){
-        $usersmodel=D('Users');
-        $user_id=$new_order['user_id'];
-        $order_address=$new_order['order_address'];
-        $user=$usersmodel->where("user_id=$user_id")->field('user_name,address,head_url')->find();
-        $arr_address=  unserialize($user['address']);
-        $address=$arr_address[$order_address];
-        $arr_location=  explode(' ', $address['location']);
-        $location=$arr_location[1];
-        $shijian=$this->shijian($new_order['created']);
-        $data=array(
-            'head_url'=>$user['head_url'],
-            'text'=>'最新订单来自 '.$location.' 的 '.$user['user_name'].',  '.$shijian.'前'
-        );
-        return $data;
-    }
 }
 
 
