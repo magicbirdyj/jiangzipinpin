@@ -50,15 +50,23 @@ class LoginController extends FontEndController {
                 'user_name'=>$userinfo['nickname'],
                 'head_url'=>$userinfo['headimgurl']
             );
-            $_SESSION['huiyuan']=$row;
-            if(!$user_id){ 
-                $usersmodel->add($row);
-                $row['user_id']=$usersmodel->where("open_id='$open_id'")->getField('user_id');
-            }else{
-                $usersmodel->where("user_id='$user_id'")->save($row);
+            if($userinfo['subscribe']==0){//未关注的情况
+                if(!$user_id){//数据库没有信息，又未关注，提示错误
+                    $this->error('您还未关注！请从首页进入','Index/index');
+                }
                 $row['user_id']=$user_id;
+                $_SESSION['huiyuan']=$row;
+            }else{
+                $_SESSION['huiyuan']=$row;
+                if(!$user_id){ 
+                    $usersmodel->add($row);
+                    $row['user_id']=$usersmodel->where("open_id='$open_id'")->getField('user_id');
+                }else{
+                    $usersmodel->where("user_id='$user_id'")->save($row);
+                    $row['user_id']=$user_id;
+                }
+                $_SESSION['huiyuan']=$row;
             }
-            $_SESSION['huiyuan']=$row;
             if(isset($_SESSION['ref'])){
                 header("location:". $_SESSION['ref']);
                 exit();
@@ -67,7 +75,7 @@ class LoginController extends FontEndController {
                 exit();
             }
             
-        }else{
+        }else{// 用于不是微信浏览器
             $usersmodel=D('Users');
             $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
             $_SESSION['huiyuan']=array(
