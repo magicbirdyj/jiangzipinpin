@@ -46,7 +46,7 @@
                         <a  href="<{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_url']}>" class="button_a_order"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_button']}></a>
                         <a  class="button_a_order quxiao_order" name="<{$order['order_id']}>">取消订单</a>
                     </div>
-                <elseif  condition="(($order['pay_status'] eq '1') and ($order['status'] egt '4'))" />
+                <elseif  condition="(($order['pay_status'] eq '1') and ($order['status'] egt '4') and ($order['status'] lt '6'))" />
                      <div class="d1">
                         <a  href="<{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_url']}>" class="button_a_order"><{:order_status($order['pay_status'],$order['status'],$order['order_id'],$order['tuan_no'])['status_button']}></a>
                         <a id='shouhou' class="button_a_order" name="<{$order['order_id']}>" href="<{:U('Order/shouhou')}>">申请售后</a>
