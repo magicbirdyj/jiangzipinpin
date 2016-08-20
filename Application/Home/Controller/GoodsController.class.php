@@ -629,7 +629,7 @@ class GoodsController extends FontEndController {
     }
 
     //生成微信支付订单
-    public function alipay($order_id) {
+    private function alipay($order_id) {
         //$order_id=$_GET['order_id'];
         $ordermodel = D('Order');
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
@@ -695,7 +695,7 @@ class GoodsController extends FontEndController {
      * 微信支付的 异步回调
      * 
      */
-    public function notifyweixin() {
+    public function notifyweixin(){
         vendor('wxp.notify'); //引入第三方类库
         $notify = new \PayNotifyCallBack();
         $notify->Handle(false);
