@@ -702,6 +702,7 @@ class GoodsController extends FontEndController {
                 'updated' => time(),
                 "pay_type" => 1
             );
+            $ordermodel = D('Order');
             if (!$ordermodel->where("order_id=$order_id")->save($row)) {
                 echo "fail";
                 die;
