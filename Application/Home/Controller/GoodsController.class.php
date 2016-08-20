@@ -7,6 +7,7 @@ use Home\Controller;
 class GoodsController extends FontEndController {
 
     public function index() {
+        var_dump($_SESSION['guanzhu']);
         C('TOKEN_ON',false);//取消表单令牌
         $this->get_weixin_config();
         $goods_id = $_GET['goods_id'];
