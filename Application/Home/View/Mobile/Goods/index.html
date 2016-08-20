@@ -95,20 +95,20 @@
         <div><a class="maodian_pingjia" href="<{:U('Goods/index',array('goods_id'=>$goods['goods_id'])).'#maodian_pingjia'}>"><span><{$goods['score']}></span>分</a></div>
         <div id="pingjia"><a class="maodian_pingjia" href="<{:U('Goods/index',array('goods_id'=>$goods['goods_id'])).'#maodian_pingjia'}>"><span><{$goods['comment_number']}></span>人评价</a></div>
     </div>
+    <!--
     <div class="about back_f0">
-        
              <div class='back_f0'>
                  描述：<span><{$pingfen_fl[0]}></span>
              </div>
              <div class='back_f0'>
-                 服务<span><{$pingfen_fl[1]}></span>
+                 服务：<span><{$pingfen_fl[1]}></span>
              </div>
              <div class='back_f0'>
-                 专业<span><{$pingfen_fl[2]}></span>
+                 物流：<span><{$pingfen_fl[2]}></span>
              </div>
          
     </div>
-    
+    <-->
     <if condition="$zx_shuxing neq null">
     <div class="padding" id="xuanze" style="margin-bottom: 10px;">
         <span style="line-height: 23px;" id="zx_shuxing">选择<volist name='zx_shuxing' id='vo'><{$key}>&nbsp;&nbsp;</volist>： </span>
@@ -116,7 +116,7 @@
     </div>
     </if>
     
-    <div style="padding: 7px 10px;font-size: 14px;">支付开团并邀请 <{$goods['tuan_number']-1}> 人开团，人数不足自动退款</div>
+    <div style="padding: 7px 10px;font-size: 14px;margin-top: 10px;">支付开团并邀请 <{$goods['tuan_number']-1}> 人开团，人数不足自动退款</div>
     <if condition="($goods_tuan neq NULL) and ($goods['1yuangou'] eq 0) and ($goods['choujiang'] eq 0)">
     <div style="padding: 10px 10px;font-size: 14px;background-color: #f0f0f0;">以下小伙伴正在发起团购，您可以直接参与</div>
     <div class="all_pintuan">
