@@ -35,7 +35,6 @@
 <script type="text/javascript">
     $('.a_tjdd').bind('click',function(){
         callpay();
-        //$('#form_alipay').submit();
         
     });
     
@@ -53,7 +52,7 @@
                         },
                         function(res){
                             if (res.err_msg == "get_brand_wcpay_request:ok") {
-                                window.location.href="<{:U('Goods/gmcg_wx',array('order_id'=>$order_id))}>";
+                                window.location.href="<{:U('Goods/gmcg_wx',array('order_id'=>$order['order_id']))}>";
                             } else{
                                 alert('支付失败');
                                
