@@ -801,6 +801,15 @@ class GoodsController extends FontEndController {
            foreach ($arr_buy_number as $value) {
                $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$value);//商品的购买次数加
            }
+        }else{//团员人数未满
+            //检查是否超时，如果超时 做出处理 
+            $time=  time();
+            if($time>($goods['tuanzhang_created']+86400)){
+                $row=array(
+                   'status'=>6//拼团失败
+               );
+                $ordermodel->where("order_id=$order_id")->save($row);
+            }
         }
         
         $tuanzhang_id=$ordermodel->where("tuan_no=$tuan_no and identity=1")->getField('user_id');
