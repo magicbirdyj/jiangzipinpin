@@ -500,22 +500,7 @@ class OrderController extends FontEndController {
     
 
     
-    private function get_user($new_order){
-        $usersmodel=D('Users');
-        $user_id=$new_order['user_id'];
-        $order_address=$new_order['order_address'];
-        $user=$usersmodel->where("user_id=$user_id")->field('user_name,address,head_url')->find();
-        $arr_address=  unserialize($user['address']);
-        $address=$arr_address[$order_address];
-        $arr_location=  explode(' ', $address['location']);
-        $location=$arr_location[1];
-        $shijian=$this->shijian($new_order['created']);
-        $data=array(
-            'head_url'=>$user['head_url'],
-            'text'=>'最新订单来自 '.$location.' 的 '.$user['user_name'].',  '.$shijian.'前'
-        );
-        return $data;
-    }
+    
     
     private function shijian($time){
         $second=time()-$time;
