@@ -685,11 +685,10 @@ class GoodsController extends FontEndController {
             }
             $this->assign('paydata',$paydata);
             $this->assign("parameters", json_encode($parameters));
-            //$this->display('zhifuweixin_zhijie');
-            var_dump($orderInput);
-            echo '<br />';
-            var_dump('下面是订单信息');
-            var_dump($orderInfo);
+            //var_dump($orderInput);
+            //echo '<br />';
+            //echo '下面是订单信息';
+            //var_dump($orderInfo);
             $this->display('zhifu');
     }
     
@@ -700,26 +699,6 @@ class GoodsController extends FontEndController {
      * 
      */
     public function notifyweixin(){
-        $order_id = '178';
-            $row = array(
-                'pay_status' => 1, //支付状态为支付
-                'updated' => time(),
-                "pay_type" => 1
-            );
-            $ordermodel = D('Order');
-            if (!$ordermodel->where("order_id=$order_id")->save($row)) {
-                echo "fail";
-                die;
-            }
-            
-            //订单或者团购订单成功再加商品购买数量
-            echo "success";
-            exit();
-        
-        
-        
-        
-        
         vendor('wxp.notify'); //引入第三方类库
         $notify = new \PayNotifyCallBack();
         $notify->Handle(false);
