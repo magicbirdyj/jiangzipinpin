@@ -3,7 +3,7 @@ namespace Home\Controller;
 use Home\Controller;
 class MemberController extends FontEndController {
     public function index(){
-        $user_id=$_SESSION['huiyuan']['user_id'];//获取会员id号
+        $user_id=$_SESSION['wei_huiyuan']['user_id'];//获取会员id号
         $usersmodel=D('Users');
         if(!empty($user_id)||$user_id===0){
         $data=$usersmodel->where("user_id={$user_id}")->find();
@@ -47,7 +47,7 @@ class MemberController extends FontEndController {
          $status=$_GET['status'];
          $this->assign('title','我的订单');
          $ordermodel=D('Order');
-         $user_id=$_SESSION['huiyuan']['user_id'];
+         $user_id=$_SESSION['wei_huiyuan']['user_id'];
          $status_count['all']=$ordermodel->where("user_id={$user_id}")->count();//获取全部订单条数
          $status_count['no_pay']=$ordermodel->where("user_id={$user_id} and pay_status=0")->count();//获取未付款条数
          $status_count['daiqueren']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=1")->count();//获取待确认条数
@@ -104,7 +104,7 @@ class MemberController extends FontEndController {
     //收藏列表
     public function sellection(){
         $this->assign("title","一起网_我的收藏");
-        $user_id=$_SESSION['huiyuan']['user_id'];
+        $user_id=$_SESSION['wei_huiyuan']['user_id'];
         $sellectionmodel=D('Sellection');
         $count=$sellectionmodel->where("user_id=$user_id")->count();
         $page=$this->get_page($count, 10);
@@ -135,7 +135,7 @@ class MemberController extends FontEndController {
    
     
     public function daijinquan(){
-        $user_id=$_SESSION['huiyuan']['user_id'];//获取会员id号
+        $user_id=$_SESSION['wei_huiyuan']['user_id'];//获取会员id号
         $usersmodel=D('Users');
         if(empty($user_id)||$user_id===0){
             $this->error('用户ID不存在!');
