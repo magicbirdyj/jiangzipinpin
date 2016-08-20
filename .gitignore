@@ -2,7 +2,6 @@
 /Application/Runtime/*
 /Application/Common/Conf/config.php
 /WebRoot/Public/Uploads/*
-/Application/Home/Conf/config.php
 /WebRoot/Upload/*
 /nbproject
 /nbproject/*

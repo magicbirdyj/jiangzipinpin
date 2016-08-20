@@ -23,7 +23,7 @@ class WeixinController extends FontEndController {
         if( $tmpStr == $signature ){
             return true;
         }else{
-        return false;
+            return false;
         }
     }
     
