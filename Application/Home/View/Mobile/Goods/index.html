@@ -47,21 +47,11 @@
           <div class="choose_div">
           </div>
       </div>
-    <div class="titile"><{$goods['goods_name']}></div>
-    <div class="title1_1"><{$goods['goods_jianjie']}></div>
-    <if condition="($goods['1yuangou'] eq 1) and ($goods['choujiang'] eq 1)">
-        <div class="title1_1">
-            <p>抽奖规则</p>
-            <p>1、拼团成功后，团长将获得1元购活动商品，再从9名团员中随机抽取一名获得1元购商品。</p>
-            <p>2、未中奖的团员全额退款，并赠送88元代金券。</p>
-            <p>3、未中奖的团员可自己开团，但不能再参团，拼团成功的团长和已中奖的团员不能重复参加该活动</p>
-        </div>
-    </if>
-    <div class="price">
+         <div class="price">
         <div class="price_l">
-            <strong class="sprice_strong strong_color"><{$goods['tuan_price']}></strong>
-            <span class="strong_color" style="margin-left: -6px;">元</span>
-            <del style="letter-spacing: -1px;">原价:<{$goods['yuan_price']}>元</del>
+            <strong class="price_strong price_red"><{$goods['tuan_price']}></strong>
+            <span class="price_red" style="margin-left: -2px;">元</span>
+            <del class="yuan_price">原价:<{$goods['yuan_price']}>元</del>
         </div>
         <div class="price_r">
             <if  condition="$goods['1yuangou'] eq '1'">
@@ -72,12 +62,17 @@
                 </if>
         </div>
     </div>
-    
-    <div class="about">
-        <div>已售：<span><{$goods['buy_number']}></span></div>
-        <div><a class="maodian_pingjia" href="<{:U('Goods/index',array('goods_id'=>$goods['goods_id'])).'#maodian_pingjia'}>"><span><{$goods['score']}></span>分</a></div>
-        <div id="pingjia"><a class="maodian_pingjia" href="<{:U('Goods/index',array('goods_id'=>$goods['goods_id'])).'#maodian_pingjia'}>"><span><{$goods['comment_number']}></span>人评价</a></div>
-    </div>
+    <div class="titile"><{$goods['goods_name']}></div>
+    <div class="title1_1"><{$goods['goods_jianjie']}></div>
+    <if condition="($goods['1yuangou'] eq 1) and ($goods['choujiang'] eq 1)">
+        <div class="title1_1">
+            <p>抽奖规则</p>
+            <p>1、拼团成功后，团长将获得1元购活动商品，再从9名团员中随机抽取一名获得1元购商品。</p>
+            <p>2、未中奖的团员全额退款，并赠送88元代金券。</p>
+            <p>3、未中奖的团员可自己开团，但不能再参团，拼团成功的团长和已中奖的团员不能重复参加该活动</p>
+        </div>
+    </if>
+   
     <div class="jianjie" >
         <div class="sjcn">酱紫承诺</div>
          <div class="chengnuo_content">
@@ -95,6 +90,24 @@
              </a>
          </div>
     </div>
+    <div class="about">
+        <div>已售：<span><{$goods['buy_number']}></span></div>
+        <div><a class="maodian_pingjia" href="<{:U('Goods/index',array('goods_id'=>$goods['goods_id'])).'#maodian_pingjia'}>"><span><{$goods['score']}></span>分</a></div>
+        <div id="pingjia"><a class="maodian_pingjia" href="<{:U('Goods/index',array('goods_id'=>$goods['goods_id'])).'#maodian_pingjia'}>"><span><{$goods['comment_number']}></span>人评价</a></div>
+    </div>
+    <div class="about back_f0">
+        <ul>
+             <li>
+                 描述：<span><{$pingfen_fl[0]}></span>
+             </li>
+             <li>
+                 服务<span><{$pingfen_fl[1]}></span>
+             </li>
+             <li>
+                 专业<span><{$pingfen_fl[2]}></span>
+             </li>
+         </ul>
+    </div>
     
     <if condition="$zx_shuxing neq null">
     <div class="padding" id="xuanze" style="margin-bottom: 10px;">
@@ -103,7 +116,7 @@
     </div>
     </if>
     
-    <div style="padding: 7px 10px;font-size: 14px; margin-bottom: 10px;">支付开团并邀请 <{$goods['tuan_number']-1}> 人开团，人数不足自动退款</div>
+    <div style="padding: 7px 10px;font-size: 14px;">支付开团并邀请 <{$goods['tuan_number']-1}> 人开团，人数不足自动退款</div>
     <if condition="($goods_tuan neq NULL) and ($goods['1yuangou'] eq 0) and ($goods['choujiang'] eq 0)">
     <div style="padding: 10px 10px;font-size: 14px;background-color: #f0f0f0;">以下小伙伴正在发起团购，您可以直接参与</div>
     <div class="all_pintuan">
@@ -131,23 +144,7 @@
         </ul>
     </div>
     </if>
-    <div class="padding" style="margin-bottom: 1px;">
-        <span class="float_l" style="line-height: 33px;">评分：</span>
-        <ul class="dianpujieshao_pingfen float_r">
-             <li>
-                 <div>描述</div>
-                 <div class="pingfen_jt"><{$pingfen_fl[0]}></div>
-             </li>
-             <li>
-                 <div>服务</div>
-                 <div class="pingfen_jt"><{$pingfen_fl[1]}></div>
-             </li>
-             <li style="border-right: none;">
-                 <div>专业</div>
-                 <div  class="pingfen_jt"><{$pingfen_fl[2]}></div>
-             </li>
-         </ul>
-    </div>
+    
     
     
     <a name="shop_a" id="shop_a" style="height: 0px;position:absolute;">&nbsp;</a>

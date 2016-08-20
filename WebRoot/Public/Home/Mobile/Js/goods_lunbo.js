@@ -1,5 +1,4 @@
 // JavaScript Document
-
 var index_this=0;//index_this是当前显示的图片index
 var times,left,right;
 var number=$('#lunbo_div>a').length;
@@ -75,7 +74,11 @@ if(number===2){
         
     }
 
-    
+    lunbo_start();
+
+    function lunbo_start(){
+        times=setInterval(huadong_l,3000);
+    }
     function huadong_r(){
         margin_left=$('#lunbo_div')[0].style.marginLeft;
         var n=parseInt(margin_left.substring(1,2));
