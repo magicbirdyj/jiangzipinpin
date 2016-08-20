@@ -19,11 +19,6 @@ class LoginController extends FontEndController {
     }
 
     public function wei_index(){
-        if(isset($_SESSION['wei_huiyuan'])){
-            $index_url=U('index/index');
-            header ( "Location: {$index_url}" ); 
-            exit();
-        }
         if(is_weixin()){
             $a=urlencode("http://m.jiangzipinpin.com/Home/Login/wei_login");
             $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx91953340c19f656e&redirect_uri=".$a."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
@@ -129,6 +124,7 @@ class LoginController extends FontEndController {
                 exit();
             }
         }else{
+            $_SESSION['guanzhu']='weiguanzhu';
             $usersmodel=D('Users');
             $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
             $_SESSION['wei_huiyuan']=array(
