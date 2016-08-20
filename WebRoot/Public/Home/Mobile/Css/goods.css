@@ -34,7 +34,6 @@ body{
     padding: 0px 10px;
     padding-top: 10px;
     padding-bottom: 5px;
-    margin-top: -10px;
 }
 .title1_1{
     font-size: 14px;
@@ -46,7 +45,7 @@ body{
     line-height: 22px;
 }
 .price{
-    margin-top: 1px;
+    margin-top: -10px;
     box-sizing: border-box;
     width:100%;
     color: #999;
@@ -59,16 +58,21 @@ body{
     float: left;
     width: 60%;
 }
-.sprice_strong{
+.price_strong{
     font-size: 30px;
+    font-weight: 300;
 }
-.strong_color{
-    color: #06c1ae;
-}
+
 .price_r{
     float: left;
     width: 38%;
     margin-top: 3px;
+}
+.price .yuan_price{
+    letter-spacing: -1px;
+    font-size: 14px;
+    margin-left: 4px;
+    color: #666;
 }
 .daijinquan{
     padding: 3px 6px;
@@ -85,10 +89,9 @@ body{
     margin: 1px 0px;
     width: 100%;
     height: 20px;
-
-    padding:10px 0px;
+    padding:7px 0px;
 }
-.about div{
+.about div,.about li{
     box-sizing: border-box;
     float: left;
     line-height: 20px;
@@ -103,7 +106,9 @@ body{
 .about span{
     color: #F76120;
 }
-
+.back_f0{
+    background-color: #f0f0f0;
+}
 
 .jiantou_r{
     float: right;

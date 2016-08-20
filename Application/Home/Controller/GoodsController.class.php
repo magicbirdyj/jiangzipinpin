@@ -7,7 +7,6 @@ use Home\Controller;
 class GoodsController extends FontEndController {
 
     public function index() {
-        var_dump($_SESSION['guanzhu']);
         C('TOKEN_ON',false);//取消表单令牌
         $this->get_weixin_config();
         $goods_id = $_GET['goods_id'];
@@ -686,10 +685,6 @@ class GoodsController extends FontEndController {
             }
             $this->assign('paydata',$paydata);
             $this->assign("parameters", json_encode($parameters));
-            //var_dump($orderInput);
-            //echo '<br />';
-            //echo '下面是订单信息';
-            //var_dump($orderInfo);
             $this->display('zhifu');
     }
     
@@ -911,5 +906,23 @@ class GoodsController extends FontEndController {
         $result=$usersmodel->where("user_id=$user_id")->save($row);
         return $result;
     }
-
+    
+    
+    
+    private function weixin_saomazhifu(){
+        $this->display('bendi_zhifu');
+    }
+    public function bendi_zhifu(){
+         $order_id = $_GET['order_id'];
+            $row = array(
+                'pay_status' => 1, //支付状态为支付
+                'updated' => time(),
+                "pay_type" => 1
+            );
+            $ordermodel=D('Order');
+            if (!$ordermodel->where("order_id=$order_id")->save($row)) {
+                $this->error('支付失败');
+            }
+            $this->redirect('Goods/gmcg_wx',array('order_id'=>$order_id),0);
+    }
 }
