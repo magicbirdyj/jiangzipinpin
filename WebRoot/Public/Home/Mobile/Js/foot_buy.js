@@ -6,6 +6,7 @@ if(is_get=="yijing_get"){
     }
 $('#kaituan_buy').bind('click',function(){
     delete_guanzhu();
+    alert('aaa');
     if(guanzhu==='weiguanzhu'){
         tanchuguanzhu();
         return false;
