@@ -17,31 +17,11 @@ class WeixinController extends FontEndController {
         }elseif($msgType=='text'){
             $keyword = trim($postObj->Content);
         }
-        $time = time();
-        $textTpl = "<xml>
-		<ToUserName><![CDATA[%s]]></ToUserName>
-		<FromUserName><![CDATA[%s]]></FromUserName>
-		<CreateTime>%s</CreateTime>
-		<MsgType><![CDATA[%s]]></MsgType>
-                <ArticleCount>1</ArticleCount>
-                <Articles>
-                <item>
-                <Title><![CDATA[%s]]></Title> 
-                <Description><![CDATA[%s]]></Description>
-                <PicUrl><![CDATA[%s]]></PicUrl>
-                <Url><![CDATA[%s]]></Url>
-                </item>
-                </Articles>
-		</xml>";             
-	if(($msgType=='event'&&$keyword=='subscribe')||$keyword!='')//关注事件
-                {
-              		$hui_msgType = "news";
-                        //$articleCount='1';//图文消息的条数
-                        $user_name=$this->get_user($fromUsername);
-                	$title =$user_name. "，酱紫终于等到你，点击继续购买";
-                        $goods=$this->get_goods_infor();
-                        $description=$goods['goods_name'].'[ 团购价：&yen;'.$goods['tuan_price'].']，点击继续拼团';
-                	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $hui_msgType,$title,$description,$goods['goods_img'],$goods['url']);
+           
+	if(($msgType=='event'&&$keyword=='subscribe')||$keyword!=''){
+              		//$resultStr=$this->response_image_text($postObj);
+                        $content=$postObj->Content;
+                        $resultStr-$this->response_text($postObj, $content);
                 	echo $resultStr;
                 }else{
                 	echo "Input something...";
@@ -92,9 +72,49 @@ class WeixinController extends FontEndController {
     }
     
     
+    //发送文本消息 
+    private function response_text($object,$content){
+        $time = time();
+        $textTpl = "<xml>
+                <ToUserName><![CDATA[%s]]></ToUserName>
+                <FromUserName><![CDATA[%s]]></FromUserName>
+                <CreateTime>%s</CreateTime>
+                <MsgType><![CDATA[text]]></MsgType>
+                <Content><![CDATA[%s]]></Content>
+                </xml>";
+        $resultStr = sprintf($textTpl, $object->FromUserName, $object->ToUserName, $time, $content);
+        return $resultStr;
+    }
     
     
     
+    //发送图文消息
+    private function response_image_text($object){
+        $time = time();
+        $textTpl = "<xml>
+		<ToUserName><![CDATA[%s]]></ToUserName>
+		<FromUserName><![CDATA[%s]]></FromUserName>
+		<CreateTime>%s</CreateTime>
+		<MsgType><![CDATA[%s]]></MsgType>
+                <ArticleCount>$d</ArticleCount>
+                <Articles>
+                <item>
+                <Title><![CDATA[%s]]></Title> 
+                <Description><![CDATA[%s]]></Description>
+                <PicUrl><![CDATA[%s]]></PicUrl>
+                <Url><![CDATA[%s]]></Url>
+                </item>
+                </Articles>
+		</xml>";         
+        $hui_msgType = "news";
+        $articleCount=1;//图文消息的条数
+        $user_name=$this->get_user($fromUsername);
+        $title =$user_name. "，酱紫终于等到你，点击继续购买";
+        $goods=$this->get_goods_infor();
+        $description=$goods['goods_name'].'[ 团购价：&yen;'.$goods['tuan_price'].']，点击继续拼团';
+        $resultStr = sprintf($textTpl, $object->fromUsername, $object->toUsername, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
+        return $resultStr;
+    }
     
     
     
