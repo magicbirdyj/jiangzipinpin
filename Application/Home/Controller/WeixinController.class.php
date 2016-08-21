@@ -64,7 +64,7 @@ class WeixinController extends FontEndController {
         $goods=$goodsmodel->where("goods_id=$goods_id")->field('goods_name,goods_img_qita,tuan_price')->find();
         $goods['goods_img']=  unserialize($goods['goods_img_qita']);
         $goods['goods_img']=$goods['goods_img'][0];
-        $goods['goods_img']=$this->get_thumb($goods_img);
+        $goods['goods_img']=$this->get_thumb($goods['goods_img']);
         $goods['goods_img']='http://m.jiangzipinpin.com'.$goods['goods_img'];
         $goods['url']='m.jiangzipinpin.com'.$url;
         return $goods;
