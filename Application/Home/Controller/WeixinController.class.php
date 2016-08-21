@@ -52,6 +52,7 @@ class WeixinController extends FontEndController {
     private function get_goods_infor() {
         //'/Home/Goods/index/goods_id/221'
         $arr_url=explode("/",$_SESSION['ref']);
+        var_dump($arr_url);exit;
         $value=array_pop($arr_url);
         $key=array_pop($arr_url);
         $goodsmodel=D('Goods');
