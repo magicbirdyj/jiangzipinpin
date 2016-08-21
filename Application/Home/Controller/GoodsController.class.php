@@ -5,9 +5,9 @@ namespace Home\Controller;
 use Home\Controller;
 
 class GoodsController extends FontEndController {
-
     public function index() {
         C('TOKEN_ON',false);//取消表单令牌
+        var_dump($_SESSION);
         $this->get_weixin_config();
         $goods_id = $_GET['goods_id'];
         if(!$goods_id){
