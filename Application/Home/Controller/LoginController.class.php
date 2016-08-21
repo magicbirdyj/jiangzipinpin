@@ -153,6 +153,7 @@ class LoginController extends FontEndController {
     public function save_url_ajax(){
         $url=$_POST['s_url'];
         $this->save_url($url);
+        $this->ajaxReturn($url);
     }
     
     

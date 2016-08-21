@@ -101,7 +101,10 @@ $('#kefu').bind('click',function(){
             type:'post',
             url:'/Home/Login/save_url_ajax',
             data:s_url,
-            dataType:'json'
+            dataType:'json',
+            success:function(msg){
+                alert(msg);
+            }
         });
     } 
     
