@@ -17,10 +17,9 @@ class WeixinController extends FontEndController {
         }
            
 	if(($msgType=='event'&&$keyword=='subscribe')||$keyword=='123'){
-              		//$resultStr=$this->response_image_text($postObj);
-                        $user_name=$this->get_user($postObj->FromUserName);
-                        $content=$user_name;
-                        $resultStr=$this->response_text($postObj, $content);
+              		$resultStr=$this->response_image_text($postObj);
+                        //$content='dweew';
+                        //$resultStr=$this->response_text($postObj, $content);
                 	echo $resultStr;
                 }else{
                 	echo "";
@@ -49,26 +48,25 @@ class WeixinController extends FontEndController {
     }
     
     public function get_goods_infor($open_id) {
-        //$usersmodel=D('Users');
-        //$url=$usersmodel->where("open_id='$open_id'")->getField('url');
-        //$arr_url=explode("/",$url);
-        //$value=array_pop($arr_url);
-        //$key=array_pop($arr_url);
-        //$goodsmodel=D('Goods');
-        //if($key=='goods_id'){
-            //$goods_id=$value;
-        //}elseif($key=='tuan_no'){
-            //$tuan_no=$value;
-            //$ordermodel=D(Order);
-            //$goods_id=$ordermodel->where("tuan_no=$tuan_no")->getField('goods_id');
-        //}
-        //$goods=$goodsmodel->where("goods_id=$goods_id")->field('goods_name,goods_img_qita,tuan_price')->find();
-        //$goods['goods_img']=  unserialize($goods['goods_img_qita']);
-        //$goods['goods_img']=$goods['goods_img'][0];
-        //$goods['goods_img']='m.jiangzipinpin.com'.$goods['goods_img'];
-        //$goods['url']='m.jiangzipinpin.com'.$_SESSION['ref'];
-        //return $goods;
-        return '3eew';
+        $usersmodel=D('Users');
+        $url=$usersmodel->where("open_id='$open_id'")->getField('url');
+        $arr_url=explode("/",$url);
+        $value=array_pop($arr_url);
+        $key=array_pop($arr_url);
+        $goodsmodel=D('Goods');
+        if($key=='goods_id'){
+            $goods_id=$value;
+        }elseif($key=='tuan_no'){
+            $tuan_no=$value;
+            $ordermodel=D(Order);
+            $goods_id=$ordermodel->where("tuan_no=$tuan_no")->getField('goods_id');
+        }
+        $goods=$goodsmodel->where("goods_id=$goods_id")->field('goods_name,goods_img_qita,tuan_price')->find();
+        $goods['goods_img']=  unserialize($goods['goods_img_qita']);
+        $goods['goods_img']=$goods['goods_img'][0];
+        $goods['goods_img']='m.jiangzipinpin.com'.$goods['goods_img'];
+        $goods['url']='m.jiangzipinpin.com'.$_SESSION['ref'];
+        return $goods;
     }
     
     
@@ -111,12 +109,11 @@ class WeixinController extends FontEndController {
         //$textTpl="ToUserName:%s,FromUserName:%s,CreateTime:%s,MsgType,%s,ArticleCount:%d,Title:%s,Description:%s,PicUrl:%s,Url:%s";
         $hui_msgType = "news";
         $articleCount=1;//图文消息的条数
-        $user_name=$this->get_user($object->fromUsername);
-        //$title =$user_name. "，酱紫终于等到你，点击继续购买";
-        //$goods=$this->get_goods_infor($object->fromUsername);
-        //$description=$goods['goods_name'].'( 团购价：&yen;'.$goods['tuan_price'].')，点击继续拼团';
-        //$resultStr = sprintf($textTpl, $object->fromUsername, $object->toUsername, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
-        $resultStr = "$user_name";
+        $user_name=$this->get_user($object->FromUserName);
+        $title =$user_name. "，酱紫终于等到你，点击继续购买";
+        $goods=$this->get_goods_infor($object->FromUserName);
+        $description=$goods['goods_name'].'( 团购价：&yen;'.$goods['tuan_price'].')，点击继续拼团';
+        $resultStr = sprintf($textTpl, $object->fromUsername, $object->toUsername, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
         return $resultStr;
     }
     
