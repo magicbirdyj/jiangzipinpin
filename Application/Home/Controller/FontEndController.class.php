@@ -39,10 +39,13 @@ class FontEndController extends Controller {
         $wei_login_contorller = array('Member','Order');//需要登录的控制器
         $wei_login=array('Goods/index','Goods/pintuan_info');
         if (in_array(CONTROLLER_NAME, $wei_login_contorller)||in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $wei_login)){
-            if (!isset($_SESSION['wei_huiyuan']) || $_SESSION['wei_huiyuan'] == ''||!isset($_SESSION['guanzhu'])||$_SESSION['guanzhu']=='') {
-                header("location:". U("Login/wei_index"));
-                exit();
+            if (!isset($_SESSION['huiyuan']) || $_SESSION['huiyuan'] == '') {
+                if (!isset($_SESSION['wei_huiyuan']) || $_SESSION['wei_huiyuan'] == ''||!isset($_SESSION['guanzhu'])||$_SESSION['guanzhu']=='') {
+                    header("location:". U("Login/wei_index"));
+                    exit();
+                }
             }
+            
         }
         
         

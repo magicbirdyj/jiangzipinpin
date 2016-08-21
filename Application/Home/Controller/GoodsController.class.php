@@ -127,6 +127,13 @@ class GoodsController extends FontEndController {
          }
           //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
           $this->assign('guanzhu',$_SESSION['guanzhu']);
+          //如果未关注，把$_SESSION['ref']  写入数据表
+          if($_SESSION['guanzhu']=='weiguanzhu'){
+              $usersmodel=D('Users');
+              $user_id=$_SESSION['huiyuan']?$_SESSION['huiyuan']['user_id']:$_SESSION['wei_huiyuan']['user_id'];
+              $row=  array('url'=>$_SESSION['ref']);
+              $usersmodel->where("user_id=$user_id")->save($row);
+          }
           $this->display('index');
     }
 
