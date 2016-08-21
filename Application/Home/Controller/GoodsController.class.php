@@ -136,6 +136,7 @@ class GoodsController extends FontEndController {
               $row=  array('url'=>$_SESSION['ref']);
               $usersmodel->where("user_id=$user_id")->save($row);
           }
+          session('guanzhu',null); 
           $this->display('index');
     }
 
