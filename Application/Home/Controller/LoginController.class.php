@@ -127,7 +127,7 @@ class LoginController extends FontEndController {
                 exit();
             }
         }else{
-            $_SESSION['guanzhu']='weiguanzhu';
+            $_SESSION['guanzhu']='yiguanzhu';
             $usersmodel=D('Users');
             $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
             $_SESSION['wei_huiyuan']=array(

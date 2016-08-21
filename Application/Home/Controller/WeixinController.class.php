@@ -65,7 +65,7 @@ class WeixinController extends FontEndController {
         $goods['goods_img']=  unserialize($goods['goods_img_qita']);
         $goods['goods_img']=$goods['goods_img'][0];
         $goods['goods_img']='m.jiangzipinpin.com'.$goods['goods_img'];
-        $goods['url']='m.jiangzipinpin.com'.$_SESSION['ref'];
+        $goods['url']='m.jiangzipinpin.com'.$url;
         return $goods;
     }
     
@@ -113,7 +113,7 @@ class WeixinController extends FontEndController {
         $title =$user_name. "，酱紫终于等到你，点击继续购买";
         $goods=$this->get_goods_infor($object->FromUserName);
         $description=$goods[ 'goods_name'].'( 团购价：¥'.$goods['tuan_price'].')，点击继续拼团';
-        $resultStr = sprintf($textTpl, $object->fromUsername, $object->toUsername, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
+        $resultStr = sprintf($textTpl, $object->FromUserName, $object->ToUserName, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
         //return $resultStr;
         return $resultStr;
     }
