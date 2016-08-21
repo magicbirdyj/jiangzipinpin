@@ -17,9 +17,9 @@ class WeixinController extends FontEndController {
         }
            
 	if(($msgType=='event'&&$keyword=='subscribe')||$keyword=='123'){
-            //$resultStr=$this->response_image_text($postObj);
-            $content=$this->response_image_text($postObj);
-            $resultStr=$this->response_text($postObj, $content);
+            $resultStr=$this->response_image_text($postObj);
+            //$content=$this->response_image_text($postObj);
+            //$resultStr=$this->response_text($postObj, $content);
             echo $resultStr;
         }else{
              echo "";
@@ -89,7 +89,7 @@ class WeixinController extends FontEndController {
     //发送图文消息
     public function response_image_text($object){
         $time = time();
-        /*
+        
         $textTpl = "<xml>
 		<ToUserName><![CDATA[%s]]></ToUserName>
 		<FromUserName><![CDATA[%s]]></FromUserName>
@@ -105,8 +105,8 @@ class WeixinController extends FontEndController {
                 </item>
                 </Articles>
 		</xml>";   
-         */ 
-        $textTpl="ToUserName:%s,FromUserName:%s,CreateTime:%s,MsgType,%s,ArticleCount:%d,Title:%s,Description:%s,PicUrl:%s,Url:%s";
+         
+        //$textTpl="ToUserName:%s,FromUserName:%s,CreateTime:%s,MsgType,%s,ArticleCount:%d,Title:%s,Description:%s,PicUrl:%s,Url:%s";
         $hui_msgType = "news";
         $articleCount=1;//图文消息的条数
         $user_name=$this->get_user($object->FromUserName);
@@ -114,7 +114,6 @@ class WeixinController extends FontEndController {
         $goods=$this->get_goods_infor($object->FromUserName);
         $description=$goods[ 'goods_name'].'( 团购价：¥'.$goods['tuan_price'].')，点击继续拼团';
         $resultStr = sprintf($textTpl, $object->FromUserName, $object->ToUserName, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
-        //return $resultStr;
         return $resultStr;
     }
     
