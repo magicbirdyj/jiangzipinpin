@@ -54,20 +54,20 @@ class WeixinController extends FontEndController {
         $value=array_pop($arr_url);
         $key=array_pop($arr_url);
         $goodsmodel=D('Goods');
-        if($key=='goods_id'){
-            $goods_id=$value;
-        }elseif($key=='tuan_no'){
-            $tuan_no=$value;
-            $ordermodel=D(Order);
-            $goods_id=$ordermodel->where("tuan_no=$tuan_no")->getField('goods_id');
-        }
+        //if($key=='goods_id'){
+            //$goods_id=$value;
+        //}elseif($key=='tuan_no'){
+            //$tuan_no=$value;
+            //$ordermodel=D(Order);
+            //$goods_id=$ordermodel->where("tuan_no=$tuan_no")->getField('goods_id');
+        //}
         //$goods=$goodsmodel->where("goods_id=$goods_id")->field('goods_name,goods_img_qita,tuan_price')->find();
         //$goods['goods_img']=  unserialize($goods['goods_img_qita']);
         //$goods['goods_img']=$goods['goods_img'][0];
         //$goods['goods_img']='m.jiangzipinpin.com'.$goods['goods_img'];
         //$goods['url']='m.jiangzipinpin.com'.$_SESSION['ref'];
         //return $goods;
-        
+        return '3eew';
     }
     
     
