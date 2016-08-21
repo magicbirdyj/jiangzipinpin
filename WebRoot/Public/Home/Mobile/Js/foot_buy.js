@@ -6,6 +6,7 @@ if(is_get=="yijing_get"){
     }
 $('#kaituan_buy').bind('click',function(){
     delete_guanzhu();
+    save_url('/Home/Goods/kaituan_buy/goods_id/'+$('input[name=goods_id]').val());
     if(guanzhu!=='yiguanzhu'){
         tanchuguanzhu();
         return false;
@@ -28,6 +29,7 @@ $('#kaituan_buy').bind('click',function(){
 });
 $('#dandu_buy').bind('click',function(){
     delete_guanzhu();
+    save_url('/Home/Goods/dandu_buy/goods_id/'+$('input[name=goods_id]').val());
     if(guanzhu!=='yiguanzhu'){
         tanchuguanzhu();
         return false;
@@ -83,8 +85,8 @@ $('#kefu').bind('click',function(){
    
     });
     
-//ajax删除$_session
-function delete_guanzhu(){
+    //ajax删除$_session
+    function delete_guanzhu(){
         $.ajax({
             type:'post',
             url:'/Home/Login/delete_guanzhu',
@@ -93,5 +95,14 @@ function delete_guanzhu(){
         });
     } 
     
+    //ajax保存url进数据库
+    function save_url(s_url){
+        $.ajax({
+            type:'post',
+            url:'/Home/Login/save_url_ajax',
+            data:s_url,
+            dataType:'json'
+        });
+    } 
     
    

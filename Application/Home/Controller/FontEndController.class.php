@@ -228,7 +228,13 @@ class FontEndController extends Controller {
   }
 
 
-
+//未关注时把当前url写入数据库
+    protected function save_url($url){
+        $usersmodel=D('Users');
+        $user_id=$_SESSION['huiyuan']?$_SESSION['huiyuan']['user_id']:$_SESSION['wei_huiyuan']['user_id'];
+        $row=  array('url'=>$url);
+        $usersmodel->where("user_id=$user_id")->save($row);
+    }
 
 
 }
