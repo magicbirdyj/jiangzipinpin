@@ -90,6 +90,7 @@ class WeixinController extends FontEndController {
     //发送图文消息
     public function response_image_text($object){
         $time = time();
+        /*
         $textTpl = "<xml>
 		<ToUserName><![CDATA[%s]]></ToUserName>
 		<FromUserName><![CDATA[%s]]></FromUserName>
@@ -104,7 +105,9 @@ class WeixinController extends FontEndController {
                 <Url><![CDATA[%s]]></Url>
                 </item>
                 </Articles>
-		</xml>";         
+		</xml>";   
+         */    
+        $textTpl="ToUserName:%s,FromUserName:%s,CreateTime:%s,MsgType,%s,ArticleCount:%d,Title:%s,Description:%s,PicUrl:%s,Url:%s";
         $hui_msgType = "news";
         $articleCount=1;//图文消息的条数
         $user_name=$this->get_user($object->fromUsername);
