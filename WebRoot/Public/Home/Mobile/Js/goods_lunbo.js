@@ -73,8 +73,9 @@ if(number===2){
         });
         
     }
-
-    lunbo_start();
+    if(number>1){
+        lunbo_start();
+    }
 
     function lunbo_start(){
         times=setInterval(huadong_l,3000);
