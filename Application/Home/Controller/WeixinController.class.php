@@ -18,7 +18,8 @@ class WeixinController extends FontEndController {
            
 	if(($msgType=='event'&&$keyword=='subscribe')||$keyword=='123'){
               		//$resultStr=$this->response_image_text($postObj);
-                        $content=$this->response_image_text($postObj);
+                        $user_name=$this->get_user($postObj->fromUsername);
+                        $content=$user_name;
                         $resultStr=$this->response_text($postObj, $content);
                 	echo $resultStr;
                 }else{
