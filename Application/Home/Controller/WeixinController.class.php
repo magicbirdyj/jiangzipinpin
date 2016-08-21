@@ -114,7 +114,8 @@ class WeixinController extends FontEndController {
         $title =$user_name. "，酱紫终于等到你，点击继续购买";
         $goods=$this->get_goods_infor($object->fromUsername);
         $description=$goods['goods_name'].'( 团购价：&yen;'.$goods['tuan_price'].')，点击继续拼团';
-        $resultStr = sprintf($textTpl, $object->fromUsername, $object->toUsername, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
+        //$resultStr = sprintf($textTpl, $object->fromUsername, $object->toUsername, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
+        $resultStr = sprintf($textTpl, '$object->fromUsername', '$object->toUsername', '$time, $hui_msgType', '$articleCount','$title','$description','retert','werwerwer');
         return $resultStr;
     }
     
