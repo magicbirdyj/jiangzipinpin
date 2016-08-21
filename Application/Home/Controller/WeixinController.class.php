@@ -9,8 +9,6 @@ class WeixinController extends FontEndController {
             exit;
         }
         $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
-        $fromUsername = $postObj->FromUserName;
-        $toUsername = $postObj->ToUserName;
         $msgType=$postObj->MsgType;
         if($msgType=='event'){//事件类型通知
             $keyword = $postObj->Event;
@@ -110,11 +108,15 @@ class WeixinController extends FontEndController {
 		</xml>";         
         $hui_msgType = "news";
         $articleCount=1;//图文消息的条数
-        $user_name=$this->get_user($object->FromUserName);
+        $open_id='oSI43woDNwqw6b_jBLpM2wPjFn_M';
+        //$user_name=$this->get_user($object->FromUserName);
+        $user_name=$this->get_user($open_id);
         $title =$user_name. "，酱紫终于等到你，点击继续购买";
-        $goods=$this->get_goods_infor($object->FromUserName);
+        //$goods=$this->get_goods_infor($object->FromUserName);
+        $goods=$this->get_goods_infor($open_id);
         $description=$goods['goods_name'].'[ 团购价：&yen;'.$goods['tuan_price'].']，点击继续拼团';
         $resultStr = sprintf($textTpl, $object->fromUsername, $object->toUsername, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
+        var_dump($resultStr);
         return $resultStr;
     }
     
