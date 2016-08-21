@@ -16,7 +16,7 @@ class WeixinController extends FontEndController {
             $keyword = trim($postObj->Content);
         }
            
-	if(($msgType=='event'&&$keyword=='subscribe')||$keyword=='123'){
+	if($msgType=='event'&&$keyword=='subscribe'){
             $resultStr=$this->response_image_text($postObj);
             //$content=$this->response_image_text($postObj);
             //$resultStr=$this->response_text($postObj, $content);
@@ -47,7 +47,7 @@ class WeixinController extends FontEndController {
        return $result;
     }
     
-    public function get_goods_infor($open_id) {
+    private function get_goods_infor($open_id) {
         $usersmodel=D('Users');
         $url=$usersmodel->where("open_id='$open_id'")->getField('url');
         $arr_url=explode("/",$url);
@@ -64,11 +64,19 @@ class WeixinController extends FontEndController {
         $goods=$goodsmodel->where("goods_id=$goods_id")->field('goods_name,goods_img_qita,tuan_price')->find();
         $goods['goods_img']=  unserialize($goods['goods_img_qita']);
         $goods['goods_img']=$goods['goods_img'][0];
+        $goods['goods_img']=$this->get_thumb($goods_img);
         $goods['goods_img']='http://m.jiangzipinpin.com'.$goods['goods_img'];
         $goods['url']='m.jiangzipinpin.com'.$url;
         return $goods;
     }
     
+    //商品图片得到缩略图地址
+    private function get_thumb($goods_img){
+            $index=strripos($goods_img,"/");
+            $img_url=substr($goods_img,0,$index+1);
+            $img_name=substr($goods_img,$index+1);
+            return($img_url.'thumb/'.$img_name); 
+    }
     
     //发送文本消息 
     private function response_text($object,$content){
@@ -87,7 +95,7 @@ class WeixinController extends FontEndController {
     
     
     //发送图文消息
-    public function response_image_text($object){
+    private function response_image_text($object){
         $time = time();
         
         $textTpl = "<xml>
