@@ -5,8 +5,8 @@ if(is_get=="yijing_get"){
         $('#kaituan_buy').css('background-color','#ccc');
     }
 $('#kaituan_buy').bind('click',function(){
-    delete_guanzhu();
     alert('aaa');
+    delete_guanzhu();
     if(guanzhu==='weiguanzhu'){
         tanchuguanzhu();
         return false;
