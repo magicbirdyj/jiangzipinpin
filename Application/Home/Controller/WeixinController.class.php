@@ -62,6 +62,7 @@ class WeixinController extends FontEndController {
             $ordermodel=D(Order);
             $goods_id=$ordermodel->where("tuan_no=$tuan_no")->getField('goods_id');
         }
+        var_dump($goods_id);exit;
         $goods=$goodsmodel->where("goods_id=$goods_id")->field('goods_name,goods_img_qita,tuan_price')->find();
         $goods['goods_img']=  unserialize($goods['goods_img_qita']);
         $goods['goods_img']=$goods['goods_img'][0];
@@ -110,9 +111,8 @@ class WeixinController extends FontEndController {
         $articleCount=1;//图文消息的条数
         //$user_name=$this->get_user($object->FromUserName);
         $user_name=$this->get_user('oSI43woDNwqw6b_jBLpM2wPjFn_M');
-        var_dump($user_name);exit;
         $title =$user_name. "，酱紫终于等到你，点击继续购买";
-        $goods=$this->get_goods_infor();
+        $goods=$this->get_goods_infor();exit;
         $description=$goods['goods_name'].'[ 团购价：&yen;'.$goods['tuan_price'].']，点击继续拼团';
         //$resultStr = sprintf($textTpl, $object->fromUsername, $object->toUsername, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
         $resultStr = sprintf($textTpl, 'oSI43woDNwqw6b_jBLpM2wPjFn_M', 'asfasdfs31224', $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
