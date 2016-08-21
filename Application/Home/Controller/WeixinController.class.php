@@ -3,15 +3,7 @@ namespace Home\Controller;
 use Home\Controller;
 class WeixinController extends FontEndController {
     public function index(){
-        /*
-        $echoStr = $_GET["echostr"];
-        if($echoStr){
-            if($this->checkSignature()){
-            echo $echoStr;
-            exit;
-            }
-        }
-         */
+       
         $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
         if (empty($postStr)){
             echo '';
@@ -35,7 +27,7 @@ class WeixinController extends FontEndController {
                 <ArticleCount>%s</ArticleCount>
                 <Articles>
                 <item>
-                <Title><![CDATA[title]]></Title> 
+                <Title><![CDATA[%s]]></Title> 
                 <Description><![CDATA[%s]]></Description>
                 <PicUrl><![CDATA[%s]]></PicUrl>
                 <Url><![CDATA[%s]]></Url>
@@ -57,23 +49,7 @@ class WeixinController extends FontEndController {
                 }
         
     }
-   /*
-    private function checkSignature(){
-        $signature = $_GET["signature"];
-        $timestamp = $_GET["timestamp"];
-        $nonce = $_GET["nonce"]; 
-        $token = TOKEN;
-        $tmpArr = array($token, $timestamp, $nonce);
-        sort($tmpArr, SORT_STRING);
-        $tmpStr = implode( $tmpArr );
-        $tmpStr = sha1( $tmpStr );
-        if( $tmpStr == $signature ){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    */
+   
    
      public function get_user($open_id){
         //获取微信access_token
@@ -117,4 +93,42 @@ class WeixinController extends FontEndController {
     }
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     /*
+        $echoStr = $_GET["echostr"];
+        if($echoStr){
+            if($this->checkSignature()){
+            echo $echoStr;
+            exit;
+            }
+        }
+         */
+    /*
+    private function checkSignature(){
+        $signature = $_GET["signature"];
+        $timestamp = $_GET["timestamp"];
+        $nonce = $_GET["nonce"]; 
+        $token = TOKEN;
+        $tmpArr = array($token, $timestamp, $nonce);
+        sort($tmpArr, SORT_STRING);
+        $tmpStr = implode( $tmpArr );
+        $tmpStr = sha1( $tmpStr );
+        if( $tmpStr == $signature ){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    */
 }
