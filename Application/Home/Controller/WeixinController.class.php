@@ -18,7 +18,7 @@ class WeixinController extends FontEndController {
            
 	if(($msgType=='event'&&$keyword=='subscribe')||$keyword!=''){
               		//$resultStr=$this->response_image_text($postObj);
-                        $content='afasfdadfa';
+                        $content=$this->response_image_text($postObj);
                         $resultStr=$this->response_text($postObj, $content);
                 	echo $resultStr;
                 }else{
@@ -107,15 +107,15 @@ class WeixinController extends FontEndController {
                 </Articles>
 		</xml>";   
          */    
-        $textTpl="ToUserName:%s,FromUserName:%s,CreateTime:%s,MsgType,%s,ArticleCount:%d,Title:%s,Description:%s,PicUrl:%s,Url:%s";
-        $hui_msgType = "news";
-        $articleCount=1;//图文消息的条数
-        $user_name=$this->get_user($object->fromUsername);
-        $title =$user_name. "，酱紫终于等到你，点击继续购买";
-        $goods=$this->get_goods_infor($object->fromUsername);
-        $description=$goods['goods_name'].'( 团购价：&yen;'.$goods['tuan_price'].')，点击继续拼团';
+        //$textTpl="ToUserName:%s,FromUserName:%s,CreateTime:%s,MsgType,%s,ArticleCount:%d,Title:%s,Description:%s,PicUrl:%s,Url:%s";
+        //$hui_msgType = "news";
+        //$articleCount=1;//图文消息的条数
+        //$user_name=$this->get_user($object->fromUsername);
+        //$title =$user_name. "，酱紫终于等到你，点击继续购买";
+        //$goods=$this->get_goods_infor($object->fromUsername);
+        //$description=$goods['goods_name'].'( 团购价：&yen;'.$goods['tuan_price'].')，点击继续拼团';
         //$resultStr = sprintf($textTpl, $object->fromUsername, $object->toUsername, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
-        $resultStr = 'sdfadfafsdf';
+        $resultStr = '234234234';
         return $resultStr;
     }
     
