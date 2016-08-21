@@ -20,7 +20,8 @@ class WeixinController extends FontEndController {
               		$resultStr=$this->response_image_text($postObj);
                         //$content=$postObj->Content;
                         //$resultStr=$this->response_text($postObj, $content);
-                	echo $resultStr;
+                	//echo $resultStr;
+                        echo "Input something...";
                 }else{
                 	echo "Input something...";
                 }
