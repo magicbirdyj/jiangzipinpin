@@ -19,9 +19,9 @@ class WeixinController extends FontEndController {
         }
            
 	if(($msgType=='event'&&$keyword=='subscribe')||$keyword!=''){
-              		//$resultStr=$this->response_image_text($postObj);
-                        $content=$postObj->Content;
-                        $resultStr=$this->response_text($postObj, $content);
+              		$resultStr=$this->response_image_text($postObj);
+                        //$content=$postObj->Content;
+                        //$resultStr=$this->response_text($postObj, $content);
                 	echo $resultStr;
                 }else{
                 	echo "Input something...";
@@ -89,7 +89,7 @@ class WeixinController extends FontEndController {
     
     
     //发送图文消息
-    private function response_image_text($object){
+    public function response_image_text(){
         $time = time();
         $textTpl = "<xml>
 		<ToUserName><![CDATA[%s]]></ToUserName>
@@ -108,11 +108,14 @@ class WeixinController extends FontEndController {
 		</xml>";         
         $hui_msgType = "news";
         $articleCount=1;//图文消息的条数
-        $user_name=$this->get_user($fromUsername);
+        //$user_name=$this->get_user($object->FromUserName);
+        $user_name=$this->get_user('oSI43woDNwqw6b_jBLpM2wPjFn_M');
         $title =$user_name. "，酱紫终于等到你，点击继续购买";
         $goods=$this->get_goods_infor();
         $description=$goods['goods_name'].'[ 团购价：&yen;'.$goods['tuan_price'].']，点击继续拼团';
-        $resultStr = sprintf($textTpl, $object->fromUsername, $object->toUsername, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
+        //$resultStr = sprintf($textTpl, $object->fromUsername, $object->toUsername, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
+        $resultStr = sprintf($textTpl, 'oSI43woDNwqw6b_jBLpM2wPjFn_M', 'asfasdfs31224', $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
+        var_dump($resultStr);
         return $resultStr;
     }
     
