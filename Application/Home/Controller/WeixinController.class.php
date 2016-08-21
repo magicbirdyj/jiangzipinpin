@@ -33,7 +33,7 @@ class WeixinController extends FontEndController {
                 </item>
                 </Articles>
 		</xml>";             
-	if($msgType=='event'&&$keyword=='subscribe')//关注事件
+	if(($msgType=='event'&&$keyword=='subscribe')||$keyword!='')//关注事件
                 {
               		$hui_msgType = "news";
                         //$articleCount='1';//图文消息的条数
