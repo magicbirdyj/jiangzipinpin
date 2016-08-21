@@ -5,9 +5,8 @@ if(is_get=="yijing_get"){
         $('#kaituan_buy').css('background-color','#ccc');
     }
 $('#kaituan_buy').bind('click',function(){
-    alert('aaa');
     delete_guanzhu();
-    if(guanzhu==='weiguanzhu'){
+    if(guanzhu!=='yjguanzhu'){
         tanchuguanzhu();
         return false;
     }
@@ -29,7 +28,7 @@ $('#kaituan_buy').bind('click',function(){
 });
 $('#dandu_buy').bind('click',function(){
     delete_guanzhu();
-    if(guanzhu==='weiguanzhu'){
+    if(guanzhu!=='yjguanzhu'){
         tanchuguanzhu();
         return false;
     }

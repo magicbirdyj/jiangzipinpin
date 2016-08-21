@@ -145,8 +145,7 @@ class LoginController extends FontEndController {
     }
     
     public function delete_guanzhu() {
-        //session('guanzhu',null); 
-        $_SESSION['guanzhu']='ceshi';
+        session('guanzhu',null); 
     }
     
     private function get_wangye($code){
