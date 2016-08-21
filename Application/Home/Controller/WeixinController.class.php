@@ -49,9 +49,11 @@ class WeixinController extends FontEndController {
        return $result;
     }
     
-    private function get_goods_infor() {
+    private function get_goods_infor($open_id) {
         //'/Home/Goods/index/goods_id/221'
-        $arr_url=explode("/",$_SESSION['ref']);
+        $usersmodel=D('Users');
+        $url=$usersmodel->where("open_id=$open_id")->getFiled('url');
+        $arr_url=explode("/",$url);
         $value=array_pop($arr_url);
         $key=array_pop($arr_url);
         $goodsmodel=D('Goods');
@@ -89,7 +91,7 @@ class WeixinController extends FontEndController {
     
     
     //发送图文消息
-    public function response_image_text(){
+    public function response_image_text($object){
         $time = time();
         $textTpl = "<xml>
 		<ToUserName><![CDATA[%s]]></ToUserName>
@@ -110,7 +112,7 @@ class WeixinController extends FontEndController {
         $articleCount=1;//图文消息的条数
         $user_name=$this->get_user($object->FromUserName);
         $title =$user_name. "，酱紫终于等到你，点击继续购买";
-        $goods=$this->get_goods_infor();
+        $goods=$this->get_goods_infor($object->FromUserName);
         $description=$goods['goods_name'].'[ 团购价：&yen;'.$goods['tuan_price'].']，点击继续拼团';
         $resultStr = sprintf($textTpl, $object->fromUsername, $object->toUsername, $time, $hui_msgType, $articleCount,$title,$description,$goods['goods_img'],$goods['url']);
         return $resultStr;
