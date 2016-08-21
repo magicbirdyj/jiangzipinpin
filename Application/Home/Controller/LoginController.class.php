@@ -144,8 +144,8 @@ class LoginController extends FontEndController {
         }
     }
     
-    public function delete_wei_huiyuan() {
-        session('wei_huiyuan',null); 
+    public function delete_guanzhu() {
+        session('guanzhu',null); 
     }
     
     private function get_wangye($code){
