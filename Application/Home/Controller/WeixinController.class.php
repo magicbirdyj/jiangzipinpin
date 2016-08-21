@@ -89,7 +89,7 @@ class WeixinController extends FontEndController {
     
     
     //发送图文消息
-    public function response_image_text($object){
+    public function response_image_text(){
         $time = time();
         $textTpl = "<xml>
 		<ToUserName><![CDATA[%s]]></ToUserName>
