@@ -49,11 +49,11 @@ class WeixinController extends FontEndController {
     
     public function get_goods_infor($open_id) {
         $usersmodel=D('Users');
-        $url=$usersmodel->where("open_id='$open_id'")->getField('url');
-        $arr_url=explode("/",$url);
-        $value=array_pop($arr_url);
-        $key=array_pop($arr_url);
-        $goodsmodel=D('Goods');
+        //$url=$usersmodel->where("open_id='$open_id'")->getField('url');
+        //$arr_url=explode("/",$url);
+        //$value=array_pop($arr_url);
+        //$key=array_pop($arr_url);
+        //$goodsmodel=D('Goods');
         //if($key=='goods_id'){
             //$goods_id=$value;
         //}elseif($key=='tuan_no'){
