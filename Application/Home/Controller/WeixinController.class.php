@@ -96,7 +96,7 @@ class WeixinController extends FontEndController {
 		<FromUserName><![CDATA[%s]]></FromUserName>
 		<CreateTime>%s</CreateTime>
 		<MsgType><![CDATA[%s]]></MsgType>
-                <ArticleCount>$d</ArticleCount>
+                <ArticleCount>%d</ArticleCount>
                 <Articles>
                 <item>
                 <Title><![CDATA[%s]]></Title> 
@@ -110,6 +110,7 @@ class WeixinController extends FontEndController {
         $articleCount=1;//图文消息的条数
         //$user_name=$this->get_user($object->FromUserName);
         $user_name=$this->get_user('oSI43woDNwqw6b_jBLpM2wPjFn_M');
+        var_dump($user_name);exit;
         $title =$user_name. "，酱紫终于等到你，点击继续购买";
         $goods=$this->get_goods_infor();
         $description=$goods['goods_name'].'[ 团购价：&yen;'.$goods['tuan_price'].']，点击继续拼团';
