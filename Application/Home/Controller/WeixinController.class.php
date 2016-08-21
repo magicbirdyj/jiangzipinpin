@@ -3,13 +3,15 @@ namespace Home\Controller;
 use Home\Controller;
 class WeixinController extends FontEndController {
     public function index(){
-        //$echoStr = $_GET["echostr"];
-        //if($echoStr){
-            //if($this->checkSignature()){
-            //echo $echoStr;
-            //exit;
-            //}
-        //}
+        /*
+        $echoStr = $_GET["echostr"];
+        if($echoStr){
+            if($this->checkSignature()){
+            echo $echoStr;
+            exit;
+            }
+        }
+         */
         $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
         if (empty($postStr)){
             echo '';
@@ -30,21 +32,32 @@ class WeixinController extends FontEndController {
 		<FromUserName><![CDATA[%s]]></FromUserName>
 		<CreateTime>%s</CreateTime>
 		<MsgType><![CDATA[%s]]></MsgType>
-		<Content><![CDATA[%s]]></Content>
-		<FuncFlag>0</FuncFlag>
+                <ArticleCount>%s</ArticleCount>
+                <Articles>
+                <item>
+                <Title><![CDATA[title]]></Title> 
+                <Description><![CDATA[%s]]></Description>
+                <PicUrl><![CDATA[%s]]></PicUrl>
+                <Url><![CDATA[%s]]></Url>
+                </item>
+                </Articles>
 		</xml>";             
 	if($msgType=='event'&&$keyword=='subscribe')//关注事件
                 {
-              		$hui_msgType = "text";
-                	$contentStr = "感谢您的关注";
-                	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $hui_msgType, $contentStr);
+              		$hui_msgType = "news";
+                        $articleCount='1';//图文消息的条数
+                        $user_name=$this->get_user($fromUsername);
+                	$title =$user_name. "，酱紫终于等到你，点击继续购买";
+                        $goods=$this->get_goods_infor();
+                        $description=$goods['goods_name'].'[ 团购价：&yen;'.$goods['tuan_price'].']，点击继续拼团';
+                	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $hui_msgType,$articleCount, $title,$description,$goods['goods_img'],$goods['url']);
                 	echo $resultStr;
                 }else{
                 	echo "Input something...";
                 }
         
     }
-   
+   /*
     private function checkSignature(){
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
@@ -60,22 +73,48 @@ class WeixinController extends FontEndController {
             return false;
         }
     }
-    
-    public function ceshi(){
-        $xmlstring=<<<XML
-            <xml>
-                <ToUserName>George</ToUserName>
-                <FromUserName><![CDATA[FromUser]]></FromUserName>
-                <CreateTime>123456789</CreateTime>
-                <MsgType><![CDATA[event]]></MsgType>
-                <Event><![CDATA[subscribe]]></Event>
-            </xml>
-XML;
-                
-        $xml_oblect = simplexml_load_string($xmlstring);
-        var_dump($xml_oblect->ToUserName);
+    */
+   
+     public function get_user($open_id){
+        //获取微信access_token
+        $this->s_access_token();
+        $access_token=S('access_token');
+        $userinfo=$this->get_userinfo($open_id,$access_token);
+        $user_name=$userinfo['nickname'];
+        return $user_name;  
+          
+        }
+        
+        
+        
+    private function get_userinfo($openid,$access_token){
+       $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$access_token."&openid=".$openid."&lang=zh_CN" ;
+       $res = file_get_contents($url); //获取文件内容或获取网络请求的内容
+       $result = json_decode($res, true);//接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
+       return $result;
     }
     
+    private function get_goods_infor() {
+        //'/Home/Goods/index/goods_id/221'
+        $arr_url=explode("/",$_SESSION['ref']);
+        $value=array_pop($arr_url);
+        $key=array_pop($arr_url);
+        $goodsmodel=D('Goods');
+        if($key=='goods_id'){
+            $goods_id=$value;
+        }elseif($key=='tuan_no'){
+            $tuan_no=$value;
+            $ordermodel=D(Order);
+            $goods_id=$ordermodel->where("tuan_no=$tuan_no")->getField('goods_id');
+        }
+        $goods=$goodsmodel->where("goods_id=$goods_id")->field('goods_name,goods_img_qita,tuan_price')->find();
+        $goods['goods_img']=  unserialize($goods['goods_img_qita']);
+        $goods['goods_img']=$goods['goods_img'][0];
+        $goods['goods_img']='m.jiangzipinpin.com'.$goods['goods_img'];
+        $goods['url']='m.jiangzipinpin.com'.$_SESSION['ref'];
+        return $goods;
+        
+    }
     
     
 }

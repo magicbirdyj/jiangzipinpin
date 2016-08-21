@@ -169,11 +169,8 @@ class FontEndController extends Controller {
   
   protected function get_weixin_config(){
       //获取微信access_token
+        $this->s_access_token();
         $access_token=S('access_token');
-        if(!$access_token){
-            $this->get_access_token();
-            $access_token=S('access_token');
-        }
         $this->get_jsapi_ticket($access_token);
         $jsapi_ticket=S('jsapi_ticket');
         if(!$jsapi_ticket){
@@ -185,6 +182,14 @@ class FontEndController extends Controller {
         $wx_config=$this->get_wx_config($jsapi_ticket);
         $this->assign('wx_config',$wx_config); 
         //var_dump($wx_config);
+  }
+  
+  protected function s_access_token() {
+      //获取微信access_token
+        $access_token=S('access_token');
+        if(!$access_token){
+            $this->get_access_token();
+        }
   }
   
   protected function get_daijinquan($user_id,$type,$sum){
