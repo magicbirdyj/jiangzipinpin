@@ -151,7 +151,7 @@ class LoginController extends FontEndController {
     
     //把url存入数据库，给js的ajax用
     public function save_url_ajax(){
-        $url=$_POST['url'];
+        $url=$_POST['s_url'];
         $this->save_url($url);
     }
     
