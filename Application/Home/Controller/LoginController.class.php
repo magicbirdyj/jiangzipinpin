@@ -144,9 +144,18 @@ class LoginController extends FontEndController {
         }
     }
     
+    // 删除session guanzhu   给js的ajax用
     public function delete_guanzhu() {
         session('guanzhu',null); 
     }
+    
+    //把url存入数据库，给js的ajax用
+    public function save_url_ajax(){
+        $url=$_POST['url'];
+        $this->save_url($url);
+    }
+    
+    
     
     private function get_wangye($code){
        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code" ;
@@ -161,7 +170,6 @@ class LoginController extends FontEndController {
        $result = json_decode($res, true);//接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
        return $result;
   }
-  
   
 
 }

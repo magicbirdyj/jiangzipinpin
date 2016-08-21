@@ -7,7 +7,6 @@ use Home\Controller;
 class GoodsController extends FontEndController {
     public function index() {
         C('TOKEN_ON',false);//取消表单令牌
-        var_dump($_SESSION['guanzhu']);
         $this->get_weixin_config();
         $goods_id = $_GET['goods_id'];
         if(!$goods_id){
@@ -131,10 +130,7 @@ class GoodsController extends FontEndController {
           //如果未关注，把$_SESSION['ref']  写入数据表
           
           if($_SESSION['guanzhu']=='weiguanzhu'){
-              $usersmodel=D('Users');
-              $user_id=$_SESSION['huiyuan']?$_SESSION['huiyuan']['user_id']:$_SESSION['wei_huiyuan']['user_id'];
-              $row=  array('url'=>$_SESSION['ref']);
-              $usersmodel->where("user_id=$user_id")->save($row);
+              $this->save_url($_SESSION['ref']);
           }
           session('guanzhu',null); 
           $this->display('index');
@@ -944,4 +940,8 @@ class GoodsController extends FontEndController {
             }
             $this->redirect('Goods/gmcg_wx',array('order_id'=>$order_id),0);
     }
+    
+    
+    
+    
 }
