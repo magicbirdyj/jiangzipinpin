@@ -97,14 +97,15 @@ $('#kefu').bind('click',function(){
     
     //ajax保存url进数据库
     function save_url(s_url){
+        var data={
+        url:s_url
+    };
         $.ajax({
             type:'post',
             url:'/Home/Login/save_url_ajax',
-            data:s_url,
+            data:data,
             dataType:'json',
-            success:function(msg){
-                alert(msg);
-            }
+            
         });
     } 
     
