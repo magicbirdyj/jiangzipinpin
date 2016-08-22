@@ -1,14 +1,10 @@
-$('#overlay,#zhishi_fenxiang').bind('click',function(){
-        hideOverlay('zhishi_fenxiang');
-    }); 
-showOverlay('zhishi_fenxiang');
+
+
+jixufenxiang();
+
 $('.fixed_bottom').bind('click',function(){
     showOverlay('zhishi_fenxiang');
-})
-            
-            
-  
- 
+})  
  
 $('#zhishi_fenxiang').css('width',pageWidth());
 $('#zhishi_fenxiang').css('height',pageHeight());
@@ -20,4 +16,15 @@ $('.text3').css('top',text_h+10+"px");
             
 
 $('#fengxiang_success').css('top',($(window).height()-$('#fengxiang_success').height())/2);        
-            
+$('#jixufenxiang').bind('click',function(){
+    jixufenxiang();
+});
+
+
+function jixufenxiang(){
+    $('#overlay,#zhishi_fenxiang').bind('click',function(){
+        hideOverlay('zhishi_fenxiang');
+    }); 
+    hideOverlay('fengxiang_success');
+    showOverlay('zhishi_fenxiang');
+}

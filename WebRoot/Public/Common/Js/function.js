@@ -298,13 +298,13 @@ function showOverlay(id) {
 
     // fadeTo第一个参数为速度，第二个为透明度
     // 多重方式控制透明度，保证兼容性，但也带来修改麻烦的问题
-    $("#overlay").fadeTo(200, 0.7);
+    $("#overlay").fadeTo(0, 0.7);
     $("#"+id).css('display','block');
 }
 
 /* 隐藏覆盖层 */
 function hideOverlay(id) {
-    $("#overlay").fadeOut(200);
+    $("#overlay").fadeOut(0);
     $('#'+id).css('display','none');
 }
 
