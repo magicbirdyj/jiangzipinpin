@@ -57,6 +57,7 @@
     text-align: center;
 }
 .jixufenxiang{
+    display: block;
     width: 230px;
     background-color: #F90505;
     color: #FFF;

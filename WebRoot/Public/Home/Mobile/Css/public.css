@@ -44,13 +44,9 @@ border:none;
 a{
 color:#666;
 cursor:pointer;/*手形*/
-}
-a:link,a:visited {
 text-decoration:none;
 }
-a:hover{
-color:#2BB8AA;
-}
+
 
 .page_foot{
     margin-top: 20px;
