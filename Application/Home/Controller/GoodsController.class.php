@@ -327,11 +327,11 @@ class GoodsController extends FontEndController {
             $this->assign('choujiang',$choujiang);
             //如果组团成功过该活动商品的团购，但是未获奖，也无法再参团 只能重新开团
             $tianjian['status']=array('between','2,5');
-            $is_ctcg=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and identity=0 and choujiang=0")->where($tianjian)->count();
-            $this->assign('is_ctcg',$is_ctcg);
+            $is_ztcg=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and identity=0 and choujiang=0")->where($tianjian)->count();
+            $this->assign('is_ztcg',$is_ztcg);
         }else{
             $choujiang=0;
-            $is_ctcg=0;
+            $is_ztcg=0;
         }
         
         

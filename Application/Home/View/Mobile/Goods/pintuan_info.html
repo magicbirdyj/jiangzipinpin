@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <if condition="($is_ztcg eq 'ddct') and ($choujiang eq 0) and ($is_ctcg eq 0)">
+    <if condition="($is_ztcg eq 'ddct') and ($choujiang eq 0) and ($is_ztcg eq 0)">
     <a class='button_a_lvse fixed_bottom wyct' href='javascript:void()' id='wyct'>我也要参团</a> 
     <form name="cantuan_buy" action="<{:U('Goods/cantuan_buy')}>" method="get">
         <input name="tuan_no" type="hidden" value="<{$tuan_no}>" />

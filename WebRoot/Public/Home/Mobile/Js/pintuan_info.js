@@ -1,5 +1,5 @@
 //考虑到活动商品的各种情况
-if(is_ztcg=='ddct'&&choujiang=='0'&&is_ctcg=='0'){
+if(is_ztcg=='ddct'&&choujiang=='0'&&is_ztcg=='0'){
     
 }else if(is_ztcg=='ztcg'||is_ztcg=='ztsb'){
     $('#fixed_tishi').html('该团已经成团或者失败，您可自己开团');
@@ -11,12 +11,15 @@ if(is_ztcg=='ddct'&&choujiang=='0'&&is_ctcg=='0'){
     $('#fixed_tishi').css('display','block');
     $('#fixed_tishi').css('bottom','110px');
     setTimeout("$('#fixed_tishi').css('display','none')",5000);
-}else if(is_ctcg!='0'){
+}else if(is_ztcg!='0'){
     $('#fixed_tishi').html('已经参团成功过该活动，无法参团，您可自己开团');
     $('#fixed_tishi').css('display','block');
     $('#fixed_tishi').css('bottom','110px');
     setTimeout("$('#fixed_tishi').css('display','none')",5000);
 }
+
+
+
 
 
 //点击#xuanze_fanhui返回商品页面
