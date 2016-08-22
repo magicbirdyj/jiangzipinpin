@@ -59,15 +59,15 @@ $('.zx_shuxing_ul>li').bind('click',function(){
 
 $('.wyct').bind('click',function(event){
     delete_guanzhu();
-    
-    if(guanzhu!=='yiguanzhu'){
-        tanchuguanzhu();
-        return false;
-    }
     var zx_length=$('.zx_shuxing_ul').length;
     if(zx_length==0){
         save_url('/Home/Goods/cantuan_buy/tuan_no/'+$('input[name=tuan_no]').val());
     }
+    if(guanzhu!=='yiguanzhu'){
+        tanchuguanzhu();
+        return false;
+    }
+    
     var yixuan_length=$('.zx_shuxing_ul>.yixuan').length;
     if(zx_length!==yixuan_length){
         $('#div_xuanze').css('display','block');
