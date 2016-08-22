@@ -73,6 +73,7 @@ if(number===2){
         });
         
     }
+    alert(number);
     if(number>1){
         lunbo_start();
     }
