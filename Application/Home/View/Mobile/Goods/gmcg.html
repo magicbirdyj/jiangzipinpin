@@ -91,7 +91,7 @@
     var price=$('#price').html();
     var tuan_number=$('#tuan_number').html();
     var tuan_no="<{$tuan_no}>";
-    var link='m.jiangzipinpin.com/Home/pintuan_info/tuan_no/'+tuan_no+'.html';
+    var link='m.jiangzipinpin.com/Home/Goods/pintuan_info/tuan_no/'+tuan_no+'.html';
     wx.config({  
         //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: "<{$wx_config['appId']}>", // 必填，公众号的唯一标识
@@ -104,25 +104,25 @@
         wx.onMenuShareTimeline({
             title:  '我'+price+'元钱购买了【'+tuan_number+'人团】'+title+'，快来加入一起拼团吧', // 分享标题
              link: link, // 分享链接
-            imgUrl: 'm.jiangzipinpin.com'+img // 分享图标
+            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
         });
         wx.onMenuShareAppMessage({
             title:  '我'+price+'元钱购买了【'+tuan_number+'人团】'+title+'，快来加入一起拼团吧', // 分享标题
              link: link, // 分享链接
             desc: '您的好友已经在【酱紫拼拼】参加了'+title+'的团购，一起加入拼团，您也可以最优惠的价格，免费的快递送达，享受最优质的商品', // 分享描述
-            imgUrl: 'm.jiangzipinpin.com'+img // 分享图标
+            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
         });
         wx.onMenuShareQQ({
             title:  '我'+price+'元钱购买了【'+tuan_number+'人团】'+title+'，快来加入一起拼团吧', // 分享标题
              link: link, // 分享链接
             desc: '您的好友已经在【酱紫拼拼】参加了'+title+'的团购，一起加入拼团，您也可以最优惠的价格，免费的快递送达，享受最优质的商品', // 分享描述
-            imgUrl: 'm.jiangzipinpin.com'+img // 分享图标
+            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
         });
         wx.onMenuShareQZone({
             title: '我'+price+'元钱购买了【'+tuan_number+'人团】'+title+'，快来加入一起拼团吧', // 分享标题
              link: link, // 分享链接
             desc: '您的好友已经在【酱紫拼拼】参加了'+title+'的团购，一起加入拼团，您也可以最优惠的价格，免费的快递送达，享受最优质的商品', // 分享描述
-            imgUrl:  'm.jiangzipinpin.com'+img // 分享图标
+            imgUrl:  'http://m.jiangzipinpin.com'+img // 分享图标
         });
     });
     
