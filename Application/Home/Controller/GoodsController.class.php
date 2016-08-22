@@ -381,6 +381,17 @@ class GoodsController extends FontEndController {
 
         $arr_zx_shuxing=  unserialize($goods['goods_shuxing']);
          
+        
+        
+        //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
+          $this->assign('guanzhu',$_SESSION['guanzhu']);
+          //如果未关注，把$_SESSION['ref']  写入数据表
+          
+          if($_SESSION['guanzhu']=='weiguanzhu'){
+              $this->save_url($_SESSION['ref']);
+          }
+          session('guanzhu',null); 
+          $this->display('index');
         $this->display();
     }
     

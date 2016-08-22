@@ -6,7 +6,6 @@ if(is_get=="yijing_get"){
     }
 $('#kaituan_buy').bind('click',function(){
     delete_guanzhu();
-    save_url('/Home/Goods/kaituan_buy/goods_id/'+$('input[name=goods_id]').val());
     if(guanzhu!=='yiguanzhu'){
         tanchuguanzhu();
         return false;
@@ -18,6 +17,9 @@ $('#kaituan_buy').bind('click',function(){
         return false;
     }
     var zx_length=$('.zx_shuxing_ul').length;
+    if(zx_length==0){
+        save_url('/Home/Goods/kaituan_buy/goods_id/'+$('input[name=goods_id]').val());
+    }
     var yixuan_length=$('.zx_shuxing_ul>.yixuan').length;
     if(zx_length===yixuan_length){
         $('form[name=kaituan_buy]').submit();
@@ -29,12 +31,14 @@ $('#kaituan_buy').bind('click',function(){
 });
 $('#dandu_buy').bind('click',function(){
     delete_guanzhu();
-    save_url('/Home/Goods/dandu_buy/goods_id/'+$('input[name=goods_id]').val());
     if(guanzhu!=='yiguanzhu'){
         tanchuguanzhu();
         return false;
     }
     var zx_length=$('.zx_shuxing_ul').length;
+    if(zx_length==0){
+        save_url('/Home/Goods/kaituan_buy/goods_id/'+$('input[name=goods_id]').val());
+    }
     var yixuan_length=$('.zx_shuxing_ul>.yixuan').length;
     if(zx_length===yixuan_length){
         $('form[name=dandu_buy]').submit();
