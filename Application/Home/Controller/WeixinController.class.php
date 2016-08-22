@@ -159,4 +159,56 @@ class WeixinController extends FontEndController {
         }
     }
     */
+    
+    
+   public function creat_menu() {
+       $data='{
+                "button":[
+                    {
+                        "type":"view",
+                        "name":"1元购",
+                        "url":"http://m.jiangzipinpin.com"
+                        
+                    },
+                    {
+                        "type":"view",
+                        "name":"进入商城",
+                        "url":"http://m.jiangzipinpin.com"
+                    },
+                    {
+                        "name":"平台服务",
+                        "sub_button":[
+                        {
+                            "type":"view",
+                            "name":"会员中心",
+                            "url":"http://m.jiangzipinpin.com/Home/Member/index.html"
+                        },
+                        {
+                            "type":"view",
+                            "name":"联系客服",
+                            "url":"http://m.jiangzipinpin.com"
+                        }]
+                    }]
+                }';
+       $this->s_access_token();
+       $access_token=S('access_token');
+       $MENU_URL="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token;
+        $ch = curl_init(); 
+        curl_setopt($ch, CURLOPT_URL, $MENU_URL); 
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; MSIE 5.01; Windows NT 5.0)');
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_AUTOREFERER, 1); 
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+        $info = curl_exec($ch);
+        if (curl_errno($ch)) {
+            echo 'Errno'.curl_error($ch);
+        }
+        curl_close($ch);
+
+        var_dump($info);
+   }
 }
