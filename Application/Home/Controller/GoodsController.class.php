@@ -621,9 +621,7 @@ class GoodsController extends FontEndController {
         }
         
         $this->assign('order',$order);
-        //C('TOKEN_ON',false);//取消表单令牌
-        //$this->display('zhifu');exit();
-        //微信
+       
         $this->alipay($order_id);
        
     }
@@ -697,6 +695,7 @@ class GoodsController extends FontEndController {
             } else {
                 $this->error("下单失败" . $orderInfo['return_msg']);
             }
+            
             $this->assign('paydata',$paydata);
             $this->assign("parameters", json_encode($parameters));
             $this->display('zhifu');
