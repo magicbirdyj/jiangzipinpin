@@ -336,10 +336,10 @@ class GoodsController extends FontEndController {
 
         $cunzai_order=$ordermodel->where("tuan_no=$tuan_no and user_id=$user_id  and status='1' and deleted='0'")->field('order_id,pay_status')->find();
         if($cunzai_order&&$cunzai_order['pay_status']==0){
-            $this->redirect(U('Goods/zhifu',array('order_id'=>$cunzai_order['order_id'])),0);//已经参加该团 未付款
+            $this->redirect('Goods/zhifu',array('order_id'=>$cunzai_order['order_id']),0);//已经参加该团 未付款
             exit();
         }elseif($cunzai_order){
-            $this->redirect(U('Goods/gmcg_wx',array('order_id'=>$cunzai_order['order_id'])),0);//已经参加该团 并且支付成功
+            $this->redirect('Goods/gmcg_wx',array('order_id'=>$cunzai_order['order_id']),0);//已经参加该团 并且支付成功
             exit();
         }
         if($order['pay_status']!='1'){
