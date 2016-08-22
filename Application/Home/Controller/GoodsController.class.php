@@ -398,7 +398,7 @@ class GoodsController extends FontEndController {
         if (!$ordermodel->autoCheckToken($_POST)){ 
             if($_COOKIE['order_id']){
                 $order_id=$_COOKIE['order_id'];//一个小时内重复提交订单，进入支付页面
-                $this->redirect(U('Goods/zhifu',"order_id=$order_id"));
+                $this->redirect('Goods/zhifu',"order_id=$order_id");
             }else{
                 $this->error('不能重复提交订单',U('Order/index'));
             }
@@ -457,7 +457,7 @@ class GoodsController extends FontEndController {
         if (!$ordermodel->autoCheckToken($_POST)){ 
             if($_COOKIE['order_id']){
                 $order_id=$_COOKIE['order_id'];//一个小时内重复提交订单，进入支付页面
-                $this->redirect(U('Goods/zhifu',"order_id=$order_id"));
+                $this->redirect('Goods/zhifu',"order_id=$order_id");
             }else{
                 $this->error('不能重复提交订单',U('Order/index'));
             }
@@ -527,7 +527,7 @@ class GoodsController extends FontEndController {
         if (!$ordermodel->autoCheckToken($_POST)){ 
             if($_COOKIE['order_id']){
                 $order_id=$_COOKIE['order_id'];//一个小时内重复提交订单，进入支付页面
-                $this->redirect(U('Goods/zhifu',"order_id=$order_id"));
+                $this->redirect('Goods/zhifu',"order_id=$order_id");
             }else{
                 $this->error('不能重复提交订单',U('Order/index'));
             }
@@ -644,9 +644,7 @@ class GoodsController extends FontEndController {
     private function alipay($order_id) {
         //$order_id=$_GET['order_id'];
         $ordermodel = D('Order');
-        var_dump("order_id=$order_id and deleted=0 ");exit;
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
-        
         //微信
         $user_id=$order['user_id'];
         $usersmodel=D('Users');
