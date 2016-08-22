@@ -104,28 +104,43 @@
         wx.onMenuShareTimeline({
             title:  '我'+price+'元钱购买了【'+tuan_number+'人团】'+title+'，快来加入一起拼团吧', // 分享标题
              link: link, // 分享链接
-            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
+            imgUrl: 'http://m.jiangzipinpin.com'+img, // 分享图标
+            success: function () { 
+                fenxiang_success();
+            }
         });
         wx.onMenuShareAppMessage({
             title:  '我'+price+'元钱购买了【'+tuan_number+'人团】'+title+'，快来加入一起拼团吧', // 分享标题
              link: link, // 分享链接
             desc: '您的好友已经在【酱紫拼拼】参加了'+title+'的团购，一起加入拼团，您也可以最优惠的价格，免费的快递送达，享受最优质的商品', // 分享描述
-            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
+            imgUrl: 'http://m.jiangzipinpin.com'+img,// 分享图标
+            success: function () { 
+                fenxiang_success();
+            }
         });
         wx.onMenuShareQQ({
             title:  '我'+price+'元钱购买了【'+tuan_number+'人团】'+title+'，快来加入一起拼团吧', // 分享标题
              link: link, // 分享链接
             desc: '您的好友已经在【酱紫拼拼】参加了'+title+'的团购，一起加入拼团，您也可以最优惠的价格，免费的快递送达，享受最优质的商品', // 分享描述
-            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
+            imgUrl: 'http://m.jiangzipinpin.com'+img, // 分享图标
+            success: function () { 
+                fenxiang_success();
+            }
         });
         wx.onMenuShareQZone({
             title: '我'+price+'元钱购买了【'+tuan_number+'人团】'+title+'，快来加入一起拼团吧', // 分享标题
              link: link, // 分享链接
             desc: '您的好友已经在【酱紫拼拼】参加了'+title+'的团购，一起加入拼团，您也可以最优惠的价格，免费的快递送达，享受最优质的商品', // 分享描述
-            imgUrl:  'http://m.jiangzipinpin.com'+img // 分享图标
+            imgUrl:  'http://m.jiangzipinpin.com'+img, // 分享图标
+            success: function () { 
+                fenxiang_success();
+            }
         });
     });
     
-    
+    function fenxiang_success(){
+        hideOverlay('zhishi_fenxiang');
+        showOverlay('fengxiang_success');
+    }
 
 </script>

@@ -311,8 +311,9 @@ function CountDown(maxtime,id_hours,id_minutes,id_seconds){
 </if>
 <script>
     var img=$('#lunbo_div img:first').attr('src');
-    var title=$('.titile1').html();
+    var title=$('.titile').html();
     var price=$('.sprice_strong').html();
+    var desc=$('.titile_1').html();
     wx.config({  
         //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: "<{$wx_config['appId']}>", // 必填，公众号的唯一标识
@@ -323,23 +324,23 @@ function CountDown(maxtime,id_hours,id_minutes,id_seconds){
     });
     wx.ready(function () {
         wx.onMenuShareTimeline({
-            title:  '一起网，您的婚礼专家： '+title, // 分享标题
-            imgUrl: 'www.17each.com'+img // 分享图标
+            title:  '【酱紫拼拼】：'+price+'元 '+title, // 分享标题
+            imgUrl: 'm.jiangzipinpin.com'+img // 分享图标
         });
         wx.onMenuShareAppMessage({
-            title:  '一起网，您的婚礼专家： '+title, // 分享标题
-            desc:  '要“17”，不要“each”，节省50%费用，拥有梦幻婚礼不再是梦,'+'17价格：￥'+price, // 分享描述
-            imgUrl: 'www.17each.com'+img // 分享图标
+            title:  '【酱紫拼拼】：'+price+'元 '+title, // 分享标题
+            desc:  desc, // 分享描述
+            imgUrl: 'm.jiangzipinpin.com'+img // 分享图标
         });
         wx.onMenuShareQQ({
-            title:  '一起网，您的婚礼专家： '+title, // 分享标题
-            desc: '要“17”，不要“each”，节省50%费用，拥有梦幻婚礼不再是梦,'+'17价格：￥'+price, // 分享描述
-            imgUrl: 'www.17each.com'+img // 分享图标
+            title:  '【酱紫拼拼】：'+price+'元 '+title, // 分享标题
+            desc: desc, // 分享描述
+            imgUrl: 'm.jiangzipinpin.com'+img // 分享图标
         });
         wx.onMenuShareQZone({
-            title: '一起网，您的婚礼专家： '+title, // 分享标题
-            desc: '要“17”，不要“each”，节省50%费用，拥有梦幻婚礼不再是梦,'+'17价格：￥'+price, // 分享描述
-            imgUrl:  'www.17each.com'+img // 分享图标
+            title: '【酱紫拼拼】：'+price+'元 '+title, // 分享标题
+            desc:desc, // 分享描述
+            imgUrl:  'm.jiangzipinpin.com'+img // 分享图标
         });
     });
     
