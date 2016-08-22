@@ -391,7 +391,6 @@ class GoodsController extends FontEndController {
               $this->save_url($_SESSION['ref']);
           }
           session('guanzhu',null); 
-          $this->display('index');
         $this->display();
     }
     
