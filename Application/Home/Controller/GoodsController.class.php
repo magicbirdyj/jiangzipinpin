@@ -644,8 +644,9 @@ class GoodsController extends FontEndController {
     private function alipay($order_id) {
         //$order_id=$_GET['order_id'];
         $ordermodel = D('Order');
+        var_dump("order_id=$order_id and deleted=0 ");exit;
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
-        exit;
+        
         //微信
         $user_id=$order['user_id'];
         $usersmodel=D('Users');
