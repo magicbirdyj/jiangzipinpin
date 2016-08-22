@@ -252,6 +252,10 @@ class GoodsController extends FontEndController {
         //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
         $ordermodel=D(Order);
         $order=$ordermodel->where("order_id=$tuan_no and deleted=0 and status=1")->find();
+        if(!$order){
+            $this->redirect('Goods/pintuan_info',array('tuan_no'=>$tuan_no));
+            exit;
+        }
         $goods_id=$order['goods_id'];
         $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
         if($choujiang>0){
@@ -273,9 +277,7 @@ class GoodsController extends FontEndController {
         
         ;
         
-        if(!$order){
-            $this->error('该团不存在或者已经拼团失败');
-        }
+        
         $cunzai_order=$ordermodel->where("tuan_no=$tuan_no and user_id=$user_id and status='1' and deleted='0'")->field('order_id,pay_status')->find();
         if($cunzai_order&&$cunzai_order['pay_status']==0){
             $this->success('您已经参加该团且未付款，将跳转到付款页面',U('Goods/zhifu',array('order_id'=>$cunzai_order['order_id'])),3);
