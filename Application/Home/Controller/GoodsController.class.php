@@ -323,8 +323,6 @@ class GoodsController extends FontEndController {
         $goods=$goodsmodel->where("goods_id=$goods_id")->find();
         if($goods['1yuangou']==1||$goods['choujiang']==1){
             $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
-            // 把抽奖assign 页面判断 如果大于0 将不再显示参团按钮 而是现实您已经成功购买过该活动商品，返回按钮
-            $this->assign('choujiang',$choujiang);
             //如果组团成功过该活动商品的团购，但是未获奖，也无法再参团 只能重新开团
             $tianjian['status']=array('between','2,5');
             $is_ztcg=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and identity=0 and choujiang=0")->where($tianjian)->count();
@@ -333,7 +331,8 @@ class GoodsController extends FontEndController {
             $choujiang=0;
             $is_ztcg=0;
         }
-        
+        // 把抽奖assign 页面判断 如果大于0 将不再显示参团按钮 而是现实您已经成功购买过该活动商品，返回按钮
+            $this->assign('choujiang',$choujiang);
         
 
         $cunzai_order=$ordermodel->where("tuan_no=$tuan_no and user_id=$user_id  and status='1' and deleted='0'")->field('order_id,pay_status')->find();
