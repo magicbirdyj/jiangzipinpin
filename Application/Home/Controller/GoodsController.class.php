@@ -280,7 +280,7 @@ class GoodsController extends FontEndController {
         
         $cunzai_order=$ordermodel->where("tuan_no=$tuan_no and user_id=$user_id and status='1' and deleted='0'")->field('order_id,pay_status')->find();
         if($cunzai_order&&$cunzai_order['pay_status']==0){
-            $this->success('您已经参加该团且未付款，将跳转到付款页面',U('Goods/zhifu',array('order_id'=>$cunzai_order['order_id'])),3);
+            $this->redirect('Goods/zhifu',array('order_id'=>$cunzai_order['order_id']));
         }elseif($cunzai_order){
             $this->error('您已经参加该团',$_SESSION['ref']);
         }
