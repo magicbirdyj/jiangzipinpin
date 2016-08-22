@@ -130,7 +130,7 @@ class GoodsController extends FontEndController {
           //如果未关注，把$_SESSION['ref']  写入数据表
           
           if($_SESSION['guanzhu']=='weiguanzhu'){
-              $this->save_url($_SESSION['ref']);
+               $this->save_url(substr($_SESSION['ref'],0,strpos($_SESSION['ref'],'?')));
           }
           session('guanzhu',null); 
           $this->display('index');
@@ -382,13 +382,13 @@ class GoodsController extends FontEndController {
         
         
         //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
-          $this->assign('guanzhu',$_SESSION['guanzhu']);
-          //如果未关注，把$_SESSION['ref']  写入数据表
+        $this->assign('guanzhu',$_SESSION['guanzhu']);
+        //如果未关注，把$_SESSION['ref']  写入数据表
           
-          if($_SESSION['guanzhu']=='weiguanzhu'){
-              $this->save_url($_SESSION['ref']);
-          }
-          session('guanzhu',null); 
+        if($_SESSION['guanzhu']=='weiguanzhu'){
+            $this->save_url(substr($_SESSION['ref'],0,strpos($_SESSION['ref'],'?')));
+        }
+        session('guanzhu',null); 
         $this->display();
     }
     
