@@ -781,6 +781,15 @@ class GoodsController extends FontEndController {
         }
         $goods['count']=$ordermodel->where("tuan_no=$tuan_no and pay_status=1")->count();
         $goods['tuan_number']=$order['tuan_number'];//为了值需要assign给goods
+        
+        $tuanzhang_id=$ordermodel->where("tuan_no=$tuan_no and identity=1")->getField('user_id');
+        $usersmodel=D('Users');
+        $tuanzhang=$usersmodel->where("user_id=$tuanzhang_id")->field('head_url,user_name')->find();
+        $goods['tuanzhang_head_url']=$tuanzhang['head_url'];
+        $goods['tuanzhang_user_name']=$tuanzhang['user_name'];    
+        $goods['tuanzhang_created']=$ordermodel->where("order_id=$tuan_no")->getField("created");
+        
+        
         if($goods['count']==$order['tuan_number']){
            $this->assign('is_ztcg','ztcg');//给JS判断是否组团成功
            //$this->assign('title','组团成功');//组团成功
@@ -829,12 +838,7 @@ class GoodsController extends FontEndController {
             }
         }
         
-        $tuanzhang_id=$ordermodel->where("tuan_no=$tuan_no and identity=1")->getField('user_id');
-        $usersmodel=D('Users');
-        $tuanzhang=$usersmodel->where("user_id=$tuanzhang_id")->field('head_url,user_name')->find();
-        $goods['tuanzhang_head_url']=$tuanzhang['head_url'];
-        $goods['tuanzhang_user_name']=$tuanzhang['user_name'];    
-        $goods['tuanzhang_created']=$ordermodel->where("order_id=$tuan_no")->getField("created");
+        
         $tuanyuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.user_id=t2.user_id and t1.tuan_no=$tuan_no and t1.identity=0 and t1.pay_status=1")->field('t2.head_url,t2.user_name,t1.created')->select();
         if(!$tuanyuan[0]){
             $tuanyuan=NULL;
