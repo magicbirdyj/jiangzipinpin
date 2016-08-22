@@ -757,6 +757,7 @@ class GoodsController extends FontEndController {
     
     
     public function gmcg_wx(){
+        $this->get_weixin_config();
         $this->assign('title','付款成功');
         $this->assign('is_ztcg','ddct');//组团状态为等待成团
         $order_id=$_GET['order_id'];
@@ -774,6 +775,7 @@ class GoodsController extends FontEndController {
         $goodsmodel=D('Goods');
         $goods=$goodsmodel->where("goods_id=$goods_id")->find();
         $tuan_no=$order['tuan_no'];
+        $this->assign('tuan_no',$tuan_no);
         if($tuan_no==0){
             $this->assign('goods', $goods);
             $this->display('gmcg_dandu');
