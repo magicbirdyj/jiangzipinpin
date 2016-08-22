@@ -310,7 +310,7 @@ class GoodsController extends FontEndController {
             $this->error("参团订单ID不存在");
         }
         $this->assign('tuan_no',$tuan_no);
-        $user_id=$_SESSION['huiyuan']['user_id'];
+        $user_id=$_SESSION['wei_huiyuan']['user_id'];
         
          //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
         $ordermodel=D(Order);
