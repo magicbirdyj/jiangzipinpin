@@ -524,7 +524,6 @@ class WxPayApi
 	 */
 	private static function postXmlCurl($xml, $url, $useCert = false, $second = 30)
 	{	
-            var_dump(dirname(dirname(__FILE__)));exit();
 		$ch = curl_init();
 		//设置超时
 		curl_setopt($ch, CURLOPT_TIMEOUT, $second);

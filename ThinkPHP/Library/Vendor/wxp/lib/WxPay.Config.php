@@ -36,8 +36,8 @@ class WxPayConfig
 	 */
 	//const SSLCERT_PATH = '../cert/apiclient_cert.pem';
 	//const SSLKEY_PATH = '../cert/apiclient_key.pem';
-        const SSLCERT_PATH ='../cert/apiclient_cert.pem';
-	const SSLKEY_PATH = '../cert/apiclient_key.pem';
+        const SSLCERT_PATH ='/alidata/www/jiangzipinpin/ThinkPHP/Library/vendor/wxp/lib/cert/apiclient_cert.pem';
+	const SSLKEY_PATH = '/alidata/www/jiangzipinpin/ThinkPHP/Library/vendor/wxp/lib/cert/apiclient_key.pem';
 	
 	//=======【curl代理设置】===================================
 	/**
