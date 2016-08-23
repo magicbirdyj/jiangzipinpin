@@ -238,15 +238,17 @@ class FontEndController extends Controller {
     
     //发送模板消息
     protected function response_template($open_id,$template_id,$url,$tem_data){
-        $data='{
-                "touser":$open_id,
-                "template_id":$template_id,
-                "url":"http://m.jiangzipinpin.com".$url,            
-                "data":$tem_data
-                }';
-       $this->s_access_token();
-       $access_token=S('access_token');
-       $MENU_URL="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$access_token;
+        $arr_data=array(
+            'touser'=>$open_id,
+            "template_id"=>$template_id,
+            "url"=>"http://m.jiangzipinpin.com".$url,
+            "data"=>$tem_data
+        );
+        $data=json_encode($arr_data,JSON_UNESCAPED_UNICODE);
+        var_dump($data);
+        $this->s_access_token();
+        $access_token=S('access_token');
+        $MENU_URL="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$access_token;
         $ch = curl_init(); 
         curl_setopt($ch, CURLOPT_URL, $MENU_URL); 
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
