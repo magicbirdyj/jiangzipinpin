@@ -996,7 +996,7 @@ class GoodsController extends FontEndController {
                 $url=U('Order/view',array('order_id'=>$order_id));
                 $tem_data='{
                             "first":{
-                                "value:"您好，您拼团购买的1元购商品：".$order["goods_name"]."未被抽中，已全额退款给您！",
+                                "value:"您好，您拼团购买的1元购商品：%s未被抽中，已全额退款给您！",
                                 "color":"#666"
                             },
                             "reason":{
@@ -1004,7 +1004,7 @@ class GoodsController extends FontEndController {
                                 "color":"#666"
                             },
                             "refund":{
-                                "value:$order["dues"]."元",
+                                "value:"%s元",
                                 "color":"#666"
                             },
                             "remark":{
@@ -1012,6 +1012,8 @@ class GoodsController extends FontEndController {
                                 "color":"#666"
                             }
                             }';
+                
+                $tem_data=sprintf($tem_data,$order["goods_name"],$order["dues"]);
                 var_dump($tem_data);
                 $this->response_template($open_id, $template_id, $url, $tem_data);
             } else {
