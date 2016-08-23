@@ -103,7 +103,7 @@ class OrderController extends FontEndController {
          }
          
          
-         
+         session('guanzhu',null); 
          $this->display('index');
     }
     public function quxiao_order(){
@@ -120,6 +120,7 @@ class OrderController extends FontEndController {
                 exit();
             }
             $result = $ordermodel->where("order_id=$order_id")->save($row);
+            session('guanzhu',null); 
             $this->ajaxReturn($result);
         }
     }
@@ -144,6 +145,7 @@ class OrderController extends FontEndController {
             );
             
             $result = $ordermodel->where("order_id=$order_id")->save($row);
+            session('guanzhu',null); 
             $this->ajaxReturn($result);
         }
     }
@@ -162,6 +164,7 @@ class OrderController extends FontEndController {
                 exit();
             }
             $result = $ordermodel->where("order_id=$order_id")->save($row);
+            session('guanzhu',null); 
             $this->ajaxReturn($result);
         }
     }
@@ -185,6 +188,7 @@ class OrderController extends FontEndController {
                 exit();
             }
             $result = $ordermodel->where("order_id=$order_id")->save($row);
+            session('guanzhu',null); 
             $this->ajaxReturn($result);
         }
     }
@@ -206,7 +210,7 @@ class OrderController extends FontEndController {
                 krsort($wuliu_guiji);
                 $this->assign('wuliu_guiji',$wuliu_guiji);
             }
-            
+            session('guanzhu',null); 
             $this->display();
         }else{
             $this->error('该订单不存在','/Home/Order/index');
@@ -214,6 +218,7 @@ class OrderController extends FontEndController {
     }
     
     public function view(){
+        session('guanzhu',null); 
         $user_id=$_SESSION['wei_huiyuan']['user_id'];
         $this->assign('user_id',$user_id);
         $order_id=$_GET['order_id'];
@@ -240,6 +245,7 @@ class OrderController extends FontEndController {
     }
 
     public function jiaoyi_success(){
+        session('guanzhu',null); 
         $this->assign('title','交易完成');
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');
@@ -261,6 +267,7 @@ class OrderController extends FontEndController {
     
     
     public function appraise(){
+        session('guanzhu',null); 
         $this->assign('title','评价');
         $order_id=$_GET['order_id'];
         $this->assign('order_id',$order_id);
@@ -304,6 +311,7 @@ class OrderController extends FontEndController {
     }
     
     public function appraise_success(){
+        session('guanzhu',null); 
         $this->assign('title','评价成功');
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');
@@ -388,6 +396,7 @@ class OrderController extends FontEndController {
     }
     
     public function appraise_manage(){
+        session('guanzhu',null); 
         $this->assign('title','我已评价');
         $ordermodel=D('Order');
         $user_id=$_SESSION['wei_huiyuan']['user_id'];
@@ -402,6 +411,7 @@ class OrderController extends FontEndController {
     
     
     public function shouhou() {
+        session('guanzhu',null); 
         $user_id=$_SESSION['wei_huiyuan']['user_id'];
         $this->assign('user_id',$user_id);
         $order_id=$_GET['order_id'];
@@ -428,6 +438,7 @@ class OrderController extends FontEndController {
         }
     }
     public function shouhou_check() {
+        session('guanzhu',null); 
         $ordermodel=D('Order');
         // 手动进行令牌验证 
         if (!$ordermodel->autoCheckToken($_POST)){ 
@@ -477,6 +488,7 @@ class OrderController extends FontEndController {
         }
     }
     public function shouhou_status() {
+        session('guanzhu',null); 
         $order_id=$_GET['order_id'];
         if(empty($order_id)){
             $this->error('订单号不存在');

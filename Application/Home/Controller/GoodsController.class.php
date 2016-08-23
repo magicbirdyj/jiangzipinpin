@@ -6,7 +6,6 @@ use Home\Controller;
 
 class GoodsController extends FontEndController {
     public function index() {
-        var_dump($_SESSION['guanzhu']);
         if(!isset($_SESSION['guanzhu'])||$_SESSION['guanzhu']==''){
             $this->error('关注信息为空');
         }

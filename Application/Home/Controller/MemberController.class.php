@@ -3,6 +3,7 @@ namespace Home\Controller;
 use Home\Controller;
 class MemberController extends FontEndController {
     public function index(){
+        session('guanzhu',null); 
         $user_id=$_SESSION['wei_huiyuan']['user_id'];//获取会员id号
         $usersmodel=D('Users');
         if(!empty($user_id)||$user_id===0){
@@ -44,6 +45,7 @@ class MemberController extends FontEndController {
     
 
     public function order(){
+        session('guanzhu',null); 
          $status=$_GET['status'];
          $this->assign('title','我的订单');
          $ordermodel=D('Order');
@@ -103,6 +105,7 @@ class MemberController extends FontEndController {
    
     //收藏列表
     public function sellection(){
+        session('guanzhu',null); 
         $this->assign("title","一起网_我的收藏");
         $user_id=$_SESSION['wei_huiyuan']['user_id'];
         $sellectionmodel=D('Sellection');
@@ -117,6 +120,7 @@ class MemberController extends FontEndController {
     }
     //删除收藏
     public function sellection_del(){
+        session('guanzhu',null); 
         $sellection_id=$_GET['sellection_id'];
         $sellectionmodel=D('Sellection');
         $user_id=$_SESSION['wei_huiyuan']['user_id'];
@@ -135,6 +139,7 @@ class MemberController extends FontEndController {
    
     
     public function daijinquan(){
+        session('guanzhu',null); 
         $user_id=$_SESSION['wei_huiyuan']['user_id'];//获取会员id号
         $usersmodel=D('Users');
         if(empty($user_id)||$user_id===0){
@@ -174,6 +179,7 @@ class MemberController extends FontEndController {
     
     
     public function qiehuanzhuanghu(){
+        session('guanzhu',null); 
         $usersmodel=D(Users);
         $list=$usersmodel->select();
         $this->assign('list',$list);
