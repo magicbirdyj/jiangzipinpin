@@ -49,8 +49,8 @@ class LoginController extends FontEndController {
                 'head_url'=>$userinfo['headimgurl']
             );
             if($userinfo['subscribe']==0){//未关注的情况
-                if(!$user_id){//数据库没有信息，又未关注，提示错误
-                    $this->error('您还未关注！请从首页进入','Index/index');
+                if(!$user_id){//数据库没有信息，又未关注，转到首页
+                    $this->redirect('Index/index');
                 }
                 $row['user_id']=$user_id;
                 $_SESSION['huiyuan']=$row;
