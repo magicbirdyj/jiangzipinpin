@@ -155,7 +155,7 @@ class WxPayApi
 		}
 		$inputObj->SetAppid(WxPayConfig::APPID);//公众账号ID
 		$inputObj->SetMch_id(WxPayConfig::MCHID);//商户号
-                $inputObj->SetOp_user_id(WxPayConfig::MCHID);//操作人员号 默认是商户号
+                //$inputObj->SetOp_user_id(WxPayConfig::MCHID);//操作人员号 默认是商户号
 		$inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 		
 		$inputObj->SetSign();//签名

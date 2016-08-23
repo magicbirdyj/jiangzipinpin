@@ -2,7 +2,11 @@
 if(is_ztcg=='ddct'&&choujiang=='0'&&is_ctcg=='0'){
     
 }else if(is_ztcg=='ztcg'||is_ztcg=='ztsb'){
-    $('#fixed_tishi').html('该团已经成团或者失败，您可自己开团');
+    if(is_ztcg=='ztcg'){
+        $('#fixed_tishi').html('该团已经组团成功，您可自己开团');
+    }else{
+        $('#fixed_tishi').html('该团组团失败，您可自己开团');
+    }
     $('#fixed_tishi').css('display','block');
     $('#fixed_tishi').css('bottom','110px');
     setTimeout("$('#fixed_tishi').css('display','none')",5000);

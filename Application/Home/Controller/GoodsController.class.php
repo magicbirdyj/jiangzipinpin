@@ -983,7 +983,7 @@ class GoodsController extends FontEndController {
             $refundInput->SetOut_trade_no($order['order_no']);
             $refundInput->SetTotal_fee($order['dues'] * 100);
             $refundInput->SetRefund_fee($order['dues'] * 100);
-            
+            $refundInput->SetOp_user_id('1380048502');
             $refundInfo = \WxPayApi::refund($refundInput, 300);
 
             if (is_array($refundInfo) && $refundInfo['result_code'] == 'SUCCESS') {//退款成功
