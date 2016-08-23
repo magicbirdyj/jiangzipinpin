@@ -114,7 +114,6 @@ class WeixinController extends FontEndController {
                 </Articles>
 		</xml>";   
          
-        //$textTpl="ToUserName:%s,FromUserName:%s,CreateTime:%s,MsgType,%s,ArticleCount:%d,Title:%s,Description:%s,PicUrl:%s,Url:%s";
         $hui_msgType = "news";
         $articleCount=1;//图文消息的条数
         $user_name=$this->get_user($object->FromUserName);

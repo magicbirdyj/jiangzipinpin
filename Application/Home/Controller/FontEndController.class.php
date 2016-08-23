@@ -12,7 +12,7 @@ class FontEndController extends Controller {
         header("content-type:text/html;charset=utf-8"); 
         
         //判断是否需要记录当前url 数组内必须首字母大写
-        $noref=array('Index/search_m','Index/search','Goods/page','Index/menu','Order/yanzheng_zfmm','Order/queren_success','Goods/zhifu','Goods/pinglun','Member/cart_del','Member/goods_del','Goods/jiance_pay','Goods/getUniqueOrderNo','Goods/notifyweixin','Goods/notify','Goods/gmcg_wx','Goods/sellection_join','Buy/getQRPHP','Member/xiugai_zhifumima','Member/xiugai_zhifumima_check','Member/xiugai_zhifumima_success','Member/xiugai_mima','Member/xiugai_mima_check','Member/xiugai_mima_success','Member/getCode','Index/get_new_order');
+        $noref=array('Index/search_m','Index/search','Goods/page','Index/menu','Order/yanzheng_zfmm','Order/queren_success','Goods/zhifu','Goods/pinglun','Member/cart_del','Member/goods_del','Goods/jiance_pay','Goods/getUniqueOrderNo','Goods/notifyweixin','Goods/notify','Goods/gmcg_wx','Goods/sellection_join','Buy/getQRPHP','Member/xiugai_zhifumima','Member/xiugai_zhifumima_check','Member/xiugai_zhifumima_success','Member/xiugai_mima','Member/xiugai_mima_check','Member/xiugai_mima_success','Member/getCode','Index/get_new_order','Goods/refund');
         $noref_contorller=array('Zhuce','Login','Weixin','Crontab');
         if(!in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $noref)&&!in_array(CONTROLLER_NAME, $noref_contorller)){
             $_SESSION['ref']=  str_replace('.html', '',$_SERVER['REQUEST_URI']);
@@ -236,5 +236,35 @@ class FontEndController extends Controller {
         $usersmodel->where("user_id=$user_id")->save($row);
     }
 
+    
+    //发送模板消息
+    protected function response_template($open_id,$template_id,$url,$tem_data){
+        $data='{
+                "touser":$open_id,
+                "template_id":$template_id,
+                "url":"http://m.jiangzipinpin.com".$url,            
+                "data":$tem_data
+                }';
+       $this->s_access_token();
+       $access_token=S('access_token');
+       $MENU_URL="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$access_token;
+        $ch = curl_init(); 
+        curl_setopt($ch, CURLOPT_URL, $MENU_URL); 
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; MSIE 5.01; Windows NT 5.0)');
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_AUTOREFERER, 1); 
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+        $info = curl_exec($ch);
+        if (curl_errno($ch)) {
+            echo 'Errno'.curl_error($ch);
+        }
+        curl_close($ch);
+
+        //var_dump($info);
+    }
 
 }
