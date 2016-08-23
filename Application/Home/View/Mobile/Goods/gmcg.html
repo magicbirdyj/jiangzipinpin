@@ -93,6 +93,7 @@
     var tuan_no="<{$tuan_no}>";
     var link='m.jiangzipinpin.com/Home/Goods/pintuan_info/tuan_no/'+tuan_no+'.html';
     var user_name="<{$user_name}>";
+    var goods_desc="<{$goods['goods_jianjie']}>";
     wx.config({  
         //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: "<{$wx_config['appId']}>", // 必填，公众号的唯一标识
@@ -104,7 +105,7 @@
     wx.ready(function () {
         wx.onMenuShareTimeline({
             title:  '我'+price+'元钱购买了【'+tuan_number+'人团】'+title+'，快来加入一起拼团吧', // 分享标题
-             link: link, // 分享链接
+            link: link, // 分享链接
             imgUrl: 'http://m.jiangzipinpin.com'+img, // 分享图标
             success: function () { 
                 fenxiang_success();
@@ -112,8 +113,8 @@
         });
         wx.onMenuShareAppMessage({
             title:  '我'+price+'元钱购买了【'+tuan_number+'人团】'+title+'，快来加入一起拼团吧', // 分享标题
-             link: link, // 分享链接
-            desc: '您的好友'+user_name+'在【酱紫拼拼】参加了'+title+'的团购，一起加入拼团,免快递，共分享，同快乐', // 分享描述
+            link: link, // 分享链接
+            desc: '您的好友'+user_name+'在【酱紫拼拼】参加了团购： '+goods_desc, // 分享描述
             imgUrl: 'http://m.jiangzipinpin.com'+img,// 分享图标
             success: function () { 
                 fenxiang_success();
@@ -121,8 +122,8 @@
         });
         wx.onMenuShareQQ({
             title:  '我'+price+'元钱购买了【'+tuan_number+'人团】'+title+'，快来加入一起拼团吧', // 分享标题
-             link: link, // 分享链接
-            desc: '您的好友'+user_name+'在【酱紫拼拼】参加了'+title+'的团购，一起加入拼团,免快递，共分享，同快乐', // 分享描述
+            link: link, // 分享链接
+            desc:  '您的好友'+user_name+'在【酱紫拼拼】参加了团购： '+goods_desc, // 分享描述
             imgUrl: 'http://m.jiangzipinpin.com'+img, // 分享图标
             success: function () { 
                 fenxiang_success();
@@ -130,8 +131,8 @@
         });
         wx.onMenuShareQZone({
             title: '我'+price+'元钱购买了【'+tuan_number+'人团】'+title+'，快来加入一起拼团吧', // 分享标题
-             link: link, // 分享链接
-            desc:'您的好友'+user_name+'在【酱紫拼拼】参加了'+title+'的团购，一起加入拼团,免快递，共分享，同快乐', // 分享描述
+            link: link, // 分享链接
+            desc: '您的好友'+user_name+'在【酱紫拼拼】参加了团购： '+goods_desc, // 分享描述
             imgUrl:  'http://m.jiangzipinpin.com'+img, // 分享图标
             success: function () { 
                 fenxiang_success();
