@@ -2,7 +2,8 @@
 /**
 * 	配置账号信息
 */
-
+define('WXP_SSLCERT_PATH', dirname(__FILE__).'cert/apiclient_cert.pem');
+define('WXP_SSLKEY_PATH', dirname(__FILE__).'cert/apiclient_key.pem');
 class WxPayConfig
 {
 	//=======【基本信息设置】=====================================
@@ -34,10 +35,10 @@ class WxPayConfig
 	 * API证书下载地址：https://pay.weixin.qq.com/index.php/account/api_cert，下载之前需要安装商户操作证书）
 	 * @var path
 	 */
-	//const SSLCERT_PATH = './cert/apiclient_cert.pem';
-	//const SSLKEY_PATH = './cert/apiclient_key.pem';
-        const SSLCERT_PATH ='/alidata/www/jiangzipinpin/ThinkPHP/Library/vendor/wxp/lib/cert/apiclient_cert.pem';
-	const SSLKEY_PATH = '/alidata/www/jiangzipinpin/ThinkPHP/Library/vendor/wxp/lib/cert/apiclient_key.pem';
+	const SSLCERT_PATH = WXP_SSLCERT_PATH;
+	const SSLKEY_PATH = WXP_SSLKEY_PATH;
+        //const SSLCERT_PATH ='/alidata/www/jiangzipinpin/ThinkPHP/Library/vendor/wxp/lib/cert/apiclient_cert.pem';
+	//const SSLKEY_PATH = '/alidata/www/jiangzipinpin/ThinkPHP/Library/vendor/wxp/lib/cert/apiclient_key.pem';
 	
 	//=======【curl代理设置】===================================
 	/**
