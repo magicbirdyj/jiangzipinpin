@@ -816,7 +816,7 @@ class GoodsController extends FontEndController {
                );
                $ordermodel->where("order_id=$rand_order_id")->save($row);//抽中的人获取资格
                $ordermodel->where("order_id=$tuan_no")->save($row);//团长获取资格
-               //给未被抽中的其它团员退款    以后再做
+               //给未被抽中的其它团员退款 并发送退款模板消息
                foreach ($arr_order_id as $value) {
                    if($value!=$rand_order_id&&$value!=$tuan_no){
                        $this->refund($value);
@@ -824,27 +824,31 @@ class GoodsController extends FontEndController {
                }
                
                
-               //给被抽中的团员发送信息
+               //给被抽中的团员发送拼团获奖成功消息模板
+               $remark="恭喜您，拼团购买的1元购商品,已被抽中,我们将尽快把商品送到您的手上，请注意关注";
+               $this->pintuan_success_tep($rand_order_id,$remark);
                //给团长发送信息
+               $remark="恭喜您，开团购买的1元购商品已经成团,做为团长，您100%获奖，我们将尽快把商品送到您的手上，请注意关注";
+               $this->pintuan_success_tep($tuan_no,$remark);
                
-               $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',2);//商品的购买次数加2
-           }
-           //给成团的团长和团员发送消息，成团成功，等待发货
-           
-           //每个团员购买数量 都需要给商品的购买次数增加
-           $arr_buy_number=$ordermodel->where("tuan_no=$tuan_no and pay_status=1")->getField('buy_number',true);
-           foreach ($arr_buy_number as $value) {
-               $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$value);//商品的购买次数加
-           }
-        }else{//团员人数未满
-            //检查是否超时，如果超时 做出处理 
-            $time=  time();
-            if($time>($goods['tuanzhang_created']+86400)){
-                $row=array(
-                   'status'=>6//拼团失败
-               );
-                $ordermodel->where("order_id=$order_id")->save($row);
+               
+               $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$order['tuan_nuber']);//商品的购买次数加团购人数
+           }else{
+               //不是活动的商品  给成团的团长和团员发送消息，成团成功，等待发货
+                $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status=1 and status=2 and identity=0")->getField('order_id',true);
+                $remark="恭喜您，拼团的商品已经成团,我们将尽快把商品送到您的手上，请注意关注";
+                foreach ($arr_order_id as $value) {
+                    $this->pintuan_success_tep($value,$remark);//不是活动的商品  给成团的团长和团员发送消息，成团成功，等待发货
+                }
+                //每个团员购买数量 都需要给商品的购买次数增加
+                $arr_buy_number=$ordermodel->where("tuan_no=$tuan_no and pay_status=1")->getField('buy_number',true);
+                foreach ($arr_buy_number as $value) {
+                    $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$value);//商品的购买次数加
+                }
             }
+           
+           
+           
         }
         
         
@@ -987,31 +991,46 @@ class GoodsController extends FontEndController {
             $refundInfo = \WxPayApi::refund($refundInput, 300);
 
             if (is_array($refundInfo) && $refundInfo['result_code'] == 'SUCCESS') {//退款成功
-                $row=array('pay_status'=>4);
+                $row=array('pay_status'=>4,'shouhou_cause'=>'活动商品未获奖');
                 $ordermodel->where("order_id=$order_id")->save($row);
-                $user_id=$order['user_id'];
-                $usersmodel=D('Users');
-                $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
-                $template_id="95UZl_xx_sjJdno-l1X4vUrRvOLlsepMEZHPFsofZms";
-                $url=U('Order/view',array('order_id'=>$order_id));
-                $arr_data=array(
-                    'first'=>array('value'=>"您好，您拼团购买的1元购商品：".$order["goods_name"]."未被抽中，已全额退款给您！","color"=>"#666"),
-                    'reason'=>array('value'=>"1元购活动将在9名团员中抽取一人获奖，团长将100%获奖，您还可以自己去开团，组团成功后，您将100%获奖","color"=>"#666"),
-                    'refund'=>array('value'=>$order["dues"]."元","color"=>"#666"),
-                    'remark'=>array('value'=>"如有疑问，请致电15173897978联系我们","color"=>"#666")
-                );
-                $this->response_template($open_id, $template_id, $url, $arr_data);
+                $this->refund_tep_weihuojiang($order_id);
             } else {
                 $this->error("退款失败" .  $refundInfo['return_msg']);
             }
                
     }
     
+    private function refund_tep_weihuojiang($order_id){
+        $order=$ordermodel->where("order_id=$order_id")->find();
+        $user_id=$order['user_id'];
+        $usersmodel=D('Users');
+        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
+        $template_id="95UZl_xx_sjJdno-l1X4vUrRvOLlsepMEZHPFsofZms";
+        $goods_id=$order['goods_id'];
+        $url=U('Goods/index',array('goods_id'=>$goods_id));
+        $arr_data=array(
+            'first'=>array('value'=>"您好，您拼团购买的1元购商品：".$order["goods_name"]." 未被抽中，已全额退款给您！","color"=>"#666"),
+            'reason'=>array('value'=>"1元购活动将在".($order['tuan_number']-1)."名团员中抽取一人获奖，团长将100%获奖，您还可以自己去开团，组团成功后，您将100%获奖","color"=>"#F90505"),
+            'refund'=>array('value'=>$order["dues"]."元","color"=>"#666"),
+            'remark'=>array('value'=>"点我，现在就去开团","color"=>"#F90505")
+        );
+        $this->response_template($open_id, $template_id, $url, $arr_data);
+    }
     
-    public function ceshi_refund(){
-        $order_id=$_GET['order_id'];
-        $this->refund($order_id);
+    private function pintuan_success_tep($order_id,$remark){
+        $order=$ordermodel->where("order_id=$order_id")->find();
+        $user_id=$order['user_id'];
+        $usersmodel=D('Users');
+        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
+        $template_id="E-s0XUfqmr8jQZWF2y40xi9wFXwPyOWykZvx44YQfk8";
+        $url=U('Order/view',array('order_id'=>$order_id));
+        $arr_data=array(
+            'name'=>array('value'=>$order["goods_name"],"color"=>"#666"),
+            'remark'=>array('value'=>$remark,"color"=>"#F90505")
+        );
+        $this->response_template($open_id, $template_id, $url, $arr_data);
     }
     
     
+   
 }
