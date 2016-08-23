@@ -543,7 +543,7 @@ class WxPayApi
 		curl_setopt($ch, CURLOPT_HEADER, FALSE);
 		//要求结果为字符串且输出到屏幕上
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-
+                var_dump(dirname(dirname(__FILE__)));exit();
 		if($useCert == true){
 			//设置证书
 			//使用证书：cert 与 key 分别属于两个.pem文件
@@ -553,13 +553,7 @@ class WxPayApi
 			curl_setopt($ch,CURLOPT_SSLKEY, WxPayConfig::SSLKEY_PATH);
 		}
 		//post提交方式
-		curl_setopt($ch, CURLOPT_POST, TRUE);
-                
-                curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; MSIE 5.01; Windows NT 5.0)');
-                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-                curl_setopt($ch, CURLOPT_AUTOREFERER, 1); 
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-                
+		curl_setopt($ch, CURLOPT_POST, TRUE);                
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
 		//运行curl
 		$data = curl_exec($ch);		//返回结果
