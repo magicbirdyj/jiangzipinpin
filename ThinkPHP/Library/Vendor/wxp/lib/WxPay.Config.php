@@ -2,8 +2,9 @@
 /**
 * 	配置账号信息
 */
-define('WXP_SSLCERT_PATH', dirname(__FILE__).'cert/apiclient_cert.pem');
-define('WXP_SSLKEY_PATH', dirname(__FILE__).'cert/apiclient_key.pem');
+define('DS', DIRECTORY_SEPARATOR);
+define('WXP_SSLCERT_PATH', VENDOR_PATH."wxp".DS.'cert'.DS.'apiclient_cert.pem');
+define('WXP_SSLKEY_PATH',VENDOR_PATH."wxp".DS.'cert'.DS.'apiclient_key.pem');
 class WxPayConfig
 {
 	//=======【基本信息设置】=====================================
