@@ -523,7 +523,7 @@ class WxPayApi
 	 * @throws WxPayException
 	 */
 	private static function postXmlCurl($xml, $url, $useCert = false, $second = 30)
-	{	
+	{       
 		$ch = curl_init();
 		//设置超时
 		curl_setopt($ch, CURLOPT_TIMEOUT, $second);
