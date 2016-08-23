@@ -987,6 +987,8 @@ class GoodsController extends FontEndController {
             $refundInfo = \WxPayApi::refund($refundInput, 300);
 
             if (is_array($refundInfo) && $refundInfo['result_code'] == 'SUCCESS') {//退款成功
+                $row=array('pay_status'=>4);
+                $ordermodel->where("order_id=$order_id")->save($row);
                 $user_id=$order['user_id'];
                 $usersmodel=D('Users');
                 $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
@@ -1010,15 +1012,18 @@ class GoodsController extends FontEndController {
                                 "color":"#666"
                             }
                             }';
+                var_dump($tem_data);
                 $this->response_template($open_id, $template_id, $url, $tem_data);
             } else {
-                $this->error("退款失败" . $orderInfo['return_msg']);
+                $this->error("退款失败" .  $refundInfo['return_msg']);
             }
                
     }
     
     
-    
+    public function ceshi_refund(){
+        $this->refund('195');
+    }
     
     
 }
