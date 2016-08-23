@@ -994,26 +994,13 @@ class GoodsController extends FontEndController {
                 $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
                 $template_id="95UZl_xx_sjJdno-l1X4vUrRvOLlsepMEZHPFsofZms";
                 $url=U('Order/view',array('order_id'=>$order_id));
-                $tem_data='{
-                            "first":{
-                                "value:"您好，您拼团购买的1元购商品：%s未被抽中，已全额退款给您！",
-                                "color":"#666"
-                            },
-                            "reason":{
-                                "value:"1元购活动将在9名团员中抽取一人获奖，团长将100%获奖，您还可以自己去开团，组团成功后，您将100%获奖",
-                                "color":"#666"
-                            },
-                            "refund":{
-                                "value:"%s元",
-                                "color":"#666"
-                            },
-                            "remark":{
-                                "value:"如有疑问，请致电15173897978联系我们",
-                                "color":"#666"
-                            }
-                            }';
-                
-                $tem_data=sprintf($tem_data,$order["goods_name"],$order["dues"]);
+                $arr_data=array(
+                    'first'=>array('value'=>"您好，您拼团购买的1元购商品：".$order["goods_name"]."未被抽中，已全额退款给您！","color"=>"#666"),
+                    'reason'=>array('value'=>"1元购活动将在9名团员中抽取一人获奖，团长将100%获奖，您还可以自己去开团，组团成功后，您将100%获奖","color"=>"#666"),
+                    'refund'=>array('value'=>$order["dues"]."元","color"=>"#666"),
+                    'remark'=>array('value'=>"如有疑问，请致电15173897978联系我们","color"=>"#666")
+                );
+                $tem_data=son_encode($arr_data);
                 var_dump($tem_data);
                 $this->response_template($open_id, $template_id, $url, $tem_data);
             } else {
