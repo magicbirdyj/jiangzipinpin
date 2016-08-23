@@ -974,7 +974,7 @@ class GoodsController extends FontEndController {
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id=$order_id")->find();
         if($order['status']!=1&&$order['status']!=2){
-            $this->error('该订单未付款或者正在申请换货或者已经退款成功,无法退款');
+            //$this->error('该订单未付款或者正在申请换货或者已经退款成功,无法退款');
         }
         vendor('wxp.native'); //引入第三方类库
             $refundInput = new \WxPayRefund();
