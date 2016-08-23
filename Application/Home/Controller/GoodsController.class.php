@@ -973,7 +973,7 @@ class GoodsController extends FontEndController {
     private function refund($order_id) {
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id=$order_id")->find();
-        if($order['status']!=1&&$order['status']!=2){
+        if($order['pay_status']!=1&&$order['pay_status']!=2){
             $this->error('该订单未付款或者正在申请换货或者已经退款成功,无法退款');
         }
         vendor('wxp.native'); //引入第三方类库
@@ -1022,7 +1022,8 @@ class GoodsController extends FontEndController {
     
     
     public function ceshi_refund(){
-        $this->refund('195');
+        $order_id=$_GET['order_id'];
+        $this->refund($order_id);
     }
     
     
