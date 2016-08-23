@@ -1000,7 +1000,7 @@ class GoodsController extends FontEndController {
                     'refund'=>array('value'=>$order["dues"]."元","color"=>"#666"),
                     'remark'=>array('value'=>"如有疑问，请致电15173897978联系我们","color"=>"#666")
                 );
-                $tem_data=json_encode($arr_data);
+                $tem_data=json_encode($arr_data,JSON_UNESCAPED_UNICODE);
                 var_dump($tem_data);
                 $this->response_template($open_id, $template_id, $url, $tem_data);
             } else {
