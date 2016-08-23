@@ -113,10 +113,10 @@ class LoginController extends FontEndController {
                 $row['user_id']=$user_id;
             }
             $_SESSION['wei_huiyuan']=$row;
-            if($userinfo['subscribe']==0){
+            if($userinfo['subscribe']===0){
                 //未关注，返回原页面并弹出关注页面
                 $_SESSION['guanzhu']='weiguanzhu';
-            }else{
+            }else if($userinfo['subscribe']===1){
                 $_SESSION['guanzhu']='yiguanzhu'; 
             }
             if(isset($_SESSION['ref'])){
