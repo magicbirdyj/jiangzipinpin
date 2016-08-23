@@ -7,6 +7,9 @@ use Home\Controller;
 class GoodsController extends FontEndController {
     public function index() {
         var_dump($_SESSION['guanzhu']);
+        if(!isset($_SESSION['guanzhu'])||$_SESSION['guanzhu']==''){
+            $this->error('关注信息为空');
+        }
         C('TOKEN_ON',false);//取消表单令牌
         $this->get_weixin_config();
         $goods_id = $_GET['goods_id'];
@@ -645,7 +648,6 @@ class GoodsController extends FontEndController {
 
     //生成微信支付订单
     private function alipay($order_id) {
-        //$order_id=$_GET['order_id'];
         $ordermodel = D('Order');
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
         //微信
@@ -684,7 +686,7 @@ class GoodsController extends FontEndController {
             $orderInput->SetOpenid($paydata['open_id']);//必须为登录
             $orderInfo = \WxPayApi::unifiedOrder($orderInput, 300);
 
-            if (is_array($orderInfo) && $orderInfo['result_code'] == 'SUCCESS' && $orderInfo['return_code'] == 'SUCCESS') {
+            if (is_array($orderInfo) && $orderInfo['result_code'] == 'SUCCESS') {
                 $jsapi = new \WxPayJsApiPay();
                 $jsapi->SetAppid($orderInfo["appid"]);
                 $timeStamp = time();
@@ -802,6 +804,7 @@ class GoodsController extends FontEndController {
            
            $ordermodel->where("tuan_no=$tuan_no and pay_status=1")->save($row);
            
+           //如果是抽奖活动，随机抽
            
            //如果是抽奖活动，随机抽取一个获取购买资格 
            $choujiang_count=$ordermodel->where("tuan_no=$tuan_no and choujiang=1")->count();
@@ -815,7 +818,13 @@ class GoodsController extends FontEndController {
                $ordermodel->where("order_id=$rand_order_id")->save($row);//抽中的人获取资格
                $ordermodel->where("order_id=$tuan_no")->save($row);//团长获取资格
                //给未被抽中的其它团员退款    以后再做
-               //给未被抽中的其它团员发送退款消息，并告知谁被抽中 并告知可以开团获取购买资格
+               foreach ($arr_order_id as $value) {
+                   if($value!=$rand_order_id&&$value!=$tuan_no){
+                       $this->refund($value);
+                   }
+               }
+               
+               
                //给被抽中的团员发送信息
                //给团长发送信息
                
@@ -956,6 +965,56 @@ class GoodsController extends FontEndController {
             }
             $this->redirect('Goods/gmcg_wx',array('order_id'=>$order_id),0);
     }
+    
+    
+    
+    private function refund($order_id) {
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id=$order_id")->find();
+        if($order['status']!=1&&$order['status']!=2){
+            $this->error('该订单未付款或者正在申请换货或者已经退款成功,无法退款');
+        }
+        vendor('wxp.native'); //引入第三方类库
+            $refundInput = new \WxPayRefund();
+            $refundInput->SetTransaction_id($order['trade_no']);
+            $refundInput->SetOut_refund_no($order['order_no']);
+            $refundInput->SetOut_trade_no($order['order_no']);
+            $refundInput->SetTotal_fee($order['dues'] * 100);
+            $refundInput->SetRefund_fee($order['dues'] * 100);
+            
+            $refundInfo = \WxPayApi::refund($refundInput, 300);
+
+            if (is_array($refundInfo) && $refundInfo['result_code'] == 'SUCCESS') {//退款成功
+                $user_id=$order['user_id'];
+                $usersmodel=D('Users');
+                $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
+                $template_id="95UZl_xx_sjJdno-l1X4vUrRvOLlsepMEZHPFsofZms";
+                $url=U('Order/view',array('order_id'=>$order_id));
+                $tem_data='{
+                            "first":{
+                                "value:"您好，您拼团购买的1元购商品：".$order["goods_name"]."未被抽中，已全额退款给您！",
+                                "color":"#666"
+                            },
+                            "reason":{
+                                "value:"1元购活动将在9名团员中抽取一人获奖，团长将100%获奖，您还可以自己去开团，组团成功后，您将100%获奖",
+                                "color":"#666"
+                            },
+                            "refund":{
+                                "value:$order["dues"]."元",
+                                "color":"#666"
+                            },
+                            "remark":{
+                                "value:"如有疑问，请致电15173897978联系我们",
+                                "color":"#666"
+                            }
+                            }';
+                $this->response_template($open_id, $template_id, $url, $tem_data);
+            } else {
+                $this->error("退款失败" . $orderInfo['return_msg']);
+            }
+               
+    }
+    
     
     
     
