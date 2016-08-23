@@ -866,6 +866,9 @@ class GoodsController extends FontEndController {
             }
         }
         
+        
+        $user_name=$usersmodel->where("user_id=$user_id")->getField('user_name');
+        $this->assign('user_name',$user_name);
         $this->display('gmcg');
 
     }
