@@ -20,9 +20,10 @@ class WeixinController extends FontEndController {
             $resultStr=$this->panduan_guanzhu_leixin($postObj);//分情况发送图文消息
             echo $resultStr;
         }else{
-            $content='联系客服，请点击下方按钮：  平台服务>>联系客服';
+            //$content='联系客服，请点击下方按钮：  平台服务>>联系客服';
+            $content= $resultStr=$this->panduan_guanzhu_leixin($postObj);
             $resultStr=$this->response_text($postObj, $content);
-             echo $resultStr;
+            echo $resultStr;
             }
         
     }
