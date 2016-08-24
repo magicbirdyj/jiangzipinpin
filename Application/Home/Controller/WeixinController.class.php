@@ -124,8 +124,7 @@ class WeixinController extends FontEndController {
     }
     
     //  发送多图文信息
-    private function response_arr_image_text($object){
-        return '10000';exit;
+    private function response_arr_image_text($object){      
         $newsTplHead = "<xml>
                 <ToUserName><![CDATA[%s]]></ToUserName>
                 <FromUserName><![CDATA[%s]]></FromUserName>
@@ -161,7 +160,7 @@ class WeixinController extends FontEndController {
         }
         $footer = "</Articles>
                 </xml>";
-        return '10000';
+        return $header.$body.$footer;
     }
 
 
@@ -171,9 +170,9 @@ class WeixinController extends FontEndController {
         $usersmodel=D('Users');
         $url=$usersmodel->where("open_id='$open_id'")->getField('url');
         if($url){
-            $this->response_image_text($postObj);
+            return $this->response_image_text($postObj);
         }else{
-            $this->response_arr_image_text($postObj);
+            return $this->response_arr_image_text($postObj);
         }
     }
 
