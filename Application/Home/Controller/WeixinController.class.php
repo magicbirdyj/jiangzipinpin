@@ -130,9 +130,10 @@ class WeixinController extends FontEndController {
         $arr_textTpl['CreateTime']=time();
         $arr_textTpl['MsgType']="news";
         $arr_textTpl['ArticleCount']=3;
-        $arr_textTpl['ToUserName']=$object->FromUserName;
-        $arr_textTpl['ToUserName']=$object->FromUserName;
-        $arr_textTpl['ToUserName']=$object->FromUserName;
+        //具体内容数组
+        $arr_Articles=array();
+        $arr_Articles['a'];
+        
     }
 
 
