@@ -154,6 +154,7 @@ class WeixinController extends FontEndController {
             $arr_content[$key]['Url']='m.jiangzipinpin.com'.U('Goods/index',array('goods_id'=>$value['goods_id']));
         }
         // 转换成xml结构中的item
+        $body='';
         foreach ($arr_content as $value) {
             $body.=$this->ToXml_item($value);
         }
