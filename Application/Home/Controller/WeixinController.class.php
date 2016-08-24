@@ -150,7 +150,7 @@ class WeixinController extends FontEndController {
                 $goods_img='http://m.jiangzipinpin.com'.$goods_img;
                 $arr_content[$key]['PicUrl']=$goods_img;
             }else{
-                $arr_content[$key]['PicUrl']=$value['goods_img'];
+                $arr_content[$key]['PicUrl']='http://m.jiangzipinpin.com'.$value['goods_img'];
             }
             $arr_content[$key]['Url']='m.jiangzipinpin.com'.U('Goods/index',array('goods_id'=>$value['goods_id']));
         }
