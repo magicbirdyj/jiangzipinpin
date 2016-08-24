@@ -160,7 +160,7 @@ class WeixinController extends FontEndController {
         }
         $footer = "</Articles>
                 </xml>";
-        return $body;
+        return 'sdfasf';
     }
 
 
@@ -178,14 +178,10 @@ class WeixinController extends FontEndController {
 
 
     //多图文消息中，内容数组转XML中的<item></item> 
-    private function ToXml_item($arr)
-	{
-		if(!is_array($arr) 
-			|| count($arr) <= 0)
-		{
-    		$this->error("数组数据异常！");
-    	}
-    	
+    private function ToXml_item($arr){
+        if(!is_array($arr)|| count($arr) <= 0){
+            $this->error("数组数据异常！");
+        }
     	$xml = "<item>";
     	foreach ($arr as $key=>$val)
     	{
