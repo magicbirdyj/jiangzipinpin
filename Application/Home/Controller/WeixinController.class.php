@@ -20,7 +20,7 @@ class WeixinController extends FontEndController {
             $resultStr=$this->panduan_guanzhu_leixin($postObj);//分情况发送图文消息
             echo $resultStr;
         }else{
-            $content='联系客服，请点击下方按钮>>平台服务>>联系客服';
+            $content='联系客服，请点击下方按钮：  平台服务>>联系客服';
             $resultStr=$this->response_text($postObj, $content);
              echo $resultStr;
             }
@@ -124,16 +124,40 @@ class WeixinController extends FontEndController {
     
     //  发送多图文信息
     private function response_arr_image_text($object){
-        $arr_textTpl=array();
-        $arr_textTpl['ToUserName']=$object->FromUserName;
-        $arr_textTpl['FromUserName']=$object->ToUserName;
-        $arr_textTpl['CreateTime']=time();
-        $arr_textTpl['MsgType']="news";
-        $arr_textTpl['ArticleCount']=3;
+        $newsTplHead = "<xml>
+                <ToUserName><![CDATA[%s]]></ToUserName>
+                <FromUserName><![CDATA[%s]]></FromUserName>
+                <CreateTime>%s</CreateTime>
+                <MsgType><![CDATA[news]]></MsgType>
+                <ArticleCount>%d</ArticleCount>
+                <Articles>";
         //具体内容数组
-        $arr_Articles=array();
-        $arr_Articles['a'];
-        
+        $goodsmodel=D('Goods');
+        $arr_goods=$goodsmodel->where("1yuangou=1")->field('goods_id,goods_name,goods_img,goods_img_qita,goods_jianjie')->limit(10)->select();
+        $count=(int)count($arr_goods);
+        $header = sprintf($newsTplHead, $object->FromUserName, $object->ToUserName, time(),$count); 
+        //构建内容数组$arr_content
+        foreach ($arr_goods as $key => $value) {
+            $arr_content[$key]['Title']=$value['goods_name'];
+            $arr_content[$key]['Description']=$value['goods_jianjie'];
+            if($key==0){
+                $goods_img=  unserialize($value['goods_img_qita']);
+                $goods_img=$goods_img[0];
+                $goods_img=$this->get_thumb($goods_img);
+                $goods_img='http://m.jiangzipinpin.com'.$goods_img;
+                $arr_content[$key]['PicUrl']=$goods_img;
+            }else{
+                $arr_content[$key]['PicUrl']=$value['goods_img'];
+            }
+            $arr_content[$key]['Url']='m.jiangzipinpin.com'.U('Goods/index',array('goods_id'=>$value['goods_id']));
+        }
+        // 转换成xml结构中的item
+        foreach ($arr_content as $value) {
+            $body.=$this->ToXml_item($value);
+        }
+        $footer = "</Articles>
+                </xml>";
+        return $header.$body.$footer;
     }
 
 
@@ -150,8 +174,8 @@ class WeixinController extends FontEndController {
     }
 
 
-    //数组转XML
-    private function ToXml($arr)
+    //多图文消息中，内容数组转XML中的<item></item> 
+    private function ToXml_item($arr)
 	{
 		if(!is_array($arr) 
 			|| count($arr) <= 0)
@@ -159,8 +183,8 @@ class WeixinController extends FontEndController {
     		$this->error("数组数据异常！");
     	}
     	
-    	$xml = "<xml>";
-    	foreach ($this->values as $key=>$val)
+    	$xml = "<item>";
+    	foreach ($arr as $key=>$val)
     	{
     		if (is_numeric($val)){
     			$xml.="<".$key.">".$val."</".$key.">";
@@ -168,7 +192,7 @@ class WeixinController extends FontEndController {
     			$xml.="<".$key."><![CDATA[".$val."]]></".$key.">";
     		}
         }
-        $xml.="</xml>";
+        $xml.="</item>";
         return $xml; 
 	}
 
