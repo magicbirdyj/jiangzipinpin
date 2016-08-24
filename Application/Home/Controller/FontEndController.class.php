@@ -145,7 +145,7 @@ class FontEndController extends Controller {
     
     
     protected function get_wx_config($jsapi_ticket){
-        $url = "http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
+        $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         $timestamp = time();
         $nonceStr = $this->createNonceStr();
         // 这里参数的顺序要按照 key 值 ASCII 码升序排序
