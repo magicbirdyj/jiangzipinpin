@@ -167,7 +167,7 @@ class WeixinController extends FontEndController {
     private function panduan_guanzhu_leixin($postObj){
         $open_id=$postObj->FromUserName;
         $usersmodel=D('Users');
-        $url=$usersmodel->where("open_id=$open_id")->getField('url');
+        $url=$usersmodel->where("open_id='$open_id'")->getField('url');
         if($url){
             $this->response_image_text($postObj);
         }else{
