@@ -771,6 +771,8 @@ class GoodsController extends FontEndController {
         if($order['pay_status']!='1'){
             $this->error('未付款成功,将返回付款页面',U('Goods/zhifu',"order_id=$order_id"));
         }
+        
+        
         $goods_id=$order['goods_id'];
         $goodsmodel=D('Goods');
         $goods=$goodsmodel->where("goods_id=$goods_id")->find();
@@ -790,26 +792,23 @@ class GoodsController extends FontEndController {
         $goods['tuanzhang_head_url']=$tuanzhang['head_url'];
         $goods['tuanzhang_user_name']=$tuanzhang['user_name'];    
         $goods['tuanzhang_created']=$ordermodel->where("order_id=$tuan_no")->getField("created");
+
         
         
-        if($goods['count']>=$order['tuan_number']){
+         
+        //刚组团成功 把逻辑走一 遍    如果组团成功的逻辑已经走完一遍（即status不等于1）了 不再重复走
+        if($goods['count']>=$order['tuan_number']&&$order['status']==1){
            $this->assign('is_ztcg','ztcg');//给JS判断是否组团成功
            //$this->assign('title','组团成功');//组团成功
-           //给该团所有订单的status改为2
-           $row=array(
-               'status'=>2
-           );
            
-           
-           $ordermodel->where("tuan_no=$tuan_no and pay_status>0")->save($row);
            
            //如果是抽奖活动，随机抽
            
            //如果是抽奖活动，随机抽取一个获取购买资格 
            $choujiang_count=$ordermodel->where("tuan_no=$tuan_no and choujiang=1")->count();
-           if($goods['choujiang']==1 and $choujiang_count==0){
+           if($goods['choujiang']==1){
                $rand=  mt_rand(0, $goods['count']-2);
-               $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status>0 and status=2 and identity=0")->getField('order_id',true);
+               $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status>0 and status=1 and identity=0")->getField('order_id',true);
                $rand_order_id=$arr_order_id[$rand];
                $row=array(
                    'choujiang'=>1
@@ -835,7 +834,7 @@ class GoodsController extends FontEndController {
                $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$goods['count']);//商品的购买次数加团购人数
            }else{
                //不是活动的商品  给成团的团长和团员发送消息，成团成功，等待发货
-                $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status>0 and status=2 and identity=0")->getField('order_id',true);
+                $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status>0 and status=1 and identity=0")->getField('order_id',true);
                 $remark="恭喜您，拼团的商品已经成团,我们将尽快把商品送到您的手上，请注意关注";
                 foreach ($arr_order_id as $value) {
                     $this->pintuan_success_tep($value,$remark);//不是活动的商品  给成团的团长和团员发送消息，成团成功，等待发货
@@ -847,9 +846,15 @@ class GoodsController extends FontEndController {
                 }
             }
            
-           
-           
+        //给该团所有订单的status改为2
+           $row=array(
+               'status'=>2
+           );          
+           $ordermodel->where("tuan_no=$tuan_no and pay_status>0")->save($row);
         }
+        //组团成功的代码到此为止
+        
+        
         
         
         $tuanyuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.user_id=t2.user_id and t1.tuan_no=$tuan_no and t1.identity=0 and t1.pay_status>0")->field('t2.head_url,t2.user_name,t1.created')->select();
