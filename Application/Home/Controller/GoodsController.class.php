@@ -819,7 +819,6 @@ class GoodsController extends FontEndController {
                //给未被抽中的其它团员退款 并发送退款模板消息
                foreach ($arr_order_id as $value) {
                    if($value!=$rand_order_id){
-                       var_dump($value);
                        $this->refund($value);
                    }
                }
@@ -1002,6 +1001,7 @@ class GoodsController extends FontEndController {
     }
     
     private function refund_tep_weihuojiang($order_id){
+        $ordermodel=D('Order');
         $order=$ordermodel->where("order_id=$order_id")->find();
         $user_id=$order['user_id'];
         $usersmodel=D('Users');
@@ -1019,6 +1019,7 @@ class GoodsController extends FontEndController {
     }
     
     private function pintuan_success_tep($order_id,$remark){
+        $ordermodel=D('Order');
         $order=$ordermodel->where("order_id=$order_id")->find();
         $user_id=$order['user_id'];
         $usersmodel=D('Users');
