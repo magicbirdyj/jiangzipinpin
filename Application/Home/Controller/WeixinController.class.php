@@ -138,6 +138,7 @@ class WeixinController extends FontEndController {
         $count=(int)count($arr_goods);
         $header = sprintf($newsTplHead, $object->FromUserName, $object->ToUserName, time(),$count); 
         //构建内容数组$arr_content
+        $arr_content=array();
         foreach ($arr_goods as $key => $value) {
             $arr_content[$key]['Title']=$value['goods_name'];
             $arr_content[$key]['Description']=$value['goods_jianjie'];
