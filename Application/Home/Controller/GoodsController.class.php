@@ -366,7 +366,7 @@ class GoodsController extends FontEndController {
         $this->assign('tuanyuan',$tuanyuan);
         $this->assign('tuanyuan_count',count($tuanyuan));
         $goods['count']=$ordermodel->where("tuan_no=$tuan_no and pay_status>0")->count();
-        if($goods['tuan_number']==$goods['count']){
+        if($goods['tuan_number']<=$goods['count']){
             //组团成功
             $this->assign('is_ztcg','ztcg');
         }
@@ -792,7 +792,7 @@ class GoodsController extends FontEndController {
         $goods['tuanzhang_created']=$ordermodel->where("order_id=$tuan_no")->getField("created");
         
         
-        if($goods['count']==$order['tuan_number']){
+        if($goods['count']>=$order['tuan_number']){
            $this->assign('is_ztcg','ztcg');//给JS判断是否组团成功
            //$this->assign('title','组团成功');//组团成功
            //给该团所有订单的status改为2
@@ -808,7 +808,7 @@ class GoodsController extends FontEndController {
            //如果是抽奖活动，随机抽取一个获取购买资格 
            $choujiang_count=$ordermodel->where("tuan_no=$tuan_no and choujiang=1")->count();
            if($goods['choujiang']==1 and $choujiang_count==0){
-               $rand=  mt_rand(0, $order['tuan_number']-2);
+               $rand=  mt_rand(0, $goods['count']-2);
                $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status>0 and status=2 and identity=0")->getField('order_id',true);
                $rand_order_id=$arr_order_id[$rand];
                $row=array(
@@ -832,7 +832,7 @@ class GoodsController extends FontEndController {
                $this->pintuan_success_tep($tuan_no,$remark);
                
                
-               $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$order['tuan_nuber']);//商品的购买次数加团购人数
+               $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$goods['count']);//商品的购买次数加团购人数
            }else{
                //不是活动的商品  给成团的团长和团员发送消息，成团成功，等待发货
                 $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status>0 and status=2 and identity=0")->getField('order_id',true);
