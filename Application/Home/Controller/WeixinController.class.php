@@ -17,12 +17,12 @@ class WeixinController extends FontEndController {
         }
            
 	if($msgType=='event'&&$keyword=='subscribe'){
-            $resultStr=$this->response_image_text($postObj);
-            //$content=$this->response_image_text($postObj);
-            //$resultStr=$this->response_text($postObj, $content);
+            $resultStr=$this->panduan_guanzhu_leixin($postObj);//分情况发送图文消息
             echo $resultStr;
         }else{
-             echo "";
+            $content='联系客服，请点击下方按钮>>平台服务>>联系客服';
+            $resultStr=$this->response_text($postObj, $content);
+             echo $resultStr;
             }
         
     }
@@ -122,15 +122,64 @@ class WeixinController extends FontEndController {
         return $resultStr;
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-     /*
+    //  发送多图文信息
+    private function response_arr_image_text($object){
+        $arr_textTpl=array();
+        $arr_textTpl['ToUserName']=$object->FromUserName;
+        $arr_textTpl['FromUserName']=$object->ToUserName;
+        $arr_textTpl['CreateTime']=time();
+        $arr_textTpl['MsgType']="news";
+        $arr_textTpl['ArticleCount']=3;
+        $arr_textTpl['ToUserName']=$object->FromUserName;
+        $arr_textTpl['ToUserName']=$object->FromUserName;
+        $arr_textTpl['ToUserName']=$object->FromUserName;
+    }
+
+
+    //判断关注前有没有浏览商品或者拼团信息，没有的话 发多图文 有的话 发商品或拼团链接ss
+    private function panduan_guanzhu_leixin($postObj){
+        $open_id=$postObj->FromUserName;
+        $usersmodel=D('Users');
+        $url=$usersmodel->where("open_id=$open_id")->getField('url');
+        if($url){
+            $this->response_image_text($postObj);
+        }else{
+            $this->response_arr_image_text($postObj);
+        }
+    }
+
+
+    //数组转XML
+    private function ToXml($arr)
+	{
+		if(!is_array($arr) 
+			|| count($arr) <= 0)
+		{
+    		$this->error("数组数据异常！");
+    	}
+    	
+    	$xml = "<xml>";
+    	foreach ($this->values as $key=>$val)
+    	{
+    		if (is_numeric($val)){
+    			$xml.="<".$key.">".$val."</".$key.">";
+    		}else{
+    			$xml.="<".$key."><![CDATA[".$val."]]></".$key.">";
+    		}
+        }
+        $xml.="</xml>";
+        return $xml; 
+	}
+
+
+
+
+
+
+
+
+
+    /*
         $echoStr = $_GET["echostr"];
         if($echoStr){
             if($this->checkSignature()){

@@ -265,7 +265,7 @@ class FontEndController extends Controller {
         }
         curl_close($ch);
 
-        var_dump($info);
+        //var_dump($info);
     }
 
 }
