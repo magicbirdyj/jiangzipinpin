@@ -74,6 +74,10 @@ class LoginController extends FontEndController {
             }
             
         }else{// 用于不是微信浏览器
+             if(is_weixin()){
+                 echo '错误，微信浏览器却没得到code';
+                 exit;
+             }
             $usersmodel=D('Users');
             $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
             $_SESSION['huiyuan']=array(
@@ -135,18 +139,22 @@ class LoginController extends FontEndController {
                 exit();
             }
         }else{
+            if(is_weixin()){
+                 echo '错误，微信浏览器却没得到code';
+                 exit;
+             }
             $_SESSION['guanzhu']='yiguanzhu';
             $usersmodel=D('Users');
             $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
             $_SESSION['wei_huiyuan']=array(
             'user_id'=>$user['user_id'],
-            'open_id'=>"$open_id",
+            'open_id'=>$user['open_id'],
                 );
             if(isset($_SESSION['ref'])){
                 header("location:". $_SESSION['ref']);
                 exit();
             }else{
-                header("location:". U('index/index'));
+                echo '对不起，程序错误，您直接进入了登陆页面 没有ref';
                 exit();
             }
         }

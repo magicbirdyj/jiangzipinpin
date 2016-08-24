@@ -100,7 +100,7 @@ class GoodsController extends FontEndController {
         //找出该商品是否被用户收藏了
         $sellectionmodel = D('Sellection');
         
-        $user_id = $_SESSION['huiyuan']?$_SESSION['huiyuan']['user_id']:$_SESSION['wei_huiyuan']['user_id'];;
+        $user_id = $_SESSION['huiyuan']?$_SESSION['huiyuan']['user_id']:$_SESSION['wei_huiyuan']['user_id'];
         
         $is_sellect = $sellectionmodel->where("goods_id=$goods_id and user_id=$user_id")->find();
         $sellection_count = $sellectionmodel->where("user_id=$user_id")->count();
@@ -211,7 +211,7 @@ class GoodsController extends FontEndController {
             $this->error("商品ID不存在");
         }
         //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
-        $ordermodel=D(Order);
+        $ordermodel=D('Order');
         $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
         if($choujiang>0){
             $this->error("您已经成功获取过该活动商品，无法再重复参加活动");
