@@ -54,7 +54,7 @@ class GoodsController extends FontEndController {
         if($goods_tuan[0]){
             foreach ($goods_tuan as $key=>$value) {
                 $tuan_no=$value['tuan_no'];
-                $count=$ordermodel->where("tuan_no=$tuan_no and pay_status=1")->count();
+                $count=$ordermodel->where("tuan_no=$tuan_no and pay_status>0")->count();
                 $tuan_number=$value['tuan_number'];
                 $goods_tuan[$key]['count']=$tuan_number-$count;
             }
@@ -359,13 +359,13 @@ class GoodsController extends FontEndController {
         $goods['tuanzhang_head_url']=$tuanzhang['head_url'];
         $goods['tuanzhang_user_name']=$tuanzhang['user_name'];    
         $goods['tuanzhang_created']=$ordermodel->where("order_id=$tuan_no")->getField("created");
-        $tuanyuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.user_id=t2.user_id and t1.tuan_no=$tuan_no and t1.identity=0 and t1.pay_status=1")->field('t2.head_url,t2.user_name,t1.created')->select();
+        $tuanyuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.user_id=t2.user_id and t1.tuan_no=$tuan_no and t1.identity=0 and t1.pay_status>0")->field('t2.head_url,t2.user_name,t1.created')->select();
         if(!$tuanyuan[0]){
             $tuanyuan_head_url=NULL;
         }
         $this->assign('tuanyuan',$tuanyuan);
         $this->assign('tuanyuan_count',count($tuanyuan));
-        $goods['count']=$ordermodel->where("tuan_no=$tuan_no and pay_status=1")->count();
+        $goods['count']=$ordermodel->where("tuan_no=$tuan_no and pay_status>0")->count();
         if($goods['tuan_number']==$goods['count']){
             //组团成功
             $this->assign('is_ztcg','ztcg');
@@ -781,7 +781,7 @@ class GoodsController extends FontEndController {
             $this->display('gmcg_dandu');
             exit();
         }
-        $goods['count']=$ordermodel->where("tuan_no=$tuan_no and pay_status=1")->count();
+        $goods['count']=$ordermodel->where("tuan_no=$tuan_no and pay_status>0")->count();
         $goods['tuan_number']=$order['tuan_number'];//为了值需要assign给goods
         
         $tuanzhang_id=$ordermodel->where("tuan_no=$tuan_no and identity=1")->getField('user_id');
@@ -801,7 +801,7 @@ class GoodsController extends FontEndController {
            );
            
            
-           $ordermodel->where("tuan_no=$tuan_no and pay_status=1")->save($row);
+           $ordermodel->where("tuan_no=$tuan_no and pay_status>0")->save($row);
            
            //如果是抽奖活动，随机抽
            
@@ -809,7 +809,7 @@ class GoodsController extends FontEndController {
            $choujiang_count=$ordermodel->where("tuan_no=$tuan_no and choujiang=1")->count();
            if($goods['choujiang']==1 and $choujiang_count==0){
                $rand=  mt_rand(0, $order['tuan_number']-2);
-               $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status=1 and status=2 and identity=0")->getField('order_id',true);
+               $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status>0 and status=2 and identity=0")->getField('order_id',true);
                $rand_order_id=$arr_order_id[$rand];
                $row=array(
                    'choujiang'=>1
@@ -835,13 +835,13 @@ class GoodsController extends FontEndController {
                $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$order['tuan_nuber']);//商品的购买次数加团购人数
            }else{
                //不是活动的商品  给成团的团长和团员发送消息，成团成功，等待发货
-                $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status=1 and status=2 and identity=0")->getField('order_id',true);
+                $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status>0 and status=2 and identity=0")->getField('order_id',true);
                 $remark="恭喜您，拼团的商品已经成团,我们将尽快把商品送到您的手上，请注意关注";
                 foreach ($arr_order_id as $value) {
                     $this->pintuan_success_tep($value,$remark);//不是活动的商品  给成团的团长和团员发送消息，成团成功，等待发货
                 }
                 //每个团员购买数量 都需要给商品的购买次数增加
-                $arr_buy_number=$ordermodel->where("tuan_no=$tuan_no and pay_status=1")->getField('buy_number',true);
+                $arr_buy_number=$ordermodel->where("tuan_no=$tuan_no and pay_status>0")->getField('buy_number',true);
                 foreach ($arr_buy_number as $value) {
                     $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$value);//商品的购买次数加
                 }
@@ -852,7 +852,7 @@ class GoodsController extends FontEndController {
         }
         
         
-        $tuanyuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.user_id=t2.user_id and t1.tuan_no=$tuan_no and t1.identity=0 and t1.pay_status=1")->field('t2.head_url,t2.user_name,t1.created')->select();
+        $tuanyuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.user_id=t2.user_id and t1.tuan_no=$tuan_no and t1.identity=0 and t1.pay_status>0")->field('t2.head_url,t2.user_name,t1.created')->select();
         if(!$tuanyuan[0]){
             $tuanyuan=NULL;
         }
