@@ -99,6 +99,7 @@ class LoginController extends FontEndController {
             $code=$_GET['code'];
             $wangye=$this->get_wangye($code);
             $open_id=$wangye['openid'];
+            $this->s_access_token();
             $access_token=S('access_token');
             $userinfo=$this->get_userinfo($open_id,$access_token);
             $usersmodel=D('Users');
@@ -118,6 +119,13 @@ class LoginController extends FontEndController {
                 $_SESSION['guanzhu']='weiguanzhu';
             }else if($userinfo['subscribe']===1){
                 $_SESSION['guanzhu']='yiguanzhu'; 
+            }else{
+                var_dump('code： '.$code);
+                var_dump('wangye： '.$wangye);
+                var_dump('access_token： '.$access_token);
+                var_dump('userinfo： '.$userinfo);
+                echo '出现该错误，请和管理员联系报错 13574506835 谢谢';
+                exit;
             }
             if(isset($_SESSION['ref'])){
                 header("location:". $_SESSION['ref']);
