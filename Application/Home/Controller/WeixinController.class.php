@@ -170,7 +170,8 @@ class WeixinController extends FontEndController {
         $usersmodel=D('Users');
         $url=$usersmodel->where("open_id='$open_id'")->getField('url');
         if($url){
-            $this->response_image_text($postObj);
+            //$this->response_image_text($postObj);
+            return '16666';
         }else{
             //$this->response_arr_image_text($postObj);
             return '133333';
