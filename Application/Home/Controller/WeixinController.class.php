@@ -22,8 +22,9 @@ class WeixinController extends FontEndController {
         }else{
             //$content='联系客服，请点击下方按钮：  平台服务>>联系客服';
             $content=$this->panduan_guanzhu_leixin($postObj);
-            $resultStr=$this->response_text($postObj, $content);
-            echo $resultStr;
+            echo $content;
+            //$resultStr=$this->response_text($postObj, $content);
+            //echo $resultStr;
             }
         
     }
