@@ -88,7 +88,7 @@ class CrontabController extends FontEndController {
         $user_id=$order['user_id'];
         $usersmodel=D('Users');
         $user=$usersmodel->where("user_id=$user_id")->field('open_id,user_name')->find();
-        $template_id="f1x_qFFCFwJS_-kYDemBbGmLYqy4TNeqBiP6UqfskvI ";
+        $template_id="f1x_qFFCFwJS_-kYDemBbGmLYqy4TNeqBiP6UqfskvI";
         $goods_id=$order['goods_id'];
         $url=U('Goods/index',array('goods_id'=>$goods_id));
         $arr_data=array(
