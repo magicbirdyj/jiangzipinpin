@@ -160,7 +160,7 @@ class WeixinController extends FontEndController {
         }
         $footer = "</Articles>
                 </xml>";
-        return $header.$body.$footer;
+        return $body;
     }
 
 
