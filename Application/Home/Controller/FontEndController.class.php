@@ -246,7 +246,6 @@ class FontEndController extends Controller {
             "data"=>$tem_data
         );
         $data=json_encode($arr_data,JSON_UNESCAPED_UNICODE);
-        var_dump($data);
         $this->s_access_token();
         $access_token=S('access_token');
         $MENU_URL="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$access_token;
