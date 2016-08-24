@@ -4,7 +4,6 @@ use  Home\Controller;
 class CrontabController extends FontEndController {
     
     public function upload_order() {
-        $ordermodel=D('Order');
         $this->quxiao_order();
         $this->ztsb();
         
@@ -14,6 +13,7 @@ class CrontabController extends FontEndController {
     private function quxiao_order(){
         $time=  time();
         //2个小时未付款的订单，取消订单
+        $ordermodel=D('Order');
         $arr_no_pay=$ordermodel->where("deleted=0 and pay_status=0 and status=1")->field('order_id,created')->select();
         foreach ($arr_no_pay as $value) {
             //2个小时未付款的订单，取消订单
@@ -31,6 +31,7 @@ class CrontabController extends FontEndController {
     private function ztsb(){
         $time=  time();
          //24小时未组团成功，团内订单全部组团失败
+        $ordermodel=D('Order');
         $arr_tuan_no=$ordermodel->where("deleted=0 and pay_status=1 and status=1 and tuan_no<>0")->getField('tuan_no',true);
         array_unique($arr_tuan_no);
         foreach ($arr_tuan_no as $value) {
@@ -78,6 +79,7 @@ class CrontabController extends FontEndController {
                
     }
     private function quxiao_order_tep($order_id,$remark){
+        $ordermodel=D('Order');
         $order=$ordermodel->where("order_id=$order_id")->find();
         $user_id=$order['user_id'];
         $usersmodel=D('Users');
@@ -98,6 +100,7 @@ class CrontabController extends FontEndController {
     }
     
     private function refund_tep_ztsb($order_id){
+        $ordermodel=D('Order');
         $order=$ordermodel->where("order_id=$order_id")->find();
         $user_id=$order['user_id'];
         $usersmodel=D('Users');

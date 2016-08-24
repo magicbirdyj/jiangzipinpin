@@ -48,7 +48,7 @@ class FontEndController extends Controller {
             
         }
         
-        
+        $this->get_weixin_config();
         $this->assign("date",date('Y'));//给日期赋值 
         $informodel=D('Admin_infor');
         $webinfor=$informodel->where("id=1")->find();
@@ -58,6 +58,7 @@ class FontEndController extends Controller {
         $this->assign("description",$webinfor['description']);//给描述赋值
         
         //给menu页面中的最近浏览赋值
+        /*
         $arr_goodsid=  array_reverse(cookie('distory_goods_id'));
         if(!empty($arr_goodsid)){
             $goodsmodel=D('Goods');
@@ -70,7 +71,7 @@ class FontEndController extends Controller {
                 }
             }
             $this->assign('distory_goods',$distory_goods);
-        }
+        }*/
         
         
         

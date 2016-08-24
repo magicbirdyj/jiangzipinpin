@@ -325,22 +325,22 @@ function CountDown(maxtime,id_hours,id_minutes,id_seconds){
     wx.ready(function () {
         wx.onMenuShareTimeline({
             title:  '【酱紫拼拼】：'+price+'元 '+title, // 分享标题
-            imgUrl: 'm.jiangzipinpin.com'+img // 分享图标
+            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
         });
         wx.onMenuShareAppMessage({
             title:  '【酱紫拼拼】：'+price+'元 '+title, // 分享标题
             desc:  desc, // 分享描述
-            imgUrl: 'm.jiangzipinpin.com'+img // 分享图标
+            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
         });
         wx.onMenuShareQQ({
             title:  '【酱紫拼拼】：'+price+'元 '+title, // 分享标题
             desc: desc, // 分享描述
-            imgUrl: 'm.jiangzipinpin.com'+img // 分享图标
+            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
         });
         wx.onMenuShareQZone({
             title: '【酱紫拼拼】：'+price+'元 '+title, // 分享标题
             desc:desc, // 分享描述
-            imgUrl:  'm.jiangzipinpin.com'+img // 分享图标
+            imgUrl:  http://m.jiangzipinpin.com'+img // 分享图标
         });
     });
     

@@ -10,7 +10,7 @@ class GoodsController extends FontEndController {
             $this->error('关注信息为空');
         }
         C('TOKEN_ON',false);//取消表单令牌
-        $this->get_weixin_config();
+        
         $goods_id = $_GET['goods_id'];
         if(!$goods_id){
             $this->error('该商品不存在！', '/Home/Index/index');
