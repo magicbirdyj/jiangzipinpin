@@ -9,10 +9,7 @@ class CrontabController extends FontEndController {
         $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         var_dump($url);
     }
-    public function ceshi() {
-        $order_id=$_GET['order_id'];
-        $this->quxiao_order_tep($order_id,$remark);//通知消息
-    }
+    
 
     private function quxiao_order(){
         $time=  time();
