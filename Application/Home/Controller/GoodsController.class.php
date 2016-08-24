@@ -818,7 +818,8 @@ class GoodsController extends FontEndController {
                $ordermodel->where("order_id=$tuan_no")->save($row);//团长获取资格
                //给未被抽中的其它团员退款 并发送退款模板消息
                foreach ($arr_order_id as $value) {
-                   if($value!=$rand_order_id&&$value!=$tuan_no){
+                   if($value!=$rand_order_id){
+                       var_dump($value);
                        $this->refund($value);
                    }
                }
