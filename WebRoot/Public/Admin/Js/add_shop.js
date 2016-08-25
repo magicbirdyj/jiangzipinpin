@@ -4,7 +4,7 @@
 //创建个img标签并且插入obj前面
 $('#insert_img_one').css('display','none');
 $('#insert_img_one').next().css('display','none');
-$('input[name=head_img]').val('/Public/Home/Mobile/Images/public/jzpp_logo.jpg');
+$('input[name=head_url]').val('/Public/Home/Mobile/Images/public/jzpp_logo.jpg');
 var goods_img="";
 $('select[name=status]').bind('change',function(){st_change();});
 $(':text[name=shop_name]').bind('focus',function(){text_focus($('#info_title'),'店铺名不能重名');});
@@ -66,11 +66,11 @@ function st_change(){
         $('#insert_img_one').css('display','none');
         $('#insert_img_one').next().css('display','none');
         $('.div_goods_img #a_zhanshitu').click();
-        $('input[name=head_img]').val('/Public/Home/Mobile/Images/public/jzpp_logo.jpg');
+        $('input[name=head_url]').val('/Public/Home/Mobile/Images/public/jzpp_logo.jpg');
     }else{
         $('#insert_img_one').css('display','block');
         $('#insert_img_one').next().css('display','block');
-        $('input[name=head_img]').val('');
+        $('input[name=head_url]').val('');
     }
 }
 
