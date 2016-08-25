@@ -8,7 +8,7 @@ class IndexController extends FontEndController {
         $lunbo=$advertmodel->where("position='轮播'")->field('xuhao,img_url,url')->select();
         $this->assign('lunbo',$lunbo);
         $goodsmodel=D('Goods');
-        $list=$goodsmodel->select();
+        $list=$goodsmodel->where("is_delete==0")->select();
         $this->get_thumb($list);
         $this->assign('list',$list);
         $this->display();
