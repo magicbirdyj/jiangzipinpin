@@ -8,7 +8,7 @@ class ShopsmanageController extends FontEndController {
         $count=$shopsmodel->count();
         $page=$this->get_page($count, 10);
         $page_foot=$page->show();//显示页脚信息
-        $list=$shopsmodel->field('shop_name')->limit($page->firstRow.','.$page->listRows)->select();
+        $list=$shopsmodel->limit($page->firstRow.','.$page->listRows)->select();
         $this->assign('list',$list);
         $this->assign('page_foot',$page_foot);
         $this->display();
