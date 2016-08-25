@@ -40,7 +40,7 @@
             <div class='td1'><{$key+1}></div>
             <div class='td2'><{$vo['goods_name']}></div>
             <div class='td3'><a href="<{:U('/Home/Goods/index',array('goods_id'=>$vo['goods_id']))}>"><img src="<{$vo['goods_img']}>" class="img_zst"/></a></div>
-            <div class='td4'><{$vo['user_name']}></div>
+            <div class='td4'><{$vo['shop_name']}></div>
             <div class='td5'><{$vo['add_time']|date='Y/m/d H：i',###}></div>
             <div class='td6'><a style="margin-top:15px; " id="<{$vo['goods_id']}>" href='<{:U("Goodsmanage/goods_editor",array("goods_id"=>$vo["goods_id"]))}>' ><input type="button"  value="编辑" /></a><input type="button" class="input_button" id="<{$vo['goods_id']}>"  name="<{$vo['goods_name']}>'"  value="下架" /></div>
         </div>
