@@ -11,8 +11,8 @@
 </head>
 <body>
     <div class="inof_div">
-        <div class="big_title">商品页面橱窗管理</div>
-        <form name="sv_cont"  method="get"   action="<{:U('Shopmanage/shangpinyemian')}>">
+        <div class="big_title">商品管理</div>
+        <form name="sv_cont"  method="post"   action="<{:U('Goodsmanage/index')}>">
             <div class="tr">
                 <div class="tr_td1">服务分类</div>
                 <select name="server_content" class="tr_td2 release_select" >
@@ -31,7 +31,7 @@
             <div class='td1'>序号</div>
             <div class='td2'>商品名称</div>
             <div class='td3'>商品图片</div>
-            <div class='td4'>橱窗排序</div>
+            <div class='td4'>商家</div>
             <div class='td5'>添加时间</div>
             <div class='td6'>操作</div>
         </div>
@@ -40,9 +40,9 @@
             <div class='td1'><{$key+1}></div>
             <div class='td2'><{$vo['goods_name']}></div>
             <div class='td3'><a href="<{:U('/Home/Goods/index',array('goods_id'=>$vo['goods_id']))}>"><img src="<{$vo['goods_img']}>" class="img_zst"/></a></div>
-            <div class='td4'><{$vo['advert_shop_order']}></div>
+            <div class='td4'><{$vo['user_name']}></div>
             <div class='td5'><{$vo['add_time']|date='Y/m/d H：i',###}></div>
-            <div class='td6'><input class="index_input" placeholder="输入橱窗（1-12）" type="text" value="" name="index" /><input type="button" class="input_button" id="<{$vo['goods_id']}>"  name="<{$vo['goods_name']}>'"  value="确定" /></div>
+            <div class='td6'><a style="margin-top:15px; " id="<{$vo['goods_id']}>" href='<{:U("Goodsmanage/goods_editor",array("goods_id"=>$vo["goods_id"]))}>' ><input type="button"  value="编辑" /></a><input type="button" class="input_button" id="<{$vo['goods_id']}>"  name="<{$vo['goods_name']}>'"  value="下架" /></div>
         </div>
         </volist> 
     
@@ -60,29 +60,20 @@
         $('form[name=sv_cont]').submit();
     }
     $('.input_button').bind('click',function(){
-        var index=$(this).prev().val();
-        if(index===''){
-            alert('请输入需要放入的橱窗编号');
-        }else if(!(parseInt(index)>0&&parseInt(index)<13)){
-            alert('橱窗编号必须是1到12之间');
+        var id=$(this).attr('id');
+        var name=$(this).attr('name');
+        if(window.confirm('确定要把 ['+name+']下架 吗？')){
+            var url="/Admin/Goodsmanage/goods_del/goods_id/"+id+".html";
+            $.ajax({
+                type:'get',
+                async : false,
+                url:url,
+                datatype:'json'
+            });
+            window.location.href=window.location.href;
         }else{
-            var id=$(this).attr('id');
-            var name=$(this).attr('name');
-            if(window.confirm('确定要把 ['+name+']放入橱窗 吗？')){
-                var server=$('option:selected').val();
-                var url="/Admin/Shopmanage/chuchuan/leixin/shop/goods_id/"+id+"/index/"+index+"/server/"+server+".html";
-                $.ajax({
-                    type:'get',
-                    async : false,
-                    url:url,
-                    datatype:'json'
-                });
-                window.location.href=window.location.href;
-            }else{
-                return false;
-            }
-        }
-        
+            return false;
+        }   
     });
     
     

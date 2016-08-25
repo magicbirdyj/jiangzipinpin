@@ -32,7 +32,7 @@ height:25px;
 line-height:25px;
 border:none;
 margin:10px 0px;
-padding:0px;
+padding:5px 0px;
 font-size:14px;
 }
 .tr .text{
@@ -124,6 +124,7 @@ span{
     background-position: 0px -40px;
     background-image: url("../Images/public/delete_icon.png");
     display: none;
+    z-index: 1000;
 }
 .empty_img{
     width:0px;

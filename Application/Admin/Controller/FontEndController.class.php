@@ -19,7 +19,7 @@ class FontEndController extends Controller {
         }
         
          
-        $this->assign("date",date(Y));//给日期赋值 
+        $this->assign("date",date('Y'));//给日期赋值 
         $informodel=D('Admin_infor');
         $webinfor=$informodel->where("id=1")->find();
         $this->assign("copy",$webinfor['copy']);//给备案号赋值

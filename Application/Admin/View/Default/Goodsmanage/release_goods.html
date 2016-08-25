@@ -17,7 +17,7 @@
         <form name="sv_cont" method="post" action="<{:U('Goodsmanage/release_goods')}>" >
             <div class="tr">
                 <div class="tr_td1">商品分类</div>
-                <select name="server_content" class="tr_td2 release_select" >
+                <select name="server_content" class="tr_td2 release_select title_select" >
                     <volist name="arr_sc" id="vo">
                         <option value="<{$vo}>" <{$$vo}>> <{$vo}></option>
                     </volist>
@@ -33,6 +33,16 @@
             <input name="server_content" value="<{$server_content}>" type="hidden"/> 
             <input name="goods_img" value="" type="hidden"/> 
             <input name="goods_zhanshitu" value="" type="hidden"/> 
+            <div class="tr">
+                <div class="tr_td1">所属店铺</div>
+                <select name="shop" class="tr_td2 release_select title_select" >
+                    <option value=""  > ----请选择店铺----</option>
+                    <volist name="arr_shop" id="vo">
+                        <option value="<{$vo}>"  > <{$vo}></option>
+                    </volist>
+                </select>
+                
+            </div>
             <div class="tr">
                 <div class="tr_td1">商品标题</div>
                 <input name="title" type="text" class="text"  />

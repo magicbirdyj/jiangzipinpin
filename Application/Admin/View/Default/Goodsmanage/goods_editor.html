@@ -17,7 +17,7 @@
         <form name="sv_cont" method="post" action="<{:U('Goodsmanage/bianji_check',"goods_id=$goods_id")}>" >
             <div class="tr">
                 <div class="tr_td1">商品分类</div>
-                <select name="server_content" class="tr_td2 release_select" >
+                <select name="server_content" class="tr_td2 release_select title_select" >
                     <volist name="arr_sc" id="vo">
                         <option value="<{$vo}>" <{$$vo}>> <{$vo}></option>
                     </volist>
@@ -95,20 +95,20 @@
 
             <div class="tr">
                 <div class="tr_td1">价格</div>
-                <input name="price" type="text" class="text price_text" value="<{$goods['price']|intval}>"  />
+                <input name="price" type="text" class="text price_text" value="<{$goods['price']|floatval}>"  />
                 <span style="font-size: 14px;">元</span>
                 <span id="info_price"></span>
             </div>
             <div class="tr">
                 <div class="tr_td1">原价</div>
-                <input name="yuan_price" type="text" class="text price_text" value="<{$goods['yuan_price']|intval}>"  />
+                <input name="yuan_price" type="text" class="text price_text" value="<{$goods['yuan_price']|floatval}>"  />
                 <span style="font-size: 14px;">元</span>
                 <span id="info_yuan_price"></span>
             </div>
             <div style="width:400px;height:0px;border-top:1px dashed #666;"></div>
             <div class="tr">
                 <div class="tr_td1">团购价</div>
-                <input name="tuan_price" type="text" class="text price_text" value="<{$goods['tuan_price']|intval}>"  />
+                <input name="tuan_price" type="text" class="text price_text" value="<{$goods['tuan_price']|floatval}>"  />
                 <span style="font-size: 14px;">元</span>
                 <span id="info_tuan_price"></span>
             </div>

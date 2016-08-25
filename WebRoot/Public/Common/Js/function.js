@@ -46,12 +46,12 @@ function text_focus(obj,str){
 
 //文本框失去焦点，检查是否为空和非法（第一个参数是失去焦点的本身对象（this），第二个参数是需要显示信息的jq对象）
 function text_blue(obj,obj_info,txt){
-    if(obj.val()==''){
+    if(Trim(obj.val())==''){
         obj_info.css('color','red');
         obj_info.html(txt+'为空，请输入内容');
         setTimeout(infor_none,5000);
         return false;
-    }else if(is_feifa(obj.val())){
+    }else if(is_feifa(Trim(obj.val()))){
         obj_info.css('color','red');
         //obj_info.html('含有非法字符=;:#&\/^$()[]{}*+?-"，请重新输入');
         obj_info.html(txt+'含有非法字符：'+is_feifa(obj.val()));
@@ -64,6 +64,7 @@ function text_blue(obj,obj_info,txt){
         return true;
     }
 }
+
 
 //验证图片是否上传和类型是否正确，第一个参数是文件对象，第二个参数是信息对象，第三个参数为真，则弹出对话框，为假，不弹出。  参数为JQ对象
 function check_file_image(obj_file,obj_info,flag){
@@ -209,21 +210,27 @@ function infor_none(){
 
 //文本框失去焦点，检查是否为空和非法（第一个参数是失去焦点的本身对象（this），第二个参数是需要显示信息的jq对象）
 function text_blue_shouji(obj,obj_info,txt){
-    if(obj.val()===''){
-        obj_info.css('display','block');
+    if(Trim(obj.val())===''){
+        //obj_info.css('display','block');
         obj_info.css('color','red');
         obj_info.html(txt+'为空，请输入内容');
         setTimeout(infor_none,5000);
         return false;
-    }else if(is_feifa(obj.val())){
-        obj_info.css('display','block');
+    }else if(is_feifa(Trim(obj.val()))){
         obj_info.css('color','red');
         //obj_info.html('含有非法字符=;:#&\/^$()[]{}*+?-"，请重新输入');
         obj_info.html(txt+'含有非法字符：'+is_feifa(obj.val()));
         setTimeout(infor_none,5000);
         return false;
+    }else if(!is_shoujihao(Trim(obj.val()))){
+        obj_info.css('color','red');
+        obj_info.html(txt+' 不是手机号');
+        setTimeout(infor_none,5000);
+        return false;
     }else{
-        obj_info.css('display','none');
+        obj_info.css('color','#666');
+        obj_info.html('&radic;');
+        //obj_info.css('display','none');
         return true;
     }
 }
