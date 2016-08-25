@@ -11,38 +11,31 @@
 </head>
 <body>
     <div class="inof_div">
-        <div class="big_title">商品管理</div>
-        <form name="sv_cont"  method="post"   action="<{:U('Goodsmanage/index')}>">
-            <div class="tr">
-                <div class="tr_td1">服务分类</div>
-                <select name="server_content" class="tr_td2 release_select" >
-                    <volist name="data" id="vo">
-                        <option value="<{$vo['cat_name']}>" <{$$vo['cat_name']}> ><{$vo['cat_name']}></option>
-                    </volist>
-                </select>
-            </div>
+        <div class="big_title">店铺管理</div>
+        <form name="sv_cont"  method="post"   action="<{:U('Shopsmanage/index')}>">
+            
             <div class="serch_div">
-                <div class="tr_td1">输入商品名</div>
+                <div class="tr_td1">输入店铺名</div>
                 <input type="text" name="serch" class="text_serch" value="<{$serch_name}>" />
                 <input type="submit" name="serch_sm" value="搜索"/>
             </div>
         </form>
         <div class="title"><!--标题行-->
             <div class='td1'>序号</div>
-            <div class='td2'>商品名称</div>
-            <div class='td3'>商品图片</div>
-            <div class='td4'>商家</div>
-            <div class='td5'>添加时间</div>
+            <div class='td2'>店铺名称</div>
+            <div class='td3'>店铺头像</div>
+            <div class='td4'>售卖数量</div>
+            <div class='td5'>注册时间</div>
             <div class='td6'>操作</div>
         </div>
         <volist name="list" id="vo">
         <div class="content"><!--内容遍历-->
             <div class='td1'><{$key+1}></div>
-            <div class='td2'><{$vo['goods_name']}></div>
-            <div class='td3'><a href="<{:U('/Home/Goods/index',array('goods_id'=>$vo['goods_id']))}>"><img src="<{$vo['goods_img']}>" class="img_zst"/></a></div>
-            <div class='td4'><{$vo['user_name']}></div>
-            <div class='td5'><{$vo['add_time']|date='Y/m/d H：i',###}></div>
-            <div class='td6'><a style="margin-top:15px; " id="<{$vo['goods_id']}>" href='<{:U("Goodsmanage/goods_editor",array("goods_id"=>$vo["goods_id"]))}>' ><input type="button"  value="编辑" /></a><input type="button" class="input_button" id="<{$vo['goods_id']}>"  name="<{$vo['goods_name']}>'"  value="下架" /></div>
+            <div class='td2'><{$vo['shop_name']}></div>
+            <div class='td3'><img src="<{$vo['head_img']}>" class="img_zst"/></div>
+            <div class='td4'><{$vo['sale_number']}></div>
+            <div class='td5'><{$vo['created']|date='Y/m/d H：i',###}></div>
+            <div class='td6'><a style="margin-top:15px; " id="<{$vo['shop_id']}>" href='<{:U("Shopsmanage/shop_editor",array("shop_id"=>$vo["shop_id"]))}>' ><input type="button"  value="编辑" /></a></div>
         </div>
         </volist> 
     
