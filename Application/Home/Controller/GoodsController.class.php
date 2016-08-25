@@ -24,7 +24,7 @@ class GoodsController extends FontEndController {
         //获取到店铺信息
         $shopsmodel=D('Shops');
         $shop_id=$goods['shop_id'];
-        $shop=$shopsmodel->where("shop_id=$shop_id")->filed('qq,head_url,tel')->find();
+        $shop=$shopsmodel->where("shop_id=$shop_id")->field('qq,head_url,tel')->find();
         $this->assign('shop',$shop);
         //把价格后面无意义的0去掉
         $goods['price']= floatval($goods['price']);
