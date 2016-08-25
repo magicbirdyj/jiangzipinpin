@@ -318,7 +318,7 @@ class GoodsmanageController extends FontEndController {
         }
         $shop_name=$content['shop'];
         $shopmodel=D('Shops');
-        $shop_id=$shopmodel->where("shop_name=$shop_name")->getField('shop_id');
+        $shop_id=$shopmodel->where("shop_name='$shop_name'")->getField('shop_id');
         if(empty($content['goods_img'])||empty($content['goods_zhanshitu'])){
             $this->error('未选择展示图片或者商品图片');
             exit();
@@ -444,7 +444,7 @@ class GoodsmanageController extends FontEndController {
             'cat_name'=>$server_content,//分类名
             'fabu_name'=>$fabu_name,     //发布者姓名
             'shop_id'=>$shop_id,
-            'shop_name'=>"$shop_name",//所属店铺
+            'shop_name'=>$shop_name,//所属店铺
             'goods_name'=>$content['title'],//商品名称
             'goods_jianjie'=>$content['goods_jianjie'],//商品简介
             'units'=>$content['units'],//商品单位重量
