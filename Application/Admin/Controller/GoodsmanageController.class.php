@@ -5,7 +5,7 @@ class GoodsmanageController extends FontEndController {
    
     public function index(){
         $categorymodel=D('Category');
-        $data=$categorymodel->field('cat_name')->select();
+        $data=$categorymodel->where("pid<>0 and deleted=0")->field('cat_name')->select();
         $this->assign('data',$data);
         //获取服务类型表单提交值
         if(!empty($_POST['server_content'])){
