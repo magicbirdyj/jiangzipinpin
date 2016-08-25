@@ -32,7 +32,7 @@
         <div class="content"><!--内容遍历-->
             <div class='td1'><{$key+1}></div>
             <div class='td2'><{$vo['shop_name']}></div>
-            <div class='td3'><img src="<{$vo['head_img']}>" class="img_zst"/></div>
+            <div class='td3'><img src="<{$vo['head_url']}>" class="img_zst"/></div>
             <div class='td4'><{$vo['sale_number']}></div>
             <div class='td5'><{$vo['created']|date='Y/m/d H：i',###}></div>
             <div class='td6'><a style="margin-top:15px; " id="<{$vo['shop_id']}>" href='<{:U("Shopsmanage/shop_editor",array("shop_id"=>$vo["shop_id"]))}>' ><input type="button"  value="编辑" /></a></div>
