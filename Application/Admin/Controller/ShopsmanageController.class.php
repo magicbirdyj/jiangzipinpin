@@ -35,10 +35,10 @@ class ShopsmanageController extends FontEndController {
         if($data['check']=='title_ajax'){
             $shop_name=$data['shop_name'];
             $shopsmodel=D('Shops');
-            $count=$shopsmodel->where("shop_name=$shop_name")->count();
+            $count=$shopsmodel->where("shop_name='$shop_name'")->count();
             $this->ajaxReturn($count);
         }
-        $this->ajaxReturn('333');
+        $this->ajaxReturn($shop_name);
     }
     
     

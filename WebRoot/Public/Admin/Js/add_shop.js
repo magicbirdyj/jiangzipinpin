@@ -8,7 +8,7 @@ $('input[name=head_img]').val('/Public/Home/Mobile/Images/public/jzpp_logo.jpg')
 var goods_img="";
 $('select[name=status]').bind('change',function(){st_change();});
 $(':text[name=shop_name]').bind('focus',function(){text_focus($('#info_title'),'店铺名不能重名');});
-$(':text[name=shop_name]').bind('blur',function(){text_blue($('input[name=shop_name]'),$('#info_title'),'店铺名');});
+$(':text[name=shop_name]').bind('blur',function(){title_blue();});
 
 
 $(':text[name=qq]').bind('focus',function(){text_focus($('#info_qq'),'填写客服QQ');});
@@ -21,7 +21,13 @@ function title_blue(){
     var a=text_blue($('input[name=shop_name]'),$('#info_title'),'商品标题');
     if(a){
         b=title_ajax();
-        $('#info_title').html('该店铺名重复，请重新输入') 
+        if(b){
+             $('#info_title').css('color','#666');
+            $('#info_title').html('&radic;');
+        }else{
+            $('#info_title').css('color','red');
+            $('#info_title').html('该店铺名重复，请重新输入');
+        }
         return b;
     }else{
         return false;
@@ -43,7 +49,6 @@ function title_ajax(){
         datatype:'json',
         success:function(msg){
             count=msg;
-            alert(count);
         }
     });
     if(count==0){
@@ -79,7 +84,7 @@ function fabu(){
     if(aa.indexOf("undefined")!==-1){
         alert('商品图片因超过5M或其它原因未上传成功');
     }else{
-        var a=text_blue($('input[name=shop_name]'),$('#info_title'),'店铺名');
+        var a=title_blue();
         var b=check_file($('input[name=head_img]'),$('#span_head_img'));
         var c=text_blue($('input[name=qq]'),$('#info_qq'),'客服QQ');
         var d=text_blue_shouji($('input[name=tel]'),$('#info_tel'),'客服电话');
