@@ -11,10 +11,10 @@
 </head>
 <body>
     <div class="inof_div">
-        <div class="title">分类属性管理</div>
+        <div class="title">具体属性管理</div>
         <form name="sv_cont"  method="post"   action="<{:U('Category/manger')}>">
             <div class="tr">
-                <div class="tr_td1">服务分类</div>
+                <div class="tr_td1">商品分类</div>
                 <select name="server_content" class="tr_td2 release_select" >
                     <volist name="data" id="vo">
                         <option value="<{$vo['cat_name']}>" <{$$vo['cat_name']}> ><{$vo['cat_name']}></option>

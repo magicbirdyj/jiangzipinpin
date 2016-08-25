@@ -56,6 +56,3 @@ $('body').on('click','.del_a:not(.del_a1)',function(){
         $(this).parents('.tr').remove();
     }
 });
-$('body').on('click','.release_select',function(){
-    $(this).val('');
-});
