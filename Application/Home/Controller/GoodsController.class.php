@@ -17,11 +17,15 @@ class GoodsController extends FontEndController {
         }
         $this->assign('goods_id', $goods_id);
         $goodsmodel = D('Goods');
-        $goods = $goodsmodel->where("goods_id='$goods_id'")->field('goods_id,goods_name,goods_jianjie,price,yuan_price,tuan_price,goods_img,goods_img_qita,goods_desc,comment_number,shuxing,score,cat_name,shop_name,daijinquan,1yuangou,choujiang,is_delete,buy_number,tuan_number,goods_shuxing')->find();
+        $goods = $goodsmodel->where("goods_id='$goods_id'")->field('goods_id,goods_name,goods_jianjie,price,yuan_price,tuan_price,goods_img,goods_img_qita,goods_desc,comment_number,shuxing,score,cat_name,shop_id,shop_name,daijinquan,1yuangou,choujiang,is_delete,buy_number,tuan_number,goods_shuxing')->find();
         if($goods['is_delete']==='1'||!$goods){
             $this->error('该商品不存在！', '/Home/Index/index');
         }
-
+        //获取到店铺信息
+        $shopsmodel=D('Shops');
+        $shop_id=$goods['shop_id'];
+        $shop=$shopsmodel->where("shop_id=$shop_id")->filed('qq,head_url,tel')->find();
+        $this->assign('shop',$shop);
         //把价格后面无意义的0去掉
         $goods['price']= floatval($goods['price']);
         $goods['yuan_price']= floatval($goods['yuan_price']);
@@ -62,8 +66,6 @@ class GoodsController extends FontEndController {
             $goods_tuan=NULL;
         }
         $this->assign('goods_tuan',$goods_tuan);
-        
-
         $img_qita = unserialize($goods['goods_img_qita']); //获取其它展示图数组
         $this->assign('img_qita', $img_qita);
         $shuxing = unserialize($goods['shuxing']); //获取商品属性数组
