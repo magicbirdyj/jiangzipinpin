@@ -1,0 +1,76 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_ADMIN__/Css/release_goods.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC_ADMIN__/Css/manger.css" />
+<script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/jquery.form.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script>
+<script src="__PUBLIC_COMMON__/Js/kindeditor/kindeditor.js"></script>
+<script src="__PUBLIC_COMMON__/Js/kindeditor/lang/zh_CN.js"></script>
+</head>
+
+<body>
+    <div class="release">
+        <div class="div1">
+            店铺注册：
+        </div>
+   
+        <form name="release_goods" method="post"  action="<{:U('Shopsmanage/release_check')}>">
+            <input name="head_img" value="" type="hidden"/> 
+            
+            <div class="tr">
+                <div class="tr_td1">店铺分类</div>
+                <select name="status" class="tr_td2 release_select title_select" >
+                        <option value="自营">自营</option>
+                        <option value="入驻">入驻</option>
+                </select>
+                
+            </div>
+            <div style="width:400px;height:0px;border-top:1px dashed #666;"></div>
+            
+            <div class="tr">
+                <div class="tr_td1">店铺名</div>
+                <input name="shop_name" type="text" class="text"  />
+                <span id="info_title"></span>
+            </div>
+            <div style="width:400px;height:0px;border-top:1px dashed #666;"></div>
+            
+            <div  class="tr" id="insert_img_one">
+                <div class="tr_td1" style="height: 35px;line-height: 35px;">店铺头像</div>
+                <div class="file_jia" id="file_jia_zhanshitu">+</div>                
+                <span id="span_head_img"></span>
+                <span class="file_tishi">(请上传分辨率为250：250正方形，最高5M)</span>
+            </div>
+
+            <div style="width:400px;height:0px;border-top:1px dashed #666;"></div>
+
+
+            <div class="tr">
+                <div class="tr_td1">客服QQ</div>
+                <input name="qq" type="text" class="text price_text"  />
+                <span id="info_qq"></span>
+            </div>
+            <div class="tr">
+                <div class="tr_td1">客服电话</div>
+                <input name="tel" type="text" class="text price_text"  />
+                <span id="info_tel"></span>
+            </div>
+            <div style="width:400px;height:0px;border-top:1px dashed #666;"></div>
+           
+            
+           
+            
+            
+            <a href="javascript:void(0)" id="xiayibu" class="xyb">立刻发布</a>
+            <{__TOKEN__}>
+        </form>
+    </div>
+    
+    
+    
+    <form id = "form_file_jia_zhanshitu" enctype="multipart/form-data" action="<{:U('Goodsmanage/file_jia','name=file_img_zhanshitu&width=50&height=50')}>" method="get">   
+        <input name="file_img_zhanshitu" type="file"  style="visibility:hidden; width:0px; height: 0px;"/>
+    </form>
+
+<script src="__PUBLIC_ADMIN__/Js/add_shop.js" type="text/javascript"></script>
+
+

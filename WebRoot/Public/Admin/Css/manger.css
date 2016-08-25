@@ -18,8 +18,8 @@ color:#333;
 float: left;
 }
 .tr_td2{
-height:25px;
-line-height:25px;
+height:30px;
+line-height:30px;
 border:none;
 margin:10px 0px;
 padding:0px;
@@ -38,6 +38,9 @@ font-size:14px;
     text-align: center;
     color: #000;
     cursor:pointer;
+}
+.title_select{
+    width: 270px;
 }
 .tr_td1_input{
     height:25px;

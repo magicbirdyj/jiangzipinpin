@@ -792,7 +792,8 @@ class GoodsController extends FontEndController {
         $goods['tuanzhang_head_url']=$tuanzhang['head_url'];
         $goods['tuanzhang_user_name']=$tuanzhang['user_name'];    
         $goods['tuanzhang_created']=$ordermodel->where("order_id=$tuan_no")->getField("created");
-
+        $shopsmodel=D('Shops');
+        $shop_id=$goods['shop_id'];
         
         
          
@@ -831,7 +832,8 @@ class GoodsController extends FontEndController {
                $this->pintuan_success_tep($tuan_no,$remark);
                
                
-               $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$goods['count']);//商品的购买次数加团购人数
+               $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$goods['count']);//商品的购买次数加团购人数               
+               $shopsmodel->where("shop_id=$shop_id")->setInc('sale_number',(int)$goods['count']);//店铺的购买次数加团购人数
            }else{
                //不是活动的商品  给成团的团长和团员发送消息，成团成功，等待发货
                 $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status>0 and status=1 and identity=0")->getField('order_id',true);
@@ -843,6 +845,7 @@ class GoodsController extends FontEndController {
                 $arr_buy_number=$ordermodel->where("tuan_no=$tuan_no and pay_status>0")->getField('buy_number',true);
                 foreach ($arr_buy_number as $value) {
                     $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$value);//商品的购买次数加
+                    $shopsmodel->where("shop_id=$shop_id")->setInc('sale_number',(int)$value);//店铺的购买次数加
                 }
             }
            

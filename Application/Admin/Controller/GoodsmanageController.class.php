@@ -278,6 +278,10 @@ class GoodsmanageController extends FontEndController {
     
     
      public function release_goods(){
+         //获取店铺列表
+         $shopsmodel=D('Shops');
+         $arr_shop=$shopsmodel->getField('shop_name',true);
+         $this->assign('arr_shop',$arr_shop);
         //获取该会员基本信息
         $categorymodel=D('Category');
         $arr_sc=$categorymodel->getField('cat_name',true);
@@ -309,6 +313,12 @@ class GoodsmanageController extends FontEndController {
     
     public function release_check(){
         $content=$_POST;//获取提交的内容
+        if($content['shop']==''){
+            $this->error('没选择店铺');
+        }
+        $shop_name=$content['shop'];
+        $shopmodel=D('Shops');
+        $shop_id=$shopmodel->where("shop_name=$shop_name")->getField('shop_id');
         if(empty($content['goods_img'])||empty($content['goods_zhanshitu'])){
             $this->error('未选择展示图片或者商品图片');
             exit();
@@ -399,6 +409,7 @@ class GoodsmanageController extends FontEndController {
         $server_content=$content['server_content'];
         $categorymodel=D('Category');
         $data_category=$categorymodel->where("cat_name='{$server_content}'")->find();
+        $cat_id=$data_category['cat_id'];
          $data_cat=unserialize($data_category['shuxing']);//得到分类的属性,并反序列化成数组
          $data_cat_keys=array_keys($data_cat);//获取属性键名,保存到数组
          //拼凑出属性数组 并序列化
@@ -429,9 +440,11 @@ class GoodsmanageController extends FontEndController {
         //保存商品信息，把商品信息写入数据库
         $goodsmodel=D('Goods');
         $row=array(
+            'cat_id'=>$cat_id,
             'cat_name'=>$server_content,//分类名
             'fabu_name'=>$fabu_name,     //发布者姓名
-            'user_name'=>'酱紫拼拼',//所属店铺
+            'shop_id'=>$shop_id,
+            'shop_name'=>$shop_name,//所属店铺
             'goods_name'=>$content['title'],//商品名称
             'goods_jianjie'=>$content['goods_jianjie'],//商品简介
             'units'=>$content['units'],//商品单位重量
