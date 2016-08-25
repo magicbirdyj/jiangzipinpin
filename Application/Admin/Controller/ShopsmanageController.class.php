@@ -21,6 +21,7 @@ class ShopsmanageController extends FontEndController {
     
     public function release_check() {
         $post=$_POST;
+        $post['created']=time();
         $shopsmodel=D('Shops');
         $result=$shopsmodel->add($post);
         if($result){
