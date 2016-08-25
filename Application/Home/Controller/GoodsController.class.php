@@ -17,7 +17,7 @@ class GoodsController extends FontEndController {
         }
         $this->assign('goods_id', $goods_id);
         $goodsmodel = D('Goods');
-        $goods = $goodsmodel->where("goods_id='$goods_id'")->field('goods_id,goods_name,goods_jianjie,price,yuan_price,tuan_price,goods_img,goods_img_qita,goods_desc,comment_number,shuxing,score,cat_name,user_name,daijinquan,1yuangou,choujiang,is_delete,buy_number,tuan_number,goods_shuxing')->find();
+        $goods = $goodsmodel->where("goods_id='$goods_id'")->field('goods_id,goods_name,goods_jianjie,price,yuan_price,tuan_price,goods_img,goods_img_qita,goods_desc,comment_number,shuxing,score,cat_name,shop_name,daijinquan,1yuangou,choujiang,is_delete,buy_number,tuan_number,goods_shuxing')->find();
         if($goods['is_delete']==='1'||!$goods){
             $this->error('该商品不存在！', '/Home/Index/index');
         }
@@ -429,7 +429,7 @@ class GoodsController extends FontEndController {
             'goods_id' => $goods_id,
             'buy_number'=>$buy_number,
             'zx_shuxing'=>$zx_shuxing,
-            'shop_name' => $goods['user_name'],
+            'shop_name' => $goods['shop_name'],
             'goods_name' => $goods['goods_name'],
             'order_fahuo_day'=>$goods['fahuo_day'],
             'status' => 1, //生成订单
@@ -492,7 +492,7 @@ class GoodsController extends FontEndController {
             'tuan_number'=>$goods['tuan_number'],
             'order_fahuo_day'=>$goods['fahuo_day'],
             'identity'=>1,
-            'shop_name' => $goods['user_name'],
+            'shop_name' => $goods['shop_name'],
             'goods_name' => $goods['goods_name'],
             'status' => 1, //生成订单
             'pay_status' => 0, //支付状态为未支付
@@ -860,7 +860,7 @@ class GoodsController extends FontEndController {
         
         
         
-        $tuanyuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.user_id=t2.user_id and t1.tuan_no=$tuan_no and t1.identity=0 and t1.pay_status>0")->field('t2.head_url,t2.user_name,t1.created')->select();
+        $tuanyuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.user_id=t2.user_id and t1.tuan_no=$tuan_no and t1.identity=0 and t1.pay_status>0")->field('t2.head_url,t2.shop_name,t1.created')->select();
         if(!$tuanyuan[0]){
             $tuanyuan=NULL;
         }
