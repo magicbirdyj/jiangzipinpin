@@ -172,11 +172,78 @@ class MemberController extends FontEndController {
    
     
     
-    public function kefu() {
-        
-        $this->display();
+    public function address_tiaozhuan() {
+        $a=urlencode("http://m.17each.com/Home/Member/address_manage");
+        $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6231a8932405bdaf&redirect_uri=".$a."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+        header("Location:{$url}"); 
+        exit();
+
     }
-    
+    public function address_manage(){
+        /*
+        vendor('wxp.lib.WxPay#Api');
+        vendor('wxp.example.WxPay#JsApiPay');
+        $tools = new \JsApiPay();
+        $editAddress = $tools->GetEditAddressParameters();
+        $this->assign('signPackage',$editAddress);
+        $this->display();*/
+        
+        if(isset($_GET['code'])){
+           
+		
+            
+            $code=$_GET['code'];
+            $wangye=$this->get_wangye($code);
+            $access_token=$wangye['access_token'];
+            $appid=APPID;
+            $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+            $nonceStr=$this->createNonceStr(32);
+            $timeStamp=time();
+            $timeStamp="$timeStamp";
+             $data = array();
+		$data["appid"] =$appid;
+		$data["url"] = $url;
+		$data["timestamp"] = $timeStamp;
+		$data["noncestr"] = $nonceStr;
+		$data["accesstoken"] = $access_token;
+		ksort($data);
+                $params = $this->ToUrlParams($data);
+                $addrSign = sha1($params);
+		
+		$afterData = array(
+			"addrSign" => $addrSign,
+			"signType" => "sha1",
+			"scope" => "jsapi_address",
+			"appId" => $appid,
+			"timeStamp" => $data["timestamp"],
+			"nonceStr" => $data["noncestr"]
+		);
+		$parameters = json_encode($afterData);
+            
+            $this->assign('signPackage',$parameters);
+            $this->display();
+        }
+    }
+    private function get_wangye($code){
+       $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code" ;
+       $res = file_get_contents($url); //获取文件内容或获取网络请求的内容
+       $result = json_decode($res, true);//接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
+       return $result;
+  }
+  public function ToUrlParams($urlObj)
+	{
+		$buff = "";
+		foreach ($urlObj as $k => $v)
+		{
+			if($k != "sign"){
+				$buff .= $k . "=" . $v . "&";
+			}
+		}
+		
+		$buff = trim($buff, "&");
+		return $buff;
+    }
+
     
     public function qiehuanzhuanghu(){
         session('guanzhu',null); 
