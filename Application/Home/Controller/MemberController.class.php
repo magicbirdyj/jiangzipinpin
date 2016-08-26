@@ -188,13 +188,17 @@ class MemberController extends FontEndController {
         $this->assign('signPackage',$editAddress);
         $this->display();*/
         
-        if(isset($_GET['code'])){
+        //if(isset($_GET['code'])){
            
 		
             
             $code=$_GET['code'];
             $wangye=$this->get_wangye($code);
-            $access_token=$wangye['access_token'];
+            //$access_token=$wangye['access_token'];
+            
+            $this->s_access_token();
+            $access_token=S('access_token');
+            
             $appid=APPID;
             $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
             $nonceStr=$this->createNonceStr(32);
@@ -222,7 +226,7 @@ class MemberController extends FontEndController {
             
             $this->assign('signPackage',$parameters);
             $this->display();
-        }
+        //}
     }
     private function get_wangye($code){
        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code" ;
