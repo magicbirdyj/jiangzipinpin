@@ -180,24 +180,13 @@ class MemberController extends FontEndController {
 
     }
     public function address_manage(){
-        /*
-        vendor('wxp.lib.WxPay#Api');
-        vendor('wxp.example.WxPay#JsApiPay');
-        $tools = new \JsApiPay();
-        $editAddress = $tools->GetEditAddressParameters();
-        $this->assign('signPackage',$editAddress);
-        $this->display();*/
-        
         if(isset($_GET['code'])){
-           
-		
-            
             $code=$_GET['code'];
             $wangye=$this->get_wangye($code);
-            $access_token=$wangye['access_token'];
+            //$access_token=$wangye['access_token'];
             
-            //$this->s_access_token();
-            //$access_token=S('access_token');
+            $this->s_access_token();
+            $access_token=S('access_token');
             
             $appid=APPID;
             $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
