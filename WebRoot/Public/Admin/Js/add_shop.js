@@ -80,7 +80,7 @@ function st_change(){
 
 
 function fabu(){
-    var aa=$('input[name=head_img]').attr('value');
+    var aa=$('input[name=head_url]').attr('value');
     if(aa.indexOf("undefined")!==-1){
         alert('商品图片因超过5M或其它原因未上传成功');
     }else{
