@@ -8,8 +8,8 @@ class GoodsmanageController extends FontEndController {
         $data=$categorymodel->where("pid<>0 and deleted=0")->field('cat_name')->select();
         $this->assign('data',$data);
         //获取服务类型表单提交值
-        if(!empty($_POST['server_content'])){
-            $server_content=$_POST['server_content'];
+        if(!empty($_GET['server_content'])){
+            $server_content=$_GET['server_content'];
         }else{
             $server_content=$data[0]['cat_name'];
         }
@@ -17,7 +17,7 @@ class GoodsmanageController extends FontEndController {
         $this->assign('server_content',$server_content);
         //$cat_id=$categorymodel->where("cat_name='$server_content'")->getField('cat_id');
         $goodsmodel=D('Goods');
-        $serch_name=$_POST['serch'];
+        $serch_name=$_GET['serch'];
         $this->assign('serch_name',$serch_name);
         if(!empty($serch_name)){
             $where['goods_name']=array('like',"%$serch_name%");
