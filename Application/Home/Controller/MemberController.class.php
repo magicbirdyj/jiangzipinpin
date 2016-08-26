@@ -182,7 +182,44 @@ class MemberController extends FontEndController {
     public function address_manage(){
         if(isset($_GET['code'])){
             $code=$_GET['code'];
+            $parameters=$this->get_address_data($code);
+            $this->assign('signPackage',$parameters);
+            $usersmodel=D('Users');
+            $open_id=$_SESSION['wei_huiyuan']['open_id'];
+            $user=$usersmodel->where("open_id=$open_id")->field("address,default_address")->find();
+            if($user['address']!=''){
+                $arr_address=  unserialize($user['address']);
+            }else{
+                $arr_address='';
+            }
+            $this->assign('arr_address',$arr_address);
+            $this->assign('default_address',$user['default_address']);
+            $this->assign('open_id',$open_id);
+            $this->display();
+        }
+        $usersmodel=D('Users');
+        $open_id=$_SESSION['wei_huiyuan']['open_id'];
+            $user=$usersmodel->where("open_id=$open_id")->field("address,default_address")->find();
+            if($user['address']!=''){
+                $arr_address=  unserialize($user['address']);
+            }else{
+                $arr_address='';
+            }
+            $this->assign('arr_address',$arr_address);
+            $this->assign('default_address',$user['default_address']);
+            $this->assign('open_id',$open_id);
+        $this->display();
+    }
+    
+    private function get_address_data($code){
             $wangye=$this->get_wangye($code);
+            //同时相当于伪登陆
+            $row=array(
+                 'open_id'=>$wangye['open_id'],
+                );
+            $_SESSION['wei_huiyuan']=$row;
+            
+            
             $access_token=$wangye['access_token'];//共享收货地址必须使用网页授权access_token
             
             $appid=APPID;
@@ -209,11 +246,19 @@ class MemberController extends FontEndController {
 			"nonceStr" => $data["noncestr"]
 		);
 		$parameters = json_encode($afterData);
-            
-            $this->assign('signPackage',$parameters);
-            $this->display();
-        }
+                return $parameters;
     }
+    
+    public function shezhi_moren_address(){
+        $data=$_POST;
+        $open_id=$data['open_id'];
+        $item=$data['item'];
+        $usersmodel=D('Users');
+        $row=array('default_address'=>$item);
+        $result=$usersmodel->where("open_id=$open_id")->save($row);
+        $this->ajaxReturn($result);
+    }
+
     private function get_wangye($code){
        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code" ;
        $res = file_get_contents($url); //获取文件内容或获取网络请求的内容
