@@ -9,17 +9,17 @@ if(is_ztcg=='ddct'&&choujiang=='0'&&is_ctcg=='0'){
     }
     $('#fixed_tishi').css('display','block');
     $('#fixed_tishi').css('bottom','110px');
-    setTimeout("$('#fixed_tishi').css('display','none')",5000);
+    setTimeout("$('#fixed_tishi').css('display','none')",3000);
 }else if(choujiang!='0'){
     $('#fixed_tishi').html('您已经成功获得过该活动商品，无法重复参加');
     $('#fixed_tishi').css('display','block');
     $('#fixed_tishi').css('bottom','110px');
-    setTimeout("$('#fixed_tishi').css('display','none')",5000);
+    setTimeout("$('#fixed_tishi').css('display','none')",3000);
 }else if(is_ctcg!='0'){
     $('#fixed_tishi').html('已经参团成功过该活动，无法参团，您可自己开团');
     $('#fixed_tishi').css('display','block');
     $('#fixed_tishi').css('bottom','110px');
-    setTimeout("$('#fixed_tishi').css('display','none')",5000);
+    setTimeout("$('#fixed_tishi').css('display','none')",3000);
 }
 
 
@@ -61,7 +61,7 @@ $('.zx_shuxing_ul>li').bind('click',function(){
 
 
 
-$('.wyct').bind('click',function(event){
+$('#wyct').bind('click',function(){
     delete_guanzhu();
     var zx_length=$('.zx_shuxing_ul').length;
     if(zx_length==0){
@@ -84,7 +84,17 @@ $('.wyct').bind('click',function(event){
     }
 });
 
-
+//已经抽奖等于1的，我要参团按钮变成灰色，并且点击弹出提示
+if(choujiang>0){
+    $('#wyct').css('background-color','#888');
+    $('#wyct').css('border-color','#888');
+    $('#wyct').unbind('click');
+    $('#wyct').bind('click',function(){
+        $('#fixed_tishi').css('display','block');
+        $('#fixed_tishi').html('您已经成功获得过该活动商品，无法重复参加');
+        setTimeout("$('#fixed_tishi').css('display','none')",3000);
+    });
+}
     //ajax删除$_session
     function delete_guanzhu(){
         $.ajax({

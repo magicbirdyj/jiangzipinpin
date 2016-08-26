@@ -24,20 +24,14 @@ $('.ljpj').bind('click',function(){
 });
    
 
-//点击#xuanze 显示#div_xuanze
-$('#xuanze').bind('click',function(){
-    $('#div_xuanze').css('display','block');
-    showOverlay('div_xuanze');
-    $('#div_xuanze').animate({'bottom':'0px'},'normal');
-  
-});
+
 //点击#xuanze_fanhui 隐藏选择属性
 $('#xuanze_fanhui').bind('click',function(){
     $('#div_xuanze').animate({'bottom':'-500px'},'normal',function(){
         $('#div_xuanze').css('display','none');
+        $('.footer').css('display','block');
         hideOverlay('div_xuanze');
     });
-
 });
 
 

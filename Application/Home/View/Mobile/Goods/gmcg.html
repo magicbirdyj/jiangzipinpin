@@ -27,7 +27,6 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
 <title><{$title}></title>
-<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/public.css">
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/goods.css">
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/buy.css">
 
@@ -36,8 +35,16 @@
 <body>
     <div id="overlay"></div><!--遮罩层div-->
     <if condition="$is_ztcg eq 'ddct'">
-        <a href="javascript:void(0)" class='button_a_lvse fixed_bottom'>还差 <{$goods['tuan_number']-$goods['count']}>人拼团成功</a>
-        <include file='Public/zhishifenxiang'/>   
+        <div class="fixed_bottom" style='width:100%;bottom: 15px;background-color:rgba(0,0,0,0);'>
+            <a href="<{:U('Index/index')}>" class="button_a_lvse left_button"><span class="iconfont tb_shouye">&#xe60f;</span>更多拼团</a>
+        <a id='a_zhishifenxiang' href="javascript:void(0)" class='button_a_lvse right_button'>还差 <{$goods['tuan_number']-$goods['count']}>人拼团成功</a>
+        </div>
+        <include file='Public/zhishifenxiang'/>  
+    <else />
+        <div class="fixed_bottom" style='width:100%;bottom: 15px;background-color:rgba(0,0,0,0);'>
+            <a href="<{:U('Index/index')}>" class="button_a_lvse left_button"><span class="iconfont tb_shouye">&#xe60f;</span>更多拼团</a>
+            <a href="<{:U('Goods/index',array('goods_id'=>$goods['goods_id']))}>" class='button_a_lvse right_button'>我也开个团</a>
+    </div>
     </if>
 <div class="fanhui padding"><a href="javascript:void(0)"><span class="iconfont tb_fanhui tb_success" id="shangjia_info_fanhui" >&#xe635;</span></a><{$title}></div>
 
@@ -178,14 +185,7 @@
 </script>
 
 
-  <div class="footer">
-      <div class="ui-footer">
-                  <a href="<{:U('Index/index')}>"><span class=" iconfont foot_home foot_tb">&#xe60f;</span><span>首页</span></a>
-                  <a href="<{:U('Member/sellection')}>"><span class=" iconfont foot_shoucang foot_tb">&#xe620;</span><span>我的收藏</span></a>
-                  <a href="<{:U('Order/index')}>"><span class="iconfont foot_pintuan foot_tb">&#xe622;</span><span>我的拼团</span></a>
-                  <a href="<{:U('Member/index')}>"><span class=" iconfont foot_wode foot_tb">&#xe60a;</span><span>我的酱紫</span></a>
-          </div>
-  </div> 
+  
 
 
 

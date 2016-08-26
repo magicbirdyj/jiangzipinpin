@@ -89,7 +89,7 @@ color:#2BB8AA;
     border: 1px solid #AAA;
     background-color: #00FFDB;
     display: inline-block;
-    cursor:pointer;//手形
+    cursor:pointer;/*手形*/
 }
 /*按钮样式鼠标放上*/
 .button_a_lvse:hover{

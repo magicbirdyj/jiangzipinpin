@@ -331,8 +331,8 @@ class GoodsController extends FontEndController {
         if($goods['1yuangou']==1||$goods['choujiang']==1){
             $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
             //如果组团成功过该活动商品的团购，但是未获奖，也无法再参团 只能重新开团
-            $tianjian['status']=array('between','2,5');
-            $is_ctcg=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and identity=0 and choujiang=0")->where($tianjian)->count();
+            $tiaojian['status']=array('between','2,5');
+            $is_ctcg=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and identity=0 and choujiang=0")->where($tiaojian)->count();
         }else{
             $choujiang=0;
             $is_ctcg=0;
@@ -472,6 +472,15 @@ class GoodsController extends FontEndController {
         }
         $user_id = $_SESSION['huiyuan']['user_id'];
         $goods_id = $_POST['goods_id'];
+        
+        
+        
+        //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
+        $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
+        if($choujiang>0){
+            $this->error("您已经成功获取过该活动商品，无法再重复参加活动");
+        }
+        
         $price=$_POST['price'];
         $ky_daijinquan=$_POST['ky_daijinquan'];
         $dues=$_POST['dues'];
@@ -543,6 +552,22 @@ class GoodsController extends FontEndController {
         $user_id = $_SESSION['huiyuan']['user_id'];
         $tuan_no=$_POST['tuan_no'];
         $order=$ordermodel->where("order_id=$tuan_no")->find();
+        
+        
+        //如果组团成功过该活动商品的团购，就无法再参团 
+        $goods_id=$order['goods_id'];
+        $goodsmodel=D('Goods');
+        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
+        if($goods['1yuangou']==1||$goods['choujiang']==1){
+            ///如果组团成功过该活动商品的团购，就无法再参团 
+            $tiaojian['status']=array('between','2,5');
+            $is_ctcg=$ordermodel->where("user_id=$user_id and goods_id=$goods_id")->where($tiaojian)->count();
+            if($is_ctcg>0){
+                $this->error('您已经组团成功过该商品，无法重复参加活动。');
+            }
+        }
+        
+        
         $ky_daijinquan=$_POST['ky_daijinquan'];
         $dues=$_POST['dues'];
         $buy_number=$_POST['buy_number'];
@@ -862,7 +887,7 @@ class GoodsController extends FontEndController {
         
         
         
-        $tuanyuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.user_id=t2.user_id and t1.tuan_no=$tuan_no and t1.identity=0 and t1.pay_status>0")->field('t2.head_url,t2.shop_name,t1.created')->select();
+        $tuanyuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.user_id=t2.user_id and t1.tuan_no=$tuan_no and t1.identity=0 and t1.pay_status>0")->field('t2.head_url,t2.user_name,t1.created')->select();
         if(!$tuanyuan[0]){
             $tuanyuan=NULL;
         }
