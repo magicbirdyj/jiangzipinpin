@@ -35,8 +35,8 @@ class FontEndController extends Controller {
         
         
         //需要无关注伪登陆的控制器或者方式
-        $wei_login_contorller = array('Member','Order');//需要登录的控制器
-        $wei_login=array('Goods/index','Goods/pintuan_info');
+        $wei_login_contorller = array('Order');//需要登录的控制器
+        $wei_login=array('Goods/index','Goods/pintuan_info','Member/index','Member/order','Member/sellection','Member/sellection_del','Member/daijinquan','Member/qiehuanzhuanghu');
         if (in_array(CONTROLLER_NAME, $wei_login_contorller)||in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $wei_login)){
             if (isset($_SESSION['huiyuan']) &&$_SESSION['huiyuan'] != '') {
                 $_SESSION['wei_huiyuan']=$_SESSION['huiyuan'];
