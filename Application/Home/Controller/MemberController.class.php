@@ -113,7 +113,7 @@ class MemberController extends FontEndController {
         $page=$this->get_page($count, 10);
         $page_foot=$page->show();//显示页脚信息
         $this->assign('count',$count);
-        $list=$sellectionmodel->table('m_sellection t1,m_goods t2')->where("t1.user_id=$user_id and t1.goods_id=t2.goods_id")->order('t1.add_time desc')->limit($page->firstRow.','.$page->listRows)->field('t1.sellection_id,t1.goods_id,t1.add_time,t2.goods_name,t2.goods_img,t2.tuan_price,t2.user_name,t2.tuan_number,t2.price')->select();
+        $list=$sellectionmodel->table('m_sellection t1,m_goods t2')->where("t1.user_id=$user_id and t1.goods_id=t2.goods_id")->order('t1.add_time desc')->limit($page->firstRow.','.$page->listRows)->field('t1.sellection_id,t1.goods_id,t1.add_time,t2.goods_name,t2.goods_img,t2.tuan_price,t2.shop_name,t2.tuan_number,t2.price')->select();
         $this->assign('list',$list);
         $this->assign('page_foot',$page_foot);
         $this->display('sellection');
