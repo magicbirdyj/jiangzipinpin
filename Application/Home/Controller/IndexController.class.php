@@ -89,17 +89,17 @@ class IndexController extends FontEndController {
         //排序
             $order=$_GET['order'];
             if(empty($order)){ 
-                $list=$goodsmodel->where($tiaojian)->where($search)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('daijinquan desc,buy_number desc,score desc,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where($search)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('daijinquan desc,buy_number desc,score desc,last_update desc')->select();
             }elseif($order==='number_desc'){
-                $list=$goodsmodel->where($tiaojian)->where($search)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('buy_number desc,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where($search)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('buy_number desc,last_update desc')->select();
             }elseif($order==='price_desc'){
-                $list=$goodsmodel->where($tiaojian)->where($search)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('tuan_price desc,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where($search)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('tuan_price desc,last_update desc')->select();
             }elseif($order==='pinglun_desc'){
-                $list=$goodsmodel->where($tiaojian)->where($search)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('score desc,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where($search)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,ushop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('score desc,last_update desc')->select();
             }elseif($order==='update_desc'){
-                $list=$goodsmodel->where($tiaojian)->where($search)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where($search)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('last_update desc')->select();
             }elseif($order==='price_asc'){
-                $list=$goodsmodel->where($tiaojian)->where($search)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,user_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('tuan_price,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where($search)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('tuan_price,last_update desc')->select();
             }
         $this->get_thumb($list);
         $this->assign('list',$list);
