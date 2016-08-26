@@ -183,10 +183,7 @@ class MemberController extends FontEndController {
         if(isset($_GET['code'])){
             $code=$_GET['code'];
             $wangye=$this->get_wangye($code);
-            //$access_token=$wangye['access_token'];
-            
-            $this->s_access_token();
-            $access_token=S('access_token');
+            $access_token=$wangye['access_token'];//共享收货地址必须使用网页授权access_token
             
             $appid=APPID;
             $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
