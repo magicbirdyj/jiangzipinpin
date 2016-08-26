@@ -1,0 +1,57 @@
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/hunliren_shangjiaxinxi.css">
+</head>
+
+<body>
+    <div class="fanhui padding"><a href="<{:U('Member/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe601;</span></a>服务地址管理</div>
+    <div class="right">
+
+        <a class="button_a_lvse" id='address_shoudong'>手动添加</a>
+        <a class="button_a_lvse" id='address_weixin'>微信添加</a>
+
+    </div>
+    
+
+<script>
+            $(function(){
+                $('#address_weixin').bind('click',function(){
+                    calladd();
+                });
+                
+            });
+            var jsApiParameters = <{$signPackage}> ;
+            //获取共享地址
+            function onreadyeditAddress(){
+		WeixinJSBridge.invoke(  
+			'editAddress',
+                        jsApiParameters,
+			function(res){
+				var value1 = res.proviceFirstStageName;
+				var value2 = res.addressCitySecondStageName;
+				var value3 = res.addressCountiesThirdStageName;
+				var value4 = res.addressDetailInfo;
+				var tel = res.telNumber;
+				alert(value1 + value2 + value3 + value4 + ":" + tel);
+                                
+			}
+		);
+	}
+	
+	function calladd(){
+        if (typeof WeixinJSBridge == "undefined"){
+            if (document.addEventListener){
+                document.addEventListener('WeixinJSBridgeReady', onreadyeditAddress, false);
+            } else if (document.attachEvent){
+                document.attachEvent('WeixinJSBridgeReady', onreadyeditAddress);
+                document.attachEvent('onWeixinJSBridgeReady', onreadyeditAddress);
+            }
+        } else{
+            onreadyeditAddress();
+        }
+    }
+	
+	</script>
+
+</body> 
+</html>

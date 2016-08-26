@@ -101,6 +101,9 @@
     line-height: 46px;
     font-size: 14px;
 }
+.address{
+    display: block;
+}
 .address div{
     height: 23px;
     line-height: 23px;
