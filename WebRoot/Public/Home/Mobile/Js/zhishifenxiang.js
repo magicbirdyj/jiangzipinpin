@@ -2,7 +2,7 @@
 
 jixufenxiang();
 
-$('.fixed_bottom').bind('click',function(){
+$('#a_zhishifenxiang').bind('click',function(){
     showOverlay('zhishi_fenxiang');
 })  
  

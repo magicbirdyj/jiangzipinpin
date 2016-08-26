@@ -318,6 +318,7 @@ border-bottom:10px solid #555;
     width: 70%;
     text-align: center;
     display: none;
+    z-index: 18000;
 }
 
 /*二维码求关注*/
@@ -368,3 +369,24 @@ border-bottom:10px solid #555;
     width: 100%;
 }
 
+.fixed_bottom .left_button{
+    width: 35%;
+    margin-right: 0px;
+    font-size: 14px;
+    float: left;
+    background-color: #888;
+    border-color: #888;
+    height: 48px;
+    padding: 12px 0px;
+}
+.fixed_bottom .right_button{
+    width: 50%;
+    font-size: 14px;
+    float: left;
+}
+.fixed_bottom .tb_shouye{
+    font-size: 18px;
+    margin-right: 10px;
+    position: relative;
+    top:1px;
+}

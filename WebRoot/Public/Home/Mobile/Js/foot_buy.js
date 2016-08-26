@@ -4,9 +4,10 @@ if(is_get=="yijing_get"){
         $('#fixed_tishi').html('您已经购买成功过该活动商品');
         $('#kaituan_buy').css('background-color','#ccc');
     }
+    
+    var zx_length=$('.zx_shuxing_ul').length;
 $('#kaituan_buy').bind('click',function(){
     delete_guanzhu();
-    var zx_length=$('.zx_shuxing_ul').length;
     if(zx_length==0){
         save_url('/Home/Goods/kaituan_buy/goods_id/'+$('input[name=goods_id]').val());
     }
@@ -26,13 +27,18 @@ $('#kaituan_buy').bind('click',function(){
         $('form[name=kaituan_buy]').submit();
     }else{
         $('#div_xuanze').css('display','block');
+        $('.footer').css('display','none');
         showOverlay('div_xuanze');
         $('#div_xuanze').animate({'bottom':'0px'},'normal');
+        //选择属性弹出框 确定按钮的点击事件
+        $('#shuxing_queding').bind('click',function(){
+            shuxing_queding_click('kaituan_buy');
+        });
     }
 });
 $('#dandu_buy').bind('click',function(){
     delete_guanzhu();
-    var zx_length=$('.zx_shuxing_ul').length;
+    
     if(zx_length==0){
         save_url('/Home/Goods/kaituan_buy/goods_id/'+$('input[name=goods_id]').val());
     }
@@ -46,10 +52,36 @@ $('#dandu_buy').bind('click',function(){
         $('form[name=dandu_buy]').submit();
     }else{
         $('#div_xuanze').css('display','block');
+        $('.footer').css('display','none');
         showOverlay('div_xuanze');
         $('#div_xuanze').animate({'bottom':'0px'},'normal');
     }
+    //选择属性弹出框 确定按钮的点击事件
+    $('#shuxing_queding').bind('click',function(){
+         shuxing_queding_click('dandu_buy');
+    });
 });
+
+
+function shuxing_queding_click(buy_fangshi){//buy_fangshi等于dandu_buy 或者kaituan_buy
+    var yixuan_length=$('.zx_shuxing_ul>.yixuan').length;
+    var tishi;
+        if(zx_length===yixuan_length){
+            $('form[name='+buy_fangshi+']').submit();
+        }else{
+            $('.zx_shuxing_ul').each(function(){
+                var this_yixuan=$(this).children('.yixuan').length;
+                if(this_yixuan==0){
+                    tishi=$(this).prev().html();
+                    return false;
+                }
+            });
+            $('#fixed_tishi').html('请选择属性'+tishi);
+            $('#fixed_tishi').css('display','block');
+            $('#fixed_tishi').css('bottom','80px');
+            setTimeout("$('#fixed_tishi').css('display','none')",3000);
+        }
+}
 
 
 
@@ -86,10 +118,6 @@ $('#shoucang').bind('click',function(){
     });
     
     
-    //点击客服
-$('#kefu').bind('click',function(){
-   
-    });
     
     //ajax删除$_session
     function delete_guanzhu(){

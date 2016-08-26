@@ -11,18 +11,18 @@ use Home\Controller;
 class CategoryController extends FontEndController {
     public function index(){
         if(isset($_GET['cid'])){
-            //获取所有分类
-            $categorymodel=D('category');
-            $cat_all=$categorymodel->field('cat_id,cat_name')->select();
-            $this->assign('cat_all',$cat_all);
-            
             $cat_id=$_GET['cid'];
             $cat_name=$categorymodel->where("cat_id=$cat_id")->getField("cat_name");
             if(!$cat_name){
                 $this->error('未找到该分类');
             }
             $this->assign('cat_name',$cat_name);
-            $this->assign("title","酱紫拼拼 ".$cat_name);
+            //获取该分类下的所有二级分类
+            $categorymodel=D('category');
+            $cat_all=$categorymodel->where("pid=$cat_id")->field('cat_id,cat_name')->select();
+            $this->assign('cat_all',$cat_all);
+            
+            
             $url['full']=$_SERVER['REQUEST_URI'];
             $url['url']=str_replace('.html', '',$url['full']);
             $this->assign("url",$url);
