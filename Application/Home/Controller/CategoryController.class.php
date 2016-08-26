@@ -13,16 +13,19 @@ class CategoryController extends FontEndController {
         if(isset($_GET['cid'])){
             $cat_id=$_GET['cid'];
             $categorymodel=D('category');
-            $cat_name=$categorymodel->where("cat_id=$cat_id")->getField("cat_name");
+            $cat=$categorymodel->where("cat_id=$cat_id")->field("cat_name,pid")->find();
+            $cat_name=$cat['cat_name'];
             if(!$cat_name){
                 $this->error('未找到该分类');
             }
             $this->assign('cat_name',$cat_name);
-            //获取该分类下的所有二级分类
-            
-            $cat_all=$categorymodel->where("pid=$cat_id")->field('cat_id,cat_name')->select();
+            //获取和该二级分类有相同pid的所有二级分类
+            $pid=$cat['pid'];
+            $cat_all=$categorymodel->where("pid=$pid")->field('cat_id,cat_name')->select();
             $this->assign('cat_all',$cat_all);
-            
+            //获取父类名字
+            $p_cat_name=$categorymodel->where("cat_id=$pid")->getField('cat_name');
+            $this->assign('p_cat_name',$p_cat_name);
             
             $url['full']=$_SERVER['REQUEST_URI'];
             $url['url']=str_replace('.html', '',$url['full']);
