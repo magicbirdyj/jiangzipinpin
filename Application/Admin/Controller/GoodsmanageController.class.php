@@ -5,8 +5,7 @@ class GoodsmanageController extends FontEndController {
    
     public function index(){
         $categorymodel=D('Category');
-        $data=$categorymodel->where("pid>0 and deleted=0")->field('cat_name')->select();
-        var_dump($data);
+        $data=$categorymodel->where("pid<>0 and deleted=0")->field('cat_name')->select();
         $this->assign('data',$data);
         //获取服务类型表单提交值
         if(!empty($_GET['server_content'])){
@@ -69,7 +68,7 @@ class GoodsmanageController extends FontEndController {
 
 
         $categorymodel=D('Category');
-        $arr_sc=$categorymodel->getField('cat_name',true);
+        $arr_sc=$categorymodel->where("pid<>0 and deleted=0")->getField('cat_name',true);
         $this->assign("arr_sc",$arr_sc);
         
         
@@ -298,7 +297,7 @@ class GoodsmanageController extends FontEndController {
          $this->assign('arr_shop',$arr_shop);
         //获取该会员基本信息
         $categorymodel=D('Category');
-        $arr_sc=$categorymodel->getField('cat_name',true);
+        $arr_sc=$categorymodel->where("pid<>0 and deleted=0")->getField('cat_name',true);
         $this->assign("arr_sc",$arr_sc);
         
         //如果服务形式为个人，隐藏性别单选radio
