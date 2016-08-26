@@ -85,7 +85,7 @@ function fabu(){
         alert('商品图片因超过5M或其它原因未上传成功');
     }else{
         var a=title_blue();
-        var b=check_file($('input[name=head_img]'),$('#span_head_img'));
+        var b=check_file($('input[name=head_url]'),$('#span_head_img'));
         var c=text_blue($('input[name=qq]'),$('#info_qq'),'客服QQ');
         var d=text_blue_shouji($('input[name=tel]'),$('#info_tel'),'客服电话');
         if(a&&b&&c&&d){
