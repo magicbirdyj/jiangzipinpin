@@ -3,9 +3,12 @@ $('.a_tjdd').bind('click',function(){
             var url='/Home/Ajaxnologin/auto_tiaozhuan';
             $.ajax({
                 url:url,
-                datatype:'json'
+                async : true,
+                datatype:'json',
+                success:function(){
+                    $('.address').trigger('click');
+                }
             });
-            $('.address').trigger('click');
         }
         $('form[name=dingdan]').submit();
     });
