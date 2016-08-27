@@ -40,16 +40,17 @@
         </div>
         <div><input name='address' placeholder="请填写详细街道地址" value="" type='text' class='location' /></div>
         <div class='edit_title'><a href="javascript:void(0)" class="button_a_lvse" id='save_button'>保存</a></div>
-        <div id='fixed_tishi'></div>
+        <div id='fixed_tishi' class='tishi1'></div>
         <input name='eq' type='hidden'/>
     </div>
 </form>
+    <div id='fixed_tishi' class='tishi2'></div>
 <script>
     //获取共享地址
             $(function(){
                 $('#address_weixin').bind('click',function(){
                     if($('.address_ul>li').length>=6){
-                        tishi('最多添加6个收货地址','400px');
+                        tishi('tishi2','最多添加6个收货地址','400px');
                     }else{
                         calladd();
                     }
