@@ -156,7 +156,7 @@ function onreadyeditAddress(){
 	function(res){
             var data={
                 'open_id':open_id,
-                'name': res.username,
+                'name': res.userName,
                 'mobile':res.telNumber,
                 'location':res.proviceFirstStageName+' '+res.addressCitySecondStageName+' '+res.addressCountiesThirdStageName,
                 'address':res.addressDetailInfo,

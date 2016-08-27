@@ -323,7 +323,7 @@ class MemberController extends FontEndController {
   }
   
 
-  public function ToUrlParams($urlObj)
+  private function ToUrlParams($urlObj)
 	{
 		$buff = "";
 		foreach ($urlObj as $k => $v)
