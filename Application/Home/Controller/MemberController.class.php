@@ -180,13 +180,13 @@ class MemberController extends FontEndController {
 
     }
     public function address_manage(){
-        var_dump($_GET['code']);exit;
         if(isset($_GET['code'])){
             $code=$_GET['code'];
             $parameters=$this->get_address_data($code);
             $this->assign('signPackage',$parameters);
             $usersmodel=D('Users');
             $open_id=$_SESSION['wei_huiyuan']['open_id'];
+            var_dump($open_id);exit;
             $user=$usersmodel->where("open_id=$open_id")->field("address,default_address")->find();
             if($user['address']!=''){
                 $arr_address=  unserialize($user['address']);
