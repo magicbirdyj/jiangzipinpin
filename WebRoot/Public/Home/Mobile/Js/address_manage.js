@@ -162,7 +162,7 @@ function onreadyeditAddress(){
 	'editAddress',
         jsApiParameters,
 	function(res){
-            if(res!=''){
+            if(res.userName){
                 var data={
                 'open_id':open_id,
                 'name': res.userName,
@@ -172,7 +172,7 @@ function onreadyeditAddress(){
                 'id':-1,
                 'check':'add'
                 };
-                alert(res);
+                alert(res.userName);
                 save_or_add_address(data); 
             }
                                
