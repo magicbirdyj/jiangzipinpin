@@ -7,7 +7,6 @@ $('.a_tjdd').bind('click',function(){
                 datatype:'json',
                 success:function(msg){
                     window.location.href="/Home/Ajaxnologin/address_tiaozhuan"; 
-                    
                 }
             });
         }else{

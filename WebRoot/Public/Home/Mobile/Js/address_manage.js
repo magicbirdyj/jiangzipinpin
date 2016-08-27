@@ -305,7 +305,15 @@ function onreadyeditAddress(){
                     obj.find('#address').html(data.address);
                 }else if(data.check=='add'){
                     if(fanhui_ref){
-                        window.location.href=fanhui_ref;
+                        var url='/Home/Ajaxnologin/auto_tiaozhuan';
+                        $.ajax({
+                            url:url,
+                            async : true,
+                            datatype:'json',
+                            success:function(msg){
+                                window.location.href=fanhui_ref;
+                            }
+                        });
                     }else{
                          window.location.href="/Home/Ajaxnologin/address_tiaozhuan"; 
                     }
