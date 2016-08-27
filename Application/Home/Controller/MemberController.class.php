@@ -180,6 +180,7 @@ class MemberController extends FontEndController {
 
     }
     public function address_manage(){
+        var_dump($_GET['code']);exit;
         if(isset($_GET['code'])){
             $code=$_GET['code'];
             $parameters=$this->get_address_data($code);
