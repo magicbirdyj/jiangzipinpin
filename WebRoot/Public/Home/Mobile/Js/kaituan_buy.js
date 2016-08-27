@@ -1,6 +1,5 @@
 $('.a_tjdd').bind('click',function(){
-    alert(Trim($('#default_name').html()));
-        if(Trim($('#default_name').html())==''||Trim($('#default_location').html())==''){
+        if(Trim($('#default_name').html()).indexOf("点击添加地址")>=0){
             var url='/Home/Ajaxnologin/auto_tiaozhuan';
             $.ajax({
                 url:url,

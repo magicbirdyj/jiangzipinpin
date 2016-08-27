@@ -20,7 +20,7 @@
     <td colspan="2" style='position: relative;'>
         <span class="iconfont tb_address">&#xe621;</span>
         <a class="address" href="<{:U('Ajaxnologin/address_tiaozhuan')}>">
-            <div id='default_name'><{$default_Address['name']}>   <{$default_Address['mobile']}></div>
+            <div id='default_name'><{$default_Address['name']?$default_Address['name']:'点击添加地址'}>   <{$default_Address['mobile']}></div>
             <div id='default_location'><{$default_Address['location']}>   <{$default_Address['address']}></div>
         </a>
         <span class="iconfont tb_right">&#xe604;</span>
