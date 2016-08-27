@@ -304,7 +304,7 @@ function onreadyeditAddress(){
                     if(fanhui_ref){
                         window.location.href=fanhui_ref;
                     }else{
-                         window.location.href="/Home/Ajaxnologon/address_tiaozhuan"; 
+                         window.location.href="/Home/Ajaxnologin/address_tiaozhuan"; 
                     }
                 }
             }
@@ -345,7 +345,7 @@ function onreadyeditAddress(){
             datatype:'json',
             data:data,
             success:function(index){
-                window.location.href="/Home/Ajaxnologon/address_tiaozhuan"; 
+                window.location.href="/Home/Ajaxnologin/address_tiaozhuan"; 
             }
         });  
     }
