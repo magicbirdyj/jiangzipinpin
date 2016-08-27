@@ -272,7 +272,7 @@ class MemberController extends FontEndController {
         }
         $open_id=$data['open_id'];
         $usersmodel=D('Users');
-        $address=$usersmodel->where("open_id=$open_id")->getField('address');
+        $address=$usersmodel->where("open_id='$open_id'")->getField('address');
         $arr_address=  unserialize($address);
         
         $arr_data=array(
@@ -288,7 +288,7 @@ class MemberController extends FontEndController {
         }
         $address=  serialize($arr_address);
         $row=array('address'=>$address);
-        $result=$usersmodel->where("open_id=$open_id")->save($row);
+        $result=$usersmodel->where("open_id='$open_id'")->save($row);
         $this->ajaxReturn($result);
     }
     //删除地址 ajax用
@@ -299,7 +299,7 @@ class MemberController extends FontEndController {
         }
         $open_id=$data['open_id'];
         $usersmodel=D('Users');
-        $address=$usersmodel->where("open_id=$open_id")->field('address,default_address')->find();
+        $address=$usersmodel->where("open_id='$open_id'")->field('address,default_address')->find();
         $arr_address=  unserialize($address['address']);
         $length=count($arr_address);
         $int_id=(int)$data['id'];
@@ -309,7 +309,7 @@ class MemberController extends FontEndController {
         if($int_id<=$address['default_address']){
             $row['default_address']=$address['default_address']-1;
         }
-        $result=$usersmodel->where("open_id=$open_id")->save($row);
+        $result=$usersmodel->where("open_id='$open_id'")->save($row);
         $this->ajaxReturn($row['default_address']);
     }
     private function get_wangye($code){
