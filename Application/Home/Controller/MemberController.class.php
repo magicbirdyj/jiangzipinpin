@@ -219,7 +219,7 @@ class MemberController extends FontEndController {
                  'open_id'=>$wangye['open_id'],
                 );
             $_SESSION['wei_huiyuan']=$row;
-            
+            var_dump($wangye);
             
             $access_token=$wangye['access_token'];//共享收货地址必须使用网页授权access_token
             
