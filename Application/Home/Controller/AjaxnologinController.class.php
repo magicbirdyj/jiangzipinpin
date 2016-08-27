@@ -4,6 +4,7 @@ use  Home\Controller;
 class AjaxnologinController extends FontEndController {
     public function auto_tiaozhuan() {
         session('auto_ref','yes');
+        $this->ajaxReturn(1);
     }
     
     public function address_tiaozhuan() {
