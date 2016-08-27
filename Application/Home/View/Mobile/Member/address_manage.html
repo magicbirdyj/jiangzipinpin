@@ -48,7 +48,11 @@
     //获取共享地址
             $(function(){
                 $('#address_weixin').bind('click',function(){
-                    calladd();
+                    if($('.address_ul>li').length>=6){
+                        tishi('最多添加6个收货地址','400px');
+                    }else{
+                        calladd();
+                    }
                 }); 
             });
             var jsApiParameters=<{$signPackage}> ;
