@@ -186,6 +186,7 @@ class MemberController extends FontEndController {
             $this->assign('signPackage',$parameters);
             $usersmodel=D('Users');
             $open_id=$_SESSION['wei_huiyuan']['open_id'];
+            var_dump($open_id);exit;
             $user=$usersmodel->where("open_id='$open_id'")->field("address,default_address")->find();
             if($user['address']!=''){
                 $arr_address=  unserialize($user['address']);
@@ -218,7 +219,8 @@ class MemberController extends FontEndController {
                  'open_id'=>$wangye['openid'],
                 );
             $_SESSION['wei_huiyuan']=$row;
-            
+            var_dump($wangye);
+            var_dump($_SESSION['wei_huiyuan']);
             $access_token=$wangye['access_token'];//共享收货地址必须使用网页授权access_token
             
             $appid=APPID;
