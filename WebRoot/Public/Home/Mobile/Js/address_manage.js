@@ -250,15 +250,15 @@ function onreadyeditAddress(){
             'check':save_or_add
         };
         if(data.name==''){
-            tishi('姓名不能为空','70px');
+            tishi('tishi1','姓名不能为空','70px');
         }else if(data.mobile==''){
-            tishi('电话不能为空','70px');
+            tishi('tishi1','电话不能为空','70px');
         }else if(!is_shoujihao(data.mobile)){
-            tishi('手机号不正确');
+            tishi('tishi1','手机号不正确');
         }else if(address_province=='请选择省市'){
-            tishi('请选择省、市、区县','70px');
+            tishi('tishi1','请选择省、市、区县','70px');
         }else if(data.address==''){
-            tishi('街道详细地址不能为空','70px');
+            tishi('tishi1','街道详细地址不能为空','70px');
         }else{
             save_or_add_address(data);
             hideOverlay('edit_address_div');
@@ -324,11 +324,11 @@ function onreadyeditAddress(){
     
 
     //保存时出现提示
-    function tishi(text,bottom){
-        $('#fixed_tishi').html(text);
-        $('#fixed_tishi').css('display','block');
-        $('#fixed_tishi').css('bottom',bottom);
-        setTimeout("$('#fixed_tishi').css('display','none')",3000);
+    function tishi(cla,text,bottom){
+        $('.'+cla).html(text);
+        $('.'+cla).css('display','block');
+        $('.'+cla).css('bottom',bottom);
+        setTimeout("$('.'+cla).css('display','none')",3000);
     }
     
     //点击删除
@@ -365,10 +365,10 @@ function onreadyeditAddress(){
     //手动添加地址
     $('#address_shoudong').bind('click',function(){
         if($('.address_ul>li').length>=6){
-            tishi('最多添加6个收货地址','400px');
+            tishi('tishi2','最多添加6个收货地址','200px');
         }else{
             showOverlay('edit_address_div');
             $('#edit_address_div').css('top',($(window).height()-$('#edit_address_div').height())/2+'px');
             save_or_add='add';
         }
-    })
+    });
