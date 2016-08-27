@@ -4,7 +4,7 @@ $('.address_ul>li').eq(parseInt(default_eq)).find('.moren_text').html('已设为
 $('.address_ul>li').eq(parseInt(default_eq)).find('.tb_moren').css('background-color','#F90505');
 var save_or_add;
 //如果地址空 直接跳出微信增加界面
-if($('.address_ul>le').length==0){
+if($('.address_ul>li').length==0){
     $('#address_weixin').trigger('click');
 }
     
