@@ -162,7 +162,8 @@ function onreadyeditAddress(){
 	'editAddress',
         jsApiParameters,
 	function(res){
-            var data={
+            if(res){
+                var data={
                 'open_id':open_id,
                 'name': res.userName,
                 'mobile':res.telNumber,
@@ -171,9 +172,11 @@ function onreadyeditAddress(){
                 'id':-1,
                 'check':'add'
                 };
-                save_or_add_address(data);                    
+                save_or_add_address(data); 
             }
-	);
+                               
+        }
+    );
 }
 	
 	function calladd(){
