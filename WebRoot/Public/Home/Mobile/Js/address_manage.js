@@ -171,7 +171,8 @@ function onreadyeditAddress(){
                 'id':-1,
                 'check':'add'
                 };
-                save_or_add_address(data);                    
+                alert(res.userName);
+                //save_or_add_address(data);                    
             }
 	);
 }
