@@ -294,7 +294,7 @@ function onreadyeditAddress(){
                     obj.find('#location').html(data.location);
                     obj.find('#address').html(data.address);
                 }else if(data.check=='add'){
-                    location=location;
+                    window.location.href="/Home/Member/address_tiaozhuan"; 
                 }
             }
         });
@@ -334,7 +334,7 @@ function onreadyeditAddress(){
             datatype:'json',
             data:data,
             success:function(index){
-                location=location;
+                window.location.href="/Home/Member/address_tiaozhuan"; 
             }
         });  
     }
