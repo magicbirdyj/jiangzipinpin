@@ -249,8 +249,12 @@ class MemberController extends FontEndController {
                 return $parameters;
     }
     
+    //设置默认地址 ajax用
     public function shezhi_moren_address(){
         $data=$_POST;
+        if(($data['open_id']!=$_SESSION['wei_huiyuan']['open_id'])||$data['check']!='shezhi_moren'){
+            exit;
+        }
         $open_id=$data['open_id'];
         $item=$data['item'];
         $usersmodel=D('Users');
@@ -258,7 +262,55 @@ class MemberController extends FontEndController {
         $result=$usersmodel->where("open_id=$open_id")->save($row);
         $this->ajaxReturn($result);
     }
-
+    
+    //保存地址 ajax用
+    public function save_or_add_address(){
+        $data=$_POST;
+        if(($data['open_id']!=$_SESSION['wei_huiyuan']['open_id'])||($data['check']!='save'&&$data['check']!='add')){
+            exit;
+        }
+        $open_id=$data['open_id'];
+        $usersmodel=D('Users');
+        $address=$usersmodel->where("open_id=$open_id")->getField('address');
+        $arr_address=  unserialize($address);
+        
+        $arr_data=array(
+            'name'=>$data['name'],
+            'mobile'=>$data['mobile'],
+            'location'=>$data['location'],
+            'address'=>$data['address']
+        );
+        if($data['check']=='save'){
+            $arr_address[(int)$data['id']]=$data;
+        }elseif($data['check']=='add'){
+            $arr_address[]=$data;
+        }
+        $address=  serialize($arr_address);
+        $row=array('address'=>$address);
+        $result=$usersmodel->where("open_id=$open_id")->save($row);
+        $this->ajaxReturn($result);
+    }
+    //删除地址 ajax用
+    public function delete_address() {
+        $data=$_POST;
+        if(($data['open_id']!=$_SESSION['wei_huiyuan']['open_id'])||$data['check']!='del_address'){
+            exit;
+        }
+        $open_id=$data['open_id'];
+        $usersmodel=D('Users');
+        $address=$usersmodel->where("open_id=$open_id")->field('address,default_address')->find();
+        $arr_address=  unserialize($address['address']);
+        $length=count($arr_address);
+        $int_id=(int)$data['id'];
+        array_splice($arr_address,$int_id, 1);
+        $address['address']=  serialize($arr_address);
+        $row=array('address'=>$address['address']);
+        if($int_id<=$address['default_address']){
+            $row['default_address']=$address['default_address']-1;
+        }
+        $result=$usersmodel->where("open_id=$open_id")->save($row);
+        $this->ajaxReturn($row['default_address']);
+    }
     private function get_wangye($code){
        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code" ;
        $res = file_get_contents($url); //获取文件内容或获取网络请求的内容

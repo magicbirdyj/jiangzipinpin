@@ -78,6 +78,7 @@
 #edit_address_div>div>.user_info{
     width: 50%;
     box-sizing: border-box;
+    float: left;
 }
 #edit_address_div>div>.location{
     width: 100%;
@@ -97,4 +98,7 @@
   box-sizing: border-box;
   width: 33.33333%;
   float: left;
+}
+#edit_address_div #fixed_tishi{
+    position: absolute;
 }

@@ -8,7 +8,7 @@
     <div class="right">
         <ul class='address_ul'>
             <volist name='arr_address' id='vo'>
-                <li>
+                <li id='<{$key}>'>
                     <div class="address_info"><span id='name'><{$vo['name']}></span>， <span id='tel'><{$vo['mobile']}></span></div>
                     <div class="address_info border-bottom"><span id='location'><{$vo['location']}></span> <span id='address'><{$vo['address']}></span></div>
                     <div class="edit_line">
@@ -30,17 +30,18 @@
     <div id="edit_address_div">
         <div class='edit_title'>编辑地址</div>
         <div>
-            <input name='name' value="杨靖" type='text' class="user_info" style="border-right: 1px solid #AAA;" />
-            <input name='tel' value="13574506835" type='text' class="user_info" />
+            <input name='name' placeholder="名字" value="" type='text' class="user_info" style="border-right: 1px solid #AAA;" />
+            <input name='tel' placeholder="电话" value="" type='text' class="user_info" />
         </div>
         <div>
             <select name='address_province'></select>
             <select name='address_city'></select>
             <select name='address_county'></select>
         </div>
-        <div><input name='address' value="博长金水湾" type='text' class='location' /></div>
+        <div><input name='address' placeholder="请填写详细街道地址" value="" type='text' class='location' /></div>
         <div class='edit_title'><a href="javascript:void(0)" class="button_a_lvse" id='save_button'>保存</a></div>
-        
+        <div id='fixed_tishi'></div>
+        <input name='eq' type='hidden'/>
     </div>
 </form>
 <script>
@@ -53,7 +54,8 @@
             var jsApiParameters = "<{$signPackage}>" ;
             //获取共享地址
             var open_id="<{$open_id}>";
-            
+            //默认的地址eq
+            default_eq="<{$default_address}>";
 	</script>
 <script src="__PUBLIC_HOME__/Mobile/Js/address_manage.js" type="text/javascript"></script>
 </body> 

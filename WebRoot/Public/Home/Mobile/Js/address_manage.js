@@ -1,3 +1,9 @@
+//给默认地址
+$('.address_ul>li').eq(parseInt(default_eq)).find('.moren_text').css('color','#F90505');
+$('.address_ul>li').eq(parseInt(default_eq)).find('.moren_text').html('已设为默认');
+$('.address_ul>li').eq(parseInt(default_eq)).find('.tb_moren').css('background-color','#F90505');
+var save_or_add;
+
 var arr_province=["请选择省市","北京市","天津市","上海市","重庆市","河北省","山西省","内蒙古","辽宁省","吉林省","黑龙江省","江苏省","浙江省","安徽省","福建省","江西省","山东省","河南省","湖北省","湖南省","广东省","广西","海南省","四川省","贵州省","云南省","西藏","陕西省","甘肃省","青海省","宁夏","新疆"];//,"香港","澳门","台湾省"];
 var arr_city=[
 ["请选择市区"],
@@ -175,8 +181,7 @@ function onreadyeditAddress(){
     //点击设为默认按钮
     $('.edit_left').bind('click',function(){
         if($(this).children('.moren_text').html()=='设为默认'){
-            shezhi_moren(open_id,$(this).attr('id'));
-            alert($(this).attr('id'));
+            shezhi_moren($(this).attr('id'));
         }
         $(this).children('.moren_text').css('color','#F90505');
         $(this).children('.moren_text').html('已设为默认');
@@ -190,7 +195,7 @@ function onreadyeditAddress(){
     
     
     //ajax设为默认地址
-    function shezhi_moren(open_id,id){
+    function shezhi_moren(id){
         var data={
             'open_id':open_id,
             'item':id,
@@ -211,20 +216,49 @@ function onreadyeditAddress(){
     $('.bianji').bind('click',function(){
         showOverlay('edit_address_div');
         $('#edit_address_div').css('top',($(window).height()-$('#edit_address_div').height())/2+'px');
+        get_this_address($(this).parents('li'));
+        var id=$(this).parents('li').attr('id');
+        $(':hidden[name=eq]').val(id);
+        save_or_add='save';
     });
     
     //点击保存
     $('#save_button').bind('click',function(){
-        hideOverlay('edit_address_div');
+        var address_province=Trim($('select[name=address_province]').val());
+        var id=$(':hidden[name=eq]').val();
+        var data={
+            'open_id':open_id,
+            'name': Trim($(":text[name='name']").val()),
+            'mobile':Trim($(":text[name='tel']").val()),
+            'location':address_province+' '+$('select[name=address_city]').val()+' '+$('select[name=address_county]').val(),
+            'address':$(":text[name='address']").val(),
+            'id':id,
+            'check':save_or_add
+        };
+        if(data.name==''){
+            tishi('姓名不能为空');
+        }else if(data.mobile==''){
+            tishi('电话不能为空');
+        }else if(!is_shoujihao(data.mobile)){
+            tishi('手机号不正确');
+        }else if(address_province=='请选择省市'){
+            tishi('请选择省、市、区县');
+        }else if(data.address==''){
+            tishi('街道详细地址不能为空');
+        }else{
+            save_or_add_address(data);
+            hideOverlay('edit_address_div');
+        }
+        
     });
     
     //获取当前编辑的地址信息 赋值给编辑器
     function get_this_address(obj){
-        var name=obj.find('#name');
-        var tel=obj.find('#tel');
-        var location=obj.find('#location');
-        var address=obj.find('#address');
-        var arr_location=location.split(' ');
+        var name=obj.find('#name').html();
+        var tel=obj.find('#tel').html();
+        var location=obj.find('#location').html();
+        var address=obj.find('#address').html();
+        var arr_location=location.split(" ");
         var address_province=arr_location[0];
         var address_city=arr_location[1];
         var address_county=arr_location[2];
@@ -232,4 +266,88 @@ function onreadyeditAddress(){
         $(":text[name='tel']").val(tel);
         $(":text[name='tel']").val(tel);
         $(":text[name='address']").val(address);
+        $('select[name=address_province]>option[value='+address_province+']').attr('selected','selected');
+        province_onchange($('select[name=address_province]').prop('selectedIndex'));
+        $('select[name=address_city]>option[value='+address_city+']').attr('selected','selected');
+        city_onchange($('select[name=address_city]').prop('selectedIndex'));
+        $('select[name=address_county]>option[value='+address_county+']').attr('selected','selected');
     }
+    
+    // 保存编辑好的地址，写入数据库
+    function save_or_add_address(data){
+        
+        var url='/Home/Member/save_or_add_address';
+        $.ajax({
+            type:'post',
+            async : true,
+            url:url,
+            datatype:'json',
+            data:data,
+            success:function(){
+                if(data.check=='save'){
+                    var obj=$('.address_ul>li').eq(parseInt(data.id));
+                    obj.find('#name').html(data.name);
+                    obj.find('#tel').html(data.mobile);
+                    obj.find('#location').html(data.location);
+                    obj.find('#address').html(data.address);
+                }else if(data.check=='add'){
+                    $('.address_ul').append($('.address_ul>li:last').clone(true));
+                    var new_obj=$('.address_ul>li').last();
+                    new_obj.attr('id',($('.address_ul>li').length-1));
+                    new_obj.find('#name').html(data.name);
+                    new_obj.find('#tel').html(data.mobile);
+                    new_obj.find('#location').html(data.location);
+                    new_obj.find('#address').html(data.address);
+                }
+            }
+        });
+    }
+    
+
+    //保存时出现提示
+    function tishi(text){
+        $('#fixed_tishi').html(text);
+        $('#fixed_tishi').css('display','block');
+        $('#fixed_tishi').css('bottom','70px');
+        setTimeout("$('#fixed_tishi').css('display','none')",3000);
+    }
+    
+    //点击删除
+    $('.delete').bind('click',function(){
+        if(window.confirm('确定要删除该地址吗？')){
+            var id=$(this).parents('li').attr('id');
+            del(id);
+        }
+        
+    });
+    
+    //删除地址函数
+    function del(id){
+        var obj=$('.address_ul>li').eq(parseInt(id));
+        var data={
+            'id':id,
+            'open_id':open_id,
+            'check':'del_address'
+        };
+        var url='/Home/Member/delete_address';
+        $.ajax({
+            type:'post',
+            async : true,
+            url:url,
+            datatype:'json',
+            data:data,
+            success:function(index){
+                location=location;
+            }
+        });  
+    }
+    
+    
+    //手动添加地址
+    $('#address_shoudong').bind('click',function(){
+        showOverlay('edit_address_div');
+        $('#edit_address_div').css('top',($(window).height()-$('#edit_address_div').height())/2+'px');
+        var id=$(this).parents('li').attr('id');
+        $(':hidden[name=eq]').val(id);
+        save_or_add='add';
+    })
