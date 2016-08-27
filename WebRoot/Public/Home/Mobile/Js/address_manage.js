@@ -154,16 +154,16 @@ function onreadyeditAddress(){
 	'editAddress',
         jsApiParameters,
 	function(res){
-            save_or_add='add';
             var data={
                 'open_id':open_id,
-                'name': Trim(res.username),
-                'mobile':Trim(res.telNumber),
+                'name': res.username,
+                'mobile':res.telNumber,
                 'location':res.proviceFirstStageName+' '+res.addressCitySecondStageName+' '+res.addressCountiesThirdStageName,
                 'address':res.addressDetailInfo,
                 'id':-1,
-                'check':save_or_add
+                'check':'add'
                 };
+                alert(data.name);
                 save_or_add_address(data);                    
             }
 	);
