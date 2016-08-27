@@ -5,7 +5,7 @@ $('.address_ul>li').eq(parseInt(default_eq)).find('.tb_moren').css('background-c
 var save_or_add;
 //如果地址空 直接跳出微信增加界面
 if($('.address_ul>le').length==0){
-    calladd();
+    $('#address_weixin').trigger('click');
 }
     
     
