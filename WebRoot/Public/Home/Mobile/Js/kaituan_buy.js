@@ -6,8 +6,8 @@ $('.a_tjdd').bind('click',function(){
                 async : true,
                 datatype:'json',
                 success:function(msg){
-                    alert(msg);
-                    $('.address').trigger('click');
+                    window.location.href="/Home/Ajaxnologin/address_tiaozhuan"; 
+                    
                 }
             });
         }else{
