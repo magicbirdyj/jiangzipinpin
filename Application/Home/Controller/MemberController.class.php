@@ -196,6 +196,7 @@ class MemberController extends FontEndController {
             $this->assign('arr_address',$arr_address);
             $this->assign('default_address',$user['default_address']);
             $this->assign('open_id',$open_id);
+            $this->assign('ref',$_SESSION['ref']);
             $this->display();
         }else{
             $usersmodel=D('Users');
@@ -210,7 +211,6 @@ class MemberController extends FontEndController {
             $this->assign('default_address',$user['default_address']);
             $this->assign('open_id',$open_id);
             $this->assign('ref',$_SESSION['ref']);
-            var_dump($_SESSION['ref']);
             $this->display();
         }
 
