@@ -221,6 +221,7 @@ class MemberController extends FontEndController {
                  'open_id'=>$wangye['openid'],
                 );
             $_SESSION['wei_huiyuan']=$row;
+            
             $access_token=$wangye['access_token'];//共享收货地址必须使用网页授权access_token
             
             $appid=APPID;
@@ -313,11 +314,14 @@ class MemberController extends FontEndController {
         $this->ajaxReturn($row['default_address']);
     }
     private function get_wangye($code){
-       $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code" ;
-       $res = file_get_contents($url); //获取文件内容或获取网络请求的内容
-       $result = json_decode($res, true);//接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
-       return $result;
+        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code" ;
+        $res = file_get_contents($url); //获取文件内容或获取网络请求的内容
+        $result = json_decode($res, true);//接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
+        //S('wangye_access_token',$result['access_token'],7000);
+        return $result;
   }
+  
+
   public function ToUrlParams($urlObj)
 	{
 		$buff = "";

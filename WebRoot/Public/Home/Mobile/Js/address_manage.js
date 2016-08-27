@@ -150,20 +150,24 @@ function city_onchange(index){
 	}
 //获取共享地址
 function onreadyeditAddress(){
-		WeixinJSBridge.invoke(  
-			'editAddress',
-                        jsApiParameters,
-			function(res){
-				var value1 = res.proviceFirstStageName;
-				var value2 = res.addressCitySecondStageName;
-				var value3 = res.addressCountiesThirdStageName;
-				var value4 = res.addressDetailInfo;
-				var tel = res.telNumber;
-				alert(value1 + value2 + value3 + value4 + ":" + tel);
-                                
-			}
-		);
-	}
+    WeixinJSBridge.invoke(  
+	'editAddress',
+        jsApiParameters,
+	function(res){
+            save_or_add='add';
+            var data={
+                'open_id':open_id,
+                'name': Trim(res.username),
+                'mobile':Trim(res.telNumber),
+                'location':res.proviceFirstStageName+' '+res.addressCitySecondStageName+' '+res.addressCountiesThirdStageName,
+                'address':res.addressDetailInfo,
+                'id':-1,
+                'check':save_or_add
+                };
+                save_or_add_address(data);                    
+            }
+	);
+}
 	
 	function calladd(){
         if (typeof WeixinJSBridge == "undefined"){
@@ -275,7 +279,6 @@ function onreadyeditAddress(){
     
     // 保存编辑好的地址，写入数据库
     function save_or_add_address(data){
-        
         var url='/Home/Member/save_or_add_address';
         $.ajax({
             type:'post',
@@ -341,7 +344,5 @@ function onreadyeditAddress(){
     $('#address_shoudong').bind('click',function(){
         showOverlay('edit_address_div');
         $('#edit_address_div').css('top',($(window).height()-$('#edit_address_div').height())/2+'px');
-        var id=$(this).parents('li').attr('id');
-        $(':hidden[name=eq]').val(id);
         save_or_add='add';
     })
