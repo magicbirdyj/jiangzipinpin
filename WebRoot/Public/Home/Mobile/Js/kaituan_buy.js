@@ -1,5 +1,5 @@
 $('.a_tjdd').bind('click',function(){
-        if(Trim($('#default_name').html()).indexOf("点击添加地址")>=0){
+        if((Trim($('#default_name').html()).indexOf("点我")>=0)||Trim($('#default_location').html()).indexOf("添加收货地址")>=0){
             var url='/Home/Ajaxnologin/auto_tiaozhuan';
             $.ajax({
                 url:url,
