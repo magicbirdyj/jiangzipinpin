@@ -56,7 +56,13 @@
             //获取共享地址
             var open_id="<{$open_id}>";
             //默认的地址eq
-            default_eq="<{$default_address}>";
+            var default_eq="<{$default_address}>";
+            //如果自动跳转过来，保存后需要跳转回去的地址
+            var fanhui_ref=false;
+            var auto_ref="<{$auto_ref}>";
+            if(auto_ref=='yes'){
+               fanhui_ref="<{:U('$ref')}>";
+            }
 	</script>
 <script src="__PUBLIC_HOME__/Mobile/Js/address_manage.js" type="text/javascript"></script>
 </body> 

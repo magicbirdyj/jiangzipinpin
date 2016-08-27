@@ -160,25 +160,8 @@ class MemberController extends FontEndController {
     }
     
    
-    
-   
-    
-   
-    
-    
-    
-    
-    
-   
-    
-    
-    public function address_tiaozhuan() {
-        $a=urlencode("http://m.jiangzipinpin.com/Home/Member/address_manage");
-        $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx91953340c19f656e&redirect_uri=".$a."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
-        header("Location:{$url}"); 
-        exit();
 
-    }
+    
     public function address_manage(){
         if(isset($_GET['code'])){
             $code=$_GET['code'];
@@ -197,6 +180,7 @@ class MemberController extends FontEndController {
             $this->assign('default_address',$user['default_address']);
             $this->assign('open_id',$open_id);
             $this->assign('ref',$_SESSION['ref']);
+            $this->assigin('auto_ref',$_SESSION['auto_ref']);
             $this->display();
         }else{
             $usersmodel=D('Users');

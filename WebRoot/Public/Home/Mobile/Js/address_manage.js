@@ -3,7 +3,13 @@ $('.address_ul>li').eq(parseInt(default_eq)).find('.moren_text').css('color','#F
 $('.address_ul>li').eq(parseInt(default_eq)).find('.moren_text').html('已设为默认');
 $('.address_ul>li').eq(parseInt(default_eq)).find('.tb_moren').css('background-color','#F90505');
 var save_or_add;
-
+//如果地址空 直接跳出微信增加界面
+if($('.address_ul>le').length==0){
+    calladd();
+}
+    
+    
+    
 var arr_province=["请选择省市","北京市","天津市","上海市","重庆市","河北省","山西省","内蒙古","辽宁省","吉林省","黑龙江省","江苏省","浙江省","安徽省","福建省","江西省","山东省","河南省","湖北省","湖南省","广东省","广西","海南省","四川省","贵州省","云南省","西藏","陕西省","甘肃省","青海省","宁夏","新疆"];//,"香港","澳门","台湾省"];
 var arr_city=[
 ["请选择市区"],
@@ -106,6 +112,8 @@ var arr_county=[
 [["沙依巴克区","新市区","天山区","达坂城区","乌鲁木齐县","水磨沟区","头屯河区"],["克拉玛依区","独山子区","白碱滩区","乌尔禾区"],["吐鲁番市","鄯善县","托克逊县"],["哈密市","伊吾县","巴里坤"],["和田市","和田县","墨玉县","皮山县","洛浦县","策勒县","于田县","民丰县"],["阿克苏市","温宿县","库车县","沙雅县","新和县","拜城县","乌什县","阿瓦提县","柯坪县"],["喀什市","疏附县","疏勒县","英吉沙县","泽普县","莎车县","叶城县","麦盖提县","岳普湖县","伽师县","巴楚县","塔什库尔干"],["阿克陶县","阿合奇县","乌恰县"],["库尔勒市","轮台县","尉犁县","若羌县","且末县","和静县","和硕县","博湖县","焉耆"],["昌吉市","阜康市","米泉市","呼图壁县","玛纳斯县","奇台县","吉木萨尔县","木垒"],["博乐市","精河县","温泉县"],["奎屯市","伊宁县","霍城县","巩留县","新源县","昭苏县","特克斯县","尼勒克县","察布查尔"],["塔城市","乌苏市","额敏县","沙湾县","托里县","裕民县","和布克赛尔"],["阿勒泰市","布尔津县","富蕴县","福海县","哈巴河县","青河县","吉木乃县"]]
 ];
 
+
+
 var select_province=document.address_form.address_province;
 var select_city=document.address_form.address_city;
 var select_county=document.address_form.address_county;
@@ -163,7 +171,6 @@ function onreadyeditAddress(){
                 'id':-1,
                 'check':'add'
                 };
-                alert(data.name);
                 save_or_add_address(data);                    
             }
 	);
@@ -294,7 +301,11 @@ function onreadyeditAddress(){
                     obj.find('#location').html(data.location);
                     obj.find('#address').html(data.address);
                 }else if(data.check=='add'){
-                    window.location.href="/Home/Member/address_tiaozhuan"; 
+                    if(fanhui_ref){
+                        window.location.href=fanhui_ref;
+                    }else{
+                         window.location.href="/Home/Member/address_tiaozhuan"; 
+                    }
                 }
             }
         });
