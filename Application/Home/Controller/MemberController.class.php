@@ -187,6 +187,7 @@ class MemberController extends FontEndController {
             $usersmodel=D('Users');
             $open_id=$_SESSION['wei_huiyuan']['open_id'];
             $user=$usersmodel->where("open_id="."$open_id")->field("address,default_address")->find();
+            exit;
             if($user['address']!=''){
                 $arr_address=  unserialize($user['address']);
             }else{
