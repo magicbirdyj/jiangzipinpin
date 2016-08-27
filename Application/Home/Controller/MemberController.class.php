@@ -186,8 +186,20 @@ class MemberController extends FontEndController {
             $this->assign('signPackage',$parameters);
             $usersmodel=D('Users');
             $open_id=$_SESSION['wei_huiyuan']['open_id'];
-            var_dump($open_id);exit;
-            $user=$usersmodel->where("open_id='$open_id'")->field("address,default_address")->find();
+            $user=$usersmodel->where("open_id=$open_id")->field("address,default_address")->find();
+            if($user['address']!=''){
+                $arr_address=  unserialize($user['address']);
+            }else{
+                $arr_address='';
+            }
+            $this->assign('arr_address',$arr_address);
+            $this->assign('default_address',$user['default_address']);
+            $this->assign('open_id',$open_id);
+            $this->display();
+        }else{
+            $usersmodel=D('Users');
+            $open_id=$_SESSION['wei_huiyuan']['open_id'];
+            $user=$usersmodel->where("open_id=$open_id")->field("address,default_address")->find();
             if($user['address']!=''){
                 $arr_address=  unserialize($user['address']);
             }else{
@@ -198,18 +210,7 @@ class MemberController extends FontEndController {
             $this->assign('open_id',$open_id);
             $this->display();
         }
-        $usersmodel=D('Users');
-        $open_id=$_SESSION['wei_huiyuan']['open_id'];
-            $user=$usersmodel->where("open_id=$open_id")->field("address,default_address")->find();
-            if($user['address']!=''){
-                $arr_address=  unserialize($user['address']);
-            }else{
-                $arr_address='';
-            }
-            $this->assign('arr_address',$arr_address);
-            $this->assign('default_address',$user['default_address']);
-            $this->assign('open_id',$open_id);
-        $this->display();
+
     }
     
     private function get_address_data($code){
@@ -219,8 +220,6 @@ class MemberController extends FontEndController {
                  'open_id'=>$wangye['openid'],
                 );
             $_SESSION['wei_huiyuan']=$row;
-            var_dump($wangye);
-            var_dump($_SESSION['wei_huiyuan']);
             $access_token=$wangye['access_token'];//共享收货地址必须使用网页授权access_token
             
             $appid=APPID;
