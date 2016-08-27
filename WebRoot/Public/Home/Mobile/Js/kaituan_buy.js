@@ -5,7 +5,8 @@ $('.a_tjdd').bind('click',function(){
                 url:url,
                 async : true,
                 datatype:'json',
-                success:function(){
+                success:function(msg){
+                    alert(msg);
                     $('.address').trigger('click');
                 }
             });
