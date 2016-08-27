@@ -162,7 +162,7 @@ function onreadyeditAddress(){
 	'editAddress',
         jsApiParameters,
 	function(res){
-            if(res){
+            if(res!=''){
                 var data={
                 'open_id':open_id,
                 'name': res.userName,
@@ -172,6 +172,7 @@ function onreadyeditAddress(){
                 'id':-1,
                 'check':'add'
                 };
+                alert(res);
                 save_or_add_address(data); 
             }
                                
@@ -305,7 +306,7 @@ function onreadyeditAddress(){
                     obj.find('#address').html(data.address);
                 }else if(data.check=='add'){
                     if(fanhui_ref){
-                        var url='/Home/Ajaxnologin/auto_tiaozhuan';
+                        var url='/Home/Ajaxnologin/quxiao_auto_ref';
                         $.ajax({
                             url:url,
                             async : true,
