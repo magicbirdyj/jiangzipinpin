@@ -180,7 +180,7 @@ class MemberController extends FontEndController {
             $this->assign('default_address',$user['default_address']);
             $this->assign('open_id',$open_id);
             $this->assign('ref',$_SESSION['ref']);
-            $this->assigin('auto_ref',$_SESSION['auto_ref']);
+            $this->assign('auto_ref',$_SESSION['auto_ref']);
             $this->display();
         }else{
             $usersmodel=D('Users');
