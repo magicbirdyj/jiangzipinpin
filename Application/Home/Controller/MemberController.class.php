@@ -186,7 +186,7 @@ class MemberController extends FontEndController {
             $this->assign('signPackage',$parameters);
             $usersmodel=D('Users');
             $open_id=$_SESSION['wei_huiyuan']['open_id'];
-            $user=$usersmodel->where("open_id=".$open_id)->field("address,default_address")->find();
+            $user=$usersmodel->where("open_id="."$open_id")->field("address,default_address")->find();
             if($user['address']!=''){
                 $arr_address=  unserialize($user['address']);
             }else{
