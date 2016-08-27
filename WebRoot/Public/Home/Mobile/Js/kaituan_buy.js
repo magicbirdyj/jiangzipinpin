@@ -1,4 +1,5 @@
 $('.a_tjdd').bind('click',function(){
+    alert(Trim($('#default_name').html()));
         if(Trim($('#default_name').html())==''||Trim($('#default_location').html())==''){
             var url='/Home/Ajaxnologin/auto_tiaozhuan';
             $.ajax({
