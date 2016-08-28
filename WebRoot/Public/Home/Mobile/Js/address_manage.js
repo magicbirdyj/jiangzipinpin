@@ -328,7 +328,7 @@ function onreadyeditAddress(){
         $('.'+cla).html(text);
         $('.'+cla).css('display','block');
         $('.'+cla).css('bottom',bottom);
-        setTimeout("$('.'+cla).css('display','none')",3000);
+        setTimeout("$('#fixed_tishi').css('display','none')",3000);
     }
     
     //点击删除
