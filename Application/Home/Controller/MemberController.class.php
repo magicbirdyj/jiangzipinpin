@@ -145,14 +145,7 @@ class MemberController extends FontEndController {
         if(empty($user_id)||$user_id===0){
             $this->error('用户ID不存在!');
         }
-        
 
-        //$this->get_daijinquan($user_id, '通用券', 5);
-        //$this->get_daijinquan($user_id, '通用券', 8);
-        //$this->get_daijinquan($user_id, '通用券', 10);
-        //$this->get_daijinquan($user_id, '通用券', 15);
-        //$this->get_daijinquan($user_id, '通用券', 20);
-        //$this->get_daijinquan($user_id, '通用券', 30);
         $daijinquan=$usersmodel->where("user_id={$user_id}")->getField('daijinquan');
         $arr_daijinquan=  unserialize($daijinquan);
         $this->assign('arr_daijinquan',$arr_daijinquan);

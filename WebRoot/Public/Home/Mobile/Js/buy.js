@@ -11,7 +11,7 @@ $('.a_tjdd').bind('click',function(){
             });
         }else if(Trim($('#default_location').html()).indexOf("冷水江")==-1){
             if(is_1yuangou=='1'){
-                tishi('tishi1','活动商品仅支持送货冷水江市，请更改地址','350px');
+                tishi('tishi1','此活动商品仅支持送货冷水江市，请更改地址','350px');
             }else{
                 $('form[name=dingdan]').submit();
             }
