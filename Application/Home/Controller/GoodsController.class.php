@@ -845,6 +845,13 @@ class GoodsController extends FontEndController {
                foreach ($arr_order_id as $value) {
                    if($value!=$rand_order_id){
                        $this->refund($value);
+                       //给未被抽中的其它团员 发送88元代金券
+                       $weihuojiang_user_id=$ordermodel->where("order_id=$value")->getField('user_id');
+                       $this->get_88_daijinquan($weihuojiang_user_id);
+                       //发动模板消息 通知代金券到帐
+                       
+                       
+                       
                    }
                }
                
@@ -1050,6 +1057,23 @@ class GoodsController extends FontEndController {
         );
         $this->response_template($open_id, $template_id, $url, $arr_data);
     }
+    private function refund_tep_daijinquan($order_id){
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id=$order_id")->find();
+        $user_id=$order['user_id'];
+        $usersmodel=D('Users');
+        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
+        $template_id="95UZl_xx_sjJdno-l1X4vUrRvOLlsepMEZHPFsofZms";
+        $goods_id=$order['goods_id'];
+        $url=U('Goods/index',array('goods_id'=>$goods_id));
+        $arr_data=array(
+            'first'=>array('value'=>"您好，您拼团购买的1元购商品：".$order["goods_name"]." 未被抽中，已全额退款给您！","color"=>"#666"),
+            'reason'=>array('value'=>"1元购活动将在".($order['tuan_number']-1)."名团员中抽取一人获奖，团长将100%获奖，您还可以自己去开团，组团成功后，您将100%获奖","color"=>"#F90505"),
+            'refund'=>array('value'=>$order["dues"]."元","color"=>"#666"),
+            'remark'=>array('value'=>"点我，现在就去开团","color"=>"#F90505")
+        );
+        $this->response_template($open_id, $template_id, $url, $arr_data);
+    }
     
     private function pintuan_success_tep($order_id,$remark){
         $ordermodel=D('Order');
@@ -1066,6 +1090,13 @@ class GoodsController extends FontEndController {
         $this->response_template($open_id, $template_id, $url, $arr_data);
     }
     
-    
+    private function get_88_daijinquan($user_id) {
+        $this->get_daijinquan($user_id, '通用券', 5);
+        $this->get_daijinquan($user_id, '通用券', 8);
+        $this->get_daijinquan($user_id, '通用券', 10);
+        $this->get_daijinquan($user_id, '通用券', 15);
+        $this->get_daijinquan($user_id, '通用券', 20);
+        $this->get_daijinquan($user_id, '通用券', 30);
+    }
    
 }
