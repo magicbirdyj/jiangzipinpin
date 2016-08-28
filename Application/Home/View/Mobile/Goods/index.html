@@ -150,9 +150,16 @@
         </ul></div>
     <div id="spxq">
     <div class="goods_shuxing">
-        <div>商家：<{$goods['user_name']}></div>
+        <a class="shop" href="<{:U('Shop/index',array('shop_id'=>$shop['shop_id']))}>">
+            <img class="shop_head_img" src="<{$shop['head_url']}>" />
+            <div class='shop_info'>
+                <div class='shop_info_name'><{$goods['shop_name']}><span style="margin-left: 10px;font-weight: normal;font-size: 14px;">[<{$shop['status']==0?'自营':'入驻商家'}>]</span></div>
+                <div class='shop_info_sale'>销量：<{$shop['sale_number']}></div>
+            </div>
+            <div class='shop_right'><span class='iconfont tb_shop_right'>&#xe63a;</span>进店逛逛</div>
+        </a>
         <div class="shuxing_title">产品属性：</div>
-        <div>
+        <div class="shuxing">
         <ul>
             <volist name="shuxing" id="vo">
             <li><{$key}> ：<{$vo}></li>
@@ -243,7 +250,7 @@
                   <else />
                   <a href="javascript:void(0)" id='yishoucang' class="xiao_a"><span class=" iconfont foot_shoucang foot_tb" style="color:#f90">&#xe620;</span><span>已收藏</span></a>
                   </if>
-          <a href='tel://<{$shop["tel"]}>' class="xiao_a" style="border-right: none" id='kefu'><span class=" iconfont foot_home foot_tb">&#xe607;</span><span>客服</span></a>
+          <a href='tel://<{$shop["tel"]}>' class="xiao_a" style="border-right: none" id='kefu'><span class=" iconfont foot_tel foot_tb">&#xe607;</span><span>客服</span></a>
                   <a href="javascript:void(0)"  class="back_color_gwc" id='dandu_buy'><span class="foot_buy foot_tb">&yen;<{$goods['price']}></span><span class="color_FFF">单独购买</span></a>
                   <a href="javascript:void(0)" class="back_color_buy" id="kaituan_buy"><span class="foot_buy foot_tb">&yen;<{$goods['tuan_price']}></span><span class="color_FFF"><{$goods['tuan_number']}>人团</span></a>
           </div>

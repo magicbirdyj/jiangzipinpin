@@ -24,7 +24,7 @@ class GoodsController extends FontEndController {
         //获取到店铺信息
         $shopsmodel=D('Shops');
         $shop_id=$goods['shop_id'];
-        $shop=$shopsmodel->where("shop_id=$shop_id")->field('qq,head_url,tel')->find();
+        $shop=$shopsmodel->where("shop_id=$shop_id")->field('shop_id,qq,head_url,tel,sale_number,status')->find();
         $this->assign('shop',$shop);
         //把价格后面无意义的0去掉
         $goods['price']= floatval($goods['price']);
@@ -804,6 +804,11 @@ class GoodsController extends FontEndController {
         $tuan_no=$order['tuan_no'];
         $this->assign('tuan_no',$tuan_no);
         if($tuan_no==0){
+            $remark="恭喜您，购买成功,我们将尽快把商品送到您的手上，请注意关注";
+            $this->pintuan_success_tep($order_id,$remark);//给会员发送消息，购买成功，等待发货
+            $buy_number=$ordermodel->where("order_id=$order_id")->getField('buy_number');
+            $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$buy_number);//商品的购买次数加
+            $shopsmodel->where("shop_id=$shop_id")->setInc('sale_number',(int)$buy_number);//店铺的购买次数加
             $this->assign('goods', $goods);
             $this->display('gmcg_dandu');
             exit();
@@ -1089,6 +1094,7 @@ class GoodsController extends FontEndController {
         );
         $this->response_template($open_id, $template_id, $url, $arr_data);
     }
+    
     
     private function get_88_daijinquan($user_id) {
         $this->get_daijinquan($user_id, '通用券', 5);
