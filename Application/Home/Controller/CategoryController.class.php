@@ -12,6 +12,7 @@ class CategoryController extends FontEndController {
     public function index(){
         if(isset($_GET['cid'])){
             $cat_id=$_GET['cid'];
+            $this->assign('cat_id',$cat_id);
             $categorymodel=D('category');
             $cat=$categorymodel->where("cat_id=$cat_id")->field("cat_name,pid")->find();
             $cat_name=$cat['cat_name'];
@@ -21,11 +22,26 @@ class CategoryController extends FontEndController {
             $this->assign('cat_name',$cat_name);
             //获取和该二级分类有相同pid的所有二级分类
             $pid=$cat['pid'];
-            $cat_all=$categorymodel->where("pid=$pid")->field('cat_id,cat_name')->select();
+            if($pid==0){
+               $cat_all=$categorymodel->where("pid=$cat_id")->field('cat_id,cat_name')->select();
+               //找到该大类下的所有子分类
+               $all_cat_id=$categorymodel->where("pid=$cat_id")->getField('cat_id',true);
+               $tiaojian['cat_id']=array('in',$all_cat_id);
+               //父类名字就是自己（已经是一级分类）
+               $this->assign('p_cat_name',$cat_name);
+               //父类id就是自己的id
+               $pid=$cat_id;
+            }else{
+                $cat_all=$categorymodel->where("pid=$pid")->field('cat_id,cat_name')->select();
+                $all_cat_id=$categorymodel->where("pid=$pid")->getField('cat_id',true);
+                $tiaojian['cat_id']=array('eq',$cat_id);
+                 //获取父类名字
+                $p_cat_name=$categorymodel->where("cat_id=$pid")->getField('cat_name');
+                $this->assign('p_cat_name',$p_cat_name);
+            }
+            
             $this->assign('cat_all',$cat_all);
-            //获取父类名字
-            $p_cat_name=$categorymodel->where("cat_id=$pid")->getField('cat_name');
-            $this->assign('p_cat_name',$p_cat_name);
+            $this->assign('pid',$pid);
             
             $url['full']=$_SERVER['REQUEST_URI'];
             $url['url']=str_replace('.html', '',$url['full']);
@@ -97,22 +113,22 @@ class CategoryController extends FontEndController {
            
             
             $count=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->count();
-
+            
             
             //排序
             $order=$_GET['order'];
             if(empty($order)){ 
-                $list=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('daijinquan desc,buy_number desc,score desc,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('daijinquan desc,buy_number desc,score desc,last_update desc')->select();
             }elseif($order==='number_desc'){
-                $list=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('buy_number desc,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('buy_number desc,last_update desc')->select();
             }elseif($order==='price_desc'){
-                $list=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('tuan_price desc,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('tuan_price desc,last_update desc')->select();
             }elseif($order==='pinglun_desc'){
-                $list=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('score desc,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('score desc,last_update desc')->select();
             }elseif($order==='update_desc'){
-                $list=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('last_update desc')->select();
             }elseif($order==='price_asc'){
-                $list=$goodsmodel->where($tiaojian)->where("cat_name='$cat_name' and is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('tuan_price,last_update desc')->select();
+                $list=$goodsmodel->where($tiaojian)->where("is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->order('tuan_price,last_update desc')->select();
             }
             
             //手机端
@@ -131,21 +147,27 @@ class CategoryController extends FontEndController {
         //按团人数分的商品数量统计
         $arr_count['tuan_number']=$goodsmodel->where($tiaojian_count)->where("cat_name='$cat_name' and is_delete=0")->count();
         
-        //各种分类的商品数量,不要cat_name参数
+        //各种分类的商品数量,不要cat_id参数
         $tiaojian_count=$tiaojian;
         $tiaojian_count_noshuxing=$tiaojian_count;
         unset($tiaojian_count_noshuxing['shuxing']);
-        $cat_allname=$categorymodel->getField('cat_name',true);
-        foreach ($cat_allname as $value) {
-            $cat_name_where['cat_name']=array('EQ',$value);
-            if($cat_name==$value){
-                $arr_count[$value]=$goodsmodel->where($tiaojian_count)->where("is_delete=0")->where($cat_name_where)->count();
+        
+        
+        foreach ($all_cat_id as $value) {
+            $cat_id_where['cat_id']=array('EQ',$value);
+            if($cat_id==$value){
+                $arr_count_cat[$value]=$goodsmodel->where($tiaojian_count)->where("is_delete=0")->where($cat_id_where)->count();
             }else{
-                $arr_count[$value]=$goodsmodel->where($tiaojian_count_noshuxing)->where("is_delete=0")->where($cat_name_where)->count();
+                //统计其它分类，不能再要属性分类 因为属性不相同
+                $arr_count_cat[$value]=$goodsmodel->where($tiaojian_count_noshuxing)->where("is_delete=0")->where($cat_id_where)->count();
             }
         }
-       
+        //一级分类的数量 同样不要属性参数
+        $cat_id_where['cat_id']=array('in',$all_cat_id);
+        $arr_count_cat[$pid]=$goodsmodel->where($tiaojian_count_noshuxing)->where("is_delete=0")->where( $cat_id_where)->count();
+        
             $this->assign('arr_count',$arr_count);
+            $this->assign('arr_count_cat',$arr_count_cat);
             $this->display(index);
         }else{
             $this->error('没有指定分类');

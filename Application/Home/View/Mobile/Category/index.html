@@ -27,8 +27,9 @@
     </div>
     <div class="fenlei_select none" id="fenlei_select">
         <ul>
+             <li id="<{$pid}>"><a href="<{:U('Category/index',array('cid'=>$pid))}>"><{$p_cat_name}><span class="count"><{$arr_count_cat["$pid"]}></span></a></li>
             <volist name="cat_all" id="vo">
-                <li><a href="<{:U('Category/index',array('cid'=>$vo['cat_id']))}>"><{$vo['cat_name']}><span class="count"><{$arr_count[$vo['cat_name']]}></span></a></li>
+                <li id="<{$vo['cat_id']}>"><a href="<{:U('Category/index',array('cid'=>$vo['cat_id']))}>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<{$vo['cat_name']}><span class="count"><{$arr_count_cat[$vo['cat_id']]}></span></a></li>
             </volist>
         </ul>
     </div>
@@ -130,7 +131,7 @@
   
     var url=decodeURI("<{$url['url']}>");
 //选中的分类 背景更暗
-$('#fenlei_select a:contains("<{$cat_name}>")').parent().css('background-color','#f6f4f0');
+$('#fenlei_select>ul>#<{$cat_id}>').css('background-color','#f6f4f0');
 var location_1="<{$get['tuan_number']?$get['tuan_number']:'全部'}>";
 $('#didian_select a:contains('+location_1+')').parent().css('background-color','#f6f4f0');
 //选中的排序 背景更暗
