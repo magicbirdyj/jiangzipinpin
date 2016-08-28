@@ -324,11 +324,11 @@ function onreadyeditAddress(){
     
 
     //保存时出现提示
-    function tishi(cla,text,bottom){
-        $('.'+cla).html(text);
-        $('.'+cla).css('display','block');
-        $('.'+cla).css('bottom',bottom);
-        setTimeout("$('#fixed_tishi').css('display','none')",3000);
+    function tishi(tishi_id,text,bottom){
+        $('#'+tishi_id).html(text);
+        $('#'+tishi_id).css('display','block');
+        $('#'+tishi_id).css('bottom',bottom);
+        setTimeout("$('.fixed_tishi').css('display','none')",3000);
     }
     
     //点击删除
