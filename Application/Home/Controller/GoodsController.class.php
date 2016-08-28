@@ -191,7 +191,6 @@ class GoodsController extends FontEndController {
         $goodsmodel=D('Goods');
         $goods=$goodsmodel->where("goods_id=$goods_id")->find();
         $goods['ky_daijinquan']=0;
-        $goods['goods_id']=$goods_id;
         $this->assign('goods',$goods);
         //用户代金券
         $arr_daijinquan=  unserialize($address['daijinquan']);
@@ -233,7 +232,6 @@ class GoodsController extends FontEndController {
         }
         $goodsmodel=D('Goods');
         $goods=$goodsmodel->where("goods_id=$goods_id")->find();
-        $goods['goods_id']=$goods_id;
         $this->assign('goods',$goods);
         //用户代金券
         $arr_daijinquan=  unserialize($address['daijinquan']);

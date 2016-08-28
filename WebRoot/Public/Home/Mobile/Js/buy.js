@@ -9,6 +9,12 @@ $('.a_tjdd').bind('click',function(){
                     window.location.href="/Home/Ajaxnologin/address_tiaozhuan"; 
                 }
             });
+        }else if(Trim($('#default_location').html()).indexOf("冷水江")==-1){
+            if(is_1yuangou=='1'){
+                tishi('tishi1','活动商品仅支持送货冷水江市，请更改地址','350px');
+            }else{
+                $('form[name=dingdan]').submit();
+            }
         }else{
             $('form[name=dingdan]').submit();
         }
@@ -76,3 +82,11 @@ $('.a_tjdd').bind('click',function(){
         $(':hidden[name=buy_number]').val(value);
         daijinquan_each();
         });
+        
+        
+        function tishi(tishi_id,text,bottom){
+        $('#'+tishi_id).html(text);
+        $('#'+tishi_id).css('display','block');
+        $('#'+tishi_id).css('bottom',bottom);
+        setTimeout("$('.fixed_tishi').css('display','none')",3000);
+    }
