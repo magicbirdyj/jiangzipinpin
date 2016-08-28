@@ -57,11 +57,6 @@ class CategoryController extends FontEndController {
             
            
             
-  
-            
-            
-            
-            
             $this->assign('get_cs',$get_cs);//get_cs赋值给模板
             
            

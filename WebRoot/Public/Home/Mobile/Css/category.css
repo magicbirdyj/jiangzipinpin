@@ -184,7 +184,46 @@ margin-right:4px;
 
 
 
-
+/*店铺页面css*/
+.shop{
+    border-bottom: 1px solid #DDD;
+    padding: 15px 10px;
+    display: block;
+}
+.shop_head_img{
+    height: 50px;
+    width: 50px;
+    float: left;
+}
+.shop_info{
+    float: left;
+    height: 50px;
+    margin-left: 15px;
+}
+.shop_info .shop_info_name{
+    font-weight: bold;
+}
+.shop_info .shop_info_sale{
+    margin-top: 15px;
+    font-size: 12px;
+}
+.shop_right{
+    float: right;
+    padding: 3px 15px;
+    border: 1px solid #DDD;
+    border-radius: 18px;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 7px;
+    display: block;
+    background-color: #F90505;
+    color: #FFF;
+}
+.shop_right .tb_shop_right{
+    font-size: 14px;
+    margin-right: 15px;
+}
 
 
 

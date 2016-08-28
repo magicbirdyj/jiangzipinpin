@@ -221,16 +221,51 @@ body{
 .goods_shuxing{
     box-sizing: border-box;
     width: 100%;
-    border: 1px solid #E3E3E3;
-    padding-top: 20px;
+    border: 1px solid #E3E3E3;ss
 }
-.goods_shuxing div{
-    padding-left: 20px;
-    padding-bottom: 20px;
+
+.shop{
+    border-bottom: 1px solid #DDD;
+    padding: 15px 10px;
+    display: block;
+}
+.shop_head_img{
+    height: 50px;
+    width: 50px;
+    float: left;
+}
+.shop_info{
+    float: left;
+    height: 50px;
+    margin-left: 15px;
+}
+.shop_info .shop_info_name{
+    font-weight: bold;
+}
+.shop_info .shop_info_sale{
+    margin-top: 15px;
+    font-size: 12px;
+}
+.shop_right{
+    float: right;
+    padding: 5px 10px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    font-size: 14px;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 7px;
+}
+.shop_right .tb_shop_right{
+    font-size: 20px;
+    margin-right: 15px;
 }
 .goods_shuxing .shuxing_title{
-    padding-bottom: 10px;
+    padding: 15px 10px;
     font-weight: bold;
+}
+.goods_shuxing .shuxing{
+    padding: 0px 10px;
 }
 .goods_shuxing ul li{
     box-sizing: border-box;
@@ -240,7 +275,7 @@ body{
     line-height: 18px;
     overflow: hidden;
     font-size: 14px;
-    
+    margin-bottom: 10px;
 }
 .goodscontent{
     box-sizing: border-box;
