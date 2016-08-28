@@ -7,8 +7,9 @@ class CategoryController extends FontEndController {
         $fenlei=$categorymodel->where("pid<>0 and deleted=0")->select();
         foreach ($fenlei as $key => &$value) {
             $pid=$value['pid'];
-            $pid_name=$categorymodel->where("cat_id=$pid")->getField('cat_name');
-            $value['pid_name']=$pid_name;
+            $pid=$categorymodel->where("cat_id=$pid")->field('cat_name,cat_id')->find();
+            $value['pid_name']=$pid['pid_name'];
+            $value['pid_id']=$pid['pid_id'];
         }
         $this->assign('fenlei',$fenlei);
         $this->display();

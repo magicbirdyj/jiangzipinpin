@@ -38,6 +38,14 @@ class ShopController extends FontEndController {
             $get_cs['order_update']=$get;
             $get_cs['order_update']['order']='update_desc';
             
+            //显示风格url
+            $get_cs['fengge_0']=$get;
+            unset($get_cs['fengge_0']['fengge']);
+            $get_cs['fengge_1']=$get;
+            $get_cs['fengge_1']['fengge']='1';
+            
+            
+            
             $this->assign('get_cs',$get_cs);//get_cs赋值给模板
         //排序
         $order=$_GET['order'];
