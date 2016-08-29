@@ -175,7 +175,13 @@ class CategoryController extends FontEndController {
     }
     
     
-    
+    public function one_buy() {
+        $goodsmobile=D('Goods');
+        $list=$goodsmobile->where("1yuangou=1 and is_delete=0")->field('price,tuan_number,goods_img_qita,goods_id,shop_name,goods_name,tuan_price,yuan_price,goods_img,comment_number,score,buy_number,daijinquan')->select();
+        $this->get_thumb($list);
+        $this->assign('list',$list);
+        $this->display();
+    }
     
    
     

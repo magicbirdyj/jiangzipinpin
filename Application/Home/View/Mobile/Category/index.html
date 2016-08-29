@@ -89,17 +89,18 @@
                     <img src="<{$vo['goods_img_qita_0']}>" class="goods_img img_fengge_1"/>
                     <img src="<{$vo['goods_img']}>" class="goods_img img_fengge_2"/>
                     <div class="goods_infor">
-                    <div class="goods_title shenglue border-bottom"><{$vo['goods_name']}></div>
+                    <div class="goods_title"><{$vo['goods_name']}></div>
                     <div class="goods_bottom">
                         <div class="goods_infor_left">
                             <span class="iconfont">&#xe61d;</span>
                             <span class="rentuan"><{$vo['tuan_number']}>人团</span>
-                            <span class="price_red price"><span class='rmb'>&yen;</span><{$vo['tuan_price']|floor}></span>
+                            <span class="price_red price"><span class='rmb'>&yen;</span><{$vo['tuan_price']|floatval}></span>
                             <span class="price_red yuan">元</span>
-                            <del style="margin-left: 5px;">单买价：<{$vo['price']|floor}>元</del>
+                            <del style="margin-left: 5px;">单买价:<{$vo['price']|floatval}>元</del>
                         </div>
                         <div class="goods_infor_right">
-                            <span class='yituan'>已团<span class='maohao'>：</span><{$vo['buy_number']}></span>
+                            <span id='qukaituan'>去开团 &nbsp;&nbsp;></span>
+                            <span class='yituan' id='yituan'>已团<{$vo['buy_number']}></span>
                         </div>
                     </div>
                     </div>

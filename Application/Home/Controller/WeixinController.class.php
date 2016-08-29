@@ -133,7 +133,7 @@ class WeixinController extends FontEndController {
                 <Articles>";
         //具体内容数组
         $goodsmodel=D('Goods');
-        $arr_goods=$goodsmodel->where("1yuangou=1")->field('goods_id,goods_name,goods_img,goods_img_qita,goods_jianjie')->limit(10)->select();
+        $arr_goods=$goodsmodel->where("1yuangou=1  and is_delete=0")->field('goods_id,goods_name,goods_img,goods_img_qita,goods_jianjie')->limit(10)->select();
         $count=(int)count($arr_goods);
         $header = sprintf($newsTplHead, $object->FromUserName, $object->ToUserName, time(),$count); 
         //构建内容数组$arr_content

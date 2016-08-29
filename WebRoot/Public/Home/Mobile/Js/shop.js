@@ -26,6 +26,7 @@ function fengge_0(){
         $('.goods_title').addClass('border-bottom');
         //url改变
         $('#fengge').attr('href',fengge1_url);
+
         //图标变成风格2
         obj.html('&#xe630;');
 }
@@ -50,6 +51,7 @@ function fengge_1(){
         $('.goods_title').removeClass('border-bottom');
         //url改变
         $('#fengge').attr('href',fengge0_url);
+
         //图标变成风格2
         obj.html('&#xe631;');
 }
