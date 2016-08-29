@@ -92,17 +92,8 @@ class GoodsController extends FontEndController {
         $pingfen_fl[] = number_format($pingfen1 / count($pingfen), 1);
         $pingfen_fl[] = number_format($pingfen2 / count($pingfen), 1);
         $this->assign('pingfen_fl', $pingfen_fl);
-        //评论分页
-        $count_pinglun = $ordermodel->where("goods_id={$goods_id} and status=3")->count();
-        $page_pinglun = $this->get_page($count_pinglun, 4);
-        $page_foot_pinglun = $page_pinglun->show(); //显示页脚信息
-        $list_pinglun = $ordermodel->table('m_order t1,m_users t2')->where("t1.goods_id={$goods_id} and t1.user_id=t2.user_id and t1.status=3")->limit($page_pinglun->firstRow . ',' . $page_pinglun->listRows)->field('t1.updated,t1.score,t1.appraise_img,t1.appraise,t1.appraise_img,t2.user_name,t2.head_url')->order('t1.updated desc')->select();
-        //遍历数组，把img字段反序列化
-        foreach ($list_pinglun as &$value) {
-            $value['appraise_img'] = unserialize($value['appraise_img']);
-        }
-        $this->assign('list_pinglun', $list_pinglun);
-        $this->assign('page_foot_pinglun', $page_foot_pinglun);
+       
+        
 
         //获取广告商品列表
         //$guanggao = $goodsmodel->where("cat_id={$goods['cat_id']}")->order('advert_shop_order')->limit(12)->field('goods_id,goods_name,goods_img,price,buy_number')->select();
@@ -144,6 +135,10 @@ class GoodsController extends FontEndController {
           $this->assign('guanzhu',$_SESSION['guanzhu']);
           //如果未关注，把$_SESSION['ref']  写入数据表
           
+          //获得评论list
+          $list_pinglun=$this->get_pinglun($goods_id);
+          $this->assign('list_pinglun',$list_pinglun);
+          
           if($_SESSION['guanzhu']=='weiguanzhu'){
                $this->save_url(substr($_SESSION['ref'],0,strpos($_SESSION['ref'],'?')));
           }
@@ -151,22 +146,14 @@ class GoodsController extends FontEndController {
           $this->display('index');
     }
 
-    public function pinglun() {
-        $goods_id = $_GET['goods_id'];
+    public function get_pinglun($goods_id) {
         $ordermodel = D('Order');
-        $count_pinglun = $ordermodel->where("goods_id={$goods_id} and status=3")->count();
-        $page_pinglun = $this->get_page($count_pinglun, 4);
-        $page_foot_pinglun = $page_pinglun->show(); //显示页脚信息
-        $list_pinglun = $ordermodel->table('m_order t1,m_users t2')->where("t1.goods_id={$goods_id} and t1.user_id=t2.user_id and t1.status=3")->limit($page_pinglun->firstRow . ',' . $page_pinglun->listRows)->field('t1.updated,t1.score,t1.appraise_img,t1.appraise,t1.appraise_img,t2.user_name,t2.head_url')->order('t1.updated desc')->select();
+        $list_pinglun = $ordermodel->table('m_order t1,m_users t2')->where("t1.goods_id={$goods_id} and t1.user_id=t2.user_id and t1.status=5")->field('t1.updated,t1.score,t1.appraise_img,t1.appraise,t1.appraise_img,t2.user_name,t2.head_url')->order('t1.updated desc')->select();
         //遍历数组，把img字段反序列化
         foreach ($list_pinglun as &$value) {
             $value['appraise_img'] = unserialize($value['appraise_img']);
         }
-        //$this->assign('list_pinglun',$list_pinglun);
-        //$this->assign('page_foot_pinglun',$page_foot_pinglun);
-        $data['li'] = $list_pinglun;
-        $data['page_foot'] = $page_foot_pinglun;
-        $this->ajaxReturn($data);
+        return $list_pinglun;
     }
 
     public function page() {
@@ -874,9 +861,7 @@ class GoodsController extends FontEndController {
                        $weihuojiang_user_id=$ordermodel->where("order_id=$value")->getField('user_id');
                        $this->get_88_daijinquan($weihuojiang_user_id);
                        //发动模板消息 通知代金券到帐
-                       
-                       
-                       
+                       $this->send_dainjinquan_tep($value);
                    }
                }
                
@@ -1082,24 +1067,27 @@ class GoodsController extends FontEndController {
         );
         $this->response_template($open_id, $template_id, $url, $arr_data);
     }
-    private function refund_tep_daijinquan($order_id){
+    
+    private function send_dainjinquan_tep($order_id){
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id=$order_id")->find();
         $user_id=$order['user_id'];
         $usersmodel=D('Users');
         $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
-        $template_id="95UZl_xx_sjJdno-l1X4vUrRvOLlsepMEZHPFsofZms";
-        $goods_id=$order['goods_id'];
-        $url=U('Goods/index',array('goods_id'=>$goods_id));
+        $template_id="-CvJ9caeLvY9Vdqehftu8JkW0LMg0_xfmsRdK8V3_W";
+        $url=U('Index/index');
+        $tm=time();
+        $youxiaoqi=date('Y.m.d',$tm).'-'.date('Y.m.d',($tm+345600));
         $arr_data=array(
-            'first'=>array('value'=>"您好，您拼团购买的1元购商品：".$order["goods_name"]." 未被抽中，已全额退款给您！","color"=>"#666"),
-            'reason'=>array('value'=>"1元购活动将在".($order['tuan_number']-1)."名团员中抽取一人获奖，团长将100%获奖，您还可以自己去开团，组团成功后，您将100%获奖","color"=>"#F90505"),
-            'refund'=>array('value'=>$order["dues"]."元","color"=>"#666"),
-            'remark'=>array('value'=>"点我，现在就去开团","color"=>"#F90505")
+            'first'=>array('value'=>"亲爱的用户，88元代金券已经成功发放给您，前往：会员中心--”我的代金券“即可查看","color"=>"#666"),
+            'keyword1'=>array('value'=>"88元代金券","color"=>"#F90505"),
+            'keyword2'=>array('value'=>date('Y年m月d日'),"color"=>"#666"),
+            'keyword3'=>array('value'=>'已经成功发放给您的账户',"color"=>"#666"),
+            'keyword4'=>array('value'=>'代金券使用有效期：'.$youxiaoqi,"color"=>"#666"),
+            'remark'=>array('value'=>"点我，查看更多拼团，前往使用代金券。","color"=>"#F90505")
         );
         $this->response_template($open_id, $template_id, $url, $arr_data);
     }
-    
     private function pintuan_success_tep($order_id,$remark){
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id=$order_id")->find();

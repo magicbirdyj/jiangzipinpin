@@ -181,9 +181,26 @@
         </div>
         <div class="leijipinglun">
             <ul id='leijipinglun'>
+                <volist name='list_pinglun' id='vo'>
+                <li>
+                    <div class="pinglun_left"><img src="<{$vo['head_url']}>" class="img"><p class="user_name"><{$vo['user_name']}></p></div>
+                    <div class="pinglun_right">
+                        <div class="xingxing_div">
+                            <span class="pingjia_xiao"><span class="pingjia_xiao_limian" style="width:<{$vo['score']|xingxing_baifenbi}>;"></span></span>
+                            <span><{$vo['updated']|date="Y-m-d H:i:s",###}></span>
+                        </div>
+                        <div class="pinglun_text"><{$vo['appraise']}></div>
+                    </div>
+                    <ul class="pinglun_img">
+                            <foreach name="vo['appraise_img']" item="value" key='k'>
+                                <li><img src="<{$value}>" /></li>
+                            </foreach>
+                        </ul>   
+                </li>
+            
+                </volist>                 
             </ul>
 
-            <div class="page_foot" id='page_foot_pinglun'></div>
         </div>
     </div>
     </div>

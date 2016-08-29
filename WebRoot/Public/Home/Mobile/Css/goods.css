@@ -337,7 +337,7 @@ body{
     height: 16px;
     display: inline-block;
 }
-.leijipinglun ul li{
+.leijipinglun>ul>li{
     padding: 20px 0px;
     border-bottom: 1px solid #DDD;
 }
@@ -374,26 +374,31 @@ body{
     padding: 0px 10px;
 }
 .pinglun_img{
-    padding: 0px 10px;
+    padding: 10px 10px;
+    width: 100%;
 }
-.pinglun_img a{
-    width: 100px;
-    height: 100px;
-    display: inline-block;
+.pinglun_img li{
+    width: 20%;
+    float: left;
     overflow: hidden;
-    margin-right: 20px;
+    margin-right: 5%;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack:center;
+    z-index: 40000;
+    box-sizing: border-box;
+    position: static;
 }
 .pinglun_img img{
-    width:100px;
+    max-width:100%;
+    max-height: 100%;
+    vertical-align:top;
 }
 .pinglun{
     display: none;
 }
 
-#pinglun_fangda{
-    max-height: 300px;
-    margin: 10px;
-}
 
 
 
