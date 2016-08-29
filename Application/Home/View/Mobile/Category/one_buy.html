@@ -1,0 +1,70 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/category.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/index.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/search_m.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/shop_1.css" id='shop_1'>
+</head>
+<body>
+    <div class="min_menu shareBtn" id='sousou'>
+    <span class="iconfont tb_fenxiang"id="sousou" style='font-size: 22px'>&#xe60d;</span>
+    <span class="fenxiang">搜索</span>
+    </div>
+    <div class="fanhui padding"><a href="<{:U('index/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>1元购</div>
+<div class="box">
+
+   
+    
+    
+    
+    
+
+
+
+    
+    
+    <volist name="list" id="vo">
+        
+        <div class="shopping">
+                <a  href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>" class="goods_a">
+                    <img src="<{$vo['goods_img_qita_0']}>" class="goods_img img_fengge_1"/>
+                    <img src="<{$vo['goods_img']}>" class="goods_img img_fengge_2"/>
+                    <div class="goods_infor">
+                    <div class="goods_title"><{$vo['goods_name']}></div>
+                    <div class="goods_bottom">
+                        <div class="goods_infor_left">
+                            <span class="iconfont">&#xe61d;</span>
+                            <span class="rentuan"><{$vo['tuan_number']}>人团</span>
+                            <span class="price_red price"><span class='rmb'>&yen;</span><{$vo['tuan_price']|floatval}></span>
+                            <span class="price_red yuan">元</span>
+                            <del style="margin-left: 5px;">单买价:<{$vo['price']|floatval}>元</del>
+                        </div>
+                        <div class="goods_infor_right">
+                            <span id='qukaituan'>去开团 &nbsp;&nbsp;></span>
+                            <span class='yituan' id='yituan'>已团<{$vo['buy_number']}></span>
+                        </div>
+                    </div>
+                    </div>
+                </a>
+            </div><!--商品1-->
+    </volist>
+    
+<div class="page_foot"><{$page_foot_iphone}></div>
+
+
+</div><!--主内容盒子-->
+
+
+
+
+
+
+<script src="__PUBLIC_HOME__/Mobile/Js/new_order.js" type="text/javascript"></script>
+
+
+
+<script>
+
+//搜索按钮
+$('#sousou').bind('click',function(){
+    window.location.href="<{:U('Index/search_m')}>"; 
+});
+</script>

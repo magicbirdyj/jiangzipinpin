@@ -29,10 +29,10 @@
  <!--分类导航-->
       <div class="ui-grid-c">
           <div><a href="<{:U('Index/index')}>"><span class="menu_yuan iconfont tb_home">&#xe60f;</span><span>首页</span></a></div>
-          <div><a href="<{:U('Category/index',array('cid'=>3))}>"><span class="menu_yuan iconfont tb_1yuangou">&#xe614;</span><span>1元购</span></a></div>
+          <div><a href="<{:U('Category/one_buy')}>"><span class="menu_yuan iconfont tb_1yuangou">&#xe614;</span><span>1元购</span></a></div>
           <div><a href="<{:U('Category/index',array('cid'=>32))}>"><span class="menu_yuan iconfont tb_shuiguo">&#xe617;</span><span>生鲜水果</span></a></div>
           <div><a href="<{:U('Category/index',array('cid'=>34))}>"><span class="menu_yuan iconfont tb_1yuangou">&#xe63c;</span><span>美食</span></a></div>
-          <div><a href="<{:U('Category/index',array('cid'=>39))}>"><span class="menu_yuan iconfont tb_shuiguo">&#xe613;</span><span>牛奶饮料</span></a></div>
+          <div><a href="<{:U('Category/index',array('cid'=>39))}>"><span class="menu_yuan iconfont tb_shuiguo">&#xe613;</span><span>冲饮/饮料</span></a></div>
           <div><a href="<{:U('Category/index',array('cid'=>33))}>"><span class="menu_yuan iconfont tb_tianpin">&#xe618;</span><span>甜品</span></a></div>
           <div ><a href="<{:U('Category/index',array('cid'=>36))}>"><span class="menu_yuan iconfont tb_guozhi">&#xe63b;</span><span>零食</span></a></div>
           <div ><a href="<{:U('Category/index',array('cid'=>4))}>"><span class="menu_yuan iconfont tb_zhishi">&#xe61b;</span><span>拼团流程</span></a></div>
@@ -45,17 +45,17 @@
                 <a  href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>" class="goods_a">
                     <img src="<{$vo['goods_img_qita_0']}>" class="goods_img"/>
                     <div class="goods_infor">
-                    <div class="goods_title shenglue border-bottom"><{$vo['goods_name']}></div>
+                    <div class="goods_title"><{$vo['goods_name']}></div>
                     <div class="goods_bottom">
                         <div class="goods_infor_left">
                             <span class="iconfont">&#xe61d;</span>
                             <span><{$vo['tuan_number']}>人团</span>
-                            <span class="price_red price"><{$vo['tuan_price']}></span>
+                            <span class="price_red price"><{$vo['tuan_price']|floatval}></span>
                             <span class="price_red">元</span>
-                            <del style="margin-left: 5px;">单买价：<{$vo['price']}>元</del>
+                            <del style="margin-left: 5px;">单买价:<{$vo['price']|floatval}>元</del>
                         </div>
                         <div class="goods_infor_right">
-                            <span>已团：<{$vo['buy_number']}></span>
+                            <span>去开团 &nbsp;&nbsp;></span>
                         </div>
                     </div>
                     </div>

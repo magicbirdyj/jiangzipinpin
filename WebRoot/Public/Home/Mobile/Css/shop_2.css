@@ -24,6 +24,8 @@
 }
 .goods_infor .goods_title{
     padding: 0px;
+    line-height: 20px;
+    max-height: 40px;
 }
 
 .goods_infor .goods_bottom{
@@ -78,6 +80,6 @@ del{
     display: inline-block;
     margin-top: 10px;
 }
-.maohao{
+#qukaituan{
     display: none;
 }
