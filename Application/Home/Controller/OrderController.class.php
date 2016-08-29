@@ -260,6 +260,11 @@ class OrderController extends FontEndController {
         if(!$result){
             $this->error('确认收货失败！');
         }
+        //发送交易成功通知
+        $remake='点我进行评价，评价成功，您将获得33元代金券';
+        $this->jiaoyi_success_tep($order_id, $remark);
+        
+        
         $this->redirect('Order/appraise',array('order_id'=>$order_id));
     }
     
@@ -331,8 +336,8 @@ class OrderController extends FontEndController {
                 $today=substr($value,26,8);//获取到文件夹名  如20150101
                 creat_file(UPLOAD.'image/appraise/'.$today);//创建文件夹（如果存在不会创建）
                 $img_url_thumb=$this->thumb($value, 500, 800);//thumb
-                rename($img_url_thumb, str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods',$value));//移动文件
-                $value=str_replace('Public/Uploads/image/temp','Public/Uploads/image/goods',$value);  
+                rename($img_url_thumb, str_replace('Public/Uploads/image/temp', UPLOAD.'image/appraise',$value));//移动文件
+                $value=str_replace('Public/Uploads/image/temp','Public/Uploads/image/appraise',$value);  
                 $value='/'.$value;
             }
             $str_img=serialize($arr_img);//序列化数组
@@ -377,7 +382,7 @@ class OrderController extends FontEndController {
         
         //更新商品表里面的分数和评价人数，存入
         $goods_id=$ordermodel->where("order_id=$order_id")->getField('goods_id');//得到商品id
-        $array_score=$ordermodel->where("goods_id=$goods_id and status=3")->getField('score',true);
+        $array_score=$ordermodel->where("goods_id=$goods_id and status=5")->getField('score',true);
         $goods_score=0;
         foreach ($array_score as $score_value){
             $goods_score+=$score_value;
@@ -391,6 +396,13 @@ class OrderController extends FontEndController {
         $goodsmodel=D('Goods');
         $goodsmodel->where("goods_id=$goods_id")->save($row1);
         
+        //发放33元代金券
+        $this->get_daijinquan($user_id, '通用券', 5);
+        $this->get_daijinquan($user_id, '通用券', 8);
+        $this->get_daijinquan($user_id, '通用券', 20);
+        
+        //发送评论成功(得到代金券)模板消息
+        $this->send_dainjinquan_tep($order_id);
         $this->redirect('Order/appraise_manage',array('order_id'=>$order_id),0);
 
     }
@@ -574,4 +586,45 @@ class OrderController extends FontEndController {
         return $result;
     }
     
+    
+    //收货成功后，发送交易成功和评价获取代金券通知
+    private function jiaoyi_success_tep($order_id,$remark){
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id=$order_id")->find();
+        $user_id=$order['user_id'];
+        $usersmodel=D('Users');
+        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
+        $template_id="VFmfBzeReRkds4Itr5HMDij0RTgPFalRQJpL5J7Pw9s";
+        $url=U('Order/appraise',array('order_id'=>$order_id));
+        $arr_data=array(
+            'first'=>array('value'=>"您好，您购买的商品：".$order["goods_name"]."已经确认收货。","color"=>"#666"),
+            'keyword1'=>array('value'=>$order['dues'].'元',"color"=>"#F90505"),
+            'keyword2'=>array('value'=>$order["goods_name"],"color"=>"#666"),
+            'keyword3'=>array('value'=>$order['order_no'],"color"=>"#F90505"),
+            'remark'=>array('value'=>$remark,"color"=>"#F90505")
+        );
+        $this->response_template($open_id, $template_id, $url, $arr_data);
+    }
+    
+    //评价成功后 获得代金券模板消息
+    private function send_dainjinquan_tep($order_id){
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id=$order_id")->find();
+        $user_id=$order['user_id'];
+        $usersmodel=D('Users');
+        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
+        $template_id="-CvJ9caeLvY9Vdqehftu8JkW0LMg0_xfmsRdK8V3_W";
+        $url=U('Index/index');
+        $tm=time();
+        $youxiaoqi=date('Y.m.d',$tm).'-'.date('Y.m.d',($tm+345600));
+        $arr_data=array(
+            'first'=>array('value'=>"亲爱的用户，您成功评价了商品：".$order['goods_name'].",33元代金券已经成功发放给您，前往：会员中心--”我的代金券“即可查看","color"=>"#666"),
+            'keyword1'=>array('value'=>"33元代金券","color"=>"#F90505"),
+            'keyword2'=>array('value'=>date('Y年m月d日'),"color"=>"#666"),
+            'keyword3'=>array('value'=>'已经成功发放给您的账户',"color"=>"#666"),
+            'keyword4'=>array('value'=>'代金券使用有效期：'.$youxiaoqi,"color"=>"#666"),
+            'remark'=>array('value'=>"点我，查看更多拼团，前往使用代金券。","color"=>"#F90505")
+        );
+        $this->response_template($open_id, $template_id, $url, $arr_data);
+    }
 }
