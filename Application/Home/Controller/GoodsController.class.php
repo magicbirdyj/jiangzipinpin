@@ -6,6 +6,16 @@ use Home\Controller;
 
 class GoodsController extends FontEndController {
     public function index() {
+        //首先必须获取关注状态
+        if (isset($_SESSION['huiyuan']) &&$_SESSION['huiyuan'] != '') {
+                $_SESSION['wei_huiyuan']=$_SESSION['huiyuan'];
+                }
+        if (!isset($_SESSION['wei_huiyuan']) || $_SESSION['wei_huiyuan'] == ''||!isset($_SESSION['guanzhu'])||$_SESSION['guanzhu']=='') {
+            header("location:". U("Login/wei_index"));
+            exit();
+        }
+        
+        
         if(!isset($_SESSION['guanzhu'])||$_SESSION['guanzhu']==''){
             $this->error('关注信息为空');
         }
@@ -308,6 +318,16 @@ class GoodsController extends FontEndController {
         $this->display();
     }
     public function pintuan_info(){
+        //首先必须获取关注状态
+        if (isset($_SESSION['huiyuan']) &&$_SESSION['huiyuan'] != '') {
+                $_SESSION['wei_huiyuan']=$_SESSION['huiyuan'];
+                }
+        if (!isset($_SESSION['wei_huiyuan']) || $_SESSION['wei_huiyuan'] == ''||!isset($_SESSION['guanzhu'])||$_SESSION['guanzhu']=='') {
+            header("location:". U("Login/wei_index"));
+            exit();
+        }
+        
+        
         $this->assign('title','拼团详情');
         $this->assign('is_ztcg','ddct');//组团状态
         $tuan_no=$_GET['tuan_no'];

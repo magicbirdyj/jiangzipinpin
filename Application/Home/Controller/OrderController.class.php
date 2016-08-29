@@ -151,7 +151,7 @@ class OrderController extends FontEndController {
     }
     
     public function delete_order(){
-        if((!empty($_POST['order_id']))&&$_POST['check']==='delete_order'){
+        if((!empty($_POST['order_id']))&&$_POST['check']=='delete_order'){
             $order_id=$_POST['order_id'];
             $ordermodel=D('Order');
             $row=array(
