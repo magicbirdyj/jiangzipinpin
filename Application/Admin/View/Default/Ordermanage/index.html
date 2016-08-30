@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Css/public.css"/>
 <link type="text/css" rel="stylesheet" href="__PUBLIC_ADMIN__/Css/ordermange.css" />
 <script src="__PUBLIC_COMMON__/Js/jquery.min.js"></script> 
@@ -8,7 +7,15 @@
 <body>
     <div class="inof_div">
         <div class="big_title">订单管理</div>
-
+        <div class='status'>
+            <div>订单状态：</div>
+            <a id='status_all' href="<{:U('Ordermanage/index')}>">全部</a>
+            <a id='status_0' href="<{:U('Ordermanage/index',array('status'=>'0'))}>">待付款</a>
+            <a id='status_1' href="<{:U('Ordermanage/index',array('status'=>'1'))}>">待成团</a>
+            <a id='status_2' href="<{:U('Ordermanage/index',array('status'=>'2'))}>">待发货</a>
+            <a id='status_3' href="<{:U('Ordermanage/index',array('status'=>'3'))}>">待收货</a>
+            <a id='status_4' href="<{:U('Ordermanage/index',array('status'=>'4'))}>">待评价</a>
+        </div>
         <div class="title"><!--标题行-->
             <div class='td2'>团购号</div>
             <div class='td3'>商品名称</div>
@@ -61,26 +68,37 @@
     
 
 <script type="text/javascript">
-    $('select[name=server_content]').bind('change',function(){sc_change();});
-    function sc_change(){
-        $('form[name=sv_cont]').submit();
+    var status="<{$status}>";
+    var css_xuanzhong={
+        backgroundColor:'#00FFDB',
+        color:'#FFF'
+    };
+    var css_no_xuan={
+        backgroundColor:'#FFF',
+        color:'#666'
     }
-    $('.input_button').bind('click',function(){
-        var id=$(this).attr('id');
-        var name=$(this).attr('name');
-        if(window.confirm('确定要把 ['+name+']下架 吗？')){
-            var url="/Admin/Goodsmanage/goods_del/goods_id/"+id+".html";
-            $.ajax({
-                type:'get',
-                async : false,
-                url:url,
-                datatype:'json'
-            });
-            window.location.href=window.location.href;
-        }else{
-            return false;
-        }   
-    });
+    if(status=='0'){
+        $('#status_0').css(css_xuanzhong);
+        $('#status_0').siblings('a').css(css_no_xuan);
+    }else if(status=='1'){
+        $('#status_1').css(css_xuanzhong);
+        $('#status_1').siblings('a').css(css_no_xuan);
+    }else if(status=='2'){
+        $('#status_2').css(css_xuanzhong);
+        $('#status_2').siblings('a').css(css_no_xuan);
+    }else if(status=='3'){
+        $('#status_3').css(css_xuanzhong);
+        $('#status_3').siblings('a').css(css_no_xuan);
+    }else if(status=='4'){
+       $('#status_4').css(css_xuanzhong);
+        $('#status_4').siblings('a').css(css_no_xuan);
+    }else{
+        $('#status_all').css(css_xuanzhong);
+        $('#status_all').siblings('a').css(css_no_xuan);
+    }
+    
+    
+    
     
     
     
