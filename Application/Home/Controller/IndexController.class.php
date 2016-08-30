@@ -8,7 +8,7 @@ class IndexController extends FontEndController {
         $lunbo=$goodsmodel->where("goods_id=258 or goods_id=263 or goods_id=235 or goods_id=236")->field('goods_img_qita,goods_id')->select();
         foreach ($lunbo as &$value) {
             $arr_img=  unserialize($value['goods_img_qita']);
-            $img_url=$arr_img[1];
+            $img_url=$arr_img[0];
             $value['img_url']=$img_url;
         }
         $this->assign('lunbo',$lunbo);
