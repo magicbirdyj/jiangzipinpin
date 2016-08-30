@@ -106,7 +106,6 @@ class MemberController extends FontEndController {
     //收藏列表
     public function sellection(){
         session('guanzhu',null); 
-        $this->assign("title","一起网_我的收藏");
         $user_id=$_SESSION['wei_huiyuan']['user_id'];
         $sellectionmodel=D('Sellection');
         $count=$sellectionmodel->where("user_id=$user_id")->count();
