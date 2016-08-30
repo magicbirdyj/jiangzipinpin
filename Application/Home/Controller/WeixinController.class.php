@@ -236,7 +236,7 @@ class WeixinController extends FontEndController {
                     {
                         "type":"view",
                         "name":"1元购",
-                        "url":"http://m.jiangzipinpin.com"
+                        "url":"http://m.jiangzipinpin.com/Home/Category/one_buy.html"
                         
                     },
                     {
