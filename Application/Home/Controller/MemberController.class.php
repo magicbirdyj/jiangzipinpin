@@ -301,7 +301,7 @@ class MemberController extends FontEndController {
 		return $buff;
     }
 
-    
+    /*
     public function qiehuanzhuanghu(){
         session('guanzhu',null); 
         $usersmodel=D(Users);
@@ -320,7 +320,7 @@ class MemberController extends FontEndController {
                  );
         $this->redirect('Index/index',0);
     }
-
+*/
 
             
 }
