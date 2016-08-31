@@ -84,7 +84,7 @@ class FontEndController extends Controller {
             C("DEFAULT_THEME", "Mobile");//默认模板主题名称
             C("TMPL_CACHE_PREFIX", "mb");//模板缓存前缀标志
             $this->assign("title",$webinfor['web_name']);//给标题赋值
-        }else{
+        }elseif($_SERVER['HTTP_HOST']==='www.jiangzipinpin.com'&&CONTROLLER_NAME!=='Kindeditor'){
             echo '请关注我们的公众号：酱紫拼拼，并从公众号进入商城。期待您的光临！';
             exit;
         }
