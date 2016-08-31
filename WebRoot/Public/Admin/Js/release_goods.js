@@ -43,11 +43,12 @@ $('input[name=radio_choujiang]:eq(1)').attr('checked','checked');
         'flash', 'media', 'insertfile', 'table', 'hr','emoticons', 'baidumap', 'pagebreak',
         'anchor', 'link', 'unlink', '|', 'about'
 ],
-            uploadJson:"/Home/Kindeditor/editor_check",
+            uploadJson:"/Admin/Kindeditor/editor_check",
             allowMediaUpload:false,//true时显示视音频上传按钮。
             allowFlashUpload:false,//true时显示Flash上传按钮。
             allowFileUpload:false,//true时显示文件上传按钮。
             allowFileManager:false,//true时显示浏览远程服务器按钮。
+            extraFileUploadParams:{PHPSESSID:session_id},//解决多图片上传失败问题
             //autoHeightMode : true,//允许自动高度
             //afterCreate : function() {
                 //this.loadPlugin('autoheight');

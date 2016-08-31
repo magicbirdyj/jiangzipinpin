@@ -291,6 +291,14 @@ class GoodsmanageController extends FontEndController {
     
     
      public function release_goods(){
+         //传给kindeditor 一个session_id  解决多图片上传失败的问题
+         $session_id = isset($_POST['PHPSESSID'])?$_POST['PHPSESSID']:'';
+         if(!empty($session_id)){
+             session_id($session_id);
+         }
+         $this->assign('session_id',$session_id);
+         //解决多图片上传失败问题到此结束 
+         
          //获取店铺列表
          $shopsmodel=D('Shops');
          $arr_shop=$shopsmodel->getField('shop_name',true);
