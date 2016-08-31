@@ -9,17 +9,25 @@
         <div class="div1">
             快递单号填写：
         </div>
+        
         <form name="fahuo" method="post" enctype="multipart/form-data" action="<{:U('Ordermanage/fahuo_check')}>" >
+             <div class="tr">
+                <div class="tr_td1">送达方式</div>
+                <select name="fangshi" class="tr_td2 release_select title_select" >
+                    <option value="1" >同城送达</option>
+                    <option value="2" >物流快递</option>
+                </select>
+            </div>
             <input name="order_id" value="<{$order_id}>" type="hidden"/> 
             <div class="tr">
-                <div class="tr_td1">快递公司</div>
-                <input name="kuaidi_company" type="text" class="text" value='同城送达'  />
-                <span id="info_company"></span>
+                <div class="tr_td1" id="row_1">骑手姓名</div>
+                <input id="input_1" name="qishou_name" type="text" class="text"   />
+                <span id="info_1"></span>
             </div>
             <div class="tr">
-                <div class="tr_td1">单号</div>
-                <input name="kuaidi_no" type="text" class="text" value="0"  />
-                <span id="info_no"></span>
+                <div class="tr_td1" id="row_2">骑手电话</div>
+                <input id="input_2" name="qishou_mobile" type="text" class="text"   />
+                <span id="info_2"></span>
             </div>
         </form>
         <a href="javascript:void(0)" id="xiayibu" class="xyb">立刻发布</a>
@@ -29,20 +37,82 @@
     
     
     <script>
-        $(':text[name=kuaidi_company]').bind('focus',function(){text_focus($('#info_company'),'填写发货的快递公司名称, 同城填写同城送达');});
-        $(':text[name=kuaidi_company]').bind('blur',function(){text_blue($(this),$('#info_company'),'快递公司名称');});
-        $(':text[name=kuaidi_no]').bind('focus',function(){text_focus($('#info_no'),'填写发货的快递单号,同城送达填写0');});
-        $(':text[name=kuaidi_no]').bind('blur',function(){text_blue($(this),$('#info_no'),'快递单号');});
-        $('#xiayibu').bind('click',function(){fabu();});
-        
-        function fabu(){
-    
-   
-        var a=text_blue($('input[name=kuaidi_company]'),$('#info_company'),'快递公司名称');
-        var b=text_blue($('input[name=kuaidi_no]'),$('#info_no'),'快递单号');
-        if(a&&b){
-            $('form[name=fahuo]').submit();
+        function select_change(){
+            if($('select[name=fangshi]').val()=='1'){
+                $('#row_1').html('骑手姓名');
+                $('#row_2').html('骑手电话');
+                $('#input_1').attr('name','qishou_name');
+                $('#input_2').attr('name','qishou_mobile');
+                bind_1();
+            }else if($('select[name=fangshi]').val()=='2'){
+                $('#row_1').html('快递公司');
+                $('#row_2').html('单号');
+                $('#input_1').attr('name','kuaidi_company');
+                $('#input_2').attr('name','kuaidi_no');
+                bind_2();
+            }
         }
-        return false;
+        
+        $('select[name=fangshi').bind('change',function(){
+            select_change();
+        });
+        bind_1();
+        function bind_1(){
+            $(':text[name=qishou_name]').bind('focus',function(){text_focus($('#info_1'),'填写送货骑手姓名');});
+            $(':text[name=qishou_name]').bind('blur',function(){text_blue($(this),$('#info_1'),'骑手姓名');});
+            $(':text[name=qishou_mobile]').bind('focus',function(){text_focus($('#info_2'),'填写骑手电话');});
+            $(':text[name=qishou_mobile]').bind('blur',function(){yz_shouji($('input[name=qishou_mobile]'));});
+        }
+
+        function bind_2(){
+            $(':text[name=kuaidi_company]').bind('focus',function(){text_focus($('#info_1'),'填写发货的快递公司名称, 同城填写同城送达');});
+            $(':text[name=kuaidi_company]').bind('blur',function(){text_blue($(this),$('#info_1'),'快递公司名称');});
+            $(':text[name=kuaidi_no]').bind('focus',function(){text_focus($('#info_2'),'填写发货的快递单号,同城送达填写0');});
+            $(':text[name=kuaidi_no]').bind('blur',function(){text_blue($(this),$('#info_2'),'快递单号');});
+        }
+        
+        
+    
+    $('#xiayibu').bind('click',function(){fabu();});
+        
+        
+        
+        
+    function fabu(){
+        if($('select[name=fangshi]').val()=='1'){
+            var a=text_blue($('input[name=qishou_name]'),$('#info_1'),'骑手姓名');
+            var b=yz_shouji($('input[name=qishou_mobile]'));
+            if(a&&b){
+                $('form[name=fahuo]').submit();
+            }
+            return false;
+        }else if($('select[name=fangshi]').val()=='2'){
+            var a=text_blue($('input[name=kuaidi_company]'),$('#info_1'),'快递公司名称');
+            var b=text_blue($('input[name=kuaidi_no]'),$('#info_2'),'快递单号');
+            if(a&&b){
+                $('form[name=fahuo]').submit();
+            }
+            return false;
+        }
+        
+    }
+    
+    
+    
+    function yz_shouji(obj){
+    if(obj.val()===""){
+        $('#info_2').css('color','red');
+        $('#info_2').html("(骑手电话为空，请输入)");
+	return false;
+	}else if(!is_shoujihao(obj.val())){
+             $('#info_2').css('color','red');
+            $('#info_2').html("(不正确，请输入正确的手机号码)");
+            return false;
+            }else{
+                $('#info_2').css('color','#666');
+                $('#info_2').html("&radic;");
+                return true;
+            }
+		
     }
     </script>

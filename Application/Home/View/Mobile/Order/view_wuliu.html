@@ -23,12 +23,17 @@
     <div class="view">
         <div class="d2">
             <div class="d2_title">物流信息</div>
-            <div class="d2_content"><span style="font-weight: bold">物流公司：<{$wuliu['company']}></span> <span>运单编号：<{$wuliu['no']}> </span></div>
+            <if condition="$wuliu['fangshi'] eq '2'">
+                <div class="d2_content"><span style="font-weight: bold">物流公司：<{$wuliu['company']}></span> <span>运单编号：<{$wuliu['no']}> </span></div>
+            <elseif condition="$wuliu['fangshi'] eq '1'">
+                <div class="d2_content"><span style="font-weight: bold">骑手姓名：<{$wuliu['qishou_name']}></span> <span>骑手电话：<{$wuliu['qishou_mobile']}> </span></div>
+            </if>
         </div>
 
         <div class="d2_title">订单跟踪</div>
         <div class="d2_content">
             <ul class="wuliu_guiji_ul">
+                 <if condition="$wuliu['fangshi'] eq '2'">
                 <volist name="wuliu_guiji" id="vo" empty="没有找到该物流的信息">
                     <li>
                     <div class="dian"></div>
@@ -38,6 +43,15 @@
                     </div>
                 </li>
                 </volist>
+                 <elseif condition="$wuliu['fangshi'] eq '1'">
+                     <li>
+                    <div class="dian"></div>
+                    <div class='guiji'>
+                        <div>骑手已经出发，请保持联系</div>
+                        <div class="time"></div>
+                    </div>
+                    </li>
+                 </if>
             </ul>
         </div>
 

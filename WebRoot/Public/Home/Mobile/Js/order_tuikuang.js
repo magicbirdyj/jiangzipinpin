@@ -139,7 +139,6 @@ function yz_shouji(obj){
 	return false;
 	}else if(!is_shoujihao(obj.val())){
             $('#lianxi_tishi').html("(不正确，请输入正确的手机号码)");
-            alert(obj.val());
             return false;
             }else{
                 $('#lianxi_tishi').html("");

@@ -1,14 +1,11 @@
 //去两边空格
-function Trim(str)
+function Trim(str){ 
+    return str.replace(/(^\s*)|(\s*$)/g, ""); 
 
-         { 
-
-             return str.replace(/(^\s*)|(\s*$)/g, ""); 
-
-     }
+}
 //时间戳转换成时间
 function getDate(tm){
-    var tt=new Date(parseInt(tm) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ")
+    var tt=new Date(parseInt(tm) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
     return tt;
 } 
 //验证手机号，如果是，返回true,否则返回false

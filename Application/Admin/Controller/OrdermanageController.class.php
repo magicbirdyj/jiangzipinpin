@@ -53,17 +53,28 @@ class OrdermanageController extends FontEndController {
     }
     
     public function fahuo_check(){
-        if(!$_POST['order_id']){
+        $post=$_POST;
+        if(!$post['order_id']){
             $this->error('订单号获取失败！');
         }
-        $order_id=$_POST['order_id'];
+        $order_id=$post['order_id'];
         $ordermodel=D('Order');
-        $kuaidi=array(
-            'company'=>$_POST['kuaidi_company'],
-            'no'=>$_POST['kuaidi_no']
+        if($post['fangshi']=='1'){
+            $data=array(
+                'fangshi'=>'1',
+                'qishou_name'=>$post['qishou_name'],
+                'qishou_mobile'=>$post['qishou_mobile']
             );
+        }elseif($post['fangshi']=='2'){
+            $data=array(
+                'fangshi'=>'2',
+                'company'=>$post['kuaidi_company'],
+                'no'=>$post['kuaidi_no']
+            );
+        }
+        
         $row=  array(
-            'kuaidi'=>  serialize($kuaidi),
+            'kuaidi'=>  serialize($data),
             'status'=>'3'
         );
         $result_add=$ordermodel->where("order_id=$order_id")->save($row);
