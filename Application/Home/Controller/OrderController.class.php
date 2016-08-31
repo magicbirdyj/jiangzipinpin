@@ -203,12 +203,14 @@ class OrderController extends FontEndController {
             $this->assign('order',$order);
             $wuliu=  unserialize($order['kuaidi']);
             $this->assign('wuliu',$wuliu);
-            if($wuliu['no']!=0&&$wuliu['company']!='同城送达'){
+            if($wuliu['fangshi']=='2'){
                 $wuliu_info=$this->getOrderTracesByJson($order['order_no'],$this->get_kuaidi_bianma($wuliu['company']),$wuliu['no']);
                 $arr_wuliu=json_decode($wuliu_info,true);
                 $wuliu_guiji=$arr_wuliu['Traces'];
                 krsort($wuliu_guiji);
                 $this->assign('wuliu_guiji',$wuliu_guiji);
+            }elseif($wuliu['fangshi']=='1'){
+                
             }
             session('guanzhu',null); 
             $this->display();
