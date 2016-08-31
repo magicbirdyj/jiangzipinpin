@@ -4,7 +4,7 @@ namespace Admin\Controller;
 use Admin\Controller;
 
 class KindeditorController extends FontEndController {
-        public function editor_check(){
+        public function editor_check(){  
         $file_info=$this->upload('image/temp/');
         //当有文件没有上传时，提示并返回
         if(count($file_info[1])<1){
