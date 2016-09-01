@@ -131,6 +131,9 @@
 <script> 
     var shop_2_href="__PUBLIC_HOME__/Mobile/Css/shop_2.css";
     var shop_1_href="__PUBLIC_HOME__/Mobile/Css/shop_1.css";
+    var fengge="<{$get['fengge']}>";
+    var fengge0_url="<{:U('Index/search',$get_cs['fengge_0'])}>";
+    var fengge1_url="<{:U('Index/search',$get_cs['fengge_1'])}>";
 </script>
 <script src="__PUBLIC_HOME__/Mobile/Js/category.js" type="text/javascript"></script>
 <script src="__PUBLIC_HOME__/Mobile/Js/new_order.js" type="text/javascript"></script>
@@ -140,11 +143,6 @@
 
 <script  type="text/javascript">
     var url=decodeURI("<{$url['url']}>");
-    var shop_2_href="__PUBLIC_HOME__/Mobile/Css/shop_2.css";
-    var shop_1_href="__PUBLIC_HOME__/Mobile/Css/shop_1.css";
-    var fengge="<{$get['fengge']}>";
-    var fengge0_url="<{:U('Index/search',$get_cs['fengge_0'])}>";
-    var fengge1_url="<{:U('Index/search',$get_cs['fengge_1'])}>";
 //选中的分类 背景更暗
 var fenlei="<{$cat_name?$cat_name:'全部'}>";
 $('#fenlei_select a:contains('+fenlei+')').parent().css('background-color','#f6f4f0');
