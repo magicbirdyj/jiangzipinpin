@@ -28,7 +28,7 @@
                 <span class="iconfont tb_jiantou_xia" >&#xe602;</span>
             </li>
             <li id='paixu_li'><a1 id='paixu_li_span'>默认排序</a1><span class="iconfont tb_jiantou_xia" >&#xe602;</span></li>
-            <li id='shaixuan_li'><div id="shaixuan">筛选<span class="iconfont tb_jiantou_xia" >&#xe602;</span></div><div class="iconfont tb_xianshi" id='fengge_1'>&#xe630;</div></li>
+            <li id='shaixuan_li'><div id="shaixuan">筛选<span class="iconfont tb_jiantou_xia" >&#xe602;</span></div><div class="iconfont tb_xianshi" id='fengge'>&#xe630;</div></li>
         </ul>
     </div>
     <div class="fenlei_select none" id="fenlei_select">
@@ -140,6 +140,11 @@
 
 <script  type="text/javascript">
     var url=decodeURI("<{$url['url']}>");
+    var shop_2_href="__PUBLIC_HOME__/Mobile/Css/shop_2.css";
+    var shop_1_href="__PUBLIC_HOME__/Mobile/Css/shop_1.css";
+    var fengge="<{$get['fengge']}>";
+    var fengge0_url="<{:U('Index/search',$get_cs['fengge_0'])}>";
+    var fengge1_url="<{:U('Index/search',$get_cs['fengge_1'])}>";
 //选中的分类 背景更暗
 var fenlei="<{$cat_name?$cat_name:'全部'}>";
 $('#fenlei_select a:contains('+fenlei+')').parent().css('background-color','#f6f4f0');
