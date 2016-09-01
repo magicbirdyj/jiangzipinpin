@@ -5,16 +5,13 @@ class AdvertController extends FontEndController {
    
     public function advert(){
         $advertmodel=D('Admin_advert');
-        if($_GET['id']==='1'){
-            $data=$advertmodel->where("position='轮播上'")->select();
-        }else if($_GET['id']==='2'){
-            $data=$advertmodel->where("position='轮播下'")->select();
-        }else if($_GET['id']==='3'){
-            $data=$advertmodel->where("position='首页右'")->select();
-            $a='下';
-        }
+        
+
+        $data=$advertmodel->where("position='轮播'")->select();
+        
         $this->assign('data',$data);
-        $this->assign('a',$a);
+        C('TOKEN_ON','false');
+        
         $this->display();
     }
     
@@ -27,22 +24,10 @@ class AdvertController extends FontEndController {
         $file_info=$this->upload('image/temp/');//获取上传文件信息
         //获取图片URL
         $data=array(
-            'file_1'=>UPLOAD.$file_info['file_1']['savepath'].$file_info['file_1']['savename'],
-            'file_2'=>UPLOAD.$file_info['file_2']['savepath'].$file_info['file_2']['savename'],
-            'file_3'=>UPLOAD.$file_info['file_3']['savepath'].$file_info['file_3']['savename'],
-            'file_11'=>UPLOAD.$file_info['file_11']['savepath'].$file_info['file_11']['savename'],
-            'file_12'=>UPLOAD.$file_info['file_12']['savepath'].$file_info['file_12']['savename'],
-            'file_13'=>UPLOAD.$file_info['file_13']['savepath'].$file_info['file_13']['savename'],
-            'file_14'=>UPLOAD.$file_info['file_14']['savepath'].$file_info['file_14']['savename'],
-            'file_15'=>UPLOAD.$file_info['file_15']['savepath'].$file_info['file_15']['savename'],
-            'file_21'=>UPLOAD.$file_info['file_21']['savepath'].$file_info['file_21']['savename'],
-            'file_22'=>UPLOAD.$file_info['file_22']['savepath'].$file_info['file_22']['savename'],
-            'file_23'=>UPLOAD.$file_info['file_23']['savepath'].$file_info['file_23']['savename'],
-            'file_24'=>UPLOAD.$file_info['file_24']['savepath'].$file_info['file_24']['savename'],
-            'file_25'=>UPLOAD.$file_info['file_25']['savepath'].$file_info['file_25']['savename'],
-            'file_61'=>UPLOAD.$file_info['file_61']['savepath'].$file_info['file_61']['savename'],
-            'file_62'=>UPLOAD.$file_info['file_62']['savepath'].$file_info['file_62']['savename'],
-            'file_63'=>UPLOAD.$file_info['file_63']['savepath'].$file_info['file_63']['savename']
+            'file_1'=>UPLOAD.$file_info[1]['file_1']['savepath'].$file_info[1]['file_1']['savename'],
+            'file_2'=>UPLOAD.$file_info[1]['file_2']['savepath'].$file_info[1]['file_2']['savename'],
+            'file_3'=>UPLOAD.$file_info[1]['file_3']['savepath'].$file_info[1]['file_3']['savename'],
+            'file_4'=>UPLOAD.$file_info[1]['file_4']['savepath'].$file_info[1]['file_4']['savename']
         );
         $this->ajaxReturn($data,'JSON');
     }
@@ -50,22 +35,10 @@ class AdvertController extends FontEndController {
     
     public function sc(){
         $arr=array(
-            0=>'11',
-            1=>'12',
-            2=>'13',
-            3=>'14',
-            4=>'15',
-            5=>'21',
-            6=>'22',
-            7=>'23',
-            8=>'24',
-            9=>'25',
-            10=>'1',
-            11=>'2',
-            12=>'3',
-            13=>'61',
-            14=>'62',
-            15=>'63'
+            0=>'1',
+            1=>'2',
+            2=>'3',
+            3=>'4'
         );
         //移动文件 并且改变url
         foreach ($arr as $value){
@@ -81,21 +54,16 @@ class AdvertController extends FontEndController {
         $advertmodel=D('Admin_advert');
         $row=array(
             'img_url'=>$img_url,
+            'url'=>$_POST['url'],
             'add_user'=>$_SESSION['admin_huiyuan']['user_id'],
             'add_user_name'=>$_SESSION['admin_huiyuan']['user_name'],
             'add_time'=>mktime()
         );
         $result=$advertmodel->where("xuhao=$xuhao")->save($row);
-        $position=$advertmodel->where("xuhao=$xuhao")->getField('position');
         if($result!==false){
-            if($position==='轮播上'){
-                $url = "/admin/advert/advert?id=1"; 
-            }elseif($position==='轮播下'){
-                $url = "/admin/advert/advert?id=2"; 
-            }
-            elseif($position==='首页右'){
-                $url = "/admin/advert/advert?id=3"; 
-            }
+            
+            $url = "/admin/advert/advert"; 
+            
             header("location:$url");
             exit();
         }else{
