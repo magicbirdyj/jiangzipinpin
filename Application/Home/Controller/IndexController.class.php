@@ -47,6 +47,13 @@ class IndexController extends FontEndController {
             $get_cs['daijinquan']['daijinquan']='1';
             $get_cs['no_daijinquan']=$get;
             unset($get_cs['no_daijinquan']['daijinquan']);
+            
+            //显示风格url
+            $get_cs['fengge_0']=$get;
+            unset($get_cs['fengge_0']['fengge']);
+            $get_cs['fengge_1']=$get;
+            $get_cs['fengge_1']['fengge']='1';
+            
         $this->assign('get_cs',$get_cs);//get_cs赋值给模板
             
             
