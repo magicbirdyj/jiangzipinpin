@@ -14,7 +14,7 @@
         <volist name="data" id="vo">  
         <form name="qrsc_<{$vo['xuhao']}>"  method="post" enctype="multipart/form-data"  action="<{:U('Advert/sc')}>">
             <input name="text_file_<{$vo['xuhao']}>" value="" type="hidden"/> 
-            <input name="url" value="" type="hidden"/> 
+            <input name="url" value="<{$vo['url']}>" type="hidden"/> 
         </form>
         </volist>
         
@@ -25,7 +25,7 @@
             <div class="zhuce4_tr_td1" >轮播图片(<{$vo['xuhao']}>)</div>
             <div class="div_goods_img"><img src="" class="empty_img" /><img class="goods_img" id="file_<{$vo['xuhao']}>"  src="<{$vo['img_url']}>" /></div> 
             <span class="file_tishi">(分辨率750*400)</span>
-            <input class="url" type="text" id="<{$vo['xuhao']}>" style="padding: 10px;" placeholder="输入URL" />
+            <input class="url" type="text" id="<{$vo['xuhao']}>" style="padding: 10px;" placeholder="输入URL" value="<{$vo['url']}>" />
             <input type="button" value="确认上传" class="qrsc" id="qrsc_<{$vo['xuhao']}>"  />
             <input type="button" value="详情编辑" class="xqbj" id="<{$vo['xuhao']}>"  />
         </div>
