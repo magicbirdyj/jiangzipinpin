@@ -46,6 +46,7 @@ class LoginController extends FontEndController {
             $row=array(
                 'open_id'=>"$open_id",
                 'user_name'=>$userinfo['nickname'],
+                'sex'=>$userinfo['sex'],
                 'head_url'=>$userinfo['headimgurl']
             );
             if($userinfo['subscribe']==0){//未关注的情况
