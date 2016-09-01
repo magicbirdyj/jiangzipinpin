@@ -11,10 +11,10 @@
 
       <div class="lunbo_div" id="lunbo_div" style="margin-left: -300%;">
           <volist name="lunbo" id="vo"> 
-              <a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><img class="lunbo_img" src="<{$vo['img_url']}>" /></a>
+              <a href="<{$(vo['url'])}>"><img class="lunbo_img" src="<{$vo['img_url']}>" /></a>
           </volist> 
           <volist name="lunbo" id="vo"> 
-              <a href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>"><img  class="lunbo_img" src="<{$vo['img_url']}>" /></a>
+               <a href="<{$(vo['url'])}>"><img class="lunbo_img" src="<{$vo['img_url']}>" /></a>
           </volist>
       </div>
       <div class="choose">
