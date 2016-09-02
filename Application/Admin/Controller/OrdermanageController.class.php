@@ -91,8 +91,8 @@ class OrdermanageController extends FontEndController {
         $order=$ordermodel->where("order_id=$order_id")->find();
         $kuaidi=  unserialize($order['kuaidi']);
         if($kuaidi['fangshi']=='1'){
-            $keyword1='（同城送达）骑手：'.$kuaidi['qishou_name'];
-            $keyword2='（同城送达）骑手电话：'.$kuaidi['qishou_mobile'];
+            $keyword1='（同城）骑手：'.$kuaidi['qishou_name'];
+            $keyword2='（同城）骑手电话：'.$kuaidi['qishou_mobile'];
         }else{
              $keyword1=$kuaidi['company'];
               $keyword2=$kuaidi['no'];
@@ -102,7 +102,7 @@ class OrdermanageController extends FontEndController {
         $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
         $template_id="RDphvvFI8o8yTMi5ItXCCMl-JFZvLXTfvNErqjVBcRM";
         $goods_id=$order['goods_id'];
-        $url=U('Order/view_wuliu',array('order_id'=>$order_id));
+        $url=U('Home/Order/view_wuliu',array('order_id'=>$order_id));
         $arr_data=array(
             'first'=>array('value'=>"您好，您购买的商品：".$order["goods_name"]." 已经启程，讲马上到达您的身边！","color"=>"#666"),
             'keyword1'=>array('value'=>$keyword1,"color"=>"#666"),
