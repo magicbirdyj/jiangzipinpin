@@ -241,8 +241,6 @@ class GoodsController extends FontEndController {
             }
         }
         $this->assign('youxiao_daijinquan',$youxiao_daijinquan);
-        var_dump($arr_daijinquan);
-        var_dump($time);
         $this->display();
     }
     public function cantuan_buy() {
@@ -1076,12 +1074,12 @@ class GoodsController extends FontEndController {
         $user_id=$order['user_id'];
         $usersmodel=D('Users');
         $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
-        $template_id="-CvJ9caeLvY9Vdqehftu8JkW0LMg0_xfmsRdK8V3_W";
+        $template_id="-CvJ9caeLvY9Vdqehftu8JkW0LMg0_xfmsRdK8V3_WI";
         $url=U('Index/index');
         $tm=time();
         $youxiaoqi=date('Y.m.d',$tm).'-'.date('Y.m.d',($tm+345600));
         $arr_data=array(
-            'first'=>array('value'=>"亲爱的用户，88元代金券已经成功发放给您，前往：会员中心--”我的代金券“即可查看","color"=>"#666"),
+            'first'=>array('value'=>"亲爱的用户，88元代金券已经成功发放给您，前往：会员中心--我的代金券 即可查看","color"=>"#666"),
             'keyword1'=>array('value'=>"88元代金券","color"=>"#F90505"),
             'keyword2'=>array('value'=>date('Y年m月d日'),"color"=>"#666"),
             'keyword3'=>array('value'=>'已经成功发放给您的账户',"color"=>"#666"),
