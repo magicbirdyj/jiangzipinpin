@@ -23,6 +23,7 @@
     <div class="view">
         <div class="d2">
             <div class="d2_title">物流信息</div>
+            <{$wuliu['fangshi']}>
             <if condition="$wuliu['fangshi'] eq '2'">
                 <div class="d2_content"><span style="font-weight: bold">物流公司：<{$wuliu['company']}></span> <span>运单编号：<{$wuliu['no']}> </span></div>
             <elseif condition="$wuliu['fangshi'] eq '1'">
