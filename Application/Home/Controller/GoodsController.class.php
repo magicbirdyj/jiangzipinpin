@@ -119,10 +119,7 @@ class GoodsController extends FontEndController {
         $this->assign('zx_shuxing',$arr_zx_shuxing);
 
         $this->assign("title", "酱紫拼拼—". $goods['goods_name']); //给标题赋值
-         
-         //让商品的点击次数加1
-         $goodsmodel->where("goods_id='$goods_id'")->setInc('click_count');
-         
+
          
          //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
          if($goods['1yuangou']==1||$goods['choujiang']==1){
@@ -144,6 +141,8 @@ class GoodsController extends FontEndController {
           }
           session('guanzhu',null); 
           $this->display('index');
+          //让商品的点击次数加1
+         $goodsmodel->where("goods_id='$goods_id'")->setInc('click_count');
     }
 
     public function get_pinglun($goods_id) {
