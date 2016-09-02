@@ -686,7 +686,7 @@ class GoodsController extends FontEndController {
         $usersmodel=D('Users');
         $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
         $paydata=array(
-            'body'=>sprintf("酱紫拼拼：商铺名：%s 商品名：%s",  substr($order['shop_name'],0,16), substr($order['goods_name'],0,20)),
+            'body'=>sprintf("酱紫拼拼：商铺名：%s 商品名：%s",  $order['shop_name'], $order['goods_name']),
             'total_fee'=>$order['dues'],
             'notify'=>PAY_HOST . U("Goods/notifyweixin"),
             'shop_name'=>$order['shop_name'],
