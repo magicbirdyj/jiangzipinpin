@@ -277,14 +277,22 @@ class GoodsmanageController extends FontEndController {
     
     //下架商品
     public function goods_del(){
-        $goods_id=$_GET['goods_id'];
+        $goods_id=$_POST['goods_id'];
         $goodsmodel=D('Goods');
-        $user_id=$_SESSION['huiyuan']['user_id'];
+        //$user_id=$_SESSION['huiyuan']['user_id'];
         $data['is_delete']=1;
         $goodsmodel->where("goods_id=$goods_id")->save($data);
     }
     
-    
+    //商品排序改变
+    public function goods_order(){
+        $goods_id=$_POST['goods_id'];
+        $order=$_POST['order'];
+        $goodsmodel=D('Goods');
+        //$user_id=$_SESSION['huiyuan']['user_id'];
+        $data['sort_order']=$order;
+        $goodsmodel->where("goods_id=$goods_id")->save($data);
+    }
 
     
     

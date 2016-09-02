@@ -47,7 +47,7 @@ font-size:14px;
 .title{
     margin-top: 20px;
     background-color: #00FFDB;
-    width: 905px;
+    /*width: 905px;*/
 }
 .title div{
     float: left;
@@ -59,29 +59,41 @@ font-size:14px;
     border: 1px solid #EEE;
 }
 .td1{
-    width: 50px;
+    width: 4%;
     text-align: center;
 }
 .td2{
-    width: 360px;
+    width: 25%;
 }
 .td3{
-    width: 60px;
+    width: 6%;
+    text-align: center;
+}
+.td3 a{
+    margin: auto;
 }
 .td4{
-    width: 70px;
+    width: 6%;
     text-align: center;
 }
 .td5{
-    width: 160px;
+    width: 10%;
     text-align: center;
 }
 .td6{
-    width: 193px;
+    width: 15%;
     text-align: center;
 }
 .td6 a{
     margin: 0px 10px;
+}
+.td7{
+    width: 5%;
+    text-align: center;
+}
+.td8{
+    width: 5%;
+    text-align: center;
 }
 .release .content{
     margin-top: 10px;

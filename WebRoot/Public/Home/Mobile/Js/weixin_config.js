@@ -1,8 +1,8 @@
 // JavaScript Document
 var img=$('#lunbo_div img:first').attr('src');
     var title=$('.titile').html();
-    var price=$('.sprice_strong').html();
-    var desc=$('.titile_1').html();
+    var price=$('.price_strong').html();
+    var desc='赶紧拉朋友一起拼团吧：'+$('.title_1').html();
     
     wx.ready(function () {
         wx.onMenuShareTimeline({

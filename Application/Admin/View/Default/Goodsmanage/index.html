@@ -31,8 +31,10 @@
             <div class='td1'>序号</div>
             <div class='td2'>商品名称</div>
             <div class='td3'>商品图片</div>
+            <div class='td8'>价格</div>
             <div class='td4'>商家</div>
             <div class='td5'>添加时间</div>
+            <div class='td7'>排序</div>
             <div class='td6'>操作</div>
         </div>
         <volist name="list" id="vo">
@@ -40,9 +42,11 @@
             <div class='td1'><{$key+1}></div>
             <div class='td2'><{$vo['goods_name']}></div>
             <div class='td3'><a href="<{:U('/Home/Goods/index',array('goods_id'=>$vo['goods_id']))}>"><img src="<{$vo['goods_img']}>" class="img_zst"/></a></div>
+            <div class='td8'><{$vo['tuan_price']}>元</div>
             <div class='td4'><{$vo['shop_name']}></div>
             <div class='td5'><{$vo['add_time']|date='Y/m/d H：i',###}></div>
-            <div class='td6'><a style="margin-top:15px; " id="<{$vo['goods_id']}>" href='<{:U("Goodsmanage/goods_editor",array("goods_id"=>$vo["goods_id"]))}>' ><input type="button"  value="编辑" /></a><input type="button" class="input_button" id="<{$vo['goods_id']}>"  name="<{$vo['goods_name']}>'"  value="下架" /></div>
+            <div class='td7'><input style="padding: 20px 10px;;border:none;" id='order_<{$vo["goods_id"]}>' value="<{$vo['sort_order']}>" /></div>
+            <div class='td6'><a style="margin-top:15px; " id="<{$vo['goods_id']}>" href='<{:U("Goodsmanage/goods_editor",array("goods_id"=>$vo["goods_id"]))}>' ><input type="button"  value="编辑" /></a><input type="button" class="input_button delete_button" id="<{$vo['goods_id']}>"  name="<{$vo['goods_name']}>'"  value="下架" /><input type="button" class="input_button order_button" id="button_order_<{$vo['goods_id']}>"  value="修改排序" /></div>
         </div>
         </volist> 
     
@@ -59,15 +63,19 @@
     function sc_change(){
         $('form[name=sv_cont]').submit();
     }
-    $('.input_button').bind('click',function(){
+    $('.delete_button').bind('click',function(){
         var id=$(this).attr('id');
         var name=$(this).attr('name');
+        var data={
+            goods_id:id
+        };
         if(window.confirm('确定要把 ['+name+']下架 吗？')){
-            var url="/Admin/Goodsmanage/goods_del/goods_id/"+id+".html";
+            var url="/Admin/Goodsmanage/goods_del.html";
             $.ajax({
-                type:'get',
+                type:'POST',
                 async : false,
                 url:url,
+                data:data,
                 datatype:'json'
             });
             window.location.href=window.location.href;
@@ -76,7 +84,27 @@
         }   
     });
     
-    
+    $('.order_button').bind('click',function(){
+        var id=$(this).attr('id').substring(13);;
+        var order=$("#order_"+id).val();
+        if(window.confirm('确定要改变商品序号吗？')){
+            var url="/Admin/Goodsmanage/goods_order.html";
+            var data={
+                goods_id:id,
+                order:order
+            };
+            $.ajax({
+                type:'POST',
+                async : false,
+                url:url,
+                data:data,
+                datatype:'json'
+            });
+            window.location.href=window.location.href;
+        }else{
+            return false;
+        }   
+    });
     
 </script>
 </body>
