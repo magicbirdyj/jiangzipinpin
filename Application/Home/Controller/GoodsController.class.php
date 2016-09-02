@@ -241,7 +241,8 @@ class GoodsController extends FontEndController {
             }
         }
         $this->assign('youxiao_daijinquan',$youxiao_daijinquan);
-        var_dump($youxiao_daijinquan);
+        var_dump($arr_daijinquan);
+        var_dump($time);
         $this->display();
     }
     public function cantuan_buy() {
