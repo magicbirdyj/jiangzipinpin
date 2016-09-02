@@ -57,6 +57,20 @@ class FontEndController extends Controller {
         return $a;
         }
     }
+     protected function get_access_token(){
+        $token_access_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" .APPID. "&secret=" .APPSECRET;
+        $res = file_get_contents($token_access_url); //获取文件内容或获取网络请求的内容
+        $result = json_decode($res, true); //接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
+        $access_token = $result['access_token'];
+        S('access_token',$access_token,7000);
+    }
+    protected function s_access_token() {
+      //获取微信access_token
+        $access_token=S('access_token');
+        if(!$access_token){
+            $this->get_access_token();
+        }
+  }
     //发送模板消息
     protected function response_template($open_id,$template_id,$url,$tem_data){
         $arr_data=array(
