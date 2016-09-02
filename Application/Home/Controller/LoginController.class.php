@@ -148,7 +148,7 @@ class LoginController extends FontEndController {
             //$usersmodel=D('Users');
             //$user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
             //$_SESSION['wei_huiyuan']=array(
-           // 'user_id'=>$user['user_id'],
+            //'user_id'=>$user['user_id'],
             //'open_id'=>$user['open_id'],
                 //);
             //if(isset($_SESSION['ref'])){

@@ -38,7 +38,7 @@
             <div class='td3'><{$vo['goods_name']}></div>
             <div class='td4'><{$vo['shop_name']}></div>
             <div class='td5'><{:get_status($vo['status'],$vo['pay_status'],$vo['tuan_no'])}></div>
-            <div class='td6'><{$vo['user_name']}></div>
+            <div class='td6'><{$vo['user_name']}>(<{$vo['identity']=='0'?'团员':'团长'}>)</div>
             <div class='td7'><{$vo['buy_number']}></div>
             <div class='td8'><{:get_admin_order(get_order_address($vo['address'],$vo['order_address']))}></div>
             <div class='td9'><{$vo['pay_status']=='0'?'未支付':'已支付'}></div>
