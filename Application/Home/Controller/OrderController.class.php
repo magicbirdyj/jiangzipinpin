@@ -212,6 +212,7 @@ class OrderController extends FontEndController {
             }elseif($wuliu['fangshi']=='1'){
                 
             }
+
             session('guanzhu',null); 
             $this->display();
         }else{

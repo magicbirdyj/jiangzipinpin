@@ -57,7 +57,36 @@ class FontEndController extends Controller {
         return $a;
         }
     }
-    
+    //发送模板消息
+    protected function response_template($open_id,$template_id,$url,$tem_data){
+        $arr_data=array(
+            'touser'=>$open_id,
+            "template_id"=>$template_id,
+            "url"=>"http://m.jiangzipinpin.com".$url,
+            "data"=>$tem_data
+        );
+        $data=json_encode($arr_data,JSON_UNESCAPED_UNICODE);
+        $this->s_access_token();
+        $access_token=S('access_token');
+        $MENU_URL="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$access_token;
+        $ch = curl_init(); 
+        curl_setopt($ch, CURLOPT_URL, $MENU_URL); 
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; MSIE 5.01; Windows NT 5.0)');
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_AUTOREFERER, 1); 
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+        $info = curl_exec($ch);
+        if (curl_errno($ch)) {
+            echo 'Errno'.curl_error($ch);
+        }
+        curl_close($ch);
+
+        //var_dump($info);
+    }
     
     public function get_page($count,$page_size){
         $page=new \Think\Page($count,$page_size);//创建一个page类  参数1是数据总条数，参数2是一页显示的条数

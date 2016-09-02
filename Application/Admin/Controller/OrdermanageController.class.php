@@ -79,13 +79,40 @@ class OrdermanageController extends FontEndController {
         );
         $result_add=$ordermodel->where("order_id=$order_id")->save($row);
         if($result_add){
+            $this-> fahuo_tep_success($order_id);//  发送消息给团员
             $this->success('商品发货成功！',U('Ordermanage/index'),2);
         }
     }
     
     
 
-    
+    private function fahuo_tep_success($order_id){
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id=$order_id")->find();
+        $kuaidi=  unserialize($order['kuaidi']);
+        if($kuaidi['fangshi']=='1'){
+            $keyword1='（同城送达）骑手：'.$kuaidi['qishou_name'];
+            $keyword2='（同城送达）骑手电话：'.$kuaidi['qishou_mobile'];
+        }else{
+             $keyword1=$kuaidi['company'];
+              $keyword2=$kuaidi['no'];
+        }
+        $user_id=$order['user_id'];
+        $usersmodel=D('Users');
+        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
+        $template_id="RDphvvFI8o8yTMi5ItXCCMl-JFZvLXTfvNErqjVBcRM";
+        $goods_id=$order['goods_id'];
+        $url=U('Order/view_wuliu',array('order_id'=>$order_id));
+        $arr_data=array(
+            'first'=>array('value'=>"您好，您购买的商品：".$order["goods_name"]." 已经启程，讲马上到达您的身边！","color"=>"#666"),
+            'keyword1'=>array('value'=>$keyword1,"color"=>"#666"),
+            'keyword2'=>array('value'=>$keyword2,"color"=>"#666"),
+            'keyword3'=>array('value'=>$order["goods_name"],"color"=>"#666"),
+            'keyword4'=>array('value'=>$order['buy_number'],"color"=>"#666"),
+            'remark'=>array('value'=>"点我，查看物流详细信息","color"=>"#F90505")
+        );
+        $this->response_template($open_id, $template_id, $url, $arr_data);
+    }
 
 
 

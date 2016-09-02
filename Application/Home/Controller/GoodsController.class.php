@@ -127,7 +127,6 @@ class GoodsController extends FontEndController {
          //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
          if($goods['1yuangou']==1||$goods['choujiang']==1){
             $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
-            var_dump($choujiang);
             if($choujiang>0){
                 $this->assign('is_get','yijing_get');//分配变量给JS用 对已经获取过该活动商品的用户 开团按钮失效
             }

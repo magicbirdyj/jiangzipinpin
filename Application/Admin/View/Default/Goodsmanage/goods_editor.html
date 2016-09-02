@@ -174,9 +174,9 @@
             <div class="tr">
                 <div class="tr_td1">参加1元购</div>
                     <div class="tr_td2">
-                    <input name="radio_1yuangou" type="radio" class="radio" value="1" checked="checked" id="1yuangou_y" />是
+                    <input name="radio_1yuangou" type="radio" class="radio" value="1"  id="1yuangou_y" />是
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input name="radio_1yuangou" type="radio" class="radio" value="0"  id="1yuangou_n"/>否
+                    <input name="radio_1yuangou" type="radio" class="radio" value="0"  checked="checked"  id="1yuangou_n"/>否
                     <a href="<{:U('Company/index','name=daijinquan')}>" id="daijinquan_help" style="margin-left: 30px;border: 1px solid #888;padding:1px 5px;font-size: 12px;position: relative;bottom:2px;">查看详情</a>
                 </div>
             </div>
@@ -184,9 +184,9 @@
             <div class="tr">
                 <div class="tr_td1">参加抽奖</div>
                     <div class="tr_td2">
-                    <input name="radio_choujiang" type="radio" class="radio" value="1" checked="checked" id="choujiang_y" />是
+                    <input name="radio_choujiang" type="radio" class="radio" value="1" id="choujiang_y" />是
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input name="radio_choujiang" type="radio" class="radio" value="0" id="choujiang_n" />否
+                    <input name="radio_choujiang" type="radio" class="radio" value="0" checked="checked" id="choujiang_n" />否
                     <a href="<{:U('Company/index','name=daijinquan')}>" id="daijinquan_help" style="margin-left: 30px;border: 1px solid #888;padding:1px 5px;font-size: 12px;position: relative;bottom:2px;">查看详情</a>
                 </div>
             </div>
@@ -233,14 +233,20 @@
         $('#daijinquan_n').attr('checked','checked');
     }
     //1元购赋值
-    if("<{$goods['1yuangou']}>"==='0'){
-        $('#1yuangou_y').attr('checked','');
+    if("<{$goods['1yuangou']}>"=='0'){
+        $('#1yuangou_y').attr('checked',false);
         $('#1yuangou_n').attr('checked','checked');
+    }else{
+        $('#1yuangou_n').attr('checked',false);
+        $('#1yuangou_y').attr('checked','checked');
     }
     //抽奖赋值
-    if("<{$goods['choujiang']}>"==='0'){
-        $('#choujiang_y').attr('checked','');
+    if("<{$goods['choujiang']}>"=='0'){
+        $('#choujiang_y').attr('checked',false);
         $('#choujiang_n').attr('checked','checked');
+    }else{
+        $('#choujiang_n').attr('checked',false);
+        $('#choujiang_y').attr('checked','checked');
     }
    
    //商品自选属性赋值
