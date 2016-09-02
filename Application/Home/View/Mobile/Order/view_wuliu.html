@@ -23,10 +23,9 @@
     <div class="view">
         <div class="d2">
             <div class="d2_title">物流信息</div>
-            <{$wuliu['fangshi']}>
             <if condition="$wuliu['fangshi'] eq '2'">
                 <div class="d2_content"><span style="font-weight: bold">物流公司：<{$wuliu['company']}></span> <span>运单编号：<{$wuliu['no']}> </span></div>
-            <elseif condition="$wuliu['fangshi'] eq '1'">
+            <elseif condition="$wuliu['fangshi'] eq '1'" />
                 <div class="d2_content"><span style="font-weight: bold">骑手姓名：<{$wuliu['qishou_name']}></span> <span>骑手电话：<{$wuliu['qishou_mobile']}> </span></div>
             </if>
         </div>
