@@ -16,21 +16,16 @@
         <div class="title"><!--标题行-->
             <div class='td1'>会员ID</div>
             <div class='td2'>会员名</div>
-            <div class='td3'>邮箱</div>
-            <div class='td4'>电话</div>
-            <div class='td5'>是否婚礼人</div>
-            <div class='td6'>服务类别</div>
-            <div class='td7'>注册时间</div>
+            <div class='td3'>头像</div>
+            <div class='td4'>性别</div>
+           
         </div>
         <volist name="list" id="vo">
         <div class="content"><!--内容遍历-->
             <div class='td1'><{$vo['user_id']}></div>
             <div class='td2'><{$vo['user_name']}></div>
-            <div class='td3'><{$vo['email']}></div>
-            <div class='td4'><{$vo['mobile_phone']}></div>
-            <div class='td5'><{$vo['shopman_id']==='0'?'普通会员':'婚礼人'}></div>
-            <div class='td6'><{$vo['server_content']}></div>
-            <div class='td7'><{$vo['reg_time']|date='Y/m/d H：i',###}></div>
+            <div class='td3'><img src="<{$vo['head_url']}>" /></div>
+            <div class='td4'><{$vo[sex']=='1'?'男':'女'}></div>
         </div>
         </volist> 
     
