@@ -67,6 +67,12 @@ font-size:14px;
 }
 .td3{
     width: 150px;
+    text-align: center;
+}
+.head_img{
+    width: 100px;
+    height: 100px;
+    margin: auto;
 }
 .td4{
     width: 120px;
