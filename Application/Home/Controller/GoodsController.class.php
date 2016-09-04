@@ -756,7 +756,8 @@ class GoodsController extends FontEndController {
             //验证交易金额是否为订单的金额;
             if (!empty($returnPay['total_fee'])) {
                 if ($returnPay['total_fee'] != $order['dues'] * 100) {
-                    //file_put_contents('./index.txt',print_r('returnPay[total_fee]是'.$returnPay['total_fee'].' order[dues]是'.$order['dues'],true),FILE_APPEND);
+                    file_put_contents('./index.txt',$returnPay['total_fee'],FILE_APPEND);
+                    file_put_contents('./index.txt',$order['dues'],FILE_APPEND);
                     echo "fail";
                 }
             } 
