@@ -106,7 +106,7 @@ class LoginController extends FontEndController {
             $open_id=$wangye['openid'];
             $this->s_access_token();
             $access_token=S('access_token');
-            $userinfo=$this->get_userinfo($open_id,$access_token);
+            $userinfo=$this->get_userinfo('oSI43woDNwqw6b_jBLpM2wPjFn_M',$access_token);
             $usersmodel=D('Users');
             $user_id=$usersmodel->where("open_id='$open_id'")->getField('user_id');
             $row=array(
@@ -118,6 +118,9 @@ class LoginController extends FontEndController {
             }else{
                 $row['user_id']=$user_id;
             }
+            var_dump($wangye['access_token']);
+            var_dump($open_id);
+            var_dump($userinfo);exit;
             $_SESSION['wei_huiyuan']=$row;
             if($userinfo['subscribe']===0){
                 //未关注，返回原页面并弹出关注页面
@@ -184,7 +187,7 @@ class LoginController extends FontEndController {
   }
   
   private function get_userinfo($openid,$access_token){
-       $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$access_token."&openid=".$openid."&lang=zh_CN" ;
+       $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$access_token."&openid="."oSI43woDNwqw6b_jBLpM2wPjFn_M"."&lang=zh_CN" ;
        $res = file_get_contents($url); //获取文件内容或获取网络请求的内容
        $result = json_decode($res, true);//接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
        return $result;
