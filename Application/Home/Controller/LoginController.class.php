@@ -118,6 +118,9 @@ class LoginController extends FontEndController {
             }else{
                 $row['user_id']=$user_id;
             }
+            var_dump($wangye['access_token']);
+            var_dump($open_id);
+            var_dump($userinfo);exit;
             $_SESSION['wei_huiyuan']=$row;
             if($userinfo['subscribe']===0){
                 //未关注，返回原页面并弹出关注页面
