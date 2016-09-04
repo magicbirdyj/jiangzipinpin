@@ -27,6 +27,7 @@
     background-color: #00FFDB;
 }
 .title div{
+    box-sizing: border-box;
     float: left;
     font-size: 14px;
     color: #000;
@@ -103,6 +104,8 @@
     line-height: 30px;
     border:1px solid #EEE;
     font-size: 14px;
+    box-sizing: border-box;
+    padding-left: 5px;
 }
 .content .img_zst{
     height: 60px;
