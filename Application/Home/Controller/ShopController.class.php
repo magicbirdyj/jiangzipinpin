@@ -11,6 +11,7 @@ use Home\Controller;
 class ShopController extends FontEndController {
     public function index(){
         $shop_id=$_GET['shop_id'];
+        
         $shopsmodel=D('Shops');
         $shop=$shopsmodel->where("shop_id=$shop_id")->find();
         $goodsmodel=D('Goods');
