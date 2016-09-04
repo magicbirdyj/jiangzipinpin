@@ -33,22 +33,19 @@ class CrontabController extends FontEndController {
         $time=  time();
          //24小时未组团成功，团内订单全部组团失败
         $ordermodel=D('Order');
-        //$arr_tuan_no=$ordermodel->where("deleted=0 and pay_status=1 and status=1 and tuan_no<>0")->getField('tuan_no',true);
-        $arr_tuan_no=$ordermodel->where("deleted=0 and pay_status=1 and status=6 and tuan_no<>0")->getField('tuan_no',true);
+        $arr_tuan_no=$ordermodel->where("deleted=0 and pay_status=1 and status=1 and tuan_no<>0")->getField('tuan_no',true);
         array_unique($arr_tuan_no);
         foreach ($arr_tuan_no as $value) {
             $order=$ordermodel->where("order_id=$value")->field('created,tuan_number')->find();
             if($time>$order['created']+86400){
-                //$count=$ordermodel->where("tuan_no=$value and pay_status=1 and status=1 and deleted=0")->count();
-                $count=$ordermodel->where("tuan_no=$value and pay_status=1 and status=6 and deleted=0")->count();
+                $count=$ordermodel->where("tuan_no=$value and pay_status=1 and status=1 and deleted=0")->count();
                 if($count<$order['tuan_number']){
                     $row=array('status'=>6);
                     $ordermodel->where("tuan_no=$value and status=1")->save($row);
                     //该团中每个付款的成员都要退款并发送退款通知
                     $arr_order_id=$ordermodel->where("tuan_no=$value and pay_status=1")->getField('order_id',true);
-                    file_put_contents('./ztsb_0.txt',print_r($arr_order_id,true),FILE_APPEND);
+                    //file_put_contents('./ztsb_0.txt',print_r($arr_order_id,true),FILE_APPEND);
                     foreach ($arr_order_id as $value_1) {
-                        file_put_contents('./ztsb_1.txt',print_r($value_1,true),FILE_APPEND);
                         $this->refund($value_1);
                     }
                 }
