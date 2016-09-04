@@ -33,7 +33,8 @@ class CrontabController extends FontEndController {
         $time=  time();
          //24小时未组团成功，团内订单全部组团失败
         $ordermodel=D('Order');
-        $arr_tuan_no=$ordermodel->where("deleted=0 and pay_status=1 and status=1 and tuan_no<>0")->getField('tuan_no',true);
+        //$arr_tuan_no=$ordermodel->where("deleted=0 and pay_status=1 and status=1 and tuan_no<>0")->getField('tuan_no',true);
+        $arr_tuan_no=$ordermodel->where("deleted=0 and pay_status=1 and status=6 and tuan_no<>0")->getField('tuan_no',true);
         array_unique($arr_tuan_no);
         foreach ($arr_tuan_no as $value) {
             $order=$ordermodel->where("order_id=$value")->field('created,tuan_number')->find();
