@@ -749,7 +749,6 @@ class GoodsController extends FontEndController {
         $returnPay = $notify->getPayReturn();
         if (!$returnPay || $returnPay[""]) {
             echo "FAIL";
-            die;
         }
         if (array_key_exists("return_code", $returnPay) && array_key_exists("result_code", $returnPay) && $returnPay["return_code"] == "SUCCESS" && $returnPay["result_code"] == "SUCCESS") {
             $ordermodel = D('Order');
@@ -757,8 +756,8 @@ class GoodsController extends FontEndController {
             //验证交易金额是否为订单的金额;
             if (!empty($returnPay['total_fee'])) {
                 if ($returnPay['total_fee'] != $order['dues'] * 100) {
+                    //file_put_contents('./index.txt',print_r('returnPay[total_fee]是'.$returnPay['total_fee'].' order[dues]是'.$order['dues'],true),FILE_APPEND);
                     echo "fail";
-                    die;
                 }
             } 
             $order_id = $order['order_id'];
@@ -771,7 +770,6 @@ class GoodsController extends FontEndController {
             );
             if (!$ordermodel->where("order_id=$order_id")->save($row)) {
                 echo "fail";
-                die;
             }
             
             //订单或者团购订单成功再加商品购买数量
