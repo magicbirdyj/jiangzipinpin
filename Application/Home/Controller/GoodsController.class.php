@@ -877,7 +877,7 @@ class GoodsController extends FontEndController {
                $shopsmodel->where("shop_id=$shop_id")->setInc('sale_number',(int)$goods['count']);//店铺的购买次数加团购人数
            }else{
                //不是活动的商品  给成团的团长和团员发送消息，成团成功，等待发货
-                $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status>0 and status=1 and identity=0")->getField('order_id',true);
+                $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status>0 and status=1")->getField('order_id',true);
                 $remark="恭喜您，拼团的商品已经成团,我们将尽快把商品送到您的手上，请注意关注";
                 foreach ($arr_order_id as $value) {
                     $this->pintuan_success_tep($value,$remark);//不是活动的商品  给成团的团长和团员发送消息，成团成功，等待发货
