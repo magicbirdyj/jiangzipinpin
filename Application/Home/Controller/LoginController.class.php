@@ -128,7 +128,7 @@ class LoginController extends FontEndController {
                 var_dump('code： '.$code);
                 var_dump('wangye： '.$wangye);
                 var_dump('access_token： '.$access_token);
-                var_dump('userinfo： '.$userinfo);
+                var_dump('userinfo ： '.$userinfo);
                 echo '出现该错误，请和管理员联系报错 13574506835 谢谢';
                 exit;
             }
