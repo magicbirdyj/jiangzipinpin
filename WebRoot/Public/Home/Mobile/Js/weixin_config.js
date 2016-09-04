@@ -6,7 +6,7 @@ var img=$('#lunbo_div img:first').attr('src');
     var desc=yuan_price+','+tuan_number+'人团价'+price+'元：'+$('#title1_1').html();
     var is_huodong=$('#huodong_guize').html();
     if(is_huodong){
-        fenxiang_title='真的只需要'+price+'元：'+title;
+        fenxiang_title='真的只需要'+price+'元：【'+tuan_number+'人团】'+title;
     }else{
         fenxiang_title= '【酱紫拼拼】'+tuan_number+'人团：'+price+'元 '+title;
     }
