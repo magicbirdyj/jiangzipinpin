@@ -67,7 +67,7 @@
     <if condition="($goods['1yuangou'] eq 1) and ($goods['choujiang'] eq 1)">
         <div class="title1_1" id="huodong_guize">
             <p>抽奖规则</p>
-            <p>1、拼团成功后，团长将获得1元购活动商品，再从9名团员中随机抽取一名获得1元购商品。</p>
+            <p>1、拼团成功后，团长将获得1元购活动商品，再从该团的团员中随机抽取一名获得1元购商品。</p>
             <p>2、未中奖的团员全额退款，并赠送88元代金券。</p>
             <p>3、未中奖的团员可自己开团，但不能再参团，拼团成功的团长和已中奖的团员不能重复参加该活动</p>
             <p style="color:red">备注：该活动暂时只支持送货地区为冷水江市市区</p>
@@ -113,7 +113,8 @@
     
     
     <div style="padding: 7px 10px;font-size: 14px;margin-top: 10px;">支付开团并邀请 <{$goods['tuan_number']-1}> 人开团，人数不足自动退款</div>
-    <if condition="($goods_tuan neq NULL) and ($goods['1yuangou'] eq 0) and ($goods['choujiang'] eq 0)">
+   <!-- <if condition="($goods_tuan neq NULL) and ($goods['1yuangou'] eq 0) and ($goods['choujiang'] eq 0)">-->
+    <if condition="($goods_tuan neq NULL)">
     <div style="padding: 10px 10px;font-size: 14px;background-color: #f0f0f0;">以下小伙伴正在发起团购，您可以直接参与</div>
     <div class="all_pintuan">
         <ul>
