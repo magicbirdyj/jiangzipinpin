@@ -45,7 +45,7 @@ class CrontabController extends FontEndController {
                     $row=array('status'=>6);
                     $ordermodel->where("tuan_no=$value and status=1")->save($row);
                     //该团中每个付款的成员都要退款并发送退款通知
-                    $arr_order_id=$ordermodel->where("tuan_no=$value and pay_status=1")->getFiele('order_id',true);
+                    $arr_order_id=$ordermodel->where("tuan_no=$value and pay_status=1")->getField('order_id',true);
                     file_put_contents('./ztsb_0.txt',print_r($arr_order_id,true),FILE_APPEND);
                     foreach ($arr_order_id as $value_1) {
                         file_put_contents('./ztsb_1.txt',print_r($value_1,true),FILE_APPEND);
