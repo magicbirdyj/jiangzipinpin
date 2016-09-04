@@ -107,8 +107,6 @@ class LoginController extends FontEndController {
             $this->s_access_token();
             $access_token=S('access_token');
             $userinfo=$this->get_userinfo($open_id,$access_token);
-            var_dump($wangye);
-            exit();
             $usersmodel=D('Users');
             $user_id=$usersmodel->where("open_id='$open_id'")->getField('user_id');
             $row=array(
@@ -121,6 +119,7 @@ class LoginController extends FontEndController {
                 $row['user_id']=$user_id;
             }
             $_SESSION['wei_huiyuan']=$row;
+            var_dump($userinfo);exit;
             if($userinfo['subscribe']===0){
                 //未关注，返回原页面并弹出关注页面
                 $_SESSION['guanzhu']='weiguanzhu';
