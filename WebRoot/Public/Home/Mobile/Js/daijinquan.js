@@ -58,6 +58,13 @@ function daijinquan_each(){
         $(this).parents('li').unbind('click');
     }
     });
+    if(50>totle_price){
+        ky_daijinquan=0;
+        $('#ky_daijinquan').text('');
+        $(':hidden[name=ky_daijinquan]').val(ky_daijinquan);
+        $('#dues').text(totle_price-ky_daijinquan);
+        $(':hidden[name=dues]').val(totle_price-ky_daijinquan);
+    }
 }
 
 
