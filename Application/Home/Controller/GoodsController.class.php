@@ -748,7 +748,7 @@ class GoodsController extends FontEndController {
         $notify->Handle(false);
         $returnPay = $notify->getPayReturn();
         if (!$returnPay || $returnPay[""]) {
-            echo "FAIL";
+            echo "fail";
         }
         if (array_key_exists("return_code", $returnPay) && array_key_exists("result_code", $returnPay) && $returnPay["return_code"] == "SUCCESS" && $returnPay["result_code"] == "SUCCESS") {
             $ordermodel = D('Order');
