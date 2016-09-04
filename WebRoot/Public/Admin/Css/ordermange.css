@@ -25,6 +25,7 @@
 .title{
     margin-top: 20px;
     background-color: #00FFDB;
+    width: 100%;
 }
 .title div{
     box-sizing: border-box;
@@ -41,7 +42,7 @@
     width: 5%;
 }
 .td3{
-    width: 15%;
+    width: 14%;
     
 }
 .td4{
@@ -51,13 +52,13 @@
     width: 5px;
 }
 .td6{
-    width: 6%;
+    width: 5%;
 }
 .td7{
     width: 3%;
 }
 .td8{
-    width: 23%;
+    width: 21%;
 }
 
 .td9{
@@ -81,7 +82,7 @@
     text-align: center;
 }
 .td14{
-    width: 7%;
+    width: 6%;
     text-align: center;
 }
 .td15{
