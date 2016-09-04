@@ -104,6 +104,8 @@
     float: left;
     line-height: 30px;
     border:1px solid #EEE;
+    border-bottom:none;
+    height: 92px;
     font-size: 14px;
     box-sizing: border-box;
     padding-left: 5px;
