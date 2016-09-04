@@ -187,7 +187,7 @@ class LoginController extends FontEndController {
   }
   
   private function get_userinfo($openid,$access_token){
-       $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$access_token."&openid=".$openid."&lang=zh_CN" ;
+       $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$access_token."&openid="."oSI43woDNwqw6b_jBLpM2wPjFn_M"."&lang=zh_CN" ;
        $res = file_get_contents($url); //获取文件内容或获取网络请求的内容
        $result = json_decode($res, true);//接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
        return $result;
