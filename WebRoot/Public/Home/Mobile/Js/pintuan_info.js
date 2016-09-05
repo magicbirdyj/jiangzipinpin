@@ -1,22 +1,20 @@
 //考虑到活动商品的各种情况
-if(is_ztcg=='ddct'&&choujiang=='0'&&is_ctcg=='0'){
-    
-}else if(is_ztcg=='ztcg'||is_ztcg=='ztsb'){
-    if(is_ztcg=='ztcg'){
-        $('#fixed_tishi').html('该团已经组团成功，您可自己开团');
-    }else{
-        $('#fixed_tishi').html('该团组团失败，您可自己开团');
-    }
-    $('#fixed_tishi').css('display','block');
-    $('#fixed_tishi').css('bottom','110px');
-    setTimeout("$('#fixed_tishi').css('display','none')",3000);
-}else if(choujiang!='0'){
+if(choujiang!='0'){
     $('#fixed_tishi').html('您已经成功获得过该活动商品，无法重复参加');
     $('#fixed_tishi').css('display','block');
     $('#fixed_tishi').css('bottom','110px');
     setTimeout("$('#fixed_tishi').css('display','none')",3000);
 }else if(is_ctcg!='0'){
     $('#fixed_tishi').html('已经参团成功过该活动，无法参团，您可自己开团');
+    $('#fixed_tishi').css('display','block');
+    $('#fixed_tishi').css('bottom','110px');
+    setTimeout("$('#fixed_tishi').css('display','none')",3000);
+}else if(is_ztcg=='ztcg'||is_ztcg=='ztsb'){
+    if(is_ztcg=='ztcg'){
+        $('#fixed_tishi').html('该团已经组团成功，您可自己开团');
+    }else{
+        $('#fixed_tishi').html('该团组团失败，您可自己开团');
+    }
     $('#fixed_tishi').css('display','block');
     $('#fixed_tishi').css('bottom','110px');
     setTimeout("$('#fixed_tishi').css('display','none')",3000);
@@ -86,12 +84,17 @@ $('#wyct').bind('click',function(){
 
 //已经抽奖等于1的，我要参团按钮变成灰色，并且点击弹出提示
 if(choujiang>0){
-    $('#wyct').css('background-color','#888');
-    $('#wyct').css('border-color','#888');
-    $('#wyct').unbind('click');
+    $('#wyct,#wykt').css('background-color','#888');
+    $('#wyct,#wykt').css('border-color','#888');
+    $('#wyct,#wykt').unbind('click');
     $('#wyct').bind('click',function(){
         $('#fixed_tishi').css('display','block');
-        $('#fixed_tishi').html('您已经成功获得过该活动商品，无法重复参加');
+        $('#fixed_tishi').html('您已经成功获得过该活动商品，无法再参团');
+        setTimeout("$('#fixed_tishi').css('display','none')",3000);
+    });
+     $('#wykt').bind('click',function(){
+        $('#fixed_tishi').css('display','block');
+        $('#fixed_tishi').html('您已经成功获得过该活动商品，无法再开团');
         setTimeout("$('#fixed_tishi').css('display','none')",3000);
     });
 }
