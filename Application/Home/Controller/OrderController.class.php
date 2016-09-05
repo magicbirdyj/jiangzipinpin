@@ -104,7 +104,7 @@ class OrderController extends FontEndController {
          
          
          session('guanzhu',null); 
-         $this->display('index');
+         $this->display();
     }
     public function quxiao_order(){
         if((!empty($_POST['order_id']))&&$_POST['check']==='quxiao_order'){
