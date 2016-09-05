@@ -150,13 +150,13 @@ class LoginController extends FontEndController {
             //$_SESSION['wei_huiyuan']=array(
             //'user_id'=>$user['user_id'],
             //'open_id'=>$user['open_id'],
-                //);
+            //    );
             //if(isset($_SESSION['ref'])){
-                //header("location:". $_SESSION['ref']);
-                //exit();
+            //    header("location:". $_SESSION['ref']);
+            //    exit();
             //}else{
-                //echo '对不起，程序错误，您直接进入了登陆页面 没有ref';
-                //exit();
+            //    echo '对不起，程序错误，您直接进入了登陆页面 没有ref';
+            //    exit();
             //}
              echo '请关注我们的公众号：酱紫拼拼，并从公众号进入商城。期待您的光临！';
         }

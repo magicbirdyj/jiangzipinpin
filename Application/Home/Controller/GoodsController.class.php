@@ -835,7 +835,6 @@ class GoodsController extends FontEndController {
         //刚组团成功 把逻辑走一 遍    如果组团成功的逻辑已经走完一遍（即status不等于1）了 不再重复走
         if($goods['count']>=$order['tuan_number']&&$order['status']==1){
            $this->assign('is_ztcg','ztcg');//给JS判断是否组团成功
-           //$this->assign('title','组团成功');//组团成功
            
            
            //如果是抽奖活动，随机抽
@@ -849,6 +848,7 @@ class GoodsController extends FontEndController {
                $row=array(
                    'choujiang'=>1
                );
+               
                $ordermodel->where("order_id=$rand_order_id")->save($row);//抽中的人获取资格
                $ordermodel->where("order_id=$tuan_no")->save($row);//团长获取资格
                //给未被抽中的其它团员退款 并发送退款模板消息
