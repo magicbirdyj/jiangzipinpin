@@ -87,16 +87,13 @@ if(choujiang>0){
     $('#wyct,#wykt').css('background-color','#888');
     $('#wyct,#wykt').css('border-color','#888');
     $('#wyct,#wykt').unbind('click');
-    $('#wyct').bind('click',function(){
+    $('#wyct,#wykt').bind('click',function(){
         $('#fixed_tishi').css('display','block');
-        $('#fixed_tishi').html('您已经成功获得过该活动商品，无法再参团');
+        $('#fixed_tishi').html('您已经成功获得过该活动商品，无法重复参加');
         setTimeout("$('#fixed_tishi').css('display','none')",3000);
+        return false;
     });
-     $('#wykt').bind('click',function(){
-        $('#fixed_tishi').css('display','block');
-        $('#fixed_tishi').html('您已经成功获得过该活动商品，无法再开团');
-        setTimeout("$('#fixed_tishi').css('display','none')",3000);
-    });
+     
 }
     //ajax删除$_session
     function delete_guanzhu(){
