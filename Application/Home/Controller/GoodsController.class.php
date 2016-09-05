@@ -178,7 +178,6 @@ class GoodsController extends FontEndController {
         $default=$address['default_address'];
         $default_address=$arr_address[$default];
         $this->assign('default_Address',$default_address);
-
         $goods_id=$_GET['goods_id'];
         if($_GET['zx_shuxing']){
             $zx_shuxing=$_GET['zx_shuxing'];
@@ -420,6 +419,7 @@ class GoodsController extends FontEndController {
         $price=$_POST['price'];
         $ky_daijinquan=$_POST['ky_daijinquan'];
         $dues=$_POST['dues'];
+        $order_address=$_POST['order_address'];
         if($_POST['zx_shuxing']){
             $zx_shuxing=$_POST['zx_shuxing'];
         }else{
@@ -444,7 +444,8 @@ class GoodsController extends FontEndController {
             'updated' => mktime(),
             'price' => $price,
             'daijinquan'=>ky_daijinquan,
-            'dues'=>$dues
+            'dues'=>$dues,
+            'order_address'=>$order_address
         );
         $result = $ordermodel->add($row); //订单信息写入数据库order表
             if(!$result){
@@ -488,6 +489,7 @@ class GoodsController extends FontEndController {
         $price=$_POST['price'];
         $ky_daijinquan=$_POST['ky_daijinquan'];
         $dues=$_POST['dues'];
+        $order_address=$_POST['order_address'];
         if($_POST['zx_shuxing']){
             $zx_shuxing=$_POST['zx_shuxing'];
         }else{
@@ -515,7 +517,8 @@ class GoodsController extends FontEndController {
             'updated' => mktime(),
             'price' => $price,
             'daijinquan'=>ky_daijinquan,
-            'dues'=>$dues
+            'dues'=>$dues,
+            'order_address'=>$order_address
         );
         $result = $ordermodel->add($row); //订单信息写入数据库order表
         
@@ -574,6 +577,7 @@ class GoodsController extends FontEndController {
         
         $ky_daijinquan=$_POST['ky_daijinquan'];
         $dues=$_POST['dues'];
+        $order_address=$_POST['order_address'];
         $buy_number=$_POST['buy_number'];
         if($_POST['zx_shuxing']){
             $zx_shuxing=$_POST['zx_shuxing'];
@@ -601,7 +605,8 @@ class GoodsController extends FontEndController {
             'updated' => mktime(),
             'price' => $order['price'],
             'daijinquan'=>ky_daijinquan,
-            'dues'=>$dues
+            'dues'=>$dues,
+            'order_address'=>$order_address
         );
         $result = $ordermodel->add($row); //订单信息写入数据库order表
         
