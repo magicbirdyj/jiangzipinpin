@@ -306,7 +306,7 @@
 <script src="__PUBLIC_HOME__/Mobile/Js/foot_buy.js" type="text/javascript"></script>
 <script src="__PUBLIC_HOME__/Mobile/Js/new_order.js" type="text/javascript"></script>
 <script src="__PUBLIC_HOME__/Mobile/Js/weixin_config.js" type="text/javascript"></script>
-<if condition="($goods_tuan neq NULL) and ($goods['1yuangou'] eq 0) and ($goods['choujiang'] eq 0)">
+<if condition="$goods_tuan neq NULL">
 <script>
     ///倒计时
     var timestamp = (Date.parse(new Date()))/1000;
