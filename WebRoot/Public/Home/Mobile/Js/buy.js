@@ -14,7 +14,6 @@ $('.a_tjdd').bind('click',function(){
                 tishi('tishi1','此活动商品仅支持送货冷水江市，请更改地址','350px');
             }else{
                 $(':hidden[name=order_address]').val($('#default_location').html()+'  '+$('#default_name').html());
-                alert( $(':hidden[name=order_address]').val());
                 $('form[name=dingdan]').submit();
             }
         }else{
