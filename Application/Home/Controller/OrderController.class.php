@@ -104,6 +104,7 @@ class OrderController extends FontEndController {
          
          
          session('guanzhu',null); 
+         exit;
          $this->display('index');
     }
     public function quxiao_order(){
