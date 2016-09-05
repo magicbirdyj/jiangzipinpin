@@ -20,7 +20,17 @@ function get_status($status,$pay_status,$tuan_no){
                 return '等待付款';
             };
         case '2':
-            return '待发货';
+            if($pay_status==1){
+                return '待发货';
+            }elseif($pay_status==2){
+                return '申请退款';
+            }elseif($pay_status==3){
+                return '申请换货';
+            }elseif($pay_status==4){
+                return '退款成功';
+            }elseif($pay_status==5){
+                return '换货成功';
+            };
         case '3':
             return '已发货';
         case '4':
