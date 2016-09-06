@@ -144,8 +144,8 @@ function file_jia_change(id){
                     async : true,
                     success: function(msg){
                         if(msg.result==='error'){
-                            //alert(msg.error);//测试error才用
-                            alert('图片超过5M的大小限制，请重新选择图片');
+                            alert(msg.error);//测试error才用
+                            //alert('图片超过5M的大小限制，请重新选择图片');
                             return false;
                         }
                         var img_url=msg.src;
