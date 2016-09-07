@@ -371,6 +371,8 @@ class GoodsController extends FontEndController {
         $this->assign('tuanyuan',$tuanyuan);
         $this->assign('tuanyuan_count',count($tuanyuan));
         $goods['count']=$ordermodel->where("tuan_no=$tuan_no and pay_status>0")->count();
+        var_dump($goods['count']);
+        var_dump($goods['tuan_number']);
         if($goods['tuan_number']<=$goods['count']){
             //组团成功
             $this->assign('is_ztcg','ztcg');
