@@ -3,6 +3,9 @@ $('.address_ul>li').eq(parseInt(default_eq)).find('.moren_text').css('color','#F
 $('.address_ul>li').eq(parseInt(default_eq)).find('.moren_text').html('已设为默认');
 $('.address_ul>li').eq(parseInt(default_eq)).find('.tb_moren').css('background-color','#F90505');
 
+$('.address_ul>li').eq(parseInt(zhengyong_eq)).find('.address_right').html('正用');
+$('.address_ul>li').eq(parseInt(zhengyong_eq)).find('.address_right').css('background-color','#F90505');
+$('.address_ul>li').eq(parseInt(zhengyong_eq)).find('.address_right').css('color','#FFF');
 var save_or_add;
 //如果地址空 直接跳出微信增加界面
 if(($('.address_ul>li').length==0)&&fanhui_ref){
@@ -206,8 +209,35 @@ function onreadyeditAddress(){
         $(this).parents('li').siblings('li').find('.moren_text').html('设为默认');
         
     });
-    
-    
+    //点击设为正用按钮
+    $('.shezhi_zhengyong').bind('click',function(){
+        if($(this).children('.address_right').html()=='使用'){
+            shezhi_zhengyong($(this).attr('id'));
+        }
+        $(this).children('.address_right').css('color','#FFF');
+        $(this).children('.address_right').html('已用');
+        $(this).children('.address_right').css('background-color','#F90505');
+        $(this).parents('li').siblings('li').find('.address_right').css('background-color','#FFF');
+        $(this).parents('li').siblings('li').find('.address_right').css('color','#666');
+        $(this).parents('li').siblings('li').find('.address_right').html('使用');
+        history.back();
+    });
+    //ajax设为正用
+    function shezhi_zhengyong(id){
+        var data={
+            'open_id':open_id,
+            'item':id,
+            'check':'shezhi_zhengyong'
+        }
+        var url='/Home/Member/shezhi_zhengyong_address';
+        $.ajax({
+            type:'post',
+            async : true,
+            url:url,
+            datatype:'json',
+            data:data
+        });
+    }
     
     //ajax设为默认地址
     function shezhi_moren(id){

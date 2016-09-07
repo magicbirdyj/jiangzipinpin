@@ -9,7 +9,7 @@
         <ul class='address_ul'>
             <volist name='arr_address' id='vo'>
                 <li id='<{$key}>'>
-                    <div style="position: relative">
+                    <div class="shezhi_zhengyong" id='<{$key}>'>
                         <div class="address_left">
                     <div class="address_info"><span id='name'><{$vo['name']}></span>， <span id='tel'><{$vo['mobile']}></span></div>
                     <div class="address_info border-bottom"><span id='location'><{$vo['location']}></span> <span id='address'><{$vo['address']}></span></div>
@@ -67,6 +67,8 @@
             var open_id="<{$open_id}>";
             //默认的地址eq
             var default_eq="<{$default_address}>";
+            //正用eq
+            var zhengyong_eq="<{$zhengyong_address}>";
             //如果自动跳转过来，保存后需要跳转回去的地址
             var fanhui_ref=false;
             var auto_ref="<{$auto_ref}>";
@@ -74,6 +76,6 @@
                fanhui_ref="<{:U($ref)}>";
             }
 	</script>
-<script src="__PUBLIC_HOME__/Mobile/Js/address_manage.js" type="text/javascript"></script>
+<script src="__PUBLIC_HOME__/Mobile/Js/xuanze_address_manage.js" type="text/javascript"></script>
 </body> 
 </html>

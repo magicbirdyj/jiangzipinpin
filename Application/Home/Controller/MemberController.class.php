@@ -193,6 +193,11 @@ class MemberController extends FontEndController {
                 $arr_address='';
             }
             $this->assign('arr_address',$arr_address);
+            if($_SESSION['zhengyong_address']){
+                $this->assign('zhengyong_eq',$_SESSION['zhengyong_address']);
+            }else{
+                $this->assign('zhengyong_eq',$user['default_address']);
+            }
             $this->assign('default_address',$user['default_address']);
             $this->assign('open_id',$open_id);
             $this->assign('ref',$_SESSION['ref']);
@@ -253,6 +258,18 @@ class MemberController extends FontEndController {
         $this->ajaxReturn($result);
     }
     
+    //设置正用地址 ajax用
+    public function shezhi_zhengyong_address(){
+        $data=$_POST;
+        if(($data['open_id']!=$_SESSION['wei_huiyuan']['open_id'])||$data['check']!='shezhi_zhengyong'){
+            exit;
+        }
+        $open_id=$data['open_id'];
+        $item=$data['item'];
+        $zhengyong_address=$item;
+        session('zhengyong_address',$zhengyong_address);
+        
+    }
     //保存地址 ajax用
     public function save_or_add_address(){
         $data=$_POST;

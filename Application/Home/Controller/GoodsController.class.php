@@ -175,7 +175,11 @@ class GoodsController extends FontEndController {
         $usersmodel=D('Users');
         $address=$usersmodel->where("user_id=$user_id")->field('address,default_address,daijinquan')->find();
         $arr_address=  unserialize($address['address']);
-        $default=$address['default_address'];
+        if($_SESSION['zhengyong_address']){
+            $default=$address['zhengyong_address'];
+        }else{
+            $default=$address['default_address'];
+        }
         $default_address=$arr_address[$default];
         $this->assign('default_Address',$default_address);
         $goods_id=$_GET['goods_id'];

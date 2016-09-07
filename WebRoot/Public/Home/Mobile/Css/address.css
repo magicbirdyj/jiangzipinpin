@@ -15,6 +15,10 @@
     font-size: 14px;
     background-color: #f0f0f0;
 }
+.address_ul .shezhi_zhengyong{
+    position: relative;
+    border-bottom: 1px solid #AAA;
+}
 .address_ul .address_left{
     float: left;
     padding-right: 70px;
@@ -31,10 +35,10 @@
     position: absolute;
     top:25px;
     right:10px;
+    border-radius: 3px;
 }
 .address_ul .border-bottom{
    padding-bottom: 10px;
-   border-bottom: 1px solid #AAA;
 }
 
 .address_ul li{
