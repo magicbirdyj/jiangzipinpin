@@ -215,7 +215,7 @@ function onreadyeditAddress(){
             shezhi_zhengyong($(this).attr('id'));
         }
         $(this).children('.address_right').css('color','#FFF');
-        $(this).children('.address_right').html('已用');
+        $(this).children('.address_right').html('正用');
         $(this).children('.address_right').css('background-color','#F90505');
         $(this).parents('li').siblings('li').find('.address_right').css('background-color','#FFF');
         $(this).parents('li').siblings('li').find('.address_right').css('color','#666');
