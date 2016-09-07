@@ -9,8 +9,13 @@
         <ul class='address_ul'>
             <volist name='arr_address' id='vo'>
                 <li id='<{$key}>'>
+                    <div>
+                        <div class="address_left">
                     <div class="address_info"><span id='name'><{$vo['name']}></span>， <span id='tel'><{$vo['mobile']}></span></div>
                     <div class="address_info border-bottom"><span id='location'><{$vo['location']}></span> <span id='address'><{$vo['address']}></span></div>
+                        </div>
+                        <div class="address_right">使用</div>
+                    </div>
                     <div class="edit_line">
                         <div class="edit_left" id='<{$key}>'><div class="iconfont tb_moren">&#xe635;</div><div class="moren_text">设为默认</div></div>
                         <div class="edit_right">
