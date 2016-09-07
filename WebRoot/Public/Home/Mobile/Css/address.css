@@ -17,6 +17,7 @@
 }
 .address_ul .address_left{
     float: left;
+    padding-right: 70px;
 }
 .address_ul .address_info{
     padding: 0px 10px;
@@ -27,6 +28,8 @@
     border: 1px solid #AAA;
     padding: 5px 10px;
     font-size: 14px;
+    margin-right: 10px;
+    position: absolute;
 }
 .address_ul .border-bottom{
    padding-bottom: 10px;
