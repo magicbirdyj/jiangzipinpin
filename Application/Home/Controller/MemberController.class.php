@@ -196,7 +196,6 @@ class MemberController extends FontEndController {
             if($_SESSION['zhengyong_address']){
                 $this->assign('zhengyong_address',$_SESSION['zhengyong_address']);
             }else{
-                var_dump($user['default_address']);
                 $this->assign('zhengyong_address',$user['default_address']);
             }
             $this->assign('default_address',$user['default_address']);

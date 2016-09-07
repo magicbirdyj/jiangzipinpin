@@ -346,7 +346,7 @@ function onreadyeditAddress(){
                             }
                         });
                     }else{
-                         window.location.href="/Home/Ajaxnologin/address_tiaozhuan"; 
+                         window.location.href="/Home/Ajaxnologin/xuanze_address_tiaozhuan"; 
                     }
                 }
             }
