@@ -584,6 +584,9 @@ class OrderController extends FontEndController {
             case '天天快递':
                 $result='HHTT';
                 break;
+            case '邮政快递';
+                $result='YZPY';
+                break;
 
         }
         return $result;
