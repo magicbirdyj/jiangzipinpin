@@ -371,23 +371,23 @@ class GoodsController extends FontEndController {
         $this->assign('tuanyuan',$tuanyuan);
         $this->assign('tuanyuan_count',count($tuanyuan));
         $goods['count']=$ordermodel->where("tuan_no=$tuan_no and pay_status>0")->count();
-        var_dump($goods['count']);
-        var_dump($goods['tuan_number']);
         if($goods['tuan_number']<=$goods['count']){
             //组团成功
             $this->assign('is_ztcg','ztcg');
-        }
-        $this->assign('goods', $goods);
-        if($order['status']=='6'){
-            //组团失败
-            $this->assign('is_ztcg','ztsb'); 
         }else{
-             $time=  time();
-            if($time-(int)$goods['tuanzhang_created']>=86400){
+            if($order['status']=='6'){
                 //组团失败
-                $this->assign('is_ztcg','ztsb');
+                $this->assign('is_ztcg','ztsb'); 
+            }else{
+                $time=  time();
+                if($time-(int)$goods['tuanzhang_created']>=86400){
+                    //组团失败
+                    $this->assign('is_ztcg','ztsb');
+                }
             }
         }
+        $this->assign('goods', $goods);
+        
 
         $arr_zx_shuxing=  unserialize($goods['goods_shuxing']);
          
