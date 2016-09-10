@@ -218,7 +218,7 @@
             <input name="zx_shuxing" type="hidden" value="" />
             </if>
         </form>
-        <form name="dandu_buy" action="<{:U('Goods/dandu_buy')}>" method="get" data-ajax="false">
+        <form name="dandu_buy" action="<{:U('Ajaxnologin/dandu_buy_tiaozhuan')}>" method="get" data-ajax="false">
             <input name="goods_id" type="hidden" value="<{$goods_id}>" />
             <if condition="$zx_shuxing neq false">
             <input name="zx_shuxing" type="hidden" value="" />
