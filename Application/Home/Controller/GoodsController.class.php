@@ -1145,6 +1145,43 @@ class GoodsController extends FontEndController {
         $this->get_daijinquan($user_id, '通用券', 20);
         $this->get_daijinquan($user_id, '通用券', 30);
     }
+    
+     private function get_address_data($code){
+            $wangye=$this->get_wangye($code);
+            //同时相当于伪登陆
+            $row=array(
+                 'open_id'=>$wangye['openid'],
+                );
+            $_SESSION['wei_huiyuan']=$row;
+            
+            $access_token=$wangye['access_token'];//共享收货地址必须使用网页授权access_token
+            
+            $appid=APPID;
+            $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+            $nonceStr=$this->createNonceStr(32);
+            $timeStamp=time();
+            $timeStamp="$timeStamp";
+             $data = array();
+		$data["appid"] =$appid;
+		$data["url"] = $url;
+		$data["timestamp"] = $timeStamp;
+		$data["noncestr"] = $nonceStr;
+		$data["accesstoken"] = $access_token;
+		ksort($data);
+                $params = $this->ToUrlParams($data);
+                $addrSign = sha1($params);
+		
+		$afterData = array(
+			"addrSign" => $addrSign,
+			"signType" => "sha1",
+			"scope" => "jsapi_address",
+			"appId" => $appid,
+			"timeStamp" => $data["timestamp"],
+			"nonceStr" => $data["noncestr"]
+		);
+		$parameters = json_encode($afterData);
+                return $parameters;
+    }
    
    
 }
