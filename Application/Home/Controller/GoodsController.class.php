@@ -1182,6 +1182,28 @@ class GoodsController extends FontEndController {
 		$parameters = json_encode($afterData);
                 return $parameters;
     }
+    
+    private function get_wangye($code){
+        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code" ;
+        $res = file_get_contents($url); //获取文件内容或获取网络请求的内容
+        $result = json_decode($res, true);//接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
+        //S('wangye_access_token',$result['access_token'],7000);
+        return $result;
+  }
+  
+  private function ToUrlParams($urlObj)
+	{
+		$buff = "";
+		foreach ($urlObj as $k => $v)
+		{
+			if($k != "sign"){
+				$buff .= $k . "=" . $v . "&";
+			}
+		}
+		
+		$buff = trim($buff, "&");
+		return $buff;
+    }
    
    
 }
