@@ -264,7 +264,7 @@ border-bottom:10px solid #555;
 
 /*最新订单提示css*/
 .new_order_div{
-    position: absolute;
+    position: fixed;
     top:50px;
     left: 10px;
     height: 30px;

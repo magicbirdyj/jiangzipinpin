@@ -211,10 +211,8 @@ private function get_thumb(&$arr){
         $usersmodel=D('Users');
         $user_id=$new_order['user_id'];
         $order_address=$new_order['order_address'];
-        $user=$usersmodel->where("user_id=$user_id")->field('user_name,address,head_url')->find();
-        $arr_address=  unserialize($user['address']);
-        $address=$arr_address[$order_address];
-        $arr_location=  explode(' ', $address['location']);
+        $user=$usersmodel->where("user_id=$user_id")->field('user_name,head_url')->find();
+        $arr_location=  explode(' ', $order_address);
         $location=$arr_location[1];
         $shijian=$this->shijian($new_order['created']);
         $data=array(
