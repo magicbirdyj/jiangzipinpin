@@ -171,41 +171,12 @@ class MemberController extends FontEndController {
             $this->assign('arr_address',$arr_address);
             $this->assign('default_address',$user['default_address']);
             $this->assign('open_id',$open_id);
-            $this->assign('ref',$_SESSION['ref']);
-            $this->assign('auto_ref',$_SESSION['auto_ref']);
             $this->display();
         }
 
     }
     
-    public function xuanze_address_manage(){
-        if(isset($_GET['code'])){
-            $code=$_GET['code'];
-            $parameters=$this->get_address_data($code);
-            $this->assign('signPackage',$parameters);
-            $usersmodel=D('Users');
-            $open_id=$_SESSION['wei_huiyuan']['open_id'];
-            $user=$usersmodel->where("open_id='$open_id'")->field("address,default_address")->find();
-            
-            if($user['address']!=''){
-                $arr_address=  unserialize($user['address']);
-            }else{
-                $arr_address='';
-            }
-            $this->assign('arr_address',$arr_address);
-            if($_SESSION['zhengyong_address']){
-                $this->assign('zhengyong_address',$_SESSION['zhengyong_address']);
-            }else{
-                $this->assign('zhengyong_address',$user['default_address']);
-            }
-            $this->assign('default_address',$user['default_address']);
-            $this->assign('open_id',$open_id);
-            $this->assign('ref',$_SESSION['ref']);
-            $this->assign('auto_ref',$_SESSION['auto_ref']);
-            $this->display();
-        }
-
-    }
+   
     
     private function get_address_data($code){
             $wangye=$this->get_wangye($code);
