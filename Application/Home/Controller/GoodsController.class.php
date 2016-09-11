@@ -183,7 +183,7 @@ class GoodsController extends FontEndController {
         $usersmodel=D('Users');
         $address=$usersmodel->where("user_id=$user_id")->field('address,default_address,daijinquan')->find();
         if($address['address']!=''){
-                $arr_address=  unserialize($user['address']);
+                $arr_address=  unserialize($address['address']);
             }else{
                 $arr_address='';
             }

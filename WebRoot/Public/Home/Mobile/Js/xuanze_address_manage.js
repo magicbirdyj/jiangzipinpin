@@ -3,9 +3,9 @@ $('.address_ul>li').eq(parseInt(default_eq)).find('.moren_text').css('color','#F
 $('.address_ul>li').eq(parseInt(default_eq)).find('.moren_text').html('已设为默认');
 $('.address_ul>li').eq(parseInt(default_eq)).find('.tb_moren').css('background-color','#F90505');
 
-$('.address_ul>li').eq(parseInt(zhengyong_eq)).find('.address_right').html('正用');
-$('.address_ul>li').eq(parseInt(zhengyong_eq)).find('.address_right').css('background-color','#F90505');
-$('.address_ul>li').eq(parseInt(zhengyong_eq)).find('.address_right').css('color','#FFF');
+$('.address_ul>li').eq(parseInt(default_eq)).find('.address_right').html('正用');
+$('.address_ul>li').eq(parseInt(default_eq)).find('.address_right').css('background-color','#F90505');
+$('.address_ul>li').eq(parseInt(default_eq)).find('.address_right').css('color','#FFF');
 var save_or_add;
 
     
