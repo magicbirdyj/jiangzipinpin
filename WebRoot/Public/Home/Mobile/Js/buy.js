@@ -92,3 +92,22 @@ $('.a_tjdd').bind('click',function(){
         $('#'+tishi_id).css('bottom',bottom);
         setTimeout("$('.fixed_tishi').css('display','none')",3000);
     }
+    
+    //点击地址a 弹出地址编辑页面
+    $('#address_a').bind('click',function(){
+        $('#bianji_dizhi_div').css('height',$(window).height());
+        $('#bianji_dizhi_div').css('display','block');
+        window.scrollTo(0,0);
+        $('#bianji_dizhi_div').animate({'left':'0%'},'normal',function(){
+            $('#main_div').css('display','none');
+        });
+    });
+    
+    //点击返回购买下单页面
+$('#address_fanhui').bind('click',function(){
+    $('#main_div').css('display','block');
+    $('#bianji_dizhi_div').animate({'left':'100%'},'normal',function(){
+        $('#bianji_dizhi_div').css('display','none');
+    });
+
+});

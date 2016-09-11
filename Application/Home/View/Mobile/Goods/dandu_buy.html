@@ -6,7 +6,7 @@
 </head>
 
 <body>
-
+    <div id="main_div">
 <div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>提交订单</div>
 <table class="buy_table" cellspacing="0">
 <tr class="buy_table_head">
@@ -21,7 +21,7 @@
 <tr class="buy_table_content">
     <td colspan="2" style='position: relative;'>
         <span class="iconfont tb_address">&#xe621;</span>
-        <a class="address" href="<{:U('Ajaxnologin/xuanze_address_tiaozhuan')}>">
+        <a class="address" href="javascript:void(0);" id="address_a">
            <div id='default_name'><{$default_Address['name']?$default_Address['name']:'点我'}>   <{$default_Address['mobile']}></div>
             <div id='default_location'><{$default_Address['location']?$default_Address['location']:'添加收货地址'}>   <{$default_Address['address']}></div>
         </a>
@@ -72,11 +72,11 @@
         <input type="hidden" name="order_address" value="" />
     </form>
     <a href="javascript:void(0)" class="a_tjdd button_a_lvse" >提交订单</a>
-
+    </div>
     
     <!--编辑地址-->
     <div id="bianji_dizhi_div" style="display: none">
-    <div class="fanhui padding"><a href="<{:U($ref)}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>收货地址</div>
+    <div class="fanhui padding"><a href="<{:U($ref)}>" id="bianji_fanhui"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>收货地址</div>
     <div class="right">
         <ul class='address_ul'>
             <volist name='arr_address' id='vo'>

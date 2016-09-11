@@ -1,3 +1,11 @@
+
+#bianji_dizhi_div{
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    z-index: 10000;
+    left: 100%;
+}
 #address_shoudong ,#address_weixin{
     float: left;
     width: 47%;
