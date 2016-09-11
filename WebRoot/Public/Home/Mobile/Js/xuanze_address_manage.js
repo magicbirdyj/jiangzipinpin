@@ -325,7 +325,13 @@ function onreadyeditAddress(){
                     obj.find('#location').html(data.location);
                     obj.find('#address').html(data.address);
                 }else if(data.check=='add'){
-                    //window.location.href="/Home/Ajaxnologin/xuanze_address_tiaozhuan"; 
+                    var number=$('.address_ul>li').length;
+                    var li= "<li id='"+number+"'>"+"<div class='shezhi_zhengyong' id='"+number+"'>"+'<div class="address_left">';
+                    li+="<div class='address_info'><span id='name'>"+data.name+"</span>， <span id='tel'>"+data.mobile+"</span></div>";
+                    li+="<div class='address_info border-bottom'><span id='location'>"+data.location+"</span> <span id='address'>"+data.address+"<{$vo['address']}></span></div>";
+                    li+="</div> <div class='address_right'>使用</div> </div><div class='edit_line'> <div class='edit_left' id='"+number+"'><div class='iconfont tb_moren'>&#xe635;</div><div class='moren_text'>设为默认</div></div>";
+                    li+="<div class='edit_right'><div class='bianji'><div class='iconfont tb_bianji'>&#xe638;</div>编辑</div><div class='delete'><div class='iconfont tb_shanchu'>&#xe637;</div>删除</div></div></div></li>";
+                    $('.address_ul').append(li);
                 }
             }
         });
