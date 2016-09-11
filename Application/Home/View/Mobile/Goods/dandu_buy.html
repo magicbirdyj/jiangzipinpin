@@ -76,7 +76,7 @@
     
     <!--编辑地址-->
     <div id="bianji_dizhi_div" style="display: none">
-    <div class="fanhui padding"><a href="<{:U($ref)}>" id="bianji_fanhui"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>收货地址</div>
+    <div class="fanhui padding"><a href="<{:U($ref)}>" id="address_fanhui"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>收货地址</div>
     <div class="right">
         <ul class='address_ul'>
             <volist name='arr_address' id='vo'>
@@ -146,14 +146,7 @@
             var open_id="<{$open_id}>";
             //默认的地址eq
             var default_eq="<{$default_address}>";
-            //正用eq
-            var zhengyong_eq="<{$zhengyong_address}>";
-            //如果自动跳转过来，保存后需要跳转回去的地址
-            var fanhui_ref=false;
-            var auto_ref="<{$auto_ref}>";
-            if(auto_ref=='yes'){
-               fanhui_ref="<{:U($ref)}>";
-            }
+            
     </script>
 <if condition="$youxiao_daijinquan neq null">
     <include file='Public/daijinquan'/> 

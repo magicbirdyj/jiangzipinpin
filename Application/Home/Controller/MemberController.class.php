@@ -258,18 +258,7 @@ class MemberController extends FontEndController {
         $this->ajaxReturn($result);
     }
     
-    //设置正用地址 ajax用
-    public function shezhi_zhengyong_address(){
-        $data=$_POST;
-        if(($data['open_id']!=$_SESSION['wei_huiyuan']['open_id'])||$data['check']!='shezhi_zhengyong'){
-            exit;
-        }
-        $open_id=$data['open_id'];
-        $item=$data['item'];
-        $zhengyong_address=$item;
-        session('zhengyong_address',$zhengyong_address);
-        
-    }
+    
     //保存地址 ajax用
     public function save_or_add_address(){
         $data=$_POST;

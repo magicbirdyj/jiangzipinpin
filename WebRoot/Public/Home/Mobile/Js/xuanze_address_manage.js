@@ -7,10 +7,7 @@ $('.address_ul>li').eq(parseInt(zhengyong_eq)).find('.address_right').html('正�
 $('.address_ul>li').eq(parseInt(zhengyong_eq)).find('.address_right').css('background-color','#F90505');
 $('.address_ul>li').eq(parseInt(zhengyong_eq)).find('.address_right').css('color','#FFF');
 var save_or_add;
-//如果地址空 直接跳出微信增加界面
-if(($('.address_ul>li').length==0)&&fanhui_ref){
-    calladd();
-}
+
     
     
     
@@ -212,7 +209,7 @@ function onreadyeditAddress(){
     //点击设为正用按钮
     $('.shezhi_zhengyong').bind('click',function(){
         if($(this).children('.address_right').html()=='使用'){
-            shezhi_zhengyong($(this).attr('id'));
+            shezhi_zhengyong($(this));
         }
         $(this).children('.address_right').css('color','#FFF');
         $(this).children('.address_right').html('正用');
@@ -220,23 +217,16 @@ function onreadyeditAddress(){
         $(this).parents('li').siblings('li').find('.address_right').css('background-color','#FFF');
         $(this).parents('li').siblings('li').find('.address_right').css('color','#666');
         $(this).parents('li').siblings('li').find('.address_right').html('使用');
-        history.back();
+        fanhui_main();
     });
     //ajax设为正用
-    function shezhi_zhengyong(id){
-        var data={
-            'open_id':open_id,
-            'item':id,
-            'check':'shezhi_zhengyong'
-        }
-        var url='/Home/Member/shezhi_zhengyong_address';
-        $.ajax({
-            type:'post',
-            async : true,
-            url:url,
-            datatype:'json',
-            data:data
-        });
+    function shezhi_zhengyong(obj){
+       var name=obj.find('#name').html();
+       var tel=obj.find('#tel').html();
+       var location=obj.find('#location').html();
+       var address=obj.find('#address').html();
+       $('#default_name').html(name+'   '+tel);
+       $('#default_location').html(location+'   '+address);
     }
     
     //ajax设为默认地址
@@ -335,19 +325,7 @@ function onreadyeditAddress(){
                     obj.find('#location').html(data.location);
                     obj.find('#address').html(data.address);
                 }else if(data.check=='add'){
-                    if(fanhui_ref){
-                        var url='/Home/Ajaxnologin/quxiao_auto_ref';
-                        $.ajax({
-                            url:url,
-                            async : true,
-                            datatype:'json',
-                            success:function(msg){
-                                window.location.href=fanhui_ref;
-                            }
-                        });
-                    }else{
-                         window.location.href="/Home/Ajaxnologin/xuanze_address_tiaozhuan"; 
-                    }
+                    //window.location.href="/Home/Ajaxnologin/xuanze_address_tiaozhuan"; 
                 }
             }
         });

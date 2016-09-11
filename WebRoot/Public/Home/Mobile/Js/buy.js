@@ -1,14 +1,7 @@
 $('.a_tjdd').bind('click',function(){
         if((Trim($('#default_name').html()).indexOf("点我")>=0)||Trim($('#default_location').html()).indexOf("添加收货地址")>=0){
-            var url='/Home/Ajaxnologin/auto_tiaozhuan';
-            $.ajax({
-                url:url,
-                async : true,
-                datatype:'json',
-                success:function(msg){
-                    window.location.href="/Home/Ajaxnologin/address_tiaozhuan"; 
-                }
-            });
+           //编辑收货地址弹出
+           tanchu_address();
         }else if(Trim($('#default_location').html()).indexOf("冷水江")==-1){
             if(is_1yuangou=='1'){
                 tishi('tishi1','此活动商品仅支持送货冷水江市，请更改地址','350px');
@@ -95,19 +88,25 @@ $('.a_tjdd').bind('click',function(){
     
     //点击地址a 弹出地址编辑页面
     $('#address_a').bind('click',function(){
+        tanchu_address();
+    });
+    
+    function tanchu_address(){
         $('#bianji_dizhi_div').css('height',$(window).height());
         $('#bianji_dizhi_div').css('display','block');
         window.scrollTo(0,0);
         $('#bianji_dizhi_div').animate({'left':'0%'},'normal',function(){
             $('#main_div').css('display','none');
         });
-    });
+    }
     
     //点击返回购买下单页面
 $('#address_fanhui').bind('click',function(){
+    fanhui_main();
+});
+function fanhui_main(){
     $('#main_div').css('display','block');
     $('#bianji_dizhi_div').animate({'left':'100%'},'normal',function(){
         $('#bianji_dizhi_div').css('display','none');
     });
-
-});
+}

@@ -175,35 +175,21 @@ class GoodsController extends FontEndController {
             $code=$_GET['code'];
             $parameters=$this->get_address_data($code);
             $this->assign('signPackage',$parameters);
-            $usersmodel=D('Users');
             $open_id=$_SESSION['wei_huiyuan']['open_id'];
-            $user=$usersmodel->where("open_id='$open_id'")->field("address,default_address")->find();
-            
-            if($user['address']!=''){
-                $arr_address=  unserialize($user['address']);
-            }else{
-                $arr_address='';
-            }
-            $this->assign('arr_address',$arr_address);
-            if($_SESSION['zhengyong_address']){
-                $this->assign('zhengyong_address',$_SESSION['zhengyong_address']);
-            }else{
-                $this->assign('zhengyong_address',$user['default_address']);
-            }
-            $this->assign('default_address',$user['default_address']);
             $this->assign('open_id',$open_id);
-            $this->assign('ref',$_SESSION['ref']);
-            $this->assign('auto_ref',$_SESSION['auto_ref']);
+           
         }//微信地址接口
         $user_id=$_SESSION['huiyuan']['user_id'];
         $usersmodel=D('Users');
         $address=$usersmodel->where("user_id=$user_id")->field('address,default_address,daijinquan')->find();
-        $arr_address=  unserialize($address['address']);
-        if($_SESSION['zhengyong_address']){
-            $default=$_SESSION['zhengyong_address'];
-        }else{
-            $default=$address['default_address'];
-        }
+        if($address['address']!=''){
+                $arr_address=  unserialize($user['address']);
+            }else{
+                $arr_address='';
+            }
+        $this->assign('arr_address',$arr_address);
+        $default=$address['default_address'];
+        
         $default_address=$arr_address[$default];
         $this->assign('default_Address',$default_address);
         $goods_id=$_GET['goods_id'];
