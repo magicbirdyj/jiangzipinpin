@@ -192,6 +192,7 @@ class GoodsController extends FontEndController {
         
         $default_address=$arr_address[$default];
         $this->assign('default_Address',$default_address);
+        $this->assign('default_eq',$default);
         $goods_id=$_GET['goods_id'];
         if($_GET['zx_shuxing']){
             $zx_shuxing=$_GET['zx_shuxing'];
