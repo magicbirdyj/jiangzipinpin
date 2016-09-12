@@ -194,7 +194,7 @@ function onreadyeditAddress(){
     }
 
     //点击设为默认按钮
-    $('.edit_left').bind('click',function(){
+   $('body').on('click','.edit_left',function(){
         if($(this).children('.moren_text').html()=='设为默认'){
             shezhi_moren($(this).attr('id'));
         }
@@ -207,7 +207,7 @@ function onreadyeditAddress(){
         
     });
     //点击设为正用按钮
-    $('.shezhi_zhengyong').bind('click',function(){
+    $('body').on('click','.shezhi_zhengyong',function(){
         if($(this).children('.address_right').html()=='使用'){
             shezhi_zhengyong($(this));
         }
@@ -248,7 +248,7 @@ function onreadyeditAddress(){
     
     
     //点击编辑
-    $('.bianji').bind('click',function(){
+     $('body').on('click','.bianji',function(){
         showOverlay('edit_address_div');
         $('#edit_address_div').css('top',($(window).height()-$('#edit_address_div').height())/2+'px');
         get_this_address($(this).parents('li'));
@@ -347,7 +347,7 @@ function onreadyeditAddress(){
     }
     
     //点击删除
-    $('.delete').bind('click',function(){
+     $('body').on('click','.delete',function(){
         if(window.confirm('确定要删除该地址吗？')){
             var id=$(this).parents('li').attr('id');
             del(id);
