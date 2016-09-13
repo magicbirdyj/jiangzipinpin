@@ -829,6 +829,7 @@ class GoodsController extends FontEndController {
         $goods=$goodsmodel->where("goods_id=$goods_id")->find();
         $tuan_no=$order['tuan_no'];
         $this->assign('tuan_no',$tuan_no);
+        $shopsmodel=D('Shops');
         if($tuan_no==0){
             $remark="恭喜您，购买成功,我们将尽快把商品送到您的手上，请注意关注";
             $this->pintuan_success_tep($order_id,$remark);//给会员发送消息，购买成功，等待发货
@@ -848,7 +849,7 @@ class GoodsController extends FontEndController {
         $goods['tuanzhang_head_url']=$tuanzhang['head_url'];
         $goods['tuanzhang_user_name']=$tuanzhang['user_name'];    
         $goods['tuanzhang_created']=$ordermodel->where("order_id=$tuan_no")->getField("created");
-        $shopsmodel=D('Shops');
+        
         $shop_id=$goods['shop_id'];
         
         
