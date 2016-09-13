@@ -170,7 +170,7 @@ class GoodsController extends FontEndController {
         $this->ajaxReturn($data);
     }
 
-    public function dandu_buy() {
+    public function buy() {
         if(isset($_GET['code'])){//微信地址接口
             $code=$_GET['code'];
             $parameters=$this->get_address_data($code);
@@ -419,7 +419,7 @@ class GoodsController extends FontEndController {
         $this->display();
     }
     
-    public function dandu_buy_success(){
+    public function buy_success(){
         $ordermodel = D('Order');
         // 手动进行令牌验证 
         if (!$ordermodel->autoCheckToken($_POST)){ 

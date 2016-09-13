@@ -60,7 +60,7 @@
 
 </table>
    
-    <form name="dingdan" method="post" action="<{:U('Goods/dandu_buy_success')}>">
+    <form name="dingdan" method="post" action="<{:U('Goods/buy_success')}>">
         <input type="hidden" name="goods_id" value="<{$goods['goods_id']}>" />
         <if condition="$zx_shuxing neq NULL">
         <input type="hidden" name="zx_shuxing" value='<{$zx_shuxing}>' />
