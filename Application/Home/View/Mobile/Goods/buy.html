@@ -125,7 +125,7 @@
     </div><!--编辑地址DIV-->   
 <script>
         var ky_daijinquan=0;
-        var price=parseFloat(<{$goods['price']|floatval}>);
+        var price=parseFloat(<{$goods['price']|floatval}>).toFixed(2);
         var totle_price=price;
         var is_1yuangou="<{$goods['1yuangou']}>";
         
