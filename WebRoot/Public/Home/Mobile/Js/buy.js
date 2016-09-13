@@ -26,7 +26,7 @@ $('.a_tjdd').bind('click',function(){
         $('#buy_number').val((value+1));
         value=parseInt($('#buy_number').val());
         $(':hidden[name=buy_number]').val(value);
-        totle_price=value*price.toFixed(2);
+        totle_price=(value*price).toFixed(2);
         $('#dues').html(totle_price-ky_daijinquan);
         $(':hidden[name=dues]').val(totle_price-ky_daijinquan);
         if((value)>8){
@@ -45,7 +45,7 @@ $('.a_tjdd').bind('click',function(){
         $('#buy_number').val(value-1);
         value=parseInt($('#buy_number').val());
         $(':hidden[name=buy_number]').val(value);
-        totle_price=value*price.toFixed(2);
+        totle_price=(value*price).toFixed(2);
         $('#dues').html(totle_price-ky_daijinquan);
         $(':hidden[name=dues]').val(totle_price-ky_daijinquan);
         if((value)<2){
@@ -71,7 +71,7 @@ $('.a_tjdd').bind('click',function(){
             $('#jia').css('background-color','#FFF');
         }
         value=parseInt($('#buy_number').val());
-        totle_price=value*price.toFixed(2);
+        totle_price=(value*price).toFixed(2);
         $('#dues').html(totle_price-ky_daijinquan);
         $(':hidden[name=dues]').val(totle_price-ky_daijinquan);
         $(':hidden[name=buy_number]').val(value);
