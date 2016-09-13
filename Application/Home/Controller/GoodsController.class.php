@@ -211,6 +211,10 @@ class GoodsController extends FontEndController {
                 }
             }
         }
+        var_dump($goods['price']);
+        var_dump($goods['ky_daijinquan']);
+        var_dump($goods['price']-$goods['ky_daijinquan']);
+        var_dump(floatval($goods['price']-$goods['ky_daijinquan']));
         $this->assign('youxiao_daijinquan',$youxiao_daijinquan);
         $this->display();
     }
