@@ -179,7 +179,6 @@ class GoodsController extends FontEndController {
             $this->assign('open_id',$open_id);
            
         }//微信地址接口
-        exit;
         $user_id=$_SESSION['huiyuan']['user_id'];
         $usersmodel=D('Users');
         $address=$usersmodel->where("user_id=$user_id")->field('address,default_address,daijinquan')->find();
@@ -188,6 +187,7 @@ class GoodsController extends FontEndController {
             }else{
                 $arr_address='';
             }
+            exit;
         $this->assign('arr_address',$arr_address);
         $default=$address['default_address'];
         $default_address=$arr_address[$default];
