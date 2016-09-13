@@ -187,7 +187,6 @@ class GoodsController extends FontEndController {
             }else{
                 $arr_address='';
             }
-            exit;
         $this->assign('arr_address',$arr_address);
         $default=$address['default_address'];
         $default_address=$arr_address[$default];
