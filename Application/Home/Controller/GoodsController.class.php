@@ -189,7 +189,6 @@ class GoodsController extends FontEndController {
             }
         $this->assign('arr_address',$arr_address);
         $default=$address['default_address'];
-        
         $default_address=$arr_address[$default];
         $this->assign('default_Address',$default_address);
         $this->assign('default_eq',$default);
@@ -201,6 +200,7 @@ class GoodsController extends FontEndController {
         $goodsmodel=D('Goods');
         $goods=$goodsmodel->where("goods_id=$goods_id")->find();
         $goods['ky_daijinquan']=0;
+        var_dump($goods['price']-$goods['ky_daijinquan']);exit;
         $this->assign('goods',$goods);
         //用户代金券
         $arr_daijinquan=  unserialize($address['daijinquan']);
