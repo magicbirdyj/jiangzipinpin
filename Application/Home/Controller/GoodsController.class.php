@@ -179,6 +179,7 @@ class GoodsController extends FontEndController {
             $this->assign('open_id',$open_id);
            
         }//微信地址接口
+        exit;
         $user_id=$_SESSION['huiyuan']['user_id'];
         $usersmodel=D('Users');
         $address=$usersmodel->where("user_id=$user_id")->field('address,default_address,daijinquan')->find();
@@ -200,7 +201,6 @@ class GoodsController extends FontEndController {
         $goodsmodel=D('Goods');
         $goods=$goodsmodel->where("goods_id=$goods_id")->find();
         $goods['ky_daijinquan']=0;
-        var_dump($goods['price']-$goods['ky_daijinquan']);exit;
         $this->assign('goods',$goods);
         //用户代金券
         $arr_daijinquan=  unserialize($address['daijinquan']);
