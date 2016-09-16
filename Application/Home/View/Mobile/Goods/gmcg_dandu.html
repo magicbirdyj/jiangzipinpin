@@ -70,6 +70,8 @@
 <script>
     var img=$('#goods_img').attr('src');
     var yuan_title=$('#goods_name').html();
+    alert(yuan_title);
+    alert(yuan_title.length);
     var title=yuan_title.length>10?yuan_title.substring(0,10)+'...':yuan_title;
     var price=$('#price').html();
     //var tuan_number=$('#tuan_number').html();
