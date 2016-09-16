@@ -956,6 +956,8 @@ class GoodsController extends FontEndController {
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id='{$order_id}' and deleted=0")->find();
         $this->assign('order', $order);
+        var_dump($user_id);
+        var_dump($order['user_id']);exit;
         if($user_id!=$order['user_id']){
             $this->error('您没有该订单！',U('Order/index'),3);
         }
