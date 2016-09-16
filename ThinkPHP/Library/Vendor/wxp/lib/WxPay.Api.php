@@ -460,7 +460,6 @@ class WxPayApi
 		
 		//签名
 		$inputObj->SetSign();
-                throw new WxPayException($inputObj->GetSign());
 		$xml = $inputObj->ToXml();
 		
 		$startTimeStamp = self::getMillisecond();//请求开始时间
