@@ -110,23 +110,7 @@
         $('#overlay,#zhishi_fenxiang').unbind('click');
         send_red_pack();
     }
-    function send_fanxianxiaoxi(){
-        var data={
-            'order_id':"<{$order['order_id']}>",
-            'first':'您好，您成功分享了购买的商品'+title+',获得返现金额'+fanxian+'元',
-            'cause':'分享商品成功',
-            'dues':fanxian,
-            'check':'send_fanxianxiaoxi'
-        };
-        var url='/Home/Ajaxnologin/send_fanxianxiaoxi';
-        $.ajax({
-            type:'post',
-            async : true,
-            url:url,
-            datatype:'json',
-            data:data
-        });
-    }
+    
     function send_red_pack(){
         var data={
             'order_id':"<{$order['order_id']}>",
@@ -140,9 +124,6 @@
             url:url,
             datatype:'json',
             data:data,
-            success:function(msg){
-                alert(msg);
-            }
         });
     }
 

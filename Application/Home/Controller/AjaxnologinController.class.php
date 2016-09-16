@@ -21,33 +21,7 @@ class AjaxnologinController extends FontEndController {
         exit();
     }
     
-    public function send_fanxianxiaoxi(){
-        $post=$_POST;
-        if($post['check']!='send_fanxianxiaoxi'){
-            exit;
-        }
-        $order_id=$post['order_id'];
-        $ordermodel=D('Order');
-        $order=$ordermodel->where("order_id=$order_id")->find();
-        if($order['fenxiang']=='1'){
-            exit;//已经分享了直接退出
-        }
-       
-                
-        $user_id=$order['user_id'];
-        $usersmodel=D('Users');
-        $url='';
-        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
-        $template_id="C0pRziUD3HWFVJJEjlLAjtyK5eP53AoPqW5OJ9PBs14";
-        $arr_data=array(
-            'first'=>array('value'=>$post['first'],"color"=>"#666"),
-            'keyword1'=>array('value'=>$post['cause'],"color"=>"#F90505"),
-            'keyword2'=>array('value'=>$post['dues'].'元',"color"=>"#666"),
-            'keyword3'=>array('value'=>"直接到帐","color"=>"#666"), 
-            'remark'=>array('value'=>"感谢您的分享推荐","color"=>"#F90505")
-        );
-        $this->response_template($open_id, $template_id, $url, $arr_data);
-    }
+  
     
     public function send_red_pack() {
         $post=$_POST;
@@ -64,7 +38,7 @@ class AjaxnologinController extends FontEndController {
         $row=array(
             'fenxiang'=>1
         );
-        //$ordermodel->where("order_id=$order_id")->save($row);
+        $ordermodel->where("order_id=$order_id")->save($row);
                 
         $user_id=$order['user_id'];
         $usersmodel=D('Users');
