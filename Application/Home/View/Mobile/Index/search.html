@@ -105,9 +105,9 @@
                         <div class="goods_infor_left">
                             <span class="iconfont">&#xe61d;</span>
                             <span class="rentuan"><{$vo['tuan_number']}>人团</span>
-                            <span class="price_red price"><span class='rmb'>&yen;</span><{$vo['tuan_price']|floor}></span>
+                            <span class="price_red price"><span class='rmb'>&yen;</span><{$vo['tuan_price']|floatval}></span>
                             <span class="price_red yuan">元</span>
-                            <del style="margin-left: 5px;">单买价：<{$vo['price']|floor}>元</del>
+                            <del style="margin-left: 5px;">单买价：<{$vo['price']|floatval}>元</del>
                         </div>
                         <div class="goods_infor_right">
                             <span class='yituan'>已团<span class='maohao'>：</span><{$vo['buy_number']}></span>

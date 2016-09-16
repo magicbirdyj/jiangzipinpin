@@ -15,7 +15,7 @@
 
 
 .ui-footer  a{
-    width: 25%;
+    width: 35%;
     background-color: #FFF;
     border: none;
     padding: 0px;
@@ -71,6 +71,6 @@
 
 .ui-footer .xiao_a{
     box-sizing: border-box;
-    width: 16.66666667%;
+    width: 21.66666667%;
     border-right: 1px solid #C8C8C8;
 }

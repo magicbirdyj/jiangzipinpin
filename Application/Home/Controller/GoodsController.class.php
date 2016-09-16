@@ -461,7 +461,8 @@ class GoodsController extends FontEndController {
             'price' => $price,
             'daijinquan'=>ky_daijinquan,
             'dues'=>$dues,
-            'order_address'=>$order_address
+            'order_address'=>$order_address,
+            'fenxiang_dues'=>$goods['fanxian']
         );
         $result = $ordermodel->add($row); //订单信息写入数据库order表
             if(!$result){
