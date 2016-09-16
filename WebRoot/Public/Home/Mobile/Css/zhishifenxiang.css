@@ -7,7 +7,8 @@
     background-position: -10px 0px;
     width: 350px;
     height: 300px;
-    margin: 20px auto;
+    margin: 0px auto;
+    top: 20px;
     background-repeat: no-repeat;
     position: fixed;
     z-index: 20000;
