@@ -454,7 +454,8 @@ class WxPayApi
 		$inputObj->SetWxappid(WxPayConfig::APPID);//公众账号ID
 		$inputObj->SetMch_id(WxPayConfig::MCHID);//商户号
 		$inputObj->SetMch_billno(WxPayConfig::MCHID.date('YmdHis').rand(1000, 9999));//商户订单号
-                $inputObj->SetClient_ip($_SERVER['REMOTE_ADDR']);//Ip地址	  
+                $inputObj->SetClient_ip($_SERVER['REMOTE_ADDR']);//Ip地址
+                var_dump($_SERVER['REMOTE_ADDR']);exit;	  
 		//$inputObj->SetSpbill_create_ip("1.1.1.1");  	    
 		$inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 		
