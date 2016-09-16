@@ -2981,4 +2981,329 @@ class WxPayBizPayUrl extends WxPayDataBase
 	{
 		return array_key_exists('product_id', $this->values);
 	}
+        
+        
+        
+}
+
+/**
+ * 
+ * 发送普通红包输入对象
+ * @author widyhu
+ *
+ */
+class WxPaySendRedPack extends WxPayDataBase
+{	
+	/**
+	* 设置微信分配的公众账号ID
+	* @param string $value 
+	**/
+	public function SetWxappid($value)
+	{
+		$this->values['wxappid'] = $value;
+	}
+	/**
+	* 获取微信分配的公众账号ID的值
+	* @return 值
+	**/
+	public function GetWxappid()
+	{
+		return $this->values['wxappid'];
+	}
+	/**
+	* 判断微信分配的公众账号ID是否存在
+	* @return true 或 false
+	**/
+	public function IsWxappidSet()
+	{
+		return array_key_exists('wxappid', $this->values);
+	}
+
+
+	/**
+	* 设置微信支付分配的商户号
+	* @param string $value 
+	**/
+	public function SetMch_id($value)
+	{
+		$this->values['mch_id'] = $value;
+	}
+	/**
+	* 获取微信支付分配的商户号的值
+	* @return 值
+	**/
+	public function GetMch_id()
+	{
+		return $this->values['mch_id'];
+	}
+	/**
+	* 判断微信支付分配的商户号是否存在
+	* @return true 或 false
+	**/
+	public function IsMch_idSet()
+	{
+		return array_key_exists('mch_id', $this->values);
+	}
+        
+        
+        /**
+	* 设置微信支付分配的商户号
+	* @param string $value 
+	**/
+	public function SetMch_billno($value)
+	{
+		$this->values['mch_billno'] = $value;
+	}
+	/**
+	* 获取微信支付分配的商户号的值
+	* @return 值
+	**/
+	public function GetMch_billno()
+	{
+		return $this->values['mch_billno'];
+	}
+	/**
+	* 判断微信支付分配的商户号是否存在
+	* @return true 或 false
+	**/
+	public function IsMch_billnoSet()
+	{
+		return array_key_exists('mch_billno', $this->values);
+	}
+        
+        
+        /**
+	* 设置商户名称
+	* @param string $value 
+	**/
+	public function SetSend_name($value)
+	{
+		$this->values['send_name'] = $value;
+	}
+	/**
+	* 获取商户名称
+	* @return 值
+	**/
+	public function GetSend_name()
+	{
+		return $this->values['send_name'];
+	}
+	/**
+	* 判断商户名称是否存在
+	* @return true 或 false
+	**/
+	public function IsSend_nameSet()
+	{
+		return array_key_exists('send_name', $this->values);
+	}
+        
+        
+        
+         /**
+	* 设置调用接口的IP地址
+	* @param string $value 
+	**/
+	public function SetClient_ip($value)
+	{
+		$this->values['client_ip'] = $value;
+	}
+	/**
+	* 获取调用接口的IP地址
+	* @return 值
+	**/
+	public function GetClient_ip()
+	{
+		return $this->values['client_ip'];
+	}
+	/**
+	* 判断调用接口的IP地址是否存在
+	* @return true 或 false
+	**/
+	public function IsClient_ipSet()
+	{
+		return array_key_exists('client_ip', $this->values);
+	}
+
+
+
+	/**
+	* 设置随机字符串，不长于32位。推荐随机数生成算法
+	* @param string $value 
+	**/
+	public function SetNonce_str($value)
+	{
+		$this->values['nonce_str'] = $value;
+	}
+	/**
+	* 获取随机字符串，不长于32位。推荐随机数生成算法的值
+	* @return 值
+	**/
+	public function GetNonce_str()
+	{
+		return $this->values['nonce_str'];
+	}
+	/**
+	* 判断随机字符串，不长于32位。推荐随机数生成算法是否存在
+	* @return true 或 false
+	**/
+	public function IsNonce_strSet()
+	{
+		return array_key_exists('nonce_str', $this->values);
+	}
+
+	/**
+	* 设置红包金额，只能为整数
+	* @param string $value 
+	**/
+	public function SetTotal_amount($value)
+	{
+		$this->values['total_amount'] = $value;
+	}
+	/**
+	* 获取红包金额，只能为整数
+	* @return 值
+	**/
+	public function GetTotal_amount()
+	{
+		return $this->values['total_amount'];
+	}
+	/**
+	* 判断红包金额，只能为整数，是否存在
+	* @return true 或 false
+	**/
+	public function IsTotal_amountSet()
+	{
+		return array_key_exists('total_amount', $this->values);
+	}
+
+
+	/**
+	* 设置接收红包用户的Openid。 
+	* @param string $value 
+	**/
+	public function SetRe_openid($value)
+	{
+		$this->values['re_openid'] = $value;
+	}
+	/**
+	* 获取接收红包用户的Openid 的值
+	* @return 值
+	**/
+	public function GetRe_openid()
+	{
+		return $this->values['re_openid'];
+	}
+	/**
+	* 判断接收红包用户的Openid是否存在
+	* @return true 或 false
+	**/
+	public function IsRe_openidSet()
+	{
+		return array_key_exists('re_openid', $this->values);
+	}
+        
+        
+        
+        /**
+	* 设置红包发放总人数
+	* @param string $value 
+	**/
+	public function SetTotal_num($value)
+	{
+		$this->values['total_num'] = $value;
+	}
+	/**
+	* 获取红包发放总人数
+	* @return 值
+	**/
+	public function GetTotal_num()
+	{
+		return $this->values['total_num'];
+	}
+	/**
+	* 判断红包发放总人数，是否存在
+	* @return true 或 false
+	**/
+	public function IsTotal_numSet()
+	{
+		return array_key_exists('total_num', $this->values);
+	}
+        
+        
+        /**
+	* 设置红包祝福语
+	* @param string $value 
+	**/
+	public function SetWishing($value)
+	{
+		$this->values['wishing'] = $value;
+	}
+	/**
+	* 获取红包祝福语
+	* @return 值
+	**/
+	public function GetWishing()
+	{
+		return $this->values['wishing'];
+	}
+	/**
+	* 判断红包祝福语，是否存在
+	* @return true 或 false
+	**/
+	public function IsWishingSet()
+	{
+		return array_key_exists('wishing', $this->values);
+	}
+        
+        
+        /**
+	* 设置活动名称
+	* @param string $value 
+	**/
+	public function SetAct_name($value)
+	{
+		$this->values['act_name'] = $value;
+	}
+	/**
+	* 获取活动名称
+	* @return 值
+	**/
+	public function GetAct_name()
+	{
+		return $this->values['act_name'];
+	}
+	/**
+	* 判断活动名称，是否存在
+	* @return true 或 false
+	**/
+	public function IsAct_nameSet()
+	{
+		return array_key_exists('act_name', $this->values);
+	}
+        
+        
+        /**
+	* 设置备注
+	* @param string $value 
+	**/
+	public function SetRemark($value)
+	{
+		$this->values['remark'] = $value;
+	}
+	/**
+	* 获取备注
+	* @return 值
+	**/
+	public function GetRemark()
+	{
+		return $this->values['remark'];
+	}
+	/**
+	* 判断备注，是否存在
+	* @return true 或 false
+	**/
+	public function IsRemarkSet()
+	{
+		return array_key_exists('remark', $this->values);
+	}
 }

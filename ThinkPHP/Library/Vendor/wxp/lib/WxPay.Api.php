@@ -423,6 +423,52 @@ class WxPayApi
 		
 		return call_user_func($callback, $result);
 	}
+        
+        /**
+	 * 
+	 * 发放普通红包，WxPaySendRedPack中total_amount、re_openid、total_num、wishing、act_name、remark、send_name必填
+	 * wxappid、mch_id、mch_billno、nonce_str、sign、client_ip不需要填入
+	
+	 */
+	public static function sendredpack($inputObj, $timeOut = 6)
+	{
+		$url = "https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack";
+		//检测必填参数
+		if(!$inputObj->IsTotal_amountSet()) {
+			throw new WxPayException("缺少发放红包接口必填参数total_amount！");
+		}else if(!$inputObj->IsRe_openidSet()){
+			throw new WxPayException("缺少发放红包接口必填参数re_openid！");
+		}else if(!$inputObj->IsTotal_numSet()) {
+			throw new WxPayException("缺少发放红包接口必填参数total_num！");
+		}else if(!$inputObj->IsWishingSet()) {
+			throw new WxPayException("缺少发放红包接口必填参数wishing！");
+		}else if(!$inputObj->IsAct_nameSet()) {
+			throw new WxPayException("缺少发放红包接口必填参数act_name！");
+		}else if(!$inputObj->IsRemarkSet()) {
+			throw new WxPayException("缺少发放红包接口必填参数remark！");
+		}else if(!$inputObj->IsSend_nameSet()) {
+			throw new WxPayException("缺少发放红包接口必填参数send_name！");
+		}
+		
+
+		$inputObj->SetWxappid(WxPayConfig::APPID);//公众账号ID
+		$inputObj->SetMch_id(WxPayConfig::MCHID);//商户号
+		$inputObj->SetMch_billno(WxPayConfig::MCHID.date('YmdHis').rand(1000, 9999));//商户订单号
+                $inputObj->SetClient_ip($_SERVER['REMOTE_ADDR']);//Ip地址	  
+		//$inputObj->SetSpbill_create_ip("1.1.1.1");  	    
+		$inputObj->SetNonce_str(self::getNonceStr());//随机字符串
+		
+		//签名
+		$inputObj->SetSign();
+		$xml = $inputObj->ToXml();
+		
+		$startTimeStamp = self::getMillisecond();//请求开始时间
+		$response = self::postXmlCurl($xml, $url, false, $timeOut);
+		$result = WxPayResults::Init($response);
+		self::reportCostTime($url, $startTimeStamp, $result);//上报请求花费时间
+		
+		return $result;
+	}
 	
 	/**
 	 * 

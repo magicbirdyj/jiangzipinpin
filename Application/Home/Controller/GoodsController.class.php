@@ -832,6 +832,7 @@ class GoodsController extends FontEndController {
         $shopsmodel=D('Shops');
         $shop_id=$goods['shop_id'];
         if($tuan_no==0){
+            $this->assign('title','购买成功');
             $remark="恭喜您，购买成功,我们将尽快把商品送到您的手上，请注意关注";
             $this->pintuan_success_tep($order_id,$remark);//给会员发送消息，购买成功，等待发货
             $buy_number=$ordermodel->where("order_id=$order_id")->getField('buy_number');
@@ -947,7 +948,35 @@ class GoodsController extends FontEndController {
 
     }
     
-
+    public function fenxiang() {
+        $order_id=$_GET['order_id'];
+        $this->get_weixin_config();
+        $this->assign('title','分享返现');
+        $user_id=$_SESSION['huiyuan']['user_id'];
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='{$order_id}' and deleted=0")->find();
+        $this->assign('order', $order);
+        if($user_id!=$order['user_id']){
+            $this->error('您没有该订单！',U('Order/index'),3);
+        }
+        if($order['pay_status']!='1'){
+            $this->error('未付款成功,将返回付款页面',U('Goods/zhifu',"order_id=$order_id"));
+        }
+        
+        
+        $goods_id=$order['goods_id'];
+        $goodsmodel=D('Goods');
+        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
+        $tuan_no=$order['tuan_no'];
+        $this->assign('tuan_no',$tuan_no);
+        $shopsmodel=D('Shops');
+        $shop_id=$goods['shop_id'];
+        if($tuan_no==0){
+            $this->assign('goods', $goods);
+            $this->display('gmcg_dandu');
+            exit();
+        }
+    }
     
     
     

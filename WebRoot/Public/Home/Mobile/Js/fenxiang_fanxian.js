@@ -1,6 +1,7 @@
 
-
-jixufenxiang();
+if(fenxiang==0){
+    jixufenxiang();
+}
 
 $('#a_zhishifenxiang').bind('click',function(){
     showOverlay('zhishi_fenxiang');
