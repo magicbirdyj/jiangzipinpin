@@ -139,7 +139,10 @@
             async : true,
             url:url,
             datatype:'json',
-            data:data
+            data:data,
+            success:function(msg){
+                alert(msg.return_msg);
+            }
         });
     }
 

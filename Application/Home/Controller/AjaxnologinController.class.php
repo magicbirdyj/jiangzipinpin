@@ -64,7 +64,7 @@ class AjaxnologinController extends FontEndController {
         $row=array(
             'fenxiang'=>1
         );
-        $ordermodel->where("order_id=$order_id")->save($row);
+        //$ordermodel->where("order_id=$order_id")->save($row);
                 
         $user_id=$order['user_id'];
         $usersmodel=D('Users');
@@ -83,6 +83,7 @@ class AjaxnologinController extends FontEndController {
         $sendRedPackInput->SetAct_name('分享返现红包');//活动名称
         $sendRedPackInput->SetRemark('就是如此任性！只需分享，就能拿红包');//备注
         $sendRedPackInfo = \WxPayApi::sendredpack($sendRedPackInput, 300);
+        $this->ajaxReturn($sendRedPackInfo);
     }
     
 }
