@@ -5,7 +5,7 @@ class CrontabController extends FontEndController {
     
     public function upload_order() {
         $this->quxiao_order();
-        $this->ztsb();
+        //$this->ztsb();
         $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         var_dump($url);
     }

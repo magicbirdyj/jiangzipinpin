@@ -10,7 +10,7 @@ class OrdermanageController extends FontEndController {
             $count=$ordermodel->where("pay_status=0 and deleted=0 and status <>7")->count();
             $page=$this->get_page($count, 10);
             $page_foot=$page->show();//显示页脚信息
-            $list=$ordermodel->table('m_order t1,m_users t2')->where("t1.pay_status=0 and t1.user_id=t2.user_id and t1.deleted=0")->limit($page->firstRow.','.$page->listRows)->order('t1.order_id desc')->select();
+            $list=$ordermodel->table('m_order t1,m_users t2')->where("t1.pay_status=0 and t1.user_id=t2.user_id and t1.deleted=0 and t1.status <>7")->limit($page->firstRow.','.$page->listRows)->order('t1.order_id desc')->select();
         }elseif($status=='2'){
             $count=$ordermodel->where("tuan_no=0 and status=1 and pay_status=1 and deleted=0")->count();
             $page=$this->get_page($count, 10);
