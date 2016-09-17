@@ -10,56 +10,51 @@
         <div class='status'>
             <div>订单状态：</div>
             <a id='status_all' href="<{:U('Ordermanage/index')}>">全部</a>
-            <a id='status_0' href="<{:U('Ordermanage/index',array('status'=>'0'))}>">待付款</a>
-            <a id='status_1' href="<{:U('Ordermanage/index',array('status'=>'1'))}>">待成团</a>
+            <a id='status_0' href="<{:U('Ordermanage/index',array('status'=>'1'))}>">待付款</a>
             <a id='status_2' href="<{:U('Ordermanage/index',array('status'=>'2'))}>">待发货</a>
             <a id='status_3' href="<{:U('Ordermanage/index',array('status'=>'3'))}>">待收货</a>
             <a id='status_4' href="<{:U('Ordermanage/index',array('status'=>'4'))}>">待评价</a>
         </div>
-        <div class="title"><!--标题行-->
-            <div class='td2'>团购号</div>
-            <div class='td3'>商品名称</div>
-            <div class="td5">自选属性</div>
-            <div class='td4'>商家</div>
-            <div class='td5'>订单状态</div>
-            <div class='td6'>买家</div>
-            <div class='td7'>购买数量</div>
-            <div class='td8'>发货地址</div>
-            <div class='td9'>支付</div>
-            <div class='td10'>几人团</div>
-            <div class='td11'>发货天数</div>
-            <div class='td12'>代金券</div>
-            <div class='td13'>金额</div>
-            <div class='td14'>下单时间</div>
-            <div class='td15'>操作</div>
-        </div>
-        <volist name="list" id="vo">
-        <div class="content"><!--内容遍历-->
-            <div class='td2'><{$vo['tuan_no']}></div>
-            <div class='td3' style="line-height: 30px;"><{$vo['goods_name']}></div>
-            <div class='td5' style='line-height: 30px;'><{$vo['zx_shuxing']}></div>
-            <div class='td4'><{$vo['shop_name']}></div>
-            <div class='td5'><{:get_status($vo['status'],$vo['pay_status'],$vo['tuan_no'])}></div>
-            <div class='td6'><{$vo['user_name']}>(<{$vo['identity']=='0'?'团员':'团长'}>)</div>
-            <div class='td7'><{$vo['buy_number']}></div>
-            <div class='td8'><{:get_admin_order(get_order_address($vo['address'],$vo['order_address']))}></div>
-            <div class='td9'><{$vo['pay_status']=='0'?'未支付':'已支付'}></div>
-            <div class='td10'><{$vo['tuan_number']}></div>
-            <div class='td11'><{$vo['order_fahuo_day']}>天</div>
-            <div class='td12'>&yen;<{$vo['daijinquan']|intval}></div>
-            <div class='td13'>&yen;<{$vo['dues']|intval}></div>
-            <div class='td14'><{$vo['created']|date="Y/m/d",###}></div>
-            <if condition="(($vo['status'] eq 1)and ($vo['pay_status'] eq 1) and ($vo['tuan_no'] eq 0))or (($vo['status'] eq 2)and ($vo['pay_status'] eq 1) and ($vo['tuan_no'] neq 0))">
-            <div class='td15'><a style="margin-top:15px; " id="<{$vo['order_id']}>" href='<{:U("Ordermanage/fahuo",array("order_id"=>$vo["order_id"]))}>'><input type="button"  value="发货" /></a></div>
-            <elseif condition="($vo['status'] eq 6) and ($vo['pay_status'] eq 1)" />
-            <div class='td15'><a style="margin-top:15px; " id="<{$vo['goods_id']}>" href='<{:U("Goodsmanage/goods_editor",array("goods_id"=>$vo["order_id"]))}>'><input type="button"  value="退款" /></a></div>
-            <elseif condition="$vo['pay_status'] eq 2" />
-            <div class='td15'><a style="margin-top:15px; " id="<{$vo['order_id']}>" href='<{:U("Goodsmanage/goods_editor",array("goods_id"=>$vo["order_id"]))}>'><input type="button"  value="处理退款" /></a></div>
-            <else />
-             <div class='td15'></div>
-            </if>
-        </div>
-        </volist> 
+        <table class="order_table">
+            <tr class="title">
+                <td class="td1">订单ID</td>
+                <td class="td2">商品名称</td>
+                <td class="td3">自选属性</td>
+                <td class="td4">订单状态</td>
+                <td class="td5">买家</td>
+                <td class="td6">购买数量</td>
+                <td class="td7">收货地址</td>
+                <td class="td8">代金券</td>
+                <td class="td9">金额</td>
+                <td class="td10">下单时间</td>
+                <td class="td11">操作</td>
+            </tr>
+            <volist name="list" id="vo">
+                <tr class="content">
+                    <td class="td1"><{$vo['order_id']}></td>
+                    <td class="td2"><{$vo['goods_name']}></td>
+                    <td class="td3"><{$vo['zx_shuxing']}></td>
+                    <td class="td4"><{:get_status($vo['status'],$vo['pay_status'],$vo['tuan_no'])}></td>
+                    <td class="td5"><{$vo['user_name']}></td>
+                    <td class="td6"><{$vo['buy_number']}></td>
+                    <td class="td7"><{$vo['order_address']}></td>
+                    <td class="td8">&yen;<{$vo['daijinquan']|floatval}></td>
+                    <td class="td9">&yen;<{$vo['dues']|floatval}></td>
+                    <td class="td10"><{$vo['created']|date="Y/m/d",###}></td>
+                    <if condition="($vo['status'] eq 2)and ($vo['pay_status'] eq 1) and ($vo['tuan_no'] neq 0)">
+                        <td class='td11'><a style="margin-top:15px; " id="<{$vo['order_id']}>" href='<{:U("Ordermanage/fahuo",array("order_id"=>$vo["order_id"]))}>'><input type="button"  value="发货" /></a></td>
+                    <elseif condition="($vo['status'] eq 6) and ($vo['pay_status'] eq 1)" />
+                        <td class='td11'><a style="margin-top:15px; " id="<{$vo['goods_id']}>" href='<{:U("Goodsmanage/goods_editor",array("goods_id"=>$vo["order_id"]))}>'><input type="button"  value="退款" /></a></td>
+                    <elseif condition="$vo['pay_status'] eq 2" />
+                        <td class='td11'><a style="margin-top:15px; " id="<{$vo['order_id']}>" href='<{:U("Goodsmanage/goods_editor",array("goods_id"=>$vo["order_id"]))}>'><input type="button"  value="处理退款" /></a></td>
+                    <else />
+                        <td class='td11'></td>
+                    </if>
+                </tr>
+            </volist>
+        </table>
+        
+       
     
         
         

@@ -237,8 +237,8 @@
     var fahuo_day="<{$goods['fahuo_day']}>";
     $('select[name=select_fahuo]>option[value='+fahuo_day+']').attr('selected','selected');
     //成团人数选项赋值select_tuan_num
-    var tuan_number="<{$goods['tuan_number']}>";
-    $('select[name=select_tuan_num]>option[value='+tuan_number+']').attr('selected','selected');
+    //var tuan_number="<{$goods['tuan_number']}>";
+    //$('select[name=select_tuan_num]>option[value='+tuan_number+']').attr('selected','selected');
     
     //代金券赋值
     if("<{$goods['daijinquan']}>"==='0'){
@@ -246,6 +246,7 @@
         $('#daijinquan_n').attr('checked','checked');
     }
     //1元购赋值
+    /*
     if("<{$goods['1yuangou']}>"=='0'){
         $('#1yuangou_y').attr('checked',false);
         $('#1yuangou_n').attr('checked','checked');
@@ -261,7 +262,7 @@
         $('#choujiang_n').attr('checked',false);
         $('#choujiang_y').attr('checked','checked');
     }
-   
+   */
    //商品自选属性赋值
    
    

@@ -24,7 +24,7 @@ class MemberController extends FontEndController {
          $status_count['all']=$ordermodel->where("user_id={$user_id} and deleted=0")->count();//获取全部订单条数
          $status_count['no_pay']=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status<6")->count();//获取待付款条数
          $status_count['wait_tuan']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=1 and deleted=0 and tuan_no<>0")->count();//获取待成团条数
-         $status_count['daifahuo']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=2 and deleted=0")->count();//获取待发货条数
+         $status_count['daifahuo']=$ordermodel->where("user_id={$user_id} and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0")->count();//获取待发货条数
          $status_count['daishouhuo']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=3 and deleted=0")->count();//获取待收货条数
          $status_count['daipingjia']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=4 and deleted=0")->count();//获取待评价条数
          $status_count['shouhou']=$ordermodel->where("user_id={$user_id} and pay_status>1 and deleted=0")->count();//获取售后条数
