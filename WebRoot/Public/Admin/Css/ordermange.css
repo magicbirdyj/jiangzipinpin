@@ -22,6 +22,7 @@
 }
 .order_table{
     margin-top: 20px;
+    width: 100%;
 }
 .order_table td{
     border: 1px solid #666;
