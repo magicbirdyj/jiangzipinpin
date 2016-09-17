@@ -187,8 +187,8 @@ class GoodsmanageController extends FontEndController {
             $this->error('原价为空或者不规范,请输入如100.00');
             exit();
         }
-         if(!is_price($content['tuan_price'])){
-            $this->error('团购价为空或者不合规范');
+         if(!is_price($content['fanxian'])){
+            $this->error('乐享红包为空或者不合规范');
             exit();
         }
         $user_id=$_SESSION['admin_huiyuan']['user_id'];//获取发布商品的管理员id号
@@ -254,12 +254,9 @@ class GoodsmanageController extends FontEndController {
             'goods_name'=>$content['title'],//商品名称
             'goods_jianjie'=>$content['goods_jianjie'],//商品简介
             'units'=>$content['units'],//商品单位重量
-            '1yuangou'=>$content['radio_1yuangou'],//1元购
-            'choujiang'=>$content['radio_choujiang'],//抽奖
             'yuan_price'=>$content['yuan_price'],//原价
-            'price'=>$content['price'],//单购价
-            'tuan_price'=>$content['tuan_price'],//单购价
-            'tuan_number'=>$content['select_tuan_num'],//成团人数
+            'price'=>$content['price'],//乐享价
+            'fanxian'=>$content['fanxian'],//乐享红包
             'fahuo_day'=>$content['select_fahuo'],//发货天数
             'shuxing'=>$str_shuxing,//属性
             'goods_shuxing'=>$str_zx_shuxing,//商品可选属性

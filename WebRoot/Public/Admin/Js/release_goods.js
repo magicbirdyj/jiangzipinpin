@@ -16,8 +16,10 @@ $(':text[name=price]').bind('focus',function(){text_focus($('#info_price'),'填�
 $(':text[name=price]').bind('blur',function(){price_blue($(this),$('#info_price'));});
 $(':text[name=yuan_price]').bind('focus',function(){text_focus($('#info_yuan_price'),'填写原价');});
 $(':text[name=yuan_price]').bind('blur',function(){price_blue($(this),$('#info_yuan_price'));});
-$(':text[name=tuan_price]').bind('focus',function(){text_focus($('#info_tuan_price'),'填写团购价');});
-$(':text[name=tuan_price]').bind('blur',function(){price_blue($(this),$('#info_tuan_price'));});
+$(':text[name=fanxian]').bind('focus',function(){text_focus($('#info_fanxian'),'填写乐享红包，金额为1-200之间');});
+$(':text[name=fanxian]').bind('blur',function(){fanxian_blue($(this),$('#info_fanxian'));});
+//$(':text[name=tuan_price]').bind('focus',function(){text_focus($('#info_tuan_price'),'填写团购价');});
+//$(':text[name=tuan_price]').bind('blur',function(){price_blue($(this),$('#info_tuan_price'));});
 $('#xiayibu').bind('click',function(){fabu();});
 
 
@@ -25,8 +27,8 @@ $('#xiayibu').bind('click',function(){fabu();});
 
 
 //给1元购和抽奖radio一个默认值
-$('input[name=radio_1yuangou]:eq(1)').attr('checked','checked');
-$('input[name=radio_choujiang]:eq(1)').attr('checked','checked');
+//$('input[name=radio_1yuangou]:eq(1)').attr('checked','checked');
+//$('input[name=radio_choujiang]:eq(1)').attr('checked','checked');
 
     //引入在线编辑器
     var editor;
@@ -71,15 +73,33 @@ function price_blue(obj,obj_info){
     if(result){
         obj_info.html('&radic;');
         obj_info.css('color','#666');
-        //obj.val(parseFloat(obj.val()).toFixed(2));
         return true;
     }else{
         obj_info.css('color','red');
-        obj_info.html('不符合规范，请填入正确价格，如100或者9.99');
+        obj_info.html('不符合规范，请填入正确金额，如100或者9.99');
         return false;
     }
 }
 
+function fanxian_blue(obj,obj_info){
+    var reg=/^\d+\.?\d{0,2}$/gi;
+    var result= reg.test(obj.val());
+    if(result){
+        if(obj.val()<1||obj.val()>200){
+            obj_info.css('color','red');
+            obj_info.html('红包金额必须在1到200之间');
+            return false;
+        }else{
+            obj_info.html('&radic;');
+            obj_info.css('color','#666');
+        }
+        return true;
+    }else{
+        obj_info.css('color','red');
+        obj_info.html('不符合规范，请填入正确金额，如100或者9.99');
+        return false;
+    }
+}
 
 
 
@@ -102,7 +122,7 @@ function fabu(){
         var b=check_file($('input[name=goods_zhanshitu]'),$('#span_zhanshitu'));
         var c=price_blue($('input[name=price]'),$('#info_price'));
         var d=price_blue($('input[name=yuan_price]'),$('#info_yuan_price'));
-        var f=price_blue($('input[name=tuan_price]'),$('#info_tuan_price'));
+        var f=fanxian_blue($('input[name=fanxian]'),$('#info_fanxian'));
         if(a&&e&&h&&g&&b&&c&&d&&f){
             $('form[name=release_goods]').submit();
         }
