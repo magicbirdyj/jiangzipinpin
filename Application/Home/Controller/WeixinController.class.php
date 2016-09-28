@@ -256,6 +256,11 @@ class WeixinController extends FontEndController {
                             "type":"view",
                             "name":"联系客服",
                             "url":"http://m.jiangzipinpin.com"
+                        },
+                        {
+                            "type":"view",
+                            "name":"商家入驻",
+                            "url":"http://m.jiangzipinpin.com/Home/Zhuceshop/index.html"
                         }]
                     }]
                 }';
