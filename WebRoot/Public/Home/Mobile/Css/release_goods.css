@@ -72,23 +72,9 @@ padding-left: 120px;
 font-size:14px;
 padding:0px 5px;}
 
-.release .xyb{
-    display: block;
-    width:90%;
-    height: 50px;
-    line-height: 50px;
-    font-size: 18px;
-    text-align: center;
-    color: #FFFFFF;
-    margin: 0px auto;
-    margin-top: 20px;
-}
-.release .xyb:link,.release .xyb:visited{
-    background-color: #03BA8A;
-}
-.release .xyb:hover{
-    background-color: #00FFDB;
-}
+
+
+
 
 
 
@@ -206,4 +192,73 @@ span{
 .ke-outline .ke-icon-link{
     background-color: #03BA8A;
     color: #FFF;
+}
+
+.goods_jianjie{
+    margin: 0px 10%;
+    margin-bottom: 10px;
+    width: 80%;
+    height: 50px;
+}
+
+.input_button{
+    margin: 0px auto;
+    width: 150px;
+    padding: 10px 0px;
+    text-align: center;
+    margin-top: 15px;
+    background-color: #F90505;
+    color: #FFF;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.zx_tr{
+    background-color: #ddd;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333;
+}
+.js_div{
+    width: 90%;
+    margin: 15px 0px;
+    margin-left: 10%;
+    box-sizing: border-box;
+    padding-right: 120px;
+    position: relative;
+    background-color: #ddd;
+}
+.tr_td1_input{
+    border:1px solid #AAA;
+    width:100%;
+    box-sizing: border-box;
+    font-size:16px;
+    padding: 6px 10px 6px 10px;
+}
+.del_a{
+    display: block;
+    text-align: center;
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px;
+    width: 80px;
+    color: #333;
+    position: absolute;
+    right: 20px;
+    top:0px;
+    background-color: #F90505;
+    color: #FFF;
+    border-radius: 5px;
+}
+.input_button_sxz{
+    display: block;
+    text-align: center;
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px;
+    width: 120px;
+    color: #333;
+    background-color: #F90505;
+    color: #FFF;
+    border-radius: 5px;
+    float: right;
+    margin-right: 20px;
 }

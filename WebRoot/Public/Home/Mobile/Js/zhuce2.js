@@ -1,26 +1,29 @@
 // JavaScript Document
 //var backurl=document.referrer;
-$('#infor').css('display','block');
+$('#infor').css('display','none');
 var obj_form=document.zhuce;
 var huiyuanming;
 var i;
 var setit;
 var send_message='';
-document.getElementById("dlm_sjh").style.cssText="background-color:#03BA8A;color:#FFF";
+$("#dlm_sjh").css('background-color','#888');
+$("#dlm_sjh").css('color','#FFF');
 obj_form.huiyuanming.onfocus=function (){huiyuanming_foucs();};
 obj_form.huiyuanming.onblur=function (){huiyuanming_blur();};
-obj_form.shezhimima.onfocus=function (){shezhimima_foucs();};
+//obj_form.shezhimima.onfocus=function (){shezhimima_foucs();};
 obj_form.shezhimima.onblur=function (){shezhimima_blur();};
 obj_form.shezhimima.onkeyup=function (){shezhimima_keyup();};
-obj_form.querenmima.onfocus=function (){querenmima_foucs();};
+//obj_form.querenmima.onfocus=function (){querenmima_foucs();};
 obj_form.querenmima.onblur=function (){querenmima_blur();};
 $('input[name="shoujiyanzheng"]').bind('focus',function(){
     if(send_message!==''){
         $('#infor').css('color','#666');
         $('#infor').html('请输入手机短信动态码');
     }else{
+        $('#infor').css('display','block');
         $('#infor').css('color','red');
         $('#infor').html('请先点击:免费获取短信动态码');
+        setTimeout(infor_none,3000);
     }
 });
 $('input[name="shoujiyanzheng"]').bind('blur',function(){
@@ -30,15 +33,19 @@ $('input[name="shoujiyanzheng"]').bind('blur',function(){
 function shoujiyanzheng_blur(){
     var sjyz;
     if(send_message===''){
+        $('#infor').css('display','block');
+        setTimeout(infor_none,3000);
         $('#infor').css('color','red');
         $('#infor').html('请先点击:免费获取短信动态码');
         return false;
     }else if($('input[name="shoujiyanzheng"]').val()===''){
+        $('#infor').css('display','block');
+        setTimeout(infor_none,3000);
         $('#infor').html('短信动态码为空');
         $('#infor').css('color','red');
         return false;
     }else{
-        var url='/Home/zhuce/send_message.html';
+        var url='/Home/zhuceshop/send_message.html';
         var data={
             yanzhengma:$('input[name="shoujiyanzheng"]').val(),
             check:"yanzheng_message"
@@ -55,6 +62,8 @@ function shoujiyanzheng_blur(){
                     $('#infor').html('&radic;');
                     $('#infor').css('color','#666');
                 }else{
+                    $('#infor').css('display','block');
+                    setTimeout(infor_none,3000);
                     $('#infor').html('短信动态码错误');
                     $('#infor').css('color','red');
                 }
@@ -72,7 +81,7 @@ $('input[name="btn_sjyz"]').bind('click',btn_sjyz_click);
 function btn_sjyz_click(){
     i=30;
     setit=setInterval("yanshi()",1000);
-    var url='/Home/zhuce/send_message.html';
+    var url='/Home/zhuceshop/send_message.html';
     var data={
             shoujihao:$('#dlm_sjh').text(),
             check:"send_message"
@@ -107,23 +116,31 @@ function yanshi(){
     }
 }
 function huiyuanming_foucs(){
+        $('#infor').css('display','block');
+        setTimeout(infor_none,3000);
 	$('#infor').css('color','#666');
-	$('#infor').html("输入您想要的会员名，不可更改，建议使用中文");
+	$('#infor').html("输入您想要的店铺名，不可更改，建议使用中文");
 	}
 function huiyuanming_blur(){
 	if(obj_form.huiyuanming.value===""){
+            $('#infor').css('display','block');
+            setTimeout(infor_none,3000);
                 $('#infor').css('color','red');
-		$('#infor').html("会员名为空，请输入你的会员名");
+		$('#infor').html("店铺名为空，请输入你的会员名");
 		return false;
 		}
 		else if(obj_form.huiyuanming.value.length<2||obj_form.huiyuanming.value.length>12){
+                    $('#infor').css('display','block');
+                    setTimeout(infor_none,3000);
 			$('#infor').css('color','red');
-			$('#infor').html("会员名小于2个字符或者大于12个字符");
+			$('#infor').html("店铺名小于2个字符或者大于12个字符");
 			return false;
 			}
                 else if(is_feifa(obj_form.huiyuanming.value)){
+                    $('#infor').css('display','block');
+                    setTimeout(infor_none,3000);
                     $('#infor').css('color','red');
-                    $('#infor').html("会员名含有非法字符");
+                    $('#infor').html("店铺名含有非法字符");
                     return false;
                 }
 		else{
@@ -131,7 +148,7 @@ function huiyuanming_blur(){
                             huiyuanming:$('input[name=huiyuanming]').val(),
                             check:"huiyuanming"
                             };
-                    var url='/Home/zhuce/check.html';
+                    var url='/Home/zhuceshop/check.html';
                     $.ajax({
                         type:'post',
                         async : false,
@@ -144,10 +161,12 @@ function huiyuanming_blur(){
                         success:function(msg){
                         huiyuanming=msg;
                         if(msg!=='0'){
+                            $('#infor').css('display','block');
+                            setTimeout(infor_none,3000);
                             $('#infor').css('color','red');
-                            $('#infor').html("会员名已经被注册，请重新填写");
+                            $('#infor').html("店铺名已经被注册，请重新填写");
                             }else {
-                                $('#infor').html("会员名可用&radic;");
+                                $('#infor').html("店铺名可用&radic;");
                                 }
                         }
                     });
@@ -165,11 +184,15 @@ function shezhimima_foucs(){
 	
 function shezhimima_blur(){	
 	if(obj_form.shezhimima.value==""){
+            $('#infor').css('display','block');
+            setTimeout(infor_none,3000);
 		$('#infor').css('color','red');
 		$('#infor').html("密码为空，请输入您的密码");
 		return false;
 		}
 		else if(obj_form.shezhimima.value.length<5||obj_form.shezhimima.value.length>32){
+                    $('#infor').css('display','block');
+                    setTimeout(infor_none,3000);
 			$('#infor').css('color','red');
 			$('#infor').html("密码小于5个字符或者大于32个字符");
 			return false;
@@ -229,10 +252,14 @@ function querenmima_foucs(){
 	}
 function querenmima_blur(){
 	if(obj_form.querenmima.value==""){
+            $('#infor').css('display','block');
+            setTimeout(infor_none,3000);
 		$('#infor').css('color','red');
 		$('#infor').html("确认密码为空，请再次输入您的密码");
 		return false;
 	}else if(!(obj_form.querenmima.value==obj_form.shezhimima.value)){
+            $('#infor').css('display','block');
+            setTimeout(infor_none,3000);
                         $('#infor').css('color','red');
 			$('#infor').html("两次输入的密码不相同，请重新输入");
 			return false;

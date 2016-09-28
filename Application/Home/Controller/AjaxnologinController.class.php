@@ -60,6 +60,27 @@ class AjaxnologinController extends FontEndController {
         $this->ajaxReturn($sendRedPackInfo);
     }
     
+    
+    
+    public function get_shuxing() {
+        $post=$_POST;
+        if($post['check']!='get_shuxing'){
+            exit;
+        }
+        $cat_id=$post['cat_id'];
+        $categorymodel=D('Category');
+        $data_cat=$categorymodel->where("cat_id='$cat_id'")->getField('shuxing');
+        $arr_shuxing=unserialize($data_cat);//得到反序列化属性数组
+        foreach ($arr_shuxing as $key => $value) {
+            $str.='<div class="tr shuxing"><div class="tr_td1">'.$key.'</div><div class="tr_td2"><select name="shuxing[]" class="release_select" >';
+            foreach ($value as $v) {
+                $str.='<option value="'.$v.'">'.$v.'</option>';
+            }
+            $str.='</select></div></div>';
+        }
+        $this->ajaxReturn($str);
+    }
+    
 }
 
 

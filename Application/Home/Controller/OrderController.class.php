@@ -206,7 +206,7 @@ class OrderController extends FontEndController {
             $wuliu=  unserialize($order['kuaidi']);
             $this->assign('wuliu',$wuliu);
             if($wuliu['fangshi']=='2'){
-                $wuliu_info=$this->getOrderTracesByJson($order['order_no'],$this->get_kuaidi_bianma($wuliu['company']),$wuliu['no']);
+                $wuliu_info=$this->getOrderTracesByJson($order['order_no'],$wuliu['company_bianma'],$wuliu['no']);
                 $arr_wuliu=json_decode($wuliu_info,true);
                 $wuliu_guiji=$arr_wuliu['Traces'];
                 krsort($wuliu_guiji);
@@ -581,18 +581,7 @@ class OrderController extends FontEndController {
     }
     
     
-    private function get_kuaidi_bianma($name){
-        switch ($name) {
-            case '天天快递':
-                $result='HHTT';
-                break;
-            case '邮政快递';
-                $result='YZPY';
-                break;
-
-        }
-        return $result;
-    }
+   
     
     
     //收货成功后，发送交易成功和评价获取代金券通知

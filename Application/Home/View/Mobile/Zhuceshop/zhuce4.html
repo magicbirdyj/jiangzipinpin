@@ -1,0 +1,132 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/zhuce.css">
+<script src="__PUBLIC_COMMON__/Js/jquery.form.js"></script> 
+</head>
+
+<body>
+    <div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>店铺信息完善</div>
+    <div id="infor" class="infor" style="color: #666;display: block"></div>
+
+
+    <form name="zhuce" method="post" enctype="multipart/form-data" action="<{:U('Zhuceshop/zhuce4_check')}>">
+         <input name="member_file_touxiang" value="" type="hidden"/> 
+<div class="zhuce4_tr">
+    <div class="zhuce4_tr_td1" style="height: 35px;line-height: 35px;">上传logo</div>
+    <div class="file_jia" id="file_touxiang">+</div>                
+</div><!--第一行-->
+
+</div><!--第二行-->
+<div  class="xuxian"></div>
+<div class="zhuce4_tr">
+<div class="zhuce4_tr_td1">店铺形式</div>
+<div class="zhuce4_tr_td2">
+<input name="radio_fuwuxingshi" type="radio" class="zhuce4_radio" value="0" />普通商品
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input name="radio_fuwuxingshi" type="radio" class="zhuce4_radio" value="1"  />代购
+</div>
+</div><!--第三行-->
+<div class="zhuce4_tr">
+    <div class="zhuce4_tr_td1"></div>
+    <div class="zhuce4_tr_td2">
+<input name="radio_fuwuxingshi" type="radio" class="zhuce4_radio" value="2"  />个人纯手工商品
+    </div>
+</div>
+
+
+
+
+    
+    
+<div  class="xuxian"></div>
+<div class="zhuce4_tr">
+<div class="zhuce4_tr_td1">所在城市</div>
+    <select name="address_province" class="zhuce4_tr_td2 zhuce4_select" ></select>
+</div><!--第七行-->
+
+<div class="zhuce4_tr">
+<div class="zhuce4_tr_td1"></div>
+    <select name="address_city" class="zhuce4_tr_td2 zhuce4_select" ></select>
+</div><!--第七行-->
+
+<div class="zhuce4_tr">
+<div class="zhuce4_tr_td1"></div>
+    <select name="address_county" class="zhuce4_tr_td2 zhuce4_select" ></select>
+</div><!--第七行-->
+
+<div class="zhuce4_tr">
+<div class="zhuce4_tr_td1">详细地址</div>
+<input name="address_juti" type="text" class="zhuce4_tr_td2 zhuce4_text"  />
+</div><!--第八行-->
+<div  class="xuxian"></div>
+<div class="zhuce4_tr">
+<div class="zhuce4_tr_td1">联系微信</div>
+    <input name="contact_weixin" type="text"  class="zhuce4_tr_td2 zhuce4_text"  />
+
+</div><!--第九行-->
+div class="zhuce4_tr">
+<div class="zhuce4_tr_td1">联系QQ</div>
+    <input name="contact_qq" type="text"  class="zhuce4_tr_td2 zhuce4_text"  />
+
+</div><!--第九行-->
+
+
+<div class="xuxian"></div>
+<div class="zhuce4_tr">
+    <div class="zhuce4_tr_td1">主营分类</div>
+    <select name="cate_0" class="zhuce4_tr_td2 zhuce4_select" ></select>
+</div><!--第十行-->
+<div class="zhuce4_tr">
+<div class="zhuce4_tr_td1"></div>
+    <select name="cate_1" class="zhuce4_tr_td2 zhuce4_select" ></select>
+</div><!--第九行-->
+<div  class="xuxian"></div>
+
+<div class="zhuce4_tr" style="position: relative;">
+<div class="zhuce4_tr_td1">店铺介绍</div>  
+<textarea id="shop_introduce" name="shop_introduce"  class="zhuce4_text" placeholder="500字以内"></textarea>
+</div>
+
+<a href="javascript:void(0)" id="zhuce1_xiayibu" class="a_xyb button_a_lvse">下一步</a>
+</form>
+
+
+    <form id = "form_file_touxiang" enctype="multipart/form-data" action="<{:U('Zhuceshop/file_jia')}>" method="post" name="form_file_touxiang">   
+        <input name="file_touxiang" type="file"  style="visibility:hidden; width:0px; height: 0px;" />
+    </form>
+    
+    
+    
+    <script type="text/javascript">
+        var arr_cate_0 = new Array();
+        var arr_cate_1 = new Array();
+        var i,i1;
+        arr_cate_0[0]="请选择大类";
+        <volist name='cate_0' id='vo'>
+            i=parseInt("<{$key}>");
+            arr_cate_0[i+1]="<{$vo['cat_name']}>";
+        </volist>
+        arr_cate_1[0]=new Array();
+        arr_cate_1[0][0]=new Array();
+        <volist name='cate_1' id='vo'>
+             i=parseInt("<{$key}>");
+              arr_cate_1[i+1]=new Array();
+              <foreach name="vo" item="value"  key="k"  >
+                i1=parseInt("<{$k}>");
+                arr_cate_1[i+1][i1]=new Array();
+            </foreach>
+        </volist>
+        arr_cate_1[0][0][0]="请选择分类";
+        arr_cate_1[0][0][1]="请选择分类";
+        <volist name='cate_1' id='vo'>
+            i=parseInt("<{$key}>");
+            <foreach name="vo" item="value"  key="k"  >
+                i1=parseInt("<{$k}>");
+                arr_cate_1[i+1][i1][0]="<{$value['cat_id']}>";
+                arr_cate_1[i+1][i1][1]="<{$value['cat_name']}>";
+            </foreach>
+        </volist>
+
+    </script>    
+<script src="__PUBLIC_HOME__/Mobile/Js/zhuce4.js" type="text/javascript"></script>
+</body>
+</html>

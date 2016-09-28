@@ -9,7 +9,7 @@ $.ajaxSetup({
 });     
 
 obj_form.shoujihao.onblur=function (){yzshouji_blur();}
-obj_form.yanzhengma.onfocus=function (){yanzhengma_foucs();}
+//obj_form.yanzhengma.onfocus=function (){yanzhengma_focus();}
 
 
 
@@ -32,7 +32,7 @@ function yzshouji_blur(){
                             shoujihao:$('input[name=shoujihao]').val(),
                             check:"shoujihao"
                             };
-                    var url='/Home/zhuce/check.html';
+                    var url='/Home/zhuceshop/check.html';
                     $.ajax({
                         type:'post',
                         url:url,
@@ -76,7 +76,7 @@ function yanzhengma_blur(){
         yanzhengma:$('input[name=yanzhengma]').val(),
         check:"yanzhengma"
     };
-    var url='/Home/zhuce/check.html';
+    var url='/Home/zhuceshop/check.html';
     $.post(url,data,function(msg){
          yanzhengma=msg;
         if(msg===0){

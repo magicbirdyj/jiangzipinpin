@@ -80,11 +80,11 @@ class LoginController extends FontEndController {
                  exit;
              }
             $usersmodel=D('Users');
-            $user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
+            $user=$usersmodel->where("open_id='oSI43woDNwqw6b_jBLpM2wPjFn_M'")->field('user_id,user_name,open_id')->find();
             $_SESSION['huiyuan']=array(
             'user_id'=>$user['user_id'],
             'user_name'=>$user['user_name'],
-            'open_id'=>"$open_id",
+            'open_id'=>$user['open_id'],
             'head_url'=>$use['head_url']
                 );
             if(isset($_SESSION['ref'])){
@@ -144,21 +144,25 @@ class LoginController extends FontEndController {
                  echo '错误，微信浏览器却没得到code';
                  exit;
              }
-            //$_SESSION['guanzhu']='yiguanzhu';
-            //$usersmodel=D('Users');
-            //$user=$usersmodel->where("open_id='123456'")->field('user_id,user_name,open_id')->find();
-            //$_SESSION['wei_huiyuan']=array(
-            //'user_id'=>$user['user_id'],
-            //'open_id'=>$user['open_id'],
-            //    );
-            //if(isset($_SESSION['ref'])){
-            //    header("location:". $_SESSION['ref']);
-            //    exit();
-            //}else{
-            //    echo '对不起，程序错误，您直接进入了登陆页面 没有ref';
-            //    exit();
-            //}
-             echo '请关注我们的公众号：酱紫拼拼，并从公众号进入商城。期待您的光临！';
+             
+             
+            $_SESSION['guanzhu']='yiguanzhu';
+            $usersmodel=D('Users');
+            $user=$usersmodel->where("open_id='oSI43woDNwqw6b_jBLpM2wPjFn_M'")->field('user_id,user_name,open_id')->find();
+            $_SESSION['wei_huiyuan']=array(
+            'user_id'=>$user['user_id'],
+            'open_id'=>$user['open_id'],
+                );
+            if(isset($_SESSION['ref'])){
+                header("location:". $_SESSION['ref']);
+                exit();
+            }else{
+                echo '对不起，程序错误，您直接进入了登陆页面 没有ref';
+                exit();
+            }
+             
+             
+             //echo '请关注我们的公众号：酱紫拼拼，并从公众号进入商城。期待您的光临！';
         }
     }
     

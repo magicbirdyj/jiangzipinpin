@@ -1,17 +1,17 @@
 // JavaScript Document
-
+$('#infor').css('display','none');
 var obj=document.getElementById("infor");
 var arr_province=["请选择省市","北京市","天津市","上海市","重庆市","河北省","山西省","内蒙古","辽宁省","吉林省","黑龙江省","江苏省","浙江省","安徽省","福建省","江西省","山东省","河南省","湖北省","湖南省","广东省","广西","海南省","四川省","贵州省","云南省","西藏","陕西省","甘肃省","青海省","宁夏","新疆"];//,"香港","澳门","台湾省"];
 var arr_city=[
 ["请选择市区"],
 
-["东城区","西城区","崇文区","宣武区","朝阳区","丰台区","石景山区","海淀区","门头沟区","房山区","通州区","顺义区","昌平区","大兴区","怀柔区","平谷区","密云县","延庆县","延庆镇"],
+["北京市"],
 
-["和平区","河东区","河西区","南开区","河北区","红桥区","塘沽区","汉沽区","大港区","东丽区","西青区","津南区","北辰区","武清区","宝坻区","蓟县","宁河县","芦台镇","静海县","静海镇"],
+["天津市"],
 
-["黄浦区","卢湾区","徐汇区","长宁区","静安区","普陀区","闸北区","虹口区","杨浦区","闵行区","宝山区","嘉定区","浦东新区","金山区","松江区","青浦区","南汇区","奉贤区","崇明县","城桥镇"],
+["上海市"],
 
-["渝中区","大渡口区","江北区","沙坪坝区","九龙坡区","南岸区","北碚区","万盛区","双桥区","渝北区","巴南区","万州区","涪陵区","黔江区","长寿区","合川市","永川区市","江津市","南川市","綦江县","潼南县","铜梁县","大足县","荣昌县","璧山县","垫江县","武隆县","丰都县","城口县","梁平县","开县","巫溪县","巫山县","奉节县","云阳县","忠县","石柱县","彭水县","酉阳县","秀山县"],
+["重庆市"],
 
 ["石家庄市","唐山市","秦皇岛市","邯郸市","邢台市","保定市","张家口市","承德市","沧州市","廊坊市","衡水市"],
 
@@ -70,10 +70,10 @@ var arr_city=[
 ;
 var arr_county=[
 [["请选择区县"]],
-[[]],
-[[]],
-[[]],
-[[]],
+[["东城区","西城区","崇文区","宣武区","朝阳区","丰台区","石景山区","海淀区","门头沟区","房山区","通州区","顺义区","昌平区","大兴区","怀柔区","平谷区","密云县","延庆县","延庆镇"]],
+[["和平区","河东区","河西区","南开区","河北区","红桥区","塘沽区","汉沽区","大港区","东丽区","西青区","津南区","北辰区","武清区","宝坻区","蓟县","宁河县","芦台镇","静海县","静海镇"]],
+[["黄浦区","卢湾区","徐汇区","长宁区","静安区","普陀区","闸北区","虹口区","杨浦区","闵行区","宝山区","嘉定区","浦东新区","金山区","松江区","青浦区","南汇区","奉贤区","崇明县","城桥镇"]],
+[["渝中区","大渡口区","江北区","沙坪坝区","九龙坡区","南岸区","北碚区","万盛区","双桥区","渝北区","巴南区","万州区","涪陵区","黔江区","长寿区","合川市","永川区市","江津市","南川市","綦江县","潼南县","铜梁县","大足县","荣昌县","璧山县","垫江县","武隆县","丰都县","城口县","梁平县","开县","巫溪县","巫山县","奉节县","云阳县","忠县","石柱县","彭水县","酉阳县","秀山县"]],
 [["长安区","桥东区","桥西区","新华区","裕华区","井陉矿区","辛集市","藁城市","晋州市","新乐市","鹿泉市","井陉县","正定县","栾城县","行唐县","灵寿县","高邑县","深泽县","赞皇县","无极县","平山县","元氏县","赵县"],["路北区","路南区","古冶区","开平区","丰润区","丰南区","遵化市","迁安市","滦县","滦南县","乐亭县","迁西县","玉田县","唐海县"],["海港区","山海关区","北戴河区","南戴河区","昌黎县","抚宁县","卢龙县","青龙"],["丛台区","邯山区","复兴区","峰峰矿区","武安市","邯郸县","临漳县","成安县","大名县","涉县","磁县","肥乡县","永年县","邱县","鸡泽县","广平县","馆陶县","魏县","曲周县"],["桥东区","桥西区","南宫市","沙河市","邢台县","临城县","内丘县","柏乡县","隆尧县","任县","南和县","宁晋县","巨鹿县","新河县","广宗县","平乡县","威县","清河县","临西县"],["新市区","北市区","南市区","定州市","涿州市","安国市","高碑店市","满城县","清苑县","易县","徐水县","涞源县","定兴县","顺平县","唐县","望都县","涞水县","高阳县","安新县","雄县","容城县","曲阳县","阜平县","博野县","蠡县"],["桥西区","桥东区","宣化区","下花园区","宣化县","张北县","康保县","沽源县","尚义县","蔚县","阳原县","怀安县","万全县","怀来县","涿鹿县","赤城县","崇礼县"],["双桥区","双滦区","鹰手","承德县","兴隆县","平泉县","滦平县","隆化县","丰宁","宽城","围场"],["运河区","新华区","泊头市","任丘市","黄骅市","河间市","沧县","青县","东光县","海兴县","盐山县","肃宁县","南皮县","吴桥县","献县","孟村"],["安次区","广阳区","霸州市","三河市","固安县","永清县","香河县","大城县","文安县","大厂回族自治县"],["桃城区","冀州市","深州市","枣强县","武邑县","武强县","饶阳县","安平县","故城县","景县","阜城县"]],
 [["小店区","迎泽区","尖草坪区","万柏林区","晋源区","古交市","清徐县","阳曲县","娄烦县"],["矿区","大同城区","南郊区","新荣区","阳高县","天镇县","广灵县","灵丘县","浑源县","左云县","大同县"],["矿区","阳泉市郊区","平定县","盂县"],["潞城市","长治县","襄垣县","屯留县","平顺县","黎城县","壶关县","长子县","武乡县","沁县","沁源县"],["高平市","沁水县","阳城县","陵川县"],["平鲁区","朔城区","山阴县","应县","右玉县","怀仁县"],["介休市","榆社县","左权县","和顺县","昔阳县","寿阳县","太谷县","祁县","平遥县","灵石县"],["永济市","盐湖区","河津市","芮城县","临猗县","万荣县","新绛县","稷山县","闻喜县","夏县","绛县","平陆县","垣曲县"],["原平市","定襄县","五台县","代县","繁峙县","宁武县","静乐县","神池县","五寨县","岢岚县","河曲县","保德县","偏关县"],["侯马市","霍州市","曲沃县","翼城县","襄汾县","洪洞县","古县","安泽县","浮山县","吉县","乡宁县","蒲县","大宁县","永和县","隰县","尧都区","汾西县"],["孝义市","汾阳市","文水县","中阳县","兴县","临县","方山县","柳林县","岚县","交口县","交城县","石楼县","离石区"]],
 [["回民区","新城区","玉泉区","赛罕区","托克托县","武川县","和林格尔","清水河县","土默特左旗"],["昆都仑区","东河区","青山区","石拐区","白云矿区","九原区","固阳县","土默特右旗","达尔罕"],["海勃湾区","乌达区","海南区"],["红山区","元宝山区","松山区","宁城县","林西县","阿鲁科尔沁","巴林左旗","巴林右旗","克什克腾","翁牛特旗","喀喇沁旗","敖汉旗"],["科尔沁区","霍林郭勒","开鲁县","库伦旗","奈曼旗","扎鲁特旗","科尔沁左中","科尔沁左后"],["东胜区","达拉特旗","准格尔旗","鄂托克前旗","鄂托克旗","杭锦旗","乌审旗","伊金霍洛旗"],["海拉尔区","满洲里市","扎兰屯市","牙克石市","根河市","额尔古纳市","阿荣旗","新巴尔虎右","新巴尔虎左","陈巴尔虎旗","鄂伦春","鄂温克族","莫力达瓦达"],["集宁市","丰镇市","卓资县","化德县","商都县","兴和县","凉城县","察哈尔右前","察哈尔右中","察哈尔右后","四子王旗"],["锡林浩特市","二连浩特市","多伦县","阿巴嘎旗","苏尼特左旗","苏尼特右旗","东乌珠","西乌珠","太仆寺旗","镶黄旗","正镶白旗","正蓝旗"],["临河市","五原县","磴口县","乌拉特前旗","乌拉特中旗","乌拉特后旗","杭锦后旗"],["阿拉善左旗","阿拉善右旗","额济纳旗"],["乌兰浩特市","阿尔山市","突泉县","科尔沁右前","科尔沁右中"]],
@@ -104,8 +104,6 @@ var arr_county=[
 ];
 var obj_form=document.zhuce;
 var obj_file_touxiang=document.form_file_touxiang.file_touxiang;
-var obj_file_shenfenzheng=document.form_file_shenfenzheng.file_shenfenzheng;
-//var obj_file_yingyezhizhao=document.zhuce.file_yingyezhizhao;
 var obj_radio_fuwuxingshi=document.zhuce.radio_fuwuxingshi;
 
 var t=0;
@@ -113,12 +111,13 @@ var select_province=document.zhuce.address_province;
 var select_city=document.zhuce.address_city;
 var select_county=document.zhuce.address_county;
 var province_index;
-var obj_name=document.zhuce.name;
 var obj_address_juti=document.zhuce.address_juti;
-var obj_contact_qq=document.zhuce.contact_qq;
 var obj_contact_weixin=document.zhuce.contact_weixin;
-var obj_contact_email=document.zhuce.contact_email;
+var obj_contact_qq=document.zhuce.contact_qq;
 var touxiang_is=false;
+var select_cate_0=document.zhuce.cate_0;
+var select_cate_1=document.zhuce.cate_1;
+var cate_0_index;
 
 obj_file_touxiang.onchange=function(){
     if(check_file_image($(this),$("#infor"),true)){
@@ -126,33 +125,21 @@ obj_file_touxiang.onchange=function(){
     };
 };
 
-obj_file_shenfenzheng.onchange=function(){
-    if(check_file_image($(this),$("#infor"),true)){
-        file_jia_change($(this));
-    };
-    
-};
+
 $('input[name=file_erweima]').bind('change',function(){
     if(check_file_image($(this),$("#infor"),true)){
         file_jia_change($(this));
     };
 });
-//obj_file_yingyezhizhao.onchange=function(){check_file_image(this,1);};
-obj_radio_fuwuxingshi[0].onclick=function(){radio_select(this);};
-obj_radio_fuwuxingshi[1].onclick=function(){radio_select(this);};
-//obj_radio_fuwuxingshi[2].onclick=function(){radio_select(this);};
+
+
+
 select_province.onchange=function (){province_onchange(this.selectedIndex);};
 select_city.onchange=function (){city_onchange(this.selectedIndex);};
-obj_address_juti.onfocus=function (){address_juti_onfocus();};
+select_cate_0.onchange=function (){cate_0_onchange(this.selectedIndex);};
 obj_address_juti.onblur=function (){address_juti_onblur();};
-obj_contact_qq.onfocus=function (){contact_onfocus(this.name);};
-obj_contact_qq.onblur=function (){contact_qq_onblur();};
-obj_contact_weixin.onfocus=function (){contact_onfocus(this.name);};
 obj_contact_weixin.onblur=function (){contact_weixin_onblur();};
-obj_contact_email.onfocus=function (){contact_onfocus(this.name);};
-obj_contact_email.onblur=function (){contact_email_onblur();};
-obj_name.onfocus=function (){name_onfocus();};
-obj_name.onblur=function (){name_onblur();};
+obj_contact_qq.onblur=function (){contact_qq_onblur();};
 document.getElementById("zhuce1_xiayibu").onclick=function (){return xiayibu_onclick();};
 
 
@@ -172,21 +159,23 @@ for(var i=0;i<arr_county[0][0].length;i++){
         select_county.options[i].value=arr_county[0][0][i];
 	}
 
-
-
-
-
-for(var i=0;i<$(':checkbox').length;i++){
-	$(':checkbox').eq(i).bind('click',function(event){
-           if(!checkbox()){
-                event.preventDefault();
-           }
-        });
+select_cate_0.length=arr_cate_0.length;
+select_cate_1.length=arr_cate_1[0][0].length;
+for(var i=0;i<arr_cate_0.length;i++ ){
+	select_cate_0.options[i].text=arr_cate_0[i];
+        select_cate_0.options[i].value=arr_cate_0[i];
 	}
-document.zhuce.radio_sex[0].checked=true;
+
+select_cate_1.options[0].text=arr_cate_1[0][0][1];
+select_cate_1.options[0].value=arr_cate_1[0][0][0];
+	
+
+
+
+
 obj_radio_fuwuxingshi[0].checked=true;
 
-radio_select(obj_radio_fuwuxingshi[0]);
+
 
 
 function province_onchange(index){
@@ -210,55 +199,25 @@ function city_onchange(index){
 		}
 	}
 
-
-function radio_select(obj){
+function cate_0_onchange(index){
 	obj.innerHTML="";
-	switch(obj.value){
-		case "个人" :
-		document.getElementById("radio_1").style.cssText="display:block;";
-		document.getElementById("radio_2").style.cssText="display:block;";
-		//document.getElementById("radio_3").style.cssText="display:none;";
-		document.getElementById("radio_1").getElementsByTagName("div")[0].innerHTML="真实姓名";
-		document.getElementById("radio_2").getElementsByTagName("div")[0].innerHTML="身份证照";
-		break;
-		case "工作室":
-		document.getElementById("radio_1").style.cssText="display:block;";
-		document.getElementById("radio_2").style.cssText="display:block;";
-		//document.getElementById("radio_3").style.cssText="display:none;";
-		document.getElementById("radio_1").getElementsByTagName("div")[0].innerHTML="负责人姓名";
-		document.getElementById("radio_2").getElementsByTagName("div")[0].innerHTML="负责人身份证照";
-		break;
-		//case "公司":
-		//document.getElementById("radio_1").style.cssText="display:block;";
-		//document.getElementById("radio_2").style.cssText="display:block;";
-		//document.getElementById("radio_3").style.cssText="display:block;";
-		//document.getElementById("radio_1").getElementsByTagName("div")[0].innerHTML="公司名称";
-		//document.getElementById("radio_2").getElementsByTagName("div")[0].innerHTML="法人身份证照";
-		//break;
+	cate_0_index=index;
+	select_cate_1.length=0;
+	select_cate_1.length=arr_cate_1[index].length;
+	for(var i=0;i<arr_cate_1[index].length;i++){
+		select_cate_1.options[i].text=arr_cate_1[index][i][1];
+                select_cate_1.options[i].value=arr_cate_1[index][i][0];
 		}
 	}
-function checkbox(){
-	t=0;
-	for(var i=0;i<$(':checkbox').length;i++){
-		if($(':checkbox').eq(i).is(':checked')){
-			t++;
-			}
-		}
-	if(t<3){
-		return true;
-		}
-		else{
-                    return false;
-			}
-	}
-function address_juti_onfocus(){
-	obj.style.cssText="color:#666;";
-	obj.innerHTML="请输入您的详细地址";
-	}
+
+
+
 function address_juti_onblur(){
 	if(obj_address_juti.value==""){
-		obj.style.cssText="color:red;";
-		obj.innerHTML="您的详细地址为空";
+            $('#infor').css('display','block');
+            setTimeout(infor_none,3000);
+		$('#infor').css('color','red');
+		$('#infor').html("您的详细地址为空");
 		return false;
 		}
 		else{
@@ -267,102 +226,42 @@ function address_juti_onblur(){
 			}
 	}
 	
-function contact_onfocus(name_self){
-	obj.style.cssText="color:#666;";
-	if(name_self==="contact_qq"){
-		obj.innerHTML="请输入您的QQ号";
+
+
+
+function contact_weixin_onblur(){
+	if(obj_contact_weixin.value==""){
+            $('#infor').css('display','block');
+            setTimeout(infor_none,3000);
+		$('#infor').css('color','red');
+		$('#infor').html("您的微信为空");
+		return false;
 		}
-		else if(name_self==="contact_weixin"){
-		obj.innerHTML="请输入您的微信号";
-			}
 		else{
-			obj.innerHTML="请输入您的邮箱";
+			obj.innerHTML="&radic;";
+			return true;
+			}
+	}
+function contact_qq_onblur(){
+	if(obj_contact_qq.value==""){
+            $('#infor').css('display','block');
+            setTimeout(infor_none,3000);
+		$('#infor').css('color','red');
+		$('#infor').html("您的QQ为空");
+		return false;
+		}
+		else{
+			obj.innerHTML="&radic;";
+			return true;
 			}
 	}
 
-function contact_qq_onblur(){
-	if(obj_contact_qq.value==""){
-		obj.style.cssText="color:red;";
-		obj.innerHTML="您的QQ为空";
-		return false;
-		}
-		else if(isNaN(obj_contact_qq.value)){
-			obj.style.cssText="color:red;";
-			obj.innerHTML="您输入的qq格式不正确";
-			return false;
-			}
-		else{
-			obj.innerHTML="&radic;";
-			return true;
-			}
-	}
-function contact_weixin_onblur(){
-	if(obj_contact_weixin.value==""){
-		obj.style.cssText="color:red;";
-		obj.innerHTML="您的微信为空";
-		return false;
-		}
-		else{
-			obj.innerHTML="&radic;";
-			return true;
-			}
-	}
-function contact_email_onblur(){
-	var arr=["com","cn","net"];
-	//var index1=obj_contact_email.value.lastIndexOf("@");
-	//var str1=obj_contact_email.value.substr(index1+1);
-	//var index2=str1.lastIndexOf(".");
-	//var str2=str1.substr(index2+1);
-	if(obj_contact_email.value==""){
-		obj.style.cssText="color:red;";
-		obj.innerHTML="您的邮箱为空";
-		return false;
-		}
-		else if(is_youxiang(obj_contact_email.value)){
-                        obj.innerHTML="&radic;";
-			return true;
-			}
-		else{
-                        obj.style.cssText="color:red;";
-			obj.innerHTML="您输入的邮箱格式不正确";
-			return false;
-			} 
-	}
-function name_onfocus(){
-	obj.style.cssText="color:#666;";
-	if(obj_radio_fuwuxingshi[0].checked){
-		obj.innerHTML="请输入您的真实姓名";
-		}
-		else if(obj_radio_fuwuxingshi[1].checked){
-			obj.innerHTML="请输入负责人的真实姓名";
-			}
-			else {
-				obj.innerHTML="请输入您公司的全称";
-				}
-	}
-function name_onblur(){
-	if(document.zhuce.name.value==""){
-		obj.style.cssText="color:red;";
-		if(obj_radio_fuwuxingshi[0].checked){
-		obj.innerHTML="您的姓名为空";
-		}
-		else if(obj_radio_fuwuxingshi[1].checked){
-			obj.innerHTML="负责人的姓名为空";
-			}
-			else {
-				//obj.innerHTML="公司的名称为空";
-				}
-		return false;
-		}
-		else{
-			obj.innerHTML="&radic;";
-			return true;
-			}
-	}
 function check_seleck(){
 	if(select_province.selectedIndex==0){
-		obj.style.cssText="color:red;";
-		obj.innerHTML="未选择所在城市";
+            $('#infor').css('display','block');
+            setTimeout(infor_none,3000);
+		$('#infor').css('color','red');
+		$('#infor').html("未选择所在城市");
 		return false;
 		}
 	else{
@@ -370,33 +269,30 @@ function check_seleck(){
 		return true;
 		}
 	}
-function check_checkbox(){
-	if(t===0){
-		obj.style.cssText="color:red;";
-		obj.innerHTML="未选择服务内容";
+        
+function check_seleck_cate(){
+	if(select_cate_0.selectedIndex==0){
+            $('#infor').css('display','block');
+            setTimeout(infor_none,3000);
+		$('#infor').css('color','red');
+		$('#infor').html("未选择主营分类");
 		return false;
 		}
-		else{
-			obj.innerHTML="";
-			return true;
-			}
+	else{
+		obj.innerHTML="";
+		return true;
+		}
 	}
+
 function xiayibu_onclick(){
     if($('input[name=member_file_touxiang]').attr('value')=== "undefined"){
         alert('头像图片因超过5M或其它原因未上传成功,请重新上传');
         return false;
-    }else if($('input[name=member_file_shenfenzheng]').attr('value')=== "undefined"){
-        alert('身份证图片因超过5M或其它原因未上传成功,请重新上传');
-        return false;
-    }else if($('input[name=member_file_erweima]').attr('value')=== "undefined"){
-        alert('微信二维码图片因超过5M或其它原因未上传成功,请重新上传');
-        return false;
     }
 
-	//var c2=check_file_image($(obj_file_shenfenzheng),$("#span_shenfenzheng"),false);
-        //var c2=true;
-	//var c3=check_file_image(obj_file_yingyezhizhao,2);
-    if(touxiang_check()&&name_onblur()&&check_seleck()&&address_juti_onblur()&&contact_qq_onblur()&&contact_weixin_onblur()&&contact_email_onblur()&&check_checkbox()&&text_blue($('#shop_introduce'),$('#infor'),'婚礼人介绍')){
+    if(touxiang_check()&&check_seleck()&&address_juti_onblur()&&check_seleck_cate()&&contact_weixin_onblur()&&contact_qq_onblur()&&text_blue($('#shop_introduce'),$('#infor'),'店铺介绍')){
+        $('#infor').css('display','block');
+        setTimeout(infor_none,3000);
         $('#infor').css('color','#666');
         $('#infor').html('审核通过 &radic;');
         obj_form.submit();
@@ -405,6 +301,8 @@ function xiayibu_onclick(){
 }
 function touxiang_check(){
     if(!touxiang_is){
+        $('#infor').css('display','block');
+        setTimeout(infor_none,3000);
         $('#infor').css('color','red');
         $('#infor').html('未上传头像');
         return false;
@@ -413,12 +311,9 @@ function touxiang_check(){
     }
 }
 
-$('#shop_introduce').bind('focus',function(){
-    $('#infor').html('（请填写详细的店铺介绍，将显示在商品页面右侧）');
-    $('#infor').css('color','#666');
-});
+
 $('#shop_introduce').bind('blur',function(){
-    return text_blue($('#shop_introduce'),$('#infor'),'婚礼人介绍');
+    return text_blue($('#shop_introduce'),$('#infor'),'店铺介绍');
 });
 
 
@@ -426,12 +321,7 @@ $('#shop_introduce').bind('blur',function(){
 $('#file_touxiang').bind('click',function(){
     $('input[name=file_touxiang]').trigger('click');
 });
-$('#file_shenfenzheng').bind('click',function(){
-    $('input[name=file_shenfenzheng]').trigger('click');
-});
-$('#file_erweima').bind('click',function(){
-    $('input[name=file_erweima]').trigger('click');
-});
+
 
 
 //文件上传控件内容改变时的ajax上传函数
@@ -446,8 +336,8 @@ function file_jia_change(obj){
                         if(msg.result==='error'){
                             //alert(msg.error);//测试error才用
                             alert('图片超过5M的大小限制，请重新选择图片');
-                            $('#infor').css('color','red');
-                            $('#infor').html('文件上传失败');
+                            //$('#infor').css('color','red');
+                            //$('#infor').html('文件上传失败');
                             return false;
                         }
                         var img_url='';
@@ -457,20 +347,8 @@ function file_jia_change(obj){
                             img_url_thumb=msg.file_touxiang_thumb;
                             touxiang_is=true;
                             //String(img_url)==="undefined"?touxiang_is=false:touxiang_is=true;
-                        }else if(id==='file_shenfenzheng'){
-                            img_url=msg.file_shenfenzheng;
-                            img_url_thumb=msg.file_shenfenzheng_thumb;
-                        }else{
-                            img_url=msg.file_erweima;
-                            img_url_thumb=msg.file_erweima_thumb;
                         }
-                        /*应该不再需要这段
-                        if(String(img_url)==="undefined"){
-                            alert('图片因超过5M或其它原因未上传成功,请重新上传');
-                            $('#infor').css('color','red');
-                            $('#infor').html('文件上传失败');
-                            return false;
-                        }*/
+                       
                         creat_img($('#'+id),String(img_url),img_url_thumb);
                         return true;
                     }, 

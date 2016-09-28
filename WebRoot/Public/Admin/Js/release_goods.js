@@ -175,11 +175,7 @@ function file_jia_change(id){
                         }else{
                             creat_zhanshitu($('#file_jia_zhanshitu'),img_url,img_url_thumb);
                         }
-                        /*应该不再需要这段
-                        if(String(img_url)=== "undefined"){
-                            alert('商品图片因超过5M或其它原因未上传成功,请重新上传');
-                            return false
-                        }*/
+                       
                         return true; 
                     },  
                     error: function(){  

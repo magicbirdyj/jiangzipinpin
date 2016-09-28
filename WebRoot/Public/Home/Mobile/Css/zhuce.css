@@ -30,7 +30,7 @@ padding-left: 38px;
 background-color: #FFF;
     color: #6C6C6C;
 }
-
+/*
 .a_xyb{
 box-sizing: border-box;
 display:block;
@@ -48,27 +48,24 @@ cursor:pointer;
 .a_xyb:hover{
 color:#FFFFFF;
 background-color:#00FFDB;
+}*/
+.a_xyb{
+    margin-top: 20px;
 }
-
 .icon {
     position: absolute;
     display: inline-block;
-    width: 18px;
-    height: 18px;
-    top: 14px;
+    width: 20px;
+    height: 20px;
+    top: 13px;
     left: 9px;
-    line-height: 18px;
+    line-height: 20px;
     vertical-align: text-top;
-    color: #DDDDDD;
+    color: #DDD;
+    font-size: 20px;
 }
-.icon-user {
-    background-position: -298px -141px;
-    background-image: url("../../../Common/Images/login_icon.png");
-}
-.icon-password{
-    background-position: -150px -217px;
-    background-image: url("../../../Common/Images/login_icon.png");
-}
+
+
 
 
 

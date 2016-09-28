@@ -64,6 +64,7 @@ class OrdermanageController extends FontEndController {
             $data=array(
                 'fangshi'=>'2',
                 'company'=>$post['kuaidi_company'],
+                'company_bianma'=>$post['kuaidi_bianma'],
                 'no'=>$post['kuaidi_no']
             );
         }

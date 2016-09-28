@@ -195,14 +195,5 @@
 
 
 .xyb{
-    display: block;
-    width:90%;
-    height: 50px;
-    line-height: 50px;
-    font-size: 18px;
-    text-align: center;
-    color: #FFFFFF;
-    margin: 0px auto;
     margin-top: 20px;
-    background-color: #03BA8A;
 }

@@ -1,13 +1,11 @@
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/public.css"/>
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/zhuce.css">
-<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/iconfont/iconfont_zhuce/iconfont.css">
-<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/iconfont/iconfont_jiantou/iconfont.css">
 </head>
 
 <body>
-    <div class="fanhui padding"><a href="<{:U('Member/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe643;</span></a>填写账户信息</div>
+    <div class="fanhui padding"><a href="<{:U('Member/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>填写账户信息</div>
      <div id="infor" class="infor"></div>
-    <form name="zhuce"  method="post" action="<{:U('zhuce/zhuce3')}>">
+    <form name="zhuce"  method="post" action="<{:U('zhuceshop/zhuce3')}>">
         <input type="hidden" name="hidden" value="<{$time2}>" />
 <div class="zhuce1_tr">
 <div class="zhuce1_tr_td2" id="dlm_sjh"><{$dlm}></div>
@@ -15,18 +13,18 @@
 </div><!--第一行-->
 
 <div class="zhuce1_tr">
-<i class="iconfont tb_duanxin icon">&#xe625;</i>
+<i class="iconfont icon">&#xe63f;</i>
 <input type="text" name="shoujiyanzheng" class="zhuce1_tr_td2" placeholder="短信动态码"/>
 
 </div><!--第二行-->
 
 <div class="zhuce1_tr">
-<i class="icon icon-user"></i>
-<input type="text" name="huiyuanming" class="zhuce1_tr_td2" placeholder="会员名"/>
+<i class="iconfont icon">&#xe63a;</i>
+<input type="text" name="huiyuanming" class="zhuce1_tr_td2" placeholder="店铺名"/>
 
 </div><!--第二行-->
 <div class="zhuce1_tr">
- <i class="icon icon-password"></i>   
+ <i class="iconfont icon">&#xe63d;</i>   
 <input type="password" name="shezhimima" class="zhuce1_tr_td2" placeholder="设置密码"/>
 
 </div><!--第三行-->
@@ -37,11 +35,11 @@
 </div><!--密码效果-->
 
 <div class="zhuce1_tr">
-<i class="icon icon-password"></i>
+<i class="iconfont icon">&#xe63d;</i>
 <input type="password" name="querenmima" class="zhuce1_tr_td2 zhuce1_tr_teshu" placeholder="确认密码" style="border-top: 1px solid #F0F0F0;border-bottom: 1px solid #F0F0F0;"/>
 
 </div><!--第四行-->
-<a href="javascript:void(0)" id="zhuce1_xiayibu" class="a_xyb" >下一步</a>
+<a href="javascript:void(0)" id="zhuce1_xiayibu" class="button_a_lvse" >下一步</a>
 
 
 </form>

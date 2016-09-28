@@ -39,6 +39,11 @@ class MemberController extends FontEndController {
         
         $this->assign(status_count,$status_count);
         
+        //是否有店铺
+        $open_id=$_SESSION['wei_huiyuan']['open_id'];
+        $shopsmodel=D('Shops');
+        $is_shop=$shopsmodel->where("open_id='$open_id'")->count();
+        $this->assign('is_shop',$is_shop);
         $this->display('index');
     }
     

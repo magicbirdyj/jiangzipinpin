@@ -4,13 +4,12 @@ namespace Home\Controller;
 
 use Home\Controller;
 
-class ZhuceController extends FontEndController {
+class ZhuceshopController extends FontEndController {
 
 
     public function index() {
         $time=gettime();
         $_SESSION['zhuce1']=$time;
-        $this->assign("title", "新用户注册：设置用户名");
         $this->assign("time", $time);
         $this->display('index');
     }
@@ -19,7 +18,6 @@ class ZhuceController extends FontEndController {
         if(!empty($_POST['hidden'])&&!empty($_SESSION['zhuce1'])){
             $hidden=$_POST['hidden'];
             if($hidden==$_SESSION['zhuce1']){
-                $this->assign("title", "新用户注册：填写账户信息");
                 $this->assign("dlm", $_POST['shoujihao']);
                 $time2=gettime();
                 $this->assign("time2", $time2);
@@ -28,13 +26,14 @@ class ZhuceController extends FontEndController {
                 $_SESSION['zhuce2']=$time2;
                 $_SESSION['dlm']=$_POST['shoujihao'];
             }else{
-                redirect(U('zhuce/index'),1,'您中途打开了另一个注册页面，将重新刷新页面');
+                redirect(U('zhuceshop/index'));
             }
         }else{
-            redirect(U('index/index'),1,'请从注册页面进入');
+            redirect(U('Zhuceshop/index'));
 
         }
     }
+    
 
     public function zhuce3() {
          if(!empty($_POST['hidden'])&&!empty($_SESSION['zhuce2'])){
@@ -42,7 +41,7 @@ class ZhuceController extends FontEndController {
                  redirect(U('zhuce/index'),1,'手机验证码错误，请重新注册');
                  exit();
              }
-            $usersmodel=D('Users');
+            $shopsmodel=D('Shops');
             $hidden=$_POST['hidden'];
             $dlm=$_SESSION['dlm'];
             $hym=$_POST['huiyuanming'];
@@ -50,107 +49,94 @@ class ZhuceController extends FontEndController {
             $salt=  create_char(6);
             $password_md5=  md5($password.$salt);
             if($hidden==$_SESSION['zhuce2']){
-                $count=$usersmodel->where("mobile_phone='{$dlm}'")->count();
+                $count=$shopsmodel->where("tel='{$dlm}'")->count();
                 if(!is_shoujihao($dlm)||$count!=='0') {
                      $this->error('手机号错误或者已被注册，请重新注册',U('zhuce/index'),3);
                      exit();
                 }
-                $count1=$usersmodel->where("user_name='{$hym}'")->count();
+                $count1=$shopsmodel->where("shop_name='{$hym}'")->count();
                 if(is_feifa($hym)||$count1!=='0'){
-                    $this->error('会员名含有非法字符或者已被注册，请重新注册',U('zhuce/index'),3);
+                    $this->error('店铺名含有非法字符或者已被注册，请重新注册',U('zhuce/index'),3);
                     exit();
                 }
                 $row=array(
-                    'mobile_phone'=>$dlm,
-                    'user_name'=>$hym,
+                    'open_id'=>$_SESSION['huiyuan']['open_id'],
+                    'tel'=>$dlm,
+                    'shop_name'=>$hym,
                     'password'=>$password_md5,
                     'zhifu_password'=>$password_md5,//初始支付密码等于登录密码
                     'last_login'=>mktime(),
                     'salt'=>$salt,
-                    'head_url'=>'/Public/Home/Images/public/man.png',//给个默认的头像
                     'reg_time'=>  mktime()
                 );
                 if($_SERVER['REMOTE_ADDR']){
                     $row['last_ip']=$_SERVER['REMOTE_ADDR'];
                 }
-                $result=$usersmodel->add($row);//注册信息写入数据库
+                $result=$shopsmodel->add($row);//注册信息写入数据库
                 if($result){
-                    $this->assign("title", "新用户注册：注册完成");
-                    $this->assign("dlm", $dlm);
-                    $this->assign("hym",$hym);
-                    $this->display();
-                    $id=$usersmodel->where("user_name='{$hym}'")->getField('user_id');
-                    $smid=$usersmodel->where("user_name='{$hym}'")->getField('shopman_id');
-                    $_SESSION['huiyuan']=array(
-                        'user_id'=>$id,
-                        'user_name'=>$hym,
-                        'shopman_id'=>$smid
-                            );
+                    $this->assign("tel", $dlm);
+                    $this->assign("shop_name",$hym);
+                    $this->redirect('Zhuceshop/zhuce4');
+                    //$id=$usersmodel->where("user_name='{$hym}'")->getField('user_id');
+                    //$smid=$usersmodel->where("user_name='{$hym}'")->getField('shopman_id');
                     unset($_SESSION['zhuce2']);
                 }else{
-                    redirect(U('zhuce/index'),1,'注册失败，请重新注册');
+                    $this->redirect('Zhuceshop/index',1,'注册失败，请重新注册');
                 }
             }else{
-               redirect(U('zhuce/index'),1,'您中途打开了另一个注册页面，将重新刷新页面');
+               $this->redirect('Zhuceshop/index');
             }
         }else{
-            redirect(U('index/index'),1,'请从注册页面进入');
+            $this->redirect('index/index');
 
         }
         
     }
 
     public function zhuce4() {
-        //判断是否登录
-        if (isset($_SESSION['huiyuan']) && $_SESSION['huiyuan'] !== '') {
-            //判断是否已经是商家
-            if($_SESSION['huiyuan']['shopman_id']==='1'){
-                header("location:". U("Member/hunlirenshangjiaxinxi"));
-                exit();
-            }
-            $this->assign("title", "成为婚礼人");
-            $this->display(zhuce4);
-        }else{
-           redirect(U('Login/index'),1,'请先登录');
+        //判断是否已经是商家
+         $shopsmodel=D('Shops');
+         $open_id=$_SESSION['huiyuan']['open_id'];
+         $head_url=$shopsmodel->where("open_id='$open_id'")->getField('head_url');
+        if($head_url!=''){
+            header("location:". U("Member/hunlirenshangjiaxinxi"));
+            exit();
         }
+        $categorymodel=D('Category');
+        $cate_0=$categorymodel->where("pid=0 and deleted=0")->field('cat_id,cat_name')->select();
+        $this->assign('cate_0',$cate_0);
+        foreach ($cate_0 as $key => $value) {
+            $pid=$value['cat_id'];
+            $cate_1[]=$categorymodel->where("pid=$pid and deleted=0")->field('cat_id,cat_name')->select();
+        }
+        $this->assign('cate_1',$cate_1);
+        $this->display(zhuce4);
+       
         
     }
     
     public function zhuce4_check(){
-        //如果已经是婚礼人了  直接跳过
-        if($_SESSION['huiyuan']['shopman_id']==='1'){
-            header("location:". U("Member/hunlirenshangjiaxinxi"));
+        //如果已经完善了资料  直接跳过
+        $shopsmodel=D('Shops');
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        $head_url=$shopsmodel->where("open_id='$open_id'")->getField('head_url');
+        if($head_url!=''){
+            header("location:". U("Member/shop_info"));
             exit();
         }
         //当有文件没有上传时，提示并返回
         if(empty($_POST['member_file_touxiang'])){
             $this->error('未选择上传头像');
         }
-        //身份证以后再验证
-        //if(empty($_POST['member_file_shenfenzheng'])){
-            //$this->error('未选择上传身份证照片');
-        //}
+        
+        
         //移动文件 并且改变url
         $today=substr($_POST['member_file_touxiang'],26,8);//获取到文件夹名  如20150101
         creat_file(UPLOAD.'image/member/'.$today);//创建文件夹（如果存在不会创建）
         rename($_POST['member_file_touxiang'], str_replace('Public/Uploads/image/temp', UPLOAD.'image/member',str_replace('thumb/','',$_POST['member_file_touxiang'])));//移动文件
         $head_url='/'.str_replace('Public/Uploads/image/temp', UPLOAD.'image/member',str_replace('thumb/','',$_POST['member_file_touxiang']));
-       
-        $today=substr($_POST['member_file_shenfenzheng'],26,8);//获取到文件夹名  如20150101
-        creat_file(UPLOAD.'image/hunliren/'.$today);//创建文件夹（如果存在不会创建）
-        rename($_POST['member_file_shenfenzheng'], str_replace('Public/Uploads/image/temp', UPLOAD.'image/hunliren',$_POST['member_file_shenfenzheng']));//移动文件
-        $shenfenzheng_url='/'.str_replace('Public/Uploads/image/temp', UPLOAD.'image/hunliren',$_POST['member_file_shenfenzheng']);
-        if(!empty($_POST['member_file_erweima'])){
-            $today=substr($_POST['member_file_erweima'],26,8);//获取到文件夹名  如20150101
-            creat_file(UPLOAD.'image/hunliren/'.$today);//创建文件夹（如果存在不会创建）
-            rename($_POST['member_file_erweima'], str_replace('Public/Uploads/image/temp', UPLOAD.'image/hunliren',$_POST['member_file_erweima']));//移动文件
-            $weixin_erweima='/'.str_replace('Public/Uploads/image/temp', UPLOAD.'image/hunliren',$_POST['member_file_erweima']);
-        }else{
-            $weixin_erweima='';
-        }
-        
-            
-        $serverform=intval($_POST['radio_fuwuxingshi']);//获取服务形式
+ 
+        $shop_form=intval($_POST['radio_fuwuxingshi']);//获取服务形式
         //当服务形式为公司，至少必须上传3个图片文件，否则提示并且返回
        //if($serverform===2){
             //if(count($file_info)<3){
@@ -158,8 +144,7 @@ class ZhuceController extends FontEndController {
                 //exit();
             //}
         //}
-        $sex=  intval($_POST['radio_sex']);//获取性别
-        $name=$_POST['name'];//获取真实姓名
+        
         $province=$_POST['address_province'];//获取省份
         //如果没选择省份，提示并退出
         if($province==='请选择省市'||empty($province)){
@@ -170,59 +155,54 @@ class ZhuceController extends FontEndController {
             $county=$_POST['address_county'];
         }
         $address=$_POST['address_juti'];//获取详细地址
-        $qq=$_POST['contact_qq'];//获取QQ号码
+
         $weixin=$_POST['contact_weixin'];//获取微信号码
-        $email=$_POST['contact_email'];//获取邮箱
+        $qq=$_POST['contact_qq'];//获取QQ号码
+       
         $shop_introduce=$_POST['shop_introduce'];//获取店铺介绍
-        $fuwuneirong=$_POST['fuwuneirong'];//获取服务内容
+       $default_cat_id=$_POST['cate_1'];//获取分类cat_id
+        //如果没选择分类，提示并退出
+        if($default_cat_id==='请选择分类'||empty($default_cat_id)){
+            $this->error('未选择分类');
+            exit();
+        }
+        
+        
+        
         //服务内容未选择时，提示并退出
-        if(empty($email)||empty($fuwuneirong)||empty($weixin)||empty($qq)||empty($address)||empty($name)||empty($shop_introduce)){
+        if(empty($weixin)||empty($qq)||empty($address)||empty($shop_introduce)){
             $this->error('有内容未填写');
             exit();
         }
-        $fuwuneirong=  implode('|', $fuwuneirong);//把服务内容数组变成字符串
-        //邮箱是否正确
-        if(is_youxiang($email)){
-            $this->error('邮箱不正确');
-            exit();
-        }
+       
         //任何文本框如果含有非法字符，提示并退出
-        if(is_feifa($weixin)||is_feifa($qq)||is_feifa($address)||is_feifa($name)||is_feifa($shop_introduce)){
+        if(is_feifa($weixin)||is_feifa($address)||is_feifa($shop_introduce)){
             $this->error('有内容含有非法字符');
             exit();
         }
 
-        
+        $arr_address=array();
+        $arr_address['province']=$province;
+        $arr_address['city']=$city;
+        $arr_address['county']=$county;
+        $arr_address['address']=$address;
         //准备需要写进数据库的数组
-        $user_id=intval($_SESSION['huiyuan']['user_id']);//获取会员id号
         $row=array(
             'head_url'=>$head_url,
-            'shenfenzheng_url'=>$shenfenzheng_url,
-            'sex'=>$sex,
-            'server_form'=>$serverform,
-            'true_name'=>$name,
-            'location'=>$province.'|'.$city.'|'.$county,
-            'address'=>$address,
-            'qq'=>$qq,
+            'shop_form'=>$shop_form,
+            'address'=>  serialize($arr_address),
             'weixin'=>$weixin,
-            'email'=>$email,
-            'server_content'=>$fuwuneirong,
-            'shopman_id'=>1,
+            'qq'=>$qq,
+            'default_cat_id'=>$default_cat_id,
             'shop_introduce'=>$shop_introduce,
-            'weixin_erweima'=>$weixin_erweima,
-            'shopman_reg_time'=>  mktime()
+            'last_login'=>  mktime()
         );
-        //如果上传了营业执照照片，写进数组
-        //if(isset($file_info['file_yingyezhizhao'])){
-            //$yingyezhizhao_url=UPLOAD.$file_info['file_yingyezhizha']['savepath'].$file_info['file_yingyezhizha']['savename'];
-            //$row['yingyezhizhao_url']='/'.$yingyezhizhao_url;
-        //}
+       
         //写入数据库
-        $usersmodel=D('Users');
-        $result=$usersmodel->where("user_id={$user_id}")->save($row);
+      
+        $result=$shopsmodel->where("open_id='{$open_id}'")->save($row);
         if($result!==false){
-            $_SESSION['huiyuan']['shopman_id']='1';
-            header("location:". U("Member/hunlirenshangjiaxinxi"));
+            header("location:". U("Member/index"));
             exit();
         }else{
             $this->error('更新数据库失败');
@@ -243,8 +223,6 @@ class ZhuceController extends FontEndController {
         //获取图片URL
         $data=array(
             'file_touxiang'=>UPLOAD.$file_info[1]['file_touxiang']['savepath'].$file_info[1]['file_touxiang']['savename'],
-            'file_shenfenzheng'=>UPLOAD.$file_info[1]['file_shenfenzheng']['savepath'].$file_info[1]['file_shenfenzheng']['savename'],
-            'file_erweima'=>UPLOAD.$file_info[1]['file_erweima']['savepath'].$file_info[1]['file_erweima']['savename']
         );
         
 
@@ -255,20 +233,7 @@ class ZhuceController extends FontEndController {
                 $this->thumb($img_url,$img_name, 'file_touxiang');//创建图片的缩略图
                 $data['file_touxiang_thumb']=$img_url.'thumb/'.$img_name;
             }
-           if($data['file_shenfenzheng']!=='Public/Uploads/'){
-                $index=strripos($data['file_shenfenzheng'],"/");
-                $img_url=substr($data['file_shenfenzheng'],0,$index+1);
-                $img_name=substr($data['file_shenfenzheng'],$index+1);
-                $this->thumb($img_url,$img_name, 'file_shenfenzheng');//创建图片的缩略图
-                $data['file_shenfenzheng_thumb']=$img_url.'thumb/'.$img_name;
-            }
-            if($data['file_erweima']!=='Public/Uploads/'){
-                $index=strripos($data['file_erweima'],"/");
-                $img_url=substr($data['file_erweima'],0,$index+1);
-                $img_name=substr($data['file_erweima'],$index+1);
-                $this->thumb($img_url,$img_name, 'file_erweima');//创建图片的缩略图
-                $data['file_erweima_thumb']=$img_url.'thumb/'.$img_name;
-            }
+           
 
                     
         $this->ajaxReturn($data,'JSON');
@@ -308,14 +273,14 @@ class ZhuceController extends FontEndController {
             exit();
        }elseif($_POST['check']=='shoujihao'){
             $shoujihao=$_POST['shoujihao'];
-            $usesmodel=D('Users');
-            $data=$usesmodel->where("mobile_phone={$shoujihao}")->count();
+            $shopsmodel=D('Shops');
+            $data=$shopsmodel->where("tel={$shoujihao}")->count();
             $this->ajaxReturn($data);
             exit();
        }elseif($_POST['check']=='huiyuanming'){
             $huiyuanming=$_POST['huiyuanming'];
-            $usesmodel=D('Users');
-            $data=$usesmodel->where("user_name='{$huiyuanming}'")->count();
+            $shopsmodel=D('Shops');
+            $data=$shopsmodel->where("shop_name='{$huiyuanming}'")->count();
             $this->ajaxReturn($data);
             exit();
        }
@@ -330,8 +295,8 @@ class ZhuceController extends FontEndController {
             $shoujihao=$_POST['shoujihao'];
             vendor('taobaoali.TopSdk');//引入第三方类库
             date_default_timezone_set('Asia/Shanghai'); 
-            $appkey="23304840";
-            $secret="57d27c01c6d3f9af602de646019c4e3b";
+            $appkey="23461151";
+            $secret="32eff9693ac48fcee386923dc45e3f8c";
             $c = new \TopClient;
             $c->appkey = $appkey;
             $c->secretKey = $secret;
@@ -339,12 +304,12 @@ class ZhuceController extends FontEndController {
             $req = new \AlibabaAliqinFcSmsNumSendRequest;
             $req->setExtend("123456");
             $req->setSmsType("normal");
-            $req->setSmsFreeSignName("一起网");
+            $req->setSmsFreeSignName("酱紫拼拼");
             $rand=rand(100000,999999);
             $_SESSION['send_message']="$rand";
-            $req->setSmsParam("{\"code\":\"$rand\",\"product\":\"一起网\",\"item\":\"一起网\"}");
+            $req->setSmsParam("{\"name\":\"酱紫拼拼\",\"code\":\"$rand\"}");
             $req->setRecNum($shoujihao);
-            $req->setSmsTemplateCode("SMS_4705353");
+            $req->setSmsTemplateCode("SMS_15405215");
             $resp = $c->execute($req);
             $data=$resp->result->success;
             $this->ajaxReturn($data);
