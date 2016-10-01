@@ -4,15 +4,16 @@
 </head>
 
 <body>
-    <div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>店铺信息完善</div>
+    <div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>店铺编辑</div>
     <div id="infor" class="infor" style="color: #666;display: block"></div>
 
 
-    <form name="zhuce" method="post" enctype="multipart/form-data" action="<{:U('Zhuceshop/zhuce4_check')}>">
+    <form name="zhuce" method="post" enctype="multipart/form-data" action="<{:U('Shop/editor_check')}>" style='margin-bottom: 30px;'>
          <input name="member_file_touxiang" value="" type="hidden"/> 
 <div class="zhuce4_tr">
     <div class="zhuce4_tr_td1" style="height: 35px;line-height: 35px;">上传logo</div>
-    <div class="file_jia" id="file_touxiang">+</div>                
+    <div class="div_goods_img"><img src="" class="empty_img" /><img class="goods_img" src="<{$shop['head_url']}>"  /><a title="删除"></a></div>
+    <div class="file_jia" id="file_touxiang" style="display: none">+</div>                
 </div><!--第一行-->
 
 </div><!--第二行-->
@@ -129,5 +130,36 @@
 
     </script>    
 <script src="__PUBLIC_HOME__/Mobile/Js/zhuce4.js" type="text/javascript"></script>
+<script>
+    //赋值
+        var head_url="<{$shop['head_url']}>";
+        $('input[name=member_file_touxiang]').attr('value',head_url);
+        
+        var shop_form="<{$shop['shop_form']}>";
+        $(":radio[name=radio_fuwuxingshi]").eq(shop_form).attr("checked",'true');
+        
+        var address_province="<{$shop['address']['province']}>";
+        var address_city="<{$shop['address']['city']}>";
+        var address_county="<{$shop['address']['county']}>";
+        $("select[name=address_province]").val(address_province);
+        var selectedIndex=$("select[name=address_province]").prop('selectedIndex');
+        province_onchange(selectedIndex);
+        $("select[name=address_city]").val(address_city);
+        var selectedIndex=$("select[name=address_city]").prop('selectedIndex');
+        city_onchange(selectedIndex);
+        $("select[name=address_county]").val(address_county);
+        
+        $(':text[name=address_juti]').val("<{$shop['address']['address']}>");
+        $(':text[name=contact_qq]').val("<{$shop['qq']}>");
+        
+        var default_cat_0="<{$default_cat_0}>";
+        var default_cat_id="<{$shop['default_cat_id']}>";
+        $("select[name=cate_0]").val(default_cat_0);
+        var selectedIndex=$("select[name=cate_0]").prop('selectedIndex');
+        cate_0_onchange(selectedIndex);
+        $("select[name=cate_1]").val(default_cat_id);
+        
+         $('textarea[name=shop_introduce]').val("<{$shop['shop_introduce']}>");
+</script>
 </body>
 </html>

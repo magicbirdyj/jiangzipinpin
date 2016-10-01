@@ -68,7 +68,154 @@ class ShopController extends FontEndController {
         $this->display();
     }
     
+    public function editor() {
+        //先判断是否注册了商家
+        $shopsmodel=D('Shops');
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        $count=$shopsmodel->where("open_id='$open_id'")->count();
+        if($count=='0'){
+            header("location:". U("Zhuceshop/index"));
+                exit();
+        }else{
+            $shop=$shopsmodel->where("open_id='$open_id'")->find();
+            if($shop['head_url']==''){
+                header("location:". U("Zhuceshop/zhuce4"));
+                exit();
+            }
+        }
+
+        $categorymodel=D('Category');
+        $cate_0=$categorymodel->where("pid=0 and deleted=0")->field('cat_id,cat_name')->select();
+        $this->assign('cate_0',$cate_0);
+        foreach ($cate_0 as $key => $value) {
+            $pid=$value['cat_id'];
+            $cate_1[]=$categorymodel->where("pid=$pid and deleted=0")->field('cat_id,cat_name')->select();
+        }
+        $this->assign('cate_1',$cate_1);
+        
+        $shop['address']=  unserialize($shop['address']);
+        $this->assign('shop',$shop);
+        
+        // 默认category的大类
+        $default_cat_id=$shop['default_cat_id'];
+        $default_cat_0=$categorymodel->where("cat_id='$default_cat_id'")->getField('pid');
+        $default_cat_0=$categorymodel->where("cat_id='$default_cat_0'")->getField('cat_name');
+        $this->assign('default_cat_0',$default_cat_0);
+        $this->display();
+       
+        
+    }
     
+    public function editor_check(){
+        //先判断是否注册了商家
+        $shopsmodel=D('Shops');
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        $count=$shopsmodel->where("open_id='$open_id'")->count();
+        if($count=='0'){
+            header("location:". U("Zhuceshop/index"));
+                exit();
+        }else{
+            $shop=$shopsmodel->where("open_id='$open_id'")->find();
+            if($shop['head_url']==''){
+                header("location:". U("Zhuceshop/zhuce4"));
+                exit();
+            }
+        }
+        
+        
+        $content=$_POST;//获取提交的内容
+        
+        if($content['member_file_touxiang']===''){
+            $this->error('未上传店铺logo');
+            exit();
+        }
+        if(strstr($content['member_file_touxiang'], "undefined")!==false){
+            $this->error('店铺logo未上传成功');
+            exit();
+        }
+        
+        
+        $head_url=$content['member_file_touxiang'];//获取
+        if(strchr($head_url,'temp')){
+            //移动文件 并且改变url
+            $today=substr($_POST['member_file_touxiang'],26,8);//获取到文件夹名  如20150101
+            creat_file(UPLOAD.'image/member/'.$today);//创建文件夹（如果存在不会创建）
+            rename($_POST['member_file_touxiang'], str_replace('Public/Uploads/image/temp', UPLOAD.'image/member',str_replace('thumb/','',$_POST['member_file_touxiang'])));//移动文件
+            $head_url='/'.str_replace('Public/Uploads/image/temp', UPLOAD.'image/member',str_replace('thumb/','',$_POST['member_file_touxiang']));
+        }
+       
+ 
+        $shop_form=intval($_POST['radio_fuwuxingshi']);//获取服务形式
+        //当服务形式为公司，至少必须上传3个图片文件，否则提示并且返回
+       //if($serverform===2){
+            //if(count($file_info)<3){
+                //$this->error('有选现未选择文件');
+                //exit();
+            //}
+        //}
+        
+        $province=$_POST['address_province'];//获取省份
+        //如果没选择省份，提示并退出
+        if($province==='请选择省市'||empty($province)){
+            $this->error('未选择所在省市');
+            exit();
+        }else{//获取城市和县城
+            $city=$_POST['address_city'];
+            $county=$_POST['address_county'];
+        }
+        $address=$_POST['address_juti'];//获取详细地址
+
+        $qq=$_POST['contact_qq'];//获取QQ号码
+       
+        $shop_introduce=$_POST['shop_introduce'];//获取店铺介绍
+       $default_cat_id=$_POST['cate_1'];//获取分类cat_id
+        //如果没选择分类，提示并退出
+        if($default_cat_id==='请选择分类'||empty($default_cat_id)){
+            $this->error('未选择分类');
+            exit();
+        }
+        
+        
+        
+        //服务内容未选择时，提示并退出
+        if(empty($qq)||empty($address)||empty($shop_introduce)){
+            $this->error('有内容未填写');
+            exit();
+        }
+       
+        //任何文本框如果含有非法字符，提示并退出
+        if(is_feifa($weixin)||is_feifa($address)||is_feifa($shop_introduce)){
+            $this->error('有内容含有非法字符');
+            exit();
+        }
+
+        $arr_address=array();
+        $arr_address['province']=$province;
+        $arr_address['city']=$city;
+        $arr_address['county']=$county;
+        $arr_address['address']=$address;
+        //准备需要写进数据库的数组
+        $row=array(
+            'head_url'=>$head_url,
+            'shop_form'=>$shop_form,
+            'address'=>  serialize($arr_address),
+            'qq'=>$qq,
+            'default_cat_id'=>$default_cat_id,
+            'shop_introduce'=>$shop_introduce,
+            'last_login'=>  mktime()
+        );
+       
+        //写入数据库
+      
+        $result=$shopsmodel->where("open_id='{$open_id}'")->save($row);
+        if($result!==false){
+            header("location:". U("Member/index"));
+            exit();
+        }else{
+            $this->error('更新数据库失败');
+            exit();
+        }
+    }
     
     public function release_goods() {
         $open_id=$_SESSION['huiyuan']['open_id'];
@@ -230,6 +377,309 @@ class ShopController extends FontEndController {
         }
     }
     
+    
+    
+    
+    public function bianji_goods() {
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        $shopsmodel=D('Shops');
+        $shop=$shopsmodel->where("open_id='$open_id'")->find();
+        if($shop['head_url']==''){
+            $this->redirect('Zhuceshop/zhuce4');
+        }
+        $categorymodel=D('Category');
+        $cate_0=$categorymodel->where("pid=0 and deleted=0")->field('cat_id,cat_name')->select();
+        $this->assign('cate_0',$cate_0);
+        foreach ($cate_0 as $key => $value) {
+            $pid=$value['cat_id'];
+            $cate_1[]=$categorymodel->where("pid=$pid and deleted=0")->field('cat_id,cat_name')->select();
+        }
+        $this->assign('cate_1',$cate_1);
+        
+        $this->assign('shop',$shop);
+        
+        //获取商品信息
+        $goods_id=$_GET['goods_id'];
+        if(!$goods_id){$this->error('没有商品id');}
+        $goodsmodel=D('Goods');
+        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
+        if($goods['shop_id']!=$shop['shop_id']){$this->error('您没有该商品');}
+        $goods['goods_img_qita']=  unserialize($goods['goods_img_qita']);
+        $goods['shuxing']=unserialize($goods['shuxing']);
+        $this->assign('goods',$goods);
+        $default_cat_id=$goods['cat_id'];
+        $default_cat_0=$categorymodel->where("cat_id='$default_cat_id'")->getField('pid');
+        $this->assign('default_cat_0',$default_cat_0);
+        $this->display();
+    }
+    
+    public function bianji_check(){
+        $goods_id=$_GET['goods_id'];
+        $goodsmodel=D('Goods');
+        $goods=$goodsmodel->where("goods_id=$goods_id")->find();//商品信息列表
+        $arr_goods_img_qita_yuan=  unserialize($goods['goods_img_qita']);
+        
+        
+        $content=$_POST;//获取提交的内容
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        $shopmodel=D('Shops');
+        $shop=$shopmodel->where("open_id='$open_id'")->field('shop_name,shop_id')->find();
+        if($content['goods_img']===''){
+            $this->error('未选择商品图片');
+            exit();
+        }
+        if(strstr($content['goods_img'], "undefined")!==false){
+            $this->error('有未上传成功的商品图片');
+            exit();
+        }
+        // 获取展示图片并thumb(250, 250)再移动
+        $goods_zhanshitu=$content['goods_zhanshitu'];//获取
+        if(strchr($goods_zhanshitu,'temp')){
+            $goods_zhanshitu_thumb=$this->thumb($goods_zhanshitu, 250, 250);//thumb
+            //移动到正式文件夹
+            $today=substr($goods_zhanshitu,26,8);//获取到文件夹名  如20150101
+            creat_file(UPLOAD.'image/goods/'.$today);//创建文件夹（如果存在不会创建
+            rename($goods_zhanshitu_thumb, str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods',$goods_zhanshitu));//移动文件
+            $goods_zhanshitu='/'.str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods',$goods_zhanshitu);
+        }
+        //获取商品图片URL,分割成数组
+        $arr_goods_img=explode('+img+',$content['goods_img']);
+         if(strchr($arr_goods_img[0],'temp')){
+            //获取第一张图片并thumb(435, 232)再移动
+            $today=substr($arr_goods_img[0],26,8);//获取到文件夹名  如20150101
+            creat_file(UPLOAD.'image/goods/'.$today);//创建文件夹（如果存在不会创建
+            creat_file(UPLOAD.'image/goods/'.$today.'/thumb');//创建文件夹（如果存在不会创建
+            $value=$this->thumb($arr_goods_img[0], 435, 232);//thumb
+            rename($value, str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods',$value));//移动文件
+        }else{
+            if($arr_goods_img_qita_yuan[0]!=$arr_goods_img[0]){
+                $today=substr($arr_goods_img[0],26,8);//获取到文件夹名  如20150101
+                creat_file(UPLOAD.'image/goods/'.$today);//创建文件夹（如果存在不会创建
+                creat_file(UPLOAD.'image/goods/'.$today.'/thumb');//创建文件夹（如果存在不会创建
+                $value=$this->thumb($arr_goods_img[0], 435, 232);//thumb
+            }
+        }
+        //获取每张图片并thumb(750, 400)再移动,直接改变数组的值
+        foreach ($arr_goods_img as &$value) {
+            $today=substr($value,26,8);//获取到文件夹名  如20150101
+            creat_file(UPLOAD.'image/goods/'.$today);//创建文件夹（如果存在不会创建
+            creat_file(UPLOAD.'image/goods/'.$today.'/thumb');//创建文件夹（如果存在不会创建
+            $img_url_thumb=$this->thumb($value, 750, 400);//thumb
+            rename($img_url_thumb, str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods',$value));//移动文件
+            $value=str_replace('Public/Uploads/image/temp','Public/Uploads/image/goods',$value);  
+            $value='/'.$value;
+        }
+
+        
+        
+       //商品图片数组序列化
+       $str_goods_img=serialize($arr_goods_img);
+
+        if($content['title']==''||is_feifa($content['title'])){
+            $this->error('商品标题为空或者含有非法字符');
+            exit();
+        }
+        if($content['goods_jianjie']==''||is_feifa($content['title'])){
+            $this->error('商品简介为空或者含有非法字符');
+            exit();
+        }
+        if($content['units']==''||is_feifa($content['units'])){
+            $this->error('商品单位重量为空或者含有非法字符');
+            exit();
+        }
+        if(!is_price($content['price'])){
+            $this->error('价格为空或者不合规范');
+            exit();
+        }
+        if(!is_price($content['yuan_price'])){
+            $this->error('原价为空或者不合规范0');
+            exit();
+        }
+       
+        
+        
+        $result=get_file($content['content']);//得到编辑框里面的图片文件
+        //遍历图片文件，并把图片文件从临时文件夹保存进正式文件夹,并把文件名存储到$file_name数组中
+        foreach ($result[1] as $value){
+            $today=substr($value,26,8);//获取到文件夹名  如20150101
+            creat_file(UPLOAD.'image/goods/'.$today);//创建文件夹（如果存在不会创建）
+            rename($value, str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods', $value));//移动文件
+        }
+        $goods_desc=str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods', $content['content']);
+        $goods_desc=  replace_a($goods_desc);//取消其它网站的超级链接
+        $goods_desc=str_replace('<embed','<iframe',$goods_desc);//把flash 的embed标签改成 iframe标签 
+        $goods_desc=str_replace('/>','></iframe>',$goods_desc);//把flash 的embed标签改成 iframe标签 
+        //得到商品分类id
+        
+        $cat_id=$content['cate_1'];
+        $categorymodel=D('Category');
+        $data_category=$categorymodel->where("cat_id='{$cat_id}'")->find();
+        $data_cat=unserialize($data_category['shuxing']);//得到分类的属性,并反序列化成数组
+         $data_cat_keys=array_keys($data_cat);//获取属性键名,保存到数组
+         //拼凑出属性数组 并序列化
+        foreach ($data_cat_keys as $key=>$value){
+             $arr_shuxing["$value"]=$content['shuxing'][$key];
+         }
+        $str_shuxing=serialize($arr_shuxing);
+        
+        //获取商品可选属性（如果有）
+        $zx_shuxing=$content['zx_shuxing'];
+        if($zx_shuxing){
+           $zx_shuxingzhi=$content['zx_shuxingzhi'];
+            $i=0;
+            $new_arr=array();
+            foreach ($zx_shuxingzhi as  $value) {
+            $key=$zx_shuxing[$i];
+            $new_arr[$key]=$value;
+            $i++;
+            }
+            $str_zx_shuxing=serialize($new_arr);
+            
+        }else{
+            $str_zx_shuxing='';
+        }
+        
+        
+        
+        //保存商品信息，把商品信息写入数据库
+        $row=array(
+            'cat_id'=>$cat_id,
+            'cat_name'=>$data_category['cat_name'],//分类名
+            'shop_id'=>$shop['shop_id'],
+            'shop_name'=>$shop['shop_name'],//所属店铺
+            'goods_name'=>$content['title'],//商品名称
+            'goods_jianjie'=>$content['goods_jianjie'],//商品简介
+            'units'=>$content['units'],//商品单位重量
+            'yuan_price'=>$content['yuan_price'],//原价
+            'price'=>$content['price'],//单购价
+            'shuxing'=>$str_shuxing,//属性
+            'goods_img'=>$goods_zhanshitu,//商品图片
+            'goods_img_qita'=>$str_goods_img,//被序列化的其它图片
+            'goods_desc'=>$goods_desc,//商品描述
+            'goods_shuxing'=>$str_zx_shuxing,//商品可选属性
+            'add_time'=>time(),             //添加时间
+            'last_update'=>time()            //更新时间初始等于添加时间
+        );
+        $result_add=$goodsmodel->where("goods_id=$goods_id")->save($row);;
+        if($result_add){
+            $this->success('商品编辑成功',U('Shop/goods'),3);
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    public function order(){
+        $open_id=$_SESSION['wei_huiyuan']['open_id'];
+        $shopsmodel=D('Shops');
+        $is_shop=$shopsmodel->where("open_id='$open_id'")->count();
+        if(!$is_shop){
+            $this->error('您没有注册店铺！');
+        }
+        $shop_id=$shopsmodel->where("open_id='$open_id'")->getField('shop_id');
+        
+        $status=$_GET['status'];
+        $this->assign('canshu',$_GET['status']);
+        $ordermodel=D('Order');
+        $status_count['all']=$ordermodel->where("shop_id={$shop_id} and deleted=0")->count();//获取全部订单条数
+        $status_count['no_pay']=$ordermodel->where("shop_id={$shop_id} and pay_status=0 and deleted=0  and status<6")->count();//获取未付款条数
+        $status_count['daifahuo']=$ordermodel->where("shop_id={$shop_id} and pay_status=1 and status=1 and deleted=0")->count();//获取待发货条数
+        $status_count['daishouhuo']=$ordermodel->where("shop_id={$shop_id} and pay_status=1 and status=3 and deleted=0")->count();//获取待收货条数
+        $status_count['daipingjia']=$ordermodel->where("shop_id={$shop_id} and pay_status=1 and status=4 and deleted=0")->count();//获取待评价条数
+        $status_count['shouhou']=$ordermodel->where("shop_id={$shop_id} and pay_status>1 and pay_status<4 and deleted=0")->count();//获取售后申请条数
+         $this->assign(status_count,$status_count);
+         $time=  time();
+         $this->assign('time',$time);
+         if(empty($status)){
+            
+             $count=$ordermodel->where("shop_id={$shop_id} and deleted=0")->count();
+             $this->assign(count,$count);
+             $page=$this->get_page($count, 10);
+             $page_foot=$page->show();//显示页脚信息
+             $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.shop_id={$shop_id} and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
+             
+             $this->assign('list',$list);
+             $this->assign('page_foot',$page_foot);
+         }else if($status==='no_pay'){
+            
+             $count=$ordermodel->where("shop_id={$shop_id} and pay_status=0 and deleted=0  and status<6")->count();
+             $page=$this->get_page($count, 10);
+             $page_foot=$page->show();//显示页脚信息
+             $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.shop_id={$shop_id} and t1.pay_status=0  and t1.status<6 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
+             
+             $this->assign('list',$list);
+             $this->assign('page_foot',$page_foot);
+         }else if($status==='daifahuo'){
+           
+             $count=$ordermodel->where("shop_id={$shop_id} and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0")->count();
+             $page=$this->get_page($count, 10);
+             $page_foot=$page->show();//显示页脚信息
+             $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.shop_id={$shop_id} and t1.pay_status=1 and (t1.status=2 or (t1.tuan_no=0 and t1.status=1)) and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
+             $this->assign('list',$list);
+             $this->assign('page_foot',$page_foot);
+         }else if($status==='daishouhuo'){
+           
+             $count=$ordermodel->where("shop_id={$shop_id} and pay_status=1 and status=3 and deleted=0")->count();
+             $page=$this->get_page($count, 10);
+             $page_foot=$page->show();//显示页脚信息
+             $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.shop_id={$shop_id} and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
+             $this->assign('list',$list);
+             $this->assign('page_foot',$page_foot);
+         }else if($status==='daipingjia'){
+            
+             $count=$ordermodel->where("shop_id={$shop_id} and pay_status=1 and status=4 and deleted=0")->count();
+             $page=$this->get_page($count, 10);
+             $page_foot=$page->show();//显示页脚信息
+             $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.shop_id={$shop_id} and t1.pay_status=1 and t1.status=4 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
+             $this->assign('list',$list);
+             $this->assign('page_foot',$page_foot);
+         }else if($status==='shouhou'){
+             
+             $count=$ordermodel->where("shop_id={$shop_id} and pay_status>1 and deleted=0")->count();
+             $page=$this->get_page($count, 10);
+             $page_foot=$page->show();//显示页脚信息
+             $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.shop_id={$shop_id} and t1.pay_status>1 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
+             $this->assign('list',$list);
+             $this->assign('page_foot',$page_foot);
+         }
+         
+         
+         session('guanzhu',null); 
+         $this->display();
+    }
+    
+    public function goods(){
+        $open_id=$_SESSION['wei_huiyuan']['open_id'];
+        $shopsmodel=D('Shops');
+        $is_shop=$shopsmodel->where("open_id='$open_id'")->count();
+        if(!$is_shop){
+            $this->error('您没有注册店铺！');
+        }
+        $shop_id=$shopsmodel->where("open_id='$open_id'")->getField('shop_id');
+        $goodsmodel=D('Goods');
+        $status=$_GET['status'];
+        $this->assign('canshu',$status);
+        $status_count['0']=$goodsmodel->where("shop_id={$shop_id} and is_delete=0")->count();//获取上架商品条数
+        $status_count['1']=$goodsmodel->where("shop_id={$shop_id} and is_delete=1")->count();//获取下架商品条数
+        $this->assign('status_count',$status_count);
+        if($status==='1'){
+             //$count=$goodsmodel->where("shop_id={$shop_id} and is_delete=1")->count();//获取下架商品条数
+             //$this->assign(count,$count);
+             $list=$goodsmodel->where("shop_id='{$shop_id}' and is_delete=1")->order('last_update desc')->select();
+             $this->assign('list',$list);
+         }else{
+             //$count=$goodsmodel->where("shop_id={$shop_id} and is_delete=0")->count();//获取上架商品条数
+             //$this->assign(count,$count);
+             $list=$goodsmodel->where("shop_id={$shop_id} and is_delete=0")->select();
+             $this->assign('list',$list);
+             
+         }
+        $this->display();
+    }
     
      public function file_jia(){
         $name=$_GET['name'];

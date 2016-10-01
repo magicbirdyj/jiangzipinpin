@@ -8,6 +8,22 @@ class ZhuceshopController extends FontEndController {
 
 
     public function index() {
+        //先判断是否注册了商家
+        $shopsmodel=D('Shops');
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        $count=$shopsmodel->where("open_id='$open_id'")->count();
+        if($count&&$count>0){
+            $head_url=$shopsmodel->where("open_id='$open_id'")->getField('head_url');
+            if($head_url!=''){
+                header("location:". U("Member/index"));
+                exit();
+            }else{
+                header("location:". U("Zhuceshop/zhuce4"));
+                exit();
+            }
+        }
+        
+        
         $time=gettime();
         $_SESSION['zhuce1']=$time;
         $this->assign("time", $time);
@@ -156,7 +172,6 @@ class ZhuceshopController extends FontEndController {
         }
         $address=$_POST['address_juti'];//获取详细地址
 
-        $weixin=$_POST['contact_weixin'];//获取微信号码
         $qq=$_POST['contact_qq'];//获取QQ号码
        
         $shop_introduce=$_POST['shop_introduce'];//获取店铺介绍
@@ -170,7 +185,7 @@ class ZhuceshopController extends FontEndController {
         
         
         //服务内容未选择时，提示并退出
-        if(empty($weixin)||empty($qq)||empty($address)||empty($shop_introduce)){
+        if(empty($qq)||empty($address)||empty($shop_introduce)){
             $this->error('有内容未填写');
             exit();
         }
@@ -191,7 +206,6 @@ class ZhuceshopController extends FontEndController {
             'head_url'=>$head_url,
             'shop_form'=>$shop_form,
             'address'=>  serialize($arr_address),
-            'weixin'=>$weixin,
             'qq'=>$qq,
             'default_cat_id'=>$default_cat_id,
             'shop_introduce'=>$shop_introduce,

@@ -114,7 +114,7 @@ var province_index;
 var obj_address_juti=document.zhuce.address_juti;
 var obj_contact_weixin=document.zhuce.contact_weixin;
 var obj_contact_qq=document.zhuce.contact_qq;
-var touxiang_is=false;
+//var touxiang_is=false;
 var select_cate_0=document.zhuce.cate_0;
 var select_cate_1=document.zhuce.cate_1;
 var cate_0_index;
@@ -138,7 +138,7 @@ select_province.onchange=function (){province_onchange(this.selectedIndex);};
 select_city.onchange=function (){city_onchange(this.selectedIndex);};
 select_cate_0.onchange=function (){cate_0_onchange(this.selectedIndex);};
 obj_address_juti.onblur=function (){address_juti_onblur();};
-obj_contact_weixin.onblur=function (){contact_weixin_onblur();};
+//obj_contact_weixin.onblur=function (){contact_weixin_onblur();};
 obj_contact_qq.onblur=function (){contact_qq_onblur();};
 document.getElementById("zhuce1_xiayibu").onclick=function (){return xiayibu_onclick();};
 
@@ -290,7 +290,7 @@ function xiayibu_onclick(){
         return false;
     }
 
-    if(touxiang_check()&&check_seleck()&&address_juti_onblur()&&check_seleck_cate()&&contact_weixin_onblur()&&contact_qq_onblur()&&text_blue($('#shop_introduce'),$('#infor'),'店铺介绍')){
+    if(touxiang_check()&&check_seleck()&&address_juti_onblur()&&check_seleck_cate()&&contact_qq_onblur()&&text_blue($('#shop_introduce'),$('#infor'),'店铺介绍')){
         $('#infor').css('display','block');
         setTimeout(infor_none,3000);
         $('#infor').css('color','#666');
@@ -300,7 +300,7 @@ function xiayibu_onclick(){
     return false;
 }
 function touxiang_check(){
-    if(!touxiang_is){
+    if(!$('input[name=member_file_touxiang]').val()||!$('input[name=member_file_touxiang]').val()=='undefined'){
         $('#infor').css('display','block');
         setTimeout(infor_none,3000);
         $('#infor').css('color','red');
@@ -345,7 +345,7 @@ function file_jia_change(obj){
                         if(id==='file_touxiang'){
                             img_url=msg.file_touxiang;
                             img_url_thumb=msg.file_touxiang_thumb;
-                            touxiang_is=true;
+                            //touxiang_is=true;
                             //String(img_url)==="undefined"?touxiang_is=false:touxiang_is=true;
                         }
                        

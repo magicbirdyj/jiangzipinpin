@@ -34,7 +34,6 @@ function cate_0_onchange(index){
 $("select[name=cate_0]").val(default_cat_0);
 var selectedIndex=$("select[name=cate_0]").prop('selectedIndex');
 cate_0_onchange(selectedIndex);
-//$('select[name=cate_0]').find('option[value='+default_cat_0+']').click();
 $("select[name=cate_1]").val(default_cat_id);
 get_shuxing($('select[name=cate_1]').val());
 
@@ -83,9 +82,7 @@ $('#fabu').bind('click',function(){fabu();});
         $('.ke-icon-link').html('添加链接');
     });    
 
-function sc_change(){
-    $('form[name=sv_cont]').submit();
-}
+
 
 function price_blue(obj,obj_info,msg){
     var reg=/^\d+\.?\d{0,2}$/gi;
@@ -273,13 +270,14 @@ $('select[name=cate_1]').bind('change',function(){
         };
         $.ajax({
             type:'post',
-            async : true,
+            async : false,
             url:url,
             datatype:'json',
             data:data,
             success:function(msg){
                 $('.shuxing').remove();
                 $('#shuxing_xuxian').before(msg);
+                
             }
         });
     }

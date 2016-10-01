@@ -34,15 +34,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<{:U('Order/index?status=wait_tuan')}>">
-                    <div class='dingdan_fenkai_tb_div'>
-                        <span class="iconfont tb_dingdan_li">&#xe622;</span>
-                        <span style='margin-left: 2px;' class="right_up_tb"><{$status_count['wait_tuan']}></span>
-                    </div>
-                    <div><span>待成团</span></div>
-                    </a>
-                </li>
-                <li>
                     <a href="<{:U('Order/index?status=daifahuo')}>">
                     <div class='dingdan_fenkai_tb_div'>
                         <span class="iconfont tb_dingdan_li" style='font-size: 28px;'>&#xe62a;</span>
@@ -67,6 +58,15 @@
                         <span style='margin-left: 2px;' class="right_up_tb"><{$status_count['daipingjia']}></span>
                     </div>
                     <div><span>待评价</span></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="<{:U('Order/index?status=shouhou')}>">
+                    <div class='dingdan_fenkai_tb_div'>
+                        <span class="iconfont tb_dingdan_li">&#xe622;</span>
+                        <span style='margin-left: 2px;' class="right_up_tb"><{$status_count['shouhou']}></span>
+                    </div>
+                    <div><span>售后</span></div>
                     </a>
                 </li>
             </ul>
