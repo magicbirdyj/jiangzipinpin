@@ -682,8 +682,9 @@ class ShopController extends FontEndController {
     }
     
     public function view_order(){
-        $shop_id=$_SESSION['huiyuan']['user_id'];
-        $this->assign('shop_id',$shop_id);
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        $shopsmodel=D('Shops');
+        $shop_id=$shopsmodel->where("open_id='$open_id'")->getField('shop_id');
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');
         $order=$ordermodel->table('m_order t1,m_goods t2')->where("t1.order_id='{$order_id}' and  t1.goods_id=t2.goods_id and t1.deleted=0")->field('t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.created,t1.updated,t2.goods_img,t1.price,t1.dues,t1.order_address,t1.buy_number,t1.tuan_no,t1.tuan_number,t1.shop_id')->find();
