@@ -699,9 +699,9 @@ class ShopController extends FontEndController {
         if($order['shop_id']===$shop_id){
             $this->assign('order',$order);
             $this->assign('address',$address);
-            $this->display('view');
+            $this->display();
         }else{
-            $this->error('您不存在该订单 ','/Home/Order/index');
+            $this->error('您不存在该订单 ','/Home/Shop/order');
         }
     }
     
