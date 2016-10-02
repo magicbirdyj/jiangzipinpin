@@ -109,7 +109,7 @@
         showOverlay('fengxiang_success');
         $('#overlay,#zhishi_fenxiang').unbind('click');
         send_red_pack();
-        send_shop_xiaoxi();
+        send_shop_xiaoxi_red();
     }
     
     function send_red_pack(){
@@ -124,7 +124,7 @@
             async : true,
             url:url,
             datatype:'json',
-            data:data,
+            data:data
         });
     }
     
@@ -140,7 +140,7 @@
             async : true,
             url:url,
             datatype:'json',
-            data:data,
+            data:data
         });
     }
 
