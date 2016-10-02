@@ -87,6 +87,7 @@ class LoginController extends FontEndController {
             'open_id'=>$user['open_id'],
             'head_url'=>$use['head_url']
                 );
+            //var_dump('请从微信打开');exit;
             if(isset($_SESSION['ref'])){
                 header("location:". $_SESSION['ref']);
                 exit();

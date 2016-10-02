@@ -60,7 +60,28 @@ class AjaxnologinController extends FontEndController {
         $this->ajaxReturn($sendRedPackInfo);
     }
     
-    
+    public function send_shop_xiaoxi_red($order_id) {
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id=$order_id")->find();
+        $user_id=$order['user_id'];
+        $usersmodel=D('Users');
+        $user_name=$usersmodel->where("user_id=$user_id")->getField('user_name');
+        $shop_id=$order['shop_id'];
+        $shopsmodel=D('Shops');
+        $shop=$shopsmodel->where("shop_id=$shop_id")->field('open_id,shop_name')->find();
+        $template_id="TPVNrYikBGkS3KaFcVbdzBjqnurjBHhOOjOE0JjC4OM";
+        $url=U('Shop/view_order',array('order_id'=>$order_id));
+        $remark="红包金额将从您的收入中减去,点击查看该订单详情";
+        $arr_data=array(
+            'first'=>array('value'=>"恭喜您，".$user_name."成功分享了您的商品：".$order['goods_name'],"color"=>"#666"),
+            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
+            'keyword2'=>array('value'=>$order['price'],"color"=>"#666"),
+            'keyword3'=>array('value'=>date('Y/m/d H:i:s',$order['updated']),"color"=>"#666"),
+            'keyword4'=>array('value'=>$order['fenxiang_dues'],"color"=>"#666"),
+            'remark'=>array('value'=>$remark,"color"=>"#F90505")
+        );
+        $this->response_template($shop['open_id'], $template_id, $url, $arr_data);
+    }
     
     public function get_shuxing() {
         $post=$_POST;

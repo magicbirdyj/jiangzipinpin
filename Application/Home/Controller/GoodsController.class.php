@@ -451,6 +451,7 @@ class GoodsController extends FontEndController {
             'goods_id' => $goods_id,
             'buy_number'=>$buy_number,
             'zx_shuxing'=>$zx_shuxing,
+            'shop_id'=>$goods['shop_id'],
             'shop_name' => $goods['shop_name'],
             'goods_name' => $goods['goods_name'],
             'order_fahuo_day'=>$goods['fahuo_day'],
@@ -841,8 +842,16 @@ class GoodsController extends FontEndController {
             $shopsmodel->where("shop_id=$shop_id")->setInc('sale_number',(int)$buy_number);//店铺的购买次数加
             $this->assign('goods', $goods);
             $this->display('gmcg_dandu');
+            //发送消息给店铺
+            $this->dianpu_sale_tep($order_id);//给会员发送消息，购买成功，等待发货
             exit();
         }
+        //目前只走到这一步
+        
+        
+        
+        
+        
         $goods['count']=$ordermodel->where("tuan_no=$tuan_no and pay_status>0")->count();
         $goods['tuan_number']=$order['tuan_number'];//为了值需要assign给goods
         
@@ -1153,6 +1162,29 @@ class GoodsController extends FontEndController {
         $this->response_template($open_id, $template_id, $url, $arr_data);
     }
     
+    public function dianpu_sale_tep($order_id) {
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id=$order_id")->find();
+        $user_id=$order['user_id'];
+        $usersmodel=D('Users');
+        $user_name=$usersmodel->where("user_id=$user_id")->getField('user_name');
+        $shop_id=$order['shop_id'];
+        $shopsmodel=D('Shops');
+        $shop=$shopsmodel->where("shop_id=$shop_id")->field('open_id,shop_name')->find();
+        $template_id="ichV1e55uH-myne3PhPaYmgNQuCu0K54v6NuUqjTrIU";
+        $url=U('Shop/view_order',array('order_id'=>$order_id));
+        $remark="请您尽快发货哦,点击查看该订单详情";
+        $arr_data=array(
+            'first'=>array('value'=>"恭喜您，".$user_name."成功购买了店铺[".$shop['shop_name']."]的商品!","color"=>"#666"),
+            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
+            'keyword2'=>array('value'=>$order['goods_name'],"color"=>"#666"),
+            'keyword3'=>array('value'=>$order['price'],"color"=>"#666"),
+            'keyword4'=>array('value'=>$order['price'],"color"=>"#666"),
+            'keyword5'=>array('value'=>$order['order_address'],"color"=>"#666"),
+            'remark'=>array('value'=>$remark,"color"=>"#F90505")
+        );
+        $this->response_template($shop['open_id'], $template_id, $url, $arr_data);
+    }
     
     private function get_88_daijinquan($user_id) {
         $this->get_daijinquan($user_id, '通用券', 5);
