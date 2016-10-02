@@ -25,7 +25,7 @@ class AjaxnologinController extends FontEndController {
     
     public function send_red_pack() {
         $post=$_POST;
-        if($post['check']!='send_red_pack'){
+        if($post['check']!='send_red_pack_921314'){
             exit;
         }
         $order_id=$post['order_id'];
@@ -60,7 +60,12 @@ class AjaxnologinController extends FontEndController {
         $this->ajaxReturn($sendRedPackInfo);
     }
     
-    public function send_shop_xiaoxi_red($order_id) {
+    public function send_shop_xiaoxi_red() {
+        $post=$_POST;
+        if($post['check']!='send_shop_xiaoxi'){
+            exit;
+        }
+        $order_id=$post['order_id'];
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id=$order_id")->find();
         $user_id=$order['user_id'];

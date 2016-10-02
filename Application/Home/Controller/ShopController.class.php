@@ -574,7 +574,7 @@ class ShopController extends FontEndController {
     
     
     public function order(){
-        $open_id=$_SESSION['wei_huiyuan']['open_id'];
+        $open_id=$_SESSION['huiyuan']['open_id'];
         $shopsmodel=D('Shops');
         $is_shop=$shopsmodel->where("open_id='$open_id'")->count();
         if(!$is_shop){
@@ -653,7 +653,7 @@ class ShopController extends FontEndController {
     }
     
     public function goods(){
-        $open_id=$_SESSION['wei_huiyuan']['open_id'];
+        $open_id=$_SESSION['huiyuan']['open_id'];
         $shopsmodel=D('Shops');
         $is_shop=$shopsmodel->where("open_id='$open_id'")->count();
         if(!$is_shop){
@@ -679,6 +679,29 @@ class ShopController extends FontEndController {
              
          }
         $this->display();
+    }
+    
+    public function view_order(){
+        $shop_id=$_SESSION['huiyuan']['user_id'];
+        $this->assign('shop_id',$shop_id);
+        $order_id=$_GET['order_id'];
+        $ordermodel=D('Order');
+        $order=$ordermodel->table('m_order t1,m_goods t2')->where("t1.order_id='{$order_id}' and  t1.goods_id=t2.goods_id and t1.deleted=0")->field('t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.created,t1.updated,t2.goods_img,t1.price,t1.dues,t1.order_address,t1.buy_number,t1.tuan_no,t1.tuan_number,t1.shop_id')->find();
+        if(!$order){
+            $this->error('该订单号不存在或已经删除 ');
+        }
+        $user_id=$order['user_id'];
+        $usersmodel=D('Users');
+        $address=$usersmodel->where("user_id=$user_id")->getField('address');
+        $arr_address=  unserialize($address);
+        $address=$arr_address[$order['order_address']];
+        if($order['shop_id']===$shop_id){
+            $this->assign('order',$order);
+            $this->assign('address',$address);
+            $this->display('view');
+        }else{
+            $this->error('您不存在该订单 ','/Home/Order/index');
+        }
     }
     
      public function file_jia(){
