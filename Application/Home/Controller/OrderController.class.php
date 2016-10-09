@@ -390,7 +390,7 @@ class OrderController extends FontEndController {
             'score'=>$score,
             'pingfen'=>$pingfen,
             'appraise_img'=>$str_img,
-            'updated'=> mktime()
+            'updated'=> time()
                 );
         $ordermodel->where("order_id=$order_id")->save($row);
         
@@ -611,9 +611,9 @@ class OrderController extends FontEndController {
         }
         $arr_data=array(
             'first'=>array('value'=>"您好，您售出的商品".$order['goods_name']."已经被".$user_name."确认收货。","color"=>"#666"),
-            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#F90505"),
-            'keyword2'=>array('value'=>$amount,"color"=>"#F90505"),
-            'keyword3'=>array('value'=>  date('Y/m/d H:i:s'),"color"=>"#F90505"),
+            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
+            'keyword2'=>array('value'=>$amount,"color"=>"#666"),
+            'keyword3'=>array('value'=>  date('Y/m/d H:i:s'),"color"=>"#666"),
             'remark'=>array('value'=>$remark,"color"=>"#F90505")
         );
         $this->response_template($open_id, $template_id, $url, $arr_data);

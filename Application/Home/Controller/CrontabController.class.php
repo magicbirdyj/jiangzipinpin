@@ -55,7 +55,7 @@ class CrontabController extends FontEndController {
     private function aotu_queren_shouhuo() {
         $time=  time();
         $ordermodel=D('Order');
-        $yifahuo=$ordermodel->where("deleted=0 and pay_status=1 and status=3")->field('order_id,created,shop_id,fenxiang,dues,fenxiang_dues')->select();
+        $yifahuo=$ordermodel->where("deleted=0 and pay_status=1 and status=3")->field('order_id,created,updated,shop_id,fenxiang,dues,fenxiang_dues')->select();
         foreach ($yifahuo as $value) {
             //两周已发货订单，自动确认收货
             if($time>($value['updated']+1209600)){
@@ -200,9 +200,9 @@ class CrontabController extends FontEndController {
         }
         $arr_data=array(
             'first'=>array('value'=>"您好，您售出的商品(买家：".$user_name.")".$order['goods_name']."已经自动确认收货。","color"=>"#666"),
-            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#F90505"),
-            'keyword2'=>array('value'=>$amount,"color"=>"#F90505"),
-            'keyword3'=>array('value'=>  date('Y/m/d H:i:s'),"color"=>"#F90505"),
+            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
+            'keyword2'=>array('value'=>$amount,"color"=>"#666"),
+            'keyword3'=>array('value'=>  date('Y/m/d H:i:s'),"color"=>"#666"),
             'remark'=>array('value'=>$remark,"color"=>"#F90505")
         );
         $this->response_template($open_id, $template_id, $url, $arr_data);
@@ -220,9 +220,9 @@ class CrontabController extends FontEndController {
         $url=U('Order/appraise',array('order_id'=>$order_id));
         $arr_data=array(
             'first'=>array('value'=>"您好，您购买的商品：".$order["goods_name"]."因超时未收货，已经自动确认收货。","color"=>"#666"),
-            'keyword1'=>array('value'=>$order['dues'].'元',"color"=>"#F90505"),
+            'keyword1'=>array('value'=>$order['dues'].'元',"color"=>"#666"),
             'keyword2'=>array('value'=>$order["goods_name"],"color"=>"#666"),
-            'keyword3'=>array('value'=>$order['order_no'],"color"=>"#F90505"),
+            'keyword3'=>array('value'=>$order['order_no'],"color"=>"#666"),
             'remark'=>array('value'=>$remark,"color"=>"#F90505")
         );
         $this->response_template($open_id, $template_id, $url, $arr_data);

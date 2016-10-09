@@ -457,8 +457,8 @@ class GoodsController extends FontEndController {
             'order_fahuo_day'=>$goods['fahuo_day'],
             'status' => 1, //生成订单
             'pay_status' => 0, //支付状态为未支付
-            'created' => mktime(),
-            'updated' => mktime(),
+            'created' => time(),
+            'updated' => time(),
             'price' => $price,
             'daijinquan'=>ky_daijinquan,
             'dues'=>$dues,
@@ -531,8 +531,8 @@ class GoodsController extends FontEndController {
             'goods_name' => $goods['goods_name'],
             'status' => 1, //生成订单
             'pay_status' => 0, //支付状态为未支付
-            'created' => mktime(),
-            'updated' => mktime(),
+            'created' => time(),
+            'updated' => time(),
             'price' => $price,
             'daijinquan'=>ky_daijinquan,
             'dues'=>$dues,
