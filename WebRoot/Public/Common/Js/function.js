@@ -57,9 +57,9 @@ function text_blue(obj,obj_info,txt){
         setTimeout(infor_none,5000);
         return false;
     }else{
-        obj_info.css('color','#666');
-        obj_info.html('&radic;');
-        setTimeout(infor_none,5000);
+        //obj_info.css('color','#666');
+        //obj_info.html('&radic;');
+        //setTimeout(infor_none,5000);
         return true;
     }
 }

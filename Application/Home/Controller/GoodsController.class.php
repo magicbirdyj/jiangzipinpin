@@ -1173,7 +1173,7 @@ class GoodsController extends FontEndController {
         $shop=$shopsmodel->where("shop_id=$shop_id")->field('open_id,shop_name')->find();
         $template_id="ichV1e55uH-myne3PhPaYmgNQuCu0K54v6NuUqjTrIU";
         $url=U('Shop/view_order',array('order_id'=>$order_id));
-        $remark="请您尽快发货哦,点击查看该订单详情";
+        $remark="请您尽快发货哦,点击发货";
         $arr_data=array(
             'first'=>array('value'=>"恭喜您，".$user_name."成功购买了店铺[".$shop['shop_name']."]的商品!","color"=>"#666"),
             'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),

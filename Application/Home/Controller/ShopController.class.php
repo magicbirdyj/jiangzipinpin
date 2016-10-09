@@ -691,17 +691,79 @@ class ShopController extends FontEndController {
         if(!$order){
             $this->error('该订单号不存在或已经删除 ');
         }
-        $user_id=$order['user_id'];
-        $usersmodel=D('Users');
-        $address=$usersmodel->where("user_id=$user_id")->getField('address');
-        $arr_address=  unserialize($address);
-        $address=$arr_address[$order['order_address']];
+        
         if($order['shop_id']===$shop_id){
             $this->assign('order',$order);
-            $this->assign('address',$address);
             $this->display();
         }else{
             $this->error('您不存在该订单 ','/Home/Shop/order');
+        }
+    }
+     public function view_wuliu() {
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        $Shopsmodel=D('Shops');
+        $shop_id=$Shopsmodel->where("open_id='$open_id'")->getField('shop_id');
+        $order_id=$_GET['order_id'];
+        $ordermodel=D('Order');
+        $order=$ordermodel->table('m_order t1,m_goods t2')->where("t1.order_id='{$order_id}' and  t1.goods_id=t2.goods_id")->field('t1.order_no,t1.user_id,t1.goods_name,t1.shop_name,t2.goods_img,t1.price,t1.buy_number,t1.dues,t1.kuaidi,t1.shop_id')->find();
+        if($order['shop_id']===$shop_id){
+            $this->assign('order',$order);
+            $wuliu=  unserialize($order['kuaidi']);
+            $this->assign('wuliu',$wuliu);
+            if($wuliu['fangshi']=='2'){
+                $wuliu_info=$this->getOrderTracesByJson($order['order_no'],$wuliu['company_bianma'],$wuliu['no']);
+                $arr_wuliu=json_decode($wuliu_info,true);
+                $wuliu_guiji=$arr_wuliu['Traces'];
+                krsort($wuliu_guiji);
+                $this->assign('wuliu_guiji',$wuliu_guiji);
+            }elseif($wuliu['fangshi']=='1'){
+                
+            }
+            $this->display();
+        }else{
+            $this->error('该订单不存在','/Home/Shop/order');
+        }
+    }
+    
+    public function fahuo(){
+        if(!$_GET['order_id']){
+            $this->error('订单号获取失败！');
+        }
+        $order_id=$_GET['order_id'];
+        $this->assign('order_id',$order_id);
+        $this->display();
+    }
+    public function fahuo_check(){
+        $post=$_POST;
+        if(!$post['order_id']){
+            $this->error('订单号获取失败！');
+        }
+        $order_id=$post['order_id'];
+        $ordermodel=D('Order');
+        if($post['fangshi']=='1'){
+            $data=array(
+                'fangshi'=>'1',
+                'qishou_name'=>$post['qishou_name'],
+                'qishou_mobile'=>$post['qishou_mobile']
+            );
+        }elseif($post['fangshi']=='2'){
+            $data=array(
+                'fangshi'=>'2',
+                'company'=>$post['kuaidi_company'],
+                'company_bianma'=>$post['kuaidi_bianma'],
+                'no'=>$post['kuaidi_no']
+            );
+        }
+        
+        $row=  array(
+            'kuaidi'=>  serialize($data),
+            'status'=>'3',
+            'updated'=>  time()
+        );
+        $result_add=$ordermodel->where("order_id=$order_id")->save($row);
+        if($result_add){
+            $this-> fahuo_tep_success($order_id);//  发送消息给团员
+            $this->success('商品发货成功！',U('Ordermanage/index'),2);
         }
     }
     
@@ -751,5 +813,84 @@ class ShopController extends FontEndController {
             $img_name=substr($arr_goods_img_qita[0],$index+1);
             $value['goods_img_qita_0']=$img_url.'thumb/'.$img_name;
         }
+    }
+    
+    
+    
+    private function fahuo_tep_success($order_id){
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id=$order_id")->find();
+        $kuaidi=  unserialize($order['kuaidi']);
+        if($kuaidi['fangshi']=='1'){
+            $keyword1='（同城）骑手：'.$kuaidi['qishou_name'];
+            $keyword2='（同城）骑手电话：'.$kuaidi['qishou_mobile'];
+        }else{
+             $keyword1=$kuaidi['company'];
+              $keyword2=$kuaidi['no'];
+        }
+        $user_id=$order['user_id'];
+        $usersmodel=D('Users');
+        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
+        $template_id="RDphvvFI8o8yTMi5ItXCCMl-JFZvLXTfvNErqjVBcRM";
+        $goods_id=$order['goods_id'];
+        $url=U('Home/Order/view_wuliu',array('order_id'=>$order_id));
+        $arr_data=array(
+            'first'=>array('value'=>"您好，您购买的商品：".$order["goods_name"]." 已经启程，讲马上到达您的身边！","color"=>"#666"),
+            'keyword1'=>array('value'=>$keyword1,"color"=>"#666"),
+            'keyword2'=>array('value'=>$keyword2,"color"=>"#666"),
+            'keyword3'=>array('value'=>$order["goods_name"],"color"=>"#666"),
+            'keyword4'=>array('value'=>$order['buy_number'],"color"=>"#666"),
+            'remark'=>array('value'=>"点我，查看物流详细信息","color"=>"#F90505")
+        );
+        $this->response_template($open_id, $template_id, $url, $arr_data);
+    }
+    
+    
+     /**
+    * Json方式 查询订单物流轨迹
+    */
+    private function getOrderTracesByJson($OrderCode,$ShipperCode,$LogisticCode){
+	$requestData= "{'OrderCode':'$OrderCode','ShipperCode':'$ShipperCode','LogisticCode':'$LogisticCode'}";
+	$datas = array(
+            'EBusinessID' => EB_ID,
+            'RequestType' => '1002',
+            'RequestData' => urlencode($requestData) ,
+            'DataType' => '2',
+        );
+        $datas['DataSign'] = $this->encrypt($requestData, EB_AppKey);
+	$result=$this->sendPost(EB_ReqURL, $datas);	
+	
+	//根据公司业务处理返回的信息......
+	
+	return $result;
+    }
+     /**
+    *  post提交数据 
+    * @param  string $url 请求Url
+    * @param  array $datas 提交的数据 
+    * @return url响应返回的html
+    */
+    private function sendPost($url, $datas) {
+        $postdata = http_build_query($datas);    
+        $options = array(    
+            'http' => array(    
+                'method' => 'POST',    
+                'header' => 'Content-type:application/x-www-form-urlencoded',    
+                'content' => $postdata,    
+                'timeout' => 15 * 60 // 超时时间（单位:s）    
+            )    
+        );    
+        $context = stream_context_create($options);    
+        $result = file_get_contents($url, false, $context);             
+        return $result;    
+    }
+     /**
+     * 电商Sign签名生成
+    * @param data 内容   
+    * @param appkey Appkey
+    * @return DataSign签名
+    */
+    private function encrypt($data, $appkey) {
+        return urlencode(base64_encode(md5($data.$appkey)));
     }
 }

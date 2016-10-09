@@ -54,7 +54,8 @@
 .d2_content span{
     width: 100%;
     box-sizing: border-box;
-    padding: 10px 0px;
+    padding: 5px 0px;
+    line-height: 31px;
     text-align: left;
     margin-right: 10px;
     display: inline-block;

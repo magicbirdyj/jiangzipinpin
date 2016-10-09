@@ -80,6 +80,7 @@
     //var goods_desc="<{$goods['goods_jianjie']}>";
     var fanxian="<{$order['fenxiang_dues']|floatval}>";
     var fenxiang="<{$order['fenxiang']}>";
+    var desc="酱紫拼拼：一家专门做代购与个人纯手工商品的网站。"+"<{$goods['goods_jianjie']}>";
     wx.config({  
         //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: "<{$wx_config['appId']}>", // 必填，公众号的唯一标识
@@ -90,7 +91,7 @@
     });
     wx.ready(function () {
         wx.onMenuShareTimeline({
-            title:  '我'+price+'元钱购买了'+title+'，获得红包'+fanxian+'元', // 分享标题
+            title:  '我'+price+'元钱购买了'+title+'，代购与个人手工产品，就上酱紫拼拼', // 分享标题
             link: link, // 分享链接
             imgUrl: 'http://m.jiangzipinpin.com'+img, // 分享图标
             success: function () { 
@@ -99,9 +100,27 @@
                 }
             }
         });
-       wx.hideMenuItems({
-            menuList: ["menuItem:share:appMessage","menuItem:share:qq","menuItem:share:weiboApp","menuItem:share:facebook","menuItem:share:QZone"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+        wx.onMenuShareAppMessage({
+            title:  title, // 分享标题
+            link: link, // 分享链接
+            desc:  desc, // 分享描述
+            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
         });
+        wx.onMenuShareQQ({
+            title:  title, // 分享标题
+            link: link, // 分享链接
+            desc: desc, // 分享描述
+            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
+        });
+        wx.onMenuShareQZone({
+            title: title, // 分享标题
+            link: link, // 分享链接
+            desc:desc, // 分享描述
+            imgUrl:  'http://m.jiangzipinpin.com'+img // 分享图标
+        });
+       //wx.hideMenuItems({
+            //menuList: ["menuItem:share:appMessage","menuItem:share:qq","menuItem:share:weiboApp","menuItem:share:facebook","menuItem:share:QZone"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+        //});
     });
     
     function fenxiang_success(){

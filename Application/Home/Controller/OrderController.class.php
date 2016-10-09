@@ -49,7 +49,7 @@ class OrderController extends FontEndController {
              $this->assign('list',$list);
              $this->assign('page_foot',$page_foot);
          }else if($status==='daifahuo'){
-             $selected['daifahuo']="selected='selected'";//选中下拉菜单的待确认
+             $selected['daifahuo']="selected='selected'";//选中下拉菜单的待发货
              $this->assign(selected,$selected);
              $count=$ordermodel->where("user_id={$user_id} and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0")->count();
              $page=$this->get_page($count, 10);
@@ -242,19 +242,46 @@ class OrderController extends FontEndController {
         if($order_user_id!=$_SESSION['wei_huiyuan']['user_id']){//登录用户无该订单权限
             $this->error('您没有该订单权限');
         }
+        //改变订单状态，同时无法再进行分享返现
         $row=array(
-            'status'=>4
+            'status'=>4,
+            'fenxiang'=>2
         );
         $result=$ordermodel->where("order_id=$order_id")->save($row);
         if(!$result){
             $this->error('确认收货失败！');
         }
+        
+        //店铺总金额增加
+        $shop_id=$order['shop_id'];
+        if($order['fenxiang']==1){
+            $amount=$order['dues']-$order['fenxiang_dues'];
+        }else{
+            $amount=$order['dues'];
+        }
+        $row_shop=array(
+            'totle_amount'=>$amount
+        );
+        $shopsmodel=D('shops');
+        $result=$shopsmodel->where("shop_id=$shop_id")->save($row_shop);
+        if(!$result){
+            $this->error('确认收货后增加店铺金额失败！');
+        }
+        
         //发送交易成功通知
-        $remake='点我进行评价，评价成功，您将获得33元代金券';
+        $remark='点我进行评价，您的评价是对卖家最好的肯定。';
         $this->jiaoyi_success_tep($order_id, $remark);
+        
+        //给商家发送订单已经确认收货通知
+        $remark='订单金额已经转入您的店铺金额,系统将在周一早上8点统一打款至您的微信账户中';
+        $this->queren_shouhuo_tep($order_id, $remark);
         
         
         $this->redirect('Order/appraise',array('order_id'=>$order_id));
+        
+        
+        
+        
     }
     
     
@@ -565,10 +592,35 @@ class OrderController extends FontEndController {
     }
     
     
-   
+   //收货成功后，给商家发送订单确认收货通知
+    private function queren_shouhuo_tep($order_id,$remark){
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id=$order_id")->find();
+        $user_id=$order['user_id'];
+        $usersmodel=D('Users');
+        $user_name=$usersmodel->where("user_id=$user_id")->getField('user_name');
+        $shop_id=$order['shop_id'];
+        $shopsmodel=D('Shops');
+        $open_id=$shopsmodel->where("shop_id=$shop_id")->getField('open_id');
+        $template_id="TlXhsrpBwj1I8v3pkClul5dDEuvrMBGmy1ihKqJOCyY";
+        $url=U('Shop/view_order',array('order_id'=>$order_id));
+        if($order['fenxiang']==1){
+            $amount=$order['dues']-$order['fenxiang_dues'];
+        }else{
+            $amount=$order['dues'];
+        }
+        $arr_data=array(
+            'first'=>array('value'=>"您好，您售出的商品".$order['goods_name']."已经被".$user_name."确认收货。","color"=>"#666"),
+            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#F90505"),
+            'keyword2'=>array('value'=>$amount,"color"=>"#F90505"),
+            'keyword3'=>array('value'=>  date('Y/m/d H:i:s'),"color"=>"#F90505"),
+            'remark'=>array('value'=>$remark,"color"=>"#F90505")
+        );
+        $this->response_template($open_id, $template_id, $url, $arr_data);
+    }
     
     
-    //收货成功后，发送交易成功和评价获取代金券通知
+    //收货成功后，发送交易成功和请买家评价通知
     private function jiaoyi_success_tep($order_id,$remark){
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id=$order_id")->find();
@@ -608,4 +660,7 @@ class OrderController extends FontEndController {
         );
         $this->response_template($open_id, $template_id, $url, $arr_data);
     }
+    
+    
+
 }

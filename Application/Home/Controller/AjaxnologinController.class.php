@@ -107,6 +107,11 @@ class AjaxnologinController extends FontEndController {
         $this->ajaxReturn($str);
     }
     
+    
+    public function ceshi() {
+        delayed(1);
+    }
+    
 }
 
 

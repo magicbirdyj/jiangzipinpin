@@ -73,7 +73,7 @@
         
         
         <volist name="list" id="vo">
-            <a  href="<{:U('Order/view',array('order_id'=>$vo['order_id']))}>"><!--内容遍历-->
+            <a  href="<{:U('Shop/view_order',array('order_id'=>$vo['order_id']))}>"><!--内容遍历-->
                 <div class="order_row">
                 <div class='td_l'>
                     <div class="picture"><img src="<{$vo['goods_img']}>"></div>
@@ -84,26 +84,18 @@
                     <if condition="($vo['tuan_no'] neq 0) and ($vo['status'] eq 1) and ($vo['pay_status'] eq 1)">
                         <div class="info_name shenglue">订单状态：还差 <span class="price_red"><{$vo['count']}></span> 人成团</div>
                     <else />
-                        <div class="info_name shenglue"> 订单状态：<{:order_status($vo['pay_status'],$vo['status'],$vo['order_id'],$vo['tuan_no'])['status']}></div>
+                        <div class="info_name shenglue"> 订单状态：<{:order_status_shops($vo['pay_status'],$vo['status'],$vo['order_id'])['status']}></div>
                     </if>
                     <div class='info_name'><span>价格：&yen;<{$vo['price']}></span><span style="margin-left: 20px;">应付：&yen;<{$vo['dues']}></span></div>
                 </div>
                 </div>
             </a>
             <div class='action'>
-                    <a  href="<{:order_status($vo['pay_status'],$vo['status'],$vo['order_id'],$vo['tuan_no'])['status_url']}>" class="button_a_order"><{:order_status($vo['pay_status'],$vo['status'],$vo['order_id'],$vo['tuan_no'])['status_button']}></a>
+                    <a  href="<{:order_status_shops($vo['pay_status'],$vo['status'],$vo['order_id'])['status_url']}>" class="button_a_order"><{:order_status_shops($vo['pay_status'],$vo['status'],$vo['order_id'])['status_button']}></a>
                     <if  condition="($vo['status'] egt '3') and ($vo['status'] elt '5') ">
-                        <a  class="button_a_order"  href="<{:U('Order/view_wuliu',array('order_id'=>$vo['order_id']))}>">查看物流</a>
+                        <a  class="button_a_order"  href="<{:U('Shop/view_wuliu',array('order_id'=>$vo['order_id']))}>">查看物流</a>
                     </if>
-                    <if  condition="($vo['pay_status'] eq '0') and ($vo['status'] lt '6')">
-                        <a  class="button_a_order quxiao_order" name="<{$vo['order_id']}>">取消订单</a>
-                    </if>
-                    <if  condition="(($vo['pay_status'] eq '1') and ($vo['status'] egt '4') and ($vo['status'] lt '6'))">
-                        <a id='shouhou' class="button_a_order" name="<{$vo['order_id']}>" href="<{:U('Order/shouhou',array('order_id'=>$vo['order_id']))}>">申请售后</a>
-                    </if>
-                    <if  condition="($vo['pay_status'] eq '1') and ($vo['fenxiang'] eq '0')">
-                        <a  class="button_a_order"  href="<{:U('Goods/fenxiang',array('order_id'=>$vo['order_id']))}>">分享返现</a>
-                    </if>
+                    
             </div>
         </volist>
         

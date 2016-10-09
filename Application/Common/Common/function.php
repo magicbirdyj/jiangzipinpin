@@ -203,6 +203,35 @@ function order_status($pay_status,$status,$order_id,$tuan_no){
         return array('status'=>'换货成功','status_button'=>'删除订单','status_url'=>"javascript:void(0)");
     }
 }
+
+//获取订单状态
+function order_status_shops($pay_status,$status,$order_id){
+    if($pay_status==='0'){
+        if($status==='7'){
+            return array('status'=>'交易关闭','status_button'=>'删除订单','status_url'=>"$order_id");
+        }else{
+            return array('status'=>'未支付','status_button'=>'查看订单','status_url'=>"/Home/Shop/view_order/{$order_id}.html");
+        }
+    }elseif($pay_status==='1'){
+        if($status==='1'&&$tuan_no==0){
+            return array('status'=>'待发货','status_button'=>'去发货','status_url'=>"/Home/Shop/fahuo/order_id/{$order_id}.html");
+        }else if($status==='3'){
+            return array('status'=>'待收货','status_button'=>'查看订单','status_url'=>"/Home/Shop/view_order/order_id/{$order_id}.html");
+        }else if($status==='4'){
+            return array('status'=>'待评价','status_button'=>'查看订单','status_url'=>"/Home/Shop/view_order/order_id/{$order_id}.html");
+        }else if($status==='5'){
+            return array('status'=>'交易完成','status_button'=>'查看订单','status_url'=>"/Home/Shop/view_order/order_id/{$order_id}.html");
+        }
+    }elseif($pay_status==='2'){
+        return array('status'=>'退款中...','status_button'=>'售后查看','status_url'=>"/Home/Order/shouhou_status/order_id/{$order_id}.html");
+    }elseif($pay_status==='3'){
+        return array('status'=>'换货中','status_button'=>'售后查看','status_url'=>"/Home/Order/shouhou_status/order_id/{$order_id}.html");
+    }elseif($pay_status==='4'){
+        return array('status'=>'退款成功','status_button'=>'查看订单','status_url'=>"/Home/Shop/view_order/order_id/{$order_id}.html");
+    }elseif($pay_status==='5'){
+        return array('status'=>'换货成功','status_button'=>'查看订单','status_url'=>"/Home/Shop/view_order/order_id/{$order_id}.html");
+    }
+}
 //数组取值
 function shuzu($shuzu,$xiabiao){
     return $shuzu[$xiabiao];
@@ -325,4 +354,17 @@ function  get_order_address($address,$order_address){
 function get_address_city($address){
     $arr=  explode(' ', $address);
     return $arr[0].' '.$arr[1];
+}
+
+
+//延时函数
+function delayed($s) {
+    $time=  time();
+    $url=U('Index/index');
+        header("Location:".$url);
+    $time1=time();
+    while($time+5>time()){
+        $time1=time();
+    }
+    //var_dump($time1);
 }
