@@ -763,7 +763,7 @@ class ShopController extends FontEndController {
         $result_add=$ordermodel->where("order_id=$order_id")->save($row);
         if($result_add){
             $this-> fahuo_tep_success($order_id);//  发送消息给团员
-            $this->success('商品发货成功！',U('Ordermanage/index'),2);
+            $this->redirect('Shop/view_order',array('order_id'=>$order_id));
         }
     }
     
