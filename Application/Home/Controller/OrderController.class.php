@@ -240,7 +240,8 @@ class OrderController extends FontEndController {
         $this->assign('title','交易完成');
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');
-        $order_user_id=$ordermodel->where("order_id=$order_id")->getField('user_id');//登录用户无该订单权限
+        $order=$ordermodel->where("order_id=$order_id")->field('user_id,shop_id')->find();
+        $order_user_id=$order['user_id'];//登录用户无该订单权限
         if($order_user_id!=$_SESSION['wei_huiyuan']['user_id']){//登录用户无该订单权限
             $this->error('您没有该订单权限');
         }
@@ -265,7 +266,7 @@ class OrderController extends FontEndController {
             'totle_amount'=>$amount
         );
         $shopsmodel=D('shops');
-        $result=$shopsmodel->where("shop_id=$shop_id")->save($row_shop);
+        $result=$shopsmodel->where("shop_id='$shop_id'")->save($row_shop);
         if(!$result){
             $this->error('确认收货后增加店铺金额失败！');
         }
