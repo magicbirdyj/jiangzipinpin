@@ -221,9 +221,10 @@ class OrderController extends FontEndController {
         $tuan_number=$order['tuan_number'];
         $order['count']=$tuan_number-$count;
         $usersmodel=D('Users');
-        $arr_address=  explode(' ', $order['order_address']);
-        $address['location']=$arr_address[0].$arr_address[1].$arr_address[2].$arr_address[3];
-        $address['name']=$arr_address[4].$arr_address[5];
+        $arr_address=  preg_split("/\ {1,}/",$order['order_address']);
+        $length=count($arr_address);
+        $address['location']=$arr_address[0].' '.$arr_address[1].' '.$arr_address[2].' '.$arr_address[3];
+        $address['name']=$arr_address[$length-2].' '.$arr_address[$length-1];
         $this->assign('address',$address);
         if($order['user_id']===$user_id){
             $this->assign('order',$order);
