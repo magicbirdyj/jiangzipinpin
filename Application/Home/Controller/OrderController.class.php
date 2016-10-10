@@ -240,7 +240,7 @@ class OrderController extends FontEndController {
         $this->assign('title','交易完成');
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');
-        $order=$ordermodel->where("order_id=$order_id")->field('user_id,shop_id')->find();
+        $order=$ordermodel->where("order_id=$order_id")->field('user_id,shop_id,dues,fenxiang_dues')->find();
         $order_user_id=$order['user_id'];//登录用户无该订单权限
         if($order_user_id!=$_SESSION['wei_huiyuan']['user_id']){//登录用户无该订单权限
             $this->error('您没有该订单权限');
