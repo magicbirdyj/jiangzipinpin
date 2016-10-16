@@ -9,48 +9,7 @@
 
 
 
-<script>
-    var img="/Public/Home/Mobile/Images/public/jzpp_logo.jpg";
-    var title="酱紫拼拼";
-    var desc="搜尽娄底的美食美味，比美团更多的优惠，免费快递送货上门，快来一起拼团吧";
-    var link='m.jiangzipinpin.com';
-    wx.config({  
-        //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-        appId: "<{$wx_config['appId']}>", // 必填，公众号的唯一标识
-        timestamp: "<{$wx_config['timestamp']}>", // 必填，生成签名的时间戳
-        nonceStr: "<{$wx_config['nonceStr']}>", // 必填，生成签名的随机串
-        signature: "<{$wx_config['signature']}>",// 必填，签名，见附录1
-        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-    });
-    wx.ready(function () {
-        wx.onMenuShareTimeline({
-            title:  title, // 分享标题
-            link: link, // 分享链接
-            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
-        });
-        wx.onMenuShareAppMessage({
-            title:  title, // 分享标题
-            link: link, // 分享链接
-            desc:  desc, // 分享描述
-            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
-        });
-        wx.onMenuShareQQ({
-            title:  title, // 分享标题
-            link: link, // 分享链接
-            desc: desc, // 分享描述
-            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
-        });
-        wx.onMenuShareQZone({
-            title: title, // 分享标题
-            link: link, // 分享链接
-            desc:desc, // 分享描述
-            imgUrl:  'http://m.jiangzipinpin.com'+img // 分享图标
-        });
-    });
-    
-    
 
-</script>
 <?php require_once 'cs.php';echo '<img src="'._cnzzTrackPageView(1260248716).'" width="0" height="0"/>';?>
 </body>
 </html>
