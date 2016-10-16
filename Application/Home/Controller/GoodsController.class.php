@@ -58,7 +58,7 @@ class GoodsController extends FontEndController {
 
         $goods['url']['url'] = urlencode('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
         $goods['url']['goods_name'] = urlencode('酱紫拼拼-' . $goods['cat_name'] . '-' . $goods['goods_name']);
-        $goods['url']['goods_img'] = urlencode('http://www.pingogo.net' . $goods['goods_img']);
+        $goods['url']['goods_img'] = urlencode('http://www.jiangzipinpin.com' . $goods['goods_img']);
         $goods['url']['summary'] = urlencode('酱紫拼拼，拼实惠，拼乐趣。' . '-' . $goods['goods_name']);
         $this->assign('goods', $goods);
         //获取该商品的团长信息(最早的2个团)
@@ -78,6 +78,10 @@ class GoodsController extends FontEndController {
         $this->assign('goods_tuan',$goods_tuan);
         $img_qita = unserialize($goods['goods_img_qita']); //获取其它展示图数组
         $this->assign('img_qita', $img_qita);
+        //赋值第一张图片的url 微信分享需要
+        $this->assign(img_qita_0,$img_qita[0]);
+        
+        
         $shuxing = unserialize($goods['shuxing']); //获取商品属性数组
         $this->assign('shuxing', $shuxing);
         //获取具体分项目评分

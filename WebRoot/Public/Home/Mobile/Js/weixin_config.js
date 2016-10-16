@@ -1,10 +1,4 @@
 // JavaScript Document
-var img=$('#lunbo_div img:first').attr('src');
-    var title=$('.titile').html();
-    var price=$('.price_strong').html();
-    var yuan_price=$('.yuan_price').html();
-    var desc=yuan_price+','+'乐享价'+price+'元：'+$('#title1_1').html();
-    var is_huodong=$('#huodong_guize').html();
     //if(is_huodong){
         //fenxiang_title='['+tuan_number+'人团]'+'真的只需要'+price+'元：'+title;
     //}else{
