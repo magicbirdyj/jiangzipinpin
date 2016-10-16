@@ -240,16 +240,22 @@ class OrderController extends FontEndController {
         $this->assign('title','交易完成');
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');
-        $order=$ordermodel->where("order_id=$order_id")->field('user_id,shop_id,dues,fenxiang_dues')->find();
+        $order=$ordermodel->where("order_id=$order_id")->field('user_id,shop_id,dues,fenxiang_dues,fenxiang')->find();
         $order_user_id=$order['user_id'];//登录用户无该订单权限
         if($order_user_id!=$_SESSION['wei_huiyuan']['user_id']){//登录用户无该订单权限
             $this->error('您没有该订单权限');
         }
         //改变订单状态，同时无法再进行分享返现
-        $row=array(
-            'status'=>4,
-            'fenxiang'=>2
-        );
+        if($order['fenxiang']==0){
+            $row=array(
+                'status'=>4,
+                'fenxiang'=>2
+            );
+        }else{
+            $row=array(
+                'status'=>4
+            );
+        }
         $result=$ordermodel->where("order_id=$order_id")->save($row);
         if(!$result){
             $this->error('确认收货失败！');
@@ -262,11 +268,8 @@ class OrderController extends FontEndController {
         }else{
             $amount=$order['dues'];
         }
-        $row_shop=array(
-            'totle_amount'=>$amount
-        );
         $shopsmodel=D('shops');
-        $result=$shopsmodel->where("shop_id='$shop_id'")->save($row_shop);
+        $result=$shopsmodel->where("shop_id='$shop_id'")->setInc('totle_amount',(int)$amount);
         if(!$result){
             $this->error('确认收货后增加店铺金额失败！');
         }
