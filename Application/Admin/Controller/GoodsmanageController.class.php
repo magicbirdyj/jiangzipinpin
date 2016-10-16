@@ -5,7 +5,7 @@ class GoodsmanageController extends FontEndController {
    
     public function index(){
         $categorymodel=D('Category');
-        $data=$categorymodel->where("pid<>0 and deleted=0")->field('cat_name')->select();
+        $data=$categorymodel->where("pid<>0 and deleted=0")->field('cat_name,cat_id')->select();
         $this->assign('data',$data);
         //获取服务类型表单提交值
         if(!empty($_GET['server_content'])){
@@ -21,18 +21,18 @@ class GoodsmanageController extends FontEndController {
         $this->assign('serch_name',$serch_name);
         if(!empty($serch_name)){
             $where['goods_name']=array('like',"%$serch_name%");
-            $count=$goodsmodel->where($where)->where("cat_name='{$server_content}' and is_delete=0")->count();
+            $count=$goodsmodel->where($where)->where("cat_id='{$server_content}' and is_delete=0")->count();
         }else{         
-            $count=$goodsmodel->where("cat_name='{$server_content}' and is_delete=0")->count();
+            $count=$goodsmodel->where("cat_id='{$server_content}' and is_delete=0")->count();
         }
         
         $page=$this->get_page($count, 10);
         $page_foot=$page->show();//显示页脚信息
         if(!empty($serch_name)){
             $where['goods_name']=array('like',"%$serch_name%");
-            $list=$goodsmodel->where($where)->where("cat_name='{$server_content}'  and is_delete=0")->limit($page->firstRow.','.$page->listRows)->order('goods_id desc')->select();
+            $list=$goodsmodel->where($where)->where("cat_id='{$server_content}'  and is_delete=0")->limit($page->firstRow.','.$page->listRows)->order('goods_id desc')->select();
         }else{
-            $list=$goodsmodel->where("cat_name='{$server_content}' and is_delete=0")->limit($page->firstRow.','.$page->listRows)->order('goods_id desc')->select();
+            $list=$goodsmodel->where("cat_id='{$server_content}' and is_delete=0")->limit($page->firstRow.','.$page->listRows)->order('goods_id desc')->select();
         }
         $this->assign('list',$list);
         $this->assign('page_foot',$page_foot);
