@@ -62,6 +62,7 @@ class GoodsController extends FontEndController {
         $goods['url']['summary'] = urlencode('酱紫拼拼，拼实惠，拼乐趣。' . '-' . $goods['goods_name']);
         $this->assign('goods', $goods);
         //获取该商品的团长信息(最早的2个团)
+        /*
         $ordermodel=D('Order');
         $end=time()-86400;
         $goods_tuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.goods_id=$goods_id and t1.identity=1 and t1.user_id=t2.user_id and t1.created>$end and t1.status=1 and pay_status=1")->field('t2.head_url,t1.order_id,t2.user_name,t1.created,t2.address,t1.order_address,t1.tuan_no,t1.goods_id,t1.tuan_number')->order('t1.created')->limit(2)->select();
@@ -76,6 +77,8 @@ class GoodsController extends FontEndController {
             $goods_tuan=NULL;
         }
         $this->assign('goods_tuan',$goods_tuan);
+         * */
+         
         $img_qita = unserialize($goods['goods_img_qita']); //获取其它展示图数组
         $this->assign('img_qita', $img_qita);
         //赋值第一张图片的url 微信分享需要
