@@ -15,7 +15,7 @@ $('.spxq').bind('click',function(){
     $('.ljpj').css('background-color','#F6F6F6');
     location.href = "#shop_a";
 });
-$('.ljpj').bind('click',function(){
+$('.ljpj,#pingjia').bind('click',function(){
     $('#spxq').css('display','none');
     $('.pinglun').css('display','block');
     $('.ljpj').css('background-color','#FFF');

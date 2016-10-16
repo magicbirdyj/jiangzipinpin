@@ -94,7 +94,7 @@
     <div class="about">
         <div>已售：<span><{$goods['buy_number']}></span></div>
         <div><a class="maodian_pingjia" href="<{:U('Goods/index',array('goods_id'=>$goods['goods_id'])).'#maodian_pingjia'}>"><span><{$goods['score']}></span>分</a></div>
-        <div id="pingjia"><a class="maodian_pingjia" href="<{:U('Goods/index',array('goods_id'=>$goods['goods_id'])).'#maodian_pingjia'}>"><span><{$goods['comment_number']}></span>人评价</a></div>
+        <div id="pingjia"><a class="maodian_pingjia" href="javascript:void(0)"><span><{$goods['comment_number']}></span>人评价</a></div>
     </div>
     <!--
     <div class="about back_f0">
@@ -141,6 +141,22 @@
     </div>
     </if>
     -->
+<script>
+    var guanzhu="<{$guanzhu}>";
+    var is_get="<{$is_get}>"//该会员是否已经获取过1元购商品的资格
+    var tuan_number="<{$goods['tuan_number']}>";
+    wx.config({  
+        //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: "<{$wx_config['appId']}>", // 必填，公众号的唯一标识
+        timestamp: "<{$wx_config['timestamp']}>", // 必填，生成签名的时间戳
+        nonceStr: "<{$wx_config['nonceStr']}>", // 必填，生成签名的随机串
+        signature: "<{$wx_config['signature']}>",// 必填，签名，见附录1
+        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+</script>
+<script src="__PUBLIC_HOME__/Mobile/Js/weixin_config.js" type="text/javascript"></script>   
+    
+    
     
     
     <a name="shop_a" id="shop_a" style="height: 0px;position:absolute;">&nbsp;</a>
@@ -288,23 +304,9 @@
     </div>
 </div>
 
-<script>
-    var guanzhu="<{$guanzhu}>";
-    var is_get="<{$is_get}>"//该会员是否已经获取过1元购商品的资格
-    var tuan_number="<{$goods['tuan_number']}>";
-    wx.config({  
-        //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-        appId: "<{$wx_config['appId']}>", // 必填，公众号的唯一标识
-        timestamp: "<{$wx_config['timestamp']}>", // 必填，生成签名的时间戳
-        nonceStr: "<{$wx_config['nonceStr']}>", // 必填，生成签名的随机串
-        signature: "<{$wx_config['signature']}>",// 必填，签名，见附录1
-        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-    });
-</script>
 <script src="__PUBLIC_HOME__/Mobile/Js/guanzhu.js" type="text/javascript"></script>
 <script src="__PUBLIC_HOME__/Mobile/Js/foot_buy.js" type="text/javascript"></script>
 <script src="__PUBLIC_HOME__/Mobile/Js/new_order.js" type="text/javascript"></script>
-<script src="__PUBLIC_HOME__/Mobile/Js/weixin_config.js" type="text/javascript"></script>
 <if condition="$goods_tuan neq NULL">
 <script>
     ///倒计时
