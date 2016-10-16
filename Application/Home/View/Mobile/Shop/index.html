@@ -73,21 +73,19 @@
         
         <div class="shopping">
                 <a  href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>" class="goods_a">
-                    <img src="<{$vo['goods_img_qita_0']}>" class="goods_img img_fengge_1"/>
-                    <img src="<{$vo['goods_img']}>" class="goods_img img_fengge_2"/>
+                    <img src="<{$vo['goods_img_qita_0']}>" class="goods_img"/>
                     <div class="goods_infor">
                     <div class="goods_title"><{$vo['goods_name']}></div>
                     <div class="goods_bottom">
                         <div class="goods_infor_left">
                             <span class="iconfont">&#xe61d;</span>
-                            <span class="rentuan"><{$vo['tuan_number']}>人团</span>
-                            <span class="price_red price"><span class='rmb'>&yen;</span><{$vo['tuan_price']|floor}></span>
-                            <span class="price_red yuan">元</span>
-                            <del style="margin-left: 5px;">单买价：<{$vo['price']|floor}>元</del>
+                            <span>乐享价</span>
+                            <span class="price_red price"><{$vo['price']|floatval}></span>
+                            <span class="price_red">元</span>
+                            <del style="margin-left: 5px;">原价:<{$vo['yuan_price']|floatval}>元</del>
                         </div>
                         <div class="goods_infor_right">
-                            <span id='qukaituan'>去开团 &nbsp;&nbsp;></span>
-                            <span class='yituan' id='yituan'>已团<{$vo['buy_number']}></span>
+                            <span>乐享返现：<{$vo['fanxian']|floatval}>元</span>
                         </div>
                     </div>
                     </div>
