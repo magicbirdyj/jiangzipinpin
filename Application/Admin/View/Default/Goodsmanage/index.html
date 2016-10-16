@@ -17,7 +17,7 @@
                 <div class="tr_td1">商品分类</div>
                 <select name="server_content" class="tr_td2 release_select" >
                     <volist name="data" id="vo">
-                        <option value="<{$vo['cat_id']}>" <{$('cat_id'.$vo['cat_id'])}> ><{$vo['cat_name']}></option>
+                        <option value="<{$vo['cat_id']}>" ><{$vo['cat_name']}></option>
                     </volist>
                 </select>
             </div>
@@ -59,10 +59,12 @@
     
 
 <script type="text/javascript">
+    var value="<{$server_content}>";
     $('select[name=server_content]').bind('change',function(){sc_change();});
     function sc_change(){
         $('form[name=sv_cont]').submit();
     }
+    $(".release_select").val(value);
     $('.delete_button').bind('click',function(){
         var id=$(this).attr('id');
         var name=$(this).attr('name');
