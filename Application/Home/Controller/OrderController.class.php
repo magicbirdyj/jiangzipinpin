@@ -268,7 +268,8 @@ class OrderController extends FontEndController {
         }else{
             $amount=$order['dues'];
         }
-        $shopsmodel=D('shops');
+        $shopsmodel=D('Shops');
+        $amount=1;
         $result=$shopsmodel->where("shop_id='$shop_id'")->setInc('totle_amount',(int)$amount);
         if(!$result){
             $this->error('确认收货后增加店铺金额失败！');
