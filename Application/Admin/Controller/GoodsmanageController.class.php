@@ -11,8 +11,9 @@ class GoodsmanageController extends FontEndController {
         if(!empty($_GET['server_content'])){
             $server_content=$_GET['server_content'];
         }else{
-            $server_content=$data[0]['cat_name'];
+            $server_content=$data[0]['cat_id'];
         }
+        var_dump($server_content);
         $this->assign($server_content,'selected="selected"');
         $this->assign('server_content',$server_content);
         //$cat_id=$categorymodel->where("cat_name='$server_content'")->getField('cat_id');
