@@ -1,5 +1,5 @@
 // JavaScript Document
-$(document).ready(function () {
+wx.ready(function () {
         wx.onMenuShareTimeline({
             title: fenxiang_title, // 分享标题
             imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
