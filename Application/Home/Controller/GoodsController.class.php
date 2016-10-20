@@ -1185,7 +1185,7 @@ class GoodsController extends FontEndController {
         $arr_data=array(
             'first'=>array('value'=>"恭喜您，".$user_name."成功购买了店铺[".$shop['shop_name']."]的商品!","color"=>"#666"),
             'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
-            'keyword2'=>array('value'=>$order['goods_name'],"color"=>"#666"),
+            'keyword2'=>array('value'=>$order['goods_name'].'： '.$order['zx_shuxing'],"color"=>"#666"),
             'keyword3'=>array('value'=>$order['price'],"color"=>"#666"),
             'keyword4'=>array('value'=>$order['price'],"color"=>"#666"),
             'keyword5'=>array('value'=>$order['order_address'],"color"=>"#666"),
