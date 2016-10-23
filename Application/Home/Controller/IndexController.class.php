@@ -236,4 +236,17 @@ private function get_thumb(&$arr){
         }
         return $shijian;
     }
+    
+    
+    public function news() {
+        $news_id=$_GET['news_id'];
+        if(!$news_id){
+            $this->error('找不到该文章');
+        }
+        $newsmodel=D('News');
+        $news=$newsmodel->where("news_id=$news_id")->find();
+        
+        $this->assign('news',$news);
+        $this->display();
+    }
 }

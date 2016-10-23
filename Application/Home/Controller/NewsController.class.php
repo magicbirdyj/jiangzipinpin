@@ -26,17 +26,7 @@ class NewsController extends FontEndController {
     }
     
     
-    public function text() {
-        $news_id=$_GET['news_id'];
-        if(!$news_id){
-            $this->error('找不到该文章');
-        }
-        $newsmodel=D('News');
-        $news=$newsmodel->where("news_id=$news_id")->find();
-        
-        $this->assign('news',$news);
-        $this->display();
-    }
+    
     
 
  public function release_news(){

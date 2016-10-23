@@ -38,7 +38,7 @@
         
         
         <volist name="list" id="vo">
-            <a  href="<{:U('News/text',array('news_id'=>$vo['news_id']))}>"><!--内容遍历-->
+            <a  href="<{:U('Index/news',array('news_id'=>$vo['news_id']))}>"><!--内容遍历-->
                 <div class="order_row">
                 <div class='td_l'>
                     <div class="picture"><img src="<{$vo['img']}>"></div>
