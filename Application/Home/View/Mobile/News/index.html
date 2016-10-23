@@ -1,0 +1,136 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/member.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order.css">
+</head>
+
+<body>
+    <div class="fanhui padding"><a href="<{:U('Member/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>文章列表</div>
+    <div class="dingdan">
+        <div class='dingdan_4'>
+            <ul>
+                <li>
+                    <a href="<{:U('Shop/goods?status=0')}>">
+                    <div class='dingdan_fenkai_tb_div'>
+                        <span class="iconfont tb_dingdan_li" style='font-size: 28px;'>&#xe628;</span>
+                        <span style='margin-left: 2px;' class="right_up_tb"><{$status_count['0']}></span>
+                    </div>
+                    <div><span>上线文章</span></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="<{:U('Shop/goods?status=1')}>">
+                    <div class='dingdan_fenkai_tb_div'>
+                        <span class="iconfont tb_dingdan_li" style='font-size: 28px;'>&#xe62a;</span>
+                        <span style='margin-left: 2px;' class="right_up_tb"><{$status_count['1']}></span>
+                    </div>
+                    <div><span>下线文章</span></div>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+        
+        
+       
+ 
+        
+        
+        <volist name="list" id="vo">
+            <a  href="<{:U('News/text',array('news_id'=>$vo['news_id']))}>"><!--内容遍历-->
+                <div class="order_row">
+                <div class='td_l'>
+                    <div class="picture"><img src="<{$vo['img']}>"></div>
+                </div>
+                <div class="td_r">
+                    <div class="info_name shenglue"><{$vo['news_name']}></div>
+                    <div class="info_name shenglue">阅读次数：<{$vo['read_count']}></div>
+                    <div class="info_name shenglue">发布时间：<{$vo['created']|date='Y-m-d  H:m:s',###}></div>
+                    <div class='info_name'><span>排序：<{$vo['sord_order']}></span></div>
+                </div>
+                </div>
+            </a>
+            <div class='action'>
+                <a  class="button_a_order"  href="<{:U('News/bianji_goods',array('news_id'=>$vo['news_id']))}>">编辑文章</a>
+                    <if  condition="$vo['is_delete'] eq '0'">
+                        <a  class="button_a_order goods_xiajia" name='<{$vo["goods_id"]}>'  href="javascript:void(0)">文章下线</a>
+                    </if>
+                    <if  condition="$vo['is_delete'] eq '1'">
+                        <a  class="button_a_order goods_shangjia" name='<{$vo["goods_id"]}>'   href="javascript:void(0)">商品上线</a>
+                    </if>
+            </div>
+        </volist>
+        
+   
+        
+        
+
+        
+
+<script type="text/javascript">
+    var canshu="<{$canshu}>";
+    if(canshu==='1'){
+        $('.dingdan_4>ul>li:eq(1)').css('background-color','#f90');
+        $('.dingdan_4>ul>li:eq(1)>a>div').css('background-color','#f90');
+        $('.dingdan_4>ul>li:eq(1) *').css('color','#fff');
+    }else{
+        $('.dingdan_4>ul>li:eq(0)').css('background-color','#f90');
+        $('.dingdan_4>ul>li:eq(0)>a>div').css('background-color','#f90');
+        $('.dingdan_4>ul>li:eq(0) *').css('color','#fff');
+    }
+    
+    
+    
+    $('.goods_xiajia').bind('click',function(){
+        if(confirm("确定要下线该文章吗？")){
+            var url='/Home/Ajaxlogin/goods_xiajia.html';
+            var data={
+                    goods_id:$(this).attr('name'),
+                    check:"xiajia"
+                }
+            $.ajax({
+                    type:'post',
+                    async : false,
+                    url:url,
+                    data:data,
+                    datatype:'json',
+                    success:function(msg){
+                        if(msg){ 
+                            location=location;                        
+                        }else{
+                            alert('下架商品失败'); 
+                        }
+                    }
+                });    
+        }
+    });
+    $('.goods_shangjia').bind('click',function(){
+        event.preventDefault();
+        if(confirm("确定要上线该文章吗？")){
+            var url='/Home/Ajaxlogin/goods_shangjia.html';
+            var data={
+                    goods_id:$(this).attr('name'),
+                    check:"shangjia"
+                };
+            $.ajax({
+                    type:'post',
+                    async : false,
+                    url:url,
+                    data:data,
+                    datatype:'json',
+                    success:function(msg){
+                        if(msg){ 
+                            location=location;                        
+                        }else{
+                            alert('上架商品失败'); 
+                        }
+                    }
+                }); 
+        }
+    });
+    
+    
+</script>
+
+

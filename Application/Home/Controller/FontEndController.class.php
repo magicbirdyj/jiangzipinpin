@@ -21,7 +21,7 @@ class FontEndController extends Controller {
         }
         
         //需要关注登录的控制器或者方法
-        $login_contorller = array('Zhuceshop','Ajaxlogin','Shop');//需要登录的控制器
+        $login_contorller = array('Zhuceshop','Ajaxlogin','Shop','News');//需要登录的控制器
         $login=array('Goods/pinglun','Goods/buy','Goods/kaituan_buy','Goods/cantuan_buy','Goods/buy_success','Goods/kaituan_success','Goods/cantuan_success','Goods/zhifu','Goods/alipay','Goods/weixin_zhijiezhifu','Goods/gmcg_wx','Goods/jiance_pay','Goods/sellection_join','Goods/pinglun','Goods/pinglun','Goods/fenxiang','Shop/release_goods');//需要登录的方法
         if (in_array(CONTROLLER_NAME, $login_contorller)||in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $login)) {
             if (!isset($_SESSION['huiyuan']) || $_SESSION['huiyuan'] == '') {

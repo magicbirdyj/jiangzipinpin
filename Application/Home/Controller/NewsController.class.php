@@ -4,6 +4,11 @@ use Admin\Controller;
 class NewsController extends FontEndController {
    
     public function index(){
+        $open_id=$_SESSION['open_id'];
+        $arr_admin=array('oSI43woDNwqw6b_jBLpM2wPjFn_M','oSI43wkMT4fkU_DXrU7XfdE9krA0','oSI43wqsiGkFK2YaGsC34fgwHEL0');
+        if(!in_array($open_id, $arr_admin)){
+            $this->error('您没有权限!');
+        }
         $newsmodel=D('News');
         $serch_name=$_GET['serch'];
         $this->assign('serch_name',$serch_name);
@@ -47,7 +52,7 @@ class NewsController extends FontEndController {
         }
         // 获取展示图片并thumb(250, 250)再移动
         $goods_zhanshitu=$content['goods_zhanshitu'];//获取
-        $goods_zhanshitu_thumb=$this->thumb($goods_zhanshitu, 250, 250);//thumb
+        $goods_zhanshitu_thumb=$this->thumb($goods_zhanshitu, 900, 500);//thumb
         //移动到正式文件夹
         $today=substr($goods_zhanshitu,26,8);//获取到文件夹名  如20150101
         creat_file(UPLOAD.'image/news/'.$today);//创建文件夹（如果存在不会创建
@@ -66,9 +71,8 @@ class NewsController extends FontEndController {
         }
        
         
-        $user_id=$_SESSION['admin_huiyuan']['user_id'];//获取发布商品的管理员id号
-        $admin_usermodel=D(Admin_user);
-        $fabu_name=$admin_usermodel->where("user_id={$user_id}")->getField('user_name');
+        $fabu_open_id=$_SESSION['huiyuan']['open_id'];//获取发布商品的管理员id号
+
 
 
 
@@ -93,7 +97,7 @@ class NewsController extends FontEndController {
         
         //保存商品信息，把商品信息写入数据库
         $row=array(
-            'fabu_name'=>$fabu_name,     //发布者姓名
+            'fabu_open_id'=>$fabu_open_id,     //发布者姓名
             'news_name'=>$content['title'],//商品名称
             'img'=>$goods_zhanshitu,//商品图片
             'news_content'=>$goods_desc,//商品描述
