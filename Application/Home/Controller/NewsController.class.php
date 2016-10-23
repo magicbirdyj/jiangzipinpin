@@ -9,25 +9,19 @@ class NewsController extends FontEndController {
             $this->error('您没有权限!');
         }
         $newsmodel=D('News');
-        $serch_name=$_GET['serch'];
-        $this->assign('serch_name',$serch_name);
-        if(!empty($serch_name)){
-            $where['news_name']=array('like',"%$serch_name%");
-            $count=$newsmodel->where($where)->where("is_delete=0")->count();
-        }else{         
-            $count=$newsmodel->where("is_delete=0")->count();
-        }
-        
-        $page=$this->get_page($count, 10);
-        $page_foot=$page->show();//显示页脚信息
-        if(!empty($serch_name)){
-            $where['news_name']=array('like',"%$serch_name%");
-            $list=$newsmodel->where($where)->where("is_delete=0")->limit($page->firstRow.','.$page->listRows)->order('news_id desc')->select();
-        }else{
-            $list=$newsmodel->where("is_delete=0")->limit($page->firstRow.','.$page->listRows)->order('news_id desc')->select();
-        }
+       
+        $status=$_GET['status'];
+        $this->assign('canshu',$status);
+        $status_count['0']=$newsmodel->where("is_delete=0")->count();//获取上架商品条数
+        $status_count['1']=$newsmodel->where("is_delete=1")->count();//获取下架商品条数
+        $this->assign('status_count',$status_count);
+        if($status==='1'){
+             $list=$newsmodel->where("is_delete=1")->order('news_id desc')->select();
+         }else{
+             $list=$newsmodel->where("is_delete=0")->order('news_id desc')->select(); 
+         }
         $this->assign('list',$list);
-        $this->assign('page_foot',$page_foot);
+       
         $this->display();
     }
     
