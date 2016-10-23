@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Admin\Controller;
-class NewsController extends FontEndController {
+class NewsmanageController extends FontEndController {
     public function index(){
         $open_id=$_SESSION['open_id'];
         $arr_admin=array('oSI43woDNwqw6b_jBLpM2wPjFn_M','oSI43wkMT4fkU_DXrU7XfdE9krA0','oSI43wqsiGkFK2YaGsC34fgwHEL0');
