@@ -16,7 +16,6 @@
  
         <form name="release_news" method="post"  action="<{:U('News/release_check')}>" onsubmit="editor.sync()">
             <input name="goods_zhanshitu" value="" type="hidden"/> 
-            <div class='xuxian'></div>
             <div class="tr">
                 <div class="tr_td1">文章标题</div>
                 <div class="tr_td2">
@@ -39,32 +38,22 @@
             <div class='xuxian'></div>
             
 
-            <div  class="tr" id="insert_img">
-                <div class="tr_td1" >商品图<i style="margin-left: 3px;">(<i id="img_count">0</i>/4)</i></div>
-                <div class="tr_td2" style='height: 45px;line-height: 45px;margin: 15px 0px;'>
-                <div class="file_jia" id="file_jia">+</div>                
-                <span id="span_touxiang"></span>
-                <span class="file_tishi">(长宽比750：400)</span>
-                </div>
+
+            
+           <div class="tr">
+                <div class="tr_td1">文章正文</div>
             </div>
-
-            <div class='xuxian'></div>
-
-            <div  id='spms'>
-                <div class="fanhui padding" id='fanhui_2'><a href="jiavascript:void(0)"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>文章正文</div>
-                <div class="tr" id="bianjiqi">
-                    <textarea id="content" name="content" style="width:90%;height:300px;visibility:hidden;">
+            <div class="tr" id="bianjiqi">
+                <textarea id="content" name="content" style="width:90%;height:300px;visibility:hidden;">
                     
-                    </textarea>
-      
-                </div>
-                
-                <a href="javascript:void(0)" id="fabu" class="xyb button_a_lvse">立刻发布</a>
+                </textarea>
       
             </div>
+                
+            <a href="javascript:void(0)" id="fabu" class="xyb button_a_lvse">立刻发布</a>
+      
+           
             
-            
-        <{__TOKEN__}>    
         </form>
     </div>
     
