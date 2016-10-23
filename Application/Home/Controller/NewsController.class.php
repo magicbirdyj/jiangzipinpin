@@ -3,7 +3,7 @@ namespace Home\Controller;
 use Home\Controller;
 class NewsController extends FontEndController {
     public function index(){
-        $open_id=$_SESSION['open_id'];
+        $open_id=$_SESSION['huiyuan']['open_id'];
         $arr_admin=array('oSI43woDNwqw6b_jBLpM2wPjFn_M','oSI43wkMT4fkU_DXrU7XfdE9krA0','oSI43wqsiGkFK2YaGsC34fgwHEL0');
         if(!in_array($open_id, $arr_admin)){
             $this->error('您没有权限!');
