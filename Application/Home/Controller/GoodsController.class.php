@@ -148,6 +148,9 @@ class GoodsController extends FontEndController {
                $this->save_url(substr($_SESSION['ref'],0,strpos($_SESSION['ref'],'?')));
           }
           session('guanzhu',null); 
+          
+          $js_jianjie=preg_replace('/\n|\r/', " ", $goods['goods_jianjie']);
+          $this->assign('js_jianjie',$js_jianjie);
           $this->display('index');
           //让商品的点击次数加1
          $goodsmodel->where("goods_id='$goods_id'")->setInc('click_count');

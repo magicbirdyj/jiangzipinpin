@@ -1,12 +1,13 @@
 
 //已经过去过资格的1元购或者抽奖会员 无法再开团
+/*
 if(is_get=="yijing_get"){
         $('#fixed_tishi').html('您已经购买成功过该活动商品');
         $('#kaituan_buy').css('background-color','#ccc');
     }
-    
+    */
     var zx_length=$('.zx_shuxing_ul').length;
-$('#kaituan_buy').bind('click',function(){
+/*$('#kaituan_buy').bind('click',function(){
     delete_guanzhu();
     if(zx_length==0){
         save_url('/Home/Goods/kaituan_buy/goods_id/'+$('input[name=goods_id]').val());
@@ -36,6 +37,7 @@ $('#kaituan_buy').bind('click',function(){
         });
     }
 });
+*/
 $('#dandu_buy').bind('click',function(){
     delete_guanzhu();
     
