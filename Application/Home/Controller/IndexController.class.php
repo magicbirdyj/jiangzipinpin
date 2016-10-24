@@ -245,7 +245,9 @@ private function get_thumb(&$arr){
         }
         $newsmodel=D('News');
         $news=$newsmodel->where("news_id=$news_id")->find();
-        
+        if(!$news){
+            $this->error('找不到该文章');
+        }
         $this->assign('news',$news);
         $this->display();
     }
