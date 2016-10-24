@@ -73,3 +73,9 @@ a {
 .text img{
     width: 100%;
 }
+
+#gongzhonghao .gz_title {
+    background-color: #FF9712;
+    text-align: center;
+    padding: 15px 0px;
+}
