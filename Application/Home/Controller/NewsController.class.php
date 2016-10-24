@@ -53,26 +53,14 @@ class NewsController extends FontEndController {
         creat_file(UPLOAD.'image/news/'.$today);//创建文件夹（如果存在不会创建
         rename($goods_zhanshitu_thumb, str_replace('Public/Uploads/image/temp', UPLOAD.'image/news',$goods_zhanshitu));//移动文件
         $goods_zhanshitu='/'.str_replace('Public/Uploads/image/temp', UPLOAD.'image/news',$goods_zhanshitu);
-        
-        
-
-        
-        
-       
 
         if($content['title']==''||is_feifa($content['title'])){
             $this->error('文章标题为空或者含有非法字符');
             exit();
         }
        
-        
         $fabu_open_id=$_SESSION['huiyuan']['open_id'];//获取发布商品的管理员id号
 
-
-
-
-        
-        
         $result=get_file($content['content']);//得到编辑框里面的图片文件
         //遍历图片文件，并把图片文件从临时文件夹保存进正式文件夹,并把文件名存储到$file_name数组中
         foreach ($result[1] as $value){
@@ -84,12 +72,8 @@ class NewsController extends FontEndController {
         $goods_desc=  replace_a($goods_desc);//取消其它网站的超级链接
         $goods_desc=str_replace('<embed','<iframe',$goods_desc);//把flash 的embed标签改成 iframe标签 
         $goods_desc=str_replace('/>','></iframe>',$goods_desc);//把flash 的embed标签改成 iframe标签 
-        //得到商品分类id
-        
-        
-        
-        
-        
+
+
         //保存商品信息，把商品信息写入数据库
         $row=array(
             'fabu_open_id'=>$fabu_open_id,     //发布者姓名
@@ -103,6 +87,20 @@ class NewsController extends FontEndController {
         if($result_add){
             $this->success('恭喜您，文章发布成功了',U('News/index'),3);
         }
+    }
+    
+    public function bianji_news() {
+        $newsmodel=D('News');
+        $news_id=$_GET['news_id'];
+        if(!$news_id){
+            $this->error('找不到该文章');
+        }
+        $news=$newsmodel->where("news_id=$news_id")->find();
+        if(!$news){
+            $this->error('找不到该文章');
+        }
+        $this->assign('news',$news);
+        $this->display();
     }
     
     public function file_jia(){

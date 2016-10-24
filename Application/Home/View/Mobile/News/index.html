@@ -52,12 +52,12 @@
                 </div>
             </a>
             <div class='action'>
-                <a  class="button_a_order"  href="<{:U('News/bianji_goods',array('news_id'=>$vo['news_id']))}>">编辑文章</a>
+                <a  class="button_a_order"  href="<{:U('News/bianji_news',array('news_id'=>$vo['news_id']))}>">编辑文章</a>
                     <if  condition="$vo['is_delete'] eq '0'">
-                        <a  class="button_a_order goods_xiajia" name='<{$vo["goods_id"]}>'  href="javascript:void(0)">文章下线</a>
+                        <a  class="button_a_order goods_xiajia" name='<{$vo["news_id"]}>'  href="javascript:void(0)">文章下线</a>
                     </if>
                     <if  condition="$vo['is_delete'] eq '1'">
-                        <a  class="button_a_order goods_shangjia" name='<{$vo["goods_id"]}>'   href="javascript:void(0)">商品上线</a>
+                        <a  class="button_a_order goods_shangjia" name='<{$vo["news_id"]}>'   href="javascript:void(0)">文章上线</a>
                     </if>
             </div>
         </volist>
@@ -69,24 +69,14 @@
         
 
 <script type="text/javascript">
-    var canshu="<{$canshu}>";
-    if(canshu==='1'){
-        $('.dingdan_4>ul>li:eq(1)').css('background-color','#f90');
-        $('.dingdan_4>ul>li:eq(1)>a>div').css('background-color','#f90');
-        $('.dingdan_4>ul>li:eq(1) *').css('color','#fff');
-    }else{
-        $('.dingdan_4>ul>li:eq(0)').css('background-color','#f90');
-        $('.dingdan_4>ul>li:eq(0)>a>div').css('background-color','#f90');
-        $('.dingdan_4>ul>li:eq(0) *').css('color','#fff');
-    }
     
     
     
     $('.goods_xiajia').bind('click',function(){
         if(confirm("确定要下线该文章吗？")){
-            var url='/Home/Ajaxlogin/goods_xiajia.html';
+            var url='/Home/Ajaxlogin/newss_xiajia.html';
             var data={
-                    goods_id:$(this).attr('name'),
+                    news_id:$(this).attr('name'),
                     check:"xiajia"
                 }
             $.ajax({
@@ -99,7 +89,7 @@
                         if(msg){ 
                             location=location;                        
                         }else{
-                            alert('下架商品失败'); 
+                            alert('下线文章失败'); 
                         }
                     }
                 });    
@@ -108,9 +98,9 @@
     $('.goods_shangjia').bind('click',function(){
         event.preventDefault();
         if(confirm("确定要上线该文章吗？")){
-            var url='/Home/Ajaxlogin/goods_shangjia.html';
+            var url='/Home/Ajaxlogin/news_shangjia.html';
             var data={
-                    goods_id:$(this).attr('name'),
+                    news_id:$(this).attr('name'),
                     check:"shangjia"
                 };
             $.ajax({
@@ -123,7 +113,7 @@
                         if(msg){ 
                             location=location;                        
                         }else{
-                            alert('上架商品失败'); 
+                            alert('上线文章失败'); 
                         }
                     }
                 }); 

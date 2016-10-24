@@ -395,11 +395,11 @@ class GoodsmanageController extends FontEndController {
             exit();
         }
         if(!is_price($content['yuan_price'])){
-            $this->error('原价为空或者不合规范0');
+            $this->error('原价为空或者不合规范');
             exit();
         }
-        if(!is_price($content['tuan_price'])){
-            $this->error('团购价为空或者不合规范');
+        if(!is_price($content['fanxian'])){
+            $this->error('乐享红包为空或者不合规范');
             exit();
         }
         
