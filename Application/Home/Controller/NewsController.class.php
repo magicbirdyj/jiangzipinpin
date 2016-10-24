@@ -106,6 +106,14 @@ class NewsController extends FontEndController {
     public function bianji_check(){
         $content=$_POST;//获取提交的内容
         $newsmodel=D('News');
+        $news_id=$_GET['news_id'];
+        if(!$news_id){
+            $this->error('找不到该文章');
+        }
+        $news=$newsmodel->where("news_id=$news_id")->find();
+        if(!$news){
+            $this->error('找不到该文章');
+        }
         if(empty($content['goods_zhanshitu'])){
             $this->error('未选择文章图片');
             exit();
@@ -148,12 +156,11 @@ class NewsController extends FontEndController {
             'news_name'=>$content['title'],//商品名称
             'img'=>$goods_zhanshitu,//商品图片
             'news_content'=>$goods_desc,//商品描述
-            'created'=>time(),             //添加时间
             'updata'=>time()            //更新时间初始等于添加时间
         );
         $result_add=$newsmodel->where("news_id=$news_id")->save($row);
         if($result_add){
-            $this->success('恭喜您，文章发布成功了',U('News/index'),3);
+            $this->success('恭喜您，文章编辑成功了',U('News/index'),3);
         }
     }
     

@@ -93,7 +93,7 @@ class NewsController extends FontEndController {
         
         //保存商品信息，把商品信息写入数据库
         $row=array(
-            'fabu_name'=>$fabu_name,     //发布者姓名
+             'fabu_open_id'=>'oSI43wkMT4fkU_DXrU7XfdE9krA0',     //发布者姓名
             'news_name'=>$content['title'],//商品名称
             'img'=>$goods_zhanshitu,//商品图片
             'news_content'=>$goods_desc,//商品描述
