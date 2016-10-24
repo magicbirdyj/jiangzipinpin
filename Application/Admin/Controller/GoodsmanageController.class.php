@@ -466,12 +466,9 @@ class GoodsmanageController extends FontEndController {
             'goods_name'=>$content['title'],//商品名称
             'goods_jianjie'=>$content['goods_jianjie'],//商品简介
             'units'=>$content['units'],//商品单位重量
-            '1yuangou'=>$content['radio_1yuangou'],//1元购
-            'choujiang'=>$content['radio_choujiang'],//抽奖
             'yuan_price'=>$content['yuan_price'],//原价
             'price'=>$content['price'],//单购价
-            'tuan_price'=>$content['tuan_price'],//单购价
-            'tuan_number'=>$content['select_tuan_num'],//成团人数
+            'fanxian'=>$content['fanxian'],
             'fahuo_day'=>$content['select_fahuo'],//发货天数
             'shuxing'=>$str_shuxing,//属性
             'goods_img'=>$goods_zhanshitu,//商品图片

@@ -14,7 +14,7 @@
         <div class="fanhui padding" id='fanhui_1'><a href="<{:U('Member/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>编辑文章</div>
         <div id="infor" class="infor" style="color: #666;"></div>
  
-        <form name="release_news" method="post"  action="<{:U('News/release_check')}>" onsubmit="editor.sync()">
+        <form name="release_news" method="post"  action="<{:U('News/bianji_check')}>" onsubmit="editor.sync()">
             <input name="goods_zhanshitu" value="" type="hidden"/> 
             <div class="tr">
                 <div class="tr_td1">文章标题</div>
@@ -29,7 +29,8 @@
             <div  class="tr" id="insert_img">
                 <div class="tr_td1" >文章图片</div>
                 <div class="tr_td2" style='height: 45px;line-height: 45px;margin: 15px 0px;'>
-                <div class="file_jia" id="file_jia_zhanshitu">+</div>                
+                    <div class="div_goods_img"><img src="" class="empty_img" /><img class="goods_img" src=<{$news['img']}> /><a id="a_zhanshitu" title="删除"></a></div>
+                <div class="file_jia" id="file_jia_zhanshitu" style="display: none">+</div>                
                 <span id="span_zhanshitu"></span>
                 <span class="file_tishi">(长宽比900：500)</span>
                 </div>
@@ -45,7 +46,7 @@
             </div>
             <div class="tr" id="bianjiqi">
                 <textarea id="content" name="content" style="width:90%;height:300px;visibility:hidden;">
-                    
+                    <{$news['news_content']}>
                 </textarea>
       
             </div>
@@ -58,7 +59,9 @@
     </div>
     
     
-    
- 
+<script type="text/javascript">
+    var goods_zhanshitu="<{$news['img']}>";
+    $('input[name=goods_zhanshitu]').attr('value',goods_zhanshitu); 
+</script>
 <script src="__PUBLIC_HOME__/Mobile/Js/release_news.js" type="text/javascript"></script>
 

@@ -363,6 +363,7 @@ class ShopController extends FontEndController {
             'units'=>$content['units'],//商品单位重量
             'yuan_price'=>$content['yuan_price'],//原价
             'price'=>$content['price'],//单购价
+            'fanxian'=>$content['fanxian'],
             'shuxing'=>$str_shuxing,//属性
             'goods_img'=>$goods_zhanshitu,//商品图片
             'goods_img_qita'=>$str_goods_img,//被序列化的其它图片
@@ -495,6 +496,10 @@ class ShopController extends FontEndController {
             $this->error('原价为空或者不合规范0');
             exit();
         }
+        if(!is_price($content['fanxian'])){
+            $this->error('乐享红包为空或者不合规范0');
+            exit();
+        }
        
         
         
@@ -552,6 +557,7 @@ class ShopController extends FontEndController {
             'units'=>$content['units'],//商品单位重量
             'yuan_price'=>$content['yuan_price'],//原价
             'price'=>$content['price'],//单购价
+            'fanxian'=>$content['fanxian'],
             'shuxing'=>$str_shuxing,//属性
             'goods_img'=>$goods_zhanshitu,//商品图片
             'goods_img_qita'=>$str_goods_img,//被序列化的其它图片
