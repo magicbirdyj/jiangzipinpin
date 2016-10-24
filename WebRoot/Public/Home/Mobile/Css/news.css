@@ -75,9 +75,12 @@ a {
 }
 
 #gongzhonghao .gz_title {
-    background-color: #FF9712;
-    text-align: center;
-    padding: 15px 0px;
+    background-color: #FFF;
+    text-align: left;
+    line-height: 24px;
+    padding: 15px 5px;
+    font-weight: bold;
+    color:#333;
 }
 
 #gongzhonghao{
