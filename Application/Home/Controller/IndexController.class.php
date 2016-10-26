@@ -253,5 +253,7 @@ private function get_thumb(&$arr){
         $js_content=mb_substr($js_content,0,50,'utf-8');
         $this->assign('js_content',$js_content);
         $this->display();
+        //让文章的阅读次数加1
+         $newsmodel->where("news_id='$news_id'")->setInc('read_count');
     }
 }
