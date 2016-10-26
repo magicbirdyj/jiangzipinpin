@@ -25,7 +25,6 @@
 <script src="/Public/Common/Js/function.js"></script>
 <script src="/Public/Home/Mobile/Js/UC_jinzhisuofang.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-
 <title><?php echo ($title); ?></title>
 
 
@@ -55,15 +54,6 @@
                         <span style='margin-left: 2px;' class="right_up_tb"><?php echo ($status_count['no_pay']); ?></span>
                     </div>
                     <div><span>待付款</span></div>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo U('Order/index?status=wait_tuan');?>">
-                    <div class='dingdan_fenkai_tb_div'>
-                        <span class="iconfont tb_dingdan_li">&#xe622;</span>
-                        <span style='margin-left: 2px;' class="right_up_tb"><?php echo ($status_count['wait_tuan']); ?></span>
-                    </div>
-                    <div><span>待成团</span></div>
                     </a>
                 </li>
                 <li>
@@ -109,7 +99,7 @@
 
         
         
-        
+       
  
         
         
@@ -133,9 +123,10 @@
                     <?php if(($vo['status'] >= '3') and ($vo['status'] <= '5') ): ?><a  class="button_a_order"  href="<?php echo U('Order/view_wuliu',array('order_id'=>$vo['order_id']));?>">查看物流</a><?php endif; ?>
                     <?php if(($vo['pay_status'] == '0') and ($vo['status'] < '6')): ?><a  class="button_a_order quxiao_order" name="<?php echo ($vo['order_id']); ?>">取消订单</a><?php endif; ?>
                     <?php if((($vo['pay_status'] == '1') and ($vo['status'] >= '4') and ($vo['status'] < '6'))): ?><a id='shouhou' class="button_a_order" name="<?php echo ($vo['order_id']); ?>" href="<?php echo U('Order/shouhou',array('order_id'=>$vo['order_id']));?>">申请售后</a><?php endif; ?>
+                    <?php if(($vo['pay_status'] == '1') and ($vo['fenxiang'] == '0')): ?><a  class="button_a_order"  href="<?php echo U('Goods/fenxiang',array('order_id'=>$vo['order_id']));?>">分享返现</a><?php endif; ?>
             </div><?php endforeach; endif; else: echo "" ;endif; ?>
         
-    
+   
         
         
 <div class="page_foot" style="margin-bottom: 50px;"><?php echo ($page_foot); ?></div>
@@ -149,19 +140,19 @@
         $('.dingdan_4>ul>li:eq(1)').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(1)>a>div').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(1) *').css('color','#fff');
-    }else if(canshu==='wait_tuan'){
+    }else if(canshu==='daifahuo'){
         $('.dingdan_4>ul>li:eq(2)').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(2)>a>div').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(2) *').css('color','#fff');
-    }else if(canshu==='daifahuo'){
+    }else if(canshu==='daishouhuo'){
         $('.dingdan_4>ul>li:eq(3)').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(3)>a>div').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(3) *').css('color','#fff');
-    }else if(canshu==='daishouhuo'){
+    }else if(canshu==='daipingjia'){
         $('.dingdan_4>ul>li:eq(4)').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(4)>a>div').css('background-color','#f90');
-        $('.dingdan_4>ul>li:eq(4) *').css('color','#fff');
-    }else if(canshu==='daipingjia'){
+        $('.dingdan_4>ul>li:eq(4)').css('color','#fff');
+    }else if(canshu==='shouhou'){
         $('.dingdan_4>ul>li:eq(5)').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(5)>a>div').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(5)').css('color','#fff');
@@ -264,16 +255,18 @@
       <div class="ui-footer">
                   <a href="<?php echo U('Index/index');?>"><span class=" iconfont foot_home foot_tb">&#xe60f;</span><span>首页</span></a>
                   <a href="<?php echo U('Member/sellection');?>"><span class=" iconfont foot_shoucang foot_tb">&#xe620;</span><span>我的收藏</span></a>
-                  <a href="<?php echo U('Order/index');?>"><span class="iconfont foot_pintuan foot_tb">&#xe622;</span><span>我的拼团</span></a>
-                  <a href="<?php echo U('Member/index');?>"><span class=" iconfont foot_wode foot_tb">&#xe60a;</span><span>我的酱紫</span></a>
+                  <a href="<?php echo U('Order/index');?>"><span class="iconfont foot_pintuan foot_tb">&#xe622;</span><span>我的订单</span></a>
+                  <a href="<?php echo U('Member/index');?>"><span class=" iconfont foot_wode foot_tb">&#xe60a;</span><span>会员中心</span></a>
           </div>
   </div> 
 
 
 
-
-
 <script>
+    var img="/Public/Home/Mobile/Images/public/jzpp_logo.jpg";
+    var title="酱紫拼拼";
+    var desc="搜尽娄底的美食美味，比美团更多的优惠，免费快递送货上门，快来一起拼团吧";
+    var link='m.jiangzipinpin.com';
     wx.config({  
         //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: "<?php echo ($wx_config['appId']); ?>", // 必填，公众号的唯一标识
@@ -284,27 +277,33 @@
     });
     wx.ready(function () {
         wx.onMenuShareTimeline({
-            title: '17一起网', // 分享标题
-            imgUrl: 'http://www.17each.com/Public/Home/Images/menu_and_foot/logo.png' // 分享图标
+            title:  title, // 分享标题
+            link: link, // 分享链接
+            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
         });
         wx.onMenuShareAppMessage({
-            title: '17一起网', // 分享标题
-            desc: "要“17”，不要“each”，节省50%费用，拥有梦幻婚礼不再是梦", // 分享描述
-            imgUrl: 'http://www.17each.com/Public/Home/Images/menu_and_foot/logo.png' // 分享图标
+            title:  title, // 分享标题
+            link: link, // 分享链接
+            desc:  desc, // 分享描述
+            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
         });
         wx.onMenuShareQQ({
-            title: '17一起网', // 分享标题
-            desc: "要“17”，不要“each”，节省50%费用，拥有梦幻婚礼不再是梦", // 分享描述
-            imgUrl: 'http://www.17each.com/Public/Home/Images/menu_and_foot/logo.png' // 分享图标
+            title:  title, // 分享标题
+            link: link, // 分享链接
+            desc: desc, // 分享描述
+            imgUrl: 'http://m.jiangzipinpin.com'+img // 分享图标
         });
         wx.onMenuShareQZone({
-            title: '17一起网', // 分享标题
-            desc: "要“17”，不要“each”，节省50%费用，拥有梦幻婚礼不再是梦", // 分享描述
-            imgUrl: 'http://www.17each.com/Public/Home/Images/menu_and_foot/logo.png' // 分享图标
+            title: title, // 分享标题
+            link: link, // 分享链接
+            desc:desc, // 分享描述
+            imgUrl:  'http://m.jiangzipinpin.com'+img // 分享图标
         });
     });
     
-</script>
+    
 
+</script>
+<?php require_once 'cs.php';echo '<img src="'._cnzzTrackPageView(1260248716).'" width="0" height="0"/>';?>
 </body>
 </html>
