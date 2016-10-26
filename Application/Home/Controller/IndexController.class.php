@@ -249,6 +249,8 @@ private function get_thumb(&$arr){
             $this->error('找不到该文章');
         }
         $this->assign('news',$news);
+        $js_content=preg_replace('/\n|\r/', " ", $news['news_content']);
+        $this->assign('js_content',$js_content);
         $this->display();
     }
 }
