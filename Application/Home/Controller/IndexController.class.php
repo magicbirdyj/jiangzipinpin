@@ -250,7 +250,7 @@ private function get_thumb(&$arr){
         }
         $this->assign('news',$news);
         $js_content=preg_replace('/\n|\r/', " ", $news['news_content']);
-        $js_content=mb_substr($js_content,0,20,'utf-8');
+        $js_content=mb_substr($js_content,0,50,'utf-8');
         $this->assign('js_content',$js_content);
         $this->display();
     }
