@@ -47,7 +47,6 @@ class NewsController extends FontEndController {
         }
         // 获取展示图片并thumb(250, 250)再移动
         $goods_zhanshitu=$content['goods_zhanshitu'];//获取
-        var_dump($goods_zhanshitu);exit;
         $goods_zhanshitu_thumb=$this->thumb($goods_zhanshitu, 900, 500);//thumb
         //移动到正式文件夹
         $today=substr($goods_zhanshitu,26,8);//获取到文件夹名  如20150101
@@ -125,7 +124,6 @@ class NewsController extends FontEndController {
         }
         // 获取展示图片并thumb(250, 250)再移动
         $goods_zhanshitu=$content['goods_zhanshitu'];//获取
-        var_dump($goods_zhanshitu);
         $goods_zhanshitu_thumb=$this->thumb($goods_zhanshitu, 900, 500);//thumb
         //移动到正式文件夹
         $today=substr($goods_zhanshitu,26,8);//获取到文件夹名  如20150101
