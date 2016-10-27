@@ -249,7 +249,7 @@ class CrontabController extends FontEndController {
         $sendShopsTransfersInput->SetOpenid($open_id);//接收付款商家
         $sendShopsTransfersInput->SetDesc($desc);//企业付款描述信息
         $sendShopsTransfersInput->SetCheck_name('NO_CHECK');//校验用户姓名选项
-        $sendShopsTransfersInfo = \WxPayApi::sendshoptransfers(sendShopsTransfersInput, 300);
+        $sendShopsTransfersInfo = \WxPayApi::sendshoptransfers($sendShopsTransfersInput, 300);
         return $sendShopsTransfersInfo;
     }
     
