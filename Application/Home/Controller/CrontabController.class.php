@@ -17,6 +17,7 @@ class CrontabController extends FontEndController {
         }
         $shopsmodel=D('Shops');
         $arr_shop=$shopsmodel->where("status=1 and totle_amount>mentioned")->select();
+        /*
         foreach ($arr_shop as $value) {
             $open_id=$value['open_id'];
             $amount=$value['totle_amount']-$value['mentioned'];
@@ -25,6 +26,7 @@ class CrontabController extends FontEndController {
             if($result['return_code']=='SUCCESS'&&$result['result_code']=='FAIL'){
                 $result=$this->send_shops_transfers($open_id,$amount,$shijian);
             }
+
             //付款成功 ,改变shops里面的已经提现金额mentioned
             if($result['return_code']=='SUCCESS'&&$result['result_code']=='SUCCESS'){
                 $row=array(
@@ -32,6 +34,13 @@ class CrontabController extends FontEndController {
                 );
                 $shopsmodel->where("open_id=$open_id")->save($row);
             }
+        }
+         * 
+         */
+        $shijian=date('YmdHis');
+        $result=$this->send_shops_transfers('oSI43woDNwqw6b_jBLpM2wPjFn_M','0.01',$shijian);
+        if($result['return_code']=='SUCCESS'&&$result['result_code']=='FAIL'){
+            $result=$this->send_shops_transfers('oSI43woDNwqw6b_jBLpM2wPjFn_M','0.01',$shijian);
         }
         
     }
@@ -234,7 +243,7 @@ class CrontabController extends FontEndController {
         vendor('wxp.native'); //引入第三方类库
         $sendShopsTransfersInput = new \WxPaySendShoptransfers();
         //向商家付款
-       
+        $amount=(float)$amount;
         $sendShopsTransfersInput->SetAmount($amount*100);//付款金额 int
         $sendShopsTransfersInput->SetPartner_trade_no($open_id.$shijian);//商户订单号
         $sendShopsTransfersInput->SetOpenid($open_id);//接收付款商家
