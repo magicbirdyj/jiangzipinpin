@@ -237,7 +237,15 @@ private function get_thumb(&$arr){
         return $shijian;
     }
     
-    
+    public function news_all(){
+        
+        $newsmodel=D('News');
+        $list=$newsmodel->where("is_delete=0")->order('news_id desc')->select();
+
+        $this->assign('list',$list);
+       
+        $this->display();
+    }
     public function news() {
         $news_id=$_GET['news_id'];
         if(!$news_id){
