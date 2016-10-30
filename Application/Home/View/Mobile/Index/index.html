@@ -8,7 +8,7 @@
   <include file='Public/top'/>
 
   <div class="ui-content">
- <!--分类导航-->
+        <!--分类导航-->
       <div class="ui-grid-c">
           <div><a href="<{:U('Index/index')}>"><span class="menu_yuan iconfont tb_home">&#xe60f;</span><span>首页</span></a></div>
           <div><a href="<{:U('Category/one_buy')}>"><span class="menu_yuan iconfont tb_1yuangou">&#xe642;</span><span>坚果</span></a></div>
@@ -34,8 +34,11 @@
       <div style="margin-top: -10px;"></div>
       
 
- 
-      
+      <div style="padding:20px;margin-bottom: 2px;width: 100%;text-align: center;box-sizing: border-box; ">
+          <div style="text-align: center;font-size: 22px;font-weight: bold">用心做坚果</div>
+          <div style="text-align: center;font-size: 18px;">自己觉得好吃的，才是最好的</div>
+              
+      </div>
       <volist name='list' id='vo'>
             <div class="shopping">
                 <a  href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>" class="goods_a">

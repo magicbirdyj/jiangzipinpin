@@ -11,6 +11,7 @@ class CrontabController extends FontEndController {
         //var_dump($url);
     }
     public function transfersh() {
+        exit;
         if($_SERVER['REMOTE_ADDR']!='120.55.166.254'){
             var_dump('IP地址为'.$_SERVER['REMOTE_ADDR'].'非服务器IP');
             exit;
