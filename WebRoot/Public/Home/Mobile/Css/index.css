@@ -2,7 +2,6 @@
 /* -moz :火狐私有属性；-weblit :chrome、safari私有属性* -ms IE私有属性*/
 .ui-content .ui-grid-c{
     overflow: hidden;
-    margin-bottom: 10px;
 }
 .ui-content .ui-grid-c div
 {

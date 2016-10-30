@@ -9,16 +9,18 @@
 }
 .shopping{
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 .goods_a .goods_img{
     width: 100%;
 }
 .goods_a .goods_infor{
-    padding: 5px 10px;
+    padding: 5px;
 }
 .goods_infor .goods_title{
-   padding: 8px 0px 0px 0px;
+   padding: 2px 0px 0px 0px;
    max-height: 50px;
    line-height: 25px;
    font-weight: bold;

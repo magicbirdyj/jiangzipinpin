@@ -8,7 +8,14 @@
   <include file='Public/top'/>
 
   <div class="ui-content">
-
+ <!--分类导航-->
+      <div class="ui-grid-c">
+          <div><a href="<{:U('Index/index')}>"><span class="menu_yuan iconfont tb_home">&#xe60f;</span><span>首页</span></a></div>
+          <div><a href="<{:U('Category/one_buy')}>"><span class="menu_yuan iconfont tb_1yuangou">&#xe642;</span><span>坚果</span></a></div>
+          <div><a href="<{:U('Category/index',array('cid'=>32))}>"><span class="menu_yuan iconfont tb_shuiguo">&#xe63c;</span><span>休闲食品</span></a></div>
+          <div><a href="<{:U('Category/index',array('cid'=>34))}>"><span class="menu_yuan iconfont tb_1yuangou">&#xe63c;</span><span>坚果知识</span></a></div>
+      </div>
+      <!--分类导航结束-->
       <div class="lunbo_div" id="lunbo_div" style="margin-left: -300%;">
           <volist name="lunbo" id="vo"> 
               <a href="<{$vo['url']}>"><img class="lunbo_img" src="<{$vo['img_url']}>" /></a>
@@ -26,18 +33,7 @@
       </div>
       <div style="margin-top: -10px;"></div>
       
- <!--分类导航-->
-      <div class="ui-grid-c">
-          <div><a href="<{:U('Index/index')}>"><span class="menu_yuan iconfont tb_home">&#xe60f;</span><span>首页</span></a></div>
-          <div><a href="<{:U('Category/one_buy')}>"><span class="menu_yuan iconfont tb_1yuangou">&#xe614;</span><span>1元购</span></a></div>
-          <div><a href="<{:U('Category/index',array('cid'=>32))}>"><span class="menu_yuan iconfont tb_shuiguo">&#xe617;</span><span>生鲜水果</span></a></div>
-          <div><a href="<{:U('Category/index',array('cid'=>34))}>"><span class="menu_yuan iconfont tb_1yuangou">&#xe63c;</span><span>美食</span></a></div>
-          <div><a href="<{:U('Category/index',array('cid'=>39))}>"><span class="menu_yuan iconfont tb_shuiguo">&#xe613;</span><span>冲饮/饮料</span></a></div>
-          <div><a href="<{:U('Category/index',array('cid'=>33))}>"><span class="menu_yuan iconfont tb_tianpin">&#xe618;</span><span>甜品</span></a></div>
-          <div ><a href="<{:U('Category/index',array('cid'=>36))}>"><span class="menu_yuan iconfont tb_guozhi">&#xe63b;</span><span>零食</span></a></div>
-          <div ><a href="<{:U('Advert/pintuan_liucheng')}>"><span class="menu_yuan iconfont tb_zhishi">&#xe61b;</span><span>拼团流程</span></a></div>
-      </div>
-      <!--分类导航结束-->
+
  
       
       <volist name='list' id='vo'>
