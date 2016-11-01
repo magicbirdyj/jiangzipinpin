@@ -88,7 +88,7 @@ class OrderController extends FontEndController {
          
          
          session('guanzhu',null); 
-         $this->display();
+         //$this->display();
     }
     
     
