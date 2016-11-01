@@ -279,7 +279,7 @@ class OrderController extends FontEndController {
         $this->jiaoyi_success_tep($order_id, $remark);
         
         //给商家发送订单已经确认收货通知
-        $remark='订单金额已经转入您的店铺金额,系统将在周一早上8点统一打款至您的微信账户中';
+        $remark='订单金额已经转入您的店铺金额。';
         $this->queren_shouhuo_tep($order_id, $remark);
         
         
