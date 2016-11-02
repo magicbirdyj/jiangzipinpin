@@ -9,7 +9,6 @@
 </head>
 
 <body>
-    <div id="infor" class="infor"></div>
     <form id = "form_file_jia_zhanshitu" enctype="multipart/form-data" action="<{:U('Shop/file_jia','name=file_img_zhanshitu&width=50&height=50')}>" method="get" style="visibility:hidden; width:0px; height: 0px;" >   
         <input name="file_img_zhanshitu" type="file"  style="visibility:hidden; width:0px; height: 0px;" />
     </form>
@@ -17,18 +16,16 @@
         <div class="div1">
             文章发布：
         </div>
-        
- 
+
         <form name="release_news" method="post"  action="<{:U('News/editor_check',array('news_id'=>$news['news_id']))}>" onsubmit="editor.sync()">
             <input name="goods_zhanshitu" value="" type="hidden"/> 
+            <div style="width:400px;height:0px;border-top:1px dashed #666;"></div>
             <div class="tr">
                 <div class="tr_td1">文章标题</div>
-                <div class="tr_td2">
-                    <input name="title" type="text" class="text" value="<{$news['news_name']}>"  />
+                <input name="title" type="text" class="text" value="<{$news['news_name']}>"  />
                 <span id="info_title"></span>
-                </div>
             </div>
-            
+
             <div class='xuxian'></div>
             
             <div  class="tr" id="insert_img">
