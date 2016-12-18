@@ -1,76 +1,99 @@
-<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/lunbo.css">
-<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/index.css">
-<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/shop_1.css">
+
+
+<link rel="stylesheet" href="__PUBLIC_HOME__/Mobile/css/index.css">
 </head>
-<body>
 
-    
-  <include file='Public/top'/>
 
-  <div class="ui-content">
-        <!--分类导航-->
-      <div class="ui-grid-c">
-          <div><a href="<{:U('Index/index')}>"><span class="menu_yuan iconfont tb_home">&#xe60f;</span><span>首页</span></a></div>
-          <div><a href="<{:U('Category/index',array('cid'=>125))}>"><span class="menu_yuan iconfont tb_1yuangou">&#xe642;</span><span>坚果</span></a></div>
-          <div><a href="<{:U('Category/index',array('cid'=>36))}>"><span class="menu_yuan iconfont tb_shuiguo">&#xe63c;</span><span>休闲食品</span></a></div>
-          <div><a href="<{:U('Index/news_all')}>"><span class="menu_yuan iconfont tb_1yuangou">&#xe63c;</span><span>坚果知识</span></a></div>
-      </div>
-      <!--分类导航结束-->
-      <div class="lunbo_div" id="lunbo_div" style="margin-left: -300%;">
-          <volist name="lunbo" id="vo"> 
-              <a href="<{$vo['url']}>"><img class="lunbo_img" src="<{$vo['img_url']}>" /></a>
-          </volist> 
-          <volist name="lunbo" id="vo"> 
-               <a href="<{$vo['url']}>"><img class="lunbo_img" src="<{$vo['img_url']}>" /></a>
-          </volist>
-      </div>
-      <div class="choose">
-          <div class="choose_div">
-              <volist name="lunbo" id="vo"> 
-                  <span></span>
-              </volist> 
-          </div>
-      </div>
-      <div style="margin-top: -10px;"></div>
-      
+<body ontouchstart  onload="loaded()">
 
-      <div style="padding:20px;margin-bottom: 2px;width: 100%;text-align: center;box-sizing: border-box; ">
-          <div style="text-align: center;font-size: 22px;font-weight: bold">用心做坚果</div>
-          <div style="text-align: center;font-size: 18px;">自己觉得好吃的，才是最好的</div>
-              
-      </div>
-      <volist name='list' id='vo'>
-            <div class="shopping">
-                <a  href="<{:U('Goods/index',array('goods_id'=>$vo['goods_id']))}>" class="goods_a">
-                    <img src="<{$vo['goods_img_qita_0']}>" class="goods_img"/>
-                    <div class="goods_infor">
-                    <div class="goods_title"><{$vo['goods_name']}></div>
-                    <div class="goods_bottom">
-                        <div class="goods_infor_left">
-                            <span class="iconfont">&#xe61d;</span>
-                            <span>乐享价</span>
-                            <span class="price_red price"><{$vo['price']|floatval}></span>
-                            <span class="price_red">元</span>
-                            <del style="margin-left: 5px;">原价:<{$vo['yuan_price']|floatval}>元</del>
-                        </div>
-                        <div class="goods_infor_right">
-                            <span>乐享返现：<{$vo['fanxian']|floatval}>元</span>
-                        </div>
-                    </div>
-                    </div>
-                </a>
-            </div><!--商品1-->
-      </volist>
-
-    
-
-      
-      
-      
-  </div>    
-
-  
-
-    <!--<script src="__PUBLIC_HOME__/Mobile/Js/index.js" type="text/javascript"></script>-->
-    <script src="__PUBLIC_HOME__/Mobile/Js/lunbo.js" type="text/javascript"></script>
-    <script src="__PUBLIC_HOME__/Mobile/Js/new_order.js" type="text/javascript"></script>
+<div id="wrapper">
+<div id="scroller">
+<!--iscroll 滑动 开始-->
+<div class="a1header">
+	<div class="addr"><i class="iconfont">&#xe62f;</i><span>娄底</span></div>
+    <h1>衣干净</h1>
+</div>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="__PUBLIC_HOME__/Mobile/Images/index/lunbo_2.png"></div>
+        <div class="swiper-slide"><img src="__PUBLIC_HOME__/Mobile/Images/index/lunbo_2.png"></div>
+        <div class="swiper-slide"><img src="__PUBLIC_HOME__/Mobile/Images/index/lunbo_2.png"></div>
+        <div class="swiper-slide"><img src="__PUBLIC_HOME__/Mobile/Images/index/lunbo_2.png"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+   <!-- <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>-->
+</div>
+<ul class="img3">
+    <a><div class="relative"><div class="img_text"><p class="p1">按件洗</p><p class="p2">9元/件起</p></div><img src="__PUBLIC_HOME__/Mobile/Images/index/anjianxi.png"></div></a>
+    <a><div class="relative"><div class="img_text"><p class="p1">按袋洗</p><p class="p2">69元/袋</p></div><img src="__PUBLIC_HOME__/Mobile/Images/index/andaixi.png"></div></a>
+    <a><div class="relative"><div class="img_text"><p class="p1">洗居家</p><p class="p2">9元/件起</p></div><img src="__PUBLIC_HOME__/Mobile/Images/index/xijujia.png"></div></a>
+</ul>
+<ul class="servers">
+	<a href="#">
+    	<p><i class="iconfont">&#xe647;</i></p>
+        <span>服务介绍</span>
+    </a>
+    <a href="#">
+    	<p><i class="iconfont">&#xe63a;</i></p>
+        <span>服务范围</span>
+    </a>
+    <a href="#">
+    	<p><i class="iconfont">&#xe63e;</i></p>
+        <span>价目中心</span>
+    </a>
+</ul>
+<div class="bottom">
+    <div class="make_yy"><a><p>立即预约</p></a></div>
+    </div>
+<!--iscroll 滑动 结束-->
+</div>
+</div>
+<footer class="foot-h footnav">
+	<nav>
+    	<a href="#" class="curr">
+        	<i class="iconfont">&#xe639;</i>
+            <p>首页</p>
+        </a>
+        <a href="#">
+        	<i class="iconfont">&#xe655;</i>
+            <p>订单</p>
+        </a>
+        <a href="#">
+        	<i class="iconfont">&#xe623;</i>
+            <p>我的</p>
+        </a>
+    </nav>
+</footer>
+<section class="big-shade-all" style="display:block"></section>
+<section class="pop" style="display:block">
+	<div class="pop-hint">
+    	<h1>温馨提示</h1>
+        <p>你选城市..................."?</p>
+        <nav class="auto-footLine">
+        	<li class="close"><a href="#">取消</a></li>
+            <li class="sure"><a href="#">切换</a></li>
+        </nav>
+    </div>
+</section>
+</body>
+<script src="__PUBLIC_COMMON__/Js/swiper.min.js"></script>
+<script src="__PUBLIC_HOME__/Mobile/Js/index.js"></script> 
+<script>
+var swiper = new Swiper('.swiper-container', {
+	/*nextButton: '.swiper-button-next',
+	prevButton: '.swiper-button-prev',*/
+	pagination: '.swiper-pagination',
+	autoplay:1200,
+	loop:true
+});
+</script>
+<script>
+$(document).ready(function(e) {
+    $('.close').click(function(e) {
+        $('.pop').hide();
+		$('.big-shade-all').hide();
+    });
+});
+</script>
+</html>

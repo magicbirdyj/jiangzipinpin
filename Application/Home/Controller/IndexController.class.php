@@ -4,15 +4,11 @@ use Home\Controller;
 class IndexController extends FontEndController {
    
     public function index(){
-        $goodsmodel=D('Goods');
         $advertmodel=D('Admin_advert');
         
         $lunbo=$advertmodel->where("position='轮播'")->field('img_url,url')->select();
        
         $this->assign('lunbo',$lunbo);
-        $list=$goodsmodel->where("is_delete=0")->order('sort_order,last_update desc')->select();
-        $this->get_thumb($list);
-        $this->assign('list',$list);
         $this->display();
     }
     
