@@ -20,13 +20,15 @@ class FontEndController extends Controller {
             $_SESSION['ref']=  str_replace('.html', '',$_SERVER['REQUEST_URI']);
         }
         
-        //需要关注登陆的控制器或者方法
-       
+        //不需要关注登陆的控制器或者方法
+        $nologin_contorller = array('Login','Zhuce');//需要登录的控制器
+        $nologin=array('');//不需要登录的方法
+        if (!in_array(CONTROLLER_NAME, $nologin_contorller)&&!in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $nologin)) {
             if (!isset($_SESSION['huiyuan']) || $_SESSION['huiyuan'] == '') {
                 header("location:". U("Login/index"));
                 exit();
             }
-        
+        }
         
        
         
