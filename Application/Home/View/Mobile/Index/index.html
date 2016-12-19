@@ -44,7 +44,7 @@
     </a>
 </ul>
 <div class="bottom">
-    <div class="make_yy"><a href="<{:U('Goods/buy')}>"><p>立即预约</p></a></div>
+    <div class="make_yy"><a href="<{:U('Goods/buy')}>" id='xiadan'><p>一键下单</p></a></div>
     </div>
 <!--iscroll 滑动 结束-->
 </div>
@@ -76,6 +76,17 @@
         </nav>
     </div>
 </section>
+
+<section id="guanzhu">
+    <div class="gz_title">衣干净，，拼乐趣</div>
+    <div class="guanzhu_content">
+        <div class="gz_content_text text_xiao"><span class="red">关注衣干净</span>，以便下单后接受订单状态通知</div>
+        <div class="gz_content_text"><div class="red">请长按下面指纹</div><div>，识别二维码</div></div>
+    </div>
+    <div class="guanzhu_erweima">
+        <img class="erweima" src="__PUBLIC_HOME__/Mobile/Images/public/qiuguanzhu.png" />
+    </div>
+</section>
 </body>
 <script src="__PUBLIC_COMMON__/Js/swiper.min.js"></script>
 <script src="__PUBLIC_HOME__/Mobile/Js/index.js"></script> 
@@ -92,8 +103,19 @@ var swiper = new Swiper('.swiper-container', {
 $(document).ready(function(e) {
     $('.close').click(function(e) {
         $('.pop').hide();
-		$('.big-shade-all').hide();
+	$('.big-shade-all').hide();
     });
 });
 </script>
+<script>
+    var guanzhu="<{$guanzhu}>";
+    $('#xiadan').bind('click',function(){
+        delete_guanzhu();
+        if(guanzhu!=='yiguanzhu'){
+            tanchuguanzhu();
+            return false;
+        }
+    });
+</script>
+<script src="__PUBLIC_HOME__/Mobile/Js/guanzhu.js" type="text/javascript"></script>
 </html>

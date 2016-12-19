@@ -3,7 +3,7 @@ namespace Home\Controller;
 use  Home\Controller;
 class LoginController extends FontEndController {
     public function index(){
-        if(isset($_SESSION['huiyuan'])){
+        if(isset($_SESSION['huiyuan'])&&isset($_SESSION['guanzhu'])){
             $index_url=U('index/index');
             header ( "Location: {$index_url}" ); 
             exit();
@@ -86,7 +86,7 @@ class LoginController extends FontEndController {
             'user_id'=>$user['user_id'],
             'user_name'=>$user['user_name'],
             'open_id'=>$user['open_id'],
-            'head_url'=>$use['head_url']
+            'head_url'=>$user['head_url']
                 );
             $_SESSION['guanzhu']='yiguanzhu';
             //var_dump('请从微信打开');exit;
