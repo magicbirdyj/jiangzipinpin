@@ -44,7 +44,7 @@
     </a>
 </ul>
 <div class="bottom">
-    <div class="make_yy"><a><p>立即预约</p></a></div>
+    <div class="make_yy"><a href="<{:U('Goods/buy')}>"><p>立即预约</p></a></div>
     </div>
 <!--iscroll 滑动 结束-->
 </div>
@@ -65,8 +65,8 @@
         </a>
     </nav>
 </footer>
-<section class="big-shade-all" style="display:block"></section>
-<section class="pop" style="display:block">
+<section class="big-shade-all" style="display:none"></section>
+<section class="pop" style="display:none">
 	<div class="pop-hint">
     	<h1>温馨提示</h1>
         <p>你选城市..................."?</p>
@@ -89,8 +89,6 @@ var swiper = new Swiper('.swiper-container', {
 });
 </script>
 <script>
-    $('.pop').hide();
-    $('.big-shade-all').hide();
 $(document).ready(function(e) {
     $('.close').click(function(e) {
         $('.pop').hide();

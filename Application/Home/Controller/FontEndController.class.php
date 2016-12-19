@@ -20,37 +20,18 @@ class FontEndController extends Controller {
             $_SESSION['ref']=  str_replace('.html', '',$_SERVER['REQUEST_URI']);
         }
         
-        //需要关注登录的控制器或者方法
-        $login_contorller = array('Zhuceshop','Ajaxlogin','Shop','News');//需要登录的控制器
-        $login=array('Goods/pinglun','Goods/buy','Goods/kaituan_buy','Goods/cantuan_buy','Goods/buy_success','Goods/kaituan_success','Goods/cantuan_success','Goods/zhifu','Goods/alipay','Goods/weixin_zhijiezhifu','Goods/gmcg_wx','Goods/jiance_pay','Goods/sellection_join','Goods/pinglun','Goods/pinglun','Goods/fenxiang','Shop/release_goods');//需要登录的方法
-        if (in_array(CONTROLLER_NAME, $login_contorller)||in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $login)) {
+        //需要关注登陆的控制器或者方法
+       
             if (!isset($_SESSION['huiyuan']) || $_SESSION['huiyuan'] == '') {
                 header("location:". U("Login/index"));
                 exit();
             }
-        }
-        
-        //用于未关注登陆未成功返回登陆前页面的记录url
-        //if(!in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $noref)&&!in_array(CONTROLLER_NAME, $noref_contorller)){
-            //$_SESSION['before_login_ref']= str_replace('.html', '',$_SERVER['REQUEST_URI']);
-        //}
-        //
         
         
-        //需要无关注伪登陆的控制器或者方式
-        $wei_login_contorller = array('Order');//需要登录的控制器
-        //Goods/index 和Goods/pintuan_info 单独写在控制器里面
-        $wei_login=array('Member/index','Member/order','Member/sellection','Member/sellection_del','Member/daijinquan','Member/qiehuanzhuanghu');
-        if (in_array(CONTROLLER_NAME, $wei_login_contorller)||in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $wei_login)){
-            if (isset($_SESSION['huiyuan']) &&$_SESSION['huiyuan'] != '') {
-                $_SESSION['wei_huiyuan']=$_SESSION['huiyuan'];
-                }
-            if (!isset($_SESSION['wei_huiyuan']) || $_SESSION['wei_huiyuan'] == '') {
-                header("location:". U("Login/wei_index"));
-                exit();
-            }
-            
-        }
+       
+        
+        
+        
         
         $this->get_weixin_config();
         $this->assign("date",date('Y'));//给日期赋值 

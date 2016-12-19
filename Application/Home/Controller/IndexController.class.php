@@ -4,6 +4,13 @@ use Home\Controller;
 class IndexController extends FontEndController {
    
     public function index(){
+        //首先必须获取关注状态
+        if(!isset($_SESSION['guanzhu'])||$_SESSION['guanzhu']==''){
+            $this->error('关注信息为空');
+        }
+        C('TOKEN_ON',false);//取消表单令牌
+        
+        
         $advertmodel=D('Admin_advert');
         
         $lunbo=$advertmodel->where("position='轮播'")->field('img_url,url')->select();

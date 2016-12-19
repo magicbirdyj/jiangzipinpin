@@ -182,6 +182,7 @@ class GoodsController extends FontEndController {
     }
 
     public function buy() {
+        echo 'buy';exit;
         if(isset($_GET['code'])){//微信地址接口
             $code=$_GET['code'];
             $parameters=$this->get_address_data($code);
