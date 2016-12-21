@@ -2,6 +2,96 @@
 .relative{position: relative;}
 
 
+
+/*底部css*/
+.footnav{height:50px; border-top:1px solid #DBDBDB; background:#FFFFFF}
+.footnav nav{height:50px;display: -webkit-box;  display: -moz-box;display: -ms-flexbox;   display: -webkit-flex;display: flex; -webkit-justify-content:space-around;justify-content:space-around; text-align:center; }
+.footnav nav i{font-size:20px}
+.footnav nav .curr{color:#00d9f4}
+
+
+
+
+
+/*页面顶部*/
+.padding{
+    padding: 12px;
+}
+.fanhui{
+    position: relative;
+    z-index: 1000;
+    font-size: 20px;
+    background-color: #00dbf5;
+    text-align: center;
+    color: #FFF;
+    transition:dispaly 2s;
+    -moz-transition:dispaly 2s; /* Firefox 4 */
+    -webkit-transition:dispaly 2s; /* Safari and Chrome */
+    -o-transition:dispaly 2s; /* Opera */
+}
+.fanhui .tb_fanhui{
+    position: absolute;
+    font-size: 40px;
+    color: #FFF;
+    left: 10px;
+    top: 3px;
+}
+
+
+
+
+/*提示信息样式*/
+.infor{
+    display: none;
+    padding: 4px 0px;
+    background-color: #F0F0F0;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    top:56px;
+    overflow: hidden;
+    text-overflow:ellipsis;/*超出部分省略号*/
+    white-space: nowrap;/*强制文本一行输出*/
+    z-index: 1001;
+    filter:alpha(opacity=80);  
+      -moz-opacity:0.8;  
+      -khtml-opacity: 0.8;  
+      opacity: 0.8;  
+}
+
+
+
+
+/*按钮样式（蓝色按钮）*/
+.button_a_lvse:link,.button_a_lvse:visited {
+    box-sizing: border-box;
+    display:block;
+    width:90%;
+    padding: 15px 0px;
+    background-color:#00dbf5;
+    text-align:center;
+    margin-left: 5%;
+    border:1px solid #00dbf5;
+    color:#FFFFFF;
+    font-size:20px;
+    cursor:pointer;
+    border-radius: 5px;
+}
+/*按钮样式鼠标放上*/
+.button_a_lvse:active{
+    box-sizing: border-box;
+    border:1px solid #000;
+    color: #EEE;
+}
+
+
+
+
+
+
+
+
 /*二维码求关注*/
 #guanzhu{
     position:absolute;

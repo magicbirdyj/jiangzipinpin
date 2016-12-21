@@ -52,10 +52,16 @@ class LoginController extends FontEndController {
                 $_SESSION['guanzhu']='yiguanzhu';
                 
                 if(!$user_id){ 
-                    $usersmodel->add($row);
+                    $row_shujuku=$row;
+                    $row_shujuku['reg_time']=time();
+                    $row_shujuku['last_ip']=$_SERVER["REMOTE_ADDR"];
+                    $usersmodel->add($row_shujuku);
                     $row['user_id']=$usersmodel->where("open_id='$open_id'")->getField('user_id');
                 }else{
-                    $usersmodel->where("user_id='$user_id'")->save($row);
+                    $row_shujuku=$row;
+                    $row_shujuku['last_login']=time();
+                    $row_shujuku['last_ip']=$_SERVER["REMOTE_ADDR"];
+                    $usersmodel->where("user_id='$user_id'")->save($row_shujuku);
                     $row['user_id']=$user_id;
                 }
                 $_SESSION['huiyuan']=$row;
@@ -82,6 +88,9 @@ class LoginController extends FontEndController {
              }
             $usersmodel=D('Users');
             $user=$usersmodel->where("open_id='oSI43woDNwqw6b_jBLpM2wPjFn_M'")->field('user_id,user_name,open_id')->find();
+            $row['last_login']=time();
+            $row['last_ip']=$_SERVER["REMOTE_ADDR"];
+            $usersmodel->where("open_id='oSI43woDNwqw6b_jBLpM2wPjFn_M'")->save($row);
             $_SESSION['huiyuan']=array(
             'user_id'=>$user['user_id'],
             'user_name'=>$user['user_name'],

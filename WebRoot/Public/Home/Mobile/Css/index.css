@@ -26,8 +26,5 @@
 .make_yy{margin:0px; text-align:center;  padding:0px 20px;}
 .make_yy a{width:36vw; height:18vw; background:#45d0ff; border-radius:18vw 18vw 0 0; margin:0px auto; text-align:center; line-height:18vw; color:#FFFFFF; font-size:120%; font-weight:900; display:block; }
 .make_yy a p{padding-top: 5px;height: 62px;}
-.footnav{height:50px; border-top:1px solid #DBDBDB; background:#FFFFFF}
-.footnav nav{height:50px;display: -webkit-box;  display: -moz-box;display: -ms-flexbox;   display: -webkit-flex;display: flex; -webkit-justify-content:space-around;justify-content:space-around; text-align:center; }
-.footnav nav i{font-size:20px}
-.footnav nav .curr{color:#00d9f4}
+
 #scroller{min-height: 100%;}

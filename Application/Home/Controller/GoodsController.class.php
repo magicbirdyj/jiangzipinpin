@@ -182,14 +182,22 @@ class GoodsController extends FontEndController {
     }
 
     public function buy() {
-        echo 'buy';exit;
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        $usersmodel=D('Users');
+        $user=$usersmodel->where("open_id='$open_id'")->find();
+        if($user['phone']==0){
+            $this->redirect('Member/bangding_phone');
+        }
+        exit;
+        
+        
+        
         if(isset($_GET['code'])){//微信地址接口
             $code=$_GET['code'];
             $parameters=$this->get_address_data($code);
             $this->assign('signPackage',$parameters);
             $open_id=$_SESSION['wei_huiyuan']['open_id'];
             $this->assign('open_id',$open_id);
-           
         }//微信地址接口
         $user_id=$_SESSION['huiyuan']['user_id'];
         $usersmodel=D('Users');
