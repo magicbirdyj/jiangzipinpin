@@ -47,10 +47,15 @@ class CrontabController extends FontEndController {
         $time=  time();
         //提前半小时，提醒骑手准备上门取件
         $ordermodel=D('Order');
-        $arr_order=$ordermodel->where("deleted=0  and status=1")->field('order_id,appointment_time,order_address,remark')->select();
+        $arr_order=$ordermodel->where("deleted=0  and status=1")->field('order_id,appointment_time,order_address,remark,remind_horseman_time')->select();
         foreach ($arr_order as $value) {
             //提前半小时，提醒骑手准备上门取件
-            if($time>($value['appointment_time']-1800)){
+            if($time>($value['appointment_time']-1800) and ($time-600)>$value['remind_horseman_time']){
+                $row=array(
+                    'remind_horseman_time'=>$time
+                );
+                $order_id=$value['order_id'];
+                $ordermodel->where("order_id='$order_id'")->save($row);
                 $remark="点我，马上接单";
                 $this->remind_horseman_tem($value,$remark);//通知消息
             }
@@ -178,9 +183,6 @@ class CrontabController extends FontEndController {
                 'keyword5'=>array('value'=>$order['remark']?$order['remark']:'无',"color"=>"#666"),
                 'remark'=>array('value'=>$remark,"color"=>"#F90505")
             );
-            var_dump($arr_data);
-            var_dump($value);
-            var_dump($url);
             $this->response_template($value, $template_id, $url, $arr_data);
         }
     }
