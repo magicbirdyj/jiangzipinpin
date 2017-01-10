@@ -165,14 +165,15 @@ class CrontabController extends FontEndController {
     private function remind_horseman_tem($order,$remark){
         $horsemanmodel=D('Horseman');
         $arr_horseman=$horsemanmodel->getField('open_id',true);
+        $address=  unserialize($order['order_address']);
         foreach ($arr_horseman as $value) {
             $template_id="FAMVTSzVfg8IC9YKCfjAx8WD2ttaz8UvDF_B924inZ8";
             $url=U('Admin/Horseman/order_view',array('order_id'=>$order['order_id']));
             $arr_data=array(
                 'first'=>array('value'=>"又有新的预约时间到了，准备接单吧","color"=>"#666"),
                 'keyword1'=>array('value'=>date("Y年m月d日 h:i:s",$order['appointment_time']),"color"=>"#666"),
-                'keyword2'=>array('value'=>$order['order_address']['location'].' '.$order['order_address']['address'],"color"=>"#666"),
-                'keyword3'=>array('value'=>$order['order_address']['name'].' '.$order['order_address']['mobile'],"color"=>"#666"),
+                'keyword2'=>array('value'=>$address['location'].' '.$address['address'],"color"=>"#666"),
+                'keyword3'=>array('value'=>$address['name'].' '.$address['mobile'],"color"=>"#666"),
                 'keyword4'=>array('value'=>'衣物',"color"=>"#666"),
                 'keyword5'=>array('value'=>$order['remark']?$order['remark']:'无',"color"=>"#666"),
                 'remark'=>array('value'=>$remark,"color"=>"#F90505")

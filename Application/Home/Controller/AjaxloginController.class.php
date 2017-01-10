@@ -257,18 +257,18 @@ class AjaxloginController extends FontEndController {
     private function taking_success_tem($order_id,$horseman_open_id,$remark){
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id='$order_id'")->find();
+        $address=  unserialize($order['order_address']);
         $template_id="PUE-zt-KqzrR73H1kTdHjVK-q-uaeFut4r9giZrzZJg";
         $url=U('Admin/Horseman/order_view',array('order_id'=>$order['order_id']));
         $arr_data=array(
             'first'=>array('value'=>"您已接单成功，马上出发吧","color"=>"#666"),
             'keyword1'=>array('value'=>date("Y年m月d日 h:i:s",$order['appointment_time']),"color"=>"#666"),
-            'keyword2'=>array('value'=>$order['order_address']['location'].' '.$order['order_address']['address'],"color"=>"#666"),
-            'keyword3'=>array('value'=>$order['order_address']['name'].' '.$order['order_address']['mobile'],"color"=>"#666"),
+            'keyword2'=>array('value'=>$address['location'].' '.$address['address'],"color"=>"#666"),
+            'keyword3'=>array('value'=>$address['name'].' '.$address['mobile'],"color"=>"#666"),
             'keyword4'=>array('value'=>'衣物',"color"=>"#666"),
             'remark'=>array('value'=>$remark,"color"=>"#F90505")
         );
         $this->response_template($horseman_open_id, $template_id, $url, $arr_data);
-        
     }
 }
 
