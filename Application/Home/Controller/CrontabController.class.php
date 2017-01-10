@@ -176,7 +176,7 @@ class CrontabController extends FontEndController {
             $url=U('Admin/Horseman/order_view',array('order_id'=>$order['order_id']));
             $arr_data=array(
                 'first'=>array('value'=>"又有新的预约时间到了，准备接单吧","color"=>"#666"),
-                'keyword1'=>array('value'=>date("Y年m月d日 h:i:s",$order['appointment_time']),"color"=>"#666"),
+                'keyword1'=>array('value'=>date("Y年m月d日 h:i",$order['appointment_time']),"color"=>"#666"),
                 'keyword2'=>array('value'=>$address['location'].' '.$address['address'],"color"=>"#666"),
                 'keyword3'=>array('value'=>$address['name'].' '.$address['mobile'],"color"=>"#666"),
                 'keyword4'=>array('value'=>'衣物',"color"=>"#666"),
