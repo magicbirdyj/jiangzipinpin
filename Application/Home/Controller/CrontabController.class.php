@@ -178,6 +178,7 @@ class CrontabController extends FontEndController {
                 'keyword5'=>array('value'=>$order['remark']?$order['remark']:'无',"color"=>"#666"),
                 'remark'=>array('value'=>$remark,"color"=>"#F90505")
             );
+            var_dump($arr_data);
             $this->response_template($value, $template_id, $url, $arr_data);
         }
     }
