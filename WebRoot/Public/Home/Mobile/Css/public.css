@@ -1,7 +1,31 @@
+/*响应式 自适应导航*/
+.auto-nav{height:50px; border-bottom:1px solid #DBDBDB; display: -webkit-box;  display: -moz-box;display: -ms-flexbox;   display: -webkit-flex;display: flex; -webkit-justify-content:space-around;justify-content:space-around; text-align:center; line-height:50px; background:#FFFFFF;}
+.auto-nav li a{color:#999}
+.auto-nav li.curr a{color:#000000}
+.auto-footLine{height:50px; border-top:1px solid #DBDBDB; display: -webkit-box;  display: -moz-box;display: -ms-flexbox;   display: -webkit-flex;display: flex; -webkit-justify-content:space-around;justify-content:space-around; text-align:center; line-height:50px; background:#FFFFFF;}
+.auto-footLine li{border-left:1px solid #DBDBDB; -webkit-flex:1;flex:1}
+.auto-footLine li:first-child{border-left:none}
+.auto-footLine li a{display:block}
+.a1header{height:40px; padding:0 15px; background:#FFFFFF; position:relative}
+.a1header h1{text-align:center; line-height:40px}
+.a1header .addr{position:absolute; left:10px; height:40px; line-height:40px}
+.swiper-container img{width:100%}
+#scroller{min-height: 100%;}
 
+
+/*自定义*/
 .relative{position: relative;}
-
-
+.hidden{overflow: hidden}
+/*横线*/
+.borderD {
+    display: block;
+    border-bottom: 1px solid #cecece;
+    transform: scaleY(0.5);
+    -webkit-transform: scaleY(0.5);
+}
+.clearBoth {
+    clear: both;
+}
 
 /*底部css*/
 .footnav{height:50px; border-top:1px solid #DBDBDB; background:#FFFFFF}
@@ -19,7 +43,7 @@
 }
 .fanhui{
     position: relative;
-    z-index: 1000;
+    z-index: 2;
     font-size: 20px;
     background-color: #00dbf5;
     text-align: center;
@@ -31,10 +55,10 @@
 }
 .fanhui .tb_fanhui{
     position: absolute;
-    font-size: 40px;
+    font-size: 30px;
     color: #FFF;
     left: 10px;
-    top: 3px;
+    top: 5px;
 }
 
 
@@ -46,6 +70,7 @@
     padding: 4px 0px;
     background-color: #F0F0F0;
     font-size: 14px;
+    color: red;
     width: 100%;
     text-align: center;
     position: fixed;
@@ -68,7 +93,7 @@
     box-sizing: border-box;
     display:block;
     width:90%;
-    padding: 15px 0px;
+    padding: 10px 0px;
     background-color:#00dbf5;
     text-align:center;
     margin-left: 5%;
@@ -141,4 +166,25 @@
     box-sizing: border-box;
     text-align: center;
     width: 100%;
+}
+
+
+
+
+/*fixed提示*/
+#fixed_tishi,.fixed_tishi{
+    position: fixed;
+    bottom: 80px;
+    padding: 12px 0px;
+    background-color: #333;
+    color: #FFF;
+    border-radius: 5px;
+    font-size: 12px;
+    margin:auto;
+    left: 0px;
+    right: 0px;
+    width: 70%;
+    text-align: center;
+    display: none;
+    z-index: 18000;
 }

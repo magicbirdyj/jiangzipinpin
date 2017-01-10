@@ -1,0 +1,63 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order_view.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order.css">
+</head>
+
+<body ontouchstart  onload="loaded()">
+<div id="wrapper">
+<div id="scroller">
+    <div class="fanhui padding"><a href="<{:U('Horseman/order')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>订单详情</div>
+    <div class="view">
+        <div class="d2">
+            <div class="d2_title">订单信息</div>
+            <div class="d2_content">
+                <span>订单编号：<{$order['order_no']}></span>
+                <span>预约时间：<{$order['appointment_time']|date='Y-m-d H：i',###}> </span>
+                <span>取送地址：<{$order['order_address']['location']}>  <{$order['order_address']['address']}></span>
+                <span>联系人：<{$order['order_address']['name']}>  <{$order['order_address']['mobile']}></span></div>
+            <div class="d2_title">服务信息</div>
+            <div class="d2_content">
+                <span>清洗类别：衣物</span>
+                <span>备注：<{$order['remark']?$order['remark']:'无'}></span>
+            </div>
+        </div>
+        <div class="d2_title">订单状态</div>
+        <div class="view_info">
+            <div>当前订单状态：<span class="red"><{:order_status($order['pay_status'],$order['status'],$order['order_id'])['status']}></span></div>
+                <div class="d1 hidden">
+                    <a id='order_taking'  href="javascript:void(0)" class="button_a_order">我要接单</a>
+                </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+<script type="text/javascript">
+    var order_id=<{$order['order_id']}>
+    $('.button_a_order').css('background-color','#D00');
+    $('.button_a_order').css('color','#fff');
+    $('#order_taking').bind('click',function(){
+            var url='/Home/Ajaxlogin/order_taking.html';
+            var data={
+                    order_id:order_id,
+                    check:"wy_taking"
+                }
+            $.ajax({
+                    type:'post',
+                    async : true,
+                    url:url,
+                    data:data,
+                    datatype:'json',
+                    success:function(msg){
+                        if(msg){ 
+                            location='/Home/Horseman/order';                        
+                        }else{
+                            alert('接单失败'); 
+                        }
+                    }
+                });    
+    });
+
+</script>
+
+

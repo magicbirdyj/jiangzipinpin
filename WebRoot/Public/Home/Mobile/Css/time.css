@@ -1,0 +1,114 @@
+
+#bianji_time_div{
+    background-color: #FFF;
+}
+
+#time_controler {
+    background: #f7feff;
+}
+.time_date {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -o-box;
+    display: box;
+    background: #f7feff;
+    overflow: auto;
+    margin: 2px 0 0 10px;
+    padding: .34rem 0 1rem 0;
+}
+.time_date li.detail_date.tab-current, .time_date li.detail_date.selected {
+    border: 1px solid #00dbf5;
+    background: #fff;
+    border-radius: 6px;
+    position: relative;
+    color: #00dbf5;
+}
+.time_date li.detail_date {
+    width: 22%;
+    text-align: center;
+    padding: 4px 0;
+    color: #3e3e3e;
+    position: relative;
+    list-style: none;
+    border: 1px solid #f7feff;
+    font-size: 12px;
+}
+.time_hour {
+    margin: 10px auto 10px 2%;
+    width: 96%;
+    background: #fff;
+    float: left;
+}
+.time_hour .detail_hour {
+    background: #fff;
+    text-align: center;
+    width: 33.3%;
+    margin: 0 auto;
+    height: 65px;
+    float: left;
+    /* position: relative; */
+    z-index: 12;
+    display: inline-block;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    /* box-shadow: 0 0 0 1px #dcdcdc; */
+    color: #3e3e3e;
+}
+.baodan {
+    background: #f6f6f6 !important;
+    color: #9f9f9f !important;
+}
+.time_hour .detail_hour div.service_times_div {
+    display: table-cell;
+    height: 63px;
+    vertical-align: middle;
+    text-align: center;
+    width: 33.3%;
+    font-size: 12px;
+    box-shadow: 0 0 0 1px #dcdcdc;
+}
+.borderCu {
+    /* border: 1px solid #00dbf5; */
+    box-shadow: 0 0 0 1px #00dbf5;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    z-index: 111;
+    display: none;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+}
+
+.trigger-ico {
+    position: absolute;
+    bottom: -7px;
+    left: 40%;
+    display: none;
+}
+.trigger-ico img{
+    display: block;
+}
+em{
+    margin: 0px;
+    padding: 0px;
+}
+.borderDD {
+    border-top: 1px solid #ddd;
+}
+.absolute-bottom {
+    background: #fff;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+}
+.time_hour .detail_hour.select_hour .service_times_div, .time_hour .detail_hour.selected .service_times_div {
+    position: relative;
+    color: #00dbf5;
+}
+.time_hour .detail_hour.select_hour .borderCu, .time_hour .detail_hour.selected .borderCu {
+    display: block;
+}

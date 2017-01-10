@@ -77,8 +77,10 @@ class MemberController extends FontEndController {
             header("location:". $_SESSION['ref']);
             exit();
         }
+        $this->assign('url',$_SESSION['ref']);
         $this->display();
     }
+    
 
     public function order(){
         session('guanzhu',null); 
@@ -251,69 +253,11 @@ class MemberController extends FontEndController {
                 return $parameters;
     }
     
-    //设置默认地址 ajax用
-    public function shezhi_moren_address(){
-        $data=$_POST;
-        if(($data['open_id']!=$_SESSION['wei_huiyuan']['open_id'])||$data['check']!='shezhi_moren'){
-            exit;
-        }
-        $open_id=$data['open_id'];
-        $item=$data['item'];
-        $usersmodel=D('Users');
-        $row=array('default_address'=>$item);
-        $result=$usersmodel->where("open_id=$open_id")->save($row);
-        $this->ajaxReturn($result);
-    }
     
     
-    //保存地址 ajax用
-    public function save_or_add_address(){
-        $data=$_POST;
-        if(($data['open_id']!=$_SESSION['wei_huiyuan']['open_id'])||($data['check']!='save'&&$data['check']!='add')){
-            exit;
-        }
-        $open_id=$data['open_id'];
-        $usersmodel=D('Users');
-        $address=$usersmodel->where("open_id='$open_id'")->getField('address');
-        $arr_address=  unserialize($address);
-        
-        $arr_data=array(
-            'name'=>$data['name'],
-            'mobile'=>$data['mobile'],
-            'location'=>$data['location'],
-            'address'=>$data['address']
-        );
-        if($data['check']=='save'){
-            $arr_address[(int)$data['id']]=$data;
-        }elseif($data['check']=='add'){
-            $arr_address[]=$data;
-        }
-        $address=  serialize($arr_address);
-        $row=array('address'=>$address);
-        $result=$usersmodel->where("open_id='$open_id'")->save($row);
-        $this->ajaxReturn($result);
-    }
-    //删除地址 ajax用
-    public function delete_address() {
-        $data=$_POST;
-        if(($data['open_id']!=$_SESSION['wei_huiyuan']['open_id'])||$data['check']!='del_address'){
-            exit;
-        }
-        $open_id=$data['open_id'];
-        $usersmodel=D('Users');
-        $address=$usersmodel->where("open_id='$open_id'")->field('address,default_address')->find();
-        $arr_address=  unserialize($address['address']);
-        $length=count($arr_address);
-        $int_id=(int)$data['id'];
-        array_splice($arr_address,$int_id, 1);
-        $address['address']=  serialize($arr_address);
-        $row=array('address'=>$address['address']);
-        if($int_id<=$address['default_address']){
-            $row['default_address']=$address['default_address']-1;
-        }
-        $result=$usersmodel->where("open_id='$open_id'")->save($row);
-        $this->ajaxReturn($row['default_address']);
-    }
+    
+   
+    
     private function get_wangye($code){
         $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code" ;
         $res = file_get_contents($url); //获取文件内容或获取网络请求的内容
@@ -360,43 +304,7 @@ class MemberController extends FontEndController {
 
     
     
-    public function send_message(){
-        if($_POST['check']==='send_message'){
-            $shoujihao=$_POST['shoujihao'];
-            vendor('taobaoali.TopSdk');//引入第三方类库
-            date_default_timezone_set('Asia/Shanghai'); 
-            $appkey="23461151";
-            $secret="32eff9693ac48fcee386923dc45e3f8c";
-            $c = new \TopClient;
-            $c->appkey = $appkey;
-            $c->secretKey = $secret;
-            $c->format='json';
-            $req = new \AlibabaAliqinFcSmsNumSendRequest;
-            $req->setExtend("123456");
-            $req->setSmsType("normal");
-            $req->setSmsFreeSignName("酱紫拼拼");
-            $rand=rand(100000,999999);
-            $_SESSION['send_message']="$rand";
-            $req->setSmsParam("{\"name\":\"酱紫拼拼\",\"code\":\"$rand\"}");
-            $req->setRecNum($shoujihao);
-            $req->setSmsTemplateCode("SMS_15405215");
-            $resp = $c->execute($req);
-            $data=$resp->result->success;
-            $this->ajaxReturn($data);
-            exit();
-       }else if($_POST['check']=='yanzheng_message'){
-           $yanzhengma=$_POST['yanzhengma'];
-           if($yanzhengma===$_SESSION['send_message']){
-               $data=true;
-           }else{
-               $data=false;
-           }
-           $this->ajaxReturn($data);
-           exit();
-       }else{
-           exit();
-       }
-    }
+    
             
 }
 

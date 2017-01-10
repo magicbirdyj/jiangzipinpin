@@ -168,39 +168,35 @@ function creat_file($dir){
 
 
 //获取订单状态
-function order_status($pay_status,$status,$order_id,$tuan_no){
+function order_status($pay_status,$status,$order_id){
     if($pay_status==='0'){
-        if($status==='7'){
-            return array('status'=>'交易关闭','status_button'=>'删除订单','status_url'=>"$order_id");
-        }else if($status==='6'){
-            return array('status'=>'拼团失败','status_button'=>'删除订单','status_url'=>"/Home/Order/appraise/order_id/{$order_id}.html");
-        }else{
-            return array('status'=>'未支付','status_button'=>'去付款','status_url'=>"/Home/Goods/zhifu/order_id/{$order_id}.html");
+        if($status==='1'){
+            return array('status'=>'等待上门','status_button'=>'','status_url'=>"");
+        }else if($status==='2'){
+            return array('status'=>'骑手已出发','status_button'=>'','status_url'=>"");
+        }else if($status==='3'){
+            return array('status'=>'已确认取货','status_button'=>'','status_url'=>"");
+        }else if($status==='4'){
+            return array('status'=>'清洗中','status_button'=>'','status_url'=>"");
+        }else if($status==='5'or $status==='6'){
+            return array('status'=>'清洗完成','status_button'=>'','status_url'=>"");
+        }else if($status==='7'){
+            return array('status'=>'订单完成','status_button'=>'去付款','status_url'=>"/Home/order/zhifu/order_id/{$order_id}.html"); 
         }
     }elseif($pay_status==='1'){
-        if($status==='1'&&$tuan_no!=0){
-            return array('status'=>'组团中','status_button'=>'邀请好友参团','status_url'=>"/Home/Goods/gmcg_wx/order_id/{$order_id}.html");
-        }else if($status==='1'&&$tuan_no==0){
-            return array('status'=>'待发货','status_button'=>'催商家发货','status_url'=>"$order_id");
-        }else if($status==='2'){
-            return array('status'=>'待发货','status_button'=>'催商家发货','status_url'=>"$order_id");
-        }else if($status==='3'){
-            return array('status'=>'待收货','status_button'=>'确认收货','status_url'=>"/Home/Order/jiaoyi_success/order_id/{$order_id}.html");
-        }else if($status==='4'){
-            return array('status'=>'待评价','status_button'=>'去评价','status_url'=>"/Home/Order/appraise/order_id/{$order_id}.html");
-        }else if($status==='5'){
-            return array('status'=>'交易完成','status_button'=>'删除订单','status_url'=>"/Home/Order/appraise/order_id/{$order_id}.html");
-        }else if($status==='6'){
-            return array('status'=>'拼团失败','status_button'=>'删除订单','status_url'=>"/Home/Order/appraise/order_id/{$order_id}.html");
+        if($status==='7'){
+            return array('status'=>'订单完成','status_button'=>'去评价','status_url'=>"/Home/Order/appraise/order_id/{$order_id}.html");
+        }else if($status==='8'){
+            return array('status'=>'订单完成','status_button'=>'','status_url'=>"");
         }
     }elseif($pay_status==='2'){
-        return array('status'=>'退款中...','status_button'=>'售后查看','status_url'=>"/Home/Order/shouhou_status/order_id/{$order_id}.html");
+        return array('status'=>'申请赔偿中','status_button'=>'售后查看','status_url'=>"/Home/Order/shouhou_status/order_id/{$order_id}.html");
     }elseif($pay_status==='3'){
-        return array('status'=>'换货中','status_button'=>'售后查看','status_url'=>"/Home/Order/shouhou_status/order_id/{$order_id}.html");
+        return array('status'=>'申请重洗中','status_button'=>'售后查看','status_url'=>"/Home/Order/shouhou_status/order_id/{$order_id}.html");
     }elseif($pay_status==='4'){
-        return array('status'=>'退款成功','status_button'=>'删除订单','status_url'=>"javascript:void(0)");
+        return array('status'=>'赔偿完成','status_button'=>'','status_url'=>"");
     }elseif($pay_status==='5'){
-        return array('status'=>'换货成功','status_button'=>'删除订单','status_url'=>"javascript:void(0)");
+        return array('status'=>'重洗完成','status_button'=>'删除订单','status_url'=>"javascript:void(0)");
     }
 }
 
@@ -367,4 +363,17 @@ function delayed($s) {
         $time1=time();
     }
     //var_dump($time1);
+}
+
+
+//返回周几
+function week($time){
+    //获取数字型星期几
+        $number_wk=date("w",$time);
+         
+        //自定义星期数组
+        $weekArr=array("周日","周一","周二","周三","周四","周五","周六");
+         
+        //获取数字对应的星期
+        return $weekArr[$number_wk];
 }

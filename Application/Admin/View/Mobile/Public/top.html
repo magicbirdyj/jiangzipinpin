@@ -1,0 +1,24 @@
+
+
+
+<div  id="logo_header">
+<div class="logo"><!--logo-->
+    <a href="<{:U('Index/index')}>" class="logol"><img src="__PUBLIC_HOME__/Mobile/Images/public/jzpp_logo.jpg" /></a>
+<div class="search">
+    <form name="searchform" action="<{:U('Index/search')}>" method="get" id="searchform">
+        <div class="search_div">
+            <span class="iconfont tb_search">&#xe60d;</span>
+            <input class="inputsr" type="text" name="sp" value="<{$get['sp']}>" placeholder="猫山王 榴莲" maxlength="100" data-role="none"  />
+        </div>
+    </form>
+</div>
+
+</div><!--//logo-->
+</div>
+<script  type="text/javascript">
+    $('.inputsr').bind('click',function(){
+        window.location.href="<{:U('Index/search_m')}>"; 
+    });
+    
+</script>
+

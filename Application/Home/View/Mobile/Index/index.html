@@ -19,11 +19,10 @@
         <div class="swiper-slide"><img src="__PUBLIC_HOME__/Mobile/Images/index/lunbo_2.png"></div>
     </div>
     <div class="swiper-pagination"></div>
-   <!-- <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>-->
+
 </div>
 <ul class="img3">
-    <a><div class="relative"><div class="img_text"><p class="p1">按件洗</p><p class="p2">9元/件起</p></div><img src="__PUBLIC_HOME__/Mobile/Images/index/anjianxi.png"></div></a>
+    <a href='<{:U("Goods/index")}>'><div class="relative"><div class="img_text"><p class="p1">按件洗</p><p class="p2">9元/件起</p></div><img src="__PUBLIC_HOME__/Mobile/Images/index/anjianxi.png"></div></a>
     <a><div class="relative"><div class="img_text"><p class="p1">按袋洗</p><p class="p2">69元/袋</p></div><img src="__PUBLIC_HOME__/Mobile/Images/index/andaixi.png"></div></a>
     <a><div class="relative"><div class="img_text"><p class="p1">洗居家</p><p class="p2">9元/件起</p></div><img src="__PUBLIC_HOME__/Mobile/Images/index/xijujia.png"></div></a>
 </ul>
@@ -71,25 +70,10 @@
     </div>
 </section>
 
-<script src="__PUBLIC_COMMON__/Js/swiper.min.js"></script>
+
 <script src="__PUBLIC_HOME__/Mobile/Js/index.js"></script> 
-<script>
-var swiper = new Swiper('.swiper-container', {
-	/*nextButton: '.swiper-button-next',
-	prevButton: '.swiper-button-prev',*/
-	pagination: '.swiper-pagination',
-	autoplay:1200,
-	loop:true
-});
-</script>
-<script>
-$(document).ready(function(e) {
-    $('.close').click(function(e) {
-        $('.pop').hide();
-	$('.big-shade-all').hide();
-    });
-});
-</script>
+
+
 <script>
     var guanzhu="<{$guanzhu}>";
     $('#xiadan').bind('click',function(){

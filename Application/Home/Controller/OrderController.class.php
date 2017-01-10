@@ -3,113 +3,64 @@ namespace Home\Controller;
 use Home\Controller;
 class OrderController extends FontEndController {
     public function index(){
-         $status=$_GET['status'];
-         $this->assign('canshu',$_GET['status']);
-         $ordermodel=D('Order');
-         $user_id=$_SESSION['wei_huiyuan']['user_id'];
-         $status_count['all']=$ordermodel->where("user_id={$user_id} and deleted=0")->count();//获取全部订单条数
-         $status_count['no_pay']=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status<6")->count();//获取未付款条数
-         $status_count['daifahuo']=$ordermodel->where("user_id={$user_id} and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0")->count();//获取待发货条数
-         $status_count['daishouhuo']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=3 and deleted=0")->count();//获取待收货条数
-         $status_count['daipingjia']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=4 and deleted=0")->count();//获取待评价条数
-         $status_count['shouhou']=$ordermodel->where("user_id={$user_id} and pay_status>1 and deleted=0")->count();//获取售后条数
-         $this->assign(status_count,$status_count);
-         $time=  time();
-         $this->assign('time',$time);
-         if(empty($status)){
-             $selected['all']="selected='selected'";//选中下拉菜单的全部订单
+        $status=$_GET['status'];
+        $this->assign('canshu',$_GET['status']);
+        $ordermodel=D('Order');
+        $user_id=$_SESSION['huiyuan']['user_id'];
+        $status_count['no_complete']=$ordermodel->where("user_id={$user_id} and pay_status=0 and status<6 and deleted=0")->count();//获取未完成条数
+        $status_count['complete']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status>5 and deleted=0")->count();//获取已完成条数
+        $status_count['no_pay']=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status=6")->count();//获取待付款条数
+        $status_count['no_appraise']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=6 and deleted=0")->count();//获取待评价条数
+        $this->assign(status_count,$status_count);
+        $time=  time();
+        $this->assign('time',$time);
+        if(empty($status)){
+            $selected['no_complete']="selected='selected'";//选中下拉菜单的未完成订单
+            $this->assign(selected,$selected);
+            $count=$ordermodel->where("user_id={$user_id} and pay_status=0 and status<6 and deleted=0")->count();
+            $this->assign(count,$count);
+            //$page=$this->get_page($count, 10);
+            //$page_foot=$page->show();//显示页脚信息
+            //$list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
+            $list=$ordermodel->where("user_id={$user_id} and pay_status=0 and status<6 and deleted=0")->select();
+            $this->assign('list',$list);
+            //$this->assign('page_foot',$page_foot);
+        }else if($status==='complete'){
+             $selected['complete']="selected='selected'";//选中下拉菜单的未付款
              $this->assign(selected,$selected);
-             $count=$ordermodel->where("user_id={$user_id} and deleted=0")->count();
-             $this->assign(count,$count);
-             $page=$this->get_page($count, 10);
-             $page_foot=$page->show();//显示页脚信息
-             $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
-             foreach ($list as $key=>$value){
-                $tuan_no=$value['tuan_no'];
-                $count=$ordermodel->where("tuan_no=$tuan_no and pay_status=1")->count();
-                $tuan_number=$value['tuan_number'];
-                $list[$key]['count']=$tuan_number-$count;
-             }
+             $count=$ordermodel->where("user_id={$user_id} and pay_status=1 and status>5 and deleted=0")->count();
+             //$page=$this->get_page($count, 10);
+             //$page_foot=$page->show();//显示页脚信息
+             //$list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.pay_status=0  and t1.status<6 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
+             $list=$ordermodel->where("user_id={$user_id} and pay_status=1 and status>5 and deleted=0")->select();
              $this->assign('list',$list);
-             $this->assign('page_foot',$page_foot);
+             //$this->assign('page_foot',$page_foot);
          }else if($status==='no_pay'){
-             $selected['no_pay']="selected='selected'";//选中下拉菜单的未付款
-             $this->assign(selected,$selected);
-             $selected['all']='selected';
-             $count=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status<6")->count();
-             $page=$this->get_page($count, 10);
-             $page_foot=$page->show();//显示页脚信息
-             $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.pay_status=0  and t1.status<6 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
-             foreach ($list as $key=>$value){
-                $tuan_no=$value['tuan_no'];
-                $count=$ordermodel->where("tuan_no=$tuan_no and pay_status=1")->count();
-                $tuan_number=$value['tuan_number'];
-                $list[$key]['count']=$tuan_number-$count;
-             }
-             $this->assign('list',$list);
-             $this->assign('page_foot',$page_foot);
-         }else if($status==='daifahuo'){
              $selected['daifahuo']="selected='selected'";//选中下拉菜单的待发货
              $this->assign(selected,$selected);
-             $count=$ordermodel->where("user_id={$user_id} and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0")->count();
-             $page=$this->get_page($count, 10);
-             $page_foot=$page->show();//显示页脚信息
-             $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.pay_status=1 and (t1.status=2 or (t1.tuan_no=0 and t1.status=1)) and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
+             $count=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status=6")->count();
+             //$page=$this->get_page($count, 10);
+             //$page_foot=$page->show();//显示页脚信息
+             //$list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.pay_status=1 and (t1.status=2 or (t1.tuan_no=0 and t1.status=1)) and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
+             $list=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status=6")->select();
              $this->assign('list',$list);
-             $this->assign('page_foot',$page_foot);
-         }else if($status==='daishouhuo'){
+             //$this->assign('page_foot',$page_foot);
+         }else if($status==='no_appraise'){
              $selected['daishouhuo']="selected='selected'";//选中下拉菜单的待确认
              $this->assign(selected,$selected);
-             $count=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=3 and deleted=0")->count();
-             $page=$this->get_page($count, 10);
-             $page_foot=$page->show();//显示页脚信息
-             $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
+             $count=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=6 and deleted=0")->count();
+             //$page=$this->get_page($count, 10);
+             //$page_foot=$page->show();//显示页脚信息
+             //$list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
+             $list=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=6 and deleted=0")->select();
              $this->assign('list',$list);
-             $this->assign('page_foot',$page_foot);
-         }else if($status==='daipingjia'){
-             $selected['daipingjia']="selected='selected'";//选中下拉菜单的待评价
-             $this->assign(selected,$selected);
-             $count=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=4 and deleted=0")->count();
-             $page=$this->get_page($count, 10);
-             $page_foot=$page->show();//显示页脚信息
-             $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.pay_status=1 and t1.status=4 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
-             $this->assign('list',$list);
-             $this->assign('page_foot',$page_foot);
-         }else if($status==='shouhou'){
-             $selected['shouhou']="selected='selected'";//选中下拉菜单的售后
-             $this->assign(selected,$selected);
-             $count=$ordermodel->where("user_id={$user_id} and pay_status>1 and deleted=0")->count();
-             $page=$this->get_page($count, 10);
-             $page_foot=$page->show();//显示页脚信息
-             $list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.pay_status>1 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
-             $this->assign('list',$list);
-             $this->assign('page_foot',$page_foot);
+             //$this->assign('page_foot',$page_foot);
          }
-         
-         
-         session('guanzhu',null); 
          $this->display();
     }
     
     
-    public function quxiao_order(){
-        if((!empty($_POST['order_id']))&&$_POST['check']==='quxiao_order'){
-            $order_id=$_POST['order_id'];
-            $ordermodel=D('Order');
-            $row=array(
-                'status' => 7
-            );
-            $order_user_id=$ordermodel->where("order_id=$order_id")->getField('user_id');//登录用户无该订单权限
-            if($order_user_id!=$_SESSION['wei_huiyuan']['user_id']){//登录用户无该订单权限
-                $result=false;
-                $this->ajaxReturn($result);
-                exit();
-            }
-            $result = $ordermodel->where("order_id=$order_id")->save($row);
-            session('guanzhu',null); 
-            $this->ajaxReturn($result);
-        }
-    }
+    
     public function quxiao_shouhou(){
         if((!empty($_POST['order_id']))&&$_POST['check']==='quxiao_shouhou'){
             $order_id=$_POST['order_id'];

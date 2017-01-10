@@ -4,11 +4,9 @@ use  Home\Controller;
 class CrontabController extends FontEndController {
     
     public function upload_order() {
-        $this->quxiao_order();
-        $this->aotu_queren_shouhuo();
-        //$this->ztsb();
-        //$url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-        //var_dump($url);
+        $this->remind_horseman();
+        //$this->quxiao_order();
+        //$this->aotu_queren_shouhuo();
     }
     public function transfersh() {
         exit;
@@ -45,7 +43,20 @@ class CrontabController extends FontEndController {
         }
         
     }
-
+    private function remind_horseman() {
+        $time=  time();
+        //提前半小时，提醒骑手准备上门取件
+        $ordermodel=D('Order');
+        $arr_order=$ordermodel->where("deleted=0  and status=1")->field('order_id,appointment_time,order_address,remark')->select();
+        foreach ($arr_order as $value) {
+            //提前半小时，提醒骑手准备上门取件
+            if($time>($value['appointment_time']-1800)){
+                $order=$value;
+                $remark="点我，马上接单";
+                $this->remind_horseman_tem($value,$remark);//通知消息
+            }
+        }
+    }
     private function quxiao_order(){
         $time=  time();
         //2个小时未付款的订单，取消订单
@@ -152,6 +163,24 @@ class CrontabController extends FontEndController {
             }
                
     }
+    private function remind_horseman_tem($order,$remark){
+        $horsemanmodel=D('Horseman');
+        $arr_horseman=$horsemanmodel->getField('open_id',true);
+        foreach ($arr_horseman as $value) {
+            $template_id="FAMVTSzVfg8IC9YKCfjAx8WD2ttaz8UvDF_B924inZ8";
+            $url=U('Admin/Horseman/order_view',array('order_id'=>$order['order_id']));
+            $arr_data=array(
+                'first'=>array('value'=>"又有新的预约时间到了，准备接单吧","color"=>"#666"),
+                'keyword1'=>array('value'=>date("Y年m月d日 h:i:s",$order['appointment_time']),"color"=>"#666"),
+                'keyword2'=>array('value'=>$order['order_address']['location'].' '.$order['order_address']['address'],"color"=>"#666"),
+                'keyword3'=>array('value'=>$order['order_address']['name'].' '.$order['order_address']['mobile'],"color"=>"#666"),
+                'keyword4'=>array('value'=>'衣物',"color"=>"#666"),
+                'keyword5'=>array('value'=>$order['remark']?$order['remark']:'无',"color"=>"#666"),
+                'remark'=>array('value'=>$remark,"color"=>"#F90505")
+            );
+            $this->response_template($value, $template_id, $url, $arr_data);
+        }
+    }
     private function quxiao_order_tep($order_id,$remark){
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id=$order_id")->find();
@@ -173,23 +202,7 @@ class CrontabController extends FontEndController {
         $this->response_template($user['open_id'], $template_id, $url, $arr_data);
     }
     
-    private function refund_tep_ztsb($order_id){
-        $ordermodel=D('Order');
-        $order=$ordermodel->where("order_id=$order_id")->find();
-        $user_id=$order['user_id'];
-        $usersmodel=D('Users');
-        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
-        $template_id="95UZl_xx_sjJdno-l1X4vUrRvOLlsepMEZHPFsofZms";
-        $goods_id=$order['goods_id'];
-        $url=U('Goods/index',array('goods_id'=>$goods_id));
-        $arr_data=array(
-            'first'=>array('value'=>"您好，您拼团购买的商品：".$order["goods_name"]." 组团失败，已全额退款给您！","color"=>"#666"),
-            'reason'=>array('value'=>'【'.$order['tuan_number']."】人团 组团失败，您可以重新开团或者参团","color"=>"#F90505"),
-            'refund'=>array('value'=>$order["dues"]."元","color"=>"#666"),
-            'remark'=>array('value'=>"点我，重新去开团或参团","color"=>"#F90505")
-        );
-        $this->response_template($open_id, $template_id, $url, $arr_data);
-    }
+
     
     //收货成功后，给商家发送订单确认收货通知
     private function queren_shouhuo_tep($order_id,$remark){

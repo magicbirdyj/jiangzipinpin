@@ -1,0 +1,99 @@
+/* CSS Document */
+
+.view{
+    width: 100%;
+    border: 1px solid #EEE;
+    min-height: 400px;
+    margin: 0px auto;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+
+
+
+.view_info{
+    padding: 10px 0px 0px 0px;
+}
+.view_info div{
+    margin-bottom: 10px;
+    padding: 0px 10px;
+}
+.view_info .d1{
+    padding: 10px 10px;
+    margin-bottom: 0px;
+    background-color: #F8F9FA;
+}
+.view_info .red{
+    color:#D00;
+    font-weight: 700;
+}
+
+
+
+.d2{
+    border: 1px solid #E5E5E5;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+.d2_title{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    background: #EEE;
+}
+.d2 .d2_content{
+    padding: 8px  10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.d2_content span{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 0px;
+    line-height: 31px;
+    text-align: left;
+    margin-right: 10px;
+    display: inline-block;
+}
+.view_info .button_a_order{
+    float: right;
+}
+
+
+/*物流轨迹css*/
+.wuliu_guiji_ul{
+    padding:30px 20px;
+    font-size: 14px;
+}
+.wuliu_guiji_ul li{
+   position: relative;
+}
+.wuliu_guiji_ul li .guiji{
+    border-left: 1px solid #ddd;
+    padding-left: 20px;
+    padding-bottom: 15px;
+    margin-left: 3px;
+}
+.wuliu_guiji_ul .dian{
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border:1px solid #ddd;
+    border-radius: 4px;
+    background-color: #ddd;
+    left: 0px;
+    z-index: 1000;
+    top:5px;
+}
+.wuliu_guiji_ul li:first-child .dian{
+    border:1px solid #F90505;;
+    background-color: #F90505;
+}
+.guiji div{
+    line-height: 24px;
+}

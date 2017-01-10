@@ -6,181 +6,8 @@ use Home\Controller;
 
 class GoodsController extends FontEndController {
     public function index() {
-        //首先必须获取关注状态
-        if (isset($_SESSION['huiyuan']) &&$_SESSION['huiyuan'] != '') {
-                $_SESSION['wei_huiyuan']=$_SESSION['huiyuan'];
-                }
-        if (!isset($_SESSION['wei_huiyuan']) || $_SESSION['wei_huiyuan'] == ''||!isset($_SESSION['guanzhu'])||$_SESSION['guanzhu']=='') {
-            header("location:". U("Login/wei_index"));
-            exit();
-        }
-        
-        
-        if(!isset($_SESSION['guanzhu'])||$_SESSION['guanzhu']==''){
-            $this->error('关注信息为空');
-        }
-        C('TOKEN_ON',false);//取消表单令牌
-        
-        $goods_id = $_GET['goods_id'];
-        if(!$goods_id){
-            $this->error('该商品不存在！', '/Home/Index/index');
-        }
-        $this->assign('goods_id', $goods_id);
-        $goodsmodel = D('Goods');
-        $goods = $goodsmodel->where("goods_id='$goods_id'")->field('goods_id,goods_name,goods_jianjie,price,yuan_price,tuan_price,goods_img,goods_img_qita,goods_desc,comment_number,shuxing,score,cat_name,shop_id,shop_name,daijinquan,1yuangou,choujiang,is_delete,buy_number,tuan_number,goods_shuxing')->find();
-        if($goods['is_delete']==='1'||!$goods){
-            $this->error('该商品不存在！', '/Home/Index/index');
-        }
-        //获取到店铺信息
-        $shopsmodel=D('Shops');
-        $shop_id=$goods['shop_id'];
-        $shop=$shopsmodel->where("shop_id=$shop_id")->field('shop_id,qq,head_url,tel,sale_number,status')->find();
-        $this->assign('shop',$shop);
-        //把价格后面无意义的0去掉
-        $goods['price']= floatval($goods['price']);
-        $goods['yuan_price']= floatval($goods['yuan_price']);
-        $goods['tuan_price']= floatval($goods['tuan_price']);
-
-        //把商品id赋值给cookie 并且永久保存.
-        if (is_shuzi($goods_id)) {
-            $arr_goods_id = cookie('distory_goods_id') == '' ? array() : cookie('distory_goods_id');
-            $is_in = in_array($goods_id, $arr_goods_id);
-            if ($is_in === false) {
-                if (count($arr_goods_id) > 10) {
-                    array_shift($arr_goods_id);
-                }
-                array_push($arr_goods_id, $goods_id);
-                cookie('distory_goods_id', $arr_goods_id, 2419200); //保存到cookie中一个月
-            }
-        } else {
-            $this->error('发生错误：商品id不正确!', 'Index/index');
-        }
-
-        $goods['url']['url'] = urlencode('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-        $goods['url']['goods_name'] = urlencode('酱紫拼拼-' . $goods['cat_name'] . '-' . $goods['goods_name']);
-        $goods['url']['goods_img'] = urlencode('http://www.jiangzipinpin.com' . $goods['goods_img']);
-        $goods['url']['summary'] = urlencode('酱紫拼拼，拼实惠，拼乐趣。' . '-' . $goods['goods_name']);
-        $this->assign('goods', $goods);
-        $ordermodel=D('Order');
-        //获取该商品的团长信息(最早的2个团)
-        /*
-        
-        $end=time()-86400;
-        $goods_tuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.goods_id=$goods_id and t1.identity=1 and t1.user_id=t2.user_id and t1.created>$end and t1.status=1 and pay_status=1")->field('t2.head_url,t1.order_id,t2.user_name,t1.created,t2.address,t1.order_address,t1.tuan_no,t1.goods_id,t1.tuan_number')->order('t1.created')->limit(2)->select();
-        if($goods_tuan[0]){
-            foreach ($goods_tuan as $key=>$value) {
-                $tuan_no=$value['tuan_no'];
-                $count=$ordermodel->where("tuan_no=$tuan_no and pay_status>0")->count();
-                $tuan_number=$value['tuan_number'];
-                $goods_tuan[$key]['count']=$tuan_number-$count;
-            }
-        }else{
-            $goods_tuan=NULL;
-        }
-        $this->assign('goods_tuan',$goods_tuan);
-         * */
-         
-        $img_qita = unserialize($goods['goods_img_qita']); //获取其它展示图数组
-        $this->assign('img_qita', $img_qita);
-        //赋值第一张图片的url 微信分享需要
-        $this->assign(img_qita_0,$img_qita[0]);
-        
-        
-        $shuxing = unserialize($goods['shuxing']); //获取商品属性数组
-        $this->assign('shuxing', $shuxing);
-        //获取具体分项目评分
-        $pingfen = $ordermodel->where("goods_id={$goods_id}")->getField('pingfen', true);
-        foreach ($pingfen as $value) {
-            $value = unserialize($value);
-            $pingfen0+=$value[0];
-            $pingfen1+=$value[1];
-            $pingfen2+=$value[2];
-        }
-        $pingfen_fl[] = number_format($pingfen0 / count($pingfen), 1);
-        $pingfen_fl[] = number_format($pingfen1 / count($pingfen), 1);
-        $pingfen_fl[] = number_format($pingfen2 / count($pingfen), 1);
-        $this->assign('pingfen_fl', $pingfen_fl);
-       
-        
-
-        //获取广告商品列表
-        //$guanggao = $goodsmodel->where("cat_id={$goods['cat_id']}")->order('advert_shop_order')->limit(12)->field('goods_id,goods_name,goods_img,price,buy_number')->select();
-        //$this->assign('guanggao', $guanggao);
-
-
-        //找出该商品是否被用户收藏了
-        $sellectionmodel = D('Sellection');
-        
-        $user_id = $_SESSION['huiyuan']?$_SESSION['huiyuan']['user_id']:$_SESSION['wei_huiyuan']['user_id'];
-        
-        $is_sellect = $sellectionmodel->where("goods_id=$goods_id and user_id=$user_id")->find();
-        $sellection_count = $sellectionmodel->where("user_id=$user_id")->count();
-        $this->assign('sellection_count', $sellection_count);
-        
-        $this->assign('is_sellect', $is_sellect);
-        //该商品被收藏了多少次
-        //$sellection_count = $sellectionmodel->where("goods_id=$goods_id")->count();
-        //$this->assign('sellection_count', $sellection_count);
-        
-        //商品自选属性
-        $arr_zx_shuxing=  unserialize($goods['goods_shuxing']);
-        $this->assign('zx_shuxing',$arr_zx_shuxing);
-
-        $this->assign("title", "酱紫拼拼—". $goods['goods_name']); //给标题赋值
-
-         
-         //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
-         if($goods['1yuangou']==1||$goods['choujiang']==1){
-            $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
-            if($choujiang>0){
-                $this->assign('is_get','yijing_get');//分配变量给JS用 对已经获取过该活动商品的用户 开团按钮失效
-            }
-         }
-          //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
-          $this->assign('guanzhu',$_SESSION['guanzhu']);
-          //如果未关注，把$_SESSION['ref']  写入数据表
-          
-          //获得评论list
-          $list_pinglun=$this->get_pinglun($goods_id);
-          $this->assign('list_pinglun',$list_pinglun);
-          
-          if($_SESSION['guanzhu']=='weiguanzhu'){
-               $this->save_url(substr($_SESSION['ref'],0,strpos($_SESSION['ref'],'?')));
-          }
-          session('guanzhu',null); 
-          
-          $js_jianjie=preg_replace('/\n|\r/', " ", $goods['goods_jianjie']);
-          $this->assign('js_jianjie',$js_jianjie);
-          $this->display('index');
-          //让商品的点击次数加1
-         $goodsmodel->where("goods_id='$goods_id'")->setInc('click_count');
+        $this->display();
     }
-
-    public function get_pinglun($goods_id) {
-        $ordermodel = D('Order');
-        $list_pinglun = $ordermodel->table('m_order t1,m_users t2')->where("t1.goods_id={$goods_id} and t1.user_id=t2.user_id and t1.status=5")->field('t1.updated,t1.score,t1.appraise_img,t1.appraise,t1.appraise_img,t2.user_name,t2.head_url')->order('t1.updated desc')->select();
-        //遍历数组，把img字段反序列化
-        foreach ($list_pinglun as &$value) {
-            $value['appraise_img'] = unserialize($value['appraise_img']);
-        }
-        return $list_pinglun;
-    }
-
-    public function page() {
-        $goods_id = $_GET['goods_id'];
-        $goodsmodel = D('Goods');
-        //$goods=$goodsmodel->table('m_goods t1,m_users t2,m_category t3')->where("t1.user_id=t2.user_id and t1.goods_id=$goods_id and t1.cat_id=t3.cat_id")->field('t1.goods_id,t1.area,t1.goods_name,t1.price,t1.yuan_price,t1.goods_img,t1.goods_img_qita,t1.goods_sex,t1.goods_desc,t1.comment_number,t1.shuxing,t3.cat_name,t2.user_name,t1.user_id,t2.weixin,t2.qq,t2.mobile_phone,t2.email')->find();
-        $goods = $goodsmodel->where("goods_id=$goods_id")->field('user_id')->find();
-        $user_id = $goods['user_id'];
-        $count = $goodsmodel->where("user_id=$user_id and is_delete=0")->count();
-        $page = $this->get_page($count, 5);
-        $page_foot = $page->show(); //显示页脚信息
-        $goods_qita = $goodsmodel->table('m_goods t1,m_category t2')->where("t1.cat_id=t2.cat_id and t1.user_id=$user_id  and t1.is_delete=0")->limit($page->firstRow . ',' . $page->listRows)->order('t1.last_update desc')->field('t2.cat_name,t1.goods_name,t1.price,t1.yuan_price,t1.goods_id,t1.buy_number')->select();
-        $data['li'] = $goods_qita;
-        $data['page_foot'] = $page_foot;
-        $this->ajaxReturn($data);
-    }
-
     public function buy() {
         $open_id=$_SESSION['huiyuan']['open_id'];
         $usersmodel=D('Users');
@@ -188,6 +15,29 @@ class GoodsController extends FontEndController {
         if($user['phone']==0){
             $this->redirect('Member/bangding_phone');
         }
+        
+        
+        if(isset($_GET['code'])){//微信地址接口
+            $code=$_GET['code'];
+            $parameters=$this->get_address_data($code);
+            $this->assign('signPackage',$parameters);
+        }
+        $this->assign('open_id',$open_id);
+        //微信地址接口
+        $user_id=$_SESSION['huiyuan']['user_id'];
+        $address=$usersmodel->where("user_id=$user_id")->field('address,default_address,daijinquan')->find();
+        if($address['address']!=''){
+                $arr_address=  unserialize($address['address']);
+            }else{
+                $arr_address='';
+            }
+        $this->assign('arr_address',$arr_address);
+        $default=$address['default_address'];
+        $default_address=$arr_address[$default];
+        $this->assign('default_Address',$default_address);
+        $this->assign('default_eq',$default);
+        
+        $this->display();
         exit;
         
         
@@ -234,270 +84,48 @@ class GoodsController extends FontEndController {
         $this->assign('youxiao_daijinquan',$youxiao_daijinquan);
         $this->display();
     }
-    public function kaituan_buy() {
-        $user_id=$_SESSION['huiyuan']['user_id'];
-        $goods_id=$_GET['goods_id'];
-        if(!$goods_id){
-            $this->error("商品ID不存在");
-        }
-        //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
-        $ordermodel=D('Order');
-        $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
-        if($choujiang>0){
-            $this->error("您已经成功获取过该活动商品，无法再重复参加活动");
-        }
-        
-        $usersmodel=D('Users');
-        $address=$usersmodel->where("user_id=$user_id")->field('address,default_address,daijinquan')->find();
-        $arr_address=  unserialize($address['address']);
-        $default=$address['default_address'];
-        $default_address=$arr_address[$default];
-        $this->assign('default_Address',$default_address);
-        
-        
-        if($_GET['zx_shuxing']){
-            $zx_shuxing=$_GET['zx_shuxing'];
-            $this->assign('zx_shuxing',$zx_shuxing);
-        }
-        $goodsmodel=D('Goods');
-        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
-        $this->assign('goods',$goods);
-        //用户代金券
-        $arr_daijinquan=  unserialize($address['daijinquan']);
-        $time=  time();
-        if($arr_daijinquan){
-            foreach ($arr_daijinquan as $value) {
-                if($value['guoqi']>$time){
-                    $youxiao_daijinquan[]=$value;
-                }
-            }
-        }
-        $this->assign('youxiao_daijinquan',$youxiao_daijinquan);
-        $this->display();
-    }
-    public function cantuan_buy() {
-        $user_id=$_SESSION['huiyuan']['user_id'];
-        $tuan_no=$_GET['tuan_no'];
-        if(!$tuan_no){
-            $this->error("参团订单ID不存在");
-        }
-        //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
-        $ordermodel=D(Order);
-        $order=$ordermodel->where("order_id=$tuan_no and deleted=0 and status=1")->find();
-        if(!$order){
-            $this->redirect('Goods/pintuan_info',array('tuan_no'=>$tuan_no));
-            exit;
-        }
-        $goods_id=$order['goods_id'];
-        $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
-        if($choujiang>0){
-            $this->error("您已经购买成功过该活动商品，无法再重复参加活动");
-        }
-        
-        
-        if($_GET['zx_shuxing']){
-            $zx_shuxing=$_GET['zx_shuxing'];
-            $this->assign('zx_shuxing',$zx_shuxing);
-        }
-        
-        $usersmodel=D('Users');
-        $address=$usersmodel->where("user_id=$user_id")->field('address,default_address,daijinquan')->find();
-        $arr_address=  unserialize($address['address']);
-        $default=$address['default_address'];
-        $default_address=$arr_address[$default];
-        $this->assign('default_Address',$default_address);
-        
-        ;
-        
-        
-        $cunzai_order=$ordermodel->where("tuan_no=$tuan_no and user_id=$user_id and status='1' and deleted='0'")->field('order_id,pay_status')->find();
-        if($cunzai_order&&$cunzai_order['pay_status']==0){
-            $this->redirect('Goods/zhifu',array('order_id'=>$cunzai_order['order_id']));
-        }elseif($cunzai_order){
-            $this->error('您已经参加该团',$_SESSION['ref']);
-        }
-        
-        $goodsmodel=D('Goods');
-        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
-        $goods['tuan_price']=$order['price'];
-        $goods['ky_daijinquan']=0;
-        $goods['tuan_no']=$tuan_no;
-        $this->assign('goods',$goods);
-        //用户代金券
-        $arr_daijinquan=  unserialize($address['daijinquan']);
-        $time=  time();
-        if($arr_daijinquan){
-            foreach ($arr_daijinquan as $value) {
-                if($value['guoqi']>$time){
-                    $youxiao_daijinquan[]=$value;
-                }
-            }
-        }
-        $this->assign('youxiao_daijinquan',$youxiao_daijinquan);
-        $this->display();
-    }
-    public function pintuan_info(){
-        //首先必须获取关注状态
-        if (isset($_SESSION['huiyuan']) &&$_SESSION['huiyuan'] != '') {
-                $_SESSION['wei_huiyuan']=$_SESSION['huiyuan'];
-                }
-        if (!isset($_SESSION['wei_huiyuan']) || $_SESSION['wei_huiyuan'] == ''||!isset($_SESSION['guanzhu'])||$_SESSION['guanzhu']=='') {
-            header("location:". U("Login/wei_index"));
-            exit();
-        }
-        
-        
-        $this->assign('title','拼团详情');
-        $this->assign('is_ztcg','ddct');//组团状态
-        $tuan_no=$_GET['tuan_no'];
-        if(!$tuan_no){
-            $this->error("参团订单ID不存在");
-        }
-        $this->assign('tuan_no',$tuan_no);
-        $user_id=$_SESSION['wei_huiyuan']['user_id'];
-        
-         //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
-        $ordermodel=D(Order);
-        $order=$ordermodel->where("order_id=$tuan_no and deleted=0")->find();
-        if(!$order){
-            $this->error('该团不存在');
-        }
-        $goods_id=$order['goods_id'];
-        $goodsmodel=D('Goods');
-        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
-        if($goods['1yuangou']==1||$goods['choujiang']==1){
-            $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
-            //如果组团成功过该活动商品的团购，但是未获奖，也无法再参团 只能重新开团
-            $tiaojian['status']=array('between','2,5');
-            $is_ctcg=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and identity=0 and choujiang=0")->where($tiaojian)->count();
-        }else{
-            $choujiang=0;
-            $is_ctcg=0;
-        }
-        // 把抽奖assign 页面判断 如果大于0 将不再显示参团按钮 而是现实您已经成功购买过该活动商品，返回按钮
-        $this->assign('choujiang',$choujiang);
-        $this->assign('is_ctcg',$is_ctcg);
-
-        $cunzai_order=$ordermodel->where("tuan_no=$tuan_no and user_id=$user_id  and status='1' and deleted='0'")->field('order_id,pay_status')->find();
-        if($cunzai_order&&$cunzai_order['pay_status']==0){
-            $this->redirect('Goods/zhifu',array('order_id'=>$cunzai_order['order_id']),0);//已经参加该团 未付款
-            exit();
-        }elseif($cunzai_order){
-            $this->redirect('Goods/gmcg_wx',array('order_id'=>$cunzai_order['order_id']),0);//已经参加该团 并且支付成功
-            exit();
-        }
-        if($order['pay_status']!='1'){
-            $this->error('该团购因团长未付款，无法参团');
-        }
-        
-        
-        $goods['tuan_number']=$order['tuan_number'];//几人团以订单为准
-        $tuanzhang_id=$order['user_id'];
-        $usersmodel=D('Users');
-        $tuanzhang=$usersmodel->where("user_id=$tuanzhang_id")->field('head_url,user_name')->find();
-        $goods['tuanzhang_head_url']=$tuanzhang['head_url'];
-        $goods['tuanzhang_user_name']=$tuanzhang['user_name'];    
-        $goods['tuanzhang_created']=$ordermodel->where("order_id=$tuan_no")->getField("created");
-        $tuanyuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.user_id=t2.user_id and t1.tuan_no=$tuan_no and t1.identity=0 and t1.pay_status>0")->field('t2.head_url,t2.user_name,t1.created')->select();
-        if(!$tuanyuan[0]){
-            $tuanyuan_head_url=NULL;
-        }
-        $this->assign('tuanyuan',$tuanyuan);
-        $this->assign('tuanyuan_count',count($tuanyuan));
-        $goods['count']=$ordermodel->where("tuan_no=$tuan_no and pay_status>0")->count();
-        if($goods['tuan_number']<=$goods['count']){
-            //组团成功
-            $this->assign('is_ztcg','ztcg');
-        }else{
-            if($order['status']=='6'){
-                //组团失败
-                $this->assign('is_ztcg','ztsb'); 
-            }else{
-                $time=  time();
-                if($time-(int)$goods['tuanzhang_created']>=86400){
-                    //组团失败
-                    $this->assign('is_ztcg','ztsb');
-                }
-            }
-        }
-        $this->assign('goods', $goods);
-        
-
-        $arr_zx_shuxing=  unserialize($goods['goods_shuxing']);
-         
-        
-        
-        //查看页面是否有$_SESSION  guanzhu='weiguanzhu'  有的话，弹出关注框(给js用)
-        $this->assign('guanzhu',$_SESSION['guanzhu']);
-        //如果未关注，把$_SESSION['ref']  写入数据表
-          
-        if($_SESSION['guanzhu']=='weiguanzhu'){
-            $this->save_url(substr($_SESSION['ref'],0,strpos($_SESSION['ref'],'?')));
-        }
-        session('guanzhu',null); 
-        $this->display();
-    }
+    
     
     public function buy_success(){
+        $post=$_POST;
         $ordermodel = D('Order');
         // 手动进行令牌验证 
         if (!$ordermodel->autoCheckToken($_POST)){ 
             if($_COOKIE['order_id']){
                 $order_id=$_COOKIE['order_id'];//一个小时内重复提交订单，进入支付页面
-                $this->redirect('Goods/zhifu',"order_id=$order_id");
+                $this->redirect('Order/index');
             }else{
                 $this->error('不能重复提交订单',U('Order/index'));
             }
             exit();
         }
         $user_id = $_SESSION['huiyuan']['user_id'];
-        $goods_id = $_POST['goods_id'];
-        $price=$_POST['price'];
-        $ky_daijinquan=$_POST['ky_daijinquan'];
-        $dues=$_POST['dues'];
-        $order_address=$_POST['order_address'];
-        if($_POST['zx_shuxing']){
-            $zx_shuxing=$_POST['zx_shuxing'];
-        }else{
-            $zx_shuxing="";
-        }
-        $buy_number=$_POST['buy_number'];
-        $goodsmodel = D('Goods');
-        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
-
+        $arr_order_address=array(
+            'name'=>$post['address_name'],
+            'mobile'=>$post['address_mobile'],
+            'location'=>$post['address_location'],
+            'address'=>$post['address_address'],
+        );
+        $order_address=  serialize($arr_order_address);
+        $order_time=$post['order_time'];
+        $order_remark=mb_substr($post['remark'], 0, 120,'utf-8');
         $row = array(
             'user_id' => $user_id,
             "order_no" => $this->getUniqueOrderNo(),
-            'goods_id' => $goods_id,
-            'buy_number'=>$buy_number,
-            'zx_shuxing'=>$zx_shuxing,
-            'shop_id'=>$goods['shop_id'],
-            'shop_name' => $goods['shop_name'],
-            'goods_name' => $goods['goods_name'],
-            'order_fahuo_day'=>$goods['fahuo_day'],
+            'appointment_time'=>$order_time,
+            'remark'=>$order_remark,
             'status' => 1, //生成订单
             'pay_status' => 0, //支付状态为未支付
             'created' => time(),
             'updated' => time(),
-            'price' => $price,
-            'daijinquan'=>ky_daijinquan,
-            'dues'=>$dues,
             'order_address'=>$order_address,
-            'fenxiang_dues'=>$goods['fanxian']
         );
         $result = $ordermodel->add($row); //订单信息写入数据库order表
             if(!$result){
                 $this->error('订单提交失败，请重新提交', $_SERVER['HTTP_REFERER'], 3);
             }
-            //如果用了代金券 数据库中删除该代金券
-            if($ky_daijinquan!=0){
-                $shanchu_daijinquan=$this->use_daijinquan($user_id, $ky_daijinquan);
-                if(!$shanchu_daijinquan){
-                    $this->error('跟新代金券出错!');
-                }
-            }
             cookie('order_id',$result,36000);
-            $this->redirect('Goods/zhifu',array('order_id'=>$result));
+            $this->redirect('Order/index');
         
     }
 

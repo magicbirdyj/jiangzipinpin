@@ -15,7 +15,16 @@ class UsersmanageController extends FontEndController {
     }
     
 
-    
+    public function become_horseman() {
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        $horsemanmodel=D('Horseman');
+        $horseman=$horsemanmodel->where("open_id='$open_id'")->find();
+        if($horseman){
+            header("location:". $_SESSION['ref']);
+            exit();
+        }
+        $this->display();
+    }
     
     
 

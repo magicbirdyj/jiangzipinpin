@@ -10,7 +10,7 @@ class FontEndController extends Controller {
         parent::__construct();
         header("content-type:text/html;charset=utf-8"); 
         //权限判断 数组内必须首字母大写
-        $nologin = array("Zhuce",'Login');
+        $nologin = array("Zhuce",'Login','Horseman');
         if (!in_array(CONTROLLER_NAME, $nologin)) {
             if (!isset($_SESSION['admin_huiyuan']) || $_SESSION['admin_huiyuan'] == '') {
                 $_SESSION['ref']=CONTROLLER_NAME.'/'.ACTION_NAME;
@@ -26,12 +26,12 @@ class FontEndController extends Controller {
         $this->assign("title",$webinfor['web_name']);//给标题赋值
         $this->assign("keywords",$webinfor['key_word']);//给关键字赋值
         $this->assign("description",$webinfor['description']);//给描述赋值
-        $ismobile = ismobile();//检查客户端是否是手机
-        if ($ismobile) {
-            C("DEFAULT_THEME", "Mobile");
-            C("TMPL_CACHE_PREFIX", "mb");
+        if($_SERVER['HTTP_HOST']==='m.jiangzipinpin.com'||$_SERVER['HTTP_HOST']==='m.myguopin.com'){
+            C("DEFAULT_THEME", "Mobile");//默认模板主题名称
+            C("TMPL_CACHE_PREFIX", "mb");//模板缓存前缀标志
+            $this->assign("title",$webinfor['web_name']);//给标题赋值
+            $this->assign("ismobile", $ismobile);
         }
-        $this->assign("ismobile", $ismobile);
     }
     
     public function upload($path){

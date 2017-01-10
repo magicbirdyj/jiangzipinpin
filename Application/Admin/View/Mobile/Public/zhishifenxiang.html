@@ -1,0 +1,37 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/zhishifenxiang.css">
+
+
+
+
+
+
+<div id="zhishi_fenxiang">
+    <span class="zhishi_text text1">发送给小伙伴参团</span>
+    <if condition="$order['tuan_no'] eq $order['order_id']">
+    <span class="zhishi_text text2">您已开团成功，还差<span class="price_red"><{$goods['tuan_number']-$goods['count']}></span>人成团</span>
+    <else />
+    <span class="zhishi_text text2">您已参加此团，还差<span class="price_red"><{$goods['tuan_number']-$goods['count']}></span>人成团</span>
+    </if>
+    <span class="zhishi_text text3 price_red">成团后立得88元优惠券</span>
+    
+</div>
+
+<div id='fengxiang_success'>
+    <div class="fx_suc_title">
+        <div class="iconfont tb_success success">&#xe635;</div>
+        <div class="success">分享成功</div>
+    </div>
+    <div class="fx_suc_jxfx">
+        <div style="font-size: 14px;text-align: center;">继续分享才能大大提高成团率哦～</div>
+        <a href='javascript:void(0)' class="jixufenxiang" id='jixufenxiang'>继续分享</a>
+    </div>
+    <hr class="suc_hr" color="#ddd" width="0px;"/>
+    <div class="fx_suc_jxfx">
+        <div style="font-size: 14px;text-align: center;">好多人都在这发现了心仪好货～</div>
+        <a class="jixufenxiang qianwangshouye" href="/Home/Index">前往酱紫拼拼首页</a>
+    </div>
+</div>
+
+
+
+<script src="__PUBLIC_HOME__/Mobile/Js/zhishifenxiang.js" type="text/javascript"></script>

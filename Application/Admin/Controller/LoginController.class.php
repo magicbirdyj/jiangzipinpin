@@ -55,7 +55,7 @@ class LoginController extends FontEndController {
                 $dlm=$_POST['shoujihao'];
                 $usersmodel=D('Admin_user');
                 $row=array(
-                    'last_login'=>mktime(),
+                    'last_login'=>time(),
                     'last_ip'=>$_SERVER['REMOTE_ADDR']
                 );
                 $usersmodel->where("mobile_phone='{$dlm}'")->save($row);

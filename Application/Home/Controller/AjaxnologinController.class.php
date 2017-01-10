@@ -2,13 +2,56 @@
 namespace Home\Controller;
 use  Home\Controller;
 class AjaxnologinController extends FontEndController {
-
+    //发送信息
+    public function send_message(){
+        if($_POST['check']==='send_message'){
+            $shoujihao=$_POST['shoujihao'];
+            vendor('taobaoali.TopSdk');//引入第三方类库
+            date_default_timezone_set('Asia/Shanghai'); 
+            $appkey="23461151";
+            $secret="32eff9693ac48fcee386923dc45e3f8c";
+            $c = new \TopClient;
+            $c->appkey = $appkey;
+            $c->secretKey = $secret;
+            $c->format='json';
+            $req = new \AlibabaAliqinFcSmsNumSendRequest;
+            $req->setExtend("123456");
+            $req->setSmsType("normal");
+            $req->setSmsFreeSignName("衣干净");
+            $rand=rand(100000,999999);
+            $_SESSION['send_message']="$rand";
+            $req->setSmsParam("{\"name\":\"衣干净\",\"code\":\"$rand\"}");
+            $req->setRecNum($shoujihao);
+            $req->setSmsTemplateCode("SMS_34840303");
+            $resp = $c->execute($req);
+            $data=$resp->result->success;
+            $this->ajaxReturn($data);
+            exit();
+       }else if($_POST['check']=='yanzheng_message'){
+           $yanzhengma=$_POST['yanzhengma'];
+           if($yanzhengma===$_SESSION['send_message']){
+               $data=true;
+           }else{
+               $data=false;
+           }
+           $this->ajaxReturn($data);
+           exit();
+       }else{
+           exit();
+       }
+    }
+    
+    
    
 
     public function address_tiaozhuan() {
         $a=urlencode("http://m.jiangzipinpin.com/Home/Member/address_manage");
         $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx91953340c19f656e&redirect_uri=".$a."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
-        header("Location:{$url}"); 
+        if(is_weixin()){
+            header("Location:{$url}");
+        }else{
+            header("Location:{$_SESSION['ref']}");
+        }
         exit();
     }
     

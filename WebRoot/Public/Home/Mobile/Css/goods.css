@@ -1,0 +1,19 @@
+
+/*响应式 自适应导航*/
+.footnav{height:50px; border-top:1px solid #DBDBDB; background:#FFFFFF}
+.footnav nav{height:50px;display: -webkit-box;  display: -moz-box;display: -ms-flexbox;   display: -webkit-flex;display: flex; -webkit-justify-content:space-around;justify-content:space-around; text-align:center; }
+.footnav nav i{font-size:20px}
+.footnav nav .curr{color:#00d9f4}
+
+
+
+
+.m-business{background:#FFFFFF}
+.m-business a{float:left; width:33.333%; border-bottom:1px solid #DBDBDB; border-right:1px solid #DBDBDB; box-sizing:border-box;text-align:center}
+.m-business a:nth-child(3n){border-right-color:rgba(0,0,0,0); }
+.m-business img{width:70%}
+.m-business h1{color:#1A1A1A; font-weight:normal;margin-top: -10px;}
+.m-business p{color:#F02B2B;margin-bottom: 15px;}
+
+.m-door{height:50px; text-align:center; line-height:50px; color:#FFFFFF; background:#00dbf5; opacity:0.3}
+.m-door a{color:#FFFFFF;}
