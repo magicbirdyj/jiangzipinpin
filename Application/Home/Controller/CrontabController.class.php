@@ -173,7 +173,7 @@ class CrontabController extends FontEndController {
         $address=  unserialize($order['order_address']);
         foreach ($arr_horseman as $value) {
             $template_id="FAMVTSzVfg8IC9YKCfjAx8WD2ttaz8UvDF_B924inZ8";
-            $url=U('Admin/Horseman/order_view',array('order_id'=>$order['order_id']));
+            $url=U('Horseman/order_view',array('order_id'=>$order['order_id']));
             $arr_data=array(
                 'first'=>array('value'=>"又有新的预约时间到了，准备接单吧","color"=>"#666"),
                 'keyword1'=>array('value'=>date("Y年m月d日 h:i",$order['appointment_time']),"color"=>"#666"),
