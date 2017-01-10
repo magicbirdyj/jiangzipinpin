@@ -247,6 +247,7 @@ class FontEndController extends Controller {
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
         $info = curl_exec($ch);
+        var_dump($info);
         if (curl_errno($ch)) {
             echo 'Errno'.curl_error($ch);
         }
