@@ -51,7 +51,6 @@ class CrontabController extends FontEndController {
         foreach ($arr_order as $value) {
             //提前半小时，提醒骑手准备上门取件
             if($time>($value['appointment_time']-1800)){
-                $order=$value;
                 $remark="点我，马上接单";
                 $this->remind_horseman_tem($value,$remark);//通知消息
             }
