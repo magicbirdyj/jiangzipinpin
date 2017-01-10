@@ -35,9 +35,9 @@ function quick_time(){
         $('.quickly').css('display','none');
         $('.detail_hour').removeClass('baodan');
     }else{
-        $("#hours_"+hours).after($('.quickly'));
+        $(".detail_hour[date_hour="+hours+"]").after($('.quickly'));
         $('.quickly').css('display','block');
-        var n=$("#hours_"+hours).index()+1;
+        var n=$(".detail_hour[date_hour="+hours+"]").index()+1;
         $(".detail_hour:lt("+n+")").addClass('baodan');
     }
     
