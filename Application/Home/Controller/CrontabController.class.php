@@ -176,7 +176,7 @@ class CrontabController extends FontEndController {
             $url=U('Horseman/order_view',array('order_id'=>$order['order_id']));
             $arr_data=array(
                 'first'=>array('value'=>"又有新的预约时间到了，准备接单吧","color"=>"#666"),
-                'keyword1'=>array('value'=>date("Y年m月d日 h:i",$order['appointment_time']),"color"=>"#666"),
+                'keyword1'=>array('value'=>date("Y年m月d日 H:i",$order['appointment_time']),"color"=>"#666"),
                 'keyword2'=>array('value'=>$address['location'].' '.$address['address'],"color"=>"#666"),
                 'keyword3'=>array('value'=>$address['name'].' '.$address['mobile'],"color"=>"#666"),
                 'keyword4'=>array('value'=>'衣物',"color"=>"#666"),
@@ -200,7 +200,7 @@ class CrontabController extends FontEndController {
             'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
             'keyword2'=>array('value'=>"取消订单","color"=>"#666"),
             'keyword3'=>array('value'=>$order['dues'],"color"=>"#666"),
-            'keyword4'=>array('value'=>date("Y年m月d日 h:i:s",$order['created']),"color"=>"#666"),
+            'keyword4'=>array('value'=>date("Y年m月d日 H:i:s",$order['created']),"color"=>"#666"),
             'keyword5'=>array('value'=>$user['user_name'],"color"=>"#666"),
             'remark'=>array('value'=>$remark,"color"=>"#F90505")
         );

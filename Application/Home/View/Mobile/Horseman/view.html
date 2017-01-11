@@ -24,7 +24,12 @@
         <div class="view_info">
             <div>当前订单状态：<span class="red"><{:order_status($order['pay_status'],$order['status'],$order['order_id'])['status']}></span></div>
                 <div class="d1 hidden">
+                    <if  condition="$order['status'] eq '1' ">
                     <a id='order_taking'  href="javascript:void(0)" class="button_a_order">我要接单</a>
+                    </if>
+                    <if  condition="$order['status'] eq '2' ">
+                    <a id='order_taking'  href="javascript:void(0)" class="button_a_order">确认取件</a>
+                    </if>
                 </div>
         </div>
     </div>
@@ -33,7 +38,7 @@
     </div>
 
 <script type="text/javascript">
-    var order_id=<{$order['order_id']}>
+    var order_id="<{$order['order_id']}>";
     $('.button_a_order').css('background-color','#D00');
     $('.button_a_order').css('color','#fff');
     $('#order_taking').bind('click',function(){
@@ -49,7 +54,7 @@
                     data:data,
                     datatype:'json',
                     success:function(msg){
-                        if(msg){ 
+                        if(msg){
                             location='/Home/Horseman/order';                        
                         }else{
                             alert('接单失败'); 

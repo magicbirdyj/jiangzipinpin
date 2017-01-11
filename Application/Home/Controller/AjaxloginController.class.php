@@ -49,10 +49,10 @@ class AjaxloginController extends FontEndController {
             exit;
         }
         $horsemanmodel=D('Horseman');
-        $horseman_open_id=$_SESSION['huiyuan']['user_id'];
+        $horseman_open_id=$_SESSION['huiyuan']['open_id'];
         $horseman_id=$horsemanmodel->where("open_id='$horseman_open_id'")->getField('user_id');
         if(!$horseman_id){
-            $this->ajaxReturn(false);
+            $this->ajaxReturn(FALSE);
             exit;
         }
         $row=array(
@@ -262,7 +262,7 @@ class AjaxloginController extends FontEndController {
         $url=U('Horseman/order_view',array('order_id'=>$order['order_id']));
         $arr_data=array(
             'first'=>array('value'=>"您已接单成功，马上出发吧","color"=>"#666"),
-            'keyword1'=>array('value'=>date("Y年m月d日 h:i",$order['appointment_time']),"color"=>"#666"),
+            'keyword1'=>array('value'=>date("Y年m月d日 H:i",$order['appointment_time']),"color"=>"#666"),
             'keyword2'=>array('value'=>$address['location'].' '.$address['address'],"color"=>"#666"),
             'keyword3'=>array('value'=>$address['name'].' '.$address['mobile'],"color"=>"#666"),
             'keyword4'=>array('value'=>'衣物',"color"=>"#666"),
