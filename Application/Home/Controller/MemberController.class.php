@@ -3,8 +3,10 @@ namespace Home\Controller;
 use Home\Controller;
 class MemberController extends FontEndController {
     public function index(){
+        echo '还未开发，敬请期待';
+        exit;
         //是否有店铺
-        $open_id=$_SESSION['wei_huiyuan']['open_id'];
+        $open_id=$_SESSION['huiyuan']['open_id'];
         $shopsmodel=D('Shops');
         $is_shop=$shopsmodel->where("open_id='$open_id'")->count();
         $this->assign('is_shop',$is_shop);
