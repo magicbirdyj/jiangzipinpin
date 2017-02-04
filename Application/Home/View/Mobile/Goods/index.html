@@ -22,76 +22,14 @@
 </nav>
 
 <ul class="m-business clear">
-	<a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-1.png">
-        <h1>T恤/polo衫</h1>
-        <p><span>&yen; </span><span class="price">12</span></p>
-    </a>
-    <a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-2.png">
-        <h1>衬衫</h1>
-        <p><span>&yen; </span><span class="price">12</span></p>
-    </a>
-    <a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-3.png">
-        <h1>背心</h1>
-        <p><span>&yen; </span><span class="price">12</span></p>
-    </a>
-    <a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-4.png">
-        <h1>西服上衣</h1>
-        <p><span>&yen; </span><span class="price">25</span></p>
-    </a>
-    <a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-5.png">
-        <h1>夹克</h1>
-        <p><span>&yen; </span><span class="price">39</span></p>
-    </a>
-    <a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-6.png">
-        <h1>卫衣</h1>
-        <p><span>&yen; </span><span class="price">25</span></p>
-    </a>
-    <a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-7.png">
-        <h1>真丝上衣</h1>
-        <p><span>&yen; </span><span class="price">39</span></p>
-    </a>
-    <a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-8.png">
-        <h1>唐装</h1>
-        <p><span>&yen; </span><span class="price">39</span></p>
-    </a>
-    <a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-9.png">
-        <h1>pu类上衣</h1>
-        <p><span>&yen; </span><span class="price">39</span></p>
-    </a>
-    <a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-10.png">
-        <h1>毛背心(马甲)</h1>
-        <p><span>&yen; </span><span class="price">25</span></p>
-    </a>
-    <a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-11.png">
-        <h1>毛衣</h1>
-        <p><span>&yen; </span><span class="price">25</span></p>
-    </a>
-    <a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-12.png">
-        <h1>保暖衣</h1>
-        <p><span>&yen; </span><span class="price">25</span></p>
-    </a>
-    <a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-13.png">
-        <h1>单睡衣</h1>
-        <p><span>&yen; </span><span class="price">25</span></p>
-    </a>
-    <a href="#">
-    	<img src="__PUBLIC_HOME__/Mobile/Images/goods/clothes-14.png">
-        <h1>棉睡衣</h1>
-        <p><span>&yen; </span><span class="price">25</span></p>
-    </a>
+    <volist name="goods" id="vo">
+        <a href="#">
+            <img src="<{$vo['goods_img']}>">
+            <h1><{$vo['name']}></h1>
+            <p><span>&yen; </span><span class="price"><{$vo['price']}></span></p>
+        </a>
+    </volist>
+    
 
 
 </ul>

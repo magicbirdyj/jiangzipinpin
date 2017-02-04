@@ -295,22 +295,11 @@ class GoodsmanageController extends FontEndController {
     
     
      public function release_goods(){
-         
-         //获取店铺列表
-         $shopsmodel=D('Shops');
-         $arr_shop=$shopsmodel->getField('shop_name',true);
-         $this->assign('arr_shop',$arr_shop);
         //获取该会员基本信息
         $categorymodel=D('Category');
         $arr_sc=$categorymodel->where("pid<>0 and deleted=0")->getField('cat_name',true);
         $this->assign("arr_sc",$arr_sc);
         
-        //如果服务形式为个人，隐藏性别单选radio
-        if($data['server_form']==='0'){
-            $this->assign("css",'display: none;');
-        }else{
-            $this->assign("css",'');
-        }
         //获取服务类型表单提交值
         if(!empty($_POST['server_content'])){
         //if(!empty($_POST['sc_hidden'])&&$_POST['sc_hidden']==="server_content"){
@@ -321,137 +310,80 @@ class GoodsmanageController extends FontEndController {
             $server_content=$arr_sc[0];
             $this->assign('server_content',$server_content);
         }
-        $data_cat=$categorymodel->where("cat_name='$server_content'")->getField('shuxing');
-        $arr_shuxing=unserialize($data_cat);//得到反序列化属性数组
-        $this->assign("arr_shuxing",$arr_shuxing);//给模板里面的$arr_shuxing赋值
-        //var_dump($arr_shuxing);
+        
+
+
         $this->display('release_goods');
     }
     
     
     public function release_check(){
         $content=$_POST;//获取提交的内容
-        if($content['shop']==''){
-            $this->error('没选择店铺');
-        }
-        $shop_name=$content['shop'];
-        $shopmodel=D('Shops');
-        $shop_id=$shopmodel->where("shop_name='$shop_name'")->getField('shop_id');
-        if(empty($content['goods_img'])||empty($content['goods_zhanshitu'])){
-            $this->error('未选择展示图片或者商品图片');
+        
+       
+        if(empty($content['goods_zhanshitu'])){
+            $this->error('未选择展示图片');
             exit();
         }
-        if(strstr($content['goods_img'], "undefined")!==false||strstr($content['goods_zhanshitu'], "undefined")!==false){
-            $this->error('有未上传成功的展示图片或商品图片');
+        if(strstr($content['goods_zhanshitu'], "undefined")!==false){
+            $this->error('有未上传成功的展示图片');
             exit();
         }
         // 获取展示图片并thumb(250, 250)再移动
         $goods_zhanshitu=$content['goods_zhanshitu'];//获取
-        $goods_zhanshitu_thumb=$this->thumb($goods_zhanshitu, 250, 250);//thumb
+        
+        /*
+        $goods_zhanshitu_thumb=$this->thumb($goods_zhanshitu, 170, 170);//thumb
         //移动到正式文件夹
         $today=substr($goods_zhanshitu,26,8);//获取到文件夹名  如20150101
         creat_file(UPLOAD.'image/goods/'.$today);//创建文件夹（如果存在不会创建
         rename($goods_zhanshitu_thumb, str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods',$goods_zhanshitu));//移动文件
         $goods_zhanshitu='/'.str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods',$goods_zhanshitu);
-        
-        //获取商品图片URL,分割成数组
-        $arr_goods_img=explode('+img+',$content['goods_img']);
-        //获取第一张图片并thumb(435, 232)再移动
-            $today=substr($arr_goods_img[0],26,8);//获取到文件夹名  如20150101
-            creat_file(UPLOAD.'image/goods/'.$today);//创建文件夹（如果存在不会创建
-            creat_file(UPLOAD.'image/goods/'.$today.'/thumb');//创建文件夹（如果存在不会创建
-            $value=$this->thumb($arr_goods_img[0], 435, 232);//thumb
-            rename($value, str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods',$value));//移动文件
-        //获取每张图片并thumb(750, 400)再移动,直接改变数组的值
-        foreach ($arr_goods_img as &$value) {
-            $today=substr($value,26,8);//获取到文件夹名  如20150101
-            creat_file(UPLOAD.'image/goods/'.$today);//创建文件夹（如果存在不会创建
-            creat_file(UPLOAD.'image/goods/'.$today.'/thumb');//创建文件夹（如果存在不会创建
-            $img_url_thumb=$this->thumb($value, 750, 400);//thumb
-            rename($img_url_thumb, str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods',$value));//移动文件
-            $value=str_replace('Public/Uploads/image/temp','Public/Uploads/image/goods',$value);  
-            $value='/'.$value;
-        }
+        */
+        $today=substr($goods_zhanshitu,26,8);//获取到文件夹名  如20150101
+        creat_file(UPLOAD.'image/goods/'.$today);//创建文件夹（如果存在不会创建
+        rename($goods_zhanshitu, str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods',$goods_zhanshitu));//移动文件
+        $goods_zhanshitu='/'.str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods',$goods_zhanshitu);
 
-        
-        
-       //商品图片数组序列化
-       $str_goods_img=serialize($arr_goods_img);
 
         if($content['title']==''||is_feifa($content['title'])){
             $this->error('商品标题为空或者含有非法字符');
             exit();
         }
-        if($content['goods_jianjie']==''||is_feifa($content['title'])){
-            $this->error('商品简介为空或者含有非法字符');
+        if(is_feifa($content['title'])){
+            $this->error('商品简介含有非法字符');
             exit();
         }
-        if($content['units']==''||is_feifa($content['units'])){
-            $this->error('商品单位重量为空或者含有非法字符');
-            exit();
-        }
+      
         if(!is_price($content['price'])){
             $this->error('价格为空或者不合规范');
             exit();
         }
-        if(!is_price($content['yuan_price'])){
+        if(!is_price($content['cost_price'])){
             $this->error('原价为空或者不合规范');
             exit();
         }
-        if(!is_price($content['fanxian'])){
-            $this->error('乐享红包为空或者不合规范');
-            exit();
-        }
         
-        $user_id=$_SESSION['admin_huiyuan']['user_id'];//获取发布商品的管理员id号
-        $admin_usermodel=D(Admin_user);
-        $fabu_name=$admin_usermodel->where("user_id={$user_id}")->getField('user_name');
+        
+        //$user_id=$_SESSION['admin_huiyuan']['user_id'];//获取发布商品的管理员id号
+        //$admin_usermodel=D(Admin_user);
+        //$fabu_name=$admin_usermodel->where("user_id={$user_id}")->getField('user_name');
 
 
 
         
         
-        $result=get_file($content['content']);//得到编辑框里面的图片文件
-        //遍历图片文件，并把图片文件从临时文件夹保存进正式文件夹,并把文件名存储到$file_name数组中
-        foreach ($result[1] as $value){
-            $today=substr($value,26,8);//获取到文件夹名  如20150101
-            creat_file(UPLOAD.'image/goods/'.$today);//创建文件夹（如果存在不会创建）
-            rename($value, str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods', $value));//移动文件
-        }
-        $goods_desc=str_replace('Public/Uploads/image/temp', UPLOAD.'image/goods', $content['content']);
-        $goods_desc=  replace_a($goods_desc);//取消其它网站的超级链接
-        $goods_desc=str_replace('<embed','<iframe',$goods_desc);//把flash 的embed标签改成 iframe标签 
-        $goods_desc=str_replace('/>','></iframe>',$goods_desc);//把flash 的embed标签改成 iframe标签 
+        
         //得到商品分类id
         
         $server_content=$content['server_content'];
         $categorymodel=D('Category');
         $data_category=$categorymodel->where("cat_name='{$server_content}'")->find();
         $cat_id=$data_category['cat_id'];
-         $data_cat=unserialize($data_category['shuxing']);//得到分类的属性,并反序列化成数组
-         $data_cat_keys=array_keys($data_cat);//获取属性键名,保存到数组
-         //拼凑出属性数组 并序列化
-        foreach ($data_cat_keys as $key=>$value){
-             $arr_shuxing["$value"]=$content['shuxing'][$key];
-         }
-        $str_shuxing=serialize($arr_shuxing);
+
+         
         
-        //获取商品可选属性（如果有）
-        $zx_shuxing=$content['zx_shuxing'];
-        if($zx_shuxing){
-           $zx_shuxingzhi=$content['zx_shuxingzhi'];
-            $i=0;
-            $new_arr=array();
-            foreach ($zx_shuxingzhi as  $value) {
-            $key=$zx_shuxing[$i];
-            $new_arr[$key]=$value;
-            $i++;
-            }
-            $str_zx_shuxing=serialize($new_arr);
-            
-        }else{
-            $str_zx_shuxing='';
-        }
+        
         
         
         
@@ -460,22 +392,14 @@ class GoodsmanageController extends FontEndController {
         $row=array(
             'cat_id'=>$cat_id,
             'cat_name'=>$server_content,//分类名
-            'fabu_name'=>$fabu_name,     //发布者姓名
-            'shop_id'=>$shop_id,
-            'shop_name'=>$shop_name,//所属店铺
+            //'fabu_name'=>$fabu_name,     //发布者姓名
             'goods_name'=>$content['title'],//商品名称
             'goods_jianjie'=>$content['goods_jianjie'],//商品简介
-            'units'=>$content['units'],//商品单位重量
-            'yuan_price'=>$content['yuan_price'],//原价
-            'price'=>$content['price'],//单购价
-            'fanxian'=>$content['fanxian'],
-            'fahuo_day'=>$content['select_fahuo'],//发货天数
-            'shuxing'=>$str_shuxing,//属性
+            'price'=>$content['price'],//原价
+            'cost_price'=>$content['cost_price'],//单购价
+            'wash_hours'=>$content['select_fahuo'],//清洗时间
             'goods_img'=>$goods_zhanshitu,//商品图片
-            'goods_img_qita'=>$str_goods_img,//被序列化的其它图片
             'daijinquan'=>$content['radio_daijinquan'],
-            'goods_desc'=>$goods_desc,//商品描述
-            'goods_shuxing'=>$str_zx_shuxing,//商品可选属性
             'add_time'=>time(),             //添加时间
             'last_update'=>time()            //更新时间初始等于添加时间
         );
@@ -503,7 +427,7 @@ class GoodsmanageController extends FontEndController {
         $data=array();
         
         $data['src']=UPLOAD.$file_info[1][$name]['savepath'].$file_info[1][$name]['savename'];
-        $data['src_thumb']=$this->thumb($data['src'],$width,$height);//创建图片的缩略图
+        //$data['src_thumb']=$this->thumb($data['src'],$width,$height);//创建图片的缩略图
         $this->ajaxReturn($data,'JSON');
     }
         

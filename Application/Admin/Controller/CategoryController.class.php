@@ -4,7 +4,7 @@ use Admin\Controller;
 class CategoryController extends FontEndController {
     public function fenlei() {
         $categorymodel=D('Category');
-        $fenlei=$categorymodel->where("pid<>0 and deleted=0")->select();
+        $fenlei=$categorymodel->where("deleted=0")->select();
         foreach ($fenlei as $key => &$value) {
             $pid=$value['pid'];
             $pid_info=$categorymodel->where("cat_id=$pid")->field('cat_name,cat_id')->find();

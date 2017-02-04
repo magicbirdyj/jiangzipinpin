@@ -6,14 +6,40 @@
     min-height: 400px;
     margin: 0px auto;
     position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
+    margin-bottom: 60px;
+}
+
+.view_menu{
+    width: 100%;
+    background-color: #FFF;
+}
+.view_menu .view_li{
+    width: 50%;
+    text-align: center;
+    float: left;
+    font-size: 18px;
+    background-color: #FFF;
+    box-sizing: border-box;
+    padding: 10px 0px;
+}
+.view_menu .view_li:first-child i{
+    border-right: 1px solid #E5E5E5;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+.view_menu .active{
+    color: #00dbf5;
+    border-bottom: 2px solid #00dbf5;
 }
 
 
-
-
 .view_info{
-    padding: 10px 0px 0px 0px;
+    position: fixed;
+    bottom: 0px;
+    width:100%;
+    border: 1px solid #00dbf5;
 }
 .view_info div{
     margin-bottom: 10px;
@@ -22,9 +48,9 @@
 .view_info .d1{
     padding: 10px 10px;
     margin-bottom: 0px;
-    background-color: #F8F9FA;
+    background-color: #f2f2f2;
 }
-.view_info .red{
+.d2_content .red{
     color:#D00;
     font-weight: 700;
 }
@@ -32,10 +58,10 @@
 
 
 .d2{
-    border: 1px solid #E5E5E5;
     overflow: hidden;
     width: 100%;
     box-sizing: border-box;
+    position:relative;
 }
 .d2_title{
     width: 100%;
@@ -44,12 +70,13 @@
     font-size: 16px;
     font-weight: 700;
     color: #333;
-    background: #EEE;
 }
 .d2 .d2_content{
     padding: 8px  10px;
     width: 100%;
     box-sizing: border-box;
+    background-color: #FFF;
+    font-size: 16px;
 }
 .d2_content span{
     width: 100%;
@@ -57,26 +84,58 @@
     padding: 5px 0px;
     line-height: 31px;
     text-align: left;
-    margin-right: 10px;
     display: inline-block;
+}
+.d2_content i{
+    color:#999;
+    margin-right: 20px;
+}
+.d2_content .goods_span i{
+    margin-right: 0px;
+    display: block;
+    box-sizing: border-box;
+    float: left;
+    color: #555;
+}
+.goods_span .goods_name{
+    width: 70%;
+}
+.goods_span .goods_number{
+    width: 10%;
+}
+.goods_span .goods_price{
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+}
+.order_price i{
+    float: left;
+    display: block;
+    margin-right: 0px;
+    box-sizing: border-box;
 }
 .view_info .button_a_order{
     float: right;
 }
-
+.d2_content .order_price{
+    
+}
 
 /*物流轨迹css*/
 .wuliu_guiji_ul{
     padding:30px 20px;
-    font-size: 14px;
+    padding-top: 0px;
+    font-size: 16px;
+    background-color: #FFF;
+    font-weight: 600;
 }
 .wuliu_guiji_ul li{
    position: relative;
+   background-color: #FFF;
 }
 .wuliu_guiji_ul li .guiji{
-    border-left: 1px solid #ddd;
+    border-left: 1px solid #00dbf5;
     padding-left: 20px;
-    padding-bottom: 15px;
     margin-left: 3px;
 }
 .wuliu_guiji_ul .dian{
@@ -87,13 +146,44 @@
     border-radius: 4px;
     background-color: #ddd;
     left: 0px;
-    z-index: 1000;
+    z-index: 5;
+    top:28px;
+}
+.wuliu_guiji_ul li:last-child .dian{
+    border:1px solid #00dbf5;
+    background-color: #00dbf5;
+}
+.guiji .guiji_content{
+    padding: 20px 0px;
+    border-bottom: 1px solid #E5E5E5;
+}
+.guiji_content .note{
+    color: #999;
+    font-size: 14px;
+    font-weight: 300;
+    position: relative;
     top:5px;
 }
-.wuliu_guiji_ul li:first-child .dian{
-    border:1px solid #F90505;;
-    background-color: #F90505;
+.wuliu_guiji_ul li:last-child .guiji .guiji_content{
+    border-bottom: none;
 }
-.guiji div{
-    line-height: 24px;
+.guiji .guiji_content .guiji_time{
+    float: right;
+    color: #999;
+    font-weight: 400;
+}
+.hid{
+    position: absolute;
+    z-index: 15;
+    width: 5px;
+    height: 28px;
+    left:22px;
+    background-color: #FFF;
+}
+
+.hid_top{
+    top:0px;
+}
+.hid_bottom{
+    bottom:31px;
 }

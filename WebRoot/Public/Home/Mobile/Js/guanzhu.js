@@ -32,6 +32,5 @@ function tanchuguanzhu(){
             url:'/Home/Login/save_url_ajax',
             data:data,
             dataType:'json',
-            
         });
     } 

@@ -214,11 +214,11 @@ html,body{height:100%; position:relative}
 
 
 /* this is important to prevent the whole page to bounce 防止整个页面反弹*/
-body {overflow: hidden; }
+body {}
 #wrapper , #sort-wrapper{position:absolute;z-index:1;top:0;bottom:0;left:0;width:100%;overflow:hidden;}
 #scroller , #sort-scroller{position:absolute;z-index:1;-webkit-tap-highlight-color:transparent;width:100%;-webkit-transform:translateZ(0);-moz-transform:translateZ(0);-ms-transform:translateZ(0);-o-transform:translateZ(0);transform:translateZ(0);-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-size-adjust:none;-moz-text-size-adjust:none;-ms-text-size-adjust:none;-o-text-size-adjust:none;text-size-adjust:none; }
 .head-h{position:absolute;z-index:2;top:0;left:0;width:100%;}
-.foot-h{position:absolute;z-index:1;bottom:0;left:0;width:100%; background:#FFFFFF}
+.foot-h{position:fixed;z-index:1;bottom:0;left:0;width:100%; background:#FFFFFF}
 
 .big-shade{position:absolute; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:2; display:none}
 .big-shade-head{position:absolute; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:1; display:none}

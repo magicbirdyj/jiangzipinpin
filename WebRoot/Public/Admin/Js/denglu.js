@@ -28,9 +28,11 @@ function yzshouji_blur(){
 		
 	}
 
-
+$('#login').bind('click',function(){
+    login();
+});
         
-function login(obj){
+function login(){
 	if(yzshouji_blur()){
             obj=document.getElementById("info_login");
             var data={

@@ -6,6 +6,10 @@ use Home\Controller;
 
 class GoodsController extends FontEndController {
     public function index() {
+        $cat_id=$_GET['cat_id']?$_GET['cat_id']:6;
+        $goodsmodel=D('Goods');
+        $goods=$goodsmodel->where("cat_id='$cat_id' and is_delete=0")->select();
+        $this->assign('goods',$goods);
         $this->display();
     }
     public function buy() {
@@ -121,11 +125,24 @@ class GoodsController extends FontEndController {
             'order_address'=>$order_address,
         );
         $result = $ordermodel->add($row); //订单信息写入数据库order表
-            if(!$result){
-                $this->error('订单提交失败，请重新提交', $_SERVER['HTTP_REFERER'], 3);
-            }
-            cookie('order_id',$result,36000);
-            $this->redirect('Order/index');
+        if(!$result){
+            $this->error('订单提交失败，请重新提交', $_SERVER['HTTP_REFERER'], 3);
+        }
+        $usersmodel=D('Users');
+        $user_name=$usersmodel->where("user_id='$user_id'")->getField('user_name');
+        $order_actionmodel=D('Order_action');
+        $row_action=array(
+            'order_id'=>$result,
+            'action_type'=>'user',
+            'actionuser_id'=>$user_id,
+            'actionuser_name'=>$user_name,
+            'order_status'=>1,//生成订单
+            'pay_status' => 0, //支付状态为未支付
+            'log_time'=>time()
+        );
+        $order_actionmodel->add($row_action); //订单操作信息写入数据库order_action表
+        cookie('order_id',$result,36000);
+        $this->redirect('Order/index');
         
     }
 

@@ -46,10 +46,10 @@ font-size:14px;
 
 .title{
     margin-top: 20px;
-    background-color: #00FFDB;
     /*width: 905px;*/
 }
 .title div{
+    background-color: #00FFDB;
     float: left;
     font-size: 14px;
     color: #000;

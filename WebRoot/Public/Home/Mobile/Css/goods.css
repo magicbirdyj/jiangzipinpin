@@ -8,12 +8,278 @@
 
 
 
-.m-business{background:#FFFFFF}
-.m-business a{float:left; width:33.333%; border-bottom:1px solid #DBDBDB; border-right:1px solid #DBDBDB; box-sizing:border-box;text-align:center}
+.m-business{background:#FFFFFF;display: none;margin-bottom: 58px;}
+.m-business a{float:left; width:33.333%; border-bottom:1px solid #DBDBDB; border-right:1px solid #DBDBDB; box-sizing:border-box;text-align:center;position:relative;}
 .m-business a:nth-child(3n){border-right-color:rgba(0,0,0,0); }
 .m-business img{width:70%}
 .m-business h1{color:#1A1A1A; font-weight:normal;margin-top: -10px;}
 .m-business p{color:#F02B2B;margin-bottom: 15px;}
 
-.m-door{height:50px; text-align:center; line-height:50px; color:#FFFFFF; background:#00dbf5; opacity:0.3}
-.m-door a{color:#FFFFFF;}
+
+
+.page{
+    display: none;
+}
+
+.shopping-cart-wrap{
+    height:56px; 
+    text-align:center;
+    color:#FFFFFF; 
+    background:#00dbf5; 
+    position:fixed;
+    z-index: 15;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #e5eeff;
+}
+
+.m-business .buy-number {
+    position: absolute;
+    right: 15%;
+    top: 15%;
+    height: 16px;
+    width: 16px;
+    background: #F02B2B;
+    font-size: 10px;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 8px;
+    display: none;
+    line-height: 16px;
+}
+
+
+.x2 li.curr .active{
+    color: #00dbf5;
+    border-bottom: 2px solid #00dbf5;
+}
+.x2 li{
+    width: 20%;
+    font-size: 16px;
+}
+.x2 li a{
+    color: #1A1A1A;
+    display: block;
+}
+.x3{
+    height: 50px;
+    border-bottom: 1px solid #DBDBDB;
+    box-sizing: border-box;
+    width: 100%;
+}
+.x3 li{
+    width:20%;
+    box-sizing: border-box;
+    padding: 10px 7px;
+    height: 100%;
+    float: left;
+}
+.x3 li a{
+    box-sizing: border-box;
+    color: #1A1A1A;
+    display:block;
+    text-align: center;
+    height: 100%;
+    line-height: 27px;
+    max-width: 110px;
+    border: 1px solid #8C98a4;
+    border-radius: 15px;
+    margin: 0px auto;
+}
+
+.x3 li .active{
+    color: #ffffff;
+    background-color: #00dbf5;
+    border: 1px solid #00dbf5;
+}
+.u-flyer{display: block;width: 50px;height: 50px;border-radius: 50px;position: fixed;z-index: 11;} 
+.shopping-cart-wrap .shopping-cart {
+    height: 100%;
+    width: 70%;
+    background-color: #FFF;
+    float: left;
+    line-height: 56px;
+}
+.shopping-cart-wrap .order-btn {
+    height: 100%;
+    width: 30%;
+    font-size:20px;
+    color: #ffffff;
+    background: #00dbf5;
+    float: left;
+    line-height: 56px;
+}
+
+.shopping-cart-wrap img {
+    position: absolute;
+    left: 20px;
+    bottom: 9px;
+    width: 45px;
+}
+.shopping-cart-wrap .shopping-cart p {
+    font-size: 12px;
+    color: #F02B2B;
+    margin-left: 40px;
+}
+.shopping-cart-wrap .shopping-cart p .total-price {
+    font-size: 22px;
+    position:relative;
+    top: 2px;
+}
+.shopping-cart-wrap .buy-number-total {
+    position: absolute;
+    left: 54px;
+    top: 15px;
+    height: 16px;
+    width: 16px;
+    background: #F02B2B;
+    font-size: 10px;
+    color: #FFF;
+    text-align: center;
+    border-radius: 8px;
+    display: none;
+    z-index: 15;
+    line-height: 16px;
+    display: none;
+}
+
+
+/*购物车详单*/
+#price-forecast {
+    position: fixed;
+    width: 100%;
+    overflow: auto;
+    left: 0;
+    bottom: 57px;
+    z-index: 15;
+    display: none;
+}
+#price-forecast .head {
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    border-bottom: 1px solid #e9ebf3;
+    text-align: center;
+    background: #ffffff;
+    font-size: 16px;
+    padding: 5px 0px;
+}
+#price-forecast .head span:first-child, #price-forecast .head span:last-child {
+    font-size: 16px;
+    color: #00dbf5;
+    font-weight: bold;
+}
+#price-forecast .head span:first-child {
+    float: left;
+    margin-left: 15px;
+}
+#price-forecast .head span:nth-child(2) {
+    color: #1A1A1A;
+}
+#price-forecast .head span:last-child {
+    float: right;
+    margin-right: 15px;
+}
+#price-forecast .clothes-list {
+    background: #ffffff;
+    height: 330px;
+    overflow: auto;
+}
+#price-forecast .clothes-list li {
+    position: relative;
+    width: 100%;
+}
+#price-forecast .clothes-list .content {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    top: 0;
+    border-bottom: 1px solid #e9ebf3;
+    height: 75px;
+}
+#price-forecast .clothes-list .content .pic-box {
+    height: 53px;
+    width: 53px;
+    border: 1px solid #e9ebf3;
+    display: inline-block;
+    vertical-align: middle;
+}
+#price-forecast .clothes-list .content .pic-box img {
+    height: 53px;
+    width: 53px;
+}
+#price-forecast .clothes-list .content .clothes-name {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-size: 12px;
+    color: #1A1A1A;
+    display: inline-block;
+    padding-left: 20px;
+    vertical-align: middle;
+    width:28%;
+}
+#price-forecast .clothes-list .content span:nth-child(3) {
+    font-size: 10px;
+    color: #F02B2B;
+}
+#price-forecast .clothes-list .content span:nth-child(4) {
+    font-size: 14px;
+    color: #F02B2B;
+    padding-left: 5px;
+}
+#price-forecast .clothes-list .content .add-subtract {
+    display: inline-block;
+    position: relative;
+    height: 28px;
+    width: 78px;
+    float: right;
+    margin-top: 13.5px;
+}
+#price-forecast .clothes-list .content .add-subtract span:nth-child(1) {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #e9ebf3;
+    border-top-left-radius: 3.6px;
+    border-bottom-left-radius: 3.6px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#price-forecast .clothes-list .content .add-subtract span:nth-child(2) {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    border-top: 1px solid #e9ebf3;
+    border-bottom: 1px solid #e9ebf3;
+    position: absolute;
+    left: 26px;
+    top: 0;
+    text-align: center;
+    font-size: 8px;
+    color: #1A1A1A;
+}
+#price-forecast .clothes-list .content .add-subtract span:nth-child(3) {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #e9ebf3;
+    border-top-right-radius:3.6px;
+    border-bottom-right-radius: 3.6px;
+    position: absolute;
+    left: 52px;
+    top: 0;
+}
+#price-forecast .clothes-list .content .add-subtract img {
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}

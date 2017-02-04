@@ -14,8 +14,8 @@
 
 
 /*自定义*/
-body{
-    color: #555;
+div,ul,li,a,img,input,form,h1,h2,h3,h4,h5,h6,p{
+    overflow:hidden;
 }
 .relative{position: relative;}
 .hidden{overflow: hidden}
@@ -29,13 +29,6 @@ body{
 .clearBoth {
     clear: both;
 }
-.opacity{
-    filter:alpha(opacity=50);  
-      -moz-opacity:0.5;  
-      -khtml-opacity: 0.5;  
-      opacity: 0.5;  
-}
-
 
 /*底部css*/
 .footnav{height:50px; border-top:1px solid #DBDBDB; background:#FFFFFF}

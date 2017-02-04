@@ -74,7 +74,7 @@ function is_ip($str){
 //验证是否含有非法字符，含有非法返回true，否则返回false
 function is_feifa($str){
     //$reg='/[=!;:#%&\\\/\^\$\(\)\[\]\{\}\*\+\?\-\"\']+/i';
-    $reg='/[=;:#&\/\^\$\[\]\{\}\*\+\?\"\']+/i';
+    $reg='/[=;:#&\^\$\[\]\{\}\*\+\?\"\']+/i';
     $result=preg_match($reg,$str);
     if($result!==0) {
         return true;
@@ -171,32 +171,34 @@ function creat_file($dir){
 function order_status($pay_status,$status,$order_id){
     if($pay_status==='0'){
         if($status==='1'){
-            return array('status'=>'等待上门','status_button'=>'','status_url'=>"");
+            return array('status'=>'订单已提交','note'=>'请等待骑手取件','status_button'=>'','status_url'=>"");
         }else if($status==='2'){
-            return array('status'=>'骑手已出发','status_button'=>'','status_url'=>"");
+            return array('status'=>'骑手已出发','note'=>'骑手电话:','status_button'=>'','status_url'=>"");
         }else if($status==='3'){
-            return array('status'=>'已确认取货','status_button'=>'','status_url'=>"");
+            return array('status'=>'已确认取件','note'=>'','status_button'=>'','status_url'=>"");
         }else if($status==='4'){
-            return array('status'=>'清洗中','status_button'=>'','status_url'=>"");
+            return array('status'=>'清洗中','note'=>'','status_button'=>'','status_url'=>"");
         }else if($status==='5'or $status==='6'){
-            return array('status'=>'清洗完成','status_button'=>'','status_url'=>"");
+            return array('status'=>'清洗完成','note'=>'请等待配送','status_button'=>'','status_url'=>"");
         }else if($status==='7'){
-            return array('status'=>'订单完成','status_button'=>'去付款','status_url'=>"/Home/order/zhifu/order_id/{$order_id}.html"); 
+            return array('status'=>'订单完成','note'=>'请付款','status_button'=>'去付款','status_url'=>"/Home/order/zhifu/order_id/{$order_id}.html"); 
+        }else if($status==='9'){
+            return array('status'=>'订单已取消','note'=>'','status_button'=>'','status_url'=>""); 
         }
     }elseif($pay_status==='1'){
         if($status==='7'){
-            return array('status'=>'订单完成','status_button'=>'去评价','status_url'=>"/Home/Order/appraise/order_id/{$order_id}.html");
+            return array('status'=>'订单完成','note'=>'请评价','status_button'=>'去评价','status_url'=>"/Home/Order/appraise/order_id/{$order_id}.html");
         }else if($status==='8'){
-            return array('status'=>'订单完成','status_button'=>'','status_url'=>"");
+            return array('status'=>'订单完成','note'=>'','status_button'=>'','status_url'=>"");
         }
     }elseif($pay_status==='2'){
-        return array('status'=>'申请赔偿中','status_button'=>'售后查看','status_url'=>"/Home/Order/shouhou_status/order_id/{$order_id}.html");
+        return array('status'=>'申请赔偿中','note'=>'','status_button'=>'售后查看','status_url'=>"/Home/Order/shouhou_status/order_id/{$order_id}.html");
     }elseif($pay_status==='3'){
-        return array('status'=>'申请重洗中','status_button'=>'售后查看','status_url'=>"/Home/Order/shouhou_status/order_id/{$order_id}.html");
+        return array('status'=>'申请重洗中','note'=>'','status_button'=>'售后查看','status_url'=>"/Home/Order/shouhou_status/order_id/{$order_id}.html");
     }elseif($pay_status==='4'){
-        return array('status'=>'赔偿完成','status_button'=>'','status_url'=>"");
+        return array('status'=>'赔偿完成','note'=>'','status_button'=>'','status_url'=>"");
     }elseif($pay_status==='5'){
-        return array('status'=>'重洗完成','status_button'=>'删除订单','status_url'=>"javascript:void(0)");
+        return array('status'=>'重洗完成','note'=>'','status_button'=>'删除订单','status_url'=>"javascript:void(0)");
     }
 }
 

@@ -1,0 +1,37 @@
+/* CSS Document */
+
+/* 默认样式设置*/
+/* -moz :火狐私有属性；-weblit :chrome、safari私有属性* -ms IE私有属性*/
+.body{
+    width: 1200px;
+    margin: 10px auto;
+}
+.body .left{
+    width:243px;
+    float: left;
+    background-color: #F9F9F9;
+    border:1px solid #EEE;
+}
+.left .d1{
+    height: 45px;
+    font-size: 14px;
+    line-height: 42px;
+    color: #666;
+    font-weight: 800;
+    padding-left: 90px;
+}
+.left .left_ul{
+    border-bottom: 1px solid #EEE;
+}
+.left .left_ul li{
+    color: #666;
+    padding: 5px 0px 5px 100px;
+}
+
+.content .tixian_text{
+    padding: 3px 10px;
+    width: 60px;
+}
+.content .tixian_submit{
+    margin-left: 20px;
+}

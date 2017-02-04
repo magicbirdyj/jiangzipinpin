@@ -31,7 +31,7 @@ class AjaxloginController extends FontEndController {
         $row=array(
             'open_id'=>$open_id,
             'mobile_phone'=>$phone,
-            'name'=>$name,
+            'horseman_name'=>$name,
             'card_id'=>$card_id,
             'add_time'=>time(),
             'last_login'=>time(),
@@ -50,24 +50,72 @@ class AjaxloginController extends FontEndController {
         }
         $horsemanmodel=D('Horseman');
         $horseman_open_id=$_SESSION['huiyuan']['open_id'];
-        $horseman_id=$horsemanmodel->where("open_id='$horseman_open_id'")->getField('user_id');
-        if(!$horseman_id){
+        $horseman=$horsemanmodel->where("open_id='$horseman_open_id'")->find();
+        if(!$horseman['horseman_id']){
             $this->ajaxReturn(FALSE);
             exit;
         }
         $row=array(
             'status'=>2,
-            'horseman_id'=>$horseman_id
+            'horseman_id'=>$horseman['horseman_id']
         );
         $order_id=$post['order_id'];
         $ordermodel=D('Order');
         $result=$ordermodel->where("order_id='$order_id'")->save($row);
         if($result){
+            //订单操作表
+            $order_actionmodel=D('Order_action');
+            $row=array(
+                'order_id'=>$order_id,
+                'action_type'=>'horseman',
+                'actionuser_id'=>$horseman['horseman_id'],
+                'actionuser_name'=>$horseman['horseman_name'],
+                'order_status' => 2,
+                'pay_status'=>0,
+                'log_time'=>time()
+            );
+            $result = $order_actionmodel->add($row);
+        }
+        if($result){
             //发送模板消息给该骑手，接单成功
-            $remark='点我，查看订单详情';
+            $remark='点我，确认取件';
             $this->taking_success_tem($order_id,$horseman_open_id,$remark);
         }
         $this->ajaxReturn($result);
+    }
+    
+    //骑手接单ajax
+    public function deliver_shop() {
+        $post=$_POST;
+        if($post['check']!='wy_deliver'){
+            $this->ajaxReturn(false);
+            exit;
+        }
+        $horsemanmodel=D('Horseman');
+        $horseman_open_id=$_SESSION['huiyuan']['open_id'];
+        $horseman=$horsemanmodel->where("open_id='$horseman_open_id'")->find();
+        $order_id=$post['order_id'];
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='$order_id'")->find();
+        if($horseman['horseman_id']!=$order['horseman_id']){
+            $this->ajaxReturn(FALSE);
+            exit;
+        }
+        //订单加入商店id
+        $shop_id='18';
+        $row=array(
+            'shop_id'=>$shop_id
+        );
+        $result=$ordermodel->where("order_id='$order_id'")->save('$row');
+        if($result){
+            $shopsmodel=D('Shops');
+            $open_id=$shopsmodel->where("shop_id='$shop_id'")->getField('open_id');
+            //发送模板消息给工厂，确认送达
+            $remark='点我，确认订单收取';
+            $this->taking_success_tem($order_id,$open_id,$remark);
+        
+            $this->ajaxReturn($result);
+        }
     }
     
      //保存地址 ajax用
@@ -154,58 +202,66 @@ class AjaxloginController extends FontEndController {
     }
     
     
-    
-    
-    
-    
-    
-    
-    public function goods_xiajia() {
+    //骑手确认商品
+    public function confirm_goods() {
         $post=$_POST;
-        if($post['check']!='xiajia'){
+        $order_id=$post['order_id'];
+        $ordermodel=D('Order');
+        $horseman_id=$ordermodel->where("order_id='$order_id'")->getField('horseman_id');
+        $horsemanmodel=D('Horseman');
+        $horseman=$horsemanmodel->where("horseman_id='$horseman_id'")->find();
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        if($horseman['open_id']!=$open_id){
             exit;
         }
-        $goods_id=$post['goods_id'];
+        $order_goodsmodel=D('Order_goods');
         $goodsmodel=D('Goods');
-        $open_id=$_SESSION['wei_huiyuan']['open_id'];
-        $shopsmodel=D('Shops');
-        $huiyuan_shop_id=$shopsmodel->where("open_id='$open_id'")->getField('shop_id');
-        $shop_id=$goodsmodel->where("goods_id=$goods_id")->getField('shop_id');
-        if($huiyuan_shop_id!=$shop_id){
-            $result=false;
-            $this->ajaxReturn($result);
-            exit();
-        }
-        $row=array(
-                'is_delete' => 1
+        $total_price=0;
+        foreach ($post as $key => $value) {
+            if($key=='order_id'){
+                continue;
+            }
+            $goods_id=$value['goods_id'];
+            $goods=$goodsmodel->where("goods_id=$goods_id")->find();
+            $row=array(
+                'order_id'=>$order_id,
+                'goods_id'=>$value['goods_id'],
+                'goods_name'=>$goods['goods_name'],
+                'goods_number'=>$value['number'],
+                'price'=>$goods['price'],
+                'cost_price'=>$goods['cost_price']
             );
-        $result = $goodsmodel->where("goods_id=$goods_id")->save($row);
+            $total_price+=$goods['price']*$value['number'];
+            $result=$order_goodsmodel->add($row);
+        }
+        if($result){
+            $row=array(
+                'status' => 3,
+                'price'=>$total_price
+            );
+            $result = $ordermodel->where("order_id=$order_id")->save($row);
+        }
+        if($result){
+            $row=array(
+                'order_id'=>$order_id,
+                'action_type'=>'horseman',
+                'actionuser_id'=>$horseman_id,
+                'actionuser_name'=>$horseman['horseman_name'],
+                'order_status' => 3,
+                'pay_status'=>0,
+                'log_time'=>time()
+            );
+            $order_actionmodel=D('Order_action');
+            $result = $order_actionmodel->add($row);
+        }
         $this->ajaxReturn($result);
     }
     
     
-    public function goods_shangjia() {
-        $post=$_POST;
-        if($post['check']!='shangjia'){
-            exit;
-        }
-        $goods_id=$post['goods_id'];
-        $goodsmodel=D('Goods');
-        $open_id=$_SESSION['wei_huiyuan']['open_id'];
-        $shopsmodel=D('Shops');
-        $huiyuan_shop_id=$shopsmodel->where("open_id='$open_id'")->getField('shop_id');
-        $shop_id=$goodsmodel->where("goods_id=$goods_id")->getField('shop_id');
-        if($huiyuan_shop_id!=$shop_id){
-            $result=false;
-            $this->ajaxReturn($result);
-            exit();
-        }
-        $row=array(
-                'is_delete' => 0
-            );
-        $result = $goodsmodel->where("goods_id=$goods_id")->save($row);
-        $this->ajaxReturn($result);
-    }
+    
+    
+    
+    
     
     public function news_xiajia() {
         $post=$_POST;
