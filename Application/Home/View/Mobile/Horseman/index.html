@@ -7,44 +7,44 @@
 <div id="wrapper">
 <div id="scroller">
 <!--iscroll 滑动 开始-->
-    <div class="fanhui padding"><a href="<{:U('Member/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>我的订单</div>
+    <div class="fanhui padding"><a href="<{:U('Member/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>骑士订单</div>
     <div class="dingdan">
         <div class='dingdan_4'>
             <ul>
                 <li>
-                    <a href="<{:U('Order/index')}>">
-                    <div class='dingdan_fenkai_tb_div'>
-                        <span class="iconfont tb_dingdan_li">&#xe606;</span>
-                        <span style='margin-left: 2px;' class="right_up_tb"><{$status_count['no_complete']}></span>
-                    </div>
-                    <div><span>未完成</span></div>
-                    </a>
-                </li>
-                <li>
-                    <a href="<{:U('Order/index?status=no_pay')}>">
-                    <div class='dingdan_fenkai_tb_div'>
-                        <span class="iconfont tb_dingdan_li" style='font-size: 28px;'>&#xe624;</span>
-                        <span style='margin-left: 2px;' class="right_up_tb"><{$status_count['no_pay']}></span>
-                    </div>
-                    <div><span>待付款</span></div>
-                    </a>
-                </li>
-                <li>
-                    <a href="<{:U('Order/index?status=no_appraise')}>">
-                    <div class='dingdan_fenkai_tb_div'>
-                        <span class="iconfont tb_dingdan_li">&#xe626;</span>
-                        <span style='margin-left: 2px;' class="right_up_tb"><{$status_count['no_appraise']}></span>
-                    </div>
-                    <div><span>待评价</span></div>
-                    </a>
-                </li>
-                <li>
-                    <a href="<{:U('Order/index?status=complete')}>">
+                    <a href="<{:U('Horseman/index')}>">
                     <div class='dingdan_fenkai_tb_div'>
                         <span class="iconfont tb_dingdan_li" style='font-size: 28px;'>&#xe64d;</span>
-                        <span style='margin-left: 2px;' class="right_up_tb"><{$status_count['complete']}></span>
+                        <span style='margin-left: 2px;' class="right_up_tb"><{$status_count['no_taking']}></span>
                     </div>
-                    <div><span>完成</span></div>
+                    <div><span>待抢单</span></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="<{:U('Horseman/index?status=quyi')}>">
+                    <div class='dingdan_fenkai_tb_div'>
+                        <span class="iconfont tb_dingdan_li">&#xe606;</span>
+                        <span style='margin-left: 2px;' class="right_up_tb"><{$status_count['quyi']}></span>
+                    </div>
+                    <div><span>取衣中</span></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="<{:U('Horseman/index?status=songyi')}>">
+                    <div class='dingdan_fenkai_tb_div'>
+                        <span class="iconfont tb_dingdan_li" style='font-size: 28px;'>&#xe624;</span>
+                        <span style='margin-left: 2px;' class="right_up_tb"><{$status_count['songyi']}></span>
+                    </div>
+                    <div><span>送衣中</span></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="<{:U('Horseman/index?status=finished')}>">
+                    <div class='dingdan_fenkai_tb_div'>
+                        <span class="iconfont tb_dingdan_li">&#xe626;</span>
+                        <span style='margin-left: 2px;' class="right_up_tb"><{$status_count['finished']}></span>
+                    </div>
+                    <div><span>已完成</span></div>
                     </a>
                 </li>
             </ul>
@@ -60,7 +60,7 @@
         
         <volist name="list" id="vo">
             <li class="list">
-            <a  href="<{:U('Order/view',array('order_id'=>$vo['order_id']))}>"><!--内容遍历-->
+            <a  href="<{:U('Horseman/order_view',array('order_id'=>$vo['order_id']))}>"><!--内容遍历-->
                 <div class="order_row hidden">
                     <div class="category_block">
 		            <div class="category_shoes">
@@ -90,18 +90,20 @@
             </a>
                 <i class="borderD"></i>
             <div class='action hidden'>
-                    <if  condition="(($vo['pay_status'] eq '0') and ($vo['status'] eq '8')) or(($vo['pay_status'] eq '1') and ($vo['status'] lt '8')) or(($vo['pay_status'] eq '0') and ($vo['status'] eq '5')) ">
-                        <a  class="button_a_order"  href="<{:order_status($vo['pay_status'],$vo['status'],$vo['order_id'])['status_url']}>"><{:order_status($vo['pay_status'],$vo['status'],$vo['order_id'],$vo['tuan_no'])['status_button']}></a>
+                    <if  condition="$order['status'] eq '1' ">
+                    <a id='order_taking'  href="javascript:void(0)" class="button_a_order">接单取衣</a>
                     </if>
-                    
-                    <if  condition="($vo['status'] eq '1') ">
-                        <a  class="button_a_order quxiao_order" name="<{$vo['order_id']}>">取消订单</a>
+                    <if  condition="$order['status'] eq '2' ">
+                        <a id='confirm_goods'  href="<{:U('Horseman/confirm_goods',array('order_id'=>$order['order_id']))}>" class="button_a_order">确认取件</a>
                     </if>
-                    <if  condition="(($vo['pay_status'] eq '1') and ($vo['status'] egt '8') and ($vo['status'] elt '9'))">
-                        <a id='shouhou' class="button_a_order" name="<{$vo['order_id']}>" href="<{:U('Order/shouhou',array('order_id'=>$vo['order_id']))}>">申请售后</a>
+                    <if  condition="$order['status'] eq '3' and $order['shop_id'] eq '0' ">
+                        <a id='deliver_shop'  href="javascript:void(0)" class="button_a_order">送达工厂</a>
                     </if>
-                    <if  condition="($vo['pay_status'] eq '1') and ($vo['fenxiang'] eq '0')">
-                        <a  class="button_a_order"  href="<{:U('Goods/fenxiang',array('order_id'=>$vo['order_id']))}>">分享返现</a>
+                    <if  condition="$order['status'] eq '6' ">
+                    <a id='order_taking_deliver'  href="javascript:void(0)" class="button_a_order">接单送衣</a>
+                    </if>
+                    <if  condition="$order['status'] eq '7' ">
+                        <a id='order_confirm_deliver'  href="<{:U('Horseman/order_deliver',array('order_id'=>$order['order_id']))}>" class="button_a_order">确认送达</a>
                     </if>
             </div>
             </li>
@@ -130,18 +132,18 @@
     $('.button_a_order:contains("去付款")').css('background-color','#D00');
     $('.button_a_order:contains("去付款")').css('color','#fff');
     var canshu="<{$canshu}>";
-    if(canshu==='complete'){
-        $('.dingdan_4>ul>li:eq(3)').css('background-color','#f90');
-        $('.dingdan_4>ul>li:eq(3)>a>div').css('background-color','#f90');
-        $('.dingdan_4>ul>li:eq(3) *').css('color','#fff');
-    }else if(canshu==='no_pay'){
+    if(canshu==='quyi'){
         $('.dingdan_4>ul>li:eq(1)').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(1)>a>div').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(1) *').css('color','#fff');
-    }else if(canshu==='no_appraise'){
+    }else if(canshu==='songyi'){
         $('.dingdan_4>ul>li:eq(2)').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(2)>a>div').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(2) *').css('color','#fff');
+    }else if(canshu==='finished'){
+        $('.dingdan_4>ul>li:eq(3)').css('background-color','#f90');
+        $('.dingdan_4>ul>li:eq(3)>a>div').css('background-color','#f90');
+        $('.dingdan_4>ul>li:eq(3) *').css('color','#fff');
     }else{
         $('.dingdan_4>ul>li:eq(0)').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(0)>a>div').css('background-color','#f90');
@@ -150,52 +152,68 @@
     
     
     
-    $('.quxiao_order').bind('click',function(){
-        if(confirm("确定要取消订单吗？")){
-            var url='/Home/Ajaxlogin/quxiao_order.html';
+    $('#order_taking').bind('click',function(){
+            var url='/Home/Ajaxlogin/order_taking.html';
             var data={
-                    order_id:$(this).attr('name'),
-                    check:"quxiao_order"
+                    order_id:order_id,
+                    check:"wy_taking"
                 }
             $.ajax({
                     type:'post',
-                    async : false,
+                    async : true,
                     url:url,
                     data:data,
                     datatype:'json',
                     success:function(msg){
-                        if(msg){ 
-                            location=location;                        
+                        if(msg){
+                            location='/Home/Horseman/order_view/order_id/'+order_id;                      
                         }else{
-                            alert('取消订单失败'); 
+                            alert('接单失败'); 
                         }
                     }
                 });    
-        }
     });
-    $('.button_a_order:contains("删除订单")').bind('click',function(event){
-        event.preventDefault();
-        if(confirm("确定要删除订单吗？")){
-            var url='/Home/Order/delete_order.html';
+    $('#order_taking_deliver').bind('click',function(){
+            var url='/Home/Ajaxlogin/order_taking_deliver.html';
             var data={
-                    order_id:$(this).attr('href'),
-                    check:"delete_order"
-                };
+                    order_id:order_id,
+                    check:"wy_taking"
+                }
             $.ajax({
                     type:'post',
-                    async : false,
+                    async : true,
                     url:url,
                     data:data,
                     datatype:'json',
                     success:function(msg){
-                        if(msg){ 
-                            location=location;                        
+                        if(msg){
+                            location='/Home/Horseman/order_view/order_id/'+order_id;                        
                         }else{
-                            alert('删除订单失败'); 
+                            alert('确认送达失败'); 
                         }
                     }
-                }); 
-        }
+                });    
+    });
+    $('#deliver_shop').bind('click',function(){
+            var url='/Home/Ajaxlogin/deliver_shop.html';
+            var data={
+                    order_id:order_id,
+                    check:"wy_deliver"
+                }
+            $.ajax({
+                    type:'post',
+                    async : true,
+                    url:url,
+                    data:data,
+                    datatype:'json',
+                    success:function(msg){
+                        if(msg){
+                            location='/Home/Horseman/order_view/order_id/'+order_id;                     
+                        }else{
+                            alert('送达工厂失败'); 
+                        }
+                    }
+                });    
     });
     
     

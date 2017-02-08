@@ -4,7 +4,33 @@ use Home\Controller;
 class HorsemanController extends FontEndController {
    
     public function index(){
-        $this->display('order');
+        $status=$_GET['status'];
+        $this->assign('canshu',$_GET['status']);
+        $ordermodel=D('Order');
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        $horsemanmodel=D('Horseman');
+        $horseman_id=$horsemanmodel->where("open_id='{$open_id}'")->getField('horseman_id');
+        $status_count['no_taking']=$ordermodel->where("status=1 and deleted=0")->count();//获取待抢单条数
+        $status_count['quyi']=$ordermodel->where("horseman_id='{$horseman_id}' and status>=2 and status<4 and deleted=0")->count();//获取正在取衣条数
+        $status_count['songyi']=$ordermodel->where("deliver_horseman_id='{$horseman_id}' and status=7  and deleted=0")->count();//获取已完成条数
+        $status_count['finished']=$ordermodel->where("(horseman_id='{$horseman_id}' and status>3 and deleted=0) or (deliver_horseman_id='{$horseman_id}' and status>7 and deleted=0)")->count();//获取待付款条数
+        $this->assign(status_count,$status_count);
+        $time=  time();
+        $this->assign('time',$time);
+        if(empty($status)){
+            $list=$ordermodel->where("status=1 and deleted=0")->select();
+            $this->assign('list',$list);
+        }else if($status==='quyi'){
+             $list=$ordermodel->where("horseman_id='{$horseman_id}' and status>=2 and status<4 and deleted=0")->select();
+             $this->assign('list',$list);
+         }else if($status==='songyi'){
+             $list=$ordermodel->where("deliver_horseman_id='{$horseman_id}' and status=7  and deleted=0")->select();
+             $this->assign('list',$list);
+         }else if($status==='finished'){
+             $list=$ordermodel->where("(horseman_id='{$horseman_id}' and status>3 and deleted=0) or (deliver_horseman_id='{$horseman_id}' and status>7 and deleted=0)")->select();
+             $this->assign('list',$list);
+         }
+         $this->display();
     }
     public function become_horseman() {
         $open_id=$_SESSION['huiyuan']['open_id'];
@@ -16,9 +42,7 @@ class HorsemanController extends FontEndController {
         }
         $this->display();
     }
-    public function order() {
-        $this->display('order');
-    }
+    
     public function order_view() {
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');

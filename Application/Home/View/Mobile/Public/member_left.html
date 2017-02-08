@@ -1,19 +1,20 @@
 
         <div class="left">
             <if condition="$is_shop neq 0">
-                <div class="d1">店铺管理</div>
-                <ul class="left_ul">
-                     <li><a href="<{:U('Shop/editor')}>">店铺编辑<div style="float:right"><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
-                    <li><a href="<{:U('Shop/release_goods')}>">发布商品<div style="float:right"><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
-                    <li><a href="<{:U('Shop/goods')}>">店铺商品<div style="float:right"><span><{$goods_count}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
-                </ul>
                 <div class="d1">店铺订单</div>
                 <ul class="left_ul">
                     <li><a href="<{:U('Shop/order')}>">全部<div style="float:right"><span><{$status_count['shop_all']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
-                    <li><a href="<{:U('Shop/order?status=daifahuo')}>">待发货<div style="float:right"><span><{$status_count['shop_daifahuo']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                    <li><a href="<{:U('Shop/order?status=shop_finishing')}>">清洗中<div style="float:right"><span><{$status_count['shop_finishing']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
                     <li><a href="<{:U('Shop/order?status=shouhou')}>">售后申请<div style="float:right"><span><{$status_count['shop_shouhou']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
                 </ul>
             </if>
+            <div class="d1">我的订单</div>
+                <ul class="left_ul">
+                    <li><a href="<{:U('Order/index')}>">未完成<div style="float:right"><span><{$status_count['no_complete']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>                 
+                    <li><a href="<{:U('Order/index?status=no_pay')}>">待付款<div style="float:right"><span><{$status_count['no_pay']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>                   
+                    <li><a href="<{:U('Order/index?status=no_appraise')}>">待评价<div style="float:right"><span><{$status_count['no_appraise']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                    <li><a href="<{:U('Order/index?status=complete')}>">完成<div style="float:right"><span><{$status_count['complete']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                </ul>
             <if condition="$is_admin eq 1">
                 <div class="d1">文章管理</div>
                  <ul class="left_ul">

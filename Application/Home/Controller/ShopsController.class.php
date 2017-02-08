@@ -4,12 +4,35 @@ use Home\Controller;
 class ShopsController extends FontEndController {
    
     public function index(){
-        $this->display('order');
+        $status=$_GET['status'];
+        $this->assign('canshu',$_GET['status']);
+        $ordermodel=D('Order');
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        $shopsmodel=D('Shops');
+        $shop_id=$shopsmodel->where("open_id='{$open_id}'")->getField('shop_id');
+        $status_count['all']=$ordermodel->where("shop_id='{$shop_id}' and deleted=0")->count();//获取所有条数
+        $status_count['daishouqu']=$ordermodel->where("shop_id='{$shop_id}' and status=3 and deleted=0")->count();//获取待收取条数
+        $status_count['finishing']=$ordermodel->where("shop_id='{$shop_id}' and status=4  and deleted=0")->count();//获取清洗中条数
+        $status_count['clear_finished']=$ordermodel->where("shop_id='{$shop_id}' and status>=5  and deleted=0")->count();//获取清洗完成条数
+        $this->assign(status_count,$status_count);
+        $time=  time();
+        $this->assign('time',$time);
+        if(empty($status)){
+            $list=$ordermodel->where("shop_id='{$shop_id}' and deleted=0")->select();
+            $this->assign('list',$list);
+        }else if($status==='daishouqu'){
+             $list=$ordermodel->where("shop_id='{$shop_id}' and status=3 and deleted=0")->select();
+             $this->assign('list',$list);
+         }else if($status==='finishing'){
+             $list=$ordermodel->where("shop_id='{$shop_id}' and status=4  and deleted=0")->select();
+             $this->assign('list',$list);
+         }else if($status==='clear_finished'){
+             $list=$ordermodel->where("shop_id='{$shop_id}' and status>=5  and deleted=0")->select();
+             $this->assign('list',$list);
+         }
+         $this->display();
     }
 
-    public function order() {
-        $this->display('order');
-    }
     public function order_view() {
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');

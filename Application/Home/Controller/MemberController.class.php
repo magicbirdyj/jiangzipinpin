@@ -3,18 +3,15 @@ namespace Home\Controller;
 use Home\Controller;
 class MemberController extends FontEndController {
     public function index(){
-        echo '还未开发，敬请期待';
-        exit;
         //是否有店铺
         $open_id=$_SESSION['huiyuan']['open_id'];
         $shopsmodel=D('Shops');
         $is_shop=$shopsmodel->where("open_id='$open_id'")->count();
         $this->assign('is_shop',$is_shop);
-        $arr_admin=array('oSI43woDNwqw6b_jBLpM2wPjFn_M','oSI43wkMT4fkU_DXrU7XfdE9krA0','oSI43wqsiGkFK2YaGsC34fgwHEL0');
-        $this->assign('is_admin',in_array($open_id, $arr_admin)==TRUE?1:0);
         
-        session('guanzhu',null); 
-        $user_id=$_SESSION['wei_huiyuan']['user_id'];//获取会员id号
+        
+
+        $user_id=$_SESSION['huiyuan']['user_id'];//获取会员id号
         $usersmodel=D('Users');
         if(!empty($user_id)||$user_id===0){
         $data=$usersmodel->where("user_id={$user_id}")->find();
@@ -33,10 +30,10 @@ class MemberController extends FontEndController {
         
         $ordermodel=D('Order');
         $status_count['all']=$ordermodel->where("user_id={$user_id} and deleted=0")->count();//获取全部订单条数
-        $status_count['no_pay']=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status<6")->count();//获取待付款条数
-        $status_count['daifahuo']=$ordermodel->where("user_id={$user_id} and pay_status=1 and (status=2 or (tuan_no=0 and status=1)) and deleted=0")->count();//获取待发货条数
-        $status_count['daishouhuo']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=3 and deleted=0")->count();//获取待收货条数
-        $status_count['daipingjia']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=4 and deleted=0")->count();//获取待评价条数
+        $status_count['no_complete']=$ordermodel->where("user_id={$user_id} and pay_status=0 and status<9 and deleted=0")->count();//获取未完成条数
+        $status_count['complete']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status>7 and deleted=0")->count();//获取已完成条数
+        $status_count['no_pay']=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status=8")->count();//获取待付款条数
+        $status_count['no_appraise']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=8 and deleted=0")->count();//获取待评价条数
         $status_count['shouhou']=$ordermodel->where("user_id={$user_id} and pay_status>1 and deleted=0")->count();//获取售后条数
         
         
@@ -44,25 +41,13 @@ class MemberController extends FontEndController {
         if($is_shop){
             $shop_id=$shopsmodel->where("open_id='$open_id'")->getField('shop_id');
             $status_count['shop_all']=$ordermodel->where("shop_id={$shop_id} and deleted=0")->count();//获取全部订单条数
-            $status_count['shop_daifahuo']=$ordermodel->where("shop_id={$shop_id} and pay_status=1 and status=1 and deleted=0")->count();//获取待发货条数
+            $status_count['shop_finishing']=$ordermodel->where("shop_id={$shop_id} and status=4 and deleted=0")->count();//获取待完成条数
             $status_count['shop_shouhou']=$ordermodel->where("shop_id={$shop_id} and pay_status>1 and pay_status<4 and deleted=0")->count();//获取售后申请条数
-            
-            //所有已经上架的商品数量
-            $goodsmodel=D('Goods');
-            $goods_count=$goodsmodel->where("shop_id={$shop_id} and is_delete=0")->count();
-            $this->assign('goods_count',$goods_count);
+
         }
         
-        
-         
-        $this->assign(status_count,$status_count); 
-         
-         
-        $sellectionmodel=D('Sellection');
-        $status_count['sellection']=$sellectionmodel->where("user_id=$user_id")->count();
-        
-        
-        $status_count['yipingjia']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=5")->count();
+
+        $status_count['yipingjia']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=9")->count();
         
         
         $this->assign(status_count,$status_count);
