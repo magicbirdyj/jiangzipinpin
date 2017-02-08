@@ -84,7 +84,7 @@ class AjaxloginController extends FontEndController {
         $this->ajaxReturn($result);
     }
     
-    //骑手接单ajax
+    //送达商店ajax
     public function deliver_shop() {
         $post=$_POST;
         if($post['check']!='wy_deliver'){
@@ -103,8 +103,10 @@ class AjaxloginController extends FontEndController {
         }
         //订单加入商店id
         $shop_id='18';
+        $shop_name='福莱特洗衣娄底店';
         $row=array(
-            'shop_id'=>$shop_id
+            'shop_id'=>$shop_id,
+            'shop_name'=>$shop_name
         );
         $result=$ordermodel->where("order_id='$order_id'")->save('$row');
         if($result){
@@ -112,8 +114,7 @@ class AjaxloginController extends FontEndController {
             $open_id=$shopsmodel->where("shop_id='$shop_id'")->getField('open_id');
             //发送模板消息给工厂，确认送达
             $remark='点我，确认订单收取';
-            $this->taking_success_tem($order_id,$open_id,$remark);
-        
+            $this->deliver_shop_tem($order_id,$open_id,$remark);
             $this->ajaxReturn($result);
         }
     }
@@ -181,6 +182,8 @@ class AjaxloginController extends FontEndController {
         $result=$usersmodel->where("open_id='$open_id'")->save($row);
         $this->ajaxReturn($result);
     }
+    
+    
     
     //取消订单
     public function quxiao_order(){
@@ -258,7 +261,48 @@ class AjaxloginController extends FontEndController {
     }
     
     
-    
+    //骑手 送衣接单ajax
+    public function order_taking_deliver() {
+        $post=$_POST;
+        if($post['check']!='wy_taking'){
+            $this->ajaxReturn(false);
+            exit;
+        }
+        $horsemanmodel=D('Horseman');
+        $horseman_open_id=$_SESSION['huiyuan']['open_id'];
+        $horseman=$horsemanmodel->where("open_id='$horseman_open_id'")->find();
+        if(!$horseman['horseman_id']){
+            $this->ajaxReturn(FALSE);
+            exit;
+        }
+        $row=array(
+            'status'=>7,
+            'deliver_horseman_id'=>$horseman['horseman_id']
+        );
+        $order_id=$post['order_id'];
+        $ordermodel=D('Order');
+        $result=$ordermodel->where("order_id='$order_id'")->save($row);
+        if($result){
+            //订单操作表
+            $order_actionmodel=D('Order_action');
+            $row=array(
+                'order_id'=>$order_id,
+                'action_type'=>'horseman',
+                'actionuser_id'=>$horseman['horseman_id'],
+                'actionuser_name'=>$horseman['horseman_name'],
+                'order_status' => 7,
+                'pay_status'=>0,
+                'log_time'=>time()
+            );
+            $result = $order_actionmodel->add($row);
+        }
+        if($result){
+            //发送模板消息给该骑手，接单成功
+            $remark='点我，确认已经送达';
+            $this->deliver_taking_success_tem($order_id,$horseman_open_id,$remark);
+        }
+        $this->ajaxReturn($result);
+    }
     
     
     
@@ -325,6 +369,66 @@ class AjaxloginController extends FontEndController {
             'remark'=>array('value'=>$remark,"color"=>"#F90505")
         );
         $this->response_template($horseman_open_id, $template_id, $url, $arr_data);
+    }
+    
+    private function deliver_taking_success_tem($order_id,$horseman_open_id,$remark){
+        $order_goodsmodel=D('Order_goods');
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $goods='';
+        $key_last = key($arr_goods);
+        foreach ($arr_goods as $k=>$value) {
+            if($k != $key_last){
+                $goods+=$value+'、'; 
+            }else{
+                $goods+=$value;
+            }
+        }
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='$order_id'")->find();
+        $address=  unserialize($order['deliver_address']);
+        $template_id="PUE-zt-KqzrR73H1kTdHjVK-q-uaeFut4r9giZrzZJg";
+        $url=U('Horseman/order_deliver',array('order_id'=>$order['order_id']));
+        $arr_data=array(
+            'first'=>array('value'=>"您已接单成功，马上出发吧,请去洗衣店（".$order['shop_name']."）取衣送往用户处","color"=>"#666"),
+            'keyword1'=>array('value'=>date("Y年m月d日 H:i",$order['deliver_time']),"color"=>"#666"),
+            'keyword2'=>array('value'=>$address['location'].' '.$address['address'],"color"=>"#666"),
+            'keyword3'=>array('value'=>$address['name'].' '.$address['mobile'],"color"=>"#666"),
+            'keyword4'=>array('value'=>$goods,"color"=>"#666"),
+            'remark'=>array('value'=>$remark,"color"=>"#F90505")
+        );
+        $this->response_template($horseman_open_id, $template_id, $url, $arr_data);
+    }
+    
+    private function deliver_shop_tem($order_id,$open_id,$remark){
+        $order_goodsmodel=D('Order_goods');
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $goods='';
+        $key_last = key($arr_goods);
+        foreach ($arr_goods as $k=>$value) {
+            if($k != $key_last){
+                $goods+=$value+'、'; 
+            }else{
+                $goods+=$value;
+            }
+        }
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='$order_id'")->find();
+        $horsemanmodel=D('Horseman');
+        $horseman_id=$order['horseman_id'];
+        $horseman=$horsemanmodel->where("horseman_id='{$horseman_id}'")->find();
+        
+        $template_id="aOHqR_v1qq1ycSSfqRVpDSW6izoEtmPSDRCOMuyW9iA ";
+        $url=U('Shops/order_view',array('order_id'=>$order['order_id']));
+        $arr_data=array(
+            'first'=>array('value'=>"有新的订单送达，请确认收取衣物","color"=>"#666"),
+            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
+            'keyword2'=>array('value'=>$goods,"color"=>"#666"),
+            'keyword3'=>array('value'=>$horseman['horseman_name'],"color"=>"#666"),
+            'keyword4'=>array('value'=>date("Y年m月d日 H:i",time()),"color"=>"#666"),
+            'keyword5'=>array('value'=>$order['remark'],"color"=>"#666"),
+            'remark'=>array('value'=>$remark,"color"=>"#F90505")
+        );
+        $this->response_template($open_id, $template_id, $url, $arr_data);
     }
 }
 

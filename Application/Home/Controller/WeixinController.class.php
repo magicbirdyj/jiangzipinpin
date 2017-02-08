@@ -235,13 +235,13 @@ class WeixinController extends FontEndController {
                 "button":[
                     {
                         "type":"view",
-                        "name":"坚果知识",
-                        "url":"http://m.jiangzipinpin.com/Home/Index/news_all.html"
+                        "name":"预约洗衣",
+                        "url":"http://m.jiangzipinpin.com/Home/Goods/buy.html"
                         
                     },
                     {
                         "type":"view",
-                        "name":"进入商城",
+                        "name":"进入衣干净",
                         "url":"http://m.jiangzipinpin.com"
                     },
                     {
@@ -250,7 +250,7 @@ class WeixinController extends FontEndController {
                         {
                             "type":"view",
                             "name":"会员中心",
-                            "url":"http://m.jiangzipinpin.com/Home/Member/index.html"
+                            "url":"http://m.jiangzipinpin.com/Home/Order/index.html"
                         },
                         {
                             "type":"view",

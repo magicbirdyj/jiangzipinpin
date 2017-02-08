@@ -42,51 +42,7 @@ class GoodsController extends FontEndController {
         $this->assign('default_eq',$default);
         
         $this->display();
-        exit;
-        
-        
-        
-        if(isset($_GET['code'])){//微信地址接口
-            $code=$_GET['code'];
-            $parameters=$this->get_address_data($code);
-            $this->assign('signPackage',$parameters);
-            $open_id=$_SESSION['wei_huiyuan']['open_id'];
-            $this->assign('open_id',$open_id);
-        }//微信地址接口
-        $user_id=$_SESSION['huiyuan']['user_id'];
-        $usersmodel=D('Users');
-        $address=$usersmodel->where("user_id=$user_id")->field('address,default_address,daijinquan')->find();
-        if($address['address']!=''){
-                $arr_address=  unserialize($address['address']);
-            }else{
-                $arr_address='';
-            }
-        $this->assign('arr_address',$arr_address);
-        $default=$address['default_address'];
-        $default_address=$arr_address[$default];
-        $this->assign('default_Address',$default_address);
-        $this->assign('default_eq',$default);
-        $goods_id=$_GET['goods_id'];
-        if($_GET['zx_shuxing']){
-            $zx_shuxing=$_GET['zx_shuxing'];
-            $this->assign('zx_shuxing',$zx_shuxing);
-        }
-        $goodsmodel=D('Goods');
-        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
-        $goods['ky_daijinquan']=0;
-        $this->assign('goods',$goods);
-        //用户代金券
-        $arr_daijinquan=  unserialize($address['daijinquan']);
-        $time=  time();
-        if($arr_daijinquan){
-            foreach ($arr_daijinquan as $value) {
-                if($value['guoqi']>$time){
-                    $youxiao_daijinquan[]=$value;
-                }
-            }
-        }
-        $this->assign('youxiao_daijinquan',$youxiao_daijinquan);
-        $this->display();
+
     }
     
     

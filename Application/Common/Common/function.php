@@ -171,24 +171,28 @@ function creat_file($dir){
 function order_status($pay_status,$status,$order_id){
     if($pay_status==='0'){
         if($status==='1'){
-            return array('status'=>'订单已提交','note'=>'请等待骑手取件','status_button'=>'','status_url'=>"");
+            return array('status'=>'订单已提交','note'=>'请等待骑手取衣','status_button'=>'','status_url'=>"");
         }else if($status==='2'){
             return array('status'=>'骑手已出发','note'=>'骑手电话:','status_button'=>'','status_url'=>"");
         }else if($status==='3'){
             return array('status'=>'已确认取件','note'=>'','status_button'=>'','status_url'=>"");
         }else if($status==='4'){
             return array('status'=>'清洗中','note'=>'','status_button'=>'','status_url'=>"");
-        }else if($status==='5'or $status==='6'){
-            return array('status'=>'清洗完成','note'=>'请等待配送','status_button'=>'','status_url'=>"");
+        }else if($status==='5'){
+            return array('status'=>'清洗完成','note'=>'请选择送衣时间','status_button'=>'选择送衣时间','status_url'=>"/Home/order/songyi/order_id/{$order_id}.html");
+        }else if($status==='6'){
+            return array('status'=>'送衣时间已确认','note'=>'预约送衣时间:','status_button'=>'','status_url'=>"");
         }else if($status==='7'){
+            return array('status'=>'骑手出发送衣','note'=>'骑手电话:','status_button'=>'','status_url'=>""); 
+        }else if($status==='8'){
             return array('status'=>'订单完成','note'=>'请付款','status_button'=>'去付款','status_url'=>"/Home/order/zhifu/order_id/{$order_id}.html"); 
-        }else if($status==='9'){
+        }else if($status==='10'){
             return array('status'=>'订单已取消','note'=>'','status_button'=>'','status_url'=>""); 
         }
     }elseif($pay_status==='1'){
-        if($status==='7'){
+        if($status==='8'){
             return array('status'=>'订单完成','note'=>'请评价','status_button'=>'去评价','status_url'=>"/Home/Order/appraise/order_id/{$order_id}.html");
-        }else if($status==='8'){
+        }else if($status==='9'){
             return array('status'=>'订单完成','note'=>'','status_button'=>'','status_url'=>"");
         }
     }elseif($pay_status==='2'){
@@ -205,7 +209,7 @@ function order_status($pay_status,$status,$order_id){
 //获取订单状态
 function order_status_shops($pay_status,$status,$order_id){
     if($pay_status==='0'){
-        if($status==='7'){
+        if($status==='8'){
             return array('status'=>'交易关闭','status_button'=>'删除订单','status_url'=>"$order_id");
         }else{
             return array('status'=>'未支付','status_button'=>'查看订单','status_url'=>"/Home/Shop/view_order/{$order_id}.html");

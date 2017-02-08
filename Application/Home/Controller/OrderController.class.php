@@ -7,52 +7,52 @@ class OrderController extends FontEndController {
         $this->assign('canshu',$_GET['status']);
         $ordermodel=D('Order');
         $user_id=$_SESSION['huiyuan']['user_id'];
-        $status_count['no_complete']=$ordermodel->where("user_id={$user_id} and pay_status=0 and status<6 and deleted=0")->count();//获取未完成条数
-        $status_count['complete']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status>5 and deleted=0")->count();//获取已完成条数
-        $status_count['no_pay']=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status=6")->count();//获取待付款条数
-        $status_count['no_appraise']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=6 and deleted=0")->count();//获取待评价条数
+        $status_count['no_complete']=$ordermodel->where("user_id={$user_id} and pay_status=0 and status<9 and deleted=0")->count();//获取未完成条数
+        $status_count['complete']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status>7 and deleted=0")->count();//获取已完成条数
+        $status_count['no_pay']=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status=8")->count();//获取待付款条数
+        $status_count['no_appraise']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=8 and deleted=0")->count();//获取待评价条数
         $this->assign(status_count,$status_count);
         $time=  time();
         $this->assign('time',$time);
         if(empty($status)){
             $selected['no_complete']="selected='selected'";//选中下拉菜单的未完成订单
             $this->assign(selected,$selected);
-            $count=$ordermodel->where("user_id={$user_id} and pay_status=0 and status<6 and deleted=0")->count();
+            $count=$ordermodel->where("user_id={$user_id} and pay_status=0 and status<9 and deleted=0")->count();
             $this->assign(count,$count);
             //$page=$this->get_page($count, 10);
             //$page_foot=$page->show();//显示页脚信息
             //$list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
-            $list=$ordermodel->where("user_id={$user_id} and pay_status=0 and status<6 and deleted=0")->select();
+            $list=$ordermodel->where("user_id={$user_id} and pay_status=0 and status<9 and deleted=0")->select();
             $this->assign('list',$list);
             //$this->assign('page_foot',$page_foot);
         }else if($status==='complete'){
              $selected['complete']="selected='selected'";//选中下拉菜单的未付款
              $this->assign(selected,$selected);
-             $count=$ordermodel->where("user_id={$user_id} and pay_status=1 and status>5 and deleted=0")->count();
+             $count=$ordermodel->where("user_id={$user_id} and pay_status=1 and status>7 and deleted=0")->count();
              //$page=$this->get_page($count, 10);
              //$page_foot=$page->show();//显示页脚信息
              //$list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.pay_status=0  and t1.status<6 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
-             $list=$ordermodel->where("user_id={$user_id} and pay_status=1 and status>5 and deleted=0")->select();
+             $list=$ordermodel->where("user_id={$user_id} and pay_status=1 and status>7 and deleted=0")->select();
              $this->assign('list',$list);
              //$this->assign('page_foot',$page_foot);
          }else if($status==='no_pay'){
              $selected['daifahuo']="selected='selected'";//选中下拉菜单的待发货
              $this->assign(selected,$selected);
-             $count=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status=6")->count();
+             $count=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status=8")->count();
              //$page=$this->get_page($count, 10);
              //$page_foot=$page->show();//显示页脚信息
              //$list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.pay_status=1 and (t1.status=2 or (t1.tuan_no=0 and t1.status=1)) and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
-             $list=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status=6")->select();
+             $list=$ordermodel->where("user_id={$user_id} and pay_status=0 and deleted=0  and status=8")->select();
              $this->assign('list',$list);
              //$this->assign('page_foot',$page_foot);
          }else if($status==='no_appraise'){
              $selected['daishouhuo']="selected='selected'";//选中下拉菜单的待确认
              $this->assign(selected,$selected);
-             $count=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=6 and deleted=0")->count();
+             $count=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=8 and deleted=0")->count();
              //$page=$this->get_page($count, 10);
              //$page_foot=$page->show();//显示页脚信息
              //$list=$ordermodel->table('m_order t1,m_goods t2')->where("t1.deleted=0 and t1.user_id={$user_id} and t1.pay_status=1 and t1.status=3 and t1.goods_id=t2.goods_id")->order('t1.created desc')->field('t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.updated,t2.goods_img,t1.price,t1.dues,t1.tuan_no,t1.tuan_number,t1.fenxiang')->limit($page->firstRow.','.$page->listRows)->select();
-             $list=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=6 and deleted=0")->select();
+             $list=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=8 and deleted=0")->select();
              $this->assign('list',$list);
              //$this->assign('page_foot',$page_foot);
          }
@@ -105,86 +105,125 @@ class OrderController extends FontEndController {
             $this->ajaxReturn($result);
         }
     }
-    public function cuihuo(){
-        if((!empty($_POST['order_id']))&&$_POST['check']==='cuihuo'){
-            $order_id=$_POST['order_id'];
-            $ordermodel=D('Order');
-            $time=time();
-            $order_cuihuo_time=$ordermodel->where("order_id=$order_id")->getField('cuihuo_time');
-            if(($order_cuihuo_time+21600)>$time){
-                $this->ajaxReturn('亲，6小时内请勿重复催货');
-                exit();
-            }
-            $row=array(
-                'cuihuo_time' => $time
-            );
-            $order_user_id=$ordermodel->where("order_id=$order_id")->getField('user_id');//登录用户无该订单权限
-            if($order_user_id!=$_SESSION['wei_huiyuan']['user_id']){//登录用户无该订单权限
-                $result=false;
-                $this->ajaxReturn($result);
-                exit();
-            }
-            $result = $ordermodel->where("order_id=$order_id")->save($row);
-            session('guanzhu',null); 
-            $this->ajaxReturn($result);
-        }
-    }
-    
-    public function view_wuliu() {
-        $user_id=$_SESSION['wei_huiyuan']['user_id'];
-        $this->assign('user_id',$user_id);
-        $order_id=$_GET['order_id'];
-        $ordermodel=D('Order');
-        $order=$ordermodel->table('m_order t1,m_goods t2')->where("t1.order_id='{$order_id}' and  t1.goods_id=t2.goods_id")->field('t1.order_no,t1.user_id,t1.goods_name,t1.shop_name,t2.goods_img,t1.price,t1.buy_number,t1.dues,t1.kuaidi')->find();
-        if($order['user_id']===$user_id){
-            $this->assign('order',$order);
-            $wuliu=  unserialize($order['kuaidi']);
-            $this->assign('wuliu',$wuliu);
-            if($wuliu['fangshi']=='2'){
-                $wuliu_info=$this->getOrderTracesByJson($order['order_no'],$wuliu['company_bianma'],$wuliu['no']);
-                $arr_wuliu=json_decode($wuliu_info,true);
-                $wuliu_guiji=$arr_wuliu['Traces'];
-                krsort($wuliu_guiji);
-                $this->assign('wuliu_guiji',$wuliu_guiji);
-            }elseif($wuliu['fangshi']=='1'){
-                
-            }
 
-            session('guanzhu',null); 
-            $this->display();
-        }else{
-            $this->error('该订单不存在','/Home/Order/index');
-        }
-    }
-    
     public function view(){
-        session('guanzhu',null); 
-        $user_id=$_SESSION['wei_huiyuan']['user_id'];
-        $this->assign('user_id',$user_id);
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');
-        $order=$ordermodel->table('m_order t1,m_goods t2')->where("t1.order_id='{$order_id}' and  t1.goods_id=t2.goods_id and t1.deleted=0")->field('t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.created,t1.updated,t2.goods_img,t1.price,t1.dues,t1.order_address,t1.buy_number,t1.tuan_no,t1.tuan_number')->find();
-        if(!$order){
+        $order=$ordermodel->where("order_id='{$order_id}'")->find();
+        $user_id=$_SESSION['huiyuan']['user_id'];
+        if($order['user_id']!=$user_id){
             $this->error('该订单号不存在或已经删除 ');
         }
-        $tuan_no=$order['tuan_no'];
-        $count=$ordermodel->where("tuan_no=$tuan_no and pay_status=1")->count();
-        $tuan_number=$order['tuan_number'];
-        $order['count']=$tuan_number-$count;
-        $usersmodel=D('Users');
-        $arr_address=  preg_split("/\ {1,}/",$order['order_address']);
-        $length=count($arr_address);
-        $address['location']=$arr_address[0].' '.$arr_address[1].' '.$arr_address[2].' '.$arr_address[3];
-        $address['name']=$arr_address[$length-2].' '.$arr_address[$length-1];
-        $this->assign('address',$address);
-        if($order['user_id']===$user_id){
-            $this->assign('order',$order);
-            $this->assign('address',$address);
-            $this->display('view');
-        }else{
-            $this->error('您不存在该订单 ','/Home/Order/index');
+        $order_goodsmodel=D('Order_goods');
+        $order_goods=$order_goodsmodel->where("order_id='$order_id'")->select();
+        $order_price=0;
+        foreach ($order_goods as $value) {
+            $order_price+=$value['price']*$value['goods_number'];
         }
+        $this->assign('order_price',$order_price);
+        $this->assign('order_goods',$order_goods);
+        $address=  unserialize($order['order_address']);
+        $order['order_address']=$address;
+        $this->assign('order',$order);
+        
+        //订单操作记录
+        $order_actionmodel=D('Order_action');
+        $order_action=$order_actionmodel->where("order_id='$order_id'")->order('log_time asc')->select();
+        $this->assign('order_action',$order_action);
+        
+        //取衣骑手信息
+        $horsemanmodel=D('Horseman');
+        $horseman_id=$order['horseman_id'];
+        $horseman=$horsemanmodel->where("horseman_id='$horseman_id'")->find();
+        $this->assign('horseman',$horseman);
+        //送衣骑士信息
+        $deliver_horseman_id=$order['deliver_horseman_id'];
+        $deliver_horseman=$horsemanmodel->where("horseman_id='$deliver_horseman_id'")->find();
+        $this->assign('deliver_horseman',$deliver_horseman);
+        $this->display('view');
     }
+    
+    public function songyi() {
+        $order_id=$_GET['order_id'];
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='{$order_id}'")->find();
+        $user_id=$_SESSION['huiyuan']['user_id'];
+        if($order['user_id']!=$user_id){
+            $this->error('该订单号不存在或已经删除 ');
+        }
+        $usersmodel=D('Users');
+        $user=$usersmodel->where("user_id='$user_id'")->find();
+        if(isset($_GET['code'])){//微信地址接口
+            $code=$_GET['code'];
+            $parameters=$this->get_address_data($code);
+            $this->assign('signPackage',$parameters);
+        }
+        $this->assign('open_id',$open_id);
+        //微信地址接口
+        $address=$usersmodel->where("user_id=$user_id")->field('address,default_address,daijinquan')->find();
+        if($address['address']!=''){
+                $arr_address=  unserialize($address['address']);
+            }else{
+                $arr_address='';
+            }
+        $this->assign('arr_address',$arr_address);
+        $default=$address['default_address'];
+        $default_address=$arr_address[$default];
+        $this->assign('default_Address',$default_address);
+        $this->assign('default_eq',$default);
+        $this->assign('order_id',$order_id);
+        $this->display();
+    }
+    
+    public function songyi_confirm() {
+        $post=$_POST;
+        $ordermodel = D('Order');
+        // 手动进行令牌验证 
+        if (!$ordermodel->autoCheckToken($_POST)){ 
+            $this->redirect('Order/view',array('order_id'=>$order_id));
+            exit();
+        }
+        $user_id = $_SESSION['huiyuan']['user_id'];
+        $order_id=$post['order_id'];
+        $order['user_id']=$ordermodel->where("order_id='{$order_id}'")->getField('user_id');
+        if($user_id!=$order['user_id']){
+            $this->error('您没有该订单');
+            exit;
+        }
+        $arr_order_address=array(
+            'name'=>$post['address_name'],
+            'mobile'=>$post['address_mobile'],
+            'location'=>$post['address_location'],
+            'address'=>$post['address_address'],
+        );
+        $order_address=  serialize($arr_order_address);
+        $order_time=$post['order_time'];
+        $row = array(
+            'deliver_time'=>$order_time,
+            'status' => 6, 
+            'deliver_address'=>$order_address,
+        );
+        $result = $ordermodel->where("order_id='{$order_id}'")->save($row); //订单信息写入数据库order表
+       if(!$result){
+           $this->error('订单更新失败');
+       }
+        $usersmodel=D('Users');
+        $user_name=$usersmodel->where("user_id='$user_id'")->getField('user_name');
+        $order_actionmodel=D('Order_action');
+        $row_action=array(
+            'order_id'=>$order_id,
+            'action_type'=>'user',
+            'actionuser_id'=>$user_id,
+            'actionuser_name'=>$user_name,
+            'order_status'=>6,
+            'pay_status' => 0, //支付状态为未支付
+            'log_time'=>time()
+        );
+        $order_actionmodel->add($row_action); //订单操作信息写入数据库order_action表
+        cookie('order_id',$result,36000);
+        $this->redirect('Order/view',array('order_id'=>$order_id));
+    }
+    
 
     public function jiaoyi_success(){
         session('guanzhu',null); 

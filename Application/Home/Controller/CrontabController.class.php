@@ -5,8 +5,8 @@ class CrontabController extends FontEndController {
     
     public function upload_order() {
         $this->remind_horseman();
-        //$this->quxiao_order();
-        //$this->aotu_queren_shouhuo();
+        $this->remind_users();
+        $this->remind_pay();
     }
     public function transfersh() {
         exit;
@@ -47,6 +47,7 @@ class CrontabController extends FontEndController {
         $time=  time();
         //提前半小时，提醒骑手准备上门取件
         $ordermodel=D('Order');
+        //上门取衣
         $arr_order=$ordermodel->where("deleted=0  and status=1")->field('order_id,appointment_time,order_address,remark,remind_horseman_time')->select();
         foreach ($arr_order as $value) {
             //提前半小时，提醒骑手准备上门取件
@@ -60,7 +61,61 @@ class CrontabController extends FontEndController {
                 $this->remind_horseman_tem($value,$remark);//通知消息
             }
         }
+         //上门送衣
+        $arr_order_deliver=$ordermodel->where("deleted=0  and status=6")->field('order_id,deliver_time,deliver_address,deliver_remind_horseman')->select();
+        foreach ($arr_order_deliver as $value) {
+            //提前一小时，提醒骑手准备上门送衣
+            if($time>($value['deliver_time']-3600) and ($time-600)>$value['deliver_remind_horseman']){
+                $row=array(
+                    'deliver_remind_horseman'=>$time
+                );
+                $order_id=$value['order_id'];
+                $ordermodel->where("order_id='$order_id'")->save($row);
+                $shop_name=$ordermodel->where("order_id='$order_id'")->getField('shop_name');
+                $remark="请先前往洗衣店(".$shop_name.")取衣服，然后给客户送衣。点我，马上接单";
+                $this->remind_songyi_horseman_tem($value,$remark);//通知消息
+            }
+        }
     }
+    
+    private function remind_users() {
+        $time=  time();
+        //每24小时，提醒用户选择送衣时间
+        $ordermodel=D('Order');
+        $arr_order=$ordermodel->where("deleted=0  and status=5")->field('order_id,user_id,remind_user_time')->select();
+        foreach ($arr_order as $value) {
+            //每24小时，提醒用户选择送衣时间
+            if(($time-86400)>$value['remind_user_time']){
+                $row=array(
+                    'remind_user_time'=>$time
+                );
+                $order_id=$value['order_id'];
+                $ordermodel->where("order_id='$order_id'")->save($row);
+                $remark="点我,选择给您上门送衣时间";
+                $this->remind_user_tem($value['order_id'],$remark);//通知消息
+            }
+        }
+    }
+    
+    private function remind_pay() {
+        $time=  time();
+        //每2小时，提醒用户付款
+        $ordermodel=D('Order');
+        $arr_order=$ordermodel->where("deleted=0  and status=8 and pay_status=1")->field('order_id,user_id,remind_pay_time')->select();
+        foreach ($arr_order as $value) {
+            //每2小时，提醒用户付款
+            if(($time-7200)>$value['remind_pay_time']){
+                $row=array(
+                    'remind_pay_time'=>$time
+                );
+                $order_id=$value['order_id'];
+                $ordermodel->where("order_id='$order_id'")->save($row);
+                $remark='点我，马上付款';
+                $this->deliver_tem($order_id, $remark);//通知消息
+            }
+        }
+    }
+    
     private function quxiao_order(){
         $time=  time();
         //2个小时未付款的订单，取消订单
@@ -186,6 +241,108 @@ class CrontabController extends FontEndController {
             $this->response_template($value, $template_id, $url, $arr_data);
         }
     }
+    
+    private function remind_songyi_horseman_tem($order,$remark){
+        $order_id=$order['order_id'];
+        $order_goodsmodel=D('Order_goods');
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $goods='';
+        $key_last = key($arr_goods);
+        foreach ($arr_goods as $k=>$value) {
+            if($k != $key_last){
+                $goods+=$value+'、'; 
+            }else{
+                $goods+=$value;
+            }
+        }
+        $horsemanmodel=D('Horseman');
+        $arr_horseman=$horsemanmodel->getField('open_id',true);
+        $address=  unserialize($order['deliver_address']);
+        foreach ($arr_horseman as $value) {
+            $template_id="FAMVTSzVfg8IC9YKCfjAx8WD2ttaz8UvDF_B924inZ8";
+            $url=U('Horseman/order_view',array('order_id'=>$order['order_id']));
+            $arr_data=array(
+                'first'=>array('value'=>"又有新的预约时间到了，准备接单吧","color"=>"#666"),
+                'keyword1'=>array('value'=>date("Y年m月d日 H:i",$order['deliver_time']),"color"=>"#666"),
+                'keyword2'=>array('value'=>$address['location'].' '.$address['address'],"color"=>"#666"),
+                'keyword3'=>array('value'=>$address['name'].' '.$address['mobile'],"color"=>"#666"),
+                'keyword4'=>array('value'=>$goods,"color"=>"#666"),
+                'keyword5'=>array('value'=>$order['remark']?$order['remark']:'无',"color"=>"#666"),
+                'remark'=>array('value'=>$remark,"color"=>"#F90505")
+            );
+            $this->response_template($value, $template_id, $url, $arr_data);
+        }
+    }
+    
+    private function remind_user_tem($order_id,$remark){
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='$order_id'")->find();
+        $order_goodsmodel=D('Order_goods');
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $goods='';
+        $key_last = key($arr_goods);
+        foreach ($arr_goods as $k=>$value) {
+            if($k != $key_last){
+                $goods+=$value+'、'; 
+            }else{
+                $goods+=$value;
+            }
+        }
+        $template_id="A1s_g4U-xAAqCxGKdeUnZgiluf7gy-HT-T3kbVCerK4";
+        $url=U('Order/order_view',array('order_id'=>$order_id));
+        $arr_data=array(
+            'first'=>array('value'=>'您的订单已清洗完成，请及时选择送衣时间，以便骑手送达',"color"=>"#666"),
+            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
+            'keyword2'=>array('value'=>$goods,"color"=>"#666"),
+            'remark'=>array('value'=>$remark,"color"=>"#F90505")
+        );
+        $usersmodel=D('Users');
+        $user_id=$order['user_id'];
+        $user_open_id=$usersmodel->where("user_id='{$user_id}'")->getField('open_id');
+        $this->response_template($user_open_id, $template_id, $url, $arr_data);
+    }
+    
+    private function deliver_tem($order_id,$remark){
+        $order_goodsmodel=D('Order_goods');
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $goods='';
+        $key_last = key($arr_goods);
+        foreach ($arr_goods as $k=>$value) {
+            if($k != $key_last){
+                $goods+=$value+'、'; 
+            }else{
+                $goods+=$value;
+            }
+        }
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='$order_id'")->find();
+        $address=  unserialize($order['deliver_address']);
+        $template_id="Iqo9S-38jP8Pjw1PNt2tw4MUXyWN8H9W1QWa0LugavI";
+        $url=U('Order/view',array('order_id'=>$order['order_id']));
+        
+        //用户open_id
+        $user_id=$order['user_id'];
+        $usersmodel=D('Users');
+        $open_id=$usersmodel->where("user_id='{$user_id}'")->getField('open_id');
+        $arr_data=array(
+            'first'=>array('value'=>"您的衣物已经清洗完成并送达上门，请您付款","color"=>"#666"),
+            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
+            'keyword1'=>array('value'=>date("Y年m月d日 H:i",$order['deliver_time']),"color"=>"#666"),
+            'keyword2'=>array('value'=>'衣干净',"color"=>"#666"),
+            'keyword3'=>array('value'=>count($arr_goods).'件('.$goods.')',"color"=>"#666"),
+            'keyword4'=>array('value'=>'&yen;'.$order['price']-$order['daijinquan'],"color"=>"#666"),
+            'remark'=>array('value'=>'送达时间:'.date("Y年m月d日 H:i",$order['deliver_time']).'。'.$remark,"color"=>"#F90505")
+        );
+        $this->response_template($open_id, $template_id, $url, $arr_data);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     private function quxiao_order_tep($order_id,$remark){
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id=$order_id")->find();

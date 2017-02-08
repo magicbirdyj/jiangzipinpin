@@ -55,6 +55,8 @@
                             <div class='note'>
                                 <{:order_status($vo['pay_status'],$vo['order_status'],$vo['order_id'])['note']}>
                                 <if  condition="$vo['order_status'] eq '2' "><a href="tel:<{$horseman['mobile_phone']}>" style="color:#00dbf5;"><{$horseman['mobile_phone']}></a></if>
+                                <if condition="$vo['order_status'] eq '6' "><{$order['deliver_time']|date='Y-m-d H：i',###}></if>
+                                <if  condition="$vo['order_status'] eq '7' "><a href="tel:<{$deliver_horseman['mobile_phone']}>" style="color:#00dbf5;"><{$deliver_horseman['mobile_phone']}></a></if>
                             </div>
                         </div>
                     </div>
@@ -88,8 +90,9 @@
                 <span><i>取送地址</i><{$order['order_address']['location']}>  <{$order['order_address']['address']}></span>
                 <span><i>联系电话</i><{$order['order_address']['name']}>  <{$order['order_address']['mobile']}></span>
                 <span><i>预约取衣</i><{$order['appointment_time']|date='Y-m-d H：i',###}> </span>
-                <span><i>预约送衣</i>待定</span>
-                <span><i>取送骑士</i><{$order['horseman_name']?$order['horseman_name']:'等待骑士取件'}>&nbsp;&nbsp;&nbsp;&nbsp;<{$order['mobile_phone']}></span>
+                <span><i>取衣骑士</i><{$horseman['horseman_name']?$horseman['horseman_name']:'等待骑士取衣'}>&nbsp;&nbsp;&nbsp;&nbsp;<{$horseman['mobile_phone']}></span>
+                <span><i>预约送衣</i><{$order['deliver_time']?($order['deliver_time']|date='Y-m-d H：i',###):'等待用户确认'}></span>
+                <span><i>送衣骑士</i><{$deliver_horseman['horseman_name']?$deliver_horseman['horseman_name']:'等待骑士送衣'}>&nbsp;&nbsp;&nbsp;&nbsp;<{$deliver_horseman['mobile_phone']}></span>
             </div>
             <div class="d2_title">订单信息</div>
             <div class="d2_content">
@@ -102,13 +105,19 @@
      <div class="view_info">
                 <div class="d1 hidden">
                     <if  condition="$order['status'] eq '1' ">
-                    <a id='order_taking'  href="javascript:void(0)" class="button_a_order">我要接单</a>
+                    <a id='order_taking'  href="javascript:void(0)" class="button_a_order">接单取衣</a>
                     </if>
                     <if  condition="$order['status'] eq '2' ">
                         <a id='confirm_goods'  href="<{:U('Horseman/confirm_goods',array('order_id'=>$order['order_id']))}>" class="button_a_order">确认取件</a>
                     </if>
                     <if  condition="$order['status'] eq '3' and $order['shop_id'] eq '0' ">
                         <a id='deliver_shop'  href="javascript:void(0)" class="button_a_order">送达工厂</a>
+                    </if>
+                    <if  condition="$order['status'] eq '6' ">
+                    <a id='order_taking_deliver'  href="javascript:void(0)" class="button_a_order">接单送衣</a>
+                    </if>
+                    <if  condition="$order['status'] eq '7' ">
+                        <a id='order_confirm_deliver'  href="<{:U('Horseman/order_deliver',array('order_id'=>$order['order_id']))}>" class="button_a_order">确认送达</a>
                     </if>
                 </div>
         </div>
@@ -137,9 +146,30 @@
                     datatype:'json',
                     success:function(msg){
                         if(msg){
-                            location='/Home/Horseman/order';                        
+                            location='/Home/Horseman/order_view/order_id/'+order_id;                      
                         }else{
                             alert('接单失败'); 
+                        }
+                    }
+                });    
+    });
+    $('#order_taking_deliver').bind('click',function(){
+            var url='/Home/Ajaxlogin/order_taking_deliver.html';
+            var data={
+                    order_id:order_id,
+                    check:"wy_taking"
+                }
+            $.ajax({
+                    type:'post',
+                    async : true,
+                    url:url,
+                    data:data,
+                    datatype:'json',
+                    success:function(msg){
+                        if(msg){
+                            location='/Home/Horseman/order_view/order_id/'+order_id;                        
+                        }else{
+                            alert('确认送达失败'); 
                         }
                     }
                 });    
@@ -165,6 +195,8 @@
                     }
                 });    
     });
+    
+   
 
 </script>
 

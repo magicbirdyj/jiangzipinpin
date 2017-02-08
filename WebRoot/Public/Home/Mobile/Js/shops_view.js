@@ -19,7 +19,7 @@ $('#shops_confirm').bind('click',function(){
         alert('评价图片因超过5M或其它原因未上传成功');
         return false;
     }
-    var bb=$('textarea[name=pingjia_text]').html();
+    var bb=$('textarea[name=pingjia_text]').val();
     if(bb==''){
         alert('您还没填写备注');
         return false;
@@ -88,4 +88,14 @@ $('body').on('click','.div_goods_img a',function(){
     goods_img=goods_img.replace(img_url,'');
     $('input[name=goods_img]').attr('value',goods_img);
     $('#img_count').html($('.goods_img').length);
+});
+
+
+//清洗完成按钮绑定事件
+$('#clear_complate').bind('click',function(){
+    if(confirm("确定通知客户取衣吗？")){
+        return ture;
+    }else{
+        return false;
+    }
 });

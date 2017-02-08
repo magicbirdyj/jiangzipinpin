@@ -78,35 +78,26 @@
 	            <div class="item_list_box">
 	              <span>取件时间：<font id="qj-time-7341507"><{:date('Y-m-d',$vo['appointment_time'])}> <{:date('H:i',$vo['appointment_time'])}>-<{:date('H:i',$vo['appointment_time']+3600)}></font></span>		         
 	              	              <p id="modify-7341507" class="modify_time" >
-                      <img class="modify_img" src="__PUBLIC_HOME__/Mobile/Images/public/edit.png" alt=""><span>修改</span>
+                      <!--<img class="modify_img" src="__PUBLIC_HOME__/Mobile/Images/public/edit.png" alt=""><span>修改</span>-->
                   </p>
-	              	            </div>
+	            </div>
 	          </div>
 	        <div class="clearBoth"></div>
-	        
-	        <!-- Order button start 
-	        <div class="item_list_money navlist">
-	          <i class="borderD"></i>
-	          <div class="item_list_box min-height">
-	                                                    	                		  <div class="orderList">等待系统分配物流</div>
-                                        	                	                                                 	                  	
-                  	                 	          </div>
-	        </div>
-	         Order button end -->
+	       
 	        
 	        <div class="clearBoth"></div>
 	      </div>
             </a>
                 <i class="borderD"></i>
             <div class='action hidden'>
-                    <if  condition="($vo['status'] eq '7') or(($vo['pay_status'] eq '1') and ($vo['status'] lt '6')) ">
+                    <if  condition="(($vo['pay_status'] eq '0') and ($vo['status'] eq '8')) or(($vo['pay_status'] eq '1') and ($vo['status'] lt '8')) or(($vo['pay_status'] eq '0') and ($vo['status'] eq '5')) ">
                         <a  class="button_a_order"  href="<{:order_status($vo['pay_status'],$vo['status'],$vo['order_id'])['status_url']}>"><{:order_status($vo['pay_status'],$vo['status'],$vo['order_id'],$vo['tuan_no'])['status_button']}></a>
                     </if>
                     
-                    <if  condition="($vo['status'] eq '1')or (($vo['status'] eq '7') and ($vo['pay_status'] eq '1')) or ($vo['status'] eq '8') ">
+                    <if  condition="($vo['status'] eq '1') ">
                         <a  class="button_a_order quxiao_order" name="<{$vo['order_id']}>">取消订单</a>
                     </if>
-                    <if  condition="(($vo['pay_status'] eq '1') and ($vo['status'] egt '7') and ($vo['status'] elt '8'))">
+                    <if  condition="(($vo['pay_status'] eq '1') and ($vo['status'] egt '8') and ($vo['status'] elt '9'))">
                         <a id='shouhou' class="button_a_order" name="<{$vo['order_id']}>" href="<{:U('Order/shouhou',array('order_id'=>$vo['order_id']))}>">申请售后</a>
                     </if>
                     <if  condition="($vo['pay_status'] eq '1') and ($vo['fenxiang'] eq '0')">
@@ -125,6 +116,17 @@
         
 
 <script type="text/javascript">
+    //如果没有动作  padding改为0
+    $('.action').each(function(){
+        var child=$(this).children().length;
+        if(child==0){
+            $(this).css('padding','0px');
+            $(this).css('border-bottom','none')
+        }
+    });
+
+    
+    
     $('.button_a_order:contains("去付款")').css('background-color','#D00');
     $('.button_a_order:contains("去付款")').css('color','#fff');
     var canshu="<{$canshu}>";
@@ -145,14 +147,7 @@
         $('.dingdan_4>ul>li:eq(0)>a>div').css('background-color','#f90');
         $('.dingdan_4>ul>li:eq(0) *').css('color','#fff');
     }
-    //确认收货
-    $('.action>a:contains("确认收货")').bind('click',function(){
-         if(confirm("确定已经收到商品了吗？")){
-             return true;
-         }else{
-             return false;
-         }
-    });
+    
     
     
     $('.quxiao_order').bind('click',function(){
@@ -203,34 +198,7 @@
         }
     });
     
-    //催商家发货
-    $('.action>a:contains("催商家发货")').bind('click',function(event){
-         event.preventDefault();
-         var url='/Home/Order/cuihuo.html';
-         var data={
-                order_id:$(this).attr('href'),
-                check:"cuihuo"
-            };
-            $.ajax({
-                type:'post',
-                async : false,
-                url:url,
-                data:data,
-                datatype:'json',
-                success:function(msg){
-                    if(msg){ 
-                        if(msg=='亲，6小时内请勿重复催货'){
-                            alert(msg);
-                        }else{
-                            alert('已催促商家'); 
-                        }                      
-                    }else{
-                        alert('催促商家失败'); 
-                    }
-                }
-            }); 
-            
-    });
+    
 </script>
 
 

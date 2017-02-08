@@ -20,6 +20,7 @@ class ShopsController extends FontEndController {
         if(!$order){
             $this->error('该订单号不存在或已经删除 ');
         }
+
         $order_goodsmodel=D('Order_goods');
         $order_goods=$order_goodsmodel->where("order_id='$order_id'")->select();
         $order_price=0;
@@ -41,8 +42,30 @@ class ShopsController extends FontEndController {
     public function shops_confirm() {
         $post=$_POST;
         $order_id=$post['order_id'];
-        $this->assign('order_id',$order_id);
         $ordermodel=D('Order');
+        //获取图片URL,分割成数组
+        if($post['goods_img']!==''){
+            $arr_img=explode('+img+',$post['goods_img']);
+            //移动文件 并且改变url
+            foreach ($arr_img as &$value) {
+                $today=substr($value,26,8);//获取到文件夹名  如20150101
+                creat_file(UPLOAD.'image/shop_note/'.$today);//创建文件夹（如果存在不会创建）
+                $img_url_thumb=$this->thumb($value, 500, 800);//thumb
+                rename($img_url_thumb, str_replace('Public/Uploads/image/temp', UPLOAD.'image/shop_note',$value));//移动文件
+                $value=str_replace('Public/Uploads/image/temp','Public/Uploads/image/shop_note',$value);  
+                $value='/'.$value;
+            }
+            $str_img=serialize($arr_img);//序列化数组
+        }
+         //进行令牌验证 
+        if (!$ordermodel->autoCheckToken($_POST)){ 
+            $this->assign('order_id',$order_id);
+            $this->assign('确认收衣成功',$title);
+            $this->assign('text',$post['pingjia_text']);
+            $this->assign('arr_img',$arr_img);
+            $this->display('success_shops_confirm');
+            exit();
+        }
         $shop_id=$ordermodel->where("order_id='{$order_id}'")->getField('shop_id');
         $shopsmodel=D('Shops');
         $shop=$shopsmodel->where("shop_id='$shop_id'")->find();
@@ -51,28 +74,14 @@ class ShopsController extends FontEndController {
             $this->error('骑手并没送达该订单到您工厂,无法对其确认商品',U('Shop/index'));
             exit;
         }
-        
-        //获取图片URL,分割成数组
-        if($post['goods_img']!==''){
-            $arr_img=explode('+img+',$post['goods_img']);
-            //移动文件 并且改变url
-            foreach ($arr_img as &$value) {
-                $today=substr($value,26,8);//获取到文件夹名  如20150101
-                creat_file(UPLOAD.'image/appraise/'.$today);//创建文件夹（如果存在不会创建）
-                $img_url_thumb=$this->thumb($value, 500, 800);//thumb
-                rename($img_url_thumb, str_replace('Public/Uploads/image/temp', UPLOAD.'image/appraise',$value));//移动文件
-                $value=str_replace('Public/Uploads/image/temp','Public/Uploads/image/shop_note',$value);  
-                $value='/'.$value;
-            }
-            $str_img=serialize($arr_img);//序列化数组
-        }
+
         //商店确认收到衣服
         $row=array(
             'shop_note'=>$post['pingjia_text'],
             'shop_img'=>$str_img,
             'status'=>4
         );
-       $result=$ordermodel->where("order_id='$order_id'")->save($row);
+       $result=$ordermodel->where("order_id='{$order_id}'")->save($row);
        if($result){
            //订单操作表
             $order_actionmodel=D('Order_action');
@@ -91,8 +100,60 @@ class ShopsController extends FontEndController {
            $this->error('商家确认商品出错');
            exit;
        }
-        $this->display('success');
+       $this->assign('order_id',$order_id);
+       $this->assign('确认收衣成功',$title);
+       $this->assign('text',$post['pingjia_text']);
+       $this->assign('arr_img',$arr_img);
+       $this->display('success_shops_confirm');
     }
+    
+    public function clear_complate() {
+        $order_id=$_GET['order_id'];
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='{$order_id}'")->find();
+        $shop_id=$order['shop_id'];
+        $shopsmodel=D('Shops');
+        $shop=$shopsmodel->where("shop_id='$shop_id'")->find();
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        if($shop['open_id']!=$open_id||$order['status']!='4'){
+            $this->error('您没有该订单或者该订单并不是清洗状态,无法对其确认清洗完成',U('Shop/index'));
+            exit;
+        }
+        //发送模板消息给顾客，清洗完成
+        $remark='点我，选择给您上门送衣时间';
+        $this->clear_complate_tem($order_id,$horseman_open_id,$remark);
+        $row=array(
+            'status'=>5,
+            'remind_user_time'=>  time()
+        );
+        $result=$ordermodel->where("order_id='{$order_id}'")->save($row);
+        if(!$result){
+            $this->error('订单写入不成功',U('Shop/index'));
+            exit;
+        }else{
+            //订单操作表
+            $order_actionmodel=D('Order_action');
+            $row=array(
+                'order_id'=>$order_id,
+                'action_type'=>'shop',
+                'actionuser_id'=>$shop_id,
+                'actionuser_name'=>$shop['shop_name'],
+                'order_status' => 5,
+                'pay_status'=>0,
+                'log_time'=>time()
+            );
+            $result = $order_actionmodel->add($row);
+        }
+        if($result){
+            $this->redirect('Shops/order_view',array('order_id'=>$order_id));
+        }else{
+            $this->error('订单操作表写入不成功',U('Shop/index'));
+        }
+    }
+    
+    
+    
+    
     
     private function thumb($url,$a,$b){
         $image = new \Think\Image(); 
@@ -106,7 +167,33 @@ class ShopsController extends FontEndController {
     }
 
     
-    
+    private function clear_complate_tem($order_id,$remark){
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='$order_id'")->find();
+        $order_goodsmodel=D('Order_goods');
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $goods='';
+        $key_last = key($arr_goods);
+        foreach ($arr_goods as $k=>$value) {
+            if($k != $key_last){
+                $goods+=$value+'、'; 
+            }else{
+                $goods+=$value;
+            }
+        }
+        $template_id="A1s_g4U-xAAqCxGKdeUnZgiluf7gy-HT-T3kbVCerK4";
+        $url=U('Order/order_view',array('order_id'=>$order['order_id']));
+        $arr_data=array(
+            'first'=>array('value'=>'您的订单已清洗完成，请及时选择送衣时间，以便骑手送达',"color"=>"#666"),
+            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
+            'keyword2'=>array('value'=>$goods,"color"=>"#666"),
+            'remark'=>array('value'=>$remark,"color"=>"#F90505")
+        );
+        $usersmodel=D('Users');
+        $user_id=$order['user_id'];
+        $user_open_id=$usersmodel->where("user_id='{$user_id}'")->getField('open_id');
+        $this->response_template($user_open_id, $template_id, $url, $arr_data);
+    }
     
 
 

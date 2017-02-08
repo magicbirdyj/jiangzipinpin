@@ -16,6 +16,7 @@
     overflow: auto;
     margin: 2px 0 0 10px;
     padding: .34rem 0 1rem 0;
+    overflow: auto;
 }
 .time_date li.detail_date.tab-current, .time_date li.detail_date.selected {
     border: 1px solid #00dbf5;

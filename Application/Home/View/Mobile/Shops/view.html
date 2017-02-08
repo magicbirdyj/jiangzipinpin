@@ -65,7 +65,7 @@
             <if  condition="$order['status'] eq '3' ">
              <div class="d2_title">商家确认</div>
         <form name="shops_confirm" method="post" action="<{:U('Shops/shops_confirm')}>" enctype="multipart/form-data" >
-            <input name="order_id" value="<{$order_id}>" type="hidden"/>
+            <input name="order_id" value="<{$order['order_id']}>" type="hidden"/>
             <input name="goods_img" value="" type="hidden"/> 
             <div class="pingjia" style="background-color: #FFF;padding: 0px;">
             <div class="pingjia_top">
@@ -90,6 +90,9 @@
                 <div class="d1 hidden">
                     <if  condition="$order['status'] eq '3' ">
                         <a id='shops_confirm'  href="javascript:void(0)" class="button_a_order">确认收衣</a>
+                    </if>
+                    <if  condition="$order['status'] eq '4' ">
+                        <a id='clear_complate'  href="<{:U('Shops/clear_complate',array('order_id'=>$order['order_id']))}>" class="button_a_order">清洗完成</a>
                     </if>
                 </div>
         </div>
