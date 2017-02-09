@@ -143,8 +143,11 @@ class ShopsController extends FontEndController {
             exit;
         }
         //发送模板消息给顾客，清洗完成
+        $usersmodel=D('Users');
+        $user_id=$order['user_id'];
+        $user_open_id=$usersmodel->where("user_id='{$user_id}'")->getField('open_id');
         $remark='点我，选择给您上门送衣时间';
-        $this->clear_complate_tem($order_id,$horseman_open_id,$remark);
+        $this->clear_complate_tem($order_id,$user_open_id,$remark);
         $row=array(
             'status'=>5,
             'remind_user_time'=>  time()
