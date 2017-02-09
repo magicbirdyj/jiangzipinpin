@@ -16,7 +16,7 @@ $('.a_tjdd').bind('click',function(){
             date_hour=='60'?date_hour=myDate.getHours()+':'+myDate.getMinutes():date_hour=date_hour+':'+'00';
             var str_time=$('.selected').attr('id')+' '+date_hour+':00';//2014-07-10 10:21:12
             $(':hidden[name=order_time]').val((Date.parse(new Date(str_time)))/1000);
-            $('form[name=dingdan]').submit();
+            //$('form[name=dingdan]').submit();
         }
     });
 
