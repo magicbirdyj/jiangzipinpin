@@ -91,19 +91,19 @@
                 <i class="borderD"></i>
             <div class='action hidden'>
                     <if  condition="$vo['status'] eq '1' ">
-                    <a id='order_taking'  href="javascript:void(0)" class="button_a_order">接单取衣</a>
+                        <a id='order_taking' order_id="<{$vo['order_id']}>"  href="javascript:void(0)" class="button_a_order">接单取衣</a>
                     </if>
                     <if  condition="$vo['status'] eq '2' ">
-                        <a id='confirm_goods'  href="<{:U('Horseman/confirm_goods',array('order_id'=>$order['order_id']))}>" class="button_a_order">确认取件</a>
+                        <a id='confirm_goods'  href="<{:U('Horseman/confirm_goods',array('order_id'=>$vo['order_id']))}>" class="button_a_order">确认取件</a>
                     </if>
                     <if  condition="$vo['status'] eq '3' and $vo['shop_id'] eq '0' ">
-                        <a id='deliver_shop'  href="javascript:void(0)" class="button_a_order">送达工厂</a>
+                        <a id='deliver_shop' order_id="<{$vo['order_id']}>"  href="javascript:void(0)" class="button_a_order">送达工厂</a>
                     </if>
                     <if  condition="$vo['status'] eq '6' ">
-                    <a id='order_taking_deliver'  href="javascript:void(0)" class="button_a_order">接单送衣</a>
+                    <a id='order_taking_deliver' order_id="<{$vo['order_id']}>"  href="javascript:void(0)" class="button_a_order">接单送衣</a>
                     </if>
                     <if  condition="$vo['status'] eq '7' ">
-                        <a id='order_confirm_deliver'  href="<{:U('Horseman/order_deliver',array('order_id'=>$order['order_id']))}>" class="button_a_order">确认送达</a>
+                        <a id='order_confirm_deliver'   href="<{:U('Horseman/order_deliver',array('order_id'=>$vo['order_id']))}>" class="button_a_order">确认送达</a>
                     </if>
             </div>
             </li>
@@ -155,7 +155,7 @@
     $('#order_taking').bind('click',function(){
             var url='/Home/Ajaxlogin/order_taking.html';
             var data={
-                    order_id:order_id,
+                    order_id:$(this).attr('order_id'),
                     check:"wy_taking"
                 }
             $.ajax({
@@ -176,7 +176,7 @@
     $('#order_taking_deliver').bind('click',function(){
             var url='/Home/Ajaxlogin/order_taking_deliver.html';
             var data={
-                    order_id:order_id,
+                    order_id:$(this).attr('order_id'),
                     check:"wy_taking"
                 }
             $.ajax({
@@ -197,7 +197,7 @@
     $('#deliver_shop').bind('click',function(){
             var url='/Home/Ajaxlogin/deliver_shop.html';
             var data={
-                    order_id:order_id,
+                    order_id:$(this).attr('order_id'),
                     check:"wy_deliver"
                 }
             $.ajax({

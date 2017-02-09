@@ -91,10 +91,10 @@
                 <i class="borderD"></i>
             <div class='action hidden'>
                     <if  condition="$vo['status'] eq '3' ">
-                        <a id='shops_confirm'  href="javascript:void(0)" class="button_a_order">确认收衣</a>
+                        <a id='shops_confirm'    href="<{:U('Shops/order_view',array('order_id'=>$vo['order_id']))}>" class="button_a_order">确认收衣</a>
                     </if>
                     <if  condition="$vo['status'] eq '4' ">
-                        <a id='clear_complate'  href="<{:U('Shops/clear_complate',array('order_id'=>$order['order_id']))}>" class="button_a_order">清洗完成</a>
+                        <a id='clear_complate'  href="<{:U('Shops/clear_complate',array('order_id'=>$vo['order_id']))}>" class="button_a_order">清洗完成</a>
                     </if>
             </div>
             </li>
@@ -141,71 +141,17 @@
         $('.dingdan_4>ul>li:eq(0) *').css('color','#fff');
     }
     
+    //清洗完成按钮绑定事件
+$('#clear_complate').bind('click',function(){
+    if(confirm("确定通知客户取衣吗？")){
+        return ture;
+    }else{
+        return false;
+    }
+});
     
     
-    $('#order_taking').bind('click',function(){
-            var url='/Home/Ajaxlogin/order_taking.html';
-            var data={
-                    order_id:order_id,
-                    check:"wy_taking"
-                }
-            $.ajax({
-                    type:'post',
-                    async : true,
-                    url:url,
-                    data:data,
-                    datatype:'json',
-                    success:function(msg){
-                        if(msg){
-                            location='/Home/Horseman/order_view/order_id/'+order_id;                      
-                        }else{
-                            alert('接单失败'); 
-                        }
-                    }
-                });    
-    });
-    $('#order_taking_deliver').bind('click',function(){
-            var url='/Home/Ajaxlogin/order_taking_deliver.html';
-            var data={
-                    order_id:order_id,
-                    check:"wy_taking"
-                }
-            $.ajax({
-                    type:'post',
-                    async : true,
-                    url:url,
-                    data:data,
-                    datatype:'json',
-                    success:function(msg){
-                        if(msg){
-                            location='/Home/Horseman/order_view/order_id/'+order_id;                        
-                        }else{
-                            alert('确认送达失败'); 
-                        }
-                    }
-                });    
-    });
-    $('#deliver_shop').bind('click',function(){
-            var url='/Home/Ajaxlogin/deliver_shop.html';
-            var data={
-                    order_id:order_id,
-                    check:"wy_deliver"
-                }
-            $.ajax({
-                    type:'post',
-                    async : true,
-                    url:url,
-                    data:data,
-                    datatype:'json',
-                    success:function(msg){
-                        if(msg){
-                            location='/Home/Horseman/order_view/order_id/'+order_id;                     
-                        }else{
-                            alert('送达工厂失败'); 
-                        }
-                    }
-                });    
-    });
+    
     
     
 </script>
