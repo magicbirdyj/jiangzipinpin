@@ -145,7 +145,6 @@ class ShopsController extends FontEndController {
         //发送模板消息给顾客，清洗完成
         $remark='点我，选择给您上门送衣时间';
         $this->clear_complate_tem($order_id,$remark);
-        exit;
         $row=array(
             'status'=>5,
             'remind_user_time'=>  time()
@@ -196,21 +195,15 @@ class ShopsController extends FontEndController {
         $order=$ordermodel->where("order_id='$order_id'")->find();
         $order_goodsmodel=D('Order_goods');
         $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
-        var_dump($arr_goods);
         $goods='';
         $key_last = key($arr_goods);
         foreach ($arr_goods as $k=>$value) {
             if($k != $key_last){
-                $goods+=$value+'、'; 
-                var_dump($value);
-                var_dump($goods);
+                $goods.=$value.'、'; 
             }else{
-                $goods+=$value;
-                var_dump($value);
-                var_dump($goods);
+                $goods.=$value;
             }
         }
-        var_dump($goods);exit;
         $template_id="A1s_g4U-xAAqCxGKdeUnZgiluf7gy-HT-T3kbVCerK4";
         $url=U('Order/order_view',array('order_id'=>$order['order_id']));
         $arr_data=array(

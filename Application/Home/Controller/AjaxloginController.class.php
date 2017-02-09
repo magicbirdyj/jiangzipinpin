@@ -406,9 +406,9 @@ class AjaxloginController extends FontEndController {
         $key_last = key($arr_goods);
         foreach ($arr_goods as $k=>$value) {
             if($k != $key_last){
-                $goods+=$value+'、'; 
+                $goods.=$value.'、'; 
             }else{
-                $goods+=$value;
+                $goods.=$value;
             }
         }
         $ordermodel=D('Order');
