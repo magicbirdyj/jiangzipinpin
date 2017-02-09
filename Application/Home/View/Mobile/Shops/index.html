@@ -90,10 +90,10 @@
             </a>
                 <i class="borderD"></i>
             <div class='action hidden'>
-                    <if  condition="$order['status'] eq '3' ">
+                    <if  condition="$vo['status'] eq '3' ">
                         <a id='shops_confirm'  href="javascript:void(0)" class="button_a_order">确认收衣</a>
                     </if>
-                    <if  condition="$order['status'] eq '4' ">
+                    <if  condition="$vo['status'] eq '4' ">
                         <a id='clear_complate'  href="<{:U('Shops/clear_complate',array('order_id'=>$order['order_id']))}>" class="button_a_order">清洗完成</a>
                     </if>
             </div>

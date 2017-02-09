@@ -90,19 +90,19 @@
             </a>
                 <i class="borderD"></i>
             <div class='action hidden'>
-                    <if  condition="$order['status'] eq '1' ">
+                    <if  condition="$vo['status'] eq '1' ">
                     <a id='order_taking'  href="javascript:void(0)" class="button_a_order">接单取衣</a>
                     </if>
-                    <if  condition="$order['status'] eq '2' ">
+                    <if  condition="$vo['status'] eq '2' ">
                         <a id='confirm_goods'  href="<{:U('Horseman/confirm_goods',array('order_id'=>$order['order_id']))}>" class="button_a_order">确认取件</a>
                     </if>
-                    <if  condition="$order['status'] eq '3' and $order['shop_id'] eq '0' ">
+                    <if  condition="$vo['status'] eq '3' and $vo['shop_id'] eq '0' ">
                         <a id='deliver_shop'  href="javascript:void(0)" class="button_a_order">送达工厂</a>
                     </if>
-                    <if  condition="$order['status'] eq '6' ">
+                    <if  condition="$vo['status'] eq '6' ">
                     <a id='order_taking_deliver'  href="javascript:void(0)" class="button_a_order">接单送衣</a>
                     </if>
-                    <if  condition="$order['status'] eq '7' ">
+                    <if  condition="$vo['status'] eq '7' ">
                         <a id='order_confirm_deliver'  href="<{:U('Horseman/order_deliver',array('order_id'=>$order['order_id']))}>" class="button_a_order">确认送达</a>
                     </if>
             </div>
