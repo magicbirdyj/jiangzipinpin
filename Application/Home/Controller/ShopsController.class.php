@@ -196,7 +196,7 @@ class ShopsController extends FontEndController {
         $order_goodsmodel=D('Order_goods');
         $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
         $goods='';
-        $key_last = key($arr_goods);
+        $key_last = count($arr_goods)-1;
         foreach ($arr_goods as $k=>$value) {
             if($k != $key_last){
                 $goods.=$value.'、'; 
@@ -205,7 +205,7 @@ class ShopsController extends FontEndController {
             }
         }
         $template_id="A1s_g4U-xAAqCxGKdeUnZgiluf7gy-HT-T3kbVCerK4";
-        $url=U('Order/order_view',array('order_id'=>$order['order_id']));
+        $url=U('Order/view',array('order_id'=>$order['order_id']));
         $arr_data=array(
             'first'=>array('value'=>'您的订单已清洗完成，请及时选择送衣时间，以便骑手送达',"color"=>"#666"),
             'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
