@@ -1,58 +1,99 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="screen-orientation" content="portrait" /> <!-- uc强制竖屏 -->
+<meta name="x5-orientation" content="portrait" />  <!-- QQ强制竖屏 -->
+<!--<meta name="full-screen" content="yes" /> <!-- UC强制全屏 -->
+<meta name="x5-fullscreen" content="true" /> <!-- QQ强制全屏 -->
+<!--<meta name="browsermode" content="application" /> <!-- UC应用模式 -->
+<meta name="x5-page-mode" content="app" /> <!-- QQ应用模式 -->
+<meta name="viewport"  content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"  /> 
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="<{$keywords}>" />
+<meta name="description" content="<{$description}>" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/public.css">
+<link rel="stylesheet" href="__PUBLIC_COMMON__/Css/weui.min.css">
+<link rel="stylesheet" href="__PUBLIC_COMMON__/Css/jquery-weui.min.css">
+<link rel="stylesheet" href="__PUBLIC_COMMON__/Css/reset.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/iconfont/iconfont.css">
+
+<script src="__PUBLIC_COMMON__/Js/jquery-2.1.4.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/jquery-weui.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/iscroll.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/function.js"></script>
+<script src="__PUBLIC_COMMON__/Js/swiper.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<title><{$title}></title>
 <link rel="stylesheet" href="__PUBLIC_HOME__/Mobile/Css/goods.css">
 </head>
 
-<body ontouchstart  onload="loaded()">
-    <div id="wrapper">
-    <div id="scroller">
-    <!--iscroll 滑动 开始-->
 <nav class="auto-nav x2">
-    <li class="curr"><a href="#">洗衣</a></li>
-    <li><a href="#">洗鞋</a></li>
-    <li><a href="#">洗家纺</a></li>
-    <li><a href="#">洗窗帘</a></li>
-    <li><a href="#">袋洗</a></li>
+    <volist name='arr_cat_top' id='vo_top'>
+        <li class="curr"><a href="javascript:void(0)"><{$vo_top['cat_name']}></a></li>
+    </volist>
 </nav>
-<img src="__PUBLIC_HOME__/Mobile/Images/goods/11.jpg" class="master-map">
-<nav class="auto-nav x3">
-    <li class="curr"><a href="#">上衣</a></li>
-    <li><a href="#">大衣外套</a></li>
-    <li><a href="#">裤装裙装</a></li>
-    <li><a href="#">配件</a></li>
-    <li><a href="#">爆品</a></li>
+    <volist name='arr_cat_top' id='vo_top'>
+        <div id="cat_id_<{$vo_top['cat_id']}>" class="page">
+<nav class="x3">
+    <volist name="arr_cat[$vo_top['cat_id']]" id='vo_cat'>
+        <li class="curr"><a  href="javascript:void(0)"><{$vo_cat['cat_name']}></a></li>
+    </volist>
 </nav>
-
+<volist name="arr_cat[$vo_top['cat_id']]" id='vo_cat'>
 <ul class="m-business clear">
-    <volist name="goods" id="vo">
-        <a href="#">
+    <volist name="goods[$vo_top['cat_id']][$vo_cat['cat_id']]" id="vo">
+        <a href="#" data_id="<{$vo['goods_id']}>">
             <img src="<{$vo['goods_img']}>">
-            <h1><{$vo['name']}></h1>
+            <div style='height: 70px;'>
+            <h1 class="goods_name"><{$vo['goods_name']}></h1>
             <p><span>&yen; </span><span class="price"><{$vo['price']}></span></p>
+            </div>
+            <div class="buy-number">0</div>
         </a>
     </volist>
-    
-
-
 </ul>
-<section class="footnav" style="margin:15px 0;">
-	<nav>
-    	<a href="#">
-        	<i class="iconfont">&#xe647;</i>
-            <p>高效服务</p>
-        </a>
-        <a href="#">
-        	<i class="iconfont">&#xe626;</i>
-            <p>售后保障</p>
-        </a>
-        <a href="#">
-        	<i class="iconfont">&#xe63f;</i>
-            <p>上门取件</p>
-        </a>
-    </nav>
-</section>
-<!--iscroll 滑动 结束-->
-</div>
-</div>
-<footer class="foot-h m-door">
-	<a href="#">上门取件</a>
-</footer>
-<script src="__PUBLIC_HOME__/Mobile/Js/goods.js" type="text/javascript"></script>
+</volist>
+    </div>
+    </volist>
+
+    
+    <section class="big-shade-all" style="display:none"></section>
+    <div id="price-forecast" >
+            <div class="head">
+                <span id='clear'>清空</span>
+                <span>价格合计</span>
+                <span id="close">关闭</span>
+            </div>
+            <div class="clothes-list">
+                <ul id="car_ul">
+                    
+                </ul>
+            </div>
+        </div>
+    
+    
+    <div class="shopping-cart-wrap">
+            <div class="shopping-cart">
+                <img id="car_img" src="__PUBLIC_HOME__/Mobile/Images/public/shopping-cart.png">
+                <p><span>合计价格￥</span><span class="total-price">0.00</span></p>
+            </div>
+            <div class="order-btn">确认商品</div>
+            <div class="buy-number-total">0</div>
+        </div>
+    
+   
+    <script>
+        var order_id="<{$order_id}>";
+        var obj_li='<li  class="car_li"><div class="content"><div class="pic-box"><img src=""></div><span class="clothes-name"></span><span>￥</span>';
+        obj_li+='<span class="single_price"></span><div class="add-subtract"><span class="minus"><img src="__PUBLIC_HOME__/Mobile/Images/public/jian.png"></span>';
+        obj_li+='<span class="single_number">1</span><span class="add"><img src="__PUBLIC_HOME__/Mobile/Images/public/jia.png"></span></div></div></li>';
+    </script>
+<script src="__PUBLIC_COMMON__/Js/jquery.fly.min.js"></script> 
+<script src="__PUBLIC_COMMON__/Js/requestAnimationFrame.js"></script> 
+<script src="__PUBLIC_HOME__/Mobile/Js/confirm_goods.js" type="text/javascript"></script>
+</body>
+</html>

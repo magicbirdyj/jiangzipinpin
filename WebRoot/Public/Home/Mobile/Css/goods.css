@@ -13,7 +13,7 @@
 .m-business a:nth-child(3n){border-right-color:rgba(0,0,0,0); }
 .m-business img{width:70%}
 .m-business h1{color:#1A1A1A; font-weight:normal;margin-top: -10px;}
-.m-business p{color:#F02B2B;margin-bottom: 15px;}
+.m-business p{color:#F02B2B;margin-bottom: 10px;margin-top: 3px;}
 
 
 

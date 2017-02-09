@@ -6,10 +6,23 @@ use Home\Controller;
 
 class GoodsController extends FontEndController {
     public function index() {
-        $cat_id=$_GET['cat_id']?$_GET['cat_id']:6;
+        $categorymodel=D('Category');
+        $arr_cat_top=$categorymodel->where("pid='0' and deleted=0")->select();
+        $this->assign('arr_cat_top',$arr_cat_top);
         $goodsmodel=D('Goods');
-        $goods=$goodsmodel->where("cat_id='$cat_id' and is_delete=0")->select();
+        foreach ($arr_cat_top as $value) {
+            $pid=$value['cat_id'];
+            $arr_cat[$pid]=$categorymodel->where("pid='$pid' and deleted=0")->select();
+            foreach ($arr_cat[$pid] as $value_cat) {
+                $cat_id=$value_cat['cat_id'];
+                $goods[$pid][$cat_id]=$goodsmodel->where("cat_id='$cat_id' and is_delete=0")->select();
+            }
+        }
+        $arr_cat[1]['hot']=array('cat_name'=>'爆品');
+        $this->assign('arr_cat',$arr_cat);
+        $goods[1]['hot']=$goodsmodel->where($where)->where("is_hot=1 and is_delete=0")->select();
         $this->assign('goods',$goods);
+        
         $this->display();
     }
     public function buy() {
