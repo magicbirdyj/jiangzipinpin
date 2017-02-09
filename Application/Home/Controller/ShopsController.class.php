@@ -202,8 +202,12 @@ class ShopsController extends FontEndController {
         foreach ($arr_goods as $k=>$value) {
             if($k != $key_last){
                 $goods+=$value+'、'; 
+                var_dump($value);
+                var_dump($goods);
             }else{
                 $goods+=$value;
+                var_dump($value);
+                var_dump($goods);
             }
         }
         var_dump($goods);exit;
