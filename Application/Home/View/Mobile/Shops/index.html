@@ -8,7 +8,7 @@
     <div class="fanhui padding"><a href="<{:U('Member/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>店铺订单</div>
     <div class="dingdan">
         <div class='dingdan_4'>
-            <ul style='margin-bottom: 50px;'>
+            <ul>
                 <li>
                     <a href="<{:U('Shops/index')}>">
                     <div class='dingdan_fenkai_tb_div'>
@@ -55,7 +55,7 @@
        
  
         
-        
+        <ul  style='margin-bottom: 70px;'>
         <volist name="list" id="vo">
             <li class="list">
             <a  href="<{:U('Shops/order_view',array('order_id'=>$vo['order_id']))}>"><!--内容遍历-->
@@ -97,7 +97,7 @@
             </div>
             </li>
         </volist>
-        
+        </ul>
 
         
         
