@@ -50,11 +50,12 @@
                     <div class='guiji'>
                         <div class="guiji_content">
                             <span><{:order_status($vo['pay_status'],$vo['order_status'],$vo['order_id'])['status']}></span>
-                            <span class="guiji_time"><{$vo['log_time']|date='Y-m-d H：i',###}></span>
+                            <span class="guiji_time"><{$vo['log_time']|date='Y-m-d H:i',###}></span>
                             <div class='note'>
                                 <{:order_status($vo['pay_status'],$vo['order_status'],$vo['order_id'])['note']}>
+                                <if condition="$vo['order_status'] eq '1' "><{$order['appointment_time']|date='Y-m-d H:i',###}>--<{:date('H:i',($order['appointment_time']+3600))}></if>
                                 <if  condition="$vo['order_status'] eq '2' "><a href="tel:<{$horseman['mobile_phone']}>" style="color:#00dbf5;"><{$horseman['mobile_phone']}></a></if>
-                                <if condition="$vo['order_status'] eq '6' "><{$order['deliver_time']|date='Y-m-d H：i',###}></if>
+                                <if condition="$vo['order_status'] eq '6' "><{$order['deliver_time']|date='Y-m-d H:i',###}>--<{:date('H:i',($order['deliver_time']+3600))}></if>
                                 <if  condition="$vo['order_status'] eq '7' "><a href="tel:<{$deliver_horseman['mobile_phone']}>" style="color:#00dbf5;"><{$deliver_horseman['mobile_phone']}></a></if>
                             </div>
                         </div>

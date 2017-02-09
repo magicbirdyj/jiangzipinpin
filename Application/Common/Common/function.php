@@ -171,7 +171,7 @@ function creat_file($dir){
 function order_status($pay_status,$status,$order_id){
     if($pay_status==='0'){
         if($status==='1'){
-            return array('status'=>'订单已提交','note'=>'请等待骑手取衣','status_button'=>'','status_url'=>"");
+            return array('status'=>'订单已提交','note'=>'预约取衣时间:','status_button'=>'','status_url'=>"");
         }else if($status==='2'){
             return array('status'=>'骑手已出发','note'=>'骑手电话:','status_button'=>'','status_url'=>"");
         }else if($status==='3'){
