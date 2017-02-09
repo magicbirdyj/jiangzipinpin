@@ -60,6 +60,11 @@ $('#order-btn').bind('click',function(){
         setTimeout("$('#time_tishi').css('display','none')",3000);
     }else{
         $('#time').html(get_time());
+        var myDate = new Date();
+        var date_hour=$('.select_hour').attr('date_hour');
+        date_hour=='60'?date_hour=myDate.getHours()+':'+myDate.getMinutes():date_hour=date_hour+':'+'00';
+        var str_time=$('.selected').attr('id')+' '+date_hour+':00';//2014-07-10 10:21:12
+        $(':hidden[name=order_time]').val((Date.parse(new Date(str_time)))/1000);
         fanhui_main($('#bianji_time_div'));
     }
 })
