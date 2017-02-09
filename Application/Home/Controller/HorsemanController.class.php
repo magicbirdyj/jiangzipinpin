@@ -176,12 +176,12 @@ class HorsemanController extends FontEndController {
         $order_goodsmodel=D('Order_goods');
         $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
         $goods='';
-        $key_last = key($arr_goods);
+        $key_last = count($arr_goods)-1;
         foreach ($arr_goods as $k=>$value) {
             if($k != $key_last){
-                $goods+=$value+'、'; 
+                $goods.=$value.'、'; 
             }else{
-                $goods+=$value;
+                $goods.=$value;
             }
         }
         $ordermodel=D('Order');
@@ -200,7 +200,7 @@ class HorsemanController extends FontEndController {
             'keyword1'=>array('value'=>date("Y年m月d日 H:i",$order['deliver_time']),"color"=>"#666"),
             'keyword2'=>array('value'=>'衣干净',"color"=>"#666"),
             'keyword3'=>array('value'=>count($arr_goods).'件('.$goods.')',"color"=>"#666"),
-            'keyword4'=>array('value'=>'&yen;'.$order['price']-$order['daijinquan'],"color"=>"#666"),
+            'keyword4'=>array('value'=>'&yen;'.($order['price']-$order['daijinquan']),"color"=>"#666"),
             'remark'=>array('value'=>'送达时间:'.date("Y年m月d日 H:i",$order['deliver_time']).'。'.$remark,"color"=>"#F90505")
         );
         $this->response_template($open_id, $template_id, $url, $arr_data);

@@ -375,12 +375,12 @@ class AjaxloginController extends FontEndController {
         $order_goodsmodel=D('Order_goods');
         $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
         $goods='';
-        $key_last = key($arr_goods);
+        $key_last = count($arr_goods)-1;
         foreach ($arr_goods as $k=>$value) {
             if($k != $key_last){
-                $goods+=$value+'、'; 
+                $goods.=$value.'、'; 
             }else{
-                $goods+=$value;
+                $goods.=$value;
             }
         }
         $ordermodel=D('Order');
