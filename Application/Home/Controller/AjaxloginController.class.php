@@ -113,7 +113,7 @@ class AjaxloginController extends FontEndController {
             $shopsmodel=D('Shops');
             $open_id=$shopsmodel->where("shop_id='$shop_id'")->getField('open_id');
             //发送模板消息给工厂，确认送达
-            $remark='点我，确认订单收取';
+            $remark='点我，确认衣物送达洗衣店';
             $this->deliver_shop_tem($order_id,$open_id,$remark);
             $this->ajaxReturn($result);
         }
@@ -417,7 +417,7 @@ class AjaxloginController extends FontEndController {
         $horseman_id=$order['horseman_id'];
         $horseman=$horsemanmodel->where("horseman_id='{$horseman_id}'")->find();
         
-        $template_id="aOHqR_v1qq1ycSSfqRVpDSW6izoEtmPSDRCOMuyW9iA ";
+        $template_id="aOHqR_v1qq1ycSSfqRVpDSW6izoEtmPSDRCOMuyW9iA";
         $url=U('Shops/order_view',array('order_id'=>$order['order_id']));
         $arr_data=array(
             'first'=>array('value'=>"有新的订单送达，请确认收取衣物","color"=>"#666"),
