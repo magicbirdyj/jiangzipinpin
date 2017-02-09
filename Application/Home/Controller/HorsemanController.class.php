@@ -201,7 +201,6 @@ class HorsemanController extends FontEndController {
         $arr_data=array(
             'first'=>array('value'=>"您的衣物已经清洗完成并送达上门，请您付款","color"=>"#666"),
             'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
-            'keyword1'=>array('value'=>date("Y年m月d日 H:i",$order['deliver_time']),"color"=>"#666"),
             'keyword2'=>array('value'=>'衣干净',"color"=>"#666"),
             'keyword3'=>array('value'=>count($arr_goods).'件('.$goods.')',"color"=>"#666"),
             'keyword4'=>array('value'=>'￥'.($order['price']-$order['daijinquan']),"color"=>"#666"),

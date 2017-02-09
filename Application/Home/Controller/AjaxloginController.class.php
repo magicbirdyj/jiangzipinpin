@@ -362,7 +362,7 @@ class AjaxloginController extends FontEndController {
         $url=U('Horseman/order_view',array('order_id'=>$order['order_id']));
         $arr_data=array(
             'first'=>array('value'=>"您已接单成功，马上出发吧","color"=>"#666"),
-            'keyword1'=>array('value'=>date("Y年m月d日 H:i",$order['appointment_time']),"color"=>"#666"),
+            'keyword1'=>array('value'=>date("m月d日 H:i",$order['appointment_time']).'--'.date("H:i",(int)$order['appointment_time']+3600),"color"=>"#666"),
             'keyword2'=>array('value'=>$address['location'].' '.$address['address'],"color"=>"#666"),
             'keyword3'=>array('value'=>$address['name'].' '.$address['mobile'],"color"=>"#666"),
             'keyword4'=>array('value'=>'衣物',"color"=>"#666"),
@@ -390,7 +390,7 @@ class AjaxloginController extends FontEndController {
         $url=U('Horseman/order_view',array('order_id'=>$order['order_id']));
         $arr_data=array(
             'first'=>array('value'=>"您已接单成功，马上出发吧,请去洗衣店（".$order['shop_name']."）取衣送往用户处","color"=>"#666"),
-            'keyword1'=>array('value'=>date("Y年m月d日 H:i",$order['deliver_time']),"color"=>"#666"),
+            'keyword1'=>array('value'=>date("m月d日 H:i",$order['deliver_time']).'--'.date("H:i",(int)$order['deliver_time']+3600),"color"=>"#666"),
             'keyword2'=>array('value'=>$address['location'].' '.$address['address'],"color"=>"#666"),
             'keyword3'=>array('value'=>$address['name'].' '.$address['mobile'],"color"=>"#666"),
             'keyword4'=>array('value'=>$goods,"color"=>"#666"),
