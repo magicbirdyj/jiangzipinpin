@@ -96,7 +96,7 @@ class AjaxloginController extends FontEndController {
         $horseman=$horsemanmodel->where("open_id='$horseman_open_id'")->find();
         $order_id=$post['order_id'];
         $ordermodel=D('Order');
-        $order=$ordermodel->where("order_id='$order_id'")->find();
+        $order=$ordermodel->where("order_id='{$order_id}'")->find();
         if($horseman['horseman_id']!=$order['horseman_id']){
             $this->ajaxReturn(FALSE);
             exit;
@@ -108,7 +108,7 @@ class AjaxloginController extends FontEndController {
             'shop_id'=>$shop_id,
             'shop_name'=>$shop_name
         );
-        $result=$ordermodel->where("order_id='$order_id'")->save('$row');
+        $result=$ordermodel->where("order_id='{$order_id}'")->save($row);
         if($result){
             $shopsmodel=D('Shops');
             $open_id=$shopsmodel->where("shop_id='$shop_id'")->getField('open_id');
