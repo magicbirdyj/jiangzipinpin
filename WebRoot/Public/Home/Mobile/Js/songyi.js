@@ -4,7 +4,7 @@ $('.a_tjdd').bind('click',function(){
            tishi('tishi','请添加送衣地址','350px');
         }else if(Trim($('#default_location').html()).indexOf("娄星区")==-1){
             tishi('tishi','目前仅支持娄星区，请更改地址','350px');
-        }else if($('#time').html()=='请选择取件时间'){
+        }else if($('#time').html()=='请选择送衣时间'||$(':hidden[name=order_time]').val()==''){
                 tishi('tishi','请选择送衣时间','350px');
         }else{
             $(':hidden[name=address_location]').val($('#address_location').html());
