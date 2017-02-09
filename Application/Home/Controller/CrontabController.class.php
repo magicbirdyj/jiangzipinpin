@@ -6,7 +6,7 @@ class CrontabController extends FontEndController {
     public function upload_order() {
         $this->remind_horseman();
         $this->remind_users();
-        $this->remind_pay();
+        //$this->remind_pay();
     }
     public function transfersh() {
         exit;
