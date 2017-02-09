@@ -387,7 +387,7 @@ class AjaxloginController extends FontEndController {
         $order=$ordermodel->where("order_id='$order_id'")->find();
         $address=  unserialize($order['deliver_address']);
         $template_id="PUE-zt-KqzrR73H1kTdHjVK-q-uaeFut4r9giZrzZJg";
-        $url=U('Horseman/order_deliver',array('order_id'=>$order['order_id']));
+        $url=U('Horseman/order_view',array('order_id'=>$order['order_id']));
         $arr_data=array(
             'first'=>array('value'=>"您已接单成功，马上出发吧,请去洗衣店（".$order['shop_name']."）取衣送往用户处","color"=>"#666"),
             'keyword1'=>array('value'=>date("Y年m月d日 H:i",$order['deliver_time']),"color"=>"#666"),

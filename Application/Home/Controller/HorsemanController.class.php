@@ -142,6 +142,10 @@ class HorsemanController extends FontEndController {
             $this->error('您并没接取该订单,无法对其确认送达',U('Horseman/order'));
             exit;
         }
+        $order=$ordermodel->where("order_id='{$order_id}'")->find();
+        if($order['status']!=7){
+            $this->error('该订单状态并非送取中..',U('Horseman/order'));
+        }
         $row=array(
             'status'=>8,
             'remind_pay_time'=>time()
@@ -200,7 +204,7 @@ class HorsemanController extends FontEndController {
             'keyword1'=>array('value'=>date("Y年m月d日 H:i",$order['deliver_time']),"color"=>"#666"),
             'keyword2'=>array('value'=>'衣干净',"color"=>"#666"),
             'keyword3'=>array('value'=>count($arr_goods).'件('.$goods.')',"color"=>"#666"),
-            'keyword4'=>array('value'=>'&yen;'.($order['price']-$order['daijinquan']),"color"=>"#666"),
+            'keyword4'=>array('value'=>'￥'.($order['price']-$order['daijinquan']),"color"=>"#666"),
             'remark'=>array('value'=>'送达时间:'.date("Y年m月d日 H:i",$order['deliver_time']).'。'.$remark,"color"=>"#F90505")
         );
         $this->response_template($open_id, $template_id, $url, $arr_data);
