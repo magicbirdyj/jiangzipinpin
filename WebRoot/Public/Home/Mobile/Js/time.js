@@ -40,14 +40,17 @@ function quick_time(){
         var n=$(".detail_hour[date_hour="+hours+"]").index()+1;
         $(".detail_hour:lt("+n+")").addClass('baodan');
     }
-    
 }
 
+
+
 //点击时间
-$('.detail_hour').bind('click',function(){
+$('body').on('click','.detail_hour:not(.baodan)',function(){
     $(this).addClass('select_hour');
     $(this).siblings().removeClass('select_hour');
-})
+});
+
+
 
 //点击确认选择
 $('#order-btn').bind('click',function(){
