@@ -41,7 +41,7 @@ class ShopsController extends FontEndController {
             $order=$ordermodel->table('m_order t1,m_horseman t2')->where("t1.order_id='{$order_id}' and t1.horseman_id=t2.horseman_id")->find();
         }
         if(!$order){
-            $this->error('该订单号不存在或已经删除 ');
+            $this->error('该订单号不存在或已经删除','/Home/Shops/index');
         }
 
         $order_goodsmodel=D('Order_goods');
@@ -90,7 +90,7 @@ class ShopsController extends FontEndController {
         $shop=$shopsmodel->where("shop_id='$shop_id'")->find();
         $open_id=$_SESSION['huiyuan']['open_id'];
         if($shop['open_id']!=$open_id){
-            $this->error('骑手并没送达该订单到您工厂,无法对其确认商品',U('Shop/index'));
+            $this->error('骑手并没送达该订单到您工厂,无法对其确认商品','/Home/Shops/index');
             exit;
         }
 
@@ -116,7 +116,7 @@ class ShopsController extends FontEndController {
             $result = $order_actionmodel->add($row);
        }
        if(!$result){
-           $this->error('商家确认商品出错');
+           $this->error('商家确认商品出错','/Home/Shops/index');
            exit;
        }
        $this->assign('order_id',$order_id);
@@ -134,7 +134,7 @@ class ShopsController extends FontEndController {
         $shopsmodel=D('Shops');
         $shop_id=$shopsmodel->where("open_id='{$open_id}'")->getField('shop_id');
         if($order['shop_id']!=$shop_id){
-            $this->error('您没有该订单权限','/Shops/index');
+            $this->error('您没有该订单权限','/Home/Shops/index');
         }
         $order['shop_img']=  unserialize($order['shop_img']);
         $order['img_number']=count($order['shop_img']);
@@ -151,7 +151,7 @@ class ShopsController extends FontEndController {
         $shop=$shopsmodel->where("shop_id='$shop_id'")->find();
         $open_id=$_SESSION['huiyuan']['open_id'];
         if($shop['open_id']!=$open_id||$order['status']!='4'){
-            $this->error('您没有该订单或者该订单并不是清洗状态,无法对其确认清洗完成',U('Shop/index'));
+            $this->error('您没有该订单或者该订单并不是清洗状态,无法对其确认清洗完成','/Home/Shops/index');
             exit;
         }
         //发送模板消息给顾客，清洗完成
@@ -163,7 +163,7 @@ class ShopsController extends FontEndController {
         );
         $result=$ordermodel->where("order_id='{$order_id}'")->save($row);
         if(!$result){
-            $this->error('订单写入不成功',U('Shop/index'));
+            $this->error('订单写入不成功','/Home/Shops/index');
             exit;
         }else{
             //订单操作表
@@ -182,7 +182,7 @@ class ShopsController extends FontEndController {
         if($result){
             $this->redirect('Shops/order_view',array('order_id'=>$order_id));
         }else{
-            $this->error('订单操作表写入不成功',U('Shop/index'));
+            $this->error('订单操作表写入不成功','/Home/Shops/index');
         }
     }
     
