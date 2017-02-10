@@ -114,7 +114,7 @@ class GoodsController extends FontEndController {
         );
         $order_actionmodel->add($row_action); //订单操作信息写入数据库order_action表
         cookie('order_id',$result,36000);
-        $this->redirect('Goods/success_buy_page',array('order_id'=>$order_id));
+        $this->redirect('Goods/success_buy_page',array('order_id'=>$result));
         
     }
     public function success_buy_page() {
