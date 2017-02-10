@@ -150,8 +150,9 @@
     
     $('#order_taking').bind('click',function(){
             var url='/Home/Ajaxlogin/order_taking.html';
+            var order_id=$(this).attr('order_id');
             var data={
-                    order_id:$(this).attr('order_id'),
+                    order_id:order_id,
                     check:"wy_taking"
                 }
             $.ajax({
@@ -171,8 +172,9 @@
     });
     $('#order_taking_deliver').bind('click',function(){
             var url='/Home/Ajaxlogin/order_taking_deliver.html';
+            var order_id=$(this).attr('order_id');
             var data={
-                    order_id:$(this).attr('order_id'),
+                    order_id:order_id,
                     check:"wy_taking"
                 }
             $.ajax({
@@ -192,6 +194,7 @@
     });
     $('#deliver_shop').bind('click',function(){
             var url='/Home/Ajaxlogin/deliver_shop.html';
+            var order_id=$(this).attr('order_id');
             var data={
                     order_id:$(this).attr('order_id'),
                     check:"wy_deliver"
