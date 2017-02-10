@@ -9,7 +9,10 @@ class MemberController extends FontEndController {
         $is_shop=$shopsmodel->where("open_id='$open_id'")->count();
         $this->assign('is_shop',$is_shop);
         
-        
+        //是否是骑士
+        $horsemanmodel=D('Horseman');
+        $is_horseman=$horsemanmodel->where("open_id='$open_id'")->count();
+        $this->assign('is_horseman',$is_horseman);
 
         $user_id=$_SESSION['huiyuan']['user_id'];//获取会员id号
         $usersmodel=D('Users');
@@ -43,10 +46,15 @@ class MemberController extends FontEndController {
             $status_count['shop_all']=$ordermodel->where("shop_id={$shop_id} and deleted=0")->count();//获取全部订单条数
             $status_count['shop_finishing']=$ordermodel->where("shop_id={$shop_id} and status=4 and deleted=0")->count();//获取待完成条数
             $status_count['shop_shouhou']=$ordermodel->where("shop_id={$shop_id} and pay_status>1 and pay_status<4 and deleted=0")->count();//获取售后申请条数
-
         }
-        
-
+        //骑士订单
+        if($is_horseman){
+            $horseman_id=$horsemanmodel->where("open_id='$open_id'")->getField('horseman_id');
+            $status_count['no_taking']=$ordermodel->where("status=1 and deleted=0")->count();//获取待抢单条数
+            $status_count['quyi']=$ordermodel->where("horseman_id='{$horseman_id}' and status>=2 and status<4 and deleted=0")->count();//获取正在取衣条数
+            $status_count['songyi']=$ordermodel->where("deliver_horseman_id='{$horseman_id}' and status=7  and deleted=0")->count();//获取已完成条数
+            $status_count['finished']=$ordermodel->where("(horseman_id='{$horseman_id}' and status>3 and deleted=0) or (deliver_horseman_id='{$horseman_id}' and status>7 and deleted=0)")->count();//获取待付款条数
+        }
         $status_count['yipingjia']=$ordermodel->where("user_id={$user_id} and pay_status=1 and status=9")->count();
         
         

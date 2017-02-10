@@ -8,6 +8,15 @@
                     <li><a href="<{:U('Shops/index?status=shouhou')}>">售后申请<div style="float:right"><span><{$status_count['shop_shouhou']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
                 </ul>
             </if>
+            <if condition="$is_horseman neq 0">
+                <div class="d1">骑士订单</div>
+                <ul class="left_ul">
+                    <li><a href="<{:U('Horseman/index')}>">待抢单<div style="float:right"><span><{$status_count['no_taking']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                    <li><a href="<{:U('Horseman/index?status=quyi')}>">取衣中<div style="float:right"><span><{$status_count['quyi']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                    <li><a href="<{:U('Horseman/index?status=songyi')}>">送衣中<div style="float:right"><span><{$status_count['songyi']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                    <li><a href="<{:U('Horseman/index?status=finished')}>">已完成<div style="float:right"><span><{$status_count['finished']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                </ul>
+            </if>
             <div class="d1">我的订单</div>
                 <ul class="left_ul">
                     <li><a href="<{:U('Order/index')}>">未完成<div style="float:right"><span><{$status_count['no_complete']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>                 
