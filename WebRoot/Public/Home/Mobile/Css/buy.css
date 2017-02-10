@@ -130,6 +130,7 @@
 .buy_table{
     border: none;
     width: 100%;
+    margin-bottom: 20px;
 }
 .buy_table_head{
     position: relative;
