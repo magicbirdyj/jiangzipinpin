@@ -185,7 +185,7 @@ function order_status($pay_status,$status,$order_id){
         }else if($status==='7'){
             return array('status'=>'骑手出发送衣','note'=>'骑手电话:','status_button'=>'','status_url'=>""); 
         }else if($status==='8'){
-            return array('status'=>'订单完成','note'=>'请付款','status_button'=>'去付款','status_url'=>"/Home/order/zhifu/order_id/{$order_id}.html"); 
+            return array('status'=>'订单完成','note'=>'请付款','status_button'=>'去付款','status_url'=>"/Home/Goods/zhifu/order_id/{$order_id}.html"); 
         }else if($status==='10'){
             return array('status'=>'订单已取消','note'=>'','status_button'=>'','status_url'=>""); 
         }

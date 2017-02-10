@@ -122,3 +122,117 @@
     border-bottom: 1px solid #e5eeff;
     font-size: 12px;
 }
+
+
+
+
+/*支付页面*/
+.buy_table{
+    border: none;
+    width: 100%;
+}
+.buy_table_head{
+    position: relative;
+}
+.buy_table_head td{
+    box-sizing: border-box;
+    background-color: #F0F0F0;
+    padding: 15px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+}
+.buy_table_head td img{
+    width: 90px;
+    height: 90px;
+    position: absolute;
+}
+.buy_table_head td .goods_name{
+    box-sizing: border-box;
+    height: 90px;
+    width: 100%;
+    background-color: #F0F0F0;
+    padding-left: 100px;
+    line-height: 30px;
+    font-size: 16px;
+}
+.goods_name .name{
+    background-color:#F0F0F0;
+    height: 60px;
+}
+.goods_name .name_price{
+    background-color: #F0F0F0;
+    font-size: 14px;
+}
+.buy_table_content td .tb_address{
+    width: 20px;
+    height: 46px;
+    line-height: 46px;
+    position: absolute;
+    font-size: 26px;
+}
+.buy_table_content td .tb_right{
+    width: 20px;
+    height: 46px;
+    line-height: 46px;
+    position: absolute;
+    right: 10px;
+    top:15px;
+    font-size: 20px;
+}
+#buy_number{
+    border: 1px solid #666;
+    height:28px;
+    width:40px;
+    padding: 0px 10px;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+    bottom:2px;
+}
+.number_kongzhi{
+    border: 1px solid #666;
+    height:28px;
+    width: 28px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 26px;
+    display: inline-block;
+    position: relative;
+    top:2px;
+}
+.buy_table_content td .address{
+    box-sizing: border-box;
+    height: 46px;
+    width: 100%;
+    padding-left: 30px;
+    line-height: 46px;
+    font-size: 14px;
+}
+.address{
+    display: block;
+}
+.address div{
+    height: 23px;
+    line-height: 23px;
+}
+.buy_table_content td{
+    background-color: #FFF;
+    padding: 15px 10px;
+    font-size: 16px;
+    text-align: left;
+    border-bottom: 1px dotted #E5E5E5;
+}
+.buy_table_content .td_l{
+    width: 45%;
+}
+.buy_table_content .td_r{
+    width: 55%;
+    text-align: right;
+}
+.buy_table_content .yingfu{
+    color: #f95757;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 13px 10px;
+}
