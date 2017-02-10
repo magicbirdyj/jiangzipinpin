@@ -3,9 +3,9 @@
             <if condition="$is_shop neq 0">
                 <div class="d1">店铺订单</div>
                 <ul class="left_ul">
-                    <li><a href="<{:U('Shops/order')}>">全部<div style="float:right"><span><{$status_count['shop_all']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
-                    <li><a href="<{:U('Shops/order?status=shop_finishing')}>">清洗中<div style="float:right"><span><{$status_count['shop_finishing']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
-                    <li><a href="<{:U('Shops/order?status=shouhou')}>">售后申请<div style="float:right"><span><{$status_count['shop_shouhou']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                    <li><a href="<{:U('Shops/index')}>">全部<div style="float:right"><span><{$status_count['shop_all']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                    <li><a href="<{:U('Shops/index?status=shop_finishing')}>">清洗中<div style="float:right"><span><{$status_count['shop_finishing']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                    <li><a href="<{:U('Shops/index?status=shouhou')}>">售后申请<div style="float:right"><span><{$status_count['shop_shouhou']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
                 </ul>
             </if>
             <div class="d1">我的订单</div>
