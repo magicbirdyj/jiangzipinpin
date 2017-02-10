@@ -48,7 +48,7 @@ class HorsemanController extends FontEndController {
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id='{$order_id}'")->find();
         if(!$order){
-            $this->error('该订单号不存在或已经删除 ');
+            $this->error('该订单号不存在或已经删除',U('Horseman/index'));
         }
         //骑手信息
         $horsemanmodel=D('Horseman');
@@ -63,16 +63,16 @@ class HorsemanController extends FontEndController {
         $open_id=$_SESSION['huiyuan']['open_id'];
         if($order['status']>=2 && $order['status']<=5){
             if($open_id!=$horseman['open_id']){
-                $this->error('您没有接到该订单');
+                $this->error('您没有接到该订单',U('Horseman/index'));
             }
         }elseif ($order['status']>=7 && $order['status']<=8) {
             if($open_id!=$deliver_horseman['open_id']){
                 $this->error('您没有接到该订单');
             }
         }elseif($order['status']==10){
-            $this->error('该订单已取消','Horseman/index');
+            $this->error('该订单已取消',U('Horseman/index'));
         }elseif(!($order['status']==1||$order['status']==6)){
-            $this->error('该订单已完成');
+            $this->error('该订单已完成',U('Horseman/index'));
         }
         
         
