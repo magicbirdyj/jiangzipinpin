@@ -72,7 +72,7 @@ class HorsemanController extends FontEndController {
         }elseif($order['status']==10){
             $this->error('该订单已取消',U('Horseman/index'));
         }elseif(!($order['status']==1||$order['status']==6)){
-            $this->error('该订单已完成',U('Horseman/index'));
+            $this->error('该订单已完成','/Horseman/index');
         }
         
         
