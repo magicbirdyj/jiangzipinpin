@@ -43,17 +43,15 @@
         <div class="d2">
            
              <div class="d2_title">收衣详情</div>
-            <input name="order_id" value="<{$order_id}>" type="hidden"/>
-            <input name="goods_img" value="" type="hidden"/> 
             <div class="pingjia" style="background-color: #FFF;padding: 0px;">
             <div class="pingjia_top">
                 <div class="pingjia_box">
-                    <textarea class="pingjia_textarea" name="pingjia_text" placeholder="" ><{$text}></textarea>
+                    <textarea class="pingjia_textarea" name="pingjia_text" placeholder="" ><{$order['shop_note']}></textarea>
                     <div class="pingjia_box_szp">
                         <div class="file_tr hidden">
-                        <div class="tr_td1" style="height: 25px;line-height: 25px;float:none;margin: 5px 0px;">照片:<i style="margin-left: 3px;">(3张)</i></div>
-                        <volist name='arr_img' id='vo'>
-                            <div class="div_goods_img"><img src="" class="empty_img" /><img class="goods_img" src="<{$vo}>" /></div>
+                        <div class="tr_td1" style="height: 25px;line-height: 25px;float:none;margin: 5px 0px;">照片:<i style="margin-left: 3px;">( <{$order['img_number']}> 张 )</i></div>
+                        <volist name="order['shop_img']" id='vo'>
+                            <div class="div_goods_img"><img src="" class="empty_img"/><img class="goods_img" src="<{$vo}>" /></div>
                         </volist>
                         </div>     
                     </div>
@@ -62,7 +60,6 @@
         </div>
     </div>
     
-<script src="__PUBLIC_HOME__/Mobile/Js/shops_view.js" type="text/javascript"></script>
 <script type="text/javascript">
    
    

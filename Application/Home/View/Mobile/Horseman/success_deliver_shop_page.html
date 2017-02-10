@@ -1,0 +1,31 @@
+
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order_view.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order.css">
+</head>
+
+<body>
+
+    <div class="fanhui padding"><a href="<{:U('Horseman/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>送达商家成功</div>
+
+    <div class="view"  style='display: block;'>
+        <div class="d2">
+           
+             <div class="d2_title">商家详情</div>
+            <input name="order_id" value="<{$order_id}>" type="hidden"/>
+            <div class="d2_content">
+                <span><i>清洗物品</i><{$goods}></span>
+                <span><i>清洗商家</i><{$order['shop_name']}></span>
+                <span><i>送达骑士</i><{$horseman['horseman_name']?$horseman['horseman_name']:'等待骑士取衣'}>&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel://<{$horseman['mobile_phone']}>" style="color:#00dbf5;"><{$horseman['mobile_phone']}></a></span>
+            </div>
+        </div>
+    </div>
+    
+<script type="text/javascript">
+   
+   
+    
+
+</script>
+
+

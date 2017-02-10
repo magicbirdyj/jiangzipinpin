@@ -48,7 +48,7 @@ class HorsemanController extends FontEndController {
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id='{$order_id}'")->find();
         if(!$order){
-            $this->error('该订单号不存在或已经删除',U('Horseman/index'));
+            $this->error('该订单号不存在或已经删除','/Horseman/index');
         }
         //骑手信息
         $horsemanmodel=D('Horseman');
@@ -63,14 +63,14 @@ class HorsemanController extends FontEndController {
         $open_id=$_SESSION['huiyuan']['open_id'];
         if($order['status']>=2 && $order['status']<=5){
             if($open_id!=$horseman['open_id']){
-                $this->error('您没有接到该订单',U('Horseman/index'));
+                $this->error('您没有接到该订单','/Horseman/index');
             }
         }elseif ($order['status']>=7 && $order['status']<=8) {
             if($open_id!=$deliver_horseman['open_id']){
                 $this->error('您没有接到该订单');
             }
         }elseif($order['status']==10){
-            $this->error('该订单已取消',U('Horseman/index'));
+            $this->error('该订单已取消','/Horseman/index');
         }elseif(!($order['status']==1||$order['status']==6)){
             $this->error('该订单已完成','/Horseman/index');
         }
@@ -105,7 +105,7 @@ class HorsemanController extends FontEndController {
         $horsemanmodel=D('Horseman');
         $horseman=$horsemanmodel->where("open_id='$horseman_open_id'")->find();
         if($horseman['horseman_id']!=$order['horseman_id']){
-            $this->error('您没有接到该订单!');
+            $this->error('您没有接到该订单!','/Horseman/index');
         }
         $order['order_address']=  unserialize($order['order_address']);
         $this->assign('horseman',$horseman);
@@ -121,7 +121,7 @@ class HorsemanController extends FontEndController {
         $horsemen_open_id=$horsemanmodel->where("horseman_id='$horseman_id'")->getField('open_id');
         $open_id=$_SESSION['huiyuan']['open_id'];
         if($horsemen_open_id!=$open_id){
-            $this->error('您并没接取该订单,无法对其确认商品',U('Horseman/order'));
+            $this->error('您并没接取该订单,无法对其确认商品','/Horseman/index');
             exit;
         }
 
@@ -144,7 +144,32 @@ class HorsemanController extends FontEndController {
         
         $this->display();
     }
-    
+    public function success_deliver_shop_page() {
+        $order_id=$_GET['order_id'];
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='{$order_id}'")->find();
+        $horseman_open_id=$_SESSION['huiyuan']['open_id'];
+        $horsemanmodel=D('Horseman');
+        $horseman=$horsemanmodel->where("open_id='$horseman_open_id'")->find();
+        if($horseman['horseman_id']!=$order['horseman_id']){
+            $this->error('您没有接到该订单!','/Horseman/index');
+        }
+        $order_goodsmodel=D('Order_goods');
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $goods='';
+        $key_last = count($arr_goods)-1;
+        foreach ($arr_goods as $k=>$value) {
+            if($k != $key_last){
+                $goods.=$value.'、'; 
+            }else{
+                $goods.=$value;
+            }
+        }
+        $this->assign('goods',$goods);
+        $this->assign('horseman',$horseman);
+        $this->assign('order',$order);
+        $this->display();
+    }
     
     public function order_deliver() {
         $order_id=$_GET['order_id'];
@@ -156,12 +181,12 @@ class HorsemanController extends FontEndController {
         $horseman_open_id=$horseman['open_id'];
         $open_id=$_SESSION['huiyuan']['open_id'];
         if($horseman_open_id!=$open_id){
-            $this->error('您并没接取该订单,无法对其确认送达',U('Horseman/order'));
+            $this->error('您并没接取该订单,无法对其确认送达','/Horseman/index');
             exit;
         }
         $order=$ordermodel->where("order_id='{$order_id}'")->find();
         if($order['status']!=7){
-            $this->error('该订单状态并非送取中..',U('Horseman/order'));
+            $this->error('该订单状态并非送取中..','/Horseman/index');
         }
         $row=array(
             'status'=>8,

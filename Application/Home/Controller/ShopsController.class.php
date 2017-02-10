@@ -66,6 +66,11 @@ class ShopsController extends FontEndController {
         $post=$_POST;
         $order_id=$post['order_id'];
         $ordermodel=D('Order');
+         //进行令牌验证 
+        if (!$ordermodel->autoCheckToken($_POST)){ 
+            $this->redirect('Shops/success_shops_confirm_page');
+            exit();
+        }
         //获取图片URL,分割成数组
         if($post['goods_img']!==''){
             $arr_img=explode('+img+',$post['goods_img']);
@@ -79,15 +84,6 @@ class ShopsController extends FontEndController {
                 $value='/'.$value;
             }
             $str_img=serialize($arr_img);//序列化数组
-        }
-         //进行令牌验证 
-        if (!$ordermodel->autoCheckToken($_POST)){ 
-            $this->assign('order_id',$order_id);
-            $this->assign('确认收衣成功',$title);
-            $this->assign('text',$post['pingjia_text']);
-            $this->assign('arr_img',$arr_img);
-            $this->display('success_shops_confirm');
-            exit();
         }
         $shop_id=$ordermodel->where("order_id='{$order_id}'")->getField('shop_id');
         $shopsmodel=D('Shops');
@@ -127,7 +123,23 @@ class ShopsController extends FontEndController {
        $this->assign('确认收衣成功',$title);
        $this->assign('text',$post['pingjia_text']);
        $this->assign('arr_img',$arr_img);
-       $this->display('success_shops_confirm');
+       $this->redirect('Shops/success_shops_confirm_page');
+    }
+    
+    public function success_shops_confirm_page() {
+        $order_id=$_GET['order_id'];
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='{$order_id}'")->find();
+        $open_id=$_SESSION['huiyuan']['open_id'];
+        $shopsmodel=D('Shops');
+        $shop_id=$shopsmodel->where("open_id='{$open_id}'")->getField('shop_id');
+        if($order['shop_id']!=$shop_id){
+            $this->error('您没有该订单权限','/Shops/index');
+        }
+        $order['shop_img']=  unserialize($order['shop_img']);
+        $order['img_number']=count($order['shop_img']);
+        $this->assign('order',$order);
+        $this->display();
     }
     
     public function clear_complate() {
