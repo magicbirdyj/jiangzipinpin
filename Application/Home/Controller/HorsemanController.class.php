@@ -69,6 +69,8 @@ class HorsemanController extends FontEndController {
             if($open_id!=$deliver_horseman['open_id']){
                 $this->error('您没有接到该订单');
             }
+        }elseif($order['status']==10){
+            $this->error('该订单已取消','Horseman/index');
         }elseif(!($order['status']==1||$order['status']==6)){
             $this->error('该订单已完成');
         }

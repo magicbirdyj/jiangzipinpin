@@ -191,7 +191,7 @@ class AjaxloginController extends FontEndController {
             $order_id=$_POST['order_id'];
             $ordermodel=D('Order');
             $row=array(
-                'status' => 9
+                'status' => 10
             );
             $order_user_id=$ordermodel->where("order_id=$order_id")->getField('user_id');//登录用户无该订单权限
             if($order_user_id!=$_SESSION['huiyuan']['user_id']){//登录用户无该订单权限
