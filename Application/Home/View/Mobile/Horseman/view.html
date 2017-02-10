@@ -90,9 +90,9 @@
                 <span><i>取送地址</i><{$order['order_address']['location']}>  <{$order['order_address']['address']}></span>
                 <span><i>联系电话</i><{$order['order_address']['name']}>  <{$order['order_address']['mobile']}></span>
                 <span><i>预约取衣</i><{$order['appointment_time']|date='Y-m-d H：i',###}> </span>
-                <span><i>取衣骑士</i><{$horseman['horseman_name']?$horseman['horseman_name']:'等待骑士取衣'}>&nbsp;&nbsp;&nbsp;&nbsp;<{$horseman['mobile_phone']}></span>
+                <span><i>取衣骑士</i><{$horseman['horseman_name']?$horseman['horseman_name']:'等待骑士取衣'}>&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel://<{$horseman['mobile_phone']}>" style="color:#00dbf5;"><{$horseman['mobile_phone']}></a></span>
                 <span><i>预约送衣</i><{$order['deliver_time']?($order['deliver_time']|date='Y-m-d H：i',###):'等待用户确认'}></span>
-                <span><i>送衣骑士</i><{$deliver_horseman['horseman_name']?$deliver_horseman['horseman_name']:'等待骑士送衣'}>&nbsp;&nbsp;&nbsp;&nbsp;<{$deliver_horseman['mobile_phone']}></span>
+                <span><i>送衣骑士</i><{$deliver_horseman['horseman_name']?$deliver_horseman['horseman_name']:'等待骑士送衣'}>&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel://<{$deliver_horseman['mobile_phone']}>" style="color:#00dbf5;"><{$deliver_horseman['mobile_phone']}></a></span>
             </div>
             <div class="d2_title">订单信息</div>
             <div class="d2_content">
@@ -146,7 +146,7 @@
                     datatype:'json',
                     success:function(msg){
                         if(msg){
-                            location='/Home/Horseman/order_view/order_id/'+order_id;                      
+                            location='/Home/Horseman/success_taking_page/order_id/'+order_id;                      
                         }else{
                             alert('接单失败'); 
                         }

@@ -6,17 +6,18 @@
 
 <body>
 
-    <div class="fanhui padding"><a href="<{:U('Order/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>下单预约成功</div>
+    <div class="fanhui padding"><a href="<{:U('Horseman/index')}>"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a>接单取衣成功</div>
 
     <div class="view"  style='display: block;'>
         <div class="d2">
            
-             <div class="d2_title">预约详情</div>
+             <div class="d2_title"> 订单详情</div>
             <input name="order_id" value="<{$order_id}>" type="hidden"/>
             <div class="d2_content">
                 <span><i>取送地址</i><{$order['order_address']['location']}>  <{$order['order_address']['address']}></span>
                 <span><i>联系电话</i><{$order['order_address']['name']}>  <{$order['order_address']['mobile']}></span>
                 <span><i>预约取衣</i><{$order['appointment_time']|date='Y-m-d H:i',###}>--<{:date('H:i',$order['appointment_time']+3600)}></span>
+                <span><i>取衣骑士</i><{$horseman['horseman_name']?$horseman['horseman_name']:'等待骑士取衣'}>&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel://<{$horseman['mobile_phone']}>" style="color:#00dbf5;"><{$horseman['mobile_phone']}></a></span>
             </div>
         </div>
     </div>

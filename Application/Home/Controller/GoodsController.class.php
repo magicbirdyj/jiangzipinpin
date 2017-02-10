@@ -114,94 +114,23 @@ class GoodsController extends FontEndController {
         );
         $order_actionmodel->add($row_action); //订单操作信息写入数据库order_action表
         cookie('order_id',$result,36000);
-        $this->redirect('Goods/success_buy_page');
+        $this->redirect('Goods/success_buy_page',array('order_id'=>$order_id));
         
     }
     public function success_buy_page() {
+        $order_id=$_GET['order_id'];
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='{$order_id}'")->find();
+        $user_id=$_SESSION['huiyuan']['user_id'];
+        if($user_id!=$order['user_id']){
+            $this->error('您没有该订单!');
+        }
+        $order['order_address']=  unserialize($order['order_address']);
+        $this->assign('order',$order);
         $this->display();
     }
 
-    public function kaituan_success(){
-        $ordermodel = D('Order');
-        // 手动进行令牌验证 
-        if (!$ordermodel->autoCheckToken($_POST)){ 
-            if($_COOKIE['order_id']){
-                $order_id=$_COOKIE['order_id'];//一个小时内重复提交订单，进入支付页面
-                $this->redirect('Goods/zhifu',"order_id=$order_id");
-            }else{
-                $this->error('不能重复提交订单',U('Order/index'));
-            }
-            exit();
-        }
-        $user_id = $_SESSION['huiyuan']['user_id'];
-        $goods_id = $_POST['goods_id'];
-        
-        
-        
-        //1元购的商品，如果用户已经获取过该商品购买资格，不能再开团或者参团
-        $choujiang=$ordermodel->where("user_id=$user_id and goods_id=$goods_id and choujiang=1")->count();
-        if($choujiang>0){
-            $this->error("您已经成功获取过该活动商品，无法再重复参加活动");
-        }
-        
-        $price=$_POST['price'];
-        $ky_daijinquan=$_POST['ky_daijinquan'];
-        $dues=$_POST['dues'];
-        $order_address=$_POST['order_address'];
-        if($_POST['zx_shuxing']){
-            $zx_shuxing=$_POST['zx_shuxing'];
-        }else{
-            $zx_shuxing="";
-        }
-        $buy_number=$_POST['buy_number'];
-        $goodsmodel = D('Goods');
-        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
-        
-
-        $row = array(
-            'user_id' => $user_id,
-            "order_no" => $this->getUniqueOrderNo(),
-            'goods_id' => $goods_id,
-            'buy_number'=>$buy_number,
-            'zx_shuxing'=>$zx_shuxing,
-            'tuan_number'=>$goods['tuan_number'],
-            'order_fahuo_day'=>$goods['fahuo_day'],
-            'identity'=>1,
-            'shop_name' => $goods['shop_name'],
-            'goods_name' => $goods['goods_name'],
-            'status' => 1, //生成订单
-            'pay_status' => 0, //支付状态为未支付
-            'created' => time(),
-            'updated' => time(),
-            'price' => $price,
-            'daijinquan'=>ky_daijinquan,
-            'dues'=>$dues,
-            'order_address'=>$order_address
-        );
-        $result = $ordermodel->add($row); //订单信息写入数据库order表
-        
-        if ($result) {
-            $row=array(
-                'tuan_no'=>$result
-            );
-            $save=$ordermodel->where("order_id=$result")->save($row);
-            if(!$save){
-                $this->error('订单提交失败，请重新提交', $_SERVER['HTTP_REFERER'], 3);
-            }
-            //如果用了代金券 数据库中删除该代金券
-            if($ky_daijinquan!=0){
-                $shanchu_daijinquan=$this->use_daijinquan($user_id, $ky_daijinquan);
-                if(!$shanchu_daijinquan){
-                    $this->error('跟新代金券出错!');
-                }
-            }
-
-            cookie('order_id',$result,36000);
-            $this->redirect('Goods/zhifu',array('order_id'=>$result));
-        } else {
-            $this->error('订单提交失败，请重新提交', $_SERVER['HTTP_REFERER'], 3);
-        }
-    }
+    
    
 
     public function zhifu() {

@@ -95,6 +95,21 @@ class HorsemanController extends FontEndController {
         
         $this->display('view');
     }
+    public function success_taking_page() {
+        $order_id=$_GET['order_id'];
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='{$order_id}'")->find();
+        $horseman_open_id=$_SESSION['huiyuan']['open_id'];
+        $horsemanmodel=D('Horseman');
+        $horseman=$horsemanmodel->where("open_id='$horseman_open_id'")->find();
+        if($horseman['horseman_id']!=$order['horseman_id']){
+            $this->error('您没有接到该订单!');
+        }
+        $order['order_address']=  unserialize($order['order_address']);
+        $this->assign('horseman',$horseman);
+        $this->assign('order',$order);
+        $this->display();
+    }
     public function confirm_goods() {
         $order_id=$_GET['order_id'];
         $this->assign('order_id',$order_id);
