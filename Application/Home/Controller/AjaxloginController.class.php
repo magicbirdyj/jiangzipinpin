@@ -220,6 +220,7 @@ class AjaxloginController extends FontEndController {
         $order_goodsmodel=D('Order_goods');
         $goodsmodel=D('Goods');
         $total_price=0;
+        $total_cost_price=0;
         foreach ($post as $key => $value) {
             if($key=='order_id'){
                 continue;
@@ -235,12 +236,15 @@ class AjaxloginController extends FontEndController {
                 'cost_price'=>$goods['cost_price']
             );
             $total_price+=$goods['price']*$value['number'];
+            $total_cost_price+=$goods['cost_price']*$value['number'];
             $result=$order_goodsmodel->add($row);
         }
         if($result){
             $row=array(
                 'status' => 3,
-                'price'=>$total_price
+                'price'=>$total_price,
+                'cost_price'=>$total_cost_price,
+                'dues'=>$total_price
             );
             $result = $ordermodel->where("order_id=$order_id")->save($row);
         }

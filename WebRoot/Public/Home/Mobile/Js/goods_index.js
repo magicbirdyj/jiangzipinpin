@@ -159,14 +159,7 @@ $('#clear').bind('click',function(){
 
 //分类按钮的点击
 $('.x2 .curr').bind('click',function(){
-    var is_select=$(this).children('a').attr('class');
-    if(is_select=='active'){
-        return false;
-    }
-    var index=$(this).index();
-    $('.page').eq(index).css('display','block').siblings('.page').css('display','none');
-    $(this).children('a').addClass('active');
-    $(this).siblings('.curr').children('a').removeClass('active');
+    x2_click($(this));
 });
 $('.x3 .curr').bind('click',function(){
     var is_select=$(this).children('a').attr('class');
@@ -179,6 +172,25 @@ $('.x3 .curr').bind('click',function(){
     $(this).children('a').addClass('active');
     $(this).siblings('.curr').children('a').removeClass('active');
 });
+
+//分类按钮点击函数
+function x2_click(even){
+    var is_select=even.children('a').attr('class');
+    if(is_select=='active'){
+        return false;
+    }
+    var index=$(this).index();
+    $('.page').eq(index).css('display','block').siblings('.page').css('display','none');
+    even.children('a').addClass('active');
+    even.siblings('.curr').children('a').removeClass('active');
+}
+
+//检查参数
+if(canshu=='andaixi'){
+    x2_click($('.x2 .curr:eq(4)'));
+}else if(canshu=='xijujia'){
+    x2_click($('.x2 .curr:eq(2)'));
+}
 
 
 //确认商品

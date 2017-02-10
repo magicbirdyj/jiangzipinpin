@@ -23,6 +23,9 @@ class GoodsController extends FontEndController {
         $goods[1]['hot']=$goodsmodel->where($where)->where("is_hot=1 and is_delete=0")->select();
         $this->assign('goods',$goods);
         
+        
+        $canshu=$_GET['canshu'];
+        $this->assign('canshu',$canshu);
         $this->display();
     }
     public function buy() {
@@ -111,8 +114,11 @@ class GoodsController extends FontEndController {
         );
         $order_actionmodel->add($row_action); //订单操作信息写入数据库order_action表
         cookie('order_id',$result,36000);
-        $this->redirect('Order/index');
+        $this->redirect('Goods/success_buy_page');
         
+    }
+    public function success_buy_page() {
+        $this->display();
     }
 
     public function kaituan_success(){
@@ -196,87 +202,7 @@ class GoodsController extends FontEndController {
             $this->error('订单提交失败，请重新提交', $_SERVER['HTTP_REFERER'], 3);
         }
     }
-    public function cantuan_success(){
-        $ordermodel = D('Order');
-        // 手动进行令牌验证 
-        if (!$ordermodel->autoCheckToken($_POST)){ 
-            if($_COOKIE['order_id']){
-                $order_id=$_COOKIE['order_id'];//一个小时内重复提交订单，进入支付页面
-                $this->redirect('Goods/zhifu',"order_id=$order_id");
-            }else{
-                $this->error('不能重复提交订单',U('Order/index'));
-            }
-            exit();
-        }
-        $user_id = $_SESSION['huiyuan']['user_id'];
-        $tuan_no=$_POST['tuan_no'];
-        $order=$ordermodel->where("order_id=$tuan_no")->find();
-        
-        
-        //如果组团成功过该活动商品的团购，就无法再参团 
-        $goods_id=$order['goods_id'];
-        $goodsmodel=D('Goods');
-        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
-        if($goods['1yuangou']==1||$goods['choujiang']==1){
-            ///如果组团成功过该活动商品的团购，就无法再参团 
-            $tiaojian['status']=array('between','2,5');
-            $is_ctcg=$ordermodel->where("user_id=$user_id and goods_id=$goods_id")->where($tiaojian)->count();
-            if($is_ctcg>0){
-                $this->error('您已经组团成功过该商品，无法重复参加活动。');
-            }
-        }
-        
-        
-        $ky_daijinquan=$_POST['ky_daijinquan'];
-        $dues=$_POST['dues'];
-        $order_address=$_POST['order_address'];
-        $buy_number=$_POST['buy_number'];
-        if($_POST['zx_shuxing']){
-            $zx_shuxing=$_POST['zx_shuxing'];
-        }else{
-            $zx_shuxing="";
-        }
-      
-        
-
-        $row = array(
-            'user_id' => $user_id,
-            "order_no" => $this->getUniqueOrderNo(),
-            'goods_id' => $order['goods_id'],
-            'zx_shuxing'=>$zx_shuxing,
-             'buy_number'=>$buy_number,
-            'tuan_number'=>$order['tuan_number'],
-            'order_fahuo_day'=>$order['order_fahuo_day'],
-            'tuan_no'=>$tuan_no,
-            'identity'=>0,
-            'shop_name' => $order['shop_name'],
-            'goods_name' => $order['goods_name'],
-            'status' => 1, //生成订单
-            'pay_status' => 0, //支付状态为未支付
-            'created' => mktime(),
-            'updated' => mktime(),
-            'price' => $order['price'],
-            'daijinquan'=>ky_daijinquan,
-            'dues'=>$dues,
-            'order_address'=>$order_address
-        );
-        $result = $ordermodel->add($row); //订单信息写入数据库order表
-        
-        if ($result) {
-            //如果用了代金券 数据库中删除该代金券
-            if($ky_daijinquan!=0){
-                $shanchu_daijinquan=$this->use_daijinquan($user_id, $ky_daijinquan);
-                if(!$shanchu_daijinquan){
-                    $this->error('跟新代金券出错!');
-                }
-            }
-            cookie('order_id',$result,36000);
-            $this->redirect('Goods/zhifu',array('order_id'=>$result));
-            
-        } else {
-            $this->error('订单提交失败，请重新提交', $_SERVER['HTTP_REFERER'], 3);
-        }
-    }
+   
 
     public function zhifu() {
         $user_id = $_SESSION['huiyuan']['user_id'];
@@ -287,31 +213,13 @@ class GoodsController extends FontEndController {
         if ($order_user_id != $user_id) {//登录用户无该订单权限
             $this->error('您没有该订单权限');
         }
-        if($order['status']!=1||$order['deleted']==1){
+        if($order['status']!=8||$order['deleted']==1){
             $this->error('该订单状态已无法付款');
         }
         if($order['pay_status']!=0){
             $this->error('该订单已经付款');
         }
-        $goods_id=$order['goods_id'];
-        $goodsmodel=D(Goods);
-        $goods_delete=$goodsmodel->where("goods_id=$goods_id")->getField('is_delete');
-        if($goods_delete==1){
-            $this->error('该商品已经下架');
-        }
-        $tuan_no=$order['tuan_no'];
-        if($tuan_no!=0){
-            $created=$ordermodel->where("order_id=$tuan_no")->getField('created');
-            $count=$ordermodel->where("tuan_no=$tuan_no and pay_status >0")->count();
-            if(($created+86400)<  time()||$count>=$order['tuan_number']){
-                $row=array(
-                    'status'=>7//取消订单
-                );
-                $ordermodel->where("order_id=$order_id")->save($row);
-                $this->error('该团购已过期或者已成团,无法再付款',$_SESSION['ref'],2);
-            }
-
-        }
+       
         
         $this->assign('order',$order);
        
@@ -337,19 +245,29 @@ class GoodsController extends FontEndController {
     private function alipay($order_id) {
         $ordermodel = D('Order');
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
+        $order_goodsmodel=D('Order_goods');
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $goods='';
+        $key_last = count($arr_goods)-1;
+        foreach ($arr_goods as $k=>$value) {
+            if($k != $key_last){
+                $goods.=$value.'、'; 
+            }else{
+                $goods.=$value;
+            }
+        }
         //微信
         $user_id=$order['user_id'];
         $usersmodel=D('Users');
         $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
         $paydata=array(
-            'body'=>sprintf("酱紫拼拼：商铺名：%s 商品名：%s",  mb_substr($order['shop_name'], 0, 10, 'utf-8'),  mb_substr($order['goods_name'], 0, 25, 'utf-8')),
+            'body'=>sprintf("衣干净： 清洗物品：%s",  mb_substr($goods, 0, 25, 'utf-8')),
             'total_fee'=>$order['dues'],
             'notify'=>PAY_HOST . U("Goods/notifyweixin"),
-            'shop_name'=>$order['shop_name'],
+            'shop_name'=>'衣干净',
             'order_no'=>$order['order_no'],
-            'goods_id'=>$order['goods_id'],
             'open_id'=>$open_id,
-            'goods_name'=> $order['goods_name'],
+            'goods_name'=> $goods,
             'order_id'=>$order_id
         );
         if(is_weixin()){//如果是微信浏览器 直接公众号支付，否则 扫一扫支付

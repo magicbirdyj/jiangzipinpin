@@ -111,7 +111,7 @@
                         <a id='confirm_goods'  href="<{:U('Order/songyi',array('order_id'=>$order['order_id']))}>" class="button_a_order">选择送衣时间</a>
                     </if>
                     <if  condition="($order['pay_status'] eq '0') and ($order['status'] eq '8') ">
-                        <a id='confirm_goods'  href="<{:U('Order/',array('order_id'=>$order['order_id']))}>" class="button_a_order">去付款</a>
+                        <a id='confirm_goods'  href="<{:U('Goods/zhifu',array('order_id'=>$order['order_id']))}>" class="button_a_order">去付款</a>
                     </if>
                 </div>
         </div>
