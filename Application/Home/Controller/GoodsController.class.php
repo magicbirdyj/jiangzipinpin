@@ -306,135 +306,16 @@ class GoodsController extends FontEndController {
         }
         
         
-        $goods_id=$order['goods_id'];
-        $goodsmodel=D('Goods');
-        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
-        $tuan_no=$order['tuan_no'];
-        $this->assign('tuan_no',$tuan_no);
-        $shopsmodel=D('Shops');
-        $shop_id=$goods['shop_id'];
-        if($tuan_no==0){
-            $this->assign('title','购买成功');
-            $remark="恭喜您，购买成功,我们将尽快把商品送到您的手上，请注意关注";
-            $this->pintuan_success_tep($order_id,$remark);//给会员发送消息，购买成功，等待发货
-            $buy_number=$ordermodel->where("order_id=$order_id")->getField('buy_number');
-            $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$buy_number);//商品的购买次数加
-            $shopsmodel->where("shop_id=$shop_id")->setInc('sale_number',(int)$buy_number);//店铺的购买次数加
-            $this->assign('goods', $goods);
-            $this->display('gmcg_dandu');
-            //发送消息给店铺
-            $this->dianpu_sale_tep($order_id);//给会员发送消息，购买成功，等待发货
-            exit();
+        $order_goodsmodel=D('Order_goods');
+        $order_goods=$order_goodsmodel->where("order_id='$order_id'")->select();
+        $order_price=0;
+        foreach ($order_goods as $value) {
+            $order_price+=$value['price']*$value['goods_number'];
         }
-        //目前只走到这一步
-        
-        
-        
-        
-        
-        $goods['count']=$ordermodel->where("tuan_no=$tuan_no and pay_status>0")->count();
-        $goods['tuan_number']=$order['tuan_number'];//为了值需要assign给goods
-        
-        $tuanzhang_id=$ordermodel->where("tuan_no=$tuan_no and identity=1")->getField('user_id');
-        $usersmodel=D('Users');
-        $tuanzhang=$usersmodel->where("user_id=$tuanzhang_id")->field('head_url,user_name')->find();
-        $goods['tuanzhang_head_url']=$tuanzhang['head_url'];
-        $goods['tuanzhang_user_name']=$tuanzhang['user_name'];    
-        $goods['tuanzhang_created']=$ordermodel->where("order_id=$tuan_no")->getField("created");
-        
-        
-        
-         
-        //刚组团成功 把逻辑走一 遍    如果组团成功的逻辑已经走完一遍（即status不等于1）了 不再重复走
-        if($goods['count']>=$order['tuan_number']&&$order['status']==1){
-           $this->assign('is_ztcg','ztcg');//给JS判断是否组团成功
-           
-           
-           //如果是抽奖活动，随机抽
-           
-           //如果是抽奖活动，随机抽取一个获取购买资格 
-           $choujiang_count=$ordermodel->where("tuan_no=$tuan_no and choujiang=1")->count();
-           if($goods['choujiang']==1){
-               $rand=  mt_rand(0, $goods['count']-2);
-               $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status>0 and status=1 and identity=0")->getField('order_id',true);
-               $rand_order_id=$arr_order_id[$rand];
-               $row=array(
-                   'choujiang'=>1
-               );
-               
-               $ordermodel->where("order_id=$rand_order_id")->save($row);//抽中的人获取资格
-               $ordermodel->where("order_id=$tuan_no")->save($row);//团长获取资格
-               //给未被抽中的其它团员退款 并发送退款模板消息
-               foreach ($arr_order_id as $value) {
-                   if($value!=$rand_order_id){
-                       $this->refund($value);
-                       //给未被抽中的其它团员 发送88元代金券
-                       $weihuojiang_user_id=$ordermodel->where("order_id=$value")->getField('user_id');
-                       $this->get_88_daijinquan($weihuojiang_user_id);
-                       //发动模板消息 通知代金券到帐
-                       $this->send_dainjinquan_tep($value);
-                   }
-               }
-               
-               
-               //给被抽中的团员发送拼团获奖成功消息模板
-               $remark="恭喜您，拼团购买的1元购商品,已被抽中,我们将尽快把商品送到您的手上，请注意关注";
-               $this->pintuan_success_tep($rand_order_id,$remark);
-               //给团长发送信息
-               $remark="恭喜您，开团购买的1元购商品已经成团,做为团长，您100%获奖，我们将尽快把商品送到您的手上，请注意关注";
-               $this->pintuan_success_tep($tuan_no,$remark);
-               
-               
-               $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$goods['count']);//商品的购买次数加团购人数               
-               $shopsmodel->where("shop_id=$shop_id")->setInc('sale_number',(int)$goods['count']);//店铺的购买次数加团购人数
-           }else{
-               //不是活动的商品  给成团的团长和团员发送消息，成团成功，等待发货
-                $arr_order_id=$ordermodel->where("tuan_no=$tuan_no and pay_status>0 and status=1")->getField('order_id',true);
-                $remark="恭喜您，拼团的商品已经成团,我们将尽快把商品送到您的手上，请注意关注";
-                foreach ($arr_order_id as $value) {
-                    $this->pintuan_success_tep($value,$remark);//不是活动的商品  给成团的团长和团员发送消息，成团成功，等待发货
-                }
-                //每个团员购买数量 都需要给商品的购买次数增加
-                $arr_buy_number=$ordermodel->where("tuan_no=$tuan_no and pay_status>0")->getField('buy_number',true);
-                foreach ($arr_buy_number as $value) {
-                    $goodsmodel->where("goods_id=$goods_id")->setInc('buy_number',(int)$value);//商品的购买次数加
-                    $shopsmodel->where("shop_id=$shop_id")->setInc('sale_number',(int)$value);//店铺的购买次数加
-                }
-            }
-           
-        //给该团所有订单的status改为2
-           $row=array(
-               'status'=>2
-           );          
-           $ordermodel->where("tuan_no=$tuan_no and pay_status>0")->save($row);
-        }
-        //组团成功的代码到此为止
-        
-        
-        
-        
-        $tuanyuan=$ordermodel->table('m_order t1,m_users t2')->where("t1.user_id=t2.user_id and t1.tuan_no=$tuan_no and t1.identity=0 and t1.pay_status>0")->field('t2.head_url,t2.user_name,t1.created')->select();
-        if(!$tuanyuan[0]){
-            $tuanyuan=NULL;
-        }
-        $this->assign('tuanyuan',$tuanyuan);
-        $this->assign('tuanyuan_count',count($tuanyuan));
-        $this->assign('goods', $goods);
-        if($order['status']=='6'){
-            $this->assign('is_ztcg','ztsb');//给JS判断是否组团成功
-            $this->display('gmcg');
-            exit();
-        }else{
-            $time=  time();
-            if($time-(int)$goods['tuanzhang_created']>=86400){
-                $this->assign('is_ztcg','ztsb');//给JS判断是否组团成功
-            }
-        }
-        
-        
-        $user_name=$usersmodel->where("user_id=$user_id")->getField('user_name');
-        $this->assign('user_name',$user_name);
-        $this->display('gmcg');
+        $this->assign('order_price',$order_price);
+        $this->assign('order_goods',$order_goods);
+
+        $this->display('gmcg_dandu');
 
     }
     
