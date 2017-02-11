@@ -233,7 +233,7 @@ class ShopsController extends FontEndController {
         $this->response_template($user_open_id, $template_id, $url, $arr_data);
     }
     
-    private function yiwu_yijiao_tem($order_id,$remark) {
+    private function yiwu_yijiao_tem($order_id,$time,$remark) {
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id='$order_id'")->find();
         $order_goodsmodel=D('Order_goods');
@@ -253,17 +253,17 @@ class ShopsController extends FontEndController {
             'first'=>array('value'=>'骑士您好，工厂已经确认衣物移交',"color"=>"#666"),
             'keyword1'=>array('value'=>$order['shop_name'],"color"=>"#666"),//工厂名称
             'keyword2'=>array('value'=>$order['order_no'],"color"=>"#666"),//订单单号
-            'keyword3'=>array('value'=>date("m月d日 H:i",time()),"color"=>"#666"),//移交日期
+            'keyword3'=>array('value'=>date("m月d日 H:i",$time),"color"=>"#666"),//移交日期
             'keyword4'=>array('value'=>'工厂确认清单：'.$goods,"color"=>"#666"),//移交状态
             'remark'=>array('value'=>$remark,"color"=>"#F90505")
         );
         $horsemanmodel=D('Horseman');
         $horseman_id=$order['deliver_horseman_id'];
-        $horseman_open_id=$horsemanmodel->where("horseman_id_id='{$horseman_id_id}'")->getField('open_id');
+        $horseman_open_id=$horsemanmodel->where("horseman_id='{$horseman_id}'")->getField('open_id');
         $this->response_template($horseman_open_id, $template_id, $url, $arr_data);
     }
     
-    private function confirm_tem($order_id,$remark){
+    private function confirm_tem($order_id,$time,$remark){
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id='$order_id'")->find();
         $order_goodsmodel=D('Order_goods');
@@ -282,7 +282,7 @@ class ShopsController extends FontEndController {
         $arr_data=array(
             'first'=>array('value'=>'尊敬的客户，请仔细核对订单详情里工厂备注对您衣物现状的详细描述和照片，如有疑问请及时联系客服',"color"=>"#666"),
             'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),//订单号
-            'keyword2'=>array('value'=>$goods,"color"=>"#666"),//核对时间
+            'keyword2'=>array('value'=>date("m月d日 H:i",$time),"color"=>"#666"),//核对时间
             'keyword3'=>array('value'=>$goods,"color"=>"#666"),//衣物数量
             'remark'=>array('value'=>'工厂备注：'.$order['shop_note'].$remark.'(内有衣物照片)',"color"=>"#F90505")
         );
