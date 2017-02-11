@@ -244,6 +244,7 @@ float: left;
     max-width: 43px;
     max-height: 43px;
     vertical-align: middle;
+    position: static;
 }
 .div_goods_img a{
     position: absolute;
@@ -259,6 +260,7 @@ float: left;
     width:0px;
     height: 100%;
     vertical-align: middle;
+    opacity:0;
 }
 .tr_td1 i{
     font-size: 12px;

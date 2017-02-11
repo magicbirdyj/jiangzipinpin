@@ -31,6 +31,7 @@
 
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order_view.css">
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order_appraise.css">
 </head>
 
 <body>
@@ -85,6 +86,21 @@
                     <i style='width:40%;text-align: right;padding-right: 10px;'><t style='color: #555;'>应付</t><t style='color: #00dbf5'>  &yen;<{$order_price-$order['daijinquan']}></t></i>
                 </span>
             </div>
+            <div class="d2_title">订单信息</div>
+            <div class="d2_content">
+                <span><i>订单编号</i><{$order['order_no']}></span>
+                <span><i>客户备注</i><{$order['remark']?$order['remark']:'无'}></span>
+                <span><i>工厂备注</i><{$order['shop_note']?$order['shop_note']:'无'}></span>
+                <span><i>备查照片</i><{$order['img_number']}> 张</span>
+                <div class="pingjia_box_szp" style='padding: 0px;'>
+                        <div class="file_tr hidden" style='margin-bottom: 0px;'>
+                        <volist name="order['shop_img']" id='vo'>
+                            <div class="div_goods_img"><img src="" class="empty_img"/><img class="goods_img" src="<{$vo}>" /></div>
+                        </volist>
+                        </div>     
+                </div>
+                <span><i>订单状态</i><i class="red"><{:order_status($order['pay_status'],$order['status'],$order['order_id'])['status']}></i></span>
+            </div>
             <div class="d2_title">取送信息</div>
             <div class="d2_content">
                 <span><i>取送地址</i><{$order['order_address']['location']}>  <{$order['order_address']['address']}></span>
@@ -93,12 +109,6 @@
                 <span><i>取衣骑士</i><{$horseman['horseman_name']?$horseman['horseman_name']:'等待骑士取衣'}>&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel://<{$horseman['mobile_phone']}>" style="color:#00dbf5;"><{$horseman['mobile_phone']}></a></span>
                 <span><i>送衣时间</i><if condition="$order['deliver_time'] eq '0' ">等待用户确认<else /><{$order['deliver_time']|date='Y-m-d H:i',###}>--<{:date('H:i',$order['deliver_time']+3600)}></if></span>
                 <span><i>送衣骑士</i><{$deliver_horseman['horseman_name']?$deliver_horseman['horseman_name']:'等待骑士送衣'}>&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel://<{$deliver_horseman['mobile_phone']}>" style="color:#00dbf5;"><{$deliver_horseman['mobile_phone']}></a></span>
-            </div>
-            <div class="d2_title">订单信息</div>
-            <div class="d2_content">
-                <span><i>订单编号</i><{$order['order_no']}></span>
-                <span><i>订单备注</i><{$order['remark']?$order['remark']:'无'}></span>
-                <span><i>订单状态</i><i class="red"><{:order_status($order['pay_status'],$order['status'],$order['order_id'])['status']}></i></span>
             </div>
         </div>
     </div>

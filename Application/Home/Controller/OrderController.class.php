@@ -124,6 +124,8 @@ class OrderController extends FontEndController {
         $this->assign('order_goods',$order_goods);
         $address=  unserialize($order['order_address']);
         $order['order_address']=$address;
+        $order['shop_img']=  unserialize($order['shop_img']);
+        $order['img_number']=count($order['shop_img']);
         $this->assign('order',$order);
         
         //订单操作记录
