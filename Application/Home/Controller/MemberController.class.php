@@ -50,7 +50,7 @@ class MemberController extends FontEndController {
         //骑士订单
         if($is_horseman){
             $horseman_id=$horsemanmodel->where("open_id='$open_id'")->getField('horseman_id');
-            $status_count['no_taking']=$ordermodel->where("status=1 and deleted=0")->count();//获取待抢单条数
+            $status_count['no_taking']=$ordermodel->where("(status=1 or status=6) and deleted=0")->count();//获取待抢单条数
             $status_count['quyi']=$ordermodel->where("horseman_id='{$horseman_id}' and status>=2 and status<4 and deleted=0")->count();//获取正在取衣条数
             $status_count['songyi']=$ordermodel->where("deliver_horseman_id='{$horseman_id}' and status=7  and deleted=0")->count();//获取已完成条数
             $status_count['finished']=$ordermodel->where("(horseman_id='{$horseman_id}' and status>3 and deleted=0) or (deliver_horseman_id='{$horseman_id}' and status>7 and deleted=0)")->count();//获取待付款条数
