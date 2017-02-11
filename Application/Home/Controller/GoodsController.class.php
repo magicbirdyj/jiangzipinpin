@@ -247,22 +247,21 @@ class GoodsController extends FontEndController {
      * 
      */
     public function notifyweixin(){
-        $order_id = '11';
         $ordermodel = D('Order');
             $row = array(
                 'pay_status' => 1, //支付状态为支付
                 'updated' => time(),
-                "pay_type" => 1,
-                "trade_no" => '123131',
-                "pay_info" => '2343423234'
             );
-        if (!$ordermodel->where("order_id='{$order_id}'")->save($row)) {
+            if (!$ordermodel->where("order_id='12'")->save($row)) {
                 echo "fail";
             }
             
-            //订单或者团购订单成功再加商品购买数量
+           
             echo "success";
         exit;
+        
+        
+        
         
         
         vendor('wxp.notify'); //引入第三方类库
@@ -291,11 +290,11 @@ class GoodsController extends FontEndController {
                 "trade_no" => $returnPay['transaction_id'],
                 "pay_info" => serialize($returnPay)
             );
-            if (!$ordermodel->where("order_id=$order_id")->save($row)) {
+            if (!$ordermodel->where("order_id='{$order_id}'")->save($row)) {
                 echo "fail";
             }
             
-            //订单或者团购订单成功再加商品购买数量
+           
             echo "success";
         }
     }

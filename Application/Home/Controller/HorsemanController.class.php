@@ -10,7 +10,7 @@ class HorsemanController extends FontEndController {
         $open_id=$_SESSION['huiyuan']['open_id'];
         $horsemanmodel=D('Horseman');
         $horseman_id=$horsemanmodel->where("open_id='{$open_id}'")->getField('horseman_id');
-        $status_count['no_taking']=$ordermodel->where("status=1 and deleted=0")->count();//获取待抢单条数
+        $status_count['no_taking']=$ordermodel->where("(status=1 or status=6) and deleted=0")->count();//获取待抢单条数
         $status_count['quyi']=$ordermodel->where("horseman_id='{$horseman_id}' and status>=2 and status<4 and deleted=0")->count();//获取正在取衣条数
         $status_count['songyi']=$ordermodel->where("deliver_horseman_id='{$horseman_id}' and status=7  and deleted=0")->count();//获取已完成条数
         $status_count['finished']=$ordermodel->where("(horseman_id='{$horseman_id}' and status>3 and deleted=0) or (deliver_horseman_id='{$horseman_id}' and status>7 and deleted=0)")->count();//获取待付款条数
@@ -18,7 +18,7 @@ class HorsemanController extends FontEndController {
         $time=  time();
         $this->assign('time',$time);
         if(empty($status)){
-            $list=$ordermodel->where("status=1 and deleted=0")->select();
+            $list=$ordermodel->where("(status=1 or status=6) and deleted=0")->select();
             $this->assign('list',$list);
         }else if($status==='quyi'){
              $list=$ordermodel->where("horseman_id='{$horseman_id}' and status>=2 and status<4 and deleted=0")->select();
