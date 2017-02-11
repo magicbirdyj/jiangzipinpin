@@ -247,23 +247,6 @@ class GoodsController extends FontEndController {
      * 
      */
     public function notifyweixin(){
-        $ordermodel = D('Order');
-            $row = array(
-                'pay_status' => 1, //支付状态为支付
-                'updated' => time(),
-            );
-            if (!$ordermodel->where("order_id='12'")->save($row)) {
-                echo "fail";
-            }
-            
-           
-            echo "success";
-        exit;
-        
-        
-        
-        
-        
         vendor('wxp.notify'); //引入第三方类库
         $notify = new \PayNotifyCallBack();
         $notify->Handle(false);

@@ -19,7 +19,7 @@ class FontEndController extends Controller {
         
         //不需要关注登陆的控制器或者方法
         $nologin_contorller = array('Login','Zhuce','Ajaxnologin','Crontab');//不需要登录的控制器
-        $nologin=array('');//不需要登录的方法
+        $nologin=array('Goods/notifyweixin');//不需要登录的方法
         if (!in_array(CONTROLLER_NAME, $nologin_contorller)&&!in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $nologin)) {
             if (!isset($_SESSION['huiyuan']) || $_SESSION['huiyuan'] == '') {
                 header("location:". U("Login/index"));
