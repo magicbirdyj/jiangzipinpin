@@ -210,7 +210,7 @@ class HorsemanController extends FontEndController {
             //发送模板消息给工厂，确认送达
             $remark='点我，确认衣物送达洗衣店';
             $this->deliver_shop_tem($order_id,$open_id,$remark);
-            $this->redirect('Horseman/success_deliver_shop_page',array('order_id'=>$open_id));
+            $this->redirect('Horseman/success_deliver_shop_page',array('order_id'=>$order_id));
         }
     }
     public function success_deliver_shop_page() {
