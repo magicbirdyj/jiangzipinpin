@@ -99,7 +99,7 @@ class HorsemanController extends FontEndController {
     }
     //骑手接单
     public function order_taking() {
-        $post=$_POST;
+        $order_id=$_GET['order_id'];
         if($post['check']!='wy_taking'){
             $this->ajaxReturn(false);
             exit;
@@ -115,7 +115,6 @@ class HorsemanController extends FontEndController {
             'status'=>2,
             'horseman_id'=>$horseman['horseman_id']
         );
-        $order_id=$post['order_id'];
         $ordermodel=D('Order');
         $result=$ordermodel->where("order_id='$order_id'")->save($row);
         if($result){
