@@ -100,10 +100,6 @@ class HorsemanController extends FontEndController {
     //骑手接单
     public function order_taking() {
         $order_id=$_GET['order_id'];
-        if($post['check']!='wy_taking'){
-            $this->ajaxReturn(false);
-            exit;
-        }
         $horsemanmodel=D('Horseman');
         $horseman_open_id=$_SESSION['huiyuan']['open_id'];
         $horseman=$horsemanmodel->where("open_id='$horseman_open_id'")->find();
