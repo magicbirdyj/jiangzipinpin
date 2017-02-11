@@ -89,7 +89,7 @@
                 <i class="borderD"></i>
             <div class='action hidden'>
                     <if  condition="$vo['status'] eq '1' ">
-                        <a id='order_taking' order_id="<{$vo['order_id']}>"  href="javascript:void(0)" class="button_a_order">接单取衣</a>
+                        <a id='order_taking'  href="<{:U('Horseman/order_taking',array('order_id'=>$vo['order_id']))}>" class="button_a_order">接单取衣</a>
                     </if>
                     <if  condition="$vo['status'] eq '2' ">
                         <a id='confirm_goods'  href="<{:U('Horseman/confirm_goods',array('order_id'=>$vo['order_id']))}>" class="button_a_order">确认取件</a>
@@ -98,7 +98,7 @@
                         <a id='deliver_shop' href="<{:U('Horseman/deliver_shop',array('order_id'=>$vo['order_id']))}>" class="button_a_order">送达工厂</a>
                     </if>
                     <if  condition="$vo['status'] eq '6' ">
-                    <a id='order_taking_deliver' order_id="<{$vo['order_id']}>"  href="javascript:void(0)" class="button_a_order">接单送衣</a>
+                    <a id='order_taking_deliver'  href="<{:U('Horseman/order_taking_deliver',array('order_id'=>$vo['order_id']))}>" class="button_a_order">接单送衣</a>
                     </if>
                     <if  condition="$vo['status'] eq '7' ">
                         <a id='order_confirm_deliver'   href="<{:U('Horseman/order_deliver',array('order_id'=>$vo['order_id']))}>" class="button_a_order">确认送达</a>
@@ -148,50 +148,8 @@
     
     
     
-    $('#order_taking').bind('click',function(){
-            var url='/Home/Ajaxlogin/order_taking.html';
-            var order_id=$(this).attr('order_id');
-            var data={
-                    order_id:order_id,
-                    check:"wy_taking"
-                }
-            $.ajax({
-                    type:'post',
-                    async : true,
-                    url:url,
-                    data:data,
-                    datatype:'json',
-                    success:function(msg){
-                        if(msg){
-                            location='/Home/Horseman/success_taking_page/order_id/'+order_id;                      
-                        }else{
-                            alert('接单失败'); 
-                        }
-                    }
-                });    
-    });
-    $('#order_taking_deliver').bind('click',function(){
-            var url='/Home/Ajaxlogin/order_taking_deliver.html';
-            var order_id=$(this).attr('order_id');
-            var data={
-                    order_id:order_id,
-                    check:"wy_taking"
-                }
-            $.ajax({
-                    type:'post',
-                    async : true,
-                    url:url,
-                    data:data,
-                    datatype:'json',
-                    success:function(msg){
-                        if(msg){
-                            location='/Home/Horseman/order_view/order_id/'+order_id;                        
-                        }else{
-                            alert('确认送达失败'); 
-                        }
-                    }
-                });    
-    });
+   
+    
    
     
     

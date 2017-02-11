@@ -119,10 +119,13 @@ class ShopsController extends FontEndController {
            $this->error('商家确认商品出错','/Home/Shops/index');
            exit;
        }
-       $this->assign('order_id',$order_id);
-       $this->assign('确认收衣成功',$title);
-       $this->assign('text',$post['pingjia_text']);
-       $this->assign('arr_img',$arr_img);
+       $time=  time();
+       $remark='点我，查看订单详情';
+       $this->confirm_tem($order_id,$time,$remark);//通知客户衣物细节确认
+       
+       //通知骑士衣物移交成功
+       $remark='点我，查看订单详情';
+       $this->yiwu_yijiao_tem($order_id,$time,$remark);
        $this->redirect('Shops/success_shops_confirm_page',array('order_id'=>$order_id));
     }
     
@@ -223,6 +226,65 @@ class ShopsController extends FontEndController {
             'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
             'keyword2'=>array('value'=>$goods,"color"=>"#666"),
             'remark'=>array('value'=>$remark,"color"=>"#F90505")
+        );
+        $usersmodel=D('Users');
+        $user_id=$order['user_id'];
+        $user_open_id=$usersmodel->where("user_id='{$user_id}'")->getField('open_id');
+        $this->response_template($user_open_id, $template_id, $url, $arr_data);
+    }
+    
+    private function yiwu_yijiao_tem($order_id,$remark) {
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='$order_id'")->find();
+        $order_goodsmodel=D('Order_goods');
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->field('goods_name,goods_number')->select();
+        $goods='';
+        $key_last = count($arr_goods)-1;
+        foreach ($arr_goods as $k=>$value) {
+            if($k != $key_last){
+                $goods.=$value['goods_name'].'×'.$value['goods_number'].'、'; 
+            }else{
+                $goods.=$value['goods_name'].'×'.$value['goods_number'];
+            }
+        }
+        $template_id="6TFGoDrTes8QST67014hTYT2H_H1CVs2dJO7KvKw2lo";
+        $url=U('Horseman/order_view',array('order_id'=>$order['order_id']));
+        $arr_data=array(
+            'first'=>array('value'=>'骑士您好，工厂已经确认衣物移交',"color"=>"#666"),
+            'keyword1'=>array('value'=>$order['shop_name'],"color"=>"#666"),//工厂名称
+            'keyword2'=>array('value'=>$order['order_no'],"color"=>"#666"),//订单单号
+            'keyword3'=>array('value'=>date("m月d日 H:i",time()),"color"=>"#666"),//移交日期
+            'keyword4'=>array('value'=>'工厂确认清单：'.$goods,"color"=>"#666"),//移交状态
+            'remark'=>array('value'=>$remark,"color"=>"#F90505")
+        );
+        $horsemanmodel=D('Horseman');
+        $horseman_id=$order['deliver_horseman_id'];
+        $horseman_open_id=$horsemanmodel->where("horseman_id_id='{$horseman_id_id}'")->getField('open_id');
+        $this->response_template($horseman_open_id, $template_id, $url, $arr_data);
+    }
+    
+    private function confirm_tem($order_id,$remark){
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='$order_id'")->find();
+        $order_goodsmodel=D('Order_goods');
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->field('goods_name,goods_number')->select();
+        $goods='';
+        $key_last = count($arr_goods)-1;
+        foreach ($arr_goods as $k=>$value) {
+            if($k != $key_last){
+                $goods.=$value['goods_name'].'×'.$value['goods_number'].'、'; 
+            }else{
+                $goods.=$value['goods_name'].'×'.$value['goods_number'];
+            }
+        }
+        $template_id="7dEFwBi0oVy3PymISrmqLOxy7SzNQDWSlpvTnrfhwnM";
+        $url=U('Order/view',array('order_id'=>$order['order_id']));
+        $arr_data=array(
+            'first'=>array('value'=>'尊敬的客户，请仔细核对订单详情里工厂备注对您衣物现状的详细描述和照片，如有疑问请及时联系客服',"color"=>"#666"),
+            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),//订单号
+            'keyword2'=>array('value'=>$goods,"color"=>"#666"),//核对时间
+            'keyword3'=>array('value'=>$goods,"color"=>"#666"),//衣物数量
+            'remark'=>array('value'=>'工厂备注：'.$order['shop_note'].$remark.'(内有衣物照片)',"color"=>"#F90505")
         );
         $usersmodel=D('Users');
         $user_id=$order['user_id'];

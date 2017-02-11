@@ -41,48 +41,7 @@ class AjaxloginController extends FontEndController {
         $this->ajaxReturn($result);
     }
     
-    //骑手接单ajax
-    public function order_taking() {
-        $post=$_POST;
-        if($post['check']!='wy_taking'){
-            $this->ajaxReturn(false);
-            exit;
-        }
-        $horsemanmodel=D('Horseman');
-        $horseman_open_id=$_SESSION['huiyuan']['open_id'];
-        $horseman=$horsemanmodel->where("open_id='$horseman_open_id'")->find();
-        if(!$horseman['horseman_id']){
-            $this->ajaxReturn(FALSE);
-            exit;
-        }
-        $row=array(
-            'status'=>2,
-            'horseman_id'=>$horseman['horseman_id']
-        );
-        $order_id=$post['order_id'];
-        $ordermodel=D('Order');
-        $result=$ordermodel->where("order_id='$order_id'")->save($row);
-        if($result){
-            //订单操作表
-            $order_actionmodel=D('Order_action');
-            $row=array(
-                'order_id'=>$order_id,
-                'action_type'=>'horseman',
-                'actionuser_id'=>$horseman['horseman_id'],
-                'actionuser_name'=>$horseman['horseman_name'],
-                'order_status' => 2,
-                'pay_status'=>0,
-                'log_time'=>time()
-            );
-            $result = $order_actionmodel->add($row);
-        }
-        if($result){
-            //发送模板消息给该骑手，接单成功
-            $remark='点我，确认取件';
-            $this->taking_success_tem($order_id,$horseman_open_id,$remark);
-        }
-        $this->ajaxReturn($result);
-    }
+    
     
    
     
@@ -235,48 +194,7 @@ class AjaxloginController extends FontEndController {
     }
     
     
-    //骑手 送衣接单ajax
-    public function order_taking_deliver() {
-        $post=$_POST;
-        if($post['check']!='wy_taking'){
-            $this->ajaxReturn(false);
-            exit;
-        }
-        $horsemanmodel=D('Horseman');
-        $horseman_open_id=$_SESSION['huiyuan']['open_id'];
-        $horseman=$horsemanmodel->where("open_id='$horseman_open_id'")->find();
-        if(!$horseman['horseman_id']){
-            $this->ajaxReturn(FALSE);
-            exit;
-        }
-        $row=array(
-            'status'=>7,
-            'deliver_horseman_id'=>$horseman['horseman_id']
-        );
-        $order_id=$post['order_id'];
-        $ordermodel=D('Order');
-        $result=$ordermodel->where("order_id='$order_id'")->save($row);
-        if($result){
-            //订单操作表
-            $order_actionmodel=D('Order_action');
-            $row=array(
-                'order_id'=>$order_id,
-                'action_type'=>'horseman',
-                'actionuser_id'=>$horseman['horseman_id'],
-                'actionuser_name'=>$horseman['horseman_name'],
-                'order_status' => 7,
-                'pay_status'=>0,
-                'log_time'=>time()
-            );
-            $result = $order_actionmodel->add($row);
-        }
-        if($result){
-            //发送模板消息给该骑手，接单成功
-            $remark='点我，确认已经送达';
-            $this->deliver_taking_success_tem($order_id,$horseman_open_id,$remark);
-        }
-        $this->ajaxReturn($result);
-    }
+    
     
     
     
@@ -323,57 +241,6 @@ class AjaxloginController extends FontEndController {
         $this->ajaxReturn($result);
     }
     
-    
-    
-    
-    
-    
-    private function taking_success_tem($order_id,$horseman_open_id,$remark){
-        $ordermodel=D('Order');
-        $order=$ordermodel->where("order_id='$order_id'")->find();
-        $address=  unserialize($order['order_address']);
-        $template_id="PUE-zt-KqzrR73H1kTdHjVK-q-uaeFut4r9giZrzZJg";
-        $url=U('Horseman/order_view',array('order_id'=>$order['order_id']));
-        $arr_data=array(
-            'first'=>array('value'=>"您已接单成功，马上出发吧","color"=>"#666"),
-            'keyword1'=>array('value'=>date("m月d日 H:i",$order['appointment_time']).'--'.date("H:i",(int)$order['appointment_time']+3600),"color"=>"#666"),
-            'keyword2'=>array('value'=>$address['location'].' '.$address['address'],"color"=>"#666"),
-            'keyword3'=>array('value'=>$address['name'].' '.$address['mobile'],"color"=>"#666"),
-            'keyword4'=>array('value'=>'衣物',"color"=>"#666"),
-            'remark'=>array('value'=>$remark,"color"=>"#F90505")
-        );
-        $this->response_template($horseman_open_id, $template_id, $url, $arr_data);
-    }
-    
-    private function deliver_taking_success_tem($order_id,$horseman_open_id,$remark){
-        $order_goodsmodel=D('Order_goods');
-        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->field('goods_name,goods_number')->select();
-        $goods='';
-        $key_last = count($arr_goods)-1;
-        foreach ($arr_goods as $k=>$value) {
-            if($k != $key_last){
-                $goods.=$value['goods_name'].'×'.$value['goods_number'].'、'; 
-            }else{
-                $goods.=$value['goods_name'].'×'.$value['goods_number'];
-            }
-        }
-        $ordermodel=D('Order');
-        $order=$ordermodel->where("order_id='$order_id'")->find();
-        $address=  unserialize($order['deliver_address']);
-        $template_id="PUE-zt-KqzrR73H1kTdHjVK-q-uaeFut4r9giZrzZJg";
-        $url=U('Horseman/order_view',array('order_id'=>$order['order_id']));
-        $arr_data=array(
-            'first'=>array('value'=>"您已接单成功，马上出发吧,请去洗衣店（".$order['shop_name']."）取衣送往用户处","color"=>"#666"),
-            'keyword1'=>array('value'=>date("m月d日 H:i",$order['deliver_time']).'--'.date("H:i",(int)$order['deliver_time']+3600),"color"=>"#666"),
-            'keyword2'=>array('value'=>$address['location'].' '.$address['address'],"color"=>"#666"),
-            'keyword3'=>array('value'=>$address['name'].' '.$address['mobile'],"color"=>"#666"),
-            'keyword4'=>array('value'=>$goods,"color"=>"#666"),
-            'remark'=>array('value'=>$remark,"color"=>"#F90505")
-        );
-        $this->response_template($horseman_open_id, $template_id, $url, $arr_data);
-    }
-    
-   
     
     private function confirm_goods_tem($order_id,$remark){
         $order_goodsmodel=D('Order_goods');
