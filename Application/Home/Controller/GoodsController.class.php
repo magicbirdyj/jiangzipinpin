@@ -175,14 +175,14 @@ class GoodsController extends FontEndController {
         $ordermodel = D('Order');
         $order = $ordermodel->where("order_id=$order_id and deleted=0 ")->find();
         $order_goodsmodel=D('Order_goods');
-        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->field('goods_name,goods_number')->select();
         $goods='';
         $key_last = count($arr_goods)-1;
         foreach ($arr_goods as $k=>$value) {
             if($k != $key_last){
-                $goods.=$value.'、'; 
+                $goods.=$value['goods_name'].'×'.$value['goods_number'].'、'; 
             }else{
-                $goods.=$value;
+                $goods.=$value['goods_name'].'×'.$value['goods_number'];
             }
         }
         //微信
@@ -247,6 +247,24 @@ class GoodsController extends FontEndController {
      * 
      */
     public function notifyweixin(){
+        $order_id = '11';
+        $ordermodel = D('Order');
+            $row = array(
+                'pay_status' => 1, //支付状态为支付
+                'updated' => time(),
+                "pay_type" => 1,
+                "trade_no" => '123131',
+                "pay_info" => '2343423234'
+            );
+        if (!$ordermodel->where("order_id='{$order_id}'")->save($row)) {
+                echo "fail";
+            }
+            
+            //订单或者团购订单成功再加商品购买数量
+            echo "success";
+        exit;
+        
+        
         vendor('wxp.notify'); //引入第三方类库
         $notify = new \PayNotifyCallBack();
         $notify->Handle(false);
