@@ -260,6 +260,9 @@ class AjaxloginController extends FontEndController {
             );
             $order_actionmodel=D('Order_action');
             $result = $order_actionmodel->add($row);
+            //发送消息给用户 确认商品成功
+            $remark='点我，查看订单详情';
+            $this->confirm_goods_tem($order_id,$remark);
         }
         $this->ajaxReturn($result);
     }
@@ -377,14 +380,14 @@ class AjaxloginController extends FontEndController {
     
     private function deliver_taking_success_tem($order_id,$horseman_open_id,$remark){
         $order_goodsmodel=D('Order_goods');
-        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->field('goods_name,goods_number')->select();
         $goods='';
         $key_last = count($arr_goods)-1;
         foreach ($arr_goods as $k=>$value) {
             if($k != $key_last){
-                $goods.=$value.'、'; 
+                $goods.=$value['goods_name'].'×'.$value['goods_number'].'、'; 
             }else{
-                $goods.=$value;
+                $goods.=$value['goods_name'].'×'.$value['goods_number'];
             }
         }
         $ordermodel=D('Order');
@@ -405,14 +408,14 @@ class AjaxloginController extends FontEndController {
     
     private function deliver_shop_tem($order_id,$open_id,$remark){
         $order_goodsmodel=D('Order_goods');
-        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->field('goods_name,goods_number')->select();
         $goods='';
         $key_last = count($arr_goods)-1;
         foreach ($arr_goods as $k=>$value) {
             if($k != $key_last){
-                $goods.=$value.'、'; 
+                $goods.=$value['goods_name'].'×'.$value['goods_number'].'、'; 
             }else{
-                $goods.=$value;
+                $goods.=$value['goods_name'].'×'.$value['goods_number'];
             }
         }
         $ordermodel=D('Order');
@@ -430,6 +433,37 @@ class AjaxloginController extends FontEndController {
             'keyword3'=>array('value'=>$horseman['horseman_name'],"color"=>"#666"),
             'keyword4'=>array('value'=>date("Y年m月d日 H:i",time()),"color"=>"#666"),
             'keyword5'=>array('value'=>$order['remark'],"color"=>"#666"),
+            'remark'=>array('value'=>$remark,"color"=>"#F90505")
+        );
+        $this->response_template($open_id, $template_id, $url, $arr_data);
+    }
+    
+    private function confirm_goods_tem($order_id,$remark){
+        $order_goodsmodel=D('Order_goods');
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->field('goods_name,goods_number')->select();
+        $goods='';
+        $key_last = count($arr_goods)-1;
+        foreach ($arr_goods as $k=>$value) {
+            if($k != $key_last){
+                $goods.=$value['goods_name'].'×'.$value['goods_number'].'、'; 
+            }else{
+                $goods.=$value['goods_name'].'×'.$value['goods_number'];
+            }
+        }
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='$order_id'")->find();
+        //获取用户open_id
+        $usersmodel=D('Users');
+        $user_id=$order['user_id'];
+        $open_id=$usersmodel->where("user_id='$user_id'")->getField('open_id');
+        $template_id="0tPJ9Kzm7sMTW80L61xyvlUdOd5jp4l0K83ietGMkH8";
+        $url=U('Order/view',array('order_id'=>$order['order_id']));
+        $arr_data=array(
+            'first'=>array('value'=>"尊敬的客户，您的订单已经确认衣物。","color"=>"#666"),
+            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),//订单编号
+            'keyword2'=>array('value'=>date("Y年m月d日 H:i",$order['created']),"color"=>"#666"),//下单时间
+            'keyword3'=>array('value'=>$goods,"color"=>"#666"),//订单详情
+            'keyword4'=>array('value'=>$order['price'],"color"=>"#666"),//订单金额
             'remark'=>array('value'=>$remark,"color"=>"#F90505")
         );
         $this->response_template($open_id, $template_id, $url, $arr_data);

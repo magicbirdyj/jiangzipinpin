@@ -206,14 +206,14 @@ class ShopsController extends FontEndController {
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id='$order_id'")->find();
         $order_goodsmodel=D('Order_goods');
-        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->field('goods_name,goods_number')->select();
         $goods='';
         $key_last = count($arr_goods)-1;
         foreach ($arr_goods as $k=>$value) {
             if($k != $key_last){
-                $goods.=$value.'、'; 
+                $goods.=$value['goods_name'].'×'.$value['goods_number'].'、'; 
             }else{
-                $goods.=$value;
+                $goods.=$value['goods_name'].'×'.$value['goods_number'];
             }
         }
         $template_id="A1s_g4U-xAAqCxGKdeUnZgiluf7gy-HT-T3kbVCerK4";

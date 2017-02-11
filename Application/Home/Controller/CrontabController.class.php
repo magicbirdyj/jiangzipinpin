@@ -245,14 +245,14 @@ class CrontabController extends FontEndController {
     private function remind_songyi_horseman_tem($order,$remark){
         $order_id=$order['order_id'];
         $order_goodsmodel=D('Order_goods');
-        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->field('goods_name,goods_number')->select();
         $goods='';
         $key_last = count($arr_goods)-1;
         foreach ($arr_goods as $k=>$value) {
             if($k != $key_last){
-                $goods.=$value.'、'; 
+                $goods.=$value['goods_name'].'×'.$value['goods_number'].'、'; 
             }else{
-                $goods.=$value;
+                $goods.=$value['goods_name'].'×'.$value['goods_number'];
             }
         }
         $horsemanmodel=D('Horseman');
@@ -278,14 +278,14 @@ class CrontabController extends FontEndController {
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id='$order_id'")->find();
         $order_goodsmodel=D('Order_goods');
-        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->field('goods_name,goods_number')->select();
         $goods='';
         $key_last = count($arr_goods)-1;
         foreach ($arr_goods as $k=>$value) {
             if($k != $key_last){
-                $goods.=$value.'、'; 
+                $goods.=$value['goods_name'].'×'.$value['goods_number'].'、'; 
             }else{
-                $goods.=$value;
+                $goods.=$value['goods_name'].'×'.$value['goods_number'];
             }
         }
         $template_id="A1s_g4U-xAAqCxGKdeUnZgiluf7gy-HT-T3kbVCerK4";
@@ -304,15 +304,17 @@ class CrontabController extends FontEndController {
     
     private function deliver_tem($order_id,$remark){
         $order_goodsmodel=D('Order_goods');
-        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->getField('goods_name',true);
+        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->field('goods_name,goods_number')->select();
         $goods='';
+        $number=0;
         $key_last = count($arr_goods)-1;
         foreach ($arr_goods as $k=>$value) {
             if($k != $key_last){
-                $goods.=$value.'、'; 
+                $goods.=$value['goods_name'].'×'.$value['goods_number'].'、'; 
             }else{
-                $goods.=$value;
+                $goods.=$value['goods_name'].'×'.$value['goods_number'];
             }
+            $number+=(int)$value['goods_number'];
         }
         $ordermodel=D('Order');
         $order=$ordermodel->where("order_id='$order_id'")->find();
@@ -328,7 +330,7 @@ class CrontabController extends FontEndController {
             'first'=>array('value'=>"您的衣物已经清洗完成并送达上门，请您付款","color"=>"#666"),
             'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
             'keyword2'=>array('value'=>'衣干净',"color"=>"#666"),
-            'keyword3'=>array('value'=>count($arr_goods).'件('.$goods.')',"color"=>"#666"),
+            'keyword3'=>array('value'=>$number.'件('.$goods.')',"color"=>"#666"),
             'keyword4'=>array('value'=>'￥'.($order['price']-$order['daijinquan']),"color"=>"#666"),
             'remark'=>array('value'=>'送达时间:'.date("Y年m月d日 H:i",$order['deliver_time']).'。'.$remark,"color"=>"#F90505")
         );
