@@ -136,7 +136,7 @@ class HorsemanController extends FontEndController {
             $remark='点我，查看订单详情';
             $this->quyi_tixing_tem($order_id,$horseman,$remark);
         }
-        $this->redirect('/Horseman/success_taking_page',array('order_id'=>$order_id));
+        $this->redirect('Horseman/success_taking_page',array('order_id'=>$order_id));
     }
     public function success_taking_page() {
         $order_id=$_GET['order_id'];
