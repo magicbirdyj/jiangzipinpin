@@ -43,9 +43,10 @@ class MemberController extends FontEndController {
         //店铺订单
         if($is_shop){
             $shop_id=$shopsmodel->where("open_id='$open_id'")->getField('shop_id');
-            $status_count['shop_all']=$ordermodel->where("shop_id={$shop_id} and deleted=0")->count();//获取全部订单条数
-            $status_count['shop_finishing']=$ordermodel->where("shop_id={$shop_id} and status=4 and deleted=0")->count();//获取待完成条数
-            $status_count['shop_shouhou']=$ordermodel->where("shop_id={$shop_id} and pay_status>1 and pay_status<4 and deleted=0")->count();//获取售后申请条数
+            $status_count['shop_all']=$ordermodel->where("shop_id='{$shop_id}' and deleted=0")->count();//获取所有条数
+            $status_count['shop_daishouqu']=$ordermodel->where("shop_id='{$shop_id}' and status=3 and deleted=0")->count();//获取待收取条数
+            $status_count['shop_finishing']=$ordermodel->where("shop_id='{$shop_id}' and status=4  and deleted=0")->count();//获取清洗中条数
+            $status_count['shop_clear_finished']=$ordermodel->where("shop_id='{$shop_id}' and status>=5  and deleted=0")->count();//获取清洗完成条数
         }
         //骑士订单
         if($is_horseman){

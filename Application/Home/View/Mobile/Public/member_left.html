@@ -4,9 +4,9 @@
                 <div class="d1">店铺订单</div>
                 <ul class="left_ul">
                     <li><a href="<{:U('Shops/index')}>">全部<div style="float:right"><span><{$status_count['shop_all']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
-                    <li><a href="<{:U('Shops/index?status=daishouqu')}>">待收取<div style="float:right"><span><{$status_count['daishouqu']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
-                    <li><a href="<{:U('Shops/index?status=finishing')}>">清洗中<div style="float:right"><span><{$status_count['finishing']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
-                    <li><a href="<{:U('Shops/index?status=clear_finished')}>">清洗完成<div style="float:right"><span><{$status_count['clear_finished']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                    <li><a href="<{:U('Shops/index?status=daishouqu')}>">待收取<div style="float:right"><span><{$status_count['shop_daishouqu']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                    <li><a href="<{:U('Shops/index?status=finishing')}>">清洗中<div style="float:right"><span><{$status_count['shop_finishing']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
+                    <li><a href="<{:U('Shops/index?status=clear_finished')}>">清洗完成<div style="float:right"><span><{$status_count['shop_clear_finished']}></span><span class="iconfont tb_jiantou_r_xiao">&#xe604;</span></div></a></li>
                 </ul>
             </if>
             <if condition="$is_horseman neq 0">
