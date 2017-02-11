@@ -123,7 +123,7 @@ class ShopsController extends FontEndController {
        $this->assign('确认收衣成功',$title);
        $this->assign('text',$post['pingjia_text']);
        $this->assign('arr_img',$arr_img);
-       $this->redirect('Shops/success_shops_confirm_page',array('order_id'=?$order_id));
+       $this->redirect('Shops/success_shops_confirm_page',array('order_id'=>$order_id));
     }
     
     public function success_shops_confirm_page() {
