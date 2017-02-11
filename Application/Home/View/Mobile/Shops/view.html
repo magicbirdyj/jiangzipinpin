@@ -110,7 +110,14 @@
     $('.button_a_order').css('background-color','#D00');
     $('.button_a_order').css('color','#fff');
    
-    
+     //清洗完成按钮绑定事件
+$('#clear_complate').bind('click',function(){
+    if(confirm("确定通知客户取衣吗？")){
+        return ture;
+    }else{
+        return false;
+    }
+});
 
 </script>
 
