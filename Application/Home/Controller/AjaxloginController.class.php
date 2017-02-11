@@ -84,40 +84,7 @@ class AjaxloginController extends FontEndController {
         $this->ajaxReturn($result);
     }
     
-    //送达商店ajax
-    public function deliver_shop() {
-        $post=$_POST;
-        if($post['check']!='wy_deliver'){
-            $this->ajaxReturn(false);
-            exit;
-        }
-        $horsemanmodel=D('Horseman');
-        $horseman_open_id=$_SESSION['huiyuan']['open_id'];
-        $horseman=$horsemanmodel->where("open_id='$horseman_open_id'")->find();
-        $order_id=$post['order_id'];
-        $ordermodel=D('Order');
-        $order=$ordermodel->where("order_id='{$order_id}'")->find();
-        if($horseman['horseman_id']!=$order['horseman_id']){
-            $this->ajaxReturn(FALSE);
-            exit;
-        }
-        //订单加入商店id
-        $shop_id='18';
-        $shop_name='福莱特洗衣娄底店';
-        $row=array(
-            'shop_id'=>$shop_id,
-            'shop_name'=>$shop_name
-        );
-        $result=$ordermodel->where("order_id='{$order_id}'")->save($row);
-        if($result){
-            $shopsmodel=D('Shops');
-            $open_id=$shopsmodel->where("shop_id='$shop_id'")->getField('open_id');
-            //发送模板消息给工厂，确认送达
-            $remark='点我，确认衣物送达洗衣店';
-            $this->deliver_shop_tem($order_id,$open_id,$remark);
-            $this->ajaxReturn($result);
-        }
-    }
+   
     
      //保存地址 ajax用
     public function save_or_add_address(){
@@ -406,37 +373,7 @@ class AjaxloginController extends FontEndController {
         $this->response_template($horseman_open_id, $template_id, $url, $arr_data);
     }
     
-    private function deliver_shop_tem($order_id,$open_id,$remark){
-        $order_goodsmodel=D('Order_goods');
-        $arr_goods=$order_goodsmodel->where("order_id='{$order_id}'")->field('goods_name,goods_number')->select();
-        $goods='';
-        $key_last = count($arr_goods)-1;
-        foreach ($arr_goods as $k=>$value) {
-            if($k != $key_last){
-                $goods.=$value['goods_name'].'×'.$value['goods_number'].'、'; 
-            }else{
-                $goods.=$value['goods_name'].'×'.$value['goods_number'];
-            }
-        }
-        $ordermodel=D('Order');
-        $order=$ordermodel->where("order_id='$order_id'")->find();
-        $horsemanmodel=D('Horseman');
-        $horseman_id=$order['horseman_id'];
-        $horseman=$horsemanmodel->where("horseman_id='{$horseman_id}'")->find();
-        
-        $template_id="aOHqR_v1qq1ycSSfqRVpDSW6izoEtmPSDRCOMuyW9iA";
-        $url=U('Shops/order_view',array('order_id'=>$order['order_id']));
-        $arr_data=array(
-            'first'=>array('value'=>"有新的订单送达，请确认收取衣物","color"=>"#666"),
-            'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
-            'keyword2'=>array('value'=>$goods,"color"=>"#666"),
-            'keyword3'=>array('value'=>$horseman['horseman_name'],"color"=>"#666"),
-            'keyword4'=>array('value'=>date("Y年m月d日 H:i",time()),"color"=>"#666"),
-            'keyword5'=>array('value'=>$order['remark'],"color"=>"#666"),
-            'remark'=>array('value'=>$remark,"color"=>"#F90505")
-        );
-        $this->response_template($open_id, $template_id, $url, $arr_data);
-    }
+   
     
     private function confirm_goods_tem($order_id,$remark){
         $order_goodsmodel=D('Order_goods');
