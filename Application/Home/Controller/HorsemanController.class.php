@@ -295,7 +295,7 @@ class HorsemanController extends FontEndController {
         $this->assign('horseman',$horseman);
         $this->assign('order',$order);
         $this->assign('status','送衣');
-        $this->display();
+        $this->display('success_taking_page');
     }
     public function order_deliver() {
         $order_id=$_GET['order_id'];

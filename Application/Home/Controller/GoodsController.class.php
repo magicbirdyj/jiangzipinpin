@@ -258,14 +258,13 @@ class GoodsController extends FontEndController {
             $ordermodel = D('Order');
             $order = $ordermodel->where("order_no='{$returnPay["out_trade_no"]}' and deleted=0 ")->find();
             //验证交易金额是否为订单的金额;
-            /*
             if (!empty($returnPay['total_fee'])) {
                 if ($returnPay['total_fee'] != $order['dues'] * 100) {
                     file_put_contents('./index.txt',$returnPay['total_fee'],FILE_APPEND);
                     file_put_contents('./index.txt',$order['dues'],FILE_APPEND);
                     echo "fail";
                 }
-            } */
+            } 
             $order_id = $order['order_id'];
             $row = array(
                 'pay_status' => 1, //支付状态为支付
@@ -294,7 +293,6 @@ class GoodsController extends FontEndController {
     public function gmcg_wx(){
         $this->get_weixin_config();
         $this->assign('title','付款成功');
-        $this->assign('is_ztcg','ddct');//组团状态为等待成团
         $order_id=$_GET['order_id'];
         $user_id=$_SESSION['huiyuan']['user_id'];
         $ordermodel=D('Order');
