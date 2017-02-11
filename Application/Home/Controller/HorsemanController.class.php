@@ -144,6 +144,33 @@ class HorsemanController extends FontEndController {
         
         $this->display();
     }
+    public function deliver_shop() {
+        $order_id=$_GET['order_id'];
+        $horsemanmodel=D('Horseman');
+        $horseman_open_id=$_SESSION['huiyuan']['open_id'];
+        $horseman=$horsemanmodel->where("open_id='$horseman_open_id'")->find();
+        $ordermodel=D('Order');
+        $order=$ordermodel->where("order_id='{$order_id}'")->find();
+        if($horseman['horseman_id']!=$order['horseman_id']){
+            $this->error('您没有接取该订单','/Home/Horseman/index');
+        }
+        //订单加入商店id
+        $shop_id='18';
+        $shop_name='福莱特洗衣娄底店';
+        $row=array(
+            'shop_id'=>$shop_id,
+            'shop_name'=>$shop_name
+        );
+        $result=$ordermodel->where("order_id='{$order_id}'")->save($row);
+        if($result){
+            $shopsmodel=D('Shops');
+            $open_id=$shopsmodel->where("shop_id='$shop_id'")->getField('open_id');
+            //发送模板消息给工厂，确认送达
+            $remark='点我，确认衣物送达洗衣店';
+            $this->deliver_shop_tem($order_id,$open_id,$remark);
+            $this->redirect('Horseman/success_deliver_shop_page',array('order_id'=>$open_id));
+        }
+    }
     public function success_deliver_shop_page() {
         $order_id=$_GET['order_id'];
         $ordermodel=D('Order');

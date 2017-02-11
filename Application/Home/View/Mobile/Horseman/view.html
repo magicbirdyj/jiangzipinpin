@@ -111,7 +111,7 @@
                         <a id='confirm_goods'  href="<{:U('Horseman/confirm_goods',array('order_id'=>$order['order_id']))}>" class="button_a_order">确认取件</a>
                     </if>
                     <if  condition="$order['status'] eq '3' and $order['shop_id'] eq '0' ">
-                        <a id='deliver_shop'  href="javascript:void(0)" class="button_a_order">送达工厂</a>
+                        <a id='deliver_shop'  href="<{:U('Horseman/deliver_shop',array('order_id'=>$order['order_id']))}>" class="button_a_order">送达工厂</a>
                     </if>
                     <if  condition="$order['status'] eq '6' ">
                     <a id='order_taking_deliver'  href="javascript:void(0)" class="button_a_order">接单送衣</a>
@@ -174,27 +174,7 @@
                     }
                 });    
     });
-    $('#deliver_shop').bind('click',function(){
-            var url='/Home/Ajaxlogin/deliver_shop.html';
-            var data={
-                    order_id:order_id,
-                    check:"wy_deliver"
-                }
-            $.ajax({
-                    type:'post',
-                    async : true,
-                    url:url,
-                    data:data,
-                    datatype:'json',
-                    success:function(msg){
-                        if(msg){
-                            location='/Home/Horseman/success_deliver_shop_page/order_id/'+order_id;                          
-                        }else{
-                            alert('送达工厂失败'); 
-                        }
-                    }
-                });    
-    });
+   
     
      $('#order_confirm_deliver').bind('click',function(){
         if(confirm("确定衣物已经送达客户吗？")){
