@@ -335,18 +335,15 @@ class GoodsController extends FontEndController {
         }
         
         
-        $goods_id=$order['goods_id'];
-        $goodsmodel=D('Goods');
-        $goods=$goodsmodel->where("goods_id=$goods_id")->find();
-        $tuan_no=$order['tuan_no'];
-        $this->assign('tuan_no',$tuan_no);
-        $shopsmodel=D('Shops');
-        $shop_id=$goods['shop_id'];
-        if($tuan_no==0){
-            $this->assign('goods', $goods);
-            $this->display('gmcg_dandu');
-            exit();
+        $order_goodsmodel=D('Order_goods');
+        $order_goods=$order_goodsmodel->where("order_id='$order_id'")->select();
+        $order_price=0;
+        foreach ($order_goods as $value) {
+            $order_price+=$value['price']*$value['goods_number'];
         }
+        $this->assign('order_price',$order_price);
+        $this->assign('order_goods',$order_goods);
+        $this->display('gmcg_dandu');
     }
     
     
@@ -392,11 +389,7 @@ class GoodsController extends FontEndController {
     
     
     
-    private function pintuan_fail($tuan_no){
-        $ordermodel=D('Order');
-        $data['status']=6;
-        $ordermodel->where("tuan_no=$tuan_no and status<7")->save($data);
-    }
+   
 
 
 
@@ -508,20 +501,7 @@ class GoodsController extends FontEndController {
         );
         $this->response_template($open_id, $template_id, $url, $arr_data);
     }
-    private function pintuan_success_tep($order_id,$remark){
-        $ordermodel=D('Order');
-        $order=$ordermodel->where("order_id=$order_id")->find();
-        $user_id=$order['user_id'];
-        $usersmodel=D('Users');
-        $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
-        $template_id="E-s0XUfqmr8jQZWF2y40xi9wFXwPyOWykZvx44YQfk8";
-        $url=U('Order/view',array('order_id'=>$order_id));
-        $arr_data=array(
-            'name'=>array('value'=>$order["goods_name"],"color"=>"#666"),
-            'remark'=>array('value'=>$remark,"color"=>"#F90505")
-        );
-        $this->response_template($open_id, $template_id, $url, $arr_data);
-    }
+    
     
     public function dianpu_sale_tep($order_id) {
         $ordermodel=D('Order');
