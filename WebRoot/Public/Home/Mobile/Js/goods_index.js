@@ -179,7 +179,7 @@ function x2_click(even){
     if(is_select=='active'){
         return false;
     }
-    var index=$(this).index();
+    var index=even.index();
     $('.page').eq(index).css('display','block').siblings('.page').css('display','none');
     even.children('a').addClass('active');
     even.siblings('.curr').children('a').removeClass('active');
