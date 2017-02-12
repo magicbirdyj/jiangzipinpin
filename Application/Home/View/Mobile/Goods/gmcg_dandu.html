@@ -31,11 +31,12 @@
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/goods.css">
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/buy.css">
 <link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order_appraise.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC_HOME__/Mobile/Css/order_view.css">
 </head>
 
 <body>
     <section class="big-shade-all" style="display:none"></section>
-<div class="fanhui padding"><a href="javascript:history.back()"><span class="iconfont tb_fanhui"id="shangjia_info_fanhui">&#xe603;</span></a><{$title}></div>
+    <div class="fanhui padding" style="padding: 12px 0px"><span class="confirm_left"><{$title}></span><a href="<{:U('Index/index')}>" class="confirm_right">确定</a></div>
 
     <div class="d2">
             <div class="d2_title">订单明细</div>
@@ -50,21 +51,20 @@
                 <span class="order_price">
                     <i style='width:30%'>总计  &yen;<{$order_price}></i>
                     <i style='width:30%'>优惠  &yen;<{$order['daijinquan']}></i>
-                    <i style='width:40%;text-align: right;padding-right: 10px;'><t style='color: #555;'>应付</t><t style='color: #00dbf5'>  &yen;<{$order_price-$order['daijinquan']}></t></i>
+                    <i style='width:40%;text-align: right;padding-right: 10px;'><t style='color: #555;'>实付</t><t style='color: #00dbf5'>  &yen;<{$order_price-$order['daijinquan']}></t></i>
                 </span>
             </div>
         </div>
 
 
 <div class="fixed_bottom" style='width:100%;bottom: 15px;background-color:rgba(0,0,0,0);'>
-    <a href="<{:U('Index/index')}>" class="button_a_lvse left_button"><span class="iconfont tb_shouye">&#xe60f;</span>更多乐享</a>
     <if condition="$order['fenxiang'] eq '0' ">
-        <a id='a_zhishifenxiang' href="javascript:void(0)" class='button_a_lvse right_button'>分享返现：&yen;<{$goods['fanxian']|floatval}></a>
+        <a id='a_zhishifenxiang' href="javascript:void(0)" class='button_a_lvse right_button' style="margin-top: 20px;">分享返现：&yen;<{$goods['fanxian']|floatval}></a>
     <else />
         <a href="javascript:void(0)" class='button_a_lvse right_button' style='background-color:#888;border-color: #888; '>已获得分享返现：&yen;<{$goods['fanxian']|floatval}></a>
     </if>
 </div>
-<div style='margin-bottom: 105px;'></div>
+
 
 
 
