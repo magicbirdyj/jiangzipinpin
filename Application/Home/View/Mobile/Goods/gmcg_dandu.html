@@ -59,7 +59,7 @@
 
 <div class="fixed_bottom" style='width:100%;bottom: 15px;background-color:rgba(0,0,0,0);'>
     <if condition="$order['fenxiang'] eq '0' ">
-        <a id='a_zhishifenxiang' href="javascript:void(0)" class='button_a_lvse right_button' style="margin-top: 20px;">分享返现：&yen;<{$goods['fanxian']|floatval}></a>
+        <a id='a_zhishifenxiang' href="javascript:void(0)" class='button_a_lvse right_button' style="margin-top: 20px;">分享返现： 最高（<{$order_price-$order['daijinquan']}>元）</a>
     <else />
         <a href="javascript:void(0)" class='button_a_lvse right_button' style='background-color:#888;border-color: #888; '>已获得分享返现：&yen;<{$goods['fanxian']|floatval}></a>
     </if>
@@ -70,19 +70,11 @@
 
 
 <script>
-    var img=$('#goods_img').attr('src');
-    var yuan_title=$('#goods_name').html();
-    var title=yuan_title.length>17?yuan_title.substring(0,17)+'...':yuan_title;
-    var price=$('#price').html();
-    //var tuan_number=$('#tuan_number').html();
-    //var tuan_no="<{$tuan_no}>";
-    var goods_id="<{$goods['goods_id']}>";
-    var link='m.jiangzipinpin.com/Home/Goods/index/goods_id/'+goods_id+'.html';
-    //var user_name="<{$user_name}>";
-    //var goods_desc="<{$goods['goods_jianjie']}>";
-    var fanxian="<{$order['fenxiang_dues']|floatval}>";
+    var img='/Public/Home/Mobile/Images/public/yiganjing_logo.jpg';
+    var link='m.jiangzipinpin.com/Home/Index/index.html';
     var fenxiang="<{$order['fenxiang']}>";
-    var desc="酱紫拼拼：一家专门做代购与个人纯手工商品的网站。"+"<{$goods['goods_jianjie']}>";
+    var title= '衣干净，席卷娄底：干洗衣服低至9元，全城一件上门取衣。分享即可获得首单免费或者代金券。', // 分享标题
+    var desc="衣干净，真干洗，全城一件上门取衣，洗衣服最低9元，您还需要去洗衣店吗？";
     wx.config({  
         //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: "<{$wx_config['appId']}>", // 必填，公众号的唯一标识
@@ -93,7 +85,7 @@
     });
     wx.ready(function () {
         wx.onMenuShareTimeline({
-            title:  '我'+price+'元钱购买了'+title+'，代购与个人手工产品，就上酱紫拼拼', // 分享标题
+            title: title, // 分享标题
             link: link, // 分享链接
             imgUrl: 'http://m.jiangzipinpin.com'+img, // 分享图标
             success: function () { 
@@ -126,17 +118,13 @@
     });
     
     function fenxiang_success(){
-        hideOverlay('zhishi_fenxiang');
-        showOverlay('fengxiang_success');
-        $('#overlay,#zhishi_fenxiang').unbind('click');
+        tanchu('fengxiang_success');
         send_red_pack();
-        send_shop_xiaoxi_red();
     }
     
     function send_red_pack(){
         var data={
             'order_id':"<{$order['order_id']}>",
-            'dues':fanxian,
             'check':'send_red_pack_921314'
         };
         var url='/Home/Ajaxnologin/send_red_pack';
@@ -149,21 +137,7 @@
         });
     }
     
-    function send_shop_xiaoxi_red(){
-        var data={
-            'order_id':"<{$order['order_id']}>",
-            'dues':fanxian,
-            'check':'send_shop_xiaoxi'
-        };
-        var url='/Home/Ajaxnologin/send_shop_xiaoxi_red';
-        $.ajax({
-            type:'post',
-            async : true,
-            url:url,
-            datatype:'json',
-            data:data
-        });
-    }
+   
 
 </script>
 <include file='Public/fenxiang_fanxian'/> 

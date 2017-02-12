@@ -289,7 +289,7 @@ class CrontabController extends FontEndController {
             }
         }
         $template_id="A1s_g4U-xAAqCxGKdeUnZgiluf7gy-HT-T3kbVCerK4";
-        $url=U('Order/order_view',array('order_id'=>$order_id));
+        $url=U('Order/view',array('order_id'=>$order_id));
         $arr_data=array(
             'first'=>array('value'=>'您的订单已清洗完成，请及时选择送衣时间，以便骑手送达',"color"=>"#666"),
             'keyword1'=>array('value'=>$order['order_no'],"color"=>"#666"),
