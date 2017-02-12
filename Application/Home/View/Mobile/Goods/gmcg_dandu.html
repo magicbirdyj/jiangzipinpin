@@ -49,9 +49,9 @@
                     </span>
                 </volist>
                 <span class="order_price">
-                    <i style='width:30%'>总计  &yen;<{$order_price}></i>
+                    <i style='width:30%'>总计  &yen;<{$order['price']}></i>
                     <i style='width:30%'>优惠  &yen;<{$order['daijinquan']}></i>
-                    <i style='width:40%;text-align: right;padding-right: 10px;'><t style='color: #555;'>实付</t><t style='color: #00dbf5'>  &yen;<{$order_price-$order['daijinquan']}></t></i>
+                    <i style='width:40%;text-align: right;padding-right: 10px;'><t style='color: #555;'>实付</t><t style='color: #00dbf5'>  &yen;<{$order['price']-$order['daijinquan']}></t></i>
                 </span>
             </div>
         </div>
@@ -61,7 +61,7 @@
     <if condition="$order['fenxiang'] eq '0' ">
         <a id='a_zhishifenxiang' href="javascript:void(0)" class='button_a_lvse right_button' style="margin-top: 20px;">分享返现： 最高（<{$order_price-$order['daijinquan']}>元）</a>
     <else />
-        <a href="javascript:void(0)" class='button_a_lvse right_button' style='background-color:#888;border-color: #888; '>已获得分享返现：&yen;<{$goods['fanxian']|floatval}></a>
+        <a href="javascript:void(0)" class='button_a_lvse right_button' style='background-color:#888;border-color: #888; '>已获得分享返现：&yen;<{$order['fanxian']|floatval}></a>
     </if>
 </div>
 

@@ -309,10 +309,7 @@ class GoodsController extends FontEndController {
         $order_goodsmodel=D('Order_goods');
         $order_goods=$order_goodsmodel->where("order_id='$order_id'")->select();
         $order_price=0;
-        foreach ($order_goods as $value) {
-            $order_price+=$value['price']*$value['goods_number'];
-        }
-        $this->assign('order_price',$order_price);
+        
         $this->assign('order_goods',$order_goods);
 
         $this->display('gmcg_dandu');
