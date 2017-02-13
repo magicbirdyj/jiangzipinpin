@@ -68,10 +68,6 @@ class AjaxnologinController extends FontEndController {
     
     public function send_red_pack() {
         $post=$_POST;
-        $post=array(
-            'order_id'=>"5",
-            'check'=>'send_red_pack_921314'
-        );
         if($post['check']!='send_red_pack_921314'){
             exit;
         }
@@ -85,25 +81,18 @@ class AjaxnologinController extends FontEndController {
         $max=$order['dues'];
         $arr_last=array(0.03,0.06,0.08);
         $seed=mt_rand(1, 100);
-        if($seed<=50){
-            $fenxiang_dues=  mt_rand(1, 10)/10+$arr_last[mt_rand(0, 2)];
-        }elseif($seed<=95){
+        if($seed<=80){
             $fenxiang_dues=  mt_rand(10, 20)/10+$arr_last[mt_rand(0, 2)];
+        }elseif($seed<=95){
+            $fenxiang_dues=  mt_rand(20, 30)/10+$arr_last[mt_rand(0, 2)];
         }elseif($seed<=99){
-            $fenxiang_dues=  mt_rand(20, 100)/10+$arr_last[mt_rand(0, 2)];
+            $fenxiang_dues=  mt_rand(30, 100)/10+$arr_last[mt_rand(0, 2)];
         }else{
-            $fenxiang_dues=  mt_rand(100, 200)/10+$arr_last[mt_rand(0, 2)];
+            $fenxiang_dues=  mt_rand(40, 200)/10+$arr_last[mt_rand(0, 2)];
         }
 
         $fenxiang_dues=$fenxiang_dues<$max?$fenxiang_dues:$max;
-
-        //把订单分享字段改为1
-        $row=array(
-            'fenxiang'=>1,
-            'fenxiang_dues'=>$fenxiang_dues
-        );
-        //$ordermodel->where("order_id=$order_id")->save($row);
-                
+       
         $user_id=$order['user_id'];
         $usersmodel=D('Users');
         $open_id=$usersmodel->where("user_id=$user_id")->getField('open_id');
@@ -119,6 +108,14 @@ class AjaxnologinController extends FontEndController {
         $sendRedPackInput->SetAct_name('分享返现红包');//活动名称
         $sendRedPackInput->SetRemark('就是如此任性！只需分享，就能拿红包');//备注
         $sendRedPackInfo = \WxPayApi::sendredpack($sendRedPackInput, 300);
+        
+        
+         //把订单分享字段改为1
+        $row=array(
+            'fenxiang'=>1,
+            'fenxiang_dues'=>$fenxiang_dues
+        );
+        $ordermodel->where("order_id=$order_id")->save($row);
         $this->ajaxReturn($sendRedPackInfo);
     }
     
