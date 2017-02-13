@@ -59,7 +59,7 @@
 
 <div class="fixed_bottom" style='width:100%;bottom: 15px;background-color:rgba(0,0,0,0);'>
     <if condition="$order['fenxiang'] eq '0' ">
-        <a id='a_zhishifenxiang' href="javascript:void(0)" class='button_a_lvse right_button' style="margin-top: 20px;">分享返现： 最高（<{$order_price-$order['daijinquan']}>元）</a>
+        <a id='a_zhishifenxiang' href="javascript:void(0)" class='button_a_lvse right_button' style="margin-top: 20px;">分享返现： 最高（<{$order['price']-$order['daijinquan']}>元）</a>
     <else />
         <a href="javascript:void(0)" class='button_a_lvse right_button' style='background-color:#888;border-color: #888; '>已获得分享返现：&yen;<{$order['fanxian']|floatval}></a>
     </if>
