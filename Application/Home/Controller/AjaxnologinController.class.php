@@ -118,7 +118,7 @@ class AjaxnologinController extends FontEndController {
         $sendRedPackInput->SetWishing("感谢您的分享");//红包祝福语
         $sendRedPackInput->SetAct_name('分享返现红包');//活动名称
         $sendRedPackInput->SetRemark('就是如此任性！只需分享，就能拿红包');//备注
-        var_dump($sendRedPackInput->GetValues());exit;
+        var_dump($sendRedPackInput->GetValues());
         $sendRedPackInfo = \WxPayApi::sendredpack($sendRedPackInput, 300);
         $this->ajaxReturn($sendRedPackInfo);
     }
