@@ -126,6 +126,9 @@
                     <if  condition="($order['status'] egt '8') and ($order['pay_status'] eq '1') and ($order['fenxiang'] eq '0')">
                         <a  class="button_a_order"  href="<{:U('Goods/fenxiang',array('order_id'=>$order['order_id']))}>">分享返现</a>
                     </if>
+                    <if  condition="(($order['pay_status'] eq '1') and ($order['status'] egt '8') and ($order['status'] elt '9'))">
+                        <a id='shouhou' class="button_a_order" name="<{$vo['order_id']}>" href="<{:U('Order/shouhou',array('order_id'=>$order['order_id']))}>">申请售后</a>
+                    </if>
                 </div>
         </div>
 

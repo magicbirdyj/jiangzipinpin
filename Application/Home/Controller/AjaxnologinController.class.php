@@ -82,7 +82,7 @@ class AjaxnologinController extends FontEndController {
         $arr_last=array(0.03,0.06,0.08);
         $seed=mt_rand(1, 100);
         if($seed<=50){
-            $fenxiang_dues=  mt_rand(0, 10)/10+$arr_last[mt_rand(0, 2)];
+            $fenxiang_dues=  mt_rand(1, 10)/10+$arr_last[mt_rand(0, 2)];
         }elseif($seed<=95){
             $fenxiang_dues=  mt_rand(10, 20)/10+$arr_last[mt_rand(0, 2)];
         }elseif($seed<=99){
@@ -90,15 +90,15 @@ class AjaxnologinController extends FontEndController {
         }else{
             $fenxiang_dues=  mt_rand(100, 200)/10+$arr_last[mt_rand(0, 2)];
         }
-        
+
         $fenxiang_dues=$fenxiang_dues<$max?$fenxiang_dues:$max;
-        
+
         //把订单分享字段改为1
         $row=array(
             'fenxiang'=>1,
             'fenxiang_dues'=>$fenxiang_dues
         );
-        $ordermodel->where("order_id=$order_id")->save($row);
+        //$ordermodel->where("order_id=$order_id")->save($row);
                 
         $user_id=$order['user_id'];
         $usersmodel=D('Users');
@@ -107,12 +107,11 @@ class AjaxnologinController extends FontEndController {
         $sendRedPackInput = new \WxPaySendRedPack();
         //现金红包 
         $total_amount=$fenxiang_dues;
-        $send_name=$order['shop_name'];
         $sendRedPackInput->SetTotal_amount($total_amount*100);//红包金额 int
         $sendRedPackInput->SetRe_openid($open_id);//接收红包用户
-        $sendRedPackInput->SetSend_name($send_name);//接收红包用户
+        $sendRedPackInput->SetSend_name('衣干净');//接收红包用户
         $sendRedPackInput->SetTotal_num(1);//红包发放总人数
-        $sendRedPackInput->SetWishing("衣干净感谢您的分享");//红包祝福语
+        $sendRedPackInput->SetWishing("感谢您的分享");//红包祝福语
         $sendRedPackInput->SetAct_name('分享返现红包');//活动名称
         $sendRedPackInput->SetRemark('就是如此任性！只需分享，就能拿红包');//备注
         $sendRedPackInfo = \WxPayApi::sendredpack($sendRedPackInput, 300);

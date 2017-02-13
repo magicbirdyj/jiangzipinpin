@@ -26,5 +26,5 @@ function tanchu(id){
 
 $('#zhishi_fenxiang').bind('click',function(){
     $('#zhishi_fenxiang').hide();
-	$('.big-shade-all').hide();
+    $('.big-shade-all').hide();
 });

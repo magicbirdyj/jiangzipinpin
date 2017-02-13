@@ -437,15 +437,14 @@ class OrderController extends FontEndController {
     
     
     public function shouhou() {
-        session('guanzhu',null); 
-        $user_id=$_SESSION['wei_huiyuan']['user_id'];
+        $user_id=$_SESSION['huiyuan']['user_id'];
         $this->assign('user_id',$user_id);
         $order_id=$_GET['order_id'];
         if(!$order_id){
             $this->error('订单号为空！');
         }
         $ordermodel=D('Order');
-        $order=$ordermodel->table('m_order t1,m_goods t2')->where("t1.order_id={$order_id}  and t1.goods_id=t2.goods_id")->field('t1.user_id,t1.order_id,t1.order_no,t1.goods_id,t1.goods_name,t1.shop_name,t1.status,t1.pay_status,t1.deleted,t2.goods_img,t1.price,t1.dues')->find();
+        $order=$ordermodel->where("order_id='{$order_id}'")->find();
         $maijia_id=$order['user_id'];
         if(empty($maijia_id)){
             $this->error('该订单不存在','/Home/Order/index');
@@ -458,6 +457,8 @@ class OrderController extends FontEndController {
         $this->assign('maijia',$maijia);
         if($order['user_id']===$user_id||$order['shop_id']===$user_id){
             $this->assign('order',$order);
+            echo '请联系客服：13574506835';
+            exit;
             $this->display();
         }else{
             $this->error('该订单不存在','/Home/Order/index');
