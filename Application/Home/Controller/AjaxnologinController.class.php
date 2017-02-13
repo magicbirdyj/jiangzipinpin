@@ -111,7 +111,7 @@ class AjaxnologinController extends FontEndController {
         $sendRedPackInput = new \WxPaySendRedPack();
         //现金红包 
         $total_amount=$fenxiang_dues;
-        $sendRedPackInput->SetTotal_amount($total_amount*100);//红包金额 int
+        $sendRedPackInput->SetTotal_amount((int)$total_amount*100);//红包金额 int
         $sendRedPackInput->SetRe_openid($open_id);//接收红包用户
         $sendRedPackInput->SetSend_name('衣干净');//接收红包用户
         $sendRedPackInput->SetTotal_num(1);//红包发放总人数
