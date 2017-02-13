@@ -68,6 +68,10 @@ class AjaxnologinController extends FontEndController {
     
     public function send_red_pack() {
         $post=$_POST;
+        $post=array(
+            'order_id'=>"5",
+            'check'=>'send_red_pack_921314'
+        );
         if($post['check']!='send_red_pack_921314'){
             exit;
         }
