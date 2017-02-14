@@ -28,3 +28,5 @@ $('#zhishi_fenxiang').bind('click',function(){
     $('#zhishi_fenxiang').hide();
     $('.big-shade-all').hide();
 });
+
+tanchu('fengxiang_success');

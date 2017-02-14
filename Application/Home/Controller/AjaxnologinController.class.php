@@ -116,7 +116,7 @@ class AjaxnologinController extends FontEndController {
             'fenxiang_dues'=>$fenxiang_dues
         );
         $ordermodel->where("order_id=$order_id")->save($row);
-        $this->ajaxReturn($sendRedPackInfo);
+        $this->ajaxReturn($total_amount);
     }
     
     public function send_shop_xiaoxi_red() {
