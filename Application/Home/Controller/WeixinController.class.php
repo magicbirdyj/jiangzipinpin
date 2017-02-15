@@ -17,7 +17,7 @@ class WeixinController extends FontEndController {
         }
            
 	if($msgType=='event'&&$keyword=='subscribe'){
-            $resultStr=$this->panduan_guanzhu_leixin($postObj);//分情况发送图文消息
+            $resultStr=$this->response_arr_image_text($object);//分情况发送图文消息
             echo $resultStr;
         }else{
             $content='联系客服，请点击下方按钮：  平台服务>>联系客服';
@@ -163,17 +163,7 @@ class WeixinController extends FontEndController {
     }
 
 
-    //判断关注前有没有浏览商品或者拼团信息，没有的话 发多图文 有的话 发商品或拼团链接ss
-    private function panduan_guanzhu_leixin($postObj){
-        $open_id=$postObj->FromUserName;
-        $usersmodel=D('Users');
-        $url=$usersmodel->where("open_id='$open_id'")->getField('url');
-        if($url){
-            return $this->response_image_text($postObj);
-        }else{
-            return $this->response_arr_image_text($postObj);
-        }
-    }
+    
 
 
     //多图文消息中，内容数组转XML中的<item></item> 

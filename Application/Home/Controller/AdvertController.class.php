@@ -14,4 +14,19 @@ class AdvertController extends FontEndController {
        
         $this->display();
     }
+    
+    public function fengxiang_choujiang() {
+         //首先必须获取关注状态
+        if(!isset($_SESSION['guanzhu'])||$_SESSION['guanzhu']==''){
+            header("location:". U("Login/index"));
+            exit();
+            //$this->error('关注信息为空');
+        }
+        $user_id=$_SESSION['huiyuan']['user_id'];
+        $usersmodel=D('Users');
+        $user=$usersmodel->where("user_id='{$user_id}'")->field('choujiang,fenxiang')->find();
+        $this->assign('user',$user);
+        $this->display();
+    }
+    
 }

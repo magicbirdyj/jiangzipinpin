@@ -298,22 +298,7 @@ function infor_none(){
         
         
         
-//显示遮罩层
-function showOverlay(id) {
-    $("#overlay").height(pageHeight());
-    $("#overlay").width(pageWidth());
 
-    // fadeTo第一个参数为速度，第二个为透明度
-    // 多重方式控制透明度，保证兼容性，但也带来修改麻烦的问题
-    $("#overlay").fadeTo(0, 0.8);
-    $("#"+id).css('display','block');
-}
-
-/* 隐藏覆盖层 */
-function hideOverlay(id) {
-    $("#overlay").fadeOut(0);
-    $('#'+id).css('display','none');
-}
 
 /* 当前页面高度 */
 function pageHeight() {
@@ -323,4 +308,11 @@ function pageHeight() {
 /* 当前页面宽度 */
 function pageWidth() {
     return document.body.scrollWidth;
+}
+
+
+/*弹出遮罩层 ，显示提示*/
+function tanchu(id){
+        $('#'+id).show();
+	$('.big-shade-all').show();
 }

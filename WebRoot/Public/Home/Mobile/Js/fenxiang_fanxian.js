@@ -19,14 +19,7 @@ $('#fengxiang_success').css('top',($(window).height()-$('#fengxiang_success').he
 
 
 
-function tanchu(id){
-        $('#'+id).show();
-	$('.big-shade-all').show();
-}
-
 $('#zhishi_fenxiang').bind('click',function(){
     $('#zhishi_fenxiang').hide();
     $('.big-shade-all').hide();
 });
-
-tanchu('fengxiang_success');

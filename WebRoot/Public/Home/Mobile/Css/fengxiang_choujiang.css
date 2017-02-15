@@ -1,0 +1,28 @@
+body{
+    background:url("../Images/public/choujiang/bg.png") 0 0 repeat;
+}
+
+.rotate-con-pan{
+    position:relative;
+    width:100%;
+    margin:0px;
+    padding: 0px;
+}
+.rotate-con-pan .zhuangpan_bg{
+    width:100%;
+    display:block;
+}
+.rotate-con-zhen{
+    width:23.3333%;
+    cursor:pointer;
+    position:absolute;
+    margin-left: 38.3333%;
+    display:block;
+    top: 26.66666%;
+}
+
+.tishi{
+    font-size: 22px;
+    color: #FFF;
+    text-align: center;
+}
