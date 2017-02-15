@@ -16,6 +16,7 @@ class AdvertController extends FontEndController {
     }
     
     public function fengxiang_choujiang() {
+        C('TOKEN_ON',false);//取消表单令牌
          //首先必须获取关注状态
         if(!isset($_SESSION['guanzhu'])||$_SESSION['guanzhu']==''){
             header("location:". U("Login/index"));
