@@ -224,7 +224,7 @@ class WeixinController extends FontEndController {
    public function creat_menu() {
        $data='{
                 "button":[
-                {
+                    {
                         "name":"立即洗衣",
                         "sub_button":[
                         {
@@ -236,15 +236,13 @@ class WeixinController extends FontEndController {
                             "type":"view",
                             "name":"洗衣价目表",
                             "url":"http://m.jiangzipinpin.com"
-                        }
+                        },
                         {
                         "type":"view",
                         "name":"立即预约",
                         "url":"http://m.jiangzipinpin.com/Home/Goods/buy.html"
-                        
                         }]
-                    }
-                    ,
+                    },
                     {
                         "type":"view",
                         "name":"进入衣干净",
