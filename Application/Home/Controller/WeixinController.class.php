@@ -139,18 +139,22 @@ class WeixinController extends FontEndController {
         $arr_content[0]['Title']='【点击抽奖】立即获得首单免费或洗衣优惠券';
         $arr_content[0]['PicUrl']='http://m.jiangzipinpin.com'.'/Public/Home/Mobile/Images/public/image_text_news/choujiang_text.jpg';
         $arr_content[0]['Url']='m.jiangzipinpin.com'.U('Advert/fengxiang_choujiang');
+        $arr_content[0]['Description']='无';
         
         $arr_content[1]['Title']='洗衣低至9元起，一件也上门，点我立即下单';
         $arr_content[1]['PicUrl']='http://m.jiangzipinpin.com'.'/Public/Home/Mobile/Images/public/image_text_news/index.jpg';
         $arr_content[1]['Url']='http://m.jiangzipinpin.com';
+        $arr_content[1]['Description']='无';
         
         $arr_content[2]['Title']='洗衣新模式，58元/袋，装多少洗多少';
         $arr_content[2]['PicUrl']='http://m.jiangzipinpin.com'.'/Public/Home/Mobile/Images/public/image_text_news/daizi.jpg';
         $arr_content[2]['Url']='http://m.jiangzipinpin.com';
+        $arr_content[2]['Description']='无';
         
         $arr_content[3]['Title']='十五道衣味，精心呵护您的爱衣';
         $arr_content[3]['PicUrl']='http://m.jiangzipinpin.com'.'/Public/Home/Mobile/Images/public/image_text_news/yiwei.jpg';
         $arr_content[3]['Url']='http://m.jiangzipinpin.com';
+        $arr_content[3]['Description']='无';
         
         
         // 转换成xml结构中的item
