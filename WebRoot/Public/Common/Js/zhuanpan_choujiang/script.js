@@ -5,77 +5,113 @@ function randomnum(smin, smax) {// 获取2个值之间的随机数
 }
 
 function runzp() {
-	var data = '[{"id":1,"prize":"590大洋","v":1.0},{"id":2,"prize":"100RMB","v":2.0},{"id":3,"prize":"安慰奖","v":48.0}]';// 奖项json
+    
+	var data = '[{"id":1,"prize":"首单免费","v":20.0},{"id":2,"prize":"15元代金券","v":30.0},{"id":3,"prize":"10元代金券","v":40.0},{"id":4,"prize":"5元代金券","v":50.0}]';// 奖项json
 	var obj = eval('(' + data + ')');
 	var result = randomnum(1, 100);
-	var line = 0;
-	var temp = 0;
-	var returnobj = "0";
 	var index = 0;
 
-	//alert("随机数"+result);
-	for ( var i = 0; i < obj.length; i++) {
-		var obj2 = obj[i];
-		var c = parseFloat(obj2.v);
-		temp = temp + c;
-		line = 100 - temp;
-		if (c != 0) {
-			if (result > line && result <= (line + c)) {
-				index = i;
-				// alert(i+"中奖"+line+"<result"+"<="+(line + c));
-				returnobj = obj2;
-				break;
-			}
-		}
-	}
+	if(result>=1&&result<=10){
+            index = 0;
+        }else if(result>=11&&result<=20){
+            index = 1;
+        }else if(result>=21&&result<=40){
+            index = 2;
+        }else if(result>=41&&result<=100){
+            index = 3;
+        }
+        returnobj = obj[index]; 
 	var angle = 330;
 	var message = "";
 	var myreturn = new Object;
-	if (returnobj != "0") {// 有奖
-		message = "恭喜中奖了";
-		var angle0 = [ 344, 373 ];
-		var angle1 = [ 226, 256 ];
-		var angle2 = [ 109, 136 ];
+        var r,r0,r1,r2;
 		switch (index) {
-		case 0:// 一等奖
+		case 0:// 首单免费
+                    angle0 = [ 343, 378 ];//首单免费
+                    angle1 = [ 218, 246 ];//首单免费
+                    angle2 = [ 113, 139 ];//首单免费
+                    r = randomnum(0, 2);
+                    switch (r) {
+                    case 0:
 			var r0 = randomnum(angle0[0], angle0[1]);
 			angle = r0;
 			break;
-		case 1:// 二等奖
+                    case 1:
 			var r1 = randomnum(angle1[0], angle1[1]);
 			angle = r1;
 			break;
-		case 2:// 三等奖
+                    case 2:
 			var r2 = randomnum(angle2[0], angle2[1]);
 			angle = r2;
 			break;
+                    }
+                    break;
+		case 1:// 十五元代金券
+                    angle0 = [ 312, 342 ];//15元
+                    angle1 = [ 193, 217 ];//15元
+                    angle2 = [ 85, 112 ];//15元
+                    r = randomnum(0, 2);
+                    switch (r) {
+                    case 0:
+			var r0 = randomnum(angle0[0], angle0[1]);
+			angle = r0;
+			break;
+                    case 1:
+			var r1 = randomnum(angle1[0], angle1[1]);
+			angle = r1;
+			break;
+                    case 2:
+			var r2 = randomnum(angle2[0], angle2[1]);
+			angle = r2;
+			break;
+                    }
+                    break;
+		case 2:// 10元
+                    angle0 = [ 277, 310 ];//10元
+                    angle1 = [ 166, 192 ];//10元
+                    angle2 = [ 52, 84 ];//10元
+                    r = randomnum(0, 2);
+                    switch (r) {
+                    case 0:
+			var r0 = randomnum(angle0[0], angle0[1]);
+			angle = r0;
+			break;
+                    case 1:
+			var r1 = randomnum(angle1[0], angle1[1]);
+			angle = r1;
+			break;
+                    case 2:
+			var r2 = randomnum(angle2[0], angle2[1]);
+			angle = r2;
+			break;
+                    }
+			break;
+		
+                case 3:// 5元
+                    angle0 = [ 249, 274 ];// 5元
+                    angle1 = [ 143, 164 ];//5元
+                    angle2 = [ 19, 48];// 5元
+                    r = randomnum(0, 2);
+                    switch (r) {
+                    case 0:
+			var r0 = randomnum(angle0[0], angle0[1]);
+			angle = r0;
+			break;
+                    case 1:
+			var r1 = randomnum(angle1[0], angle1[1]);
+			angle = r1;
+			break;
+                    case 2:
+			var r2 = randomnum(angle2[0], angle2[1]);
+			angle = r2;
+			break;
+                    }
+			break;
 		}
-		myreturn.prize = returnobj.prize;
-	} else {// 没有
-		message = "再接再厉";
-		var angle3 = [ 17, 103 ];
-		var angle4 = [ 197, 220 ];
-		var angle5 = [ 259, 340 ];
-		var r = randomnum(3, 5);
-		var angle;
-		switch (r) {
-		case 3:
-			var r3 = randomnum(angle3[0], angle3[1]);
-			angle = r3;
-			break;
-		case 4:
-			var r4 = randomnum(angle4[0], angle4[1]);
-			angle = r4;
-			break;
-		case 5:
-			var r5 = randomnum(angle5[0], angle5[1]);
-			angle = r5;
-			break;
-		}
-		myreturn.prize = "继续努力!";
-
-	}
+		
+             
+        myreturn.prize = returnobj.prize;
+        myreturn.id = returnobj.id;
 	myreturn.angle = angle;
-	myreturn.message = message;
 	return myreturn;
-}// JavaScript Document
+}

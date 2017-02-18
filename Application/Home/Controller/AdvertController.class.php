@@ -27,6 +27,7 @@ class AdvertController extends FontEndController {
         $usersmodel=D('Users');
         $user=$usersmodel->where("user_id='{$user_id}'")->field('choujiang,fenxiang')->find();
         $this->assign('user',$user);
+        $this->assign('guanzhu',$_SESSION['guanzhu']);
         $this->display();
     }
     

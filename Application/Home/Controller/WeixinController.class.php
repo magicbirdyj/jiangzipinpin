@@ -17,7 +17,7 @@ class WeixinController extends FontEndController {
         }
            
 	if($msgType=='event'&&$keyword=='subscribe'){
-            $resultStr=$this->response_arr_image_text($object);//分情况发送图文消息
+            $resultStr=$this->response_arr_image_text($postObj);//分情况发送图文消息
             echo $resultStr;
         }else{
             $content='联系客服，请点击下方按钮：  平台服务>>联系客服';
@@ -132,26 +132,27 @@ class WeixinController extends FontEndController {
                 <ArticleCount>%d</ArticleCount>
                 <Articles>";
         //具体内容数组
-        $goodsmodel=D('Goods');
-        $arr_goods=$goodsmodel->where("1yuangou=1  and is_delete=0")->field('goods_id,goods_name,goods_img,goods_img_qita,goods_jianjie')->limit(10)->select();
-        $count=(int)count($arr_goods);
+        $count=4;
         $header = sprintf($newsTplHead, $object->FromUserName, $object->ToUserName, time(),$count); 
         //构建内容数组$arr_content
         $arr_content=array();
-        foreach ($arr_goods as $key => $value) {
-            $arr_content[$key]['Title']=$value['goods_name'];
-            $arr_content[$key]['Description']=$value['goods_jianjie'];
-            if($key==0){
-                $goods_img=  unserialize($value['goods_img_qita']);
-                $goods_img=$goods_img[0];
-                $goods_img=$this->get_thumb($goods_img);
-                $goods_img='http://m.jiangzipinpin.com'.$goods_img;
-                $arr_content[$key]['PicUrl']=$goods_img;
-            }else{
-                $arr_content[$key]['PicUrl']='http://m.jiangzipinpin.com'.$value['goods_img'];
-            }
-            $arr_content[$key]['Url']='m.jiangzipinpin.com'.U('Goods/index',array('goods_id'=>$value['goods_id']));
-        }
+        $arr_content[0]['Title']='【点击抽奖】立即获得首单免费或洗衣优惠券';
+        $arr_content[0]['PicUrl']='http://m.jiangzipinpin.com'.'/Public/Home/Mobile/Images/public/image_text_news/choujiang_text.jpg';
+        $arr_content[0]['Url']='m.jiangzipinpin.com'.U('Advert/fengxiang_choujiang');
+        
+        $arr_content[1]['Title']='洗衣低至9元起，一件也上门，点我立即下单';
+        $arr_content[1]['PicUrl']='http://m.jiangzipinpin.com'.'/Public/Home/Mobile/Images/public/image_text_news/index.jpg';
+        $arr_content[1]['Url']='http://m.jiangzipinpin.com';
+        
+        $arr_content[2]['Title']='洗衣新模式，58元/袋，装多少洗多少';
+        $arr_content[2]['PicUrl']='http://m.jiangzipinpin.com'.'/Public/Home/Mobile/Images/public/image_text_news/daizi.jpg';
+        $arr_content[2]['Url']='http://m.jiangzipinpin.com';
+        
+        $arr_content[3]['Title']='十五道衣味，精心呵护您的爱衣';
+        $arr_content[3]['PicUrl']='http://m.jiangzipinpin.com'.'/Public/Home/Mobile/Images/public/image_text_news/yiwei.jpg';
+        $arr_content[3]['Url']='http://m.jiangzipinpin.com';
+        
+        
         // 转换成xml结构中的item
         $body='';
         foreach ($arr_content as $value) {

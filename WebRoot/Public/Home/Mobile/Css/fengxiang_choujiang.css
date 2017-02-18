@@ -1,5 +1,5 @@
 body{
-    background:url("../Images/public/choujiang/bg.png") 0 0 repeat;
+    /*background:url("../Images/public/choujiang/bg.png") 0 0 repeat;*/
 }
 
 .rotate-con-pan{
@@ -7,6 +7,7 @@ body{
     width:100%;
     margin:0px;
     padding: 0px;
+    background-color: #FFF;
 }
 .rotate-con-pan .zhuangpan_bg{
     width:100%;
@@ -22,7 +23,13 @@ body{
 }
 
 .tishi{
+    width: 80%;
+    margin-left: 10%;
+    background-color: #00dbf5;
     font-size: 22px;
     color: #FFF;
     text-align: center;
+    position: fixed;
+    bottom:200px;
+    z-index: 110;
 }
