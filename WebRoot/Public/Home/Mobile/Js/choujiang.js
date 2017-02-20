@@ -1,4 +1,6 @@
     function fenxiang_success(){
+        //分享成功回调 fengxiang=1
+        fenxiang_huidiao();
         $('#zhishi_fenxiang').hide();
         tanchu('fengxiang_success');
         $('#fengxiang_success').bind('click',function(){
@@ -48,8 +50,31 @@
 	});
 
     
-
+function fenxiang_huidiao(){
+    var url='/Home/Ajaxlogin/fenxiang_huidiao.html';
+    var data={
+            check:"fenxiang_huidiao"
+            };
+    $.ajax({
+        type:'post',
+        url:url,
+        data:data,
+        datatype:'json',
+        async : true, 
+    });
+}
 
 function choujiang_huidiao(id){
-    
+    var url='/Home/Ajaxlogin/choujiang_huidiao.html';
+    var data={
+            id:id,
+            check:"choujiang_huidiao"
+            };
+    $.ajax({
+        type:'post',
+        url:url,
+        data:data,
+        datatype:'json',
+        async : true, 
+    });
 }

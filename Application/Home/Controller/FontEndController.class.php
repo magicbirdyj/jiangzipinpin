@@ -185,8 +185,8 @@ class FontEndController extends Controller {
   
   protected function get_daijinquan($user_id,$type,$sum){
       $tm=time();
-      $guoqi=strtotime(date('Y-m-d 23:59:59',($tm+345600)));
-      $youxiaoqi=date('Y.m.d',$tm).'-'.date('Y.m.d',($tm+345600));
+      $guoqi=strtotime(date('Y-m-d 23:59:59',($tm+1728000)));
+      $youxiaoqi=date('Y.m.d',$tm).'-'.date('Y.m.d',($tm+1728000));
       $usersmodel=D('Users');
       $daijinquan=$usersmodel->where("user_id=$user_id")->getField('daijinquan');
       if($daijinquan!=''){

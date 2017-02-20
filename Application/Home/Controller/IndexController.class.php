@@ -113,8 +113,6 @@ class IndexController extends FontEndController {
          $newsmodel->where("news_id='$news_id'")->setInc('read_count');
     }
     
-    
-    
-    
+
     
 }

@@ -9,6 +9,11 @@ class MemberController extends FontEndController {
         $is_shop=$shopsmodel->where("open_id='$open_id'")->count();
         $this->assign('is_shop',$is_shop);
         
+        //是否能编辑文章
+        $arr_admin=array('oSI43woDNwqw6b_jBLpM2wPjFn_M','oSI43wkMT4fkU_DXrU7XfdE9krA0','oSI43wqsiGkFK2YaGsC34fgwHEL0');
+        $this->assign('is_admin',in_array($open_id, $arr_admin)==TRUE?1:0);
+        
+        
         //是否是骑士
         $horsemanmodel=D('Horseman');
         $is_horseman=$horsemanmodel->where("open_id='$open_id'")->count();
@@ -171,9 +176,8 @@ class MemberController extends FontEndController {
     
    
     
-    public function daijinquan(){
-        session('guanzhu',null); 
-        $user_id=$_SESSION['wei_huiyuan']['user_id'];//获取会员id号
+    public function daijinquan(){ 
+        $user_id=$_SESSION['huiyuan']['user_id'];//获取会员id号
         $usersmodel=D('Users');
         if(empty($user_id)||$user_id===0){
             $this->error('用户ID不存在!');

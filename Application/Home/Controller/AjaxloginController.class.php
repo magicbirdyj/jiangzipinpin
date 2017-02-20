@@ -192,8 +192,38 @@ class AjaxloginController extends FontEndController {
         }
         $this->ajaxReturn($result);
     }
-    
-    
+     //分享回调
+    public function fenxiang_huidiao() {
+        $post=$_POST;
+        if($post['check']!='fenxiang_huidiao'){
+            exit;
+        }
+        //先把会员的fenxiang改为1,choujiang改为1
+        $user_id=$_SESSION['huiyuan']['user_id'];
+        $usersmodel=D('Users');
+        $row=array(
+            'choujiang'=>1,
+            'fenxiang'=>1
+        );
+        $usersmodel->where("user_id='{$user_id}'")->save($row);
+    }
+    //抽奖回调
+    public function choujiang_huidiao() {
+        $post=$_POST;
+        if($post['check']!='choujiang_huidiao'){
+            exit;
+        }
+        //先把会员的choujiang改为0
+        $user_id=$_SESSION['huiyuan']['user_id'];
+        $usersmodel=D('Users');
+        $row=array(
+            'choujiang'=>0
+        );
+        $usersmodel->where("user_id='{$user_id}'")->save($row);
+        
+        //增加代金券
+        $this->get_daijinquan($user_id, '通用券', $post['id']);
+    }
     
     
     

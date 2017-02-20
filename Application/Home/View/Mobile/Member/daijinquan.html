@@ -9,11 +9,19 @@
         <li>
             <div class="daijinquan_left price_red">
                 <span class="daijinquan_leixing"><{$vo['type']}></span>
-                &yen;<span class='daijinquan_money'><{$vo['sum']}></span>
+                <if  condition="($vo['sum'] eq '0') ">
+                    <span class='daijinquan_money' style="font-size: 16px;">首单免费</span>
+                    <else />
+                    &yen;<span class='daijinquan_money'><{$vo['sum']}></span>
+                </if>
             </div>
             <div class="daijinquan_right">
                 <div class="daijinquan_right_div">
-                    <div class="daijinquan_right_div_1 price_red">满<{$vo['sum']*10}>减<{$vo['sum']}></div>
+                    <if  condition="($vo['sum'] eq '0') ">
+                    <div class="daijinquan_right_div_1 price_red">20元以内免单</div>
+                    <else />
+                    <div class="daijinquan_right_div_1 price_red">满<{$vo['sum']*4}>减<{$vo['sum']}></div>
+                </if>
                     <div>全场通用</div>
                     <div><{$vo['youxiaoqi']}></div>
                 </div>
@@ -30,6 +38,6 @@
     
     
 
-<iframe height="1" frameborder="0" width="1" style="position:absolute;top:0;left:-9999px;" src="<{:U('index/menu')}>"></iframe>
+
 </body>
 </html>

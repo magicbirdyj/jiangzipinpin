@@ -6,7 +6,7 @@ function randomnum(smin, smax) {// 获取2个值之间的随机数
 
 function runzp() {
     
-	var data = '[{"id":1,"prize":"首单免费","v":20.0},{"id":2,"prize":"15元代金券","v":30.0},{"id":3,"prize":"10元代金券","v":40.0},{"id":4,"prize":"5元代金券","v":50.0}]';// 奖项json
+	var data = '[{"id":0,"prize":"首单免费","v":20.0},{"id":15,"prize":"15元代金券","v":30.0},{"id":10,"prize":"10元代金券","v":40.0},{"id":5,"prize":"5元代金券","v":50.0}]';// 奖项json
 	var obj = eval('(' + data + ')');
 	var result = randomnum(1, 100);
 	var index = 0;
