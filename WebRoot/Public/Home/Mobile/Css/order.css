@@ -183,3 +183,37 @@
     font-size: 14px;
     padding-top: 10px;
 }
+
+
+
+
+
+/*news/index用*/
+.order_row .td_l{
+    width: 80px;
+    position: absolute;
+}
+.td_l .picture{
+    float: left;
+    width: 80px;
+    margin-right: 20px;
+    height: 80px;
+}
+.picture img{
+    width:80px;
+    height: 80px;
+}
+.order_row .td_r{
+    padding-left: 100px;
+    width: 100%;
+    min-height: 70px;
+}
+.td_r .info_name{
+    width: 235px;
+    text-align: left;
+    font-size: 14px;
+    padding: 2px 0px;
+}
+
+
+
