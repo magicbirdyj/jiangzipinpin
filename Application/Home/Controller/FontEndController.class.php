@@ -12,7 +12,7 @@ class FontEndController extends Controller {
         header("content-type:text/html;charset=utf-8"); 
         //判断是否需要记录当前url 数组内必须首字母大写
         $noref=array('Member/bangding_phone');
-        $noref_contorller=array('Zhuce','Login','Weixin','Crontab','Ajaxnologin','Ajaxlogin');
+        $noref_contorller=array('Zhuce','Login','Weixin','Crontab','Ajaxnologin','Ajaxlogin','Index');
         if(!in_array(CONTROLLER_NAME.'/'.ACTION_NAME, $noref)&&!in_array(CONTROLLER_NAME, $noref_contorller)){
             $_SESSION['ref']=  str_replace('.html', '',$_SERVER['REQUEST_URI']);
         }
@@ -58,9 +58,9 @@ class FontEndController extends Controller {
         }*/
         
         
-        
+
         //$ismobile = checkmobile();//检查客户端是否是手机
-        if($_SERVER['HTTP_HOST']==='m.jiangzipinpin.com'||$_SERVER['HTTP_HOST']==='m.myguopin.com'){
+        if($_SERVER['HTTP_HOST']==='xy.zsxjjd.com'||$_SERVER['HTTP_HOST']==='m.myguopin.com'||$_SERVER['HTTP_HOST']==='www.huaiyw.com'){
             C("DEFAULT_THEME", "Mobile");//默认模板主题名称
             C("TMPL_CACHE_PREFIX", "mb");//模板缓存前缀标志
             $this->assign("title",$webinfor['web_name']);//给标题赋值
