@@ -60,7 +60,7 @@ class FontEndController extends Controller {
         
 
         //$ismobile = checkmobile();//检查客户端是否是手机
-        if($_SERVER['HTTP_HOST']==='xy.zsxjjd.com'||$_SERVER['HTTP_HOST']==='m.myguopin.com'||$_SERVER['HTTP_HOST']==='www.huaiyw.com'){
+        if($_SERVER['HTTP_HOST']==='xy.zsxjjd.com'||$_SERVER['HTTP_HOST']==='m.myguopin.com'||$_SERVER['HTTP_HOST']==='www.jiangzipinpin.com'){
             C("DEFAULT_THEME", "Mobile");//默认模板主题名称
             C("TMPL_CACHE_PREFIX", "mb");//模板缓存前缀标志
             $this->assign("title",$webinfor['web_name']);//给标题赋值
